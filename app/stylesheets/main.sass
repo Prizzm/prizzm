@@ -1,0 +1,229 @@
+// API located at: http://compass-style.org/docs/reference/compass/
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+ 
+$blueprint-grid-columns : 30
+$blueprint-grid-width   : 30px
+$blueprint-grid-margin  : 10px
+   
+// If you change your grid column dimensions
+// you can make a new grid background image from the command line like this:
+// compass grid-img 30+10x16
+@import blueprint
+// Import the non-default scaffolding module.
+@import blueprint/scaffolding
+ 
+// Generate the blueprint framework according to your configuration:
+@import "compass/support"
+@import "compass/css3"
+@import "compass/css3/font-face"
+@import "compass/css3/text-shadow"
+@import "compass/utilities/lists/horizontal-list"
+@import "compass/utilities/links"
+@import "compass/utilities/tables/borders"
+@import "compass/utilities/general/min"
+@import "compass/utilities/text/replacement"
+@import "compass/utilities/lists/inline-block-list"
+
++blueprint
++blueprint-scaffolding
+
+$blue: #3B5997
+$left_width: 180px
+$middle_width: 495px
+$right_width: 245px
+$container_width: 980px
+$left:  $left_width
+$middle: $middle_width
+$right: $right_width
+$border_color: #B3B3B3
+$flash-message-height: 90px
+
+$header_height: 42px
+$nav_height: 57px
+$user_height: 70px
+
+$middle_columns: 25
+$right_columns: $blueprint_grid_columns - $middle_columns - 1
+
+//$blueprint-container-size: $container_width
+
+@mixin horizontal-center($width: 500px) 
+  display: block
+  width: $width
+  margin: 0 auto
+
+// Font declarations
+
++font-face("fairy-dust", font-files('../fonts/FairyDustB.ttf', truetype))
++font-face("twilight-new-moon", font-files('../fonts/twilight-new-moon.ttf', truetype))
+
+header, nav, footer 
+  +column($blueprint_grid_columns, true)
+
+#top
+  position: relative
+  +min-height($header_height)
+  background-color: $blue
+
+  #logo
+    a
+      text-decoration: none
+      color: white
+    position: absolute
+    left: 460px
+    font-family: "fairy-dust"
+    font-size: 34px
+    font-weight: 600
+
+#nav_user
+  +min-height($nav_height)
+  position: relative
+  background:
+    image: image-url("under-tab-bg-veiw-folio.png")
+  ul
+    #current_user
+      color: green
+      font-size: 20px
+      padding-right: 50px
+    position: absolute
+    top: 14px
+    right: 50px
+    +horizontal-list
+    li a
+      font-size: 18px
+
+#user_header
+  position: relative
+  +min-height($user_height)
+  background-color: #EEF1F4
+  line-height: 0.9em
+  .user_name
+    position: absolute
+    top: 20px
+    left: 400px
+    font-family: "Verdana"
+    font-size: 27px
+    font-weight: 400
+  .user_email
+    position: absolute
+    top: 50px
+    left: 405px
+    font-family: "Verdana"
+    font-size: 14px
+    font-weight: 400
+  .user_phone
+    position: absolute
+    top: 50px
+    left: 605px
+    font-family: "Verdana"
+    font-size: 14px
+    font-weight: 400
+  .user_location
+    position: absolute
+    top: 20px
+    left: 605px
+    font-family: "Verdana"
+    font-size: 14px
+    font-weight: 400
+  #fakeit
+    position: absolute
+    top: 50px
+    left: 805px
+    font-family: "Verdana"
+    font-size: 14px
+    font-weight: 400
+
+#container
+  +container
+  header
+    +last
+    +min-height($flash-message-height)
+    .notice, .alert, .warning, .error
+      +horizontal-center(350px)
+      margin-left: 300px
+      +prepend-top(12px)
+      text-align: center
+
+  #main  
+    #middle
+      +column($middle_columns)
+      position: relative
+      padding-right: 20px
+      border-right: 1px solid $border_color
+
+      #add-item
+        position: absolute
+        top: -50px
+        right: 30px
+        
+        span.add-item-text
+          padding-right: 15px
+          font-family: "Verdana"
+          font-size: 18px
+          font-weight: 700
+          vertical-align: 40%
+
+      table
+        tbody tr
+          +prepend-top(4em)
+          +min-height(80px)
+          position: relative
+          td
+            .hover
+              background-color: #DCEDEB
+            border-bottom: 1px solid $border-color          
+            padding: 0px 10px 0px 10px
+          td.position
+            font-family: "Verdana"
+            font-size: 18px
+            font-weight: 500
+          td.rating
+            position: relative
+            width: 110px
+            .rating
+              padding-top: 10px
+              padding-left: 10px
+            .social
+              padding: 30px 0 35px 0
+              .facebook_button
+                position: relative
+                padding-right: 35px
+                float: left
+                input#submit-to-facebook
+                  position: absolute
+                  bottom: 0
+                  left: 20
+              .twitter_button
+                position: relative
+                padding-right: 25px
+                float: left
+                input#submit-to-twitter
+                  position: absolute
+                  bottom: 0
+                  left: 50
+
+
+    #right
+      +column($right_columns, true)
+      table.hidden
+        margin-left: 10px
+        display: none
+
+.high
+  background-color: yellow
+
+.hover
+  background-color: #DCEDEB
+
+.notice
+  background-color: #e6efc2
+  border: 2px solid #dddddd
+  color: #264409
+  border-color: #c6d880
+
+#facebox .content
+  padding: 30px
+  background-color: white

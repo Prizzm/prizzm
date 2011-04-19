@@ -1,0 +1,8 @@
+%tr
+  %td
+    .interaction_info
+      %ul
+        %li Created on #{interaction.created_at.to_date}
+        %li= best_in_place interaction, :contact, :path => [@user, item, interaction]
+        %li= best_in_place interaction, :description, :path => [@user, item, interaction]
+    %hr

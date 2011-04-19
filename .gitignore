@@ -1,0 +1,14 @@
+tags
+log/*.log  
+*.swp
+*.swo
+.sass-cache
+*~
+*.cache
+*.log
+*.pid
+tmp/**/*
+db/*.sqlite3
+db/data.yml
+vendor/bundle
+*live.js

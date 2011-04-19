@@ -1,0 +1,19 @@
+%tr{:id => "item_#{item.id}"}
+  %td
+    .item_info
+      %ul
+        %li
+          %b Name:
+          = best_in_place item, :name, :path => [@user, item]
+        %li
+          %b Url:
+          = best_in_place item, :url, :path => [@user, item]
+        %li
+          %b Description:
+          = best_in_place item, :description, :path => [@user, item]
+        %li
+          %b Itemtype:
+          = best_in_place item, :itemtype, :path => [@user, item]
+        %li
+          = link_to "Add an Interaction", new_user_item_interaction_path(@user, item), :rel => 'facebox'
+    %hr
