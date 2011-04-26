@@ -1,5 +1,5 @@
 class InteractionsController < InheritedResources::Base
-  nested_belongs_to :user, :item
+  belongs_to :user
   respond_to :html, :json
   layout nil
 

@@ -8,9 +8,8 @@ CharlesItems3::Application.routes.draw do
   devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations"}
   resources :users do
 
-    resources :items do
-      resources :interactions
-    end
+    resources :items 
+    resources :interactions
   end
 
   post 'items/sort', :as => :sort_items

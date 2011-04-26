@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413015531) do
+ActiveRecord::Schema.define(:version => 20110426103432) do
 
   create_table "interactions", :force => true do |t|
     t.integer  "item_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20110413015531) do
     t.string   "phone_number"
     t.string   "location"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.integer  "interaction_id"
+    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
   //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
   var fixHelper = function(e, ui) {
     ui.children().each(function() {

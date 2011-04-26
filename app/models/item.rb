@@ -17,7 +17,8 @@
 
 class Item < ActiveRecord::Base
   belongs_to :user
-  has_many :interactions
+  has_many :tags, :dependent => :nullify
+  has_many :interactions, :through => :tags
 
   acts_as_list :scope => :user
 

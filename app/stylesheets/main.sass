@@ -4,28 +4,30 @@
 // Here is where you can define your constants for your application and to configure the blueprint framework.
 // Feel free to delete these if you want keep the defaults:
  
-$blueprint-grid-columns : 30
+$blueprint-grid-columns : 26
 $blueprint-grid-width   : 30px
 $blueprint-grid-margin  : 10px
    
 // If you change your grid column dimensions
 // you can make a new grid background image from the command line like this:
 // compass grid-img 30+10x16
-@import blueprint
+@import "blueprint"
 // Import the non-default scaffolding module.
-@import blueprint/scaffolding
+@import "blueprint/scaffolding"
  
 // Generate the blueprint framework according to your configuration:
+@import "compass"
 @import "compass/support"
 @import "compass/css3"
 @import "compass/css3/font-face"
 @import "compass/css3/text-shadow"
-@import "compass/utilities/lists/horizontal-list"
-@import "compass/utilities/links"
+@import "compass/typography/lists/horizontal-list"
+@import "compass/typography/links"
 @import "compass/utilities/tables/borders"
 @import "compass/utilities/general/min"
-@import "compass/utilities/text/replacement"
-@import "compass/utilities/lists/inline-block-list"
+@import "compass/typography/text/replacement"
+@import "compass/typography/lists/inline-block-list"
+@import "compass/layout/sticky-footer"
 
 +blueprint
 +blueprint-scaffolding
@@ -38,10 +40,10 @@ $container_width: 980px
 $left:  $left_width
 $middle: $middle_width
 $right: $right_width
-$border_color: #B3B3B3
+$table-border-color: #B3B3B3
 $flash-message-height: 90px
 
-$header_height: 42px
+$top_height: 42px
 $nav_height: 57px
 $user_height: 70px
 
@@ -59,14 +61,20 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 
 +font-face("fairy-dust", font-files('../fonts/FairyDustB.ttf', truetype))
 +font-face("twilight-new-moon", font-files('../fonts/twilight-new-moon.ttf', truetype))
+//+sticky-footer(70px, '#container', '#root_footer', 'footer')
 
 header, nav, footer 
   +column($blueprint_grid_columns, true)
+body
+  +background-image(linear-gradient(top, white, #DEEFFF 33%))
+  +min-height(900px)
+  background-repeat: no-repeat
 
 #top
-  position: relative
-  +min-height($header_height)
-  background-color: $blue
+  position: fixed
+  width: 100%
+  +min-height($top_height)
+  +background-image(linear-gradient(center top, #333333, #111111))
 
   #logo
     a
@@ -78,63 +86,6 @@ header, nav, footer
     font-size: 34px
     font-weight: 600
 
-#nav_user
-  +min-height($nav_height)
-  position: relative
-  background:
-    image: image-url("under-tab-bg-veiw-folio.png")
-  ul
-    #current_user
-      color: green
-      font-size: 20px
-      padding-right: 50px
-    position: absolute
-    top: 14px
-    right: 50px
-    +horizontal-list
-    li a
-      font-size: 18px
-
-#user_header
-  position: relative
-  +min-height($user_height)
-  background-color: #EEF1F4
-  line-height: 0.9em
-  .user_name
-    position: absolute
-    top: 20px
-    left: 400px
-    font-family: "Verdana"
-    font-size: 27px
-    font-weight: 400
-  .user_email
-    position: absolute
-    top: 50px
-    left: 405px
-    font-family: "Verdana"
-    font-size: 14px
-    font-weight: 400
-  .user_phone
-    position: absolute
-    top: 50px
-    left: 605px
-    font-family: "Verdana"
-    font-size: 14px
-    font-weight: 400
-  .user_location
-    position: absolute
-    top: 20px
-    left: 605px
-    font-family: "Verdana"
-    font-size: 14px
-    font-weight: 400
-  #fakeit
-    position: absolute
-    top: 50px
-    left: 805px
-    font-family: "Verdana"
-    font-size: 14px
-    font-weight: 400
 
 #container
   +container
@@ -148,75 +99,50 @@ header, nav, footer
       text-align: center
 
   #main  
-    #middle
-      +column($middle_columns)
-      position: relative
-      padding-right: 20px
-      border-right: 1px solid $border_color
-
-      #add-item
-        position: absolute
-        top: -50px
-        right: 30px
-        
-        span.add-item-text
-          padding-right: 15px
-          font-family: "Verdana"
+    +min-height(650px)
+    +prepend-top($top-height + 30px)
+    #interactions
+      margin-left: 15px
+      +column(14)
+      +min-height(650px)
+      +display-box
+      +border-radius(7px)
+      +box-shadow
+      background-color: white
+      margin-right: -5px
+      #new_interaction_box
+        #prompt_phrase
+          +last
           font-size: 18px
-          font-weight: 700
-          vertical-align: 40%
+          padding-left: 40px
+          padding-top: 20px
+          padding-bottom: 40px
 
-      table
-        tbody tr
-          +prepend-top(4em)
-          +min-height(80px)
-          position: relative
-          td
-            .hover
-              background-color: #DCEDEB
-            border-bottom: 1px solid $border-color          
-            padding: 0px 10px 0px 10px
-          td.position
-            font-family: "Verdana"
-            font-size: 18px
-            font-weight: 500
-          td.rating
-            position: relative
-            width: 110px
-            .rating
-              padding-top: 10px
-              padding-left: 10px
-            .social
-              padding: 30px 0 35px 0
-              .facebook_button
-                position: relative
-                padding-right: 35px
-                float: left
-                input#submit-to-facebook
-                  position: absolute
-                  bottom: 0
-                  left: 20
-              .twitter_button
-                position: relative
-                padding-right: 25px
-                float: left
-                input#submit-to-twitter
-                  position: absolute
-                  bottom: 0
-                  left: 50
+        #interaction_input
+          +last
+          textarea
+            +horizontal-center
+            width: 482px
+            height: 25px
+            margin-bottom: 30px
+      #interactions_feed
+        table
+          tbody tr
+            +min-height(80px)
+            td
+              border-bottom: 1px solid $table-border-color
+              
 
+    #items
+      +min-height(650px)
+      +column(11.5, true)
+      +display-box
+      +border-right-radius(5px)
+      +box-shadow
+      +background-image(linear-gradient(left top, white, #dddddd))
 
-    #right
-      +column($right_columns, true)
-      table.hidden
-        margin-left: 10px
-        display: none
-
-.high
-  background-color: yellow
-
-.hover
-  background-color: #DCEDEB
+      #items_feed
+      #items_search
 
 .notice
   background-color: #e6efc2

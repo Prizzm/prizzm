@@ -26,28 +26,15 @@
     = yield :javascripts
 
   %body
-
     #top
       #logo= link_to "Prizzm", root_url
-    #nav_user
-      %ul
-        - if user_signed_in?
-          %li
-            %span#current_user Hello #{current_user.email}
-          %li= link_to "My Profile", edit_user_registration_path
-          %li= link_to "Sign Out", destroy_user_session_path
-        - else
-          %li= link_to "Create Account", new_user_registration_path
-          %li= link_to "Sign In", new_user_session_path
-    #user_header
-      = yield :user_header
+      #user_menu
+    %header
+      - flash.each do |type, value|
+        .flash{ :class => type.to_s }
+          = value 
     #container
-      %header
-        - flash.each do |type, value|
-          .flash{ :class => type.to_s }
-            = value 
       #main
         = yield
-  %footer
-    = debug params
-    = debug session
+      = debug params
+      = debug session
