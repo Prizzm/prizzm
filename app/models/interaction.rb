@@ -14,6 +14,7 @@
 #
 
 class Interaction < ActiveRecord::Base
+  belongs_to :user
   has_many :tags, :dependent => :nullify  
   has_many :items, :through => :tags
 end

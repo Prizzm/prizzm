@@ -19,7 +19,7 @@ class ItemsController < InheritedResources::Base
   end
 
   def rate
-    current_user.items.find(params[:item_id]).update_attribute(:rating, params[:rating])
+    current_user.items.find(params[:object_id]).update_attribute(:rating, params[:rating])
     head :ok
   end
 

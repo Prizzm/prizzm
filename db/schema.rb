@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(:version => 20110426103432) do
 
   create_table "interactions", :force => true do |t|
-    t.integer  "item_id"
     t.datetime "time_start"
     t.datetime "time_end"
     t.integer  "rating"
     t.string   "contact"
+    t.boolean  "shared_facebook"
+    t.boolean  "shared_twitter"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20110426103432) do
     t.text     "description"
     t.string   "itemtype"
     t.integer  "rating"
-    t.integer  "user_id"
     t.integer  "position"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

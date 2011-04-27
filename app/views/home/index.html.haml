@@ -11,25 +11,38 @@
         = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
         #interaction_stars
           = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+        .social
+          .twitter_button
+            = link_to image_tag('twitter_24x24.png'), '#'
+            = f.check_box :shared_twitter
+          .facebook_button
+            = link_to image_tag('facebook_24x24.png'), '#'
+            = f.check_box :shared_facebook
         = f.submit 'Share'
       :javascript
         $("#interaction_stars").stars({
           inputType: "select",
           cancelShow: false
         });
-    #interaction_tool_box   
-      .social
-        .facebook_button
-          = link_to image_tag('facebook_24x24.png'), '#'
-          = check_box_tag 'submit-to-facebook'
-        .twitter_button
-          = link_to image_tag('twitter_24x24.png'), '#'
-          = check_box_tag 'submit-to-twitter'
   #interactions_feed
-    - Interaction.all.each do |interaction|
+    - Interaction.order('created_at desc').all.each do |interaction|
       .interaction-content
-        .interaction-profile-image= placeholder_image_tag :width => 75, :height => 75
+        .interaction-profile-image= placeholder_image_tag :width => 50, :height => 50
         .interaction-description= interaction.description
+        .interaction-contact= interaction.contact
+        .interaction-created-at #{time_ago_in_words(interaction.created_at)} ago
+        %div{:id => "interaction-#{interaction.id}-rating", :class => "rating"}
+          = form_for [@user, interaction], :remote => true do |f|
+            = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+          :javascript
+            $("#interaction-#{interaction.id}-rating").stars({
+              inputType: "select",
+              cancelShow: false,
+              callback: function(ui, type, value, event){
+                var interaction = #{interaction.id};
+                update_rating('interactions', interaction,value);
+              }
+            });
 #items
   #items_feed
     %p= text_field_tag 'search term'
@@ -53,4 +66,4 @@
 
   #items_search
     #search_results
-    = render 'layouts/custom_search_json'
+    /= render 'layouts/custom_search_json'

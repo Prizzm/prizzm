@@ -1,16 +1,58 @@
 $(document).ready(function(){
+
+  /* Here, we initialize some of the Javascript plugins used for display, and
+   * interactivity on the site
+   */
+
+  // Initialize best in place edit in place helper
+  $(".best_in_place").best_in_place();
+
+  // Initialize facebox model windows if they are used
+  $('a[rel*=facebox]').facebox();
+
+
+
+
+  /*  Here we configure the effects that occur when we click on the input box.
+   *  The text_area expands in size, we add a class to it to highlight it, and we
+   *  show three other objects that were previously hidden.  Finally, after we
+   *  lose focus from the text_area, we remove the highlighting
+   */
+
   $('#interaction-input').focus(function(){
     /*this.value = this.attr('data-text');    */
     $(this).addClass('input-active');
     $(this).height(80);
     $('#interaction_submit').show();
-    $('#interaction_tool_box').show();
+    $('.social img,input').show();
     $('#interaction_stars').show();
   });
 
   $('#interaction-input').blur(function(){
     $(this).removeClass('input-active');
   });
+
+
+
+
+  /* This function is used to send the updated ratings to the Rails controller
+   * via ajax.  As we do not need to read the response (we just assume it works,
+   * we can use a simple AJAX Post.
+   */
+  update_rating = function(key, object, rating){
+    $.post('/' + key + '/rate', {
+      object_id: object,
+      rating: rating
+    });
+  };
+
+
+
+
+
+
+
+
 
   //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
   var fixHelper = function(e, ui) {
@@ -42,13 +84,9 @@ $(document).ready(function(){
     update: saveOrder
   }).disableSelection();
 
-  //initialize facebox model windows
-  $('a[rel*=facebox]').facebox();
 
-  // Initialize best in place edit in place helper
-  $(".best_in_place").best_in_place();
 
-  // Used to hightlight tables when we hoover overe them.  NEed to change to
+  // Used to hightlight tables when we hoover over them.  NEed to change to
   // prevent duplicate effect on drop
   $('table.items tbody tr').hover(function(){
       $(this).find('.item_info').addClass('hover');
@@ -60,11 +98,9 @@ $(document).ready(function(){
       $(this).find('.item_info').removeClass('hover');
   });
 
-  // Update item ratings via ajax
-  update_item_rating = function(item, rating){
-    $.post('/items/rate', {
-      item_id: item,
-      rating: rating
-    }) //post order to rails
-  };
+  $('.interaction-content').hover(function(){
+      $(this).addClass('hover');
+    }, function(){
+      $(this).removeClass('hover');
+  });
 });

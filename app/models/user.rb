@@ -43,11 +43,10 @@ class User < ActiveRecord::Base
 
   def make_real
     10.times do
-      item = Factory.build :item
+      item = Factory :item
+      interaction = Factory :interaction
       self.items << item
-      3.times do
-        item.interactions << Factory.build(:interaction)
-      end
+      self.interactions << interaction
     end
     self.save
   end

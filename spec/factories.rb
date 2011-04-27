@@ -26,7 +26,7 @@ end
 Factory.define :interaction do |interaction|
   interaction.time_start { Random.date.to_datetime}
   interaction.time_end { |i| i.time_start + 1.day }
-  interaction.contact { ["email", "phone", "pigeon"].random }
+  interaction.contact { ["Email", "Phone", "Prizzm", "Video"].random }
   interaction.description { Faker::Company.bs }
   interaction.rating { [1,2,3,4,5].rand }
 end

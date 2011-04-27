@@ -1,7 +1,6 @@
 class CreateInteractions < ActiveRecord::Migration
   def self.up
     create_table :interactions do |t|
-      t.references :item
       t.datetime :time_start
       t.datetime :time_end
       t.integer :rating
@@ -10,6 +9,7 @@ class CreateInteractions < ActiveRecord::Migration
       t.boolean :shared_twitter
       t.text :description
 
+      t.references :user
       t.timestamps
     end
   end

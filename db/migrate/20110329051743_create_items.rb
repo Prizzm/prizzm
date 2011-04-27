@@ -6,8 +6,8 @@ class CreateItems < ActiveRecord::Migration
       t.text :description
       t.string :itemtype
       t.integer :rating
-      t.references :user
       t.integer :position
+      t.references :user
       t.timestamps
     end
   end

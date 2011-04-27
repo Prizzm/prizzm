@@ -70,6 +70,7 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 body
   +min-height(900px)
   background-color: #DEEFFF
+  background-color: #DEE4F2
   background-repeat: no-repeat
 
   #top
@@ -181,11 +182,6 @@ body
             +last
             form
               position: relative
-              #interaction_stars
-                position: absolute
-                top: 107px
-                right: 275px
-                display: none
               textarea#interaction-input
                 +border-radius(5px)
                 position: relative
@@ -193,6 +189,25 @@ body
                 width: 482px
                 height: 25px
                 margin-bottom: 30px
+              #interaction_stars
+                position: absolute
+                top: 107px
+                right: 275px
+                display: none
+              .social
+                position: relative
+                width: 120px
+                +float-right
+                top: -19px
+                right: 120px
+                img, input
+                  display: none
+                .facebook_button
+                  width: 60px
+                  +float-right
+                .twitter_button
+                  +float-right
+                  width: 60px
               #interaction_submit
                 position: absolute
                 right: 30px
@@ -215,17 +230,15 @@ body
         #interactions_feed
           .interaction-content
             +min-height(90.5px)
-            width: 540px
             border-bottom: 1px solid $table-border-color
-            padding: 10px 20px
+            padding: 10px 0 10px 20px
             font-size: 13px
             font-weight: 400px
             text-align: left
             vertical-align: baseline
-            background-color: transparent
-            position: relative
             .interaction-description
       #items
+        margin-left: 15px
         +min-height(650px)
         +column(11.5, true)
         +display-box
@@ -245,3 +258,7 @@ input[type="checkbox"].checkbox-tag
 #facebox .content
   padding: 30px
   background-color: white
+
+.hover
+  background-color: #DCEDEB
+
