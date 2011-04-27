@@ -49,22 +49,20 @@ $(document).ready(function(){
   /* This prepends the new interaction to our list of interactions, so that it
    * shows up at the top on our page, without us having to refresh the page
    * manually.
-   */
+   * Once the new interaction is added to the page, we'd like to signal the user
+   * so that it grabs their attention.
+  */
 
   $('#new_interaction')
     .live('ajax:success', function(event, data, status, xhr){
       $('#interactions_feed').prepend(xhr.responseText);
-      $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 3000)
+      $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
     });
 
 
-/* Once the new interaction is added to the page, we'd like to signal the user
- * so that it grabs their attention.
- */
-  $('#interactions_feed').live
 
   /* This  creates the blue highlight effect as we mouseover the interactions
-   * list, by adding the 'hover' class to the div on mouseoveer, and removing
+   * list, by adding the 'hover' class to the div on mouseover, and removing
    * it as the mouse moves away
    */
 
@@ -73,7 +71,6 @@ $(document).ready(function(){
     }, function(){
       $(this).removeClass('hover');
   });
-
 
 
 
@@ -107,7 +104,6 @@ $(document).ready(function(){
     start: getStartOrder, 
     update: saveOrder
   }).disableSelection();
-
 
 
 
