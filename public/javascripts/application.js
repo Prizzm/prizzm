@@ -47,8 +47,18 @@ $(document).ready(function(){
   };
 
 
+  $('#new_interaction')
+    .live('ajax:success', function(event, data, status, xhr){
+      /*alert(xhr.reponseText);*/
+      alert($(this));
+      //$('#interactions_feed').append(xhr.responseText);
+    });
 
-
+  $('.interaction-content').hover(function(){
+      $(this).addClass('hover');
+    }, function(){
+      $(this).removeClass('hover');
+  });
 
 
 
@@ -86,21 +96,5 @@ $(document).ready(function(){
 
 
 
-  // Used to hightlight tables when we hoover over them.  NEed to change to
-  // prevent duplicate effect on drop
-  $('table.items tbody tr').hover(function(){
-      $(this).find('.item_info').addClass('hover');
-      var interactions_table = '#' + this.id + '_interactions';
-      $('table.hidden').hide(); //hide all interactions that are currently visible
-      $(interactions_table).show(); //show the interaction that we are interested in
-    }, function(){
-      var interactions_table = '#' + this.id + '_interactions';
-      $(this).find('.item_info').removeClass('hover');
-  });
 
-  $('.interaction-content').hover(function(){
-      $(this).addClass('hover');
-    }, function(){
-      $(this).removeClass('hover');
-  });
 });

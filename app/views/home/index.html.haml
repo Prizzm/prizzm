@@ -25,24 +25,8 @@
           cancelShow: false
         });
   #interactions_feed
-    - Interaction.order('created_at desc').all.each do |interaction|
-      .interaction-content
-        .interaction-profile-image= placeholder_image_tag :width => 50, :height => 50
-        .interaction-description= interaction.description
-        .interaction-contact= interaction.contact
-        .interaction-created-at #{time_ago_in_words(interaction.created_at)} ago
-        %div{:id => "interaction-#{interaction.id}-rating", :class => "rating"}
-          = form_for [@user, interaction], :remote => true do |f|
-            = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-          :javascript
-            $("#interaction-#{interaction.id}-rating").stars({
-              inputType: "select",
-              cancelShow: false,
-              callback: function(ui, type, value, event){
-                var interaction = #{interaction.id};
-                update_rating('interactions', interaction,value);
-              }
-            });
+    - @interactions.each do |interaction|
+      = render :partial => 'interaction', :locals => {:interaction => interaction}
 #items
   #items_feed
     %p= text_field_tag 'search term'
