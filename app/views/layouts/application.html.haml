@@ -7,7 +7,7 @@
 
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js'
-    /= javascript_include_tag 'http://livejs.com/live.js'
+    /= javascript_include_tag 'http://livejs.com/live.js' if Rails.env.development?
     = javascript_include_tag :all
     = stylesheet_link_tag "edit_in_place", "facebox", "jquery.ui.stars"
     = stylesheet_link_tag "main", :media => "screen, projection"
@@ -34,13 +34,13 @@
             %li= link_to 'Home', home_url
             %li= link_to 'Contact Customer Service', '#'
             %li= link_to 'Logout', destroy_user_session_url
-    %header
+    #header
       - flash.each do |type, value|
         .flash{ :class => type.to_s }
           = value 
     - if signed_in?
       #user_profile
-        = placeholder_image_tag :width => 200, :height => 200, :category => :people, :id => 'user-profile-photo'
+        #user-profile-photo= image_tag current_user.photo_url
         #user-name= current_user.name
         #user-email= current_user.email
     #container

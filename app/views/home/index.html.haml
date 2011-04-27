@@ -9,11 +9,11 @@
     #interaction_input_box
       = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
         = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
-        = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-
+        #interaction_stars
+          = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
         = f.submit 'Share'
       :javascript
-        $("#new_interaction_form").stars({
+        $("#interaction_stars").stars({
           inputType: "select",
           cancelShow: false
         });

@@ -6,6 +6,8 @@ class CreateInteractions < ActiveRecord::Migration
       t.datetime :time_end
       t.integer :rating
       t.string :contact
+      t.boolean :shared_facebook
+      t.boolean :shared_twitter
       t.text :description
 
       t.timestamps

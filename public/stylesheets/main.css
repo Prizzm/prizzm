@@ -1364,28 +1364,7 @@ form.inline p {
   src: url('/fonts/../fonts/twilight-new-moon.ttf') format('truetype');
 }
 
-/* line 66, ../../app/stylesheets/main.sass */
-header, nav, footer {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 1030px;
-}
-/* line 147, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html header, * html nav, * html footer {
-  overflow-x: hidden;
-}
-
-/* line 68, ../../app/stylesheets/main.sass */
-body {
-  background-color: #deefff;
-  min-height: 900px;
-  height: auto !important;
-  height: 900px;
-  background-repeat: no-repeat;
-}
-
-/* line 75, ../../app/stylesheets/main.sass */
+/* line 64, ../../app/stylesheets/main.sass */
 .input-active {
   margin-bottom: 80px;
   border-color: rgba(82, 168, 236, 0.75);
@@ -1395,8 +1374,16 @@ body {
   box-shadow: 0px 0px 5px rgba(82, 168, 236, 0.5);
 }
 
-/* line 81, ../../app/stylesheets/main.sass */
-#top {
+/* line 70, ../../app/stylesheets/main.sass */
+body {
+  min-height: 900px;
+  height: auto !important;
+  height: 900px;
+  background-color: #deefff;
+  background-repeat: no-repeat;
+}
+/* line 75, ../../app/stylesheets/main.sass */
+body #top {
   z-index: 9;
   position: fixed;
   width: 100%;
@@ -1408,30 +1395,28 @@ body {
   background-image: -moz-linear-gradient(center top, #333333, #111111);
   background-image: -o-linear-gradient(center top, #333333, #111111);
   background-image: linear-gradient(center top, #333333, #111111);
+  margin-right: 0;
 }
-/* line 87, ../../app/stylesheets/main.sass */
-#top #logo {
+/* line 82, ../../app/stylesheets/main.sass */
+body #top #logo {
   position: absolute;
   left: 460px;
   font-family: "fairy-dust";
   font-size: 34px;
   font-weight: 600;
 }
-/* line 88, ../../app/stylesheets/main.sass */
-#top #logo a {
+/* line 83, ../../app/stylesheets/main.sass */
+body #top #logo a {
   text-decoration: none;
   color: white;
 }
-/* line 96, ../../app/stylesheets/main.sass */
-#top #user_menu {
+/* line 91, ../../app/stylesheets/main.sass */
+body #top #user_menu {
   position: absolute;
   left: 1000px;
-  top: 13px;
-  z-index: 10;
 }
-/* line 101, ../../app/stylesheets/main.sass */
-#top #user_menu ul {
-  border: 2px solid red;
+/* line 94, ../../app/stylesheets/main.sass */
+body #top #user_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1439,7 +1424,7 @@ body {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-#top #user_menu ul li {
+body #top #user_menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -1450,47 +1435,87 @@ body {
   padding-right: 4px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-#top #user_menu ul li:first-child, #top #user_menu ul li.first {
+body #top #user_menu ul li:first-child, body #top #user_menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-#top #user_menu ul li:last-child {
+body #top #user_menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-#top #user_menu ul li.last {
+body #top #user_menu ul li.last {
   padding-right: 0;
 }
-/* line 104, ../../app/stylesheets/main.sass */
-#top #user_menu ul li {
-  padding: 0px 30px;
+/* line 96, ../../app/stylesheets/main.sass */
+body #top #user_menu ul li {
+  min-height: 42px;
+  height: auto !important;
+  height: 42px;
+  padding: 0;
 }
-/* line 106, ../../app/stylesheets/main.sass */
-#top #user_menu ul li a {
+/* line 99, ../../app/stylesheets/main.sass */
+body #top #user_menu ul li a {
+  vertical-align: -12px;
   text-decoration: none;
-  text-decoration: none;
-  color: white;
+  color: #bababa;
+  padding: 10px 30px;
+  border-right: 1px solid gray;
   font-size: 12px;
   font-weight: 700;
-  line-height: 19.5px;
   font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans";
+  line-height: 19.5px;
 }
 /* line 4, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
-#top #user_menu ul li a:hover {
+body #top #user_menu ul li a:hover {
   text-decoration: underline;
 }
-
-/* line 115, ../../app/stylesheets/main.sass */
-#user_profile {
-  position: absolute;
-  width: 200px;
-  height: 280px;
-  top: 75px;
-  left: 175px;
+/* line 24, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+body #top #user_menu ul li a:hover {
+  color: white;
+}
+/* line 104, ../../app/stylesheets/main.sass */
+body #top #user_menu ul li a:hover {
+  background-color: #ff3300;
+}
+/* line 113, ../../app/stylesheets/main.sass */
+body #header {
+  margin-right: 0;
+  min-height: 100px;
+  height: auto !important;
+  height: 100px;
+  margin-bottom: 2px;
+}
+/* line 117, ../../app/stylesheets/main.sass */
+body #header .notice, body #header .alert, body #header .warning, body #header .error, body #header .alert {
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
 }
 /* line 121, ../../app/stylesheets/main.sass */
-#user_profile img#user-profile-photo {
-  position: absolute;
+body #header .notice {
+  background-color: #e6efc2;
+  border: 2px solid #dddddd;
+  color: #264409;
+  border-color: #c6d880;
+}
+/* line 127, ../../app/stylesheets/main.sass */
+body #user_profile {
+  position: relative;
+  height: 280px;
+  width: 200px;
+  display: inline;
+  float: left;
+  left: 275px;
+}
+/* line 133, ../../app/stylesheets/main.sass */
+body #user_profile #user-profile-photo {
+  display: inline;
+  float: left;
+}
+/* line 135, ../../app/stylesheets/main.sass */
+body #user_profile #user-profile-photo img {
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
   -o-border-radius: 15px;
@@ -1501,70 +1526,40 @@ body {
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
-  border: 1px solid black;
 }
-/* line 126, ../../app/stylesheets/main.sass */
-#user_profile #user-name {
-  position: absolute;
-  top: 160px;
-  left: 10px;
-  padding: 40px 0 0 0;
+/* line 138, ../../app/stylesheets/main.sass */
+body #user_profile #user-name {
+  clear: both;
+  text-align: center;
   font-size: 32px;
   font-family: "Helvetica Neue,Helvetica";
   font-weight: 700;
   color: #565050;
-  clear: both;
 }
-/* line 137, ../../app/stylesheets/main.sass */
-#user_profile #user-email {
-  position: absolute;
-  top: 240px;
-  left: 20px;
+/* line 145, ../../app/stylesheets/main.sass */
+body #user_profile #user-email {
+  text-align: center;
+  clear: both;
   font-size: 18px;
   font-family: "Helvetica Neue,Helvetica";
   font-weight: 700;
   color: #565050;
 }
-
-/* line 149, ../../app/stylesheets/main.sass */
-input[type="checkbox"].checkbox-tag {
-  -moz-appearance: none;
-  height: 30px;
-  width: 30px;
-}
-
-/* line 154, ../../app/stylesheets/main.sass */
-#container {
+/* line 153, ../../app/stylesheets/main.sass */
+body #container {
   width: 1030px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 156, ../../app/stylesheets/main.sass */
-#container header {
-  margin-right: 0;
-  min-height: 90px;
-  height: auto !important;
-  height: 90px;
-}
-/* line 159, ../../app/stylesheets/main.sass */
-#container header .notice, #container header .alert, #container header .warning, #container header .error, #container header .alert {
-  display: block;
-  width: 350px;
-  margin: 0 auto;
-  margin-left: 300px;
-  margin-top: 12px;
-  text-align: center;
-}
-/* line 165, ../../app/stylesheets/main.sass */
-#container #main {
+/* line 155, ../../app/stylesheets/main.sass */
+body #container #main {
   min-height: 650px;
   height: auto !important;
   height: 650px;
-  margin-top: 72px;
 }
-/* line 168, ../../app/stylesheets/main.sass */
-#container #main #interactions {
+/* line 158, ../../app/stylesheets/main.sass */
+body #container #main #interactions {
   margin-left: 15px;
   display: inline;
   float: left;
@@ -1590,16 +1585,16 @@ input[type="checkbox"].checkbox-tag {
   margin-right: -5px;
 }
 /* line 147, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html #container #main #interactions {
+* html body #container #main #interactions {
   overflow-x: hidden;
 }
-/* line 177, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box {
+/* line 167, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box {
   padding-bottom: 20px;
   border-bottom: 2px solid #ebebeb;
 }
-/* line 180, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box #prompt_phrase {
+/* line 170, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
   font-weight: 700;
@@ -1609,16 +1604,23 @@ input[type="checkbox"].checkbox-tag {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 190, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box #interaction_input_box {
+/* line 180, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_input_box {
   margin-right: 0;
 }
-/* line 192, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box #interaction_input_box form {
+/* line 182, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_input_box form {
   position: relative;
 }
-/* line 194, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
+/* line 184, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
+  position: absolute;
+  top: 107px;
+  right: 275px;
+  display: none;
+}
+/* line 189, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1633,15 +1635,40 @@ input[type="checkbox"].checkbox-tag {
   height: 25px;
   margin-bottom: 30px;
 }
-/* line 201, ../../app/stylesheets/main.sass */
-#container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
+/* line 196, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
   position: absolute;
   right: 30px;
   bottom: -35px;
   display: none;
 }
-/* line 207, ../../app/stylesheets/main.sass */
-#container #main #interactions #interactions_feed .interaction-content {
+/* line 201, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_tool_box {
+  display: none;
+}
+/* line 203, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_tool_box .social {
+  position: relative;
+  width: 120px;
+  display: inline;
+  float: right;
+  top: -19px;
+  right: 120px;
+}
+/* line 209, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_tool_box .social .facebook_button {
+  width: 60px;
+  display: inline;
+  float: right;
+}
+/* line 212, ../../app/stylesheets/main.sass */
+body #container #main #interactions #new_interaction_box #interaction_tool_box .social .twitter_button {
+  display: inline;
+  float: right;
+  width: 60px;
+}
+/* line 216, ../../app/stylesheets/main.sass */
+body #container #main #interactions #interactions_feed .interaction-content {
   min-height: 90.5px;
   height: auto !important;
   height: 90.5px;
@@ -1655,8 +1682,8 @@ input[type="checkbox"].checkbox-tag {
   background-color: transparent;
   position: relative;
 }
-/* line 221, ../../app/stylesheets/main.sass */
-#container #main #items {
+/* line 228, ../../app/stylesheets/main.sass */
+body #container #main #items {
   min-height: 650px;
   height: auto !important;
   height: 650px;
@@ -1690,19 +1717,18 @@ input[type="checkbox"].checkbox-tag {
   background-image: linear-gradient(left top, #ffffff, #dddddd);
 }
 /* line 147, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html #container #main #items {
+* html body #container #main #items {
   overflow-x: hidden;
 }
 
-/* line 232, ../../app/stylesheets/main.sass */
-.notice {
-  background-color: #e6efc2;
-  border: 2px solid #dddddd;
-  color: #264409;
-  border-color: #c6d880;
+/* line 239, ../../app/stylesheets/main.sass */
+input[type="checkbox"].checkbox-tag {
+  -moz-appearance: none;
+  height: 30px;
+  width: 30px;
 }
 
-/* line 238, ../../app/stylesheets/main.sass */
+/* line 245, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;

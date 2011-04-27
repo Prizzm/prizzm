@@ -4,6 +4,8 @@ $(document).ready(function(){
     $(this).addClass('input-active');
     $(this).height(80);
     $('#interaction_submit').show();
+    $('#interaction_tool_box').show();
+    $('#interaction_stars').show();
   });
 
   $('#interaction-input').blur(function(){
