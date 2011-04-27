@@ -6,67 +6,50 @@
 #interactions
   #new_interaction_box
     #prompt_phrase How was the service?
-    #interaction_input
-      = text_area_tag 'interaction'
-  #interactions_feed
-    %table
-      %thead
-      %tbody
-        - Interaction.all.each do |interaction|
-          %tr
-            %td= interaction.description
+    #interaction_input_box
+      = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
+        = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
+        = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
 
+        = f.submit 'Share'
+      :javascript
+        $("#new_interaction_form").stars({
+          inputType: "select",
+          cancelShow: false
+        });
+    #interaction_tool_box   
+      .social
+        .facebook_button
+          = link_to image_tag('facebook_24x24.png'), '#'
+          = check_box_tag 'submit-to-facebook'
+        .twitter_button
+          = link_to image_tag('twitter_24x24.png'), '#'
+          = check_box_tag 'submit-to-twitter'
+  #interactions_feed
+    - Interaction.all.each do |interaction|
+      .interaction-content
+        .interaction-profile-image= placeholder_image_tag :width => 75, :height => 75
+        .interaction-description= interaction.description
 #items
   #items_feed
-    %p Items Begin
+    %p= text_field_tag 'search term'
     %table.items
       %thead
         %tr
           %th 
           %th Name
-          %th Url
-          %th Description
           %th Item Type
           %th Rating
-          %th Interaction
       %tbody
         /= render :partial => "home/item", :collection => @user.items
         - current_user.items.each do |item|
           %tr{:id => "item_#{item.id}"}
             .item_info
+              %td.check_box= check_box_tag 'tag', nil, false, :class => "checkbox-tag"
               %td.position= item.position
               %td.name= best_in_place item, :name, :path => [current_user, item]
-              %td.url= best_in_place item, :url, :path => [current_user, item]
-              %td.description= best_in_place item, :description, :path => [current_user, item]
               %td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
               %td.rating
-                %div(id="item_#{item.id}_rating" class="rating")
-                  = form_for [current_user, item], :remote => true do |f|
-                    %div{:id => "stars-wrapper-#{item.id}"}
-                      = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-                    :javascript
-                      $("#stars-wrapper-#{item.id}").stars({
-                        inputType: "select",
-                        callback: function(ui, type, value, event){
-                          var item = #{item.id};
-                          update_item_rating(item,value);
-                        },
-                        cancelShow: false
-                      });
-                .social
-                  .facebook_button
-                    = link_to image_tag('facebook_24x24.png'), '#'
-                    = check_box_tag 'submit-to-facebook'
-                  .twitter_button
-                    = link_to image_tag('twitter_24x24.png'), '#'
-                    = check_box_tag 'submit-to-twitter'
-    %table
-      %thead
-      %tbody
-        - current_user.items.each do |item|
-          %tr
-            %td= item.description
-    %p item end
 
   #items_search
     #search_results

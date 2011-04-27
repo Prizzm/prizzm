@@ -40,7 +40,7 @@ $container_width: 980px
 $left:  $left_width
 $middle: $middle_width
 $right: $right_width
-$table-border-color: #B3B3B3
+$table-border-color: #EBEBEB
 $flash-message-height: 90px
 
 $top_height: 42px
@@ -66,16 +66,24 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 header, nav, footer 
   +column($blueprint_grid_columns, true)
 body
-  +background-image(linear-gradient(top, white, #DEEFFF 33%))
+  //+background-image(linear-gradient(top, white, #DEEFFF 33%))
+  background-color: #DEEFFF
   +min-height(900px)
   background-repeat: no-repeat
 
+
+.input-active
+  margin-bottom: 80px
+  border-color: rgba(82, 168, 236, 0.75)
+  +single-box-shadow(rgba(82, 168, 236, 0.5))
+
+
 #top
+  z-index: 9
   position: fixed
   width: 100%
   +min-height($top_height)
   +background-image(linear-gradient(center top, #333333, #111111))
-
   #logo
     a
       text-decoration: none
@@ -85,7 +93,63 @@ body
     font-family: "fairy-dust"
     font-size: 34px
     font-weight: 600
+  #user_menu
+    position: absolute
+    left: 1000px
+    top: 13px
+    z-index: 10
+    ul
+      border: 2px solid red
+      +horizontal-list
+      li
+        padding: 0px 30px
+        a
+          +hover-link
+          text-decoration: none
+          color: white
+          font-size: 12px
+          font-weight: 700
+          line-height: 19.5px
+          font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans"
 
+#user_profile
+  position: absolute
+  width: 200px
+  height: 280px
+  top: 75px
+  left: 175px
+  img#user-profile-photo
+    position: absolute
+    +border-radius(15px)
+    +box-shadow
+    border: 1px solid black
+  #user-name
+    position: absolute
+    top: 160px
+    left: 10px
+    padding: 40px 0 0 0 
+    font-size: 32px
+    font-family: "Helvetica Neue,Helvetica"
+    font-weight: 700
+    color: #565050 
+    float:left
+    clear: both
+  #user-email
+    position: absolute
+    top: 240px
+    left: 20px
+    float:left
+    font-size: 18px
+    font-family: "Helvetica Neue,Helvetica"
+    font-weight: 700
+    color: #565050 
+    
+
+
+input[type="checkbox"].checkbox-tag
+  -moz-appearance: none
+  height: 30px
+  width: 30px
 
 #container
   +container
@@ -111,26 +175,47 @@ body
       background-color: white
       margin-right: -5px
       #new_interaction_box
+        padding-bottom: 20px
+        border-bottom: 2px solid $table-border-color
         #prompt_phrase
           +last
+          font-family: "Helvetica Neue,Helvetica"
+          font-weight: 700
           font-size: 18px
+          color: #999999
           padding-left: 40px
-          padding-top: 20px
-          padding-bottom: 40px
+          padding-top: 10px
+          padding-bottom: 10px
 
-        #interaction_input
+        #interaction_input_box
           +last
-          textarea
-            +horizontal-center
-            width: 482px
-            height: 25px
-            margin-bottom: 30px
+          form
+            position: relative
+            textarea#interaction-input
+              +border-radius(5px)
+              position: relative
+              +horizontal-center
+              width: 482px
+              height: 25px
+              margin-bottom: 30px
+            #interaction_submit
+              position: absolute
+              right: 30px
+              bottom: -35px
+              display: none
       #interactions_feed
-        table
-          tbody tr
-            +min-height(80px)
-            td
-              border-bottom: 1px solid $table-border-color
+        .interaction-content
+          +min-height(90.5px)
+          width: 540px
+          border-bottom: 1px solid $table-border-color
+          padding: 10px 20px
+          font-size: 13px
+          font-weight: 400px
+          text-align: left
+          vertical-align: baseline
+          background-color: transparent
+          position: relative
+          .interaction-description
               
 
     #items

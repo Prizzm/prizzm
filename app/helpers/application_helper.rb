@@ -3,5 +3,4 @@ module ApplicationHelper
     user.build_profile
     user
   end
-
 end

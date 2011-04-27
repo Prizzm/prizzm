@@ -4,6 +4,7 @@ Factory.define :profile do |profile|
   profile.last_name { Forgery::Name.last_name }
   profile.phone_number { Forgery::Address.phone }
   profile.location { Forgery::Address.street_address }
+  profile.photo_url "http://lorempixum.com/150/150/people/"
 end 
 
 Factory.define :user do |user|
@@ -27,5 +28,6 @@ Factory.define :interaction do |interaction|
   interaction.time_end { |i| i.time_start + 1.day }
   interaction.contact { ["email", "phone", "pigeon"].random }
   interaction.description { Faker::Company.bs }
+  interaction.rating { [1,2,3,4,5].rand }
 end
 

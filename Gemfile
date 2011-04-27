@@ -7,6 +7,7 @@ gem 'inherited_resources'
 gem "acts_as_list"
 gem "devise", :git => "https://github.com/plataformatec/devise.git"
 gem "ajaxful_rating"
+gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
 gem "haml-rails"
 gem "jquery-rails"
@@ -19,6 +20,7 @@ gem "faker"
 gem "randexp"
 gem "random_data"
 gem 'forgery'
+gem "lorempixum", :require => 'lorempixum'
 
 # gem 'aws-s3', :require => 'aws/s3'
 # gem 'bcrypt-ruby', :require => 'bcrypt'

@@ -1,4 +1,14 @@
 $(document).ready(function(){
+  $('#interaction-input').focus(function(){
+    /*this.value = this.attr('data-text');    */
+    $(this).addClass('input-active');
+    $(this).height(80);
+    $('#interaction_submit').show();
+  });
+
+  $('#interaction-input').blur(function(){
+    $(this).removeClass('input-active');
+  });
 
   //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
   var fixHelper = function(e, ui) {

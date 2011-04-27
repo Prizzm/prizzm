@@ -4,6 +4,7 @@ class CreateInteractions < ActiveRecord::Migration
       t.references :item
       t.datetime :time_start
       t.datetime :time_end
+      t.integer :rating
       t.string :contact
       t.text :description
 
