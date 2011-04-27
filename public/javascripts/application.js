@@ -34,7 +34,6 @@ $(document).ready(function(){
 
 
 
-
   /* This function is used to send the updated ratings to the Rails controller
    * via ajax.  As we do not need to read the response (we just assume it works,
    * we can use a simple AJAX Post.
@@ -47,12 +46,27 @@ $(document).ready(function(){
   };
 
 
+  /* This prepends the new interaction to our list of interactions, so that it
+   * shows up at the top on our page, without us having to refresh the page
+   * manually.
+   */
+
   $('#new_interaction')
     .live('ajax:success', function(event, data, status, xhr){
-      /*alert(xhr.reponseText);*/
-      alert($(this));
-      //$('#interactions_feed').append(xhr.responseText);
+      $('#interactions_feed').prepend(xhr.responseText);
+      $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 3000)
     });
+
+
+/* Once the new interaction is added to the page, we'd like to signal the user
+ * so that it grabs their attention.
+ */
+  $('#interactions_feed').live
+
+  /* This  creates the blue highlight effect as we mouseover the interactions
+   * list, by adding the 'hover' class to the div on mouseoveer, and removing
+   * it as the mouse moves away
+   */
 
   $('.interaction-content').hover(function(){
       $(this).addClass('hover');

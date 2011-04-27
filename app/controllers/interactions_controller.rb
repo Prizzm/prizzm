@@ -5,11 +5,12 @@ class InteractionsController < InheritedResources::Base
 
 
   create! do |success, failure| 
-    success.html {redirect_to root_path}
+    flash = nil
+    success.html {render :partial => 'home/interaction', :locals  => {:interaction  => resource}}
   end
 
   update! do |success, failure| 
-    success.html {redirect_to root_path}
+    success.html {redirect_to home_path}
   end
 
   def rate
