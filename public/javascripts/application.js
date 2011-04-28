@@ -93,9 +93,10 @@ $(document).ready(function(){
    * it as the mouse moves away
    */
 
-  $('.interaction-content').hover(function(){
+  $('.interaction-content').live('mouseenter', function(){
       $(this).addClass('hover');
-    }, function(){
+  });
+  $('.interaction-content').live('mouseleave', function(){
       $(this).removeClass('hover');
   });
 
