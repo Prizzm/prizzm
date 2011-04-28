@@ -17,4 +17,10 @@ class Interaction < ActiveRecord::Base
   belongs_to :user
   has_many :tags, :dependent => :nullify  
   has_many :items, :through => :tags
+
+  attr_accessor :new_items
+
+  def new_items=(list)
+    self.item_ids = list.split(',').map(&:to_i)
+  end
 end

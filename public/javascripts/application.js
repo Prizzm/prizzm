@@ -11,8 +11,6 @@ $(document).ready(function(){
   $('a[rel*=facebox]').facebox();
 
 
-
-
   /*  Here we configure the effects that occur when we click on the input box.
    *  The text_area expands in size, we add a class to it to highlight it, and we
    *  show three other objects that were previously hidden.  Finally, after we
@@ -46,17 +44,46 @@ $(document).ready(function(){
   };
 
 
+
+  /* Now we need to configure the checkboxes to create an association between
+   * the items, and the interaction that is being created.  First we will bind a
+   * function to the click event, and if the box is then checked, we will add
+   * the item id to the list of interaction items.  If it is unchecked, we will
+   * remove the item from the list of interaction items.
+   */
+  $('#interaction_submit').click(function(){
+      // First get a list of all the checked Items
+      var checked_items = new Array();
+      $('#items input[type="checkbox"]:checked').each(function(){
+        checked_items.push(this.getAttribute('data-item-id'));
+      });
+
+      // Then add this list of items to the new_interaction form to be submitted
+      $('#interaction_new_items').val(checked_items);
+  });
+
+
+
   /* This prepends the new interaction to our list of interactions, so that it
    * shows up at the top on our page, without us having to refresh the page
    * manually.
    * Once the new interaction is added to the page, we'd like to signal the user
    * so that it grabs their attention.
   */
-
   $('#new_interaction')
     .live('ajax:success', function(event, data, status, xhr){
+      // Add the newly created interaction to the page, and alert the user.
       $('#interactions_feed').prepend(xhr.responseText);
       $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
+
+      //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
+      $(':input','#new_interaction')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .removeAttr('checked')
+        .removeAttr('selected');
+
+      $('#new_interaction')[0].reset();
     });
 
 
@@ -71,6 +98,9 @@ $(document).ready(function(){
     }, function(){
       $(this).removeClass('hover');
   });
+
+
+
 
 
 
