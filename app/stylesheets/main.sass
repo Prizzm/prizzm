@@ -74,9 +74,11 @@ body
   background-repeat: no-repeat
 
   #top
-    z-index: 9
     position: fixed
     width: 100%
+    top: 0
+    left: 0
+    z-index: 12
     +min-height($top_height)
     +background-image(linear-gradient(center top, #333333, #111111))
     +last
@@ -112,6 +114,7 @@ body
             line-height: 19.5px
 
   #header
+    width: 100%
     +last
     +min-height($flash-message-height)
     margin-bottom: 2px
