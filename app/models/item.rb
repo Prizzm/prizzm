@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110413015531
+# Schema version: 20110426103432
 #
 # Table name: items
 #
@@ -9,8 +9,8 @@
 #  description :text
 #  itemtype    :string(255)
 #  rating      :integer
-#  user_id     :integer
 #  position    :integer
+#  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #

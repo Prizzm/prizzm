@@ -8,7 +8,6 @@ log/*.log
 *.log
 *.pid
 tmp/**/*
-db/*.sqlite3
 db/data.yml
 vendor/bundle
 *live.js

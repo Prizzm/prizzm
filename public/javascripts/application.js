@@ -18,7 +18,6 @@ $(document).ready(function(){
    */
 
   $('#interaction-input').focus(function(){
-    /*this.value = this.attr('data-text');    */
     $(this).addClass('input-active');
     $(this).height(80);
     $('#interaction_submit').show();
