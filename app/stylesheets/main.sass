@@ -52,7 +52,7 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 
 //$blueprint-container-size: $container_width
 
-@mixin horizontal-center($width: 500px) 
+@mixin horizontal-center($width: 50px) 
   display: block
   width: $width
   margin: 0 auto
@@ -92,8 +92,7 @@ body
       font-size: 34px
       font-weight: 600
     #user_menu
-      position: absolute
-      left: 1000px
+      float: right      
       ul
         +horizontal-list
         li
@@ -129,27 +128,29 @@ body
       border-color: #c6d880
 
   #user_profile
+    +horizontal-center(350px)
     position: relative
     height: 280px
     width: 200px
     +float-left
-    left: 275px
+    margin-left: 5px
     #user-profile-photo
       +float-left
-      img
-        +border-radius(15px)
+      img        
+        width: 200px
+        height: 200px
         +box-shadow
     #user-name
-      clear: both
       text-align: center
-      font-size: 32px
+      clear: both      
+      font-size: 14pt
       font-family: "Helvetica Neue,Helvetica"
-      font-weight: 700
+      font-weight: bold
       color: #565050 
     #user-email
       text-align: center
       clear: both
-      font-size: 18px
+      font-size: 12pt
       font-family: "Helvetica Neue,Helvetica"
       font-weight: 700
       color: #565050 
@@ -162,7 +163,6 @@ body
         margin-left: 15px
         +column(14)
         +min-height(650px)
-        +display-box
         +border-radius(7px)
         +box-shadow
         background-color: white
@@ -185,11 +185,9 @@ body
             form
               position: relative
               textarea#interaction-input
-                +border-radius(5px)
-                position: relative
-                +horizontal-center
-                width: 482px
-                height: 25px
+                +border-radius(5px)                
+                +horizontal-center       
+                height: 25px                
                 margin-bottom: 30px
               #interaction_stars
                 position: absolute
@@ -233,14 +231,14 @@ body
           .interaction-content
             +min-height(90.5px)
             border-bottom: 1px solid $table-border-color
-            padding: 10px 0 10px 20px
+            padding: 10px 0 20px 20px
             font-size: 13px
             font-weight: 400px
             text-align: left
             vertical-align: baseline
             .interaction-description
       #items
-        margin-left: 15px
+        margin-left: 10px
         +min-height(650px)
         +column(11.5, true)
         +display-box
@@ -250,11 +248,6 @@ body
 
         #items_feed
         #items_search
-
-input[type="checkbox"].checkbox-tag
-  -moz-appearance: none
-  height: 30px
-  width: 30px
 
 
 #facebox .content
