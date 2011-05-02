@@ -1458,6 +1458,15 @@ body #top #user_menu ul li {
   padding: 0;
 }
 /* line 103, ../../app/stylesheets/main.sass */
+body #top #user_menu ul li img {
+  width: 25px;
+  height: 25px;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+}
+/* line 107, ../../app/stylesheets/main.sass */
 body #top #user_menu ul li a {
   vertical-align: -12px;
   text-decoration: none;
@@ -1477,20 +1486,25 @@ body #top #user_menu ul li a:hover {
 body #top #user_menu ul li a:hover {
   color: white;
 }
-/* line 108, ../../app/stylesheets/main.sass */
+/* line 112, ../../app/stylesheets/main.sass */
 body #top #user_menu ul li a:hover {
-  background-color: #ff3300;
+  background-color: #383838;
+  text-decoration: none;
 }
-/* line 117, ../../app/stylesheets/main.sass */
+/* line 120, ../../app/stylesheets/main.sass */
+body #top #user_menu ul li .active {
+  background-color: #0a0a0a;
+}
+/* line 123, ../../app/stylesheets/main.sass */
 body #header {
   width: 100%;
   margin-right: 0;
-  min-height: 100px;
+  min-height: 70px;
   height: auto !important;
-  height: 100px;
+  height: 70px;
   margin-bottom: 2px;
 }
-/* line 122, ../../app/stylesheets/main.sass */
+/* line 128, ../../app/stylesheets/main.sass */
 body #header .notice, body #header .alert, body #header .warning, body #header .error, body #header .alert {
   display: block;
   width: 350px;
@@ -1498,14 +1512,14 @@ body #header .notice, body #header .alert, body #header .warning, body #header .
   margin-top: 50px;
   text-align: center;
 }
-/* line 126, ../../app/stylesheets/main.sass */
+/* line 132, ../../app/stylesheets/main.sass */
 body #header .notice {
   background-color: #e6efc2;
   border: 2px solid #dddddd;
   color: #264409;
   border-color: #c6d880;
 }
-/* line 132, ../../app/stylesheets/main.sass */
+/* line 138, ../../app/stylesheets/main.sass */
 body #user_profile {
   display: block;
   width: 350px;
@@ -1517,21 +1531,21 @@ body #user_profile {
   float: left;
   margin-left: 10px;
 }
-/* line 139, ../../app/stylesheets/main.sass */
+/* line 145, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo {
   display: inline;
   float: left;
 }
-/* line 141, ../../app/stylesheets/main.sass */
+/* line 147, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo img {
-  width: 200px;
-  height: 200px;
+  width: 20px;
+  height: 20px;
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
 }
-/* line 145, ../../app/stylesheets/main.sass */
+/* line 151, ../../app/stylesheets/main.sass */
 body #user_profile #user-name {
   text-align: center;
   clear: both;
@@ -1540,7 +1554,7 @@ body #user_profile #user-name {
   font-weight: bold;
   color: #565050;
 }
-/* line 152, ../../app/stylesheets/main.sass */
+/* line 158, ../../app/stylesheets/main.sass */
 body #user_profile #user-email {
   text-align: center;
   clear: both;
@@ -1549,20 +1563,20 @@ body #user_profile #user-email {
   font-weight: 700;
   color: #565050;
 }
-/* line 160, ../../app/stylesheets/main.sass */
+/* line 166, ../../app/stylesheets/main.sass */
 body #container {
   width: 1030px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 162, ../../app/stylesheets/main.sass */
+/* line 168, ../../app/stylesheets/main.sass */
 body #container #main {
   min-height: 650px;
   height: auto !important;
   height: 650px;
 }
-/* line 164, ../../app/stylesheets/main.sass */
+/* line 170, ../../app/stylesheets/main.sass */
 body #container #main #interactions {
   margin-left: 15px;
   display: inline;
@@ -1589,12 +1603,12 @@ body #container #main #interactions {
 * html body #container #main #interactions {
   overflow-x: hidden;
 }
-/* line 172, ../../app/stylesheets/main.sass */
+/* line 178, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box {
   padding-bottom: 20px;
   border-bottom: 2px solid #ebebeb;
 }
-/* line 175, ../../app/stylesheets/main.sass */
+/* line 181, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1605,16 +1619,17 @@ body #container #main #interactions #new_interaction_box #prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 185, ../../app/stylesheets/main.sass */
+/* line 191, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box {
   margin-right: 0;
 }
-/* line 187, ../../app/stylesheets/main.sass */
+/* line 193, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form {
   position: relative;
 }
-/* line 189, ../../app/stylesheets/main.sass */
+/* line 195, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
+  overflow-x: hidden;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1627,14 +1642,14 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   height: 25px;
   margin-bottom: 30px;
 }
-/* line 194, ../../app/stylesheets/main.sass */
+/* line 201, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
   position: absolute;
   top: 107px;
   right: 275px;
   display: none;
 }
-/* line 199, ../../app/stylesheets/main.sass */
+/* line 206, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social {
   position: relative;
   width: 120px;
@@ -1643,34 +1658,34 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   top: -19px;
   right: 120px;
 }
-/* line 205, ../../app/stylesheets/main.sass */
+/* line 212, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social img, body #container #main #interactions #new_interaction_box #interaction_input_box form .social input {
   display: none;
 }
-/* line 207, ../../app/stylesheets/main.sass */
+/* line 214, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .facebook_button {
   width: 60px;
   display: inline;
   float: right;
 }
-/* line 210, ../../app/stylesheets/main.sass */
+/* line 217, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .twitter_button {
   display: inline;
   float: right;
   width: 60px;
 }
-/* line 213, ../../app/stylesheets/main.sass */
+/* line 220, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
   position: absolute;
   right: 30px;
   bottom: -35px;
   display: none;
 }
-/* line 218, ../../app/stylesheets/main.sass */
+/* line 225, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box {
   display: none;
 }
-/* line 220, ../../app/stylesheets/main.sass */
+/* line 227, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social {
   position: relative;
   width: 120px;
@@ -1679,19 +1694,19 @@ body #container #main #interactions #new_interaction_box #interaction_tool_box .
   top: -19px;
   right: 120px;
 }
-/* line 226, ../../app/stylesheets/main.sass */
+/* line 233, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .facebook_button {
   width: 60px;
   display: inline;
   float: right;
 }
-/* line 229, ../../app/stylesheets/main.sass */
+/* line 236, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .twitter_button {
   display: inline;
   float: right;
   width: 60px;
 }
-/* line 233, ../../app/stylesheets/main.sass */
+/* line 240, ../../app/stylesheets/main.sass */
 body #container #main #interactions #interactions_feed .interaction-content {
   min-height: 90.5px;
   height: auto !important;
@@ -1703,7 +1718,19 @@ body #container #main #interactions #interactions_feed .interaction-content {
   text-align: left;
   vertical-align: baseline;
 }
-/* line 242, ../../app/stylesheets/main.sass */
+/* line 249, ../../app/stylesheets/main.sass */
+body #container #main #interactions #interactions_feed .interaction-content .user-image {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+}
+/* line 252, ../../app/stylesheets/main.sass */
+body #container #main #interactions #interactions_feed .interaction-content .user-content {
+  min-height: 55px;
+  height: auto !important;
+  height: 55px;
+}
+/* line 254, ../../app/stylesheets/main.sass */
 body #container #main #items {
   margin-left: 10px;
   min-height: 650px;
@@ -1742,18 +1769,18 @@ body #container #main #items {
 * html body #container #main #items {
   overflow-x: hidden;
 }
-/* line 252, ../../app/stylesheets/main.sass */
+/* line 264, ../../app/stylesheets/main.sass */
 body #container #main #items #items_feed #search_term {
   margin-left: 10px;
 }
 
-/* line 258, ../../app/stylesheets/main.sass */
+/* line 270, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 262, ../../app/stylesheets/main.sass */
+/* line 274, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }
