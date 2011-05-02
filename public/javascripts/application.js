@@ -1,5 +1,23 @@
 $(document).ready(function(){
 
+  jQuery.fn.dwFadingLinks = function(settings) {
+	settings = jQuery.extend({
+		color: '#ff8c00',
+		duration: 500
+	}, settings);
+	return this.each(function() {
+		var original = $(this).css('color');
+		$(this).mouseover(function() { $(this).animate({ color: settings.color },settings.duration); });
+		$(this).mouseout(function() { $(this).animate({ color: original },settings.duration); });
+	});
+};
+
+ $('li a').dwFadingLinks({
+				color: '#4789B4',
+				duration: 600
+			});
+
+  
   /* Here, we initialize some of the Javascript plugins used for display, and
    * interactivity on the site
    */
@@ -138,3 +156,6 @@ $(document).ready(function(){
 
 
 });
+
+
+

@@ -171,7 +171,8 @@ body
         margin-left: 15px
         +column(14)
         +min-height(650px)
-        +border-radius(7px)
+        +border-radius(5px)
+        margin: 1px
         +box-shadow
         background-color: white
         margin-right: -5px
@@ -187,13 +188,12 @@ body
             padding-left: 40px
             padding-top: 10px
             padding-bottom: 10px
-
           #interaction_input_box
             +last
             form
               position: relative
               textarea#interaction-input
-                overflow-x: hidden
+                overflow-y: auto
                 +border-radius(5px)                
                 +horizontal-center       
                 height: 25px                
@@ -252,17 +252,18 @@ body
             .user-content
               +min-height(55px)
       #items
-        margin-left: 10px
+        margin-left: 9px
         +min-height(650px)
         +column(11.5, true)
         +display-box
-        +border-right-radius(5px)
+        +border-radius(5px)
         +box-shadow
         +background-image(linear-gradient(left top, white, #dddddd))
-
+        margin-top: 1px
         #items_feed
           #search_term
             margin-left: 10px
+            +border-radius(5px)
         #items_search
           
 

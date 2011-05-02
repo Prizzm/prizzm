@@ -1586,12 +1586,13 @@ body #container #main #interactions {
   min-height: 650px;
   height: auto !important;
   height: 650px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -o-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -khtml-border-radius: 7px;
-  border-radius: 7px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin: 1px;
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
@@ -1603,12 +1604,12 @@ body #container #main #interactions {
 * html body #container #main #interactions {
   overflow-x: hidden;
 }
-/* line 178, ../../app/stylesheets/main.sass */
+/* line 179, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box {
   padding-bottom: 20px;
   border-bottom: 2px solid #ebebeb;
 }
-/* line 181, ../../app/stylesheets/main.sass */
+/* line 182, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1629,7 +1630,7 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 }
 /* line 195, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
-  overflow-x: hidden;
+  overflow-y: auto;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -1732,7 +1733,7 @@ body #container #main #interactions #interactions_feed .interaction-content .use
 }
 /* line 254, ../../app/stylesheets/main.sass */
 body #container #main #items {
-  margin-left: 10px;
+  margin-left: 9px;
   min-height: 650px;
   height: auto !important;
   height: 650px;
@@ -1743,18 +1744,12 @@ body #container #main #items {
   display: -moz-box;
   display: -webkit-box;
   display: box;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  -o-border-top-right-radius: 5px;
-  -ms-border-top-right-radius: 5px;
-  -khtml-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -o-border-bottom-right-radius: 5px;
-  -ms-border-bottom-right-radius: 5px;
-  -khtml-border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
@@ -1764,6 +1759,7 @@ body #container #main #items {
   background-image: -moz-linear-gradient(left top, #ffffff, #dddddd);
   background-image: -o-linear-gradient(left top, #ffffff, #dddddd);
   background-image: linear-gradient(left top, #ffffff, #dddddd);
+  margin-top: 1px;
 }
 /* line 147, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #container #main #items {
@@ -1772,15 +1768,21 @@ body #container #main #items {
 /* line 264, ../../app/stylesheets/main.sass */
 body #container #main #items #items_feed #search_term {
   margin-left: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
 }
 
-/* line 270, ../../app/stylesheets/main.sass */
+/* line 271, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 274, ../../app/stylesheets/main.sass */
+/* line 275, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }

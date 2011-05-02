@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @user = current_user
-    @interactions = Interaction.order('created_at desc').all    
+    @interactions = Interaction.order('created_at desc').all   
     respond_to do |format|
       format.html 
       format.json  { render :json => @user }
