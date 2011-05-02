@@ -24,18 +24,15 @@
       - if signed_in?
         #user_menu
           %ul
-            %li= link_to 'Home', home_url
+            %li= link_to 'Home', home_url, :class => "active"
             %li= link_to 'Contact Customer Service', '#'
-            %li= link_to 'Logout', destroy_user_session_url
+            %li
+              = link_to current_user.name, '#'
+              = link_to 'Logout', destroy_user_session_url
     #header
       - flash.each do |type, value|
         .flash{ :class => type.to_s }
-          = value 
-    - if signed_in?
-      #user_profile
-        #user-profile-photo= image_tag current_user.photo_url
-        #user-name= current_user.name
-        #user-email= current_user.email
+          = value     
     #container
       #main
         = yield

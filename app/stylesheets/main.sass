@@ -41,7 +41,7 @@ $left:  $left_width
 $middle: $middle_width
 $right: $right_width
 $table-border-color: #EBEBEB
-$flash-message-height: 100px
+$flash-message-height: 70px
 
 $top_height: 42px
 $nav_height: 57px
@@ -100,19 +100,25 @@ body
         li
           +min-height($top_height)
           padding: 0
+          img
+            width: 25px
+            height: 25px
+            +box-shadow
           a
             vertical-align: -12px
             +hover-link
             +link-colors(#BABABA, white)
             padding: 10px 30px 
             &:hover 
-              background-color: #ff3300
-
+              background-color: #383838
+              text-decoration: none
             border-right: 1px solid gray
             font-size: 12px
             font-weight: 700
             font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans"
             line-height: 19.5px
+          .active
+            background-color: #0A0A0A
  
   #header
     width: 100%
@@ -139,8 +145,8 @@ body
     #user-profile-photo
       +float-left
       img        
-        width: 200px
-        height: 200px
+        width: 20px
+        height: 20px
         +box-shadow
     #user-name
       text-align: center
@@ -187,6 +193,7 @@ body
             form
               position: relative
               textarea#interaction-input
+                overflow-x: hidden
                 +border-radius(5px)                
                 +horizontal-center       
                 height: 25px                
