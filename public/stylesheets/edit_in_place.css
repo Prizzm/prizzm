@@ -22,7 +22,7 @@ textarea {
   min-width: 490px;
 }
 
-/* line 18, ../../app/stylesheets/edit_in_place.sass */
+/* line 19, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place {
   padding: 0.1m;
   cursor: hand;
@@ -35,13 +35,13 @@ textarea {
   border-radius: 5px;
 }
 
-/* line 29, ../../app/stylesheets/edit_in_place.sass */
+/* line 30, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place:hover, #user_account .do_hover {
   padding: 5px 0 5px 0;
   background-color: #faffc4;
 }
 
-/* line 34, ../../app/stylesheets/edit_in_place.sass */
+/* line 35, ../../app/stylesheets/edit_in_place.sass */
 .info_edit {
   float: right;
   cursor: hand;
@@ -49,7 +49,7 @@ textarea {
 }
 
 /* Missatges Flotants */
-/* line 42, ../../app/stylesheets/edit_in_place.sass */
+/* line 43, ../../app/stylesheets/edit_in_place.sass */
 .purr {
   position: fixed;
   width: 324px;
@@ -67,7 +67,7 @@ textarea {
   border-radius: 10px;
 }
 
-/* line 58, ../../app/stylesheets/edit_in_place.sass */
+/* line 59, ../../app/stylesheets/edit_in_place.sass */
 .purr:hover .close {
   position: absolute;
   top: 5px;
