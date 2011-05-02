@@ -1,0 +1,52 @@
+- content_for :user_header do
+  #user_info
+    .user_name #{@user.name}
+
+#interactions
+  #new_interaction_box
+    #prompt_phrase How was the service?
+    #interaction_input_box
+      = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
+        = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
+        #interaction_stars
+          = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+        .social
+          .twitter_button
+            = link_to image_tag('twitter_24x24.png'), '#'
+            = f.check_box :shared_twitter
+          .facebook_button
+            = link_to image_tag('facebook_24x24.png'), '#'
+            = f.check_box :shared_facebook
+        = f.hidden_field :new_items
+        = f.submit 'Share'
+      :javascript
+        $("#interaction_stars").stars({
+          inputType: "select",
+          cancelShow: false
+        });
+  #interactions_feed= render :partial => 'interaction', :collection => @interactions
+
+#items
+  #items_feed
+    %p= text_field_tag 'search term'
+    %table.items
+      %thead
+        %tr
+          %th 
+          %th Name
+          %th Item Type
+          %th Rating
+      %tbody
+        /= render :partial => "home/item", :collection => @user.items
+        - current_user.items.each do |item|
+          %tr{:id => "item_#{item.id}"}
+            .item_info
+              %td.check_box= check_box_tag "item_#{item.id}_tag", nil, false, :class => "checkbox-tag", :'data-item-id' => item.id
+              %td.position= item.position
+              %td.name= best_in_place item, :name, :path => [current_user, item]
+              %td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
+              %td.rating
+
+  #items_search
+    #search_results
+    /= render 'layouts/custom_search_json'

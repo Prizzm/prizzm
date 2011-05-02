@@ -1,0 +1,277 @@
+// API located at: http://compass-style.org/docs/reference/compass/
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+ 
+$blueprint-grid-columns : 26
+$blueprint-grid-width   : 30px
+$blueprint-grid-margin  : 10px
+   
+// If you change your grid column dimensions
+// you can make a new grid background image from the command line like this:
+// compass grid-img 30+10x16
+@import "blueprint"
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding"
+ 
+// Generate the blueprint framework according to your configuration:
+@import "compass"
+@import "compass/css3"
+@import "compass/css3/font-face"
+@import "compass/css3/text-shadow"
+@import "compass/layout/sticky-footer"
+@import "compass/support"
+@import "compass/typography/lists/horizontal-list"
+@import "compass/typography/links"
+@import "compass/typography/text/replacement"
+@import "compass/typography/lists/inline-block-list"
+@import "compass/utilities/tables/borders"
+@import "compass/utilities/general/float"
+
++blueprint
++blueprint-scaffolding
+
+$blue: #3B5997
+$left_width: 180px
+$middle_width: 495px
+$right_width: 245px
+$container_width: 980px
+$left:  $left_width
+$middle: $middle_width
+$right: $right_width
+$table-border-color: #EBEBEB
+$flash-message-height: 70px
+
+$top_height: 42px
+$nav_height: 57px
+$user_height: 70px
+
+$middle_columns: 25
+$right_columns: $blueprint_grid_columns - $middle_columns - 1
+
+//$blueprint-container-size: $container_width
+
+@mixin horizontal-center($width: 50px) 
+  display: block
+  width: $width
+  margin: 0 auto
+
+// Font declarations
+
++font-face("fairy-dust", font-files('../fonts/FairyDustB.ttf', truetype))
++font-face("twilight-new-moon", font-files('../fonts/twilight-new-moon.ttf', truetype))
+.input-active
+  margin-bottom: 80px
+  border-color: rgba(82, 168, 236, 0.75)
+  +single-box-shadow(rgba(82, 168, 236, 0.5))
+
+
+body
+  +min-height(900px)
+  background-color: #DEEFFF
+  background-color: #DEE4F2
+  background-repeat: no-repeat
+
+  #top
+    position: fixed
+    width: 100%
+    top: 0
+    left: 0
+    z-index: 12
+    +min-height($top_height)
+    background-color: #333333
+    +background-image(linear-gradient(center top, #333333, #111111))
+    background: -o-linear-gradient(#333333, #111111)
+    +last
+    #logo
+      a
+        text-decoration: none
+        color: white
+      position: absolute
+      left: 460px
+      font-family: "fairy-dust"
+      font-size: 34px
+      font-weight: 600
+    #user_menu
+      float: right      
+      ul
+        +horizontal-list
+        li
+          +min-height($top_height)
+          padding: 0
+          img
+            width: 25px
+            height: 25px
+            +box-shadow
+          a
+            vertical-align: -12px
+            +hover-link
+            +link-colors(#BABABA, white)
+            padding: 10px 30px 
+            &:hover 
+              background-color: #383838
+              text-decoration: none
+            border-right: 1px solid gray
+            font-size: 12px
+            font-weight: 700
+            font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans"
+            line-height: 19.5px
+          .active
+            background-color: #0A0A0A
+ 
+  #header
+    width: 100%
+    +last
+    +min-height($flash-message-height)
+    margin-bottom: 2px
+    .notice, .alert, .warning, .error
+      +horizontal-center(350px)
+      +prepend-top(50px)
+      text-align: center
+    .notice
+      background-color: #e6efc2
+      border: 2px solid #dddddd
+      color: #264409
+      border-color: #c6d880
+
+  #user_profile
+    +horizontal-center(350px)
+    position: relative
+    height: 280px
+    width: 200px
+    +float-left
+    margin-left: 10px
+    #user-profile-photo
+      +float-left
+      img        
+        width: 20px
+        height: 20px
+        +box-shadow
+    #user-name
+      text-align: center
+      clear: both      
+      font-size: 14pt
+      font-family: "Helvetica Neue,Helvetica"
+      font-weight: bold
+      color: #565050 
+    #user-email
+      text-align: center
+      clear: both
+      font-size: 12pt
+      font-family: "Helvetica Neue,Helvetica"
+      font-weight: 700
+      color: #565050 
+    
+  #container
+    +container
+    #main  
+      +min-height(650px)
+      #interactions
+        margin-left: 15px
+        +column(14)
+        +min-height(650px)
+        +border-radius(5px)
+        margin: 1px
+        +box-shadow
+        background-color: white
+        margin-right: -5px
+        #new_interaction_box
+          padding-bottom: 20px
+          border-bottom: 2px solid $table-border-color
+          #prompt_phrase
+            +last
+            font-family: "Helvetica Neue,Helvetica"
+            font-weight: 700
+            font-size: 18px
+            color: #999999
+            padding-left: 40px
+            padding-top: 10px
+            padding-bottom: 10px
+          #interaction_input_box
+            +last
+            form
+              position: relative
+              textarea#interaction-input
+                overflow-y: auto
+                +border-radius(5px)                
+                +horizontal-center       
+                height: 25px                
+                margin-bottom: 30px
+              #interaction_stars
+                position: absolute
+                top: 107px
+                right: 275px
+                display: none
+              .social
+                position: relative
+                width: 120px
+                +float-right
+                top: -19px
+                right: 120px
+                img, input
+                  display: none
+                .facebook_button
+                  width: 60px
+                  +float-right
+                .twitter_button
+                  +float-right
+                  width: 60px
+              #interaction_submit
+                position: absolute
+                right: 30px
+                bottom: -35px
+                display: none
+          #interaction_tool_box
+            display: none
+            .social
+              position: relative
+              width: 120px
+              +float-right
+              top: -19px
+              right: 120px
+              .facebook_button
+                width: 60px
+                +float-right
+              .twitter_button
+                +float-right
+                width: 60px
+        #interactions_feed
+          .interaction-content
+            +min-height(90.5px)
+            border-bottom: 1px solid $table-border-color
+            padding: 10px 0 20px 20px
+            font-size: 13px
+            font-weight: 400px
+            text-align: left
+            vertical-align: baseline
+            .interaction-description
+            .user-image
+              +float-left
+              margin-right: 10px
+            .user-content
+              +min-height(55px)
+      #items
+        margin-left: 9px
+        +min-height(650px)
+        +column(11.5, true)
+        +display-box
+        +border-radius(5px)
+        +box-shadow
+        +background-image(linear-gradient(left top, white, #dddddd))
+        margin-top: 1px
+        #items_feed
+          #search_term
+            margin-left: 10px
+            +border-radius(5px)
+        #items_search
+          
+
+
+#facebox .content
+  padding: 30px
+  background-color: white
+
+.hover
+  background-color: #DCEDEB
+

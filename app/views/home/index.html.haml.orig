@@ -1,0 +1,73 @@
+- content_for :user_header do
+  #user_info
+    .user_name #{@user.name}
+    .user_phone= best_in_place @user.profile, :phone_number, :path => profile_path
+    .user_email= best_in_place @user, :email, :path => user_registration_path
+    .user_location= best_in_place @user.profile, :location, :path => profile_path
+
+    #fakeit= link_to "Make Fake Data", fake_url
+
+#middle
+  #add-item
+    %span.add-item-text Add Item
+    = link_to image_tag('add.png', :id => 'add-item-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-link'
+  %table.items
+    %thead
+      %tr
+        %th 
+        %th Name
+        %th Url
+        %th Description
+        %th Item Type
+        %th Rating
+        %th Interaction
+    %tbody
+      /= render :partial => "home/item", :collection => @user.items
+      - @user.items.each do |item|
+        %tr{:id => "item_#{item.id}"}
+          .item_info
+            %td.position= item.position
+            %td.name= best_in_place item, :name, :path => [@user, item]
+            %td.url= best_in_place item, :url, :path => [@user, item]
+            %td.description= best_in_place item, :description, :path => [@user, item]
+            %td.itemtype= best_in_place item, :itemtype, :path => [@user, item]
+            %td.rating
+              %div(id="item_#{item.id}_rating" class="rating")
+                = form_for [@user, item], :remote => true do |f|
+                  %div{:id => "stars-wrapper-#{item.id}"}
+                    = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+                  :javascript
+                    $("#stars-wrapper-#{item.id}").stars({
+                      inputType: "select",
+                      callback: function(ui, type, value, event){
+                        var item = #{item.id};
+                        update_item_rating(item,value);
+                      },
+                      cancelShow: false
+                    });
+              .social
+                .facebook_button
+                  = link_to image_tag('facebook_24x24.png'), '#'
+                  = check_box_tag 'submit-to-facebook'
+                .twitter_button
+                  = link_to image_tag('twitter_24x24.png'), '#'
+                  = check_box_tag 'submit-to-twitter'
+            %td= link_to "Add Interaction", new_user_item_interaction_path(@user, item), :rel => 'facebox'
+
+#right
+  #interactions
+    - @user.items.each do |item|
+      %table.interactions.hidden{:id => "item_#{item.id}_interactions",:data => {:user => @user.id}}
+        %thead
+          %th  #{item.name} interactions
+        %tbody
+          /= render :partial => "home/interaction", :collection => item.interactions, :locals => {:item => item}
+          - item.interactions.each do |interaction|
+            %tr
+              %td
+                .interaction_info
+                  %ul
+                    %li Created on #{interaction.created_at.to_date}
+                    %li= best_in_place interaction, :contact, :path => [@user, item, interaction]
+                    %li= best_in_place interaction, :description, :path => [@user, item, interaction]
+                %hr
