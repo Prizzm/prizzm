@@ -1393,14 +1393,16 @@ body #top {
   min-height: 42px;
   height: auto !important;
   height: 42px;
+  background-color: #333333;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #111111));
   background-image: -webkit-linear-gradient(center top, #333333, #111111);
   background-image: -moz-linear-gradient(center top, #333333, #111111);
   background-image: -o-linear-gradient(center top, #333333, #111111);
   background-image: linear-gradient(center top, #333333, #111111);
+  background: -o-linear-gradient(#333333, #111111);
   margin-right: 0;
 }
-/* line 85, ../../app/stylesheets/main.sass */
+/* line 87, ../../app/stylesheets/main.sass */
 body #top #logo {
   position: absolute;
   left: 460px;
@@ -1408,16 +1410,16 @@ body #top #logo {
   font-size: 34px;
   font-weight: 600;
 }
-/* line 86, ../../app/stylesheets/main.sass */
+/* line 88, ../../app/stylesheets/main.sass */
 body #top #logo a {
   text-decoration: none;
   color: white;
 }
-/* line 94, ../../app/stylesheets/main.sass */
+/* line 96, ../../app/stylesheets/main.sass */
 body #top #user_menu {
   float: right;
 }
-/* line 96, ../../app/stylesheets/main.sass */
+/* line 98, ../../app/stylesheets/main.sass */
 body #top #user_menu ul {
   margin: 0;
   padding: 0;
@@ -1448,14 +1450,14 @@ body #top #user_menu ul li:last-child {
 body #top #user_menu ul li.last {
   padding-right: 0;
 }
-/* line 98, ../../app/stylesheets/main.sass */
+/* line 100, ../../app/stylesheets/main.sass */
 body #top #user_menu ul li {
   min-height: 42px;
   height: auto !important;
   height: 42px;
   padding: 0;
 }
-/* line 101, ../../app/stylesheets/main.sass */
+/* line 103, ../../app/stylesheets/main.sass */
 body #top #user_menu ul li a {
   vertical-align: -12px;
   text-decoration: none;
@@ -1475,11 +1477,11 @@ body #top #user_menu ul li a:hover {
 body #top #user_menu ul li a:hover {
   color: white;
 }
-/* line 106, ../../app/stylesheets/main.sass */
+/* line 108, ../../app/stylesheets/main.sass */
 body #top #user_menu ul li a:hover {
   background-color: #ff3300;
 }
-/* line 115, ../../app/stylesheets/main.sass */
+/* line 117, ../../app/stylesheets/main.sass */
 body #header {
   width: 100%;
   margin-right: 0;
@@ -1488,7 +1490,7 @@ body #header {
   height: 100px;
   margin-bottom: 2px;
 }
-/* line 120, ../../app/stylesheets/main.sass */
+/* line 122, ../../app/stylesheets/main.sass */
 body #header .notice, body #header .alert, body #header .warning, body #header .error, body #header .alert {
   display: block;
   width: 350px;
@@ -1496,14 +1498,14 @@ body #header .notice, body #header .alert, body #header .warning, body #header .
   margin-top: 50px;
   text-align: center;
 }
-/* line 124, ../../app/stylesheets/main.sass */
+/* line 126, ../../app/stylesheets/main.sass */
 body #header .notice {
   background-color: #e6efc2;
   border: 2px solid #dddddd;
   color: #264409;
   border-color: #c6d880;
 }
-/* line 130, ../../app/stylesheets/main.sass */
+/* line 132, ../../app/stylesheets/main.sass */
 body #user_profile {
   display: block;
   width: 350px;
@@ -1513,14 +1515,14 @@ body #user_profile {
   width: 200px;
   display: inline;
   float: left;
-  margin-left: 5px;
+  margin-left: 10px;
 }
-/* line 137, ../../app/stylesheets/main.sass */
+/* line 139, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo {
   display: inline;
   float: left;
 }
-/* line 139, ../../app/stylesheets/main.sass */
+/* line 141, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo img {
   width: 200px;
   height: 200px;
@@ -1529,7 +1531,7 @@ body #user_profile #user-profile-photo img {
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
 }
-/* line 143, ../../app/stylesheets/main.sass */
+/* line 145, ../../app/stylesheets/main.sass */
 body #user_profile #user-name {
   text-align: center;
   clear: both;
@@ -1538,7 +1540,7 @@ body #user_profile #user-name {
   font-weight: bold;
   color: #565050;
 }
-/* line 150, ../../app/stylesheets/main.sass */
+/* line 152, ../../app/stylesheets/main.sass */
 body #user_profile #user-email {
   text-align: center;
   clear: both;
@@ -1547,20 +1549,20 @@ body #user_profile #user-email {
   font-weight: 700;
   color: #565050;
 }
-/* line 158, ../../app/stylesheets/main.sass */
+/* line 160, ../../app/stylesheets/main.sass */
 body #container {
   width: 1030px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 160, ../../app/stylesheets/main.sass */
+/* line 162, ../../app/stylesheets/main.sass */
 body #container #main {
   min-height: 650px;
   height: auto !important;
   height: 650px;
 }
-/* line 162, ../../app/stylesheets/main.sass */
+/* line 164, ../../app/stylesheets/main.sass */
 body #container #main #interactions {
   margin-left: 15px;
   display: inline;
@@ -1587,12 +1589,12 @@ body #container #main #interactions {
 * html body #container #main #interactions {
   overflow-x: hidden;
 }
-/* line 170, ../../app/stylesheets/main.sass */
+/* line 172, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box {
   padding-bottom: 20px;
   border-bottom: 2px solid #ebebeb;
 }
-/* line 173, ../../app/stylesheets/main.sass */
+/* line 175, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1603,15 +1605,15 @@ body #container #main #interactions #new_interaction_box #prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 183, ../../app/stylesheets/main.sass */
+/* line 185, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box {
   margin-right: 0;
 }
-/* line 185, ../../app/stylesheets/main.sass */
+/* line 187, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form {
   position: relative;
 }
-/* line 187, ../../app/stylesheets/main.sass */
+/* line 189, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1625,14 +1627,14 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   height: 25px;
   margin-bottom: 30px;
 }
-/* line 192, ../../app/stylesheets/main.sass */
+/* line 194, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
   position: absolute;
   top: 107px;
   right: 275px;
   display: none;
 }
-/* line 197, ../../app/stylesheets/main.sass */
+/* line 199, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social {
   position: relative;
   width: 120px;
@@ -1641,34 +1643,34 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   top: -19px;
   right: 120px;
 }
-/* line 203, ../../app/stylesheets/main.sass */
+/* line 205, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social img, body #container #main #interactions #new_interaction_box #interaction_input_box form .social input {
   display: none;
 }
-/* line 205, ../../app/stylesheets/main.sass */
+/* line 207, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .facebook_button {
   width: 60px;
   display: inline;
   float: right;
 }
-/* line 208, ../../app/stylesheets/main.sass */
+/* line 210, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .twitter_button {
   display: inline;
   float: right;
   width: 60px;
 }
-/* line 211, ../../app/stylesheets/main.sass */
+/* line 213, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
   position: absolute;
   right: 30px;
   bottom: -35px;
   display: none;
 }
-/* line 216, ../../app/stylesheets/main.sass */
+/* line 218, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box {
   display: none;
 }
-/* line 218, ../../app/stylesheets/main.sass */
+/* line 220, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social {
   position: relative;
   width: 120px;
@@ -1677,19 +1679,19 @@ body #container #main #interactions #new_interaction_box #interaction_tool_box .
   top: -19px;
   right: 120px;
 }
-/* line 224, ../../app/stylesheets/main.sass */
+/* line 226, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .facebook_button {
   width: 60px;
   display: inline;
   float: right;
 }
-/* line 227, ../../app/stylesheets/main.sass */
+/* line 229, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .twitter_button {
   display: inline;
   float: right;
   width: 60px;
 }
-/* line 231, ../../app/stylesheets/main.sass */
+/* line 233, ../../app/stylesheets/main.sass */
 body #container #main #interactions #interactions_feed .interaction-content {
   min-height: 90.5px;
   height: auto !important;
@@ -1701,7 +1703,7 @@ body #container #main #interactions #interactions_feed .interaction-content {
   text-align: left;
   vertical-align: baseline;
 }
-/* line 240, ../../app/stylesheets/main.sass */
+/* line 242, ../../app/stylesheets/main.sass */
 body #container #main #items {
   margin-left: 10px;
   min-height: 650px;
@@ -1740,14 +1742,18 @@ body #container #main #items {
 * html body #container #main #items {
   overflow-x: hidden;
 }
+/* line 252, ../../app/stylesheets/main.sass */
+body #container #main #items #items_feed #search_term {
+  margin-left: 10px;
+}
 
-/* line 253, ../../app/stylesheets/main.sass */
+/* line 258, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 257, ../../app/stylesheets/main.sass */
+/* line 262, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }

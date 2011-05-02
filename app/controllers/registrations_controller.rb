@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  def update
+  def update    
     if resource.update_attributes(params[resource_name])
       set_flash_message :notice, :updated
       sign_in resource_name, resource, :bypass => true
