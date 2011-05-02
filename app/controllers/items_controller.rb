@@ -1,7 +1,7 @@
 class ItemsController < InheritedResources::Base
   belongs_to :user
   respond_to :html, :json
-  layout nil
+  layout nil, :except => :show
 
   create! do |success, failure| 
     success.html {redirect_to root_path}

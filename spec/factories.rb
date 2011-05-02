@@ -15,11 +15,21 @@ Factory.define :user do |user|
 end 
 
 
+# Table name: items
 Factory.define :item do |item|
   item.name { /\w+/.gen } #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
-  item.url {"http://www.#{Forgery::Internet.domain_name}"}
-  item.description { Faker::Company.catch_phrase}
   item.itemtype { Faker::Company.bs }
+  item.industry { INDUSTRIES.rand }
+  item.email { Forgery::Internet.email_address }
+  item.contact_name { "#{Forgery::Name.first_name} #{Forgery::Name.last_name}" }
+  item.address { Forgery::Address.street_address }
+  item.phone_number { Forgery::Address.phone }
+  item.secondary_number { Forgery::Address.phone }
+  item.facebook
+  item.twitter
+  item.url {"http://www.#{Forgery::Internet.domain_name}"}
+  item.photo_url {"http://www.#{Forgery::Internet.domain_name}"}
+  item.description { Faker::Company.catch_phrase}
   item.rating { [1,2,3,4,5].rand }
 end 
 

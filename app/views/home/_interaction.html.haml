@@ -7,7 +7,7 @@
     .interaction-contact= interaction.contact
     .interaction-items= pluralize(interaction.items.count, 'item')
     - interaction.items.each do |item|
-      %span.interaction-item= item.name
+      %span.interaction-item= link_to item.name, [current_user, item]
   .interaction-created-at #{time_ago_in_words(interaction.created_at)} ago
   %div{:id => "interaction-#{interaction.id}-rating", :class => "rating"}
     = form_for [interaction.user, interaction], :remote => true do |f|
