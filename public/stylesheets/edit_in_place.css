@@ -19,10 +19,10 @@ input[type=checkbox] {
 /* line 15, ../../app/stylesheets/edit_in_place.sass */
 textarea {
   max-height: 15em;
-  min-width: 40em;
+  min-width: 490px;
 }
 
-/* line 19, ../../app/stylesheets/edit_in_place.sass */
+/* line 18, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place {
   padding: 0.1m;
   cursor: hand;
@@ -35,13 +35,13 @@ textarea {
   border-radius: 5px;
 }
 
-/* line 30, ../../app/stylesheets/edit_in_place.sass */
+/* line 29, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place:hover, #user_account .do_hover {
   padding: 5px 0 5px 0;
   background-color: #faffc4;
 }
 
-/* line 35, ../../app/stylesheets/edit_in_place.sass */
+/* line 34, ../../app/stylesheets/edit_in_place.sass */
 .info_edit {
   float: right;
   cursor: hand;
@@ -49,7 +49,7 @@ textarea {
 }
 
 /* Missatges Flotants */
-/* line 43, ../../app/stylesheets/edit_in_place.sass */
+/* line 42, ../../app/stylesheets/edit_in_place.sass */
 .purr {
   position: fixed;
   width: 324px;
@@ -67,7 +67,7 @@ textarea {
   border-radius: 10px;
 }
 
-/* line 59, ../../app/stylesheets/edit_in_place.sass */
+/* line 58, ../../app/stylesheets/edit_in_place.sass */
 .purr:hover .close {
   position: absolute;
   top: 5px;

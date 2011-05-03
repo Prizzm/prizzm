@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-  jQuery.fn.dwFadingLinks = function(settings) {
+  //Fading Links Using Jquery
+  $.fn.dwFadingLinks = function(settings) {
 	settings = jQuery.extend({
 		color: '#ff8c00',
 		duration: 500
@@ -12,6 +13,7 @@ $(document).ready(function(){
 	});
 };
 
+// Use fade link to nav header bar
  $('li a').dwFadingLinks({
 				color: '#4789B4',
 				duration: 600

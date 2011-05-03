@@ -1616,7 +1616,7 @@ body #container #main #interactions #new_interaction_box #prompt_phrase {
   font-weight: 700;
   font-size: 18px;
   color: #999999;
-  padding-left: 40px;
+  padding-left: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -1647,7 +1647,7 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
   position: absolute;
   top: 107px;
-  right: 275px;
+  right: 250px;
   display: none;
 }
 /* line 206, ../../app/stylesheets/main.sass */
@@ -1657,7 +1657,7 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   display: inline;
   float: right;
   top: -19px;
-  right: 120px;
+  right: 100px;
 }
 /* line 212, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social img, body #container #main #interactions #new_interaction_box #interaction_input_box form .social input {
@@ -1678,7 +1678,7 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 /* line 220, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
   position: absolute;
-  right: 30px;
+  right: 22px;
   bottom: -35px;
   display: none;
 }
@@ -1774,15 +1774,16 @@ body #container #main #items #items_feed #search_term {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
+  width: 417px;
 }
 
-/* line 271, ../../app/stylesheets/main.sass */
+/* line 272, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 275, ../../app/stylesheets/main.sass */
+/* line 276, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }
