@@ -48,7 +48,7 @@
             .item_info
               %td.check_box= check_box_tag "item_#{item.id}_tag", nil, false, :class => "checkbox-tag", :'data-item-id' => item.id
               /%td.position= item.position
-              %td.name= best_in_place item, :name, :path => [current_user, item]
+              %td.name= link_to item.name, [current_user, item]
               %td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
               %td.rating
                 %div(id="item_#{item.id}_rating" class="rating")
