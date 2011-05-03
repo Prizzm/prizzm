@@ -13,7 +13,20 @@
 %p Secondary Number: #{@item.secondary_number}
 %p Facebook: #{@item.facebook}
 %p Twitter: #{@item.twitter}
-%p Rating: #{@item.rating}
+%p Rating: 
+%div(id="item_#{@item.id}_rating" class="rating")
+  = form_for [@user, @item], :remote => true do |f|
+    %div{:id => "stars-wrapper-#{@item.id}"}
+      = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+    :javascript
+      $("#stars-wrapper-#{@item.id}").stars({
+        inputType: "select",
+        callback: function(ui, type, value, event){
+          var item = #{@item.id};
+          update_rating('items', item,value);
+        },
+        cancelShow: false
+      });
 %p= image_tag @item.photo_url
 %p Created At: #{@item.created_at.strftime('%D')}
 %p Updated At: #{@item.updated_at.strftime('%D')}
