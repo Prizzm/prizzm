@@ -1787,3 +1787,42 @@ body #container #main #items #items_feed #search_term {
 .hover {
   background-color: #dcedeb;
 }
+
+/* line 279, ../../app/stylesheets/main.sass */
+.box {
+  background: none repeat scroll 0 0 #464e53;
+  margin-bottom: 20px;
+  padding: 10px 10px 1px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/* line 285, ../../app/stylesheets/main.sass */
+legend {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #bbbbbb;
+  font-size: 1.1em;
+  padding: 0.4em 0.8em;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/* line 292, ../../app/stylesheets/main.sass */
+#login-page {
+  margin: auto;
+  padding: 5em 0 12em;
+  width: 400px;
+}
+
+/* line 297, ../../app/stylesheets/main.sass */
+.box label {
+  color: white;
+}
