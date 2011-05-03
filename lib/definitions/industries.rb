@@ -1,4 +1,4 @@
-INDUSTRIES = %w[
+list = <<-END
 Accident & Health Insurance
 Advertising Agencies
 Aerospace/Defense - Major Diversified
@@ -214,4 +214,5 @@ Waste Management
 Water Utilities
 Wholesale, Other
 Wireless Communications
-]
+END
+INDUSTRIES = list.split("\n")

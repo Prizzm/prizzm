@@ -1,0 +1,30 @@
+= link_to "Back", home_path
+
+%h2#title.headline ITEM DETAILS - #{resource.name}
+
+%p Name: #{@item.name}
+%p Description: #{@item.description}
+%p Industry: #{@item.industry}
+%p Contact Name: #{@item.contact_name}
+%p= link_to @item.url, @item.url
+%p Address: #{@item.address}
+%p Email: #{mail_to @item.email}
+%p Phone Number: #{@item.phone_number}
+%p Secondary Number: #{@item.secondary_number}
+%p Facebook: #{@item.facebook}
+%p Twitter: #{@item.twitter}
+%p Rating: #{@item.rating}
+%p= image_tag @item.photo_url
+%p Created At: #{@item.created_at.strftime('%D')}
+%p Updated At: #{@item.updated_at.strftime('%D')}
+
+- if @item.interactions.count == 0
+  %h3 There are no interactions for this Item
+  %hr
+- else 
+  %h3 Interactions for: #{@item.name}
+  %hr
+  = render :partial => 'home/interaction', :collection => @item.interactions
+
+<script type="text/javascript" src="http://s3.productwiki.com/pwConnect.js"></script>
+<a href="RENDER_PRODUCTWIKI_URL_HERE" class="ProductWikiConnect ProductWikiEmbed">RENDER PRODUCT TITLE HERE</a>
