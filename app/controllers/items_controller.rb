@@ -1,7 +1,7 @@
 class ItemsController < InheritedResources::Base
   belongs_to :user
   respond_to :html, :json
-  layout nil, :except => :show
+  layout :determine_layout
 
   create! do |success, failure| 
     success.html {redirect_to root_path}
@@ -18,12 +18,24 @@ class ItemsController < InheritedResources::Base
     head :ok
   end
 
+  # Update the rating on an Item belonging to a User.  The item.id and rating
+  # are submitted via AJAX as a parameter.  Find Item in the database with the
+  # corresponding ID and update its rating attribute with the supplied rating
+  # value.
   def rate
     current_user.items.find(params[:object_id]).update_attribute(:rating, params[:rating])
     head :ok
   end
 
   private 
+  # Apply a layout or not, based on the controller action:
+  # If we are looking at a single item, use the normal application layout.
+  # However for other AJAX actions, don't use any layout.
+    def determine_layout
+      ['show'].include?(action_name) ? 'application' : nil 
+    end 
+
+  #
     def find_changed_item_ids
       old_item_order = extract_ids(params[:old_item_order])
       new_item_order = extract_ids(params[:new_item_order])
