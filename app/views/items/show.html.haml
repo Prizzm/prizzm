@@ -2,17 +2,18 @@
 
 %h2#title.headline ITEM DETAILS - #{resource.name}
 
-%p Name: #{@item.name}
-%p Description: #{@item.description}
-%p Industry: #{@item.industry}
-%p Contact Name: #{@item.contact_name}
+%p Name: #{best_in_place @item, :name, :path => [current_user, @item] }
+%p Description: #{best_in_place @item, :description, :path => [current_user, @item] }
+%p Industry: #{best_in_place @item, :industry, :path => [current_user, @item] }
+%p Contact Name: #{best_in_place @item, :contact_name, :path => [current_user, @item] }
 %p= link_to @item.url, @item.url
-%p Address: #{@item.address}
-%p Email: #{mail_to @item.email}
-%p Phone Number: #{@item.phone_number}
-%p Secondary Number: #{@item.secondary_number}
-%p Facebook: #{@item.facebook}
-%p Twitter: #{@item.twitter}
+%p Address: #{best_in_place @item, :address, :path => [current_user, @item] }
+%p Email: #{best_in_place @item, :email, :path => [current_user, @item] }
+#{mail_to @item.email}
+%p Phone Number: #{best_in_place @item, :phone_number, :path => [current_user, @item] }
+%p Secondary Number: #{best_in_place @item, :secondary_number, :path => [current_user, @item] }
+%p Facebook: #{best_in_place @item, :facebook, :path => [current_user, @item] }
+%p Twitter: #{best_in_place @item, :twitter, :path => [current_user, @item] }
 %p Rating: 
 %div(id="item_#{@item.id}_rating" class="rating")
   = form_for [@user, @item], :remote => true do |f|
