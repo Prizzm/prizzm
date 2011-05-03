@@ -27,7 +27,7 @@
             %li= link_to 'Home', home_url, :class => "active"
             %li= link_to 'Contact Customer Service', '#'
             %li
-              = link_to current_user.name, '#'
+              = link_to current_user.name, edit_user_registration_path
               = link_to 'Logout', destroy_user_session_url
     #header
       - flash.each do |type, value|
