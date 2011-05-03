@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def make_real
-    5.times do
+    10.times do
       item = Factory :item
       interaction = Factory :interaction
       self.items << item

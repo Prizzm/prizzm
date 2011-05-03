@@ -1,0 +1,9 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+
+  include InheritedResources::DSL
+<<<<<<< HEAD
+  include InheritedResources::DSL
+=======
+>>>>>>> clone from charles_4
+end

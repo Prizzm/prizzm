@@ -22,6 +22,7 @@ gem "random_data"
 gem 'forgery'
 gem "lorempixum", :require => 'lorempixum'
 
+gem "hashie"
 # gem 'aws-s3', :require => 'aws/s3'
 # gem 'bcrypt-ruby', :require => 'bcrypt'
 # gem 'formtastic'

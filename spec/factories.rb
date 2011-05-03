@@ -1,3 +1,4 @@
+TEST_ITEMS = Marshal.load File.read(File.join(Rails.root, 'lib', 'items.txt'))
 
 Factory.define :profile do |profile|
   profile.first_name { Forgery::Name.first_name }
@@ -17,9 +18,8 @@ end
 
 # Table name: items
 Factory.define :item do |item|
-  item.name { /\w+/.gen } #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
+
   item.itemtype { Faker::Company.bs }
-  item.industry { INDUSTRIES.rand }
   item.email { Forgery::Internet.email_address }
   item.contact_name { "#{Forgery::Name.first_name} #{Forgery::Name.last_name}" }
   item.address { Forgery::Address.street_address }
@@ -27,10 +27,15 @@ Factory.define :item do |item|
   item.secondary_number { Forgery::Address.phone }
   item.facebook
   item.twitter
-  item.url {"http://www.#{Forgery::Internet.domain_name}"}
-  item.photo_url {"http://www.#{Forgery::Internet.domain_name}"}
   item.description { Faker::Company.catch_phrase}
   item.rating { [1,2,3,4,5].rand }
+  item.after_build do |i|
+    test_item = TEST_ITEMS.rand
+    i.industry = test_item.category
+    i.name = test_item.title #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
+    i.url = test_item.url
+    i.photo_url = test_item.images.image.largeimage
+  end
 end 
 
 Factory.define :interaction do |interaction|
