@@ -2,21 +2,22 @@
   Using the formtastic form builder gem here. HTML options can be supplied and customized with options on the README page
   http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
   https://github.com/justinfrench/formtastic
-  
 - semantic_form_for [current_user, @item] do |form|
   = form.input :name
-  = form.input :itemtype 
-  = form.input :industry
-  = form.input :email
-  = form.input :contact_name
-  = form.input :address
-  = form.input :phone_number
-  = form.input :secondary_number
-  = form.input :facebook
-  = form.input :twitter
   = form.input :description
   = form.input :url, :as => :string
-  = form.input :photo_url, :as => :string
+  %p= link_to "More options...", '#', :id => 'more-item-options'
+  #advanced-new-item
+    = form.input :contact_name
+    = form.input :email
+  /= form.input :itemtype 
+  /= form.input :industry
+  /= form.input :address
+  /= form.input :phone_number
+  /= form.input :secondary_number
+  /= form.input :facebook
+  /= form.input :twitter
+  /= form.input :photo_url, :as => :string
   %div{:id => "stars-wrapper-new-item"}
     = form.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
   :javascript
@@ -26,3 +27,7 @@
     });
   = form.buttons
 
+:javascript
+  $('#more-item-options').click(function(event){
+    $('#advanced-new-item').show();
+  });

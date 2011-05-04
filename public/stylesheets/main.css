@@ -1826,3 +1826,8 @@ legend {
 .box label {
   color: white;
 }
+
+/* line 300, ../../app/stylesheets/main.sass */
+#advanced-new-item {
+  display: none;
+}
