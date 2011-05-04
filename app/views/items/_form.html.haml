@@ -6,18 +6,18 @@
   = form.input :name
   = form.input :description
   = form.input :url, :as => :string
+  = form.input :contact_name
+  = form.input :email
   %p= link_to "More options...", '#', :id => 'more-item-options'
   #advanced-new-item
-    = form.input :contact_name
-    = form.input :email
-  /= form.input :itemtype 
-  /= form.input :industry
-  /= form.input :address
-  /= form.input :phone_number
-  /= form.input :secondary_number
-  /= form.input :facebook
-  /= form.input :twitter
-  /= form.input :photo_url, :as => :string
+    = form.input :itemtype 
+    = form.input :industry
+    = form.input :address
+    = form.input :phone_number
+    = form.input :secondary_number
+    = form.input :facebook
+    = form.input :twitter
+    = form.input :photo_url, :as => :string
   %div{:id => "stars-wrapper-new-item"}
     = form.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
   :javascript
