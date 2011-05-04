@@ -6,10 +6,10 @@
   = form.input :name
   = form.input :description
   = form.input :url, :as => :string
-  = form.input :contact_name
-  = form.input :email
   %p= link_to "More options...", '#', :id => 'more-item-options'
   #advanced-new-item
+    = form.input :contact_name
+    = form.input :email
     = form.input :itemtype 
     = form.input :industry
     = form.input :address
