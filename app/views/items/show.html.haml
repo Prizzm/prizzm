@@ -33,10 +33,31 @@
 %p Created At: #{@item.created_at.strftime('%D')}
 %p Updated At: #{@item.updated_at.strftime('%D')}
 
+#new_interaction_box
+  #interaction_input_box
+    = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
+      = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
+      #interaction_stars
+        = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+      .social
+        .twitter_button
+          = link_to image_tag('twitter_24x24.png'), '#'
+          = f.check_box :shared_twitter
+        .facebook_button
+          = link_to image_tag('facebook_24x24.png'), '#'
+          = f.check_box :shared_facebook
+      = f.hidden_field :new_items, :value => @item.id
+      = f.submit 'Add Interaction', :id => 'item-interaction-submit'
+    :javascript
+      $("#interaction_stars").stars({
+        inputType: "select",
+        cancelShow: false
+      });
+
 - if @item.interactions.count == 0
   %h3 There are no interactions for this Item
-  %hr
 - else 
   %h3 Interactions for: #{@item.name}
-  %hr
-  = render :partial => 'home/interaction', :collection => @item.interactions
+
+%hr
+#interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
