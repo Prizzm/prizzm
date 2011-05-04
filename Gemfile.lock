@@ -99,6 +99,10 @@ GEM
       rake (>= 0.8.7)
     forgery (0.3.8)
       nokogiri (~> 1.4)
+    formtastic (1.2.3)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (~> 0.4)
     fssm (0.2.7)
     haml (3.1.1)
     haml-rails (0.3.4)
@@ -216,6 +220,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   forgery
+  formtastic
   haml-rails
   hashie
   hirb

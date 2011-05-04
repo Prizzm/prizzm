@@ -9,5 +9,6 @@ log/*.log
 *.pid
 tmp/**/*
 db/data.yml
+db/*.sqlite3
 vendor/bundle
 *live.js

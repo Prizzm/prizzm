@@ -1,22 +1,21 @@
-= form_for [@user, @item]   do |f|
-  -if @item.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
-      %ul
-        - @item.errors.full_messages.each do |msg|
-          %li= msg
+-#  
+  Using the formtastic form builder gem here. HTML options can be supplied and customized with options on the README page
+  http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
+  https://github.com/justinfrench/formtastic
+  
+- semantic_form_for [current_user, @item] do |form|
+  = form.input :name
+  = form.input :itemtype 
+  = form.input :industry
+  = form.input :email
+  = form.input :contact_name
+  = form.input :address
+  = form.input :phone_number
+  = form.input :secondary_number
+  = form.input :facebook
+  = form.input :twitter
+  = form.input :description
+  = form.input :url, :as => :string
+  = form.input :photo_url, :as => :string
+  = form.buttons
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :itemtype
-    = f.text_field :itemtype
-  .actions
-    = f.submit 'Save'

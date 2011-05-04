@@ -25,7 +25,7 @@ gem "lorempixum", :require => 'lorempixum'
 gem "hashie"
 # gem 'aws-s3', :require => 'aws/s3'
 # gem 'bcrypt-ruby', :require => 'bcrypt'
-# gem 'formtastic'
+gem 'formtastic'
 
 group :development, :test do
   gem "sqlite3-ruby", :require => 'sqlite3'
