@@ -18,7 +18,7 @@
 %div(id="item_#{@item.id}_rating" class="rating")
   = form_for [@user, @item], :remote => true do |f|
     %div{:id => "stars-wrapper-#{@item.id}"}
-      = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+      = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
     :javascript
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
@@ -38,7 +38,7 @@
     = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
       = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
       #interaction_stars
-        = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+        = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
       .social
         .twitter_button
           = link_to image_tag('twitter_24x24.png'), '#'

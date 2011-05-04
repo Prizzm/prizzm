@@ -19,7 +19,7 @@
   /= form.input :twitter
   /= form.input :photo_url, :as => :string
   %div{:id => "stars-wrapper-new-item"}
-    = form.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+    = form.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
   :javascript
     $("#stars-wrapper-new-item").stars({
       inputType: "select",

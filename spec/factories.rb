@@ -29,7 +29,7 @@ Factory.define :item do |item|
   item.secondary_number { Forgery::Address.phone }
   item.facebook
   item.twitter
-  item.rating { [1,2,3,4,5].rand }
+  item.rating { [1,2,3].rand }
   item.after_build do |i|
     test_item = TEST_ITEMS.rand
     i.industry = test_item.category
@@ -45,6 +45,6 @@ Factory.define :interaction do |interaction|
   interaction.time_end { |i| i.time_start + 1.day }
   interaction.contact { ["Email", "Phone", "Prizzm", "Video"].random }
   interaction.description { Faker::Company.bs }
-  interaction.rating { [1,2,3,4,5].rand }
+  interaction.rating { [1,2,3].rand }
 end
 
