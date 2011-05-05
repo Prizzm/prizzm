@@ -1777,6 +1777,28 @@ body #container #main #items #items_feed #search_term {
   width: 417px;
 }
 
+body #container #main #items #items_feed #add-item {
+  display:inline-block;
+  width: 100px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+body #container #main #items #items_feed #add-item .add-item-text {
+  display:inline-block;
+  height: 32px;
+  vertical-align: bottom;
+}
+
+body #container #main #items #items_feed .applet-title {
+  color: #999999;
+  font-family: "Helvetica Neue,Helvetica";
+  font-size: 18px;
+  font-weight: 700;
+  display:inline-block;
+  padding-left: 95px;
+}
+
 /* line 272, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;

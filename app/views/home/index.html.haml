@@ -31,8 +31,10 @@
 #items
   #items_feed
     #add-item
-      %span.add-item-text Add Item
+      .add-item-text Add Item
       = link_to image_tag('add.png', :id => 'add-item-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-link'
+    .applet-title
+      My Stuff
     %table.items
       %thead
         %tr
