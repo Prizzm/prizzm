@@ -2,8 +2,6 @@
   #user_info
     .user_name #{@user.name}
 
-
-
 #interactions
   #new_interaction_box
     #prompt_phrase How was the service?
@@ -32,7 +30,7 @@
   #items_feed
     #add-item
       .add-item-text Add Item
-      = link_to image_tag('add.png', :id => 'add-item-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-link'
+      = link_to image_tag('add.png', :id => 'add-item-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-link', :title => 'Add an item'
     .applet-title
       My Stuff
     %table.items

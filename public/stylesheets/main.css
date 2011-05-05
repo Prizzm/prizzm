@@ -1782,6 +1782,7 @@ body #container #main #items #items_feed #add-item {
   width: 100px;
   height: 32px;
   vertical-align: middle;
+  padding: 5px 0 4px 5px;
 }
 
 body #container #main #items #items_feed #add-item .add-item-text {
@@ -1803,6 +1804,38 @@ body #container #main #items #items_feed .applet-title {
 #facebox .content {
   padding: 30px;
   background-color: white;
+}
+
+#facebox fieldset {
+  border: none;
+  padding: 0;
+}
+
+#facebox form label {
+  margin: 8px 6px 3px 2px;
+  float: left;
+  width: 70px;
+  text-align: right;
+}
+
+#facebox form ol, #facebox form ul {
+  list-style: none outside none;
+  padding: 0;
+}
+
+#facebox form ol li, #facebox form ul li {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#facebox form textarea {
+  height: 100px;
+  min-width: 200px;
+  width: 250px;
+}
+
+#facebox form input {
+  width: 250px;
 }
 
 /* line 276, ../../app/stylesheets/main.sass */

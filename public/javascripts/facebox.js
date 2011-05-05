@@ -90,6 +90,8 @@
       faceboxHtml  : '\
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
+        <div class="title"> \
+        </div> \
         <div class="content"> \
         </div> \
         <a href="#" class="close"></a> \
@@ -149,7 +151,7 @@
       var klass = this.rel.match(/facebox\[?\.(\w+)\]?/)
       if (klass) klass = klass[1]
 
-      fillFaceboxFromHref(this.href, klass)
+      fillFaceboxFromHref(this.href, klass, this.title)
       return false
     }
 
@@ -234,32 +236,35 @@
   //     div: #id
   //   image: blah.extension
   //    ajax: anything else
-  function fillFaceboxFromHref(href, klass) {
+  function fillFaceboxFromHref(href, klass, title) {
     // div
     if (href.match(/#/)) {
       var url    = window.location.href.split('#')[0]
       var target = href.replace(url,'')
+      fillTitle(title);
       if (target == '#') return
       $.facebox.reveal($(target).html(), klass)
 
     // image
     } else if (href.match($.facebox.settings.imageTypesRegexp)) {
-      fillFaceboxFromImage(href, klass)
+      fillFaceboxFromImage(href, klass, title)
     // ajax
     } else {
-      fillFaceboxFromAjax(href, klass)
+      fillFaceboxFromAjax(href, klass, title)
     }
   }
 
   function fillFaceboxFromImage(href, klass) {
     var image = new Image()
     image.onload = function() {
+      fillTitle(title);
       $.facebox.reveal('<div class="image"><img src="' + image.src + '" /></div>', klass)
     }
     image.src = href
   }
 
-  function fillFaceboxFromAjax(href, klass) {
+  function fillFaceboxFromAjax(href, klass, title) {
+    fillTitle(title);
     $.get(href, function(data) { $.facebox.reveal(data, klass) })
   }
 
@@ -290,6 +295,14 @@
     })
 
     return false
+  }
+
+  function fillTitle(title) {
+    if (title) {
+      $('#facebox .title').html(title)
+    } else {
+      $('#facebox .title').html('Facebox Title')
+    }
   }
 
   /*
