@@ -62,7 +62,6 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 +font-face("fairy-dust", font-files('../fonts/FairyDustB.ttf', truetype))
 +font-face("twilight-new-moon", font-files('../fonts/twilight-new-moon.ttf', truetype))
 .input-active
-  margin-bottom: 80px
   border-color: rgba(82, 168, 236, 0.75)
   +single-box-shadow(rgba(82, 168, 236, 0.5))
 
@@ -166,11 +165,12 @@ body
     +container
     #main  
       +min-height(650px)
+      .headline
+        background-color: #c3d9ff
+        padding-left: 10px
+        margin-top: 10px
       #item-details
         margin-top: 10px
-        .headline
-          background-color: #c3d9ff
-          padding-left: 10px
         #text-fields
           float: left
           width: 710px
@@ -179,13 +179,24 @@ body
             width: 230px
             margin: 0
             float: left
-            p.fields
+            .fields
               margin: 0 0 10px
               min-height: 25px
               text-align: justify
         #image-field
           width: 285px
           float: left
+      #new_interaction_box
+        width: 550px
+        form 
+          textarea
+            height: 80px
+            width: 550px
+          #interaction_stars, .social, #item-interaction-submit
+            float: right
+            margin-right: 10px
+            .twitter_button, .facebook_button
+              display: inline
       .prompt_phrase
         +last
         font-family: "Helvetica Neue,Helvetica"
