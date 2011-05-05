@@ -1610,7 +1610,7 @@ body #container #main #interactions #new_interaction_box {
   border-bottom: 2px solid #ebebeb;
 }
 /* line 182, ../../app/stylesheets/main.sass */
-body #container #main #interactions #new_interaction_box #prompt_phrase {
+body #container #main .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
   font-weight: 700;
@@ -1620,6 +1620,7 @@ body #container #main #interactions #new_interaction_box #prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 /* line 191, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box {
   margin-right: 0;
@@ -1645,19 +1646,22 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 }
 /* line 201, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
-  position: absolute;
+  /*position: absolute;
   top: 107px;
-  right: 250px;
+  right: 250px;*/
   display: none;
+  float: right;
+  margin-right: 10px;
 }
 /* line 206, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social {
-  position: relative;
-  width: 120px;
+  /*position: relative;
+  right: 100px;
+  top: -19px;
+  width: 120px;*/
   display: inline;
   float: right;
-  top: -19px;
-  right: 100px;
+  margin-right: 10px;
 }
 /* line 212, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social img, body #container #main #interactions #new_interaction_box #interaction_input_box form .social input {
@@ -1665,7 +1669,7 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 }
 /* line 214, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .facebook_button {
-  width: 60px;
+  /*width: 60px;*/
   display: inline;
   float: right;
 }
@@ -1673,13 +1677,14 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .twitter_button {
   display: inline;
   float: right;
-  width: 60px;
+  /*width: 60px;*/
 }
 /* line 220, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
-  position: absolute;
+  /*position: absolute;
   right: 22px;
-  bottom: -35px;
+  bottom: -35px;*/
+  margin-right: 22px;
   display: none;
 }
 /* line 225, ../../app/stylesheets/main.sass */
@@ -1800,6 +1805,56 @@ body #container #main #items #items_feed .applet-title {
   padding-left: 95px;
 }
 
+body #container #main #items-details {
+  margin-left: 9px;
+  min-height: 650px;
+  height: auto !important;
+  height: 650px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 450px;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(left top, #ffffff, #dddddd);
+  background-image: -moz-linear-gradient(left top, #ffffff, #dddddd);
+  background-image: -o-linear-gradient(left top, #ffffff, #dddddd);
+  background-image: linear-gradient(left top, #ffffff, #dddddd);
+  margin-top: 1px;
+}
+/* line 147, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #container #main #items-details {
+  overflow-x: hidden;
+}
+
+body #container #main #items-details .prompt_phrase {
+  margin-right: 0;
+  font-family: "Helvetica Neue,Helvetica";
+  font-weight: 700;
+  font-size: 16px;
+  color: #999999;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+body #container #main #items-details p {
+  padding: 10px 5px 10px 10px;
+  margin: 0;
+}
+
 /* line 272, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
@@ -1897,5 +1952,14 @@ legend {
 
 /* line 300, ../../app/stylesheets/main.sass */
 #advanced-new-item {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}
+
+#item-interaction-submit {
+  margin-right: 22px;
   display: none;
 }

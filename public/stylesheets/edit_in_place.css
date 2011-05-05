@@ -8,7 +8,9 @@ form.form_in_place input {
 
 /* line 9, ../../app/stylesheets/edit_in_place.sass */
 input[type=submit] {
-  width: 5em;
+  /*width: 5em;*/
+  width: auto;
+  float: right;
 }
 
 /* line 12, ../../app/stylesheets/edit_in_place.sass */

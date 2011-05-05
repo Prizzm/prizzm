@@ -4,12 +4,11 @@
 
 #interactions
   #new_interaction_box
-    #prompt_phrase How was the service?
+    .prompt_phrase How was the service?
     #interaction_input_box
       = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
         = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
-        #interaction_stars
-          = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+        = f.submit 'Share'
         .social
           .twitter_button
             = link_to image_tag('twitter_24x24.png'), '#'
@@ -17,8 +16,10 @@
           .facebook_button
             = link_to image_tag('facebook_24x24.png'), '#'
             = f.check_box :shared_facebook
+        #interaction_stars
+          = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
         = f.hidden_field :new_items
-        = f.submit 'Share'
+        .clear
       :javascript
         $("#interaction_stars").stars({
           inputType: "select",
