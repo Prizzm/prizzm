@@ -8,23 +8,22 @@ form.form_in_place input {
 
 /* line 9, ../../app/stylesheets/edit_in_place.sass */
 input[type=submit] {
-  /*width: 5em;*/
   width: auto;
   float: right;
 }
 
-/* line 12, ../../app/stylesheets/edit_in_place.sass */
+/* line 13, ../../app/stylesheets/edit_in_place.sass */
 input[type=checkbox] {
   width: 1em;
 }
 
-/* line 15, ../../app/stylesheets/edit_in_place.sass */
+/* line 16, ../../app/stylesheets/edit_in_place.sass */
 textarea {
   max-height: 15em;
   min-width: 490px;
 }
 
-/* line 19, ../../app/stylesheets/edit_in_place.sass */
+/* line 20, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place {
   padding: 0.1m;
   cursor: hand;
@@ -37,13 +36,13 @@ textarea {
   border-radius: 5px;
 }
 
-/* line 30, ../../app/stylesheets/edit_in_place.sass */
+/* line 31, ../../app/stylesheets/edit_in_place.sass */
 .best_in_place:hover, #user_account .do_hover {
   padding: 5px 0 5px 0;
   background-color: #faffc4;
 }
 
-/* line 35, ../../app/stylesheets/edit_in_place.sass */
+/* line 36, ../../app/stylesheets/edit_in_place.sass */
 .info_edit {
   float: right;
   cursor: hand;
@@ -51,7 +50,7 @@ textarea {
 }
 
 /* Missatges Flotants */
-/* line 43, ../../app/stylesheets/edit_in_place.sass */
+/* line 44, ../../app/stylesheets/edit_in_place.sass */
 .purr {
   position: fixed;
   width: 324px;
@@ -69,7 +68,7 @@ textarea {
   border-radius: 10px;
 }
 
-/* line 59, ../../app/stylesheets/edit_in_place.sass */
+/* line 60, ../../app/stylesheets/edit_in_place.sass */
 .purr:hover .close {
   position: absolute;
   top: 5px;
