@@ -1814,7 +1814,7 @@ body #container #main #items #items_feed .applet-title {
 #facebox form label {
   margin: 8px 6px 3px 2px;
   float: left;
-  width: 70px;
+  width: 110px;
   text-align: right;
 }
 
@@ -1836,6 +1836,19 @@ body #container #main #items #items_feed .applet-title {
 
 #facebox form input {
   width: 250px;
+}
+
+#facebox form .commit {
+  text-align: right;
+  padding-right: 70px;
+}
+
+#facebox form .commit input {
+  width: auto;
+}
+
+#stars-wrapper-new-item .ui-stars-star {
+  padding-top: 8px;
 }
 
 /* line 276, ../../app/stylesheets/main.sass */
