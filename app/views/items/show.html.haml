@@ -1,61 +1,105 @@
-%p= link_to "Back", home_path
+= link_to "Back", home_path
 
-#interactions
-  #new_interaction_box
-    .prompt_phrase Add new interaction
-    #interaction_input_box
-      = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
-        = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
-        = f.submit 'Add Interaction', :id => 'item-interaction-submit'
-        .social
-          .twitter_button
-            = link_to image_tag('twitter_24x24.png'), '#'
-            = f.check_box :shared_twitter
-          .facebook_button
-            = link_to image_tag('facebook_24x24.png'), '#'
-            = f.check_box :shared_facebook
-        = f.hidden_field :new_items, :value => @item.id
-        #interaction_stars
-          = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
-        .clear
-      :javascript
-        $("#interaction_stars").stars({
-          inputType: "select",
-          cancelShow: false
-        });
+#item-details
+  %h2#title.headline ITEM DETAILS - #{resource.name}
 
-  - if @item.interactions.count == 0
-    .prompt_phrase There are no interactions for this Item
-  - else 
-    .prompt_phrase Interactions for: #{@item.name}
+  #text-fields
+    .column
+      %p.fields
+        %strong Name
+        %br/
+        #{best_in_place @item, :name, :path => [current_user, @item] }
+      %p.fields
+        %strong Contact Name
+        %br/
+        #{best_in_place @item, :contact_name, :path => [current_user, @item] }
+      %p.fields
+        %strong Address 
+        %br/
+        #{best_in_place @item, :address, :path => [current_user, @item] }
+      %p.fields
+        %strong Phone Number
+        %br/
+        #{best_in_place @item, :phone_number, :path => [current_user, @item] }
+      %p.fields
+        %strong Secondary Number 
+        %br/
+        #{best_in_place @item, :secondary_number, :path => [current_user, @item] }
 
-  #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
+    .column
+      %p.fields
+        %strong Industry 
+        %br/
+        #{best_in_place @item, :industry, :path => [current_user, @item] }
+      %p.fields
+        %strong URL
+        %br/
+        = link_to @item.url, @item.url
+      %p.fields
+        %strong Email
+        %br/
+        #{best_in_place @item, :email, :path => [current_user, @item] }
+        %br/
+        #{mail_to @item.email}
+      %p.fields
+        %strong Facebook 
+        %br/
+        #{best_in_place @item, :facebook, :path => [current_user, @item] }
+      %p.fields
+        %strong Twitter
+        %br/
+        #{best_in_place @item, :twitter, :path => [current_user, @item] }
+    .column
+      %p.fields
+        %strong Description
+        %br/
+        #{best_in_place @item, :description, :path => [current_user, @item] }
+      %p.fields
+        %strong Rating 
+        %span(id="item_#{@item.id}_rating" class="rating" style="display:inline-block")
+          = form_for [@user, @item], :remote => true do |f|
+            %div{:id => "stars-wrapper-#{@item.id}"}
+              = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+      %p.fields
+        %strong Created At 
+        %br/
+        #{@item.created_at.strftime('%D')}
+      %p.fields 
+        %strong Updated At
+        %br/
+        #{@item.updated_at.strftime('%D')}
+  #image-field
+    %p= image_tag @item.photo_url, :width => "100%"
+  .clear
 
-#items-details
-  .prompt_phrase ITEM DETAILS - #{resource.name}
+#new_interaction_box
+  #interaction_input_box
+    = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
+      = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
+      #interaction_stars
+        = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+      .social
+        .twitter_button
+          = link_to image_tag('twitter_24x24.png'), '#'
+          = f.check_box :shared_twitter
+        .facebook_button
+          = link_to image_tag('facebook_24x24.png'), '#'
+          = f.check_box :shared_facebook
+      = f.hidden_field :new_items, :value => @item.id
+      = f.submit 'Add Interaction', :id => 'item-interaction-submit'
+    :javascript
+      $("#interaction_stars").stars({
+        inputType: "select",
+        cancelShow: false
+      });
 
-  %p Name: #{best_in_place @item, :name, :path => [current_user, @item] }
-  %p Description: #{best_in_place @item, :description, :path => [current_user, @item] }
-  %p Industry: #{best_in_place @item, :industry, :path => [current_user, @item] }
-  %p Contact Name: #{best_in_place @item, :contact_name, :path => [current_user, @item] }
-  %p= link_to @item.url, @item.url
-  %p Address: #{best_in_place @item, :address, :path => [current_user, @item] }
-  %p Email: #{best_in_place @item, :email, :path => [current_user, @item] }
-  %p= mail_to @item.email
-  %p Phone Number: #{best_in_place @item, :phone_number, :path => [current_user, @item] }
-  %p Secondary Number: #{best_in_place @item, :secondary_number, :path => [current_user, @item] }
-  %p Facebook: #{best_in_place @item, :facebook, :path => [current_user, @item] }
-  %p Twitter: #{best_in_place @item, :twitter, :path => [current_user, @item] }
-  %p 
-    Rating: 
-    %span(id="item_#{@item.id}_rating" class="rating" style="display:inline-block")
-      = form_for [@user, @item], :remote => true do |f|
-        %div{:id => "stars-wrapper-#{@item.id}"}
-          = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
-  %p= image_tag @item.photo_url
-  %p Created At: #{@item.created_at.strftime('%D')}
-  %p Updated At: #{@item.updated_at.strftime('%D')}
+- if @item.interactions.count == 0
+  %h3 There are no interactions for this Item
+- else 
+  %h3 Interactions for: #{@item.name}
 
+%hr
+#interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
 :javascript
   $("#stars-wrapper-#{@item.id}").stars({
