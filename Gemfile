@@ -15,6 +15,9 @@ gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
 
 gem "factory_girl_rails"
 
+gem "carrierwave"
+gem "rmagick"
+
 # Useful for fake data generation
 gem "faker"
 gem "randexp"
@@ -48,15 +51,16 @@ group :development, :test do
 
 #  gem "cucumber-rails"
   gem "selenium-webdriver"
+  gem "rack-test"
   gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
   gem "launchy"
   #gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  #g#e#m #"#r#s#p#e#c#-#r#a#i#l#s#"#,        #:#g#i#t #=#> #"#g#i#t#:#/#/#g#i#t#h#u#b#.#c#o#m#/#r#s#p#e#c#/#r#s#p#e#c#-#r#a#i#l#s#.#g#i#t#"
-  #g#e#m #"#r#s#p#e#c#"#,              #:#g#i#t #=#> #"#g#i#t#:#/#/#g#i#t#h#u#b#.#c#o#m#/#r#s#p#e#c#/#r#s#p#e#c#.#g#i#t#"
-  #g#e#m #"#r#s#p#e#c#-#c#o#r#e#"#,         #:#g#i#t #=#> #"#g#i#t#:#/#/#g#i#t#h#u#b#.#c#o#m#/#r#s#p#e#c#/#r#s#p#e#c#-#c#o#r#e#.#g#i#t#"
-  #g#e#m #"#r#s#p#e#c#-#e#x#p#e#c#t#a#t#i#o#n#s#"#, #:#g#i#t #=#> #"#g#i#t#:#/#/#g#i#t#h#u#b#.#c#o#m#/#r#s#p#e#c#/#r#s#p#e#c#-#e#x#p#e#c#t#a#t#i#o#n#s#.#g#i#t#"
-  #g#e#m #"#r#s#p#e#c#-#m#o#c#k#s#"#,        #:#g#i#t #=#> #"#g#i#t#:#/#/#g#i#t#h#u#b#.#c#o#m#/#r#s#p#e#c#/#r#s#p#e#c#-#m#o#c#k#s#.#g#i#t#"
+  #gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  #gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  #gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  #gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  #gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 
   gem "rspec-rails", "2.6.0.rc2" 
   gem "rspec",        "2.6.0.rc2"       
