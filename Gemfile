@@ -33,6 +33,8 @@ gem "carrierwave"
 # ImageMagick
 gem "rmagick"
 
+gem "flassh_cookie_session"
+
 # Useful for fake data generation
 gem "faker"
 gem "randexp"
