@@ -1845,7 +1845,11 @@ body #container #main #items #items_feed .applet-title {
   display: inline-block;
   padding-left: 95px;
 }
-/* line 312, ../../app/stylesheets/main.sass */
+/* line 311, ../../app/stylesheets/main.sass */
+body #container #main #items #items_feed .items td.rating {
+  width: 50px;
+}
+/* line 314, ../../app/stylesheets/main.sass */
 body #container #main #items-details {
   margin: 1px 0 0 9px;
   min-height: 650px;
@@ -1874,7 +1878,7 @@ body #container #main #items-details {
   background-image: linear-gradient(left top, #ffffff, #dddddd);
   overflow-x: hidden;
 }
-/* line 339, ../../app/stylesheets/main.sass */
+/* line 341, ../../app/stylesheets/main.sass */
 body #container #main #items-details .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1885,83 +1889,83 @@ body #container #main #items-details .prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 348, ../../app/stylesheets/main.sass */
+/* line 350, ../../app/stylesheets/main.sass */
 body #container #main #items-details p {
   padding: 10px 5px 10px 10px;
   margin: 0;
 }
 
-/* line 352, ../../app/stylesheets/main.sass */
+/* line 354, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 356, ../../app/stylesheets/main.sass */
+/* line 358, ../../app/stylesheets/main.sass */
 #facebox fieldset {
   border: none;
   padding: 0;
 }
 
-/* line 361, ../../app/stylesheets/main.sass */
+/* line 363, ../../app/stylesheets/main.sass */
 #facebox form label {
   margin: 8px 6px 3px 2px;
   float: left;
   width: 110px;
   text-align: right;
 }
-/* line 366, ../../app/stylesheets/main.sass */
+/* line 368, ../../app/stylesheets/main.sass */
 #facebox form ol, #facebox form ul {
   list-style: none outside none;
   padding: 0;
 }
-/* line 369, ../../app/stylesheets/main.sass */
+/* line 371, ../../app/stylesheets/main.sass */
 #facebox form ol li, #facebox form ul li {
   margin-bottom: 10px;
   overflow: hidden;
 }
-/* line 372, ../../app/stylesheets/main.sass */
+/* line 374, ../../app/stylesheets/main.sass */
 #facebox form textarea {
   height: 100px;
   min-width: 200px;
   width: 250px;
 }
-/* line 376, ../../app/stylesheets/main.sass */
+/* line 378, ../../app/stylesheets/main.sass */
 #facebox form input {
   width: 250px;
 }
-/* line 378, ../../app/stylesheets/main.sass */
+/* line 380, ../../app/stylesheets/main.sass */
 #facebox form .commit {
   text-align: right;
   padding-right: 70px;
 }
-/* line 381, ../../app/stylesheets/main.sass */
+/* line 383, ../../app/stylesheets/main.sass */
 #facebox form .commit input {
   width: auto;
 }
 
-/* line 384, ../../app/stylesheets/main.sass */
+/* line 386, ../../app/stylesheets/main.sass */
 #stars-wrapper-new-item .ui-stars-star {
   padding-top: 8px;
 }
 
-/* line 387, ../../app/stylesheets/main.sass */
+/* line 389, ../../app/stylesheets/main.sass */
 .clear {
   clear: both;
 }
 
-/* line 390, ../../app/stylesheets/main.sass */
+/* line 392, ../../app/stylesheets/main.sass */
 #item-interaction-submit {
   margin-right: 22px;
   display: none;
 }
 
-/* line 394, ../../app/stylesheets/main.sass */
+/* line 396, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }
 
-/* line 397, ../../app/stylesheets/main.sass */
+/* line 399, ../../app/stylesheets/main.sass */
 .box {
   background: none repeat scroll 0 0 #464e53;
   margin-bottom: 20px;
@@ -1974,7 +1978,7 @@ body #container #main #items-details p {
   border-radius: 7px;
 }
 
-/* line 403, ../../app/stylesheets/main.sass */
+/* line 405, ../../app/stylesheets/main.sass */
 legend {
   background: none repeat scroll 0 0 white;
   border: 1px solid #bbbbbb;
@@ -1988,19 +1992,19 @@ legend {
   border-radius: 7px;
 }
 
-/* line 410, ../../app/stylesheets/main.sass */
+/* line 412, ../../app/stylesheets/main.sass */
 #login-page {
   margin: auto;
   padding: 5em 0 12em;
   width: 400px;
 }
 
-/* line 415, ../../app/stylesheets/main.sass */
+/* line 417, ../../app/stylesheets/main.sass */
 .box label {
   color: white;
 }
 
-/* line 418, ../../app/stylesheets/main.sass */
+/* line 420, ../../app/stylesheets/main.sass */
 #advanced-new-item {
   display: none;
 }
