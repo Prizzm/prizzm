@@ -62,14 +62,16 @@
               = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
       %br/
       %p.fields
-        %strong Created At: 
+        %strong Added on: 
         = @item.created_at.strftime('%D')
       %p.fields 
-        %strong Updated At:
+        %strong Last updated on:
         = @item.updated_at.strftime('%D')
   #image-field
     %p= image_tag @item.photo_url, :width => "100%"
   .clear
+  
+  = link_to "Add an image", '#'
 
 #new_interaction_box
   #interaction_input_box
@@ -90,12 +92,12 @@
 
 - if @item.interactions.count == 0
   %h2.headline There are no interactions for this Item
+  %hr
 - else 
   %h2.headline Interactions for: #{@item.name}
-
-%hr
-#interactions
-  #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
+  %hr
+  #interactions
+    #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
 :javascript
   $("#stars-wrapper-#{@item.id}").stars({
