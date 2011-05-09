@@ -2,20 +2,35 @@
 source 'http://rubygems.org'
 
 gem 'rails' #, :git => 'git://github.com/rails/rails.git'
+
+# Gem to abstract away the dplication common in standard restful controllers
 gem 'inherited_resources'
 
+# Allows us to keep an order of a user's items in their collection
 gem "acts_as_list"
+
+# Used to simplify user registrations and logins
 gem "devise", :git => "https://github.com/plataformatec/devise.git"
+
+# Might not be used
 gem "ajaxful_rating"
+
+# Test helper to make placeholder images
 gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
 gem "haml-rails"
 gem "jquery-rails"
+
+# Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
 
+# Easily create database models for site simulation
 gem "factory_girl_rails"
 
+# Gem for uploading images.  More flexible than "paperclip"
 gem "carrierwave"
+# Used to that we can resize images uploaded through carrierwave, using
+# ImageMagick
 gem "rmagick"
 
 # Useful for fake data generation
@@ -28,6 +43,8 @@ gem "lorempixum", :require => 'lorempixum'
 gem "hashie"
 # gem 'aws-s3', :require => 'aws/s3'
 # gem 'bcrypt-ruby', :require => 'bcrypt'
+
+# Provides a shorter syntax for building forms
 gem 'formtastic'
 
 group :development, :test do
@@ -37,13 +54,16 @@ group :development, :test do
   # nice table displays in Rails console
   gem "hirb"
 
-  # Data export
+  # Allows us to push the local development database up to Heroku, and pull the
+  # heroku db down locally
   gem "yaml_db"
 
-  # css framework for dev machine
+  # Sass and Blueprint based css framework for dev machine
+  # use "compass compile . " to compile css before deployment
   gem "compass"
 
-  # model layer, test data generation
+  # Print a header in app/model/*.rb files, listing the db columns present for
+  # each model
   gem "annotate-models"
 
   # testing

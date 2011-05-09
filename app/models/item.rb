@@ -29,6 +29,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :tags, :dependent => :nullify
   has_many :interactions, :through => :tags
+  has_many :images, :dependent => :destroy
 
   acts_as_list :scope => :user
 
