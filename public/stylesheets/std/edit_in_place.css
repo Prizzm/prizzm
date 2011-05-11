@@ -1,0 +1,81 @@
+/* ======================================================= */
+/*                      User Account                       */
+/* ======================================================= */
+/* line 6, ../../app/stylesheets/edit_in_place.sass */
+form.form_in_place input {
+  width: 85%;
+}
+
+/* line 9, ../../app/stylesheets/edit_in_place.sass */
+input[type=submit] {
+  width: auto;
+  float: right;
+}
+
+/* line 13, ../../app/stylesheets/edit_in_place.sass */
+input[type=checkbox] {
+  width: 1em;
+}
+
+/* line 16, ../../app/stylesheets/edit_in_place.sass */
+textarea {
+  max-height: 15em;
+  min-width: 490px;
+}
+
+/* line 20, ../../app/stylesheets/edit_in_place.sass */
+.best_in_place {
+  padding: 0.1m;
+  cursor: hand;
+  cursor: pointer;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 31, ../../app/stylesheets/edit_in_place.sass */
+.best_in_place:hover, #user_account .do_hover {
+  padding: 5px 0 5px 0;
+  background-color: #faffc4;
+}
+
+/* line 36, ../../app/stylesheets/edit_in_place.sass */
+.info_edit {
+  float: right;
+  cursor: hand;
+  cursor: pointer;
+}
+
+/* Missatges Flotants */
+/* line 44, ../../app/stylesheets/edit_in_place.sass */
+.purr {
+  position: fixed;
+  width: 324px;
+  top: 20px;
+  right: 15px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  border: 2px solid #aaaaaa;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* line 60, ../../app/stylesheets/edit_in_place.sass */
+.purr:hover .close {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  text-indent: -9999px;
+  background: url("/images/close-button.gif") no-repeat;
+}

@@ -28,12 +28,14 @@ gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
 gem "factory_girl_rails"
 
 # Gem for uploading images.  More flexible than "paperclip"
-gem "carrierwave"
+gem "carrierwave", :git => 'https://github.com/jnicklas/carrierwave.git'
+gem "fog"
+
 # Used to that we can resize images uploaded through carrierwave, using
 # ImageMagick
 gem "rmagick"
 
-gem "flassh_cookie_session"
+gem "flash_cookie_session"
 
 # Useful for fake data generation
 gem "faker"
@@ -72,24 +74,24 @@ group :development, :test do
   # controller helper not available for integration tests, so use webrat for now
 
 #  gem "cucumber-rails"
-  gem "selenium-webdriver"
-  gem "rack-test"
-  gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
-  gem "launchy"
-  #gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
+  # gem "selenium-webdriver"
+  # gem "rack-test"
+  # gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
+  # gem "launchy"
+  # gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  #gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  #gem "rspec",              :git => "git://github.com/rspec/rspec.git"
-  #gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  #gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  #gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+  # gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  # gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  # gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  # gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  # gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 
-  gem "rspec-rails", "2.6.0.rc2" 
-  gem "rspec",        "2.6.0.rc2"       
-  gem "rspec-core",          "2.6.0.rc2"
-  gem "rspec-expectations",  "2.6.0.rc2"
-  gem "rspec-mocks",         "2.6.0.rc2"
-  gem 'shoulda-matchers'
-  gem "ZenTest"
-  gem "autotest-rails"
+  # gem "rspec-rails", "2.6.0.rc2" 
+  # gem "rspec",        "2.6.0.rc2"       
+  # gem "rspec-core",          "2.6.0.rc2"
+  # gem "rspec-expectations",  "2.6.0.rc2"
+  # gem "rspec-mocks",         "2.6.0.rc2"
+  # gem 'shoulda-matchers'
+  # gem "ZenTest"
+  # gem "autotest-rails"
 end

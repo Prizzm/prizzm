@@ -1,16 +1,15 @@
 class ImagesController < ApplicationController
-  before_filter :find_item, :find_or_build_image
+  before_filter :find_item
+  before_filter :find_or_build_image, :except => :create
 
 
   def create
-    respond_to do |format|
-      unless @image.save
-        flash[:error] = "We were unable to upload your image"
-      end
-      format.js do
-        render :text => render_to_string(:partial => 'images/image', :locals => {:image => @image})
-      end
-    end 
+    @image = @item.images.build params[:image]
+    if @image.save
+      redirect_to [current_user, @item]
+    else
+      flash[:error] = "We were unable to upload your image"
+    end
   end
 
   def destroy
