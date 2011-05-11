@@ -6,5 +6,5 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = 'beta.prizzm.com'                     # required
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
-  config.fog_host = 'http://beta.prizzm.com.s3.amazonaws.com'
+  config.fog_host = "http://#{config.fog_directory}.s3.amazonaws.com"
 end
