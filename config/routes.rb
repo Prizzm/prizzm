@@ -4,11 +4,15 @@ CharlesItems3::Application.routes.draw do
   root :to => 'home#index'
 
   resource :profile
-
   devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations"}
+
   resources :users do
     resources :items 
     resources :interactions
+  end
+
+  resources :items do
+    resource :images, :only => [:create, :destroy]
   end
 
   post 'items/sort', :as => :sort_items

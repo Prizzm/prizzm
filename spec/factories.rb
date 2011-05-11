@@ -36,7 +36,7 @@ Factory.define :item do |item|
     i.name = test_item.title #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
     i.url = test_item.url
     i.description = Nokogiri::HTML(open(i.url)).at_css('#wc-condensed').text
-    i.photo_url = test_item.images.image.largeimage
+    i.add_image_from_url test_item.images.image.largeimage
   end
 end 
 
