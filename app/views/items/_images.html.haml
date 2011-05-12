@@ -12,13 +12,14 @@
         %a.thumb{:href => img.image.url, :name => "leaf", :title => "Title #0"}
           %img{:alt => "Title #0", :src => img.image.thumb.url}/
         .caption
+          = link_to "Delete Image", '#'
           /
             .download
               %a{:href => img.image.url} Download Original
             .image-title Title #0
             .image-desc Description
-/ End Advanced Gallery Html Containers
 %div(style="clear: both;")
+/ End Advanced Gallery Html Containers
 
 :javascript
   jQuery(document).ready(function($) {
@@ -39,7 +40,7 @@
       // Initialize Advanced Galleriffic Gallery
       var gallery = $('#thumbs').galleriffic({
           delay:                     2500,
-          numThumbs:                 15,
+          numThumbs:                 10,
           preloadAhead:              10,
           enableTopPager:            true,
           enableBottomPager:         true,
