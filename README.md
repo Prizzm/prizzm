@@ -62,6 +62,7 @@ Collaborators:  ndgiang84@gmail.com
 
 
 ## Hoptoad Exceptions
+http://sid137.hoptoadapp.com
 
 ## Issue Tracker
 
@@ -69,5 +70,8 @@ Collaborators:  ndgiang84@gmail.com
 
 TODO
 
+# Configuration variables and API keys
+Secret api keys and other things are stored in environmental variables on
+heroku.  See http://devcenter.heroku.com/articles/config-vars for details
 
 Ensure that files listed in SECRETS are never shared publicly

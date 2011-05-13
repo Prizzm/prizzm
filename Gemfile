@@ -51,6 +51,8 @@ gem "hashie"
 # Provides a shorter syntax for building forms
 gem 'formtastic'
 
+gem "hoptoad_notifier"
+
 group :development, :test do
   gem "sqlite3-ruby", :require => 'sqlite3'
   gem "ruby-debug19", :require => 'ruby-debug'

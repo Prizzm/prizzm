@@ -113,6 +113,9 @@ GEM
     has_scope (0.5.0)
     hashie (1.0.0)
     hirb (0.4.5)
+    hoptoad_notifier (2.4.9)
+      activesupport
+      builder
     i18n (0.5.0)
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
@@ -191,7 +194,7 @@ DEPENDENCIES
   annotate-models
   best_in_place!
   carrierwave!
-  compass
+  compass (>= 0.11.1)
   devise!
   factory_girl_rails
   faker
@@ -202,6 +205,7 @@ DEPENDENCIES
   haml-rails
   hashie
   hirb
+  hoptoad_notifier
   inherited_resources
   jquery-rails
   lorempixum
