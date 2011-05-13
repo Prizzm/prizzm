@@ -80,14 +80,14 @@
     = f.file_field :image
     = f.text_field :remote_image_url
     = f.hidden_field :image_cache
-    = f.submit
+    = f.submit 'Upload Photo'
 
 
 #new_interaction_box
   #interaction_input_box
     = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
       = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
-      = f.submit 'Add Interaction', :id => 'item-interaction-submit'
+      = f.submit 'Save', :id => 'item-interaction-submit'
       .social
         .twitter_button
           = link_to image_tag('twitter_24x24.png'), '#'
