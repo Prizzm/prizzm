@@ -1,4 +1,3 @@
-/ Start Advanced Gallery Html Containers
 #gallery.content
   #controls.controls
   .slideshow-container
@@ -12,7 +11,6 @@
         %a.thumb{:href => img.image.url, :name => "leaf", :title => "Title #0"}
           %img{:alt => "Title #0", :src => img.image.thumb.url}/
         .caption
-          /= link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
           /
             .download
               %a{:href => img.image.url} Download Original
@@ -20,32 +18,28 @@
             .image-desc Description
 %div(style="clear: both;")
 = link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
-/ End Advanced Gallery Html Containers
-/= @image = Image.new
-/= form_for [@item, image] do |f|
-/= f.check_box :remove_avatar
-/Delete Image
-/= f.submit
-Selected Image: 
-#selected_image
+
+
+
+
+
 :javascript
   jQuery(document).ready(function($) {
     $('#image-to-delete').live('ajax:beforeSend', function(event, xhr, settings){
       event.preventDefault();
       var selected_image = $('li.selected').attr('data-imageid');
-      console.log('Deleting image: ' + selected_image);
 
-      $.post('/items/' + #{@item.id} + '/images', {
+      $.post("#{item_images_path @item}", {
         _method: 'delete', 
         item_id: #{@item.id},
         id: selected_image
       });
-
     })
     .live('ajax:success', function(event, data, status, xhr){
       location.reload();
     });
   });
+
 
 :javascript
   jQuery(document).ready(function($) {
