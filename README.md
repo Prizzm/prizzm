@@ -1,4 +1,6 @@
-# Css compilation with Compass
+# Prizzm.com
+
+## Css compilation with Compass
 
 Css for this project is stored in the sass files under the "app/stylesheets" directory.  We then
 compile the sass into css before deploying to heroku. 
@@ -16,13 +18,13 @@ or continuously watch all sass files and compile once they are updated with
   compass watch .
 
 
-#  Pivotal Tracker project
+##  Pivotal Tracker project
 
 Project roadmap is posted on 
 
 https://www.pivotaltracker.com/projects/284851
 
-#Github
+## Github
 
 Source code repository is stored on github at:
 
@@ -30,7 +32,7 @@ https://github.com/sid137/charles5
 
 
 
-# Heroku Config
+## Heroku Config
 === radiant-beach-401
 Web URL:        http://radiant-beach-401.heroku.com/
 Domain name:    http://www.prizzm.com/
@@ -45,11 +47,11 @@ Addons:         Custom Domains, Basic Logging, Shared Database 5MB
 Owner:          sid137@gmail.com
 Collaborators:  ndgiang84@gmail.com
 
-# Hoptoad Exceptions
+## Hoptoad Exceptions
 
-# Issue Tracker
+## Issue Tracker
 
-# Tests
+## Tests
 
 TODO
 
