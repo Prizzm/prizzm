@@ -64,7 +64,7 @@ group :development, :test do
 
   # Sass and Blueprint based css framework for dev machine
   # use "compass compile . " to compile css before deployment
-  gem "compass"
+  gem "compass", ">=0.11.1"
 
   # Print a header in app/model/*.rb files, listing the db columns present for
   # each model
