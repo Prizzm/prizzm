@@ -8,18 +8,44 @@
 #thumbs.navigation
   %ul.thumbs.noscript
     - @item.images.each do |img|
-      %li
+      %li{:data => {:imageid => img.id}}
         %a.thumb{:href => img.image.url, :name => "leaf", :title => "Title #0"}
           %img{:alt => "Title #0", :src => img.image.thumb.url}/
         .caption
-          = link_to "Delete Image", '#'
+          /= link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
           /
             .download
               %a{:href => img.image.url} Download Original
             .image-title Title #0
             .image-desc Description
 %div(style="clear: both;")
+= link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
 / End Advanced Gallery Html Containers
+/= @image = Image.new
+/= form_for [@item, image] do |f|
+/= f.check_box :remove_avatar
+/Delete Image
+/= f.submit
+Selected Image: 
+#selected_image
+:javascript
+  jQuery(document).ready(function($) {
+    $('#image-to-delete').live('ajax:beforeSend', function(event, xhr, settings){
+      event.preventDefault();
+      var selected_image = $('li.selected').attr('data-imageid');
+      console.log('Deleting image: ' + selected_image);
+
+      $.post('/items/' + #{@item.id} + '/images', {
+        _method: 'delete', 
+        item_id: #{@item.id},
+        id: selected_image
+      });
+
+    })
+    .live('ajax:success', function(event, data, status, xhr){
+      location.reload();
+    });
+  });
 
 :javascript
   jQuery(document).ready(function($) {
@@ -73,6 +99,8 @@
           onPageTransitionIn:        function() {
               this.fadeTo('fast', 1.0);
           }
+            //  var selected_image = $('li.selected').attr('data-imageid');
+             // $('#selected_image').html(selected_image);
       });
 
       /**** Functions to support integration of galleriffic with the jquery.history plugin ****/

@@ -37,9 +37,10 @@
 			if (!imageData)
 				return false;
 
+            //alert(imageData.hash);
 			var gallery = imageData.gallery;
 			gallery.gotoImage(imageData);
-			
+
 			return true;
 		},
 

@@ -14,10 +14,12 @@ class ImagesController < ApplicationController
 
   def destroy
     respond_to do |format|
-      unless @image.destroy
+      if @image.destroy
+        format.js {head :ok}
+        format.html {redirect_to [current_user, @item]}
+      else
         flash[:error] = 'Photo could not be deleted'
       end
-      format.js
     end 
   end
 
