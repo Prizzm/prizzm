@@ -1,9 +1,6 @@
-Compile css with:
-    compass watch 
-
 # Css compilation with Compass
 
-Css for this project is stored in the sass files under "app/stylesheets".  We then
+Css for this project is stored in the sass files under the "app/stylesheets" directory.  We then
 compile the sass into css before deploying to heroku. 
 
 Make sure that you are running at least Compass 0.11.1
