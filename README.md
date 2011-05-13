@@ -33,19 +33,33 @@ https://github.com/sid137/charles5
 
 
 ## Heroku Config
+
 === radiant-beach-401
+
 Web URL:        http://radiant-beach-401.heroku.com/
+
 Domain name:    http://www.prizzm.com/
+
 Git Repo:       git@heroku.com:radiant-beach-401.git
+
 Dynos:          1
+
 Workers:        0
+
 Repo size:      20M
+
 Slug size:      13M
+
 Stack:          bamboo-mri-1.9.2
+
 Data size:      240k
+
 Addons:         Custom Domains, Basic Logging, Shared Database 5MB
+
 Owner:          sid137@gmail.com
+
 Collaborators:  ndgiang84@gmail.com
+
 
 ## Hoptoad Exceptions
 
