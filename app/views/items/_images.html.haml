@@ -6,16 +6,8 @@
   #caption.caption-container
 #thumbs.navigation
   %ul.thumbs.noscript
-    - @item.images.each do |img|
-      %li{:data => {:imageid => img.id}}
-        %a.thumb{:href => img.image.url, :name => "leaf", :title => "Title #0"}
-          %img{:alt => "Title #0", :src => img.image.thumb.url}/
-        .caption
-          /
-            .download
-              %a{:href => img.image.url} Download Original
-            .image-title Title #0
-            .image-desc Description
+    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
+
 %div(style="clear: both;")
 = link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
 
@@ -36,7 +28,8 @@
       });
     })
     .live('ajax:success', function(event, data, status, xhr){
-      location.reload();
+      var index = data + ''; 
+      $('body').trigger('removeImage', index);
     });
   });
 
@@ -56,7 +49,24 @@
           fadeSpeed:         'fast',
           exemptionSelector: '.selected'
       });
-      
+
+      // Enable toggling of the caption
+      var captionOpacity = 0.0;
+      $('#captionToggle a').click(function(e) {
+        var link = $(this);
+        
+        var isOff = link.hasClass('off');
+        var removeClass = isOff ? 'off' : 'on';
+        var addClass = isOff ? 'on' : 'off';
+        var linkText = isOff ? 'Hide Caption' : 'Show Caption';
+        captionOpacity = isOff ? 0.7 : 0.0;
+
+        link.removeClass(removeClass).addClass(addClass).text(linkText).attr('title', linkText);
+        $('#caption span.image-caption').fadeTo(1000, captionOpacity);
+        
+        e.preventDefault();
+      });
+
       // Initialize Advanced Galleriffic Gallery
       var gallery = $('#thumbs').galleriffic({
           delay:                     2500,
@@ -87,15 +97,48 @@
                   .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
                   .eq(nextIndex).fadeTo('fast', 1.0);
           },
+          onTransitionOut:           function(slide, caption, isSync, callback) {
+            slide.fadeTo(this.getDefaultTransitionDuration(isSync), 0.0, callback);
+            caption.fadeTo(this.getDefaultTransitionDuration(isSync), 0.0);
+          },
+          onTransitionIn:            function(slide, caption, isSync) {
+            var duration = this.getDefaultTransitionDuration(isSync);
+            slide.fadeTo(duration, 1.0);
+            
+            // Position the caption at the bottom of the image and set its opacity
+            var slideImage = slide.find('img');
+            caption.width(slideImage.width())
+              .css({
+                'bottom' : Math.floor((slide.height() - slideImage.outerHeight()) / 2),
+                'left' : Math.floor((slide.width() - slideImage.width()) / 2) + slideImage.outerWidth() - slideImage.width()
+              })
+              .fadeTo(duration, captionOpacity);
+          },
           onPageTransitionOut:       function(callback) {
               this.fadeTo('fast', 0.0, callback);
           },
           onPageTransitionIn:        function() {
               this.fadeTo('fast', 1.0);
+          },
+          onImageAdded:              function(imageData, $li) {
+            $li.opacityrollover({
+              mouseOutOpacity:   onMouseOutOpacity,
+              mouseOverOpacity:  1.0,
+              fadeSpeed:         'fast',
+              exemptionSelector: '.selected'
+            });
           }
-            //  var selected_image = $('li.selected').attr('data-imageid');
-             // $('#selected_image').html(selected_image);
       });
+
+      /********************** Attach click event to the Add Image Link ************************/
+      $('body').live('insertImage', function(event, element) {
+        gallery.appendImage(element);
+      });
+
+      $('body').live('removeImage', function(event, index) {
+        gallery.removeImageByIndex(index);
+      });
+
 
       /**** Functions to support integration of galleriffic with the jquery.history plugin ****/
 
