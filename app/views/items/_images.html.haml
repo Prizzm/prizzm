@@ -9,7 +9,7 @@
     = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
 
 %div(style="clear: both;")
-= link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true
+= link_to "Delete Image", '#', :id => 'image-to-delete', :remote => true, :method => :delete, :'data-type' => :json
 
 
 
@@ -21,14 +21,14 @@
       event.preventDefault();
       var selected_image = $('li.selected').attr('data-imageid');
 
-      $.post("#{item_images_path @item}", {
-        _method: 'delete', 
-        item_id: #{@item.id},
-        id: selected_image
+      $.post("/items/#{@item.id}/images/"+selected_image, {
+        _method: 'delete'
       });
-    })
-    .live('ajax:success', function(event, data, status, xhr){
+    });
+
+    $('#image-to-delete').live('ajax:success', function(event, data, status, xhr){
       var index = data + ''; 
+      console.log('Index: ' + index);
       $('body').trigger('removeImage', index);
     });
   });

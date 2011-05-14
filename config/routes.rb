@@ -13,7 +13,7 @@ CharlesItems3::Application.routes.draw do
 
   resources :interactions
   resources :items do
-    resource :images, :only => [:create, :destroy]
+    resources :images, :only => [:create, :destroy]
   end
 
   post 'items/sort', :as => :sort_items
