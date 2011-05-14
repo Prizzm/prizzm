@@ -1,5 +1,8 @@
 CharlesItems3::Application.routes.draw do
 
+  match "/auth/:provider/callback" => "authentications#create"
+  resources :authentications
+
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
 

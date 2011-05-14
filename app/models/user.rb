@@ -23,9 +23,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile
+  has_one  :profile
   has_many :items, :order => "position"
   has_many :interactions
+  has_many :authentications, :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :profile_attributes
