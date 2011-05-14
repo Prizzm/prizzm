@@ -1,6 +1,5 @@
 class AuthenticationsController < ApplicationController
   def create
-    puts "asaaaaaaaaaaa"
     omni_auth = request.env["omniauth.auth"]
     render :text => omni_auth.to_yaml, :content_type => "text/yaml"
     #handle_omni_auth(omni_auth)
