@@ -180,7 +180,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
   # This is used for Heroku
-  config.omniauth :facebook, '209597715729857', '781c531b9cfaee4ec3de3236f904486d', { :scope => 'email, offline_access', :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  config.omniauth :facebook, '123680611044866', 'ba3f25cd19b4a6486163c30926092dae', { :scope => 'email, offline_access', :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
   # This is used for local testing
   #config.omniauth :facebook, '145939862144756', '123453a717380f9c6f32d4016c09e012', { :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
 

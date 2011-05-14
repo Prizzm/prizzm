@@ -75,8 +75,6 @@ FYI, people on Mac OS may have difficulty dealing with SSL Certification so I ad
 
 To use FB Connect locally, please uncomment line #185 and comment out #183 in ./config/initializers/devise.rb
 
-App ID and App Secret in #183 are provided by Charles and of application Prizzm on Facebook.
-
 ## Issue Tracker
 
 ## Tests
