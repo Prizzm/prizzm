@@ -64,6 +64,19 @@ Collaborators:  ndgiang84@gmail.com
 ## Hoptoad Exceptions
 http://sid137.hoptoadapp.com
 
+## Facebook Integration
+Use edge Devise (currently 1.4.0) with Omniauth integrated (from 1.2) to do Facebook Connect.
+
+FYI, people on Mac OS may have difficulty dealing with SSL Certification so I add these lines to ./config/initializers/devise.rb to bypass certification verifying while you are in development mode.
+
+    if Rails.env.development? 
+      OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE 
+    end
+
+To use FB Connect locally, please uncomment line #185 and comment out #183 in ./config/initializers/devise.rb
+
+App ID and App Secret in #183 are provided by Charles and of application Prizzm on Facebook.
+
 ## Issue Tracker
 
 ## Tests

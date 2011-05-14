@@ -1,13 +1,9 @@
 CharlesItems3::Application.routes.draw do
-
-  match "/auth/:provider/callback" => "authentications#create"
-  resources :authentications
-
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
 
   resource :profile
-  devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations"}
+  devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :users do
     resources :items 

@@ -1,5 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
+
+# No need to check for certification in development mode
+if Rails.env.development? 
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE 
+end
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
@@ -172,6 +178,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+
+  # This is used for Heroku
+  config.omniauth :facebook, '209597715729857', '781c531b9cfaee4ec3de3236f904486d', { :scope => 'email, offline_access', :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  # This is used for local testing
+  #config.omniauth :facebook, '145939862144756', '123453a717380f9c6f32d4016c09e012', { :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
