@@ -31,11 +31,13 @@ gem "factory_girl_rails"
 gem "carrierwave", :git => 'https://github.com/jnicklas/carrierwave.git'
 gem "fog"
 
+# Apparently needed to make the uploadify multifile uploader work 
+gem "flash_cookie_session"
+
 # Used to that we can resize images uploaded through carrierwave, using
 # ImageMagick
 gem "rmagick"
 
-gem "flash_cookie_session"
 
 # Useful for fake data generation
 gem "faker"
