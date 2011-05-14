@@ -11,6 +11,7 @@ CharlesItems3::Application.routes.draw do
     resources :interactions
   end
 
+  resources :interactions
   resources :items do
     resource :images, :only => [:create, :destroy]
   end

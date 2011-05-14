@@ -106,6 +106,15 @@ $(document).ready(function(){
     });
 
 
+  /* This code sets up an event handle on the #interactions_feed element, so if
+   * any of its child interactions are deleted, it gets handled here.  This
+   * helps us avoid having to set up n event handlers on the page, by just
+   * setting one on the parent element
+   */
+  $('#interactions_feed').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    var interactionid = data + '';
+    $('#interaction-' + interactionid + '-content').fadeOut();
+  });
 
   /* This  creates the blue highlight effect as we mouseover the interactions
    * list, by adding the 'hover' class to the div on mouseover, and removing

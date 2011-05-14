@@ -1,4 +1,4 @@
-.interaction-content
+%div{:class => 'interaction-content', :id => "interaction-#{interaction.id}-content"}
   .interaction-user= interaction.user.name
   .user-image
     .interaction-profile-image= image_tag interaction.user.photo_url.gsub('200', '50')
@@ -9,6 +9,7 @@
     - interaction.items.each do |item|
       %span.interaction-item= link_to item.name, [current_user, item]
   .interaction-created-at #{time_ago_in_words(interaction.created_at)} ago
+  .delete-interaction= link_to 'Delete Interaction', interaction, :'data-interactionid' => interaction.id, :class => 'delete-interaction-link', :remote => true, :'data-method' => :delete, :'data-type' => :json
   %div{:id => "interaction-#{interaction.id}-rating", :class => "rating"}
     = form_for [interaction.user, interaction], :remote => true do |f|
       = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
