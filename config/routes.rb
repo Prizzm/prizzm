@@ -14,6 +14,8 @@ CharlesItems3::Application.routes.draw do
     resources :interactions
   end
 
+  match '/items/:item_id/images/:id/index/:index' => 'images#destroy'
+
   resources :interactions
   resources :items do
     resources :images, :only => [:create, :destroy]

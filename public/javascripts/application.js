@@ -31,6 +31,21 @@ $(document).ready(function(){
   $('a[rel*=facebox]').facebox();
 
 
+
+  /* This function is used to send the updated ratings to the Rails controller
+   * via ajax.  As we do not need to read the response (we just assume it works,
+   * we can use a simple AJAX Post.
+   */
+  update_rating = function(key, object, rating){
+    $.post('/' + key + '/rate', {
+      object_id: object,
+      rating: rating
+    });
+  };
+
+
+
+
   /*  Here we configure the effects that occur when we click on the input box.
    *  The text_area expands in size, we add a class to it to highlight it, and we
    *  show three other objects that were previously hidden.  Finally, after we
@@ -49,18 +64,6 @@ $(document).ready(function(){
     $(this).removeClass('input-active');
   });
 
-
-
-  /* This function is used to send the updated ratings to the Rails controller
-   * via ajax.  As we do not need to read the response (we just assume it works,
-   * we can use a simple AJAX Post.
-   */
-  update_rating = function(key, object, rating){
-    $.post('/' + key + '/rate', {
-      object_id: object,
-      rating: rating
-    });
-  };
 
 
 
@@ -106,7 +109,8 @@ $(document).ready(function(){
     });
 
 
-  /* This code sets up an event handle on the #interactions_feed element, so if
+  /* This is where we handle the deleted interactions */
+  /* The code sets up an event handler on the #interactions_feed element, so if
    * any of its child interactions are deleted, it gets handled here.  This
    * helps us avoid having to set up n event handlers on the page, by just
    * setting one on the parent element

@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     @image = @item.images.build params[:image]
     respond_to do |format|
       if @image.save
-        format.js do #render :json => @image.id
+        format.js do
           render :text => render_to_string(:partial => 'items/image_thumbnail', :locals => {:img => @image})
         end
       else
@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
   def destroy
     respond_to do |format|
       if @image.destroy
-        format.js {head :ok}
+        format.js {render :json => params[:index]}
         format.html {redirect_to [current_user, @item]}
       else
         flash[:error] = 'Photo could not be deleted'
