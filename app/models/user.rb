@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :interactions
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :profile_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :profile_attributes, :access_token
   delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo_url, :photo_url=,  :to  => :profile
 
   accepts_nested_attributes_for :profile
