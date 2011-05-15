@@ -178,11 +178,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
-  # This is used for Heroku
-  config.omniauth :facebook, '123680611044866', 'ba3f25cd19b4a6486163c30926092dae', { :scope => 'email, offline_access', :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
-  # This is used for local testing
-  #config.omniauth :facebook, '145939862144756', '123453a717380f9c6f32d4016c09e012', { :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  if Rails.env.production?
+    config.omniauth :facebook, Facebook.config[:app_id_heroku], Facebook.config[:app_secret_heroku], { :scope => Facebook.config[:perms], :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  else
+    config.omniauth :facebook, Facebook.config[:app_id_dev], Facebook.config[:app_secret_dev], { :scope => Facebook.config[:perms], :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  end 
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

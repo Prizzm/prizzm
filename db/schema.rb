@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509204828) do
+ActiveRecord::Schema.define(:version => 20110515090250) do
 
   create_table "images", :force => true do |t|
     t.integer  "item_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110509204828) do
     t.string    "last_sign_in_ip"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.string    "access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

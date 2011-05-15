@@ -56,6 +56,7 @@ gem 'formtastic'
 gem "hoptoad_notifier"
 
 gem "omniauth"
+gem "fb_graph"
 
 group :development, :test do
   gem "sqlite3-ruby", :require => 'sqlite3'

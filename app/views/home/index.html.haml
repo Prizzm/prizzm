@@ -52,10 +52,10 @@
         .social
           .twitter_button
             = link_to image_tag('twitter_24x24.png'), '#'
-            = f.check_box :shared_twitter
+            = check_box_tag "interaction[shared_twitter]", 1, false
           .facebook_button
             = link_to image_tag('facebook_24x24.png'), '#'
-            = f.check_box :shared_facebook
+            = check_box_tag "interaction[shared_facebook]", 1, false
         #interaction_stars
           = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
         = f.hidden_field :new_items
