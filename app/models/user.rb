@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
                      :first_name => info['first_name'], 
                      :last_name => info['last_name'],
                      :photo_url => info['image'])
+      user.save
       user
     end
   end 
