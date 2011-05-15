@@ -7,7 +7,6 @@
 # http://radiant-beach-401.heroku.com currently uses:
 # App ID = 123680611044866, App Secret = ba3f25cd19b4a6486163c30926092dae
 #
-
 development: &defaults
   app_id: 123680611044866
   app_secret: ba3f25cd19b4a6486163c30926092dae
