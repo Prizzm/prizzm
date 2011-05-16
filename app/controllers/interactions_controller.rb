@@ -10,8 +10,11 @@ class InteractionsController < InheritedResources::Base
       interaction = params[:interaction]
       render :partial => 'home/interaction', :locals  => {:interaction  => resource}
       Facebook.post_interaction(interaction[:description], current_user.access_token) unless interaction[:shared_facebook].nil?
-      TwitterConfig.update_config(@user.tt_token, @user.tt_secret)
-      Twitter.update(interaction[:description]) unless interaction[:shared_twitter].nil?
+      unless interaction[:shared_twitter].nil?
+        TwitterConfig.update_config(@user.tt_token, @user.tt_secret)
+        Twitter::Client.new
+        Twitter.update(interaction[:description]) 
+      end
     }
   end
 

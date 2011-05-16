@@ -12,8 +12,8 @@ class TwitterConfig
 
   def self.update_config(oauth_token, oauth_token_secret)
     Twitter.configure do |config|
-      config.consumer_key = TwitterConfig.config['con_id']
-      config.consumer_secret = TwitterConfig.config['con_secret']
+      config.consumer_key = TwitterConfig.config[:con_id]
+      config.consumer_secret = TwitterConfig.config[:con_secret]
       config.oauth_token = oauth_token
       config.oauth_token_secret = oauth_token_secret
     end
