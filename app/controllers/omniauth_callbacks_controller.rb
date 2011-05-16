@@ -13,6 +13,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     @user = User.find_for_twitter_oauth(env["omniauth.auth"], current_user)
-    redirect_to root_url
+    sign_in_and_redirect @user, :event => :authentication
   end
 end

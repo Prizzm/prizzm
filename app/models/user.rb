@@ -79,10 +79,34 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(access_token, user)
     credentials = access_token['credentials']
-    user.tt_token = credentials['token']
-    user.tt_secret = credentials['secret']
-    user.save
-    user
+    info = access_token['user_info']
+
+    # Not signed in.
+    if user.nil?
+      # Already signed up with Twitter.
+      if user = User.find_by_tt_token_and_tt_secret(credentials['token'], credentials['secret'])
+        user
+      else
+        # Create new Prizzm account with Twitter account information.
+        user = User.create!(:email => "email@prizzm.com", :password => Devise.friendly_token[0, 20])
+        user.tt_token = credentials['token']
+        user.tt_secret = credentials['secret']
+
+        Profile.create(:user_id => user.id,
+                       :first_name => info['name'],
+                       :photo_url => info['image'],
+                       :location => info['location']
+                      )
+        user.save
+        user
+      end
+    else
+      # Already sign in.
+      user.tt_token = credentials['token']
+      user.tt_secret = credentials['secret']
+      user.save
+      user
+    end
   end
 
   def self.new_with_session(params, session)
