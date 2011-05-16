@@ -10,4 +10,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
+  def twitter
+    @user = User.find_for_twitter_oauth(env["omniauth.auth"], current_user)
+    redirect_to root_url
+  end
 end

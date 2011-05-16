@@ -58,6 +58,7 @@ $(document).ready(function(){
     $(this).removeClass('input-active');
   });
 
+  // For Facebook posting messages
   $('#interaction_shared_facebook').live('click', function() {
     if (($('#is_signed_in_fb').val() == 'false') && ($(this).attr('checked') == true)) {
       $(this).attr('checked', false);
@@ -72,11 +73,36 @@ $(document).ready(function(){
       window.close();
       opener.focus();
       var facebookCheckbox = $(opener.document).find('#interaction_shared_facebook');
+      var facebookFlag = $(opener.document).find('#is_signed_in_fb');
       $(facebookCheckbox).attr('checked', true);
+      $(facebookFlag).val(true);
     }
   }
 
   checkWinFacebook();
+
+  // For Twitter posting message
+  $('#interaction_shared_twitter').live('click', function() {
+    if (($('#is_signed_in_tt').val() == 'false') && ($(this).attr('checked') == true)) {
+      $(this).attr('checked', false);
+      window.name = 'parent_of_twitter';
+      window.open($('#omniauth_tt_login_path').val(), 'sign_in_twitter', 'height=600,width=800');
+    }
+  });
+
+  function checkWinTwitter() {
+    if ((window.opener != null) && (window.opener.name == "parent_of_twitter")) {
+      var opener = window.opener;
+      window.close();
+      opener.focus();
+      var twitterCheckbox = $(opener.document).find('#interaction_shared_twitter');
+      var twitterFlag = $(opener.document).find('#is_signed_in_tt');
+      $(twitterCheckbox).attr('checked', true);
+      $(twitterFlag).val(true);
+    }
+  }
+
+  checkWinTwitter();
 
   /* Now we need to configure the checkboxes to create an association between
    * the items, and the interaction that is being created.  First we will bind a

@@ -179,6 +179,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :facebook, Facebook.config[:app_id], Facebook.config[:app_secret], { :scope => Facebook.config[:perms], :client_options => { :ssl => { :ca_path => "/etc/ssl/certs" }}}
+  config.omniauth :twitter, TwitterConfig.config[:con_id], TwitterConfig.config[:con_secret]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -53,6 +53,8 @@
           .twitter_button
             = link_to image_tag('twitter_24x24.png'), '#'
             = check_box_tag "interaction[shared_twitter]", 1, false
+            = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+            = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
           .facebook_button
             = link_to image_tag('facebook_24x24.png'), '#'
             = check_box_tag "interaction[shared_facebook]", 1, false

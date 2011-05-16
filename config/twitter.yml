@@ -1,0 +1,20 @@
+# 
+# Twitter setup
+#
+# http://localhost:3000 please use:
+# App ID = , App Secret = 
+#
+# http://radiant-beach-401.heroku.com currently uses:
+# App ID = Inmt9dXau1r2jR3bpbhtQ, App Secret = QqZj7aZcgP6T8vB98IkvBZ3V2nLP54lls7yEXNvg0
+#
+development: &defaults
+  con_id: Inmt9dXau1r2jR3bpbhtQ
+  con_secret: QqZj7aZcgP6T8vB98IkvBZ3V2nLP54lls7yEXNvg0
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  con_id: Inmt9dXau1r2jR3bpbhtQ
+  con_secret: QqZj7aZcgP6T8vB98IkvBZ3V2nLP54lls7yEXNvg0
