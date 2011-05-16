@@ -7,8 +7,8 @@ class InteractionsController < InheritedResources::Base
   create! do |success, failure| 
     flash = nil
     success.html {
-      render :partial => 'home/interaction', :locals  => {:interaction  => resource}
       interaction = params[:interaction]
+      render :partial => 'home/interaction', :locals  => {:interaction  => resource}
       Facebook.post_interaction(interaction[:description], current_user.access_token) unless interaction[:shared_facebook].nil?
     }
   end

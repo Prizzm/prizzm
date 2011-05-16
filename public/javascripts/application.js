@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   //Fading Links Using Jquery
   $.fn.dwFadingLinks = function(settings) {
 	settings = jQuery.extend({
@@ -30,8 +29,6 @@ $(document).ready(function(){
   // Initialize facebox model windows if they are used
   $('a[rel*=facebox]').facebox();
 
-
-
   /* This function is used to send the updated ratings to the Rails controller
    * via ajax.  As we do not need to read the response (we just assume it works,
    * we can use a simple AJAX Post.
@@ -42,9 +39,6 @@ $(document).ready(function(){
       rating: rating
     });
   };
-
-
-
 
   /*  Here we configure the effects that occur when we click on the input box.
    *  The text_area expands in size, we add a class to it to highlight it, and we
@@ -64,8 +58,25 @@ $(document).ready(function(){
     $(this).removeClass('input-active');
   });
 
+  $('#interaction_shared_facebook').live('click', function() {
+    if (($('#is_signed_in_fb').val() == 'false') && ($(this).attr('checked') == true)) {
+      $(this).attr('checked', false);
+      window.name = 'parent_of_facebook';
+      window.open($('#omniauth_fb_login_path').val(), 'sign_in_facebook', 'height=600,width=800');
+    } 
+  });
 
+  function checkWinFacebook() {
+    if ((window.opener != null) && (window.opener.name == "parent_of_facebook")) {
+      var opener = window.opener;
+      window.close();
+      opener.focus();
+      var facebookCheckbox = $(opener.document).find('#interaction_shared_facebook');
+      $(facebookCheckbox).attr('checked', true);
+    }
+  }
 
+  checkWinFacebook();
 
   /* Now we need to configure the checkboxes to create an association between
    * the items, and the interaction that is being created.  First we will bind a
@@ -83,8 +94,6 @@ $(document).ready(function(){
       // Then add this list of items to the new_interaction form to be submitted
       $('#interaction_new_items').val(checked_items);
   });
-
-
 
   /* This prepends the new interaction to our list of interactions, so that it
    * shows up at the top on our page, without us having to refresh the page
@@ -108,7 +117,6 @@ $(document).ready(function(){
       $('#new_interaction')[0].reset();
     });
 
-
   /* This is where we handle the deleted interactions */
   /* The code sets up an event handler on the #interactions_feed element, so if
    * any of its child interactions are deleted, it gets handled here.  This
@@ -131,12 +139,6 @@ $(document).ready(function(){
   $('.interaction-content').live('mouseleave', function(){
       $(this).removeClass('hover');
   });
-
-
-
-
-
-
 
   //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
   var fixHelper = function(e, ui) {
@@ -167,10 +169,4 @@ $(document).ready(function(){
     start: getStartOrder, 
     update: saveOrder
   }).disableSelection();
-
-
-
 });
-
-
-

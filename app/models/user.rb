@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = User.find_by_email(data["email"])
+      user.update_attributes(:access_token => credentials['token']) if user.access_token.blank?
       user
     else 
       # Create a user with a stub password. 

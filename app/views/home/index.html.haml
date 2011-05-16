@@ -56,6 +56,8 @@
           .facebook_button
             = link_to image_tag('facebook_24x24.png'), '#'
             = check_box_tag "interaction[shared_facebook]", 1, false
+            = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+            = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
         #interaction_stars
           = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
         = f.hidden_field :new_items
