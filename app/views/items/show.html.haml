@@ -72,7 +72,7 @@
             = check_box_tag "interaction[shared_facebook]", 1, false
             = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
             = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
-
+          = link_to "Share", '#'
       %br/
       %p.fields
         %strong Added on: 
