@@ -73,8 +73,6 @@ FYI, people on Mac OS may have difficulty dealing with SSL Certification so I ad
       OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE 
     end
 
-To use FB Connect locally, please uncomment line #185 and comment out #183 in ./config/initializers/devise.rb
-
 ## Issue Tracker
 
 ## Tests

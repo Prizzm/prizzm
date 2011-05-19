@@ -63,7 +63,7 @@ $(document).ready(function(){
     if (($('#is_signed_in_fb').val() == 'false') && ($(this).attr('checked') == true)) {
       $(this).attr('checked', false);
       window.name = 'parent_of_facebook';
-      window.open($('#omniauth_fb_login_path').val(), 'sign_in_facebook', 'height=600,width=800');
+      window.open($('#omniauth_fb_login_path').val(), 'sign_in_facebook', 'height=600,width=800,scrollbars=yes');
     } 
   });
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
     if (($('#is_signed_in_tt').val() == 'false') && ($(this).attr('checked') == true)) {
       $(this).attr('checked', false);
       window.name = 'parent_of_twitter';
-      window.open($('#omniauth_tt_login_path').val(), 'sign_in_twitter', 'height=600,width=800');
+      window.open($('#omniauth_tt_login_path').val(), 'sign_in_twitter', 'height=600,width=800,scollbars=yes');
     }
   });
 
