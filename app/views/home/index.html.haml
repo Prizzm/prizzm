@@ -30,13 +30,11 @@
                 .social
                   .twitter_button
                     = link_to image_tag('twitter_24x24.png'), '#'
-                    = check_box_tag "interaction[shared_twitter]", 1, false
-                    = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+                    = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{item.id}"
                     = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
                   .facebook_button
                     = link_to image_tag('facebook_24x24.png'), '#'
-                    = check_box_tag "interaction[shared_facebook]", 1, false
-                    = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+                    = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{item.id}"
                     = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
                 %div(id="item_#{item.id}_rating" class="rating")
                   = form_for [@user, item], :remote => true do |f|
@@ -64,13 +62,11 @@
         .social
           .twitter_button
             = link_to image_tag('twitter_24x24.png'), '#'
-            = check_box_tag "interaction[shared_twitter]", 1, false
-            = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+            = check_box_tag "interaction[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => 'interaction_shared_tt'
             = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
           .facebook_button
             = link_to image_tag('facebook_24x24.png'), '#'
-            = check_box_tag "interaction[shared_facebook]", 1, false
-            = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+            = check_box_tag "interaction[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
             = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
         #interaction_stars
           = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}

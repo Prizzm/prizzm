@@ -59,8 +59,9 @@ $(document).ready(function(){
   });
 
   // For Facebook posting messages
-  $('#interaction_shared_facebook').live('click', function() {
+  $('.shared_fb_checkbox').live('click', function() {
     if (($('#is_signed_in_fb').val() == 'false') && ($(this).attr('checked') == true)) {
+      $('#processing_fb_id').val($(this).attr('id'));
       $(this).attr('checked', false);
       window.name = 'parent_of_facebook';
       window.open($('#omniauth_fb_login_path').val(), 'sign_in_facebook', 'height=600,width=800,scrollbars=yes');
@@ -70,20 +71,24 @@ $(document).ready(function(){
   function checkWinFacebook() {
     if ((window.opener != null) && (window.opener.name == "parent_of_facebook")) {
       var opener = window.opener;
-      window.close();
+      var processing_fb_id = $(opener.document).find('#processing_fb_id');
+      var fbCheckbox = $(opener.document).find('#' + $(processing_fb_id).val());
+      var fbFlag = $(opener.document).find('#is_signed_in_fb');
+
+      $(fbCheckbox).attr('checked', true);
+      $(fbFlag).val(true);
+
       opener.focus();
-      var facebookCheckbox = $(opener.document).find('#interaction_shared_facebook');
-      var facebookFlag = $(opener.document).find('#is_signed_in_fb');
-      $(facebookCheckbox).attr('checked', true);
-      $(facebookFlag).val(true);
+      window.close();
     }
   }
 
   checkWinFacebook();
 
   // For Twitter posting message
-  $('#interaction_shared_twitter').live('click', function() {
+  $('.shared_tt_checkbox').live('click', function() {
     if (($('#is_signed_in_tt').val() == 'false') && ($(this).attr('checked') == true)) {
+      $('#processing_tt_id').val($(this).attr('id'));
       $(this).attr('checked', false);
       window.name = 'parent_of_twitter';
       window.open($('#omniauth_tt_login_path').val(), 'sign_in_twitter', 'height=600,width=800,scollbars=yes');
@@ -93,12 +98,15 @@ $(document).ready(function(){
   function checkWinTwitter() {
     if ((window.opener != null) && (window.opener.name == "parent_of_twitter")) {
       var opener = window.opener;
-      window.close();
+      var processing_tt_id = $(opener.document).find('#processing_tt_id');
+      var ttCheckbox = $(opener.document).find('#' + $(processing_tt_id).val());
+      var ttFlag = $(opener.document).find('#is_signed_in_tt');
+
+      $(ttCheckbox).attr('checked', true);
+      $(ttFlag).val(true);
+
       opener.focus();
-      var twitterCheckbox = $(opener.document).find('#interaction_shared_twitter');
-      var twitterFlag = $(opener.document).find('#is_signed_in_tt');
-      $(twitterCheckbox).attr('checked', true);
-      $(twitterFlag).val(true);
+      window.close();
     }
   }
 

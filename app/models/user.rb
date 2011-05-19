@@ -54,24 +54,33 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(access_token, user)
     data = access_token['extra']['user_hash']
     info = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = User.find_by_email(data["email"])
-      user.update_attributes(:access_token => credentials['token']) if user.access_token.blank?
-      user
-    else 
-      # Create a user with a stub password. 
-      email = data['email'] || info['email']
-      user = User.create!(:email => email, :password => Devise.friendly_token[0,20])
-      user.access_token = credentials['token']
+    # Not signed in
+    if user.nil?
+      # Already signed up with FB.
+      if user = User.find_by_email(data["email"])
+        user.update_attributes(:access_token => credentials['token']) if user.access_token.blank?
+        user
+      else 
+        # Create new acc on Prizzm with FB acc information.
+        email = data['email'] || info['email']
+        user = User.create!(:email => email, :password => Devise.friendly_token[0,20])
+        user.access_token = credentials['token']
 
-      Profile.create(:user_id => user.id,
-                     :first_name => info['first_name'], 
-                     :last_name => info['last_name'],
-                     :photo_url => info['image'])
+        Profile.create(:user_id => user.id,
+                       :first_name => info['first_name'], 
+                       :last_name => info['last_name'],
+                       :photo_url => info['image'])
+        user.save
+        user
+      end
+    else
+      # Already sign in.
+      user.access_token = credentials['token']
       user.save
       user
     end
