@@ -17,5 +17,5 @@ test:
 
 production:
   <<: *defaults
-  app_id: 123680611044866
-  app_secret: ba3f25cd19b4a6486163c30926092dae
+  app_id: 209597715729857
+  app_secret: 781c531b9cfaee4ec3de3236f904486d
