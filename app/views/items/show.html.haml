@@ -60,6 +60,19 @@
           = form_for [@user, @item], :remote => true do |f|
             %div{:id => "stars-wrapper-#{@item.id}"}
               = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+        %br
+        .social
+          .twitter_button
+            = link_to image_tag('twitter_24x24.png'), '#'
+            = check_box_tag "interaction[shared_twitter]", 1, false
+            = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+            = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
+          .facebook_button
+            = link_to image_tag('facebook_24x24.png'), '#'
+            = check_box_tag "interaction[shared_facebook]", 1, false
+            = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+            = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
+          = link_to "Share", '#'
       %br/
       %p.fields
         %strong Added on: 
@@ -67,6 +80,7 @@
       %p.fields 
         %strong Last updated on:
         = @item.updated_at.strftime('%D')
+
 
   = render 'images'
 
