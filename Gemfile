@@ -2,6 +2,8 @@
 source 'http://rubygems.org'
 
 gem 'rails' #, :git => 'git://github.com/rails/rails.git'
+gem "haml-rails"
+gem "jquery-rails"
 
 # Gem to abstract away the dplication common in standard restful controllers
 gem 'inherited_resources'
@@ -18,14 +20,10 @@ gem "ajaxful_rating"
 # Test helper to make placeholder images
 gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
-gem "haml-rails"
-gem "jquery-rails"
 
 # Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
 
-# Easily create database models for site simulation
-gem "factory_girl_rails"
 
 # Gem for uploading images.  More flexible than "paperclip"
 gem "carrierwave", :git => 'https://github.com/jnicklas/carrierwave.git'
@@ -38,6 +36,8 @@ gem "flash_cookie_session"
 # ImageMagick
 gem "rmagick"
 
+# Easily create database models for site simulation
+gem "factory_girl_rails"
 
 # Useful for fake data generation
 gem "faker"
@@ -53,8 +53,10 @@ gem "hashie"
 # Provides a shorter syntax for building forms
 gem 'formtastic'
 
+# Sends notifications of errors on Production app
 gem "hoptoad_notifier"
 
+# Social Media Gems FB Connect, FB, and Twitter
 gem "omniauth"
 gem "fb_graph"
 gem "twitter"
@@ -88,17 +90,7 @@ group :development, :test do
   # gem "launchy"
   # gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  # gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  # gem "rspec",              :git => "git://github.com/rspec/rspec.git"
-  # gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  # gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  # gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
-
-  # gem "rspec-rails", "2.6.0.rc2" 
-  # gem "rspec",        "2.6.0.rc2"       
-  # gem "rspec-core",          "2.6.0.rc2"
-  # gem "rspec-expectations",  "2.6.0.rc2"
-  # gem "rspec-mocks",         "2.6.0.rc2"
+  gem "rspec-rails"
   # gem 'shoulda-matchers'
   # gem "ZenTest"
   # gem "autotest-rails"
