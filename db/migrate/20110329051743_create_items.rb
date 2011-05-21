@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :rating
       t.integer :position
       t.references :user
+      t.references :product
       t.timestamps
     end
   end
