@@ -5,4 +5,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-CharlesItems3::Application.load_tasks
+Prizzm::Application.load_tasks

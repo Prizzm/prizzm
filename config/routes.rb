@@ -1,4 +1,8 @@
-CharlesItems3::Application.routes.draw do
+Prizzm::Application.routes.draw do
+  resources :products
+
+  resources :companies
+
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
 
