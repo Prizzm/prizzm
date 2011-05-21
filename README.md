@@ -1,5 +1,50 @@
 # Prizzm.com
 
+
+## Project Setup
+
+### Development Machine
+
+The following software is used in addition to Rails
+
+
+ImageMagick 6.6.9.8
+
+  ./configure && make && sudo make install
+
+
+
+### Environment Variables
+
+For any API keys are passwords that are necessary, specify those in
+environmental variables, and add the variable to the list here.
+
+
+Provided by Sidney:
+
+HOPTOAD_API_KEY             => 
+NEW_RELIC_APPNAME           => 
+NEW_RELIC_ID                => 
+NEW_RELIC_LICENSE_KEY       => 
+PRIZZM_S3_ACCESS_KEY_ID     => 
+PRIZZM_S3_SECRET_ACCESS_KEY => 
+
+
+Provided by Giang:
+
+
+Provided by Charles:
+
+
+### Gems
+
+All necessary gems should be installable by running the following command from
+the Rails root directory
+
+    bundle install
+
+
+
 ## Css compilation with Compass
 
 Css for this project is stored in the sass files under the "app/stylesheets" directory.  We then
