@@ -82,18 +82,16 @@ group :development, :test do
   # each model
   gem "annotate-models"
 
-  # testing
-  # controller helper not available for integration tests, so use webrat for now
 
-#  gem "cucumber-rails"
-  # gem "selenium-webdriver"
-  # gem "rack-test"
-  # gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
-  # gem "launchy"
-  # gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
+  gem "selenium-webdriver"
+  gem "rack-test"
+  gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
+  gem "launchy"
+  gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  gem "rspec-rails", '2.5.0'
-  # gem 'shoulda-matchers'
+  gem "rspec-core", "2.6.0"
+  gem "rspec-rails", '2.6.0' #, '2.5.0'
+  gem 'shoulda-matchers'
   # gem "ZenTest"
   # gem "autotest-rails"
 end
