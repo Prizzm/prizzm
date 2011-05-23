@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
 
-gem 'rails' #, :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.0.6' #, :git => 'git://github.com/rails/rails.git'
 gem "haml-rails"
 gem "jquery-rails"
 
@@ -92,7 +92,7 @@ group :development, :test do
   # gem "launchy"
   # gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  gem "rspec-rails"
+  gem "rspec-rails", '2.5.0'
   # gem 'shoulda-matchers'
   # gem "ZenTest"
   # gem "autotest-rails"
