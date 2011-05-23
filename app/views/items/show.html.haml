@@ -61,16 +61,15 @@
             %div{:id => "stars-wrapper-#{@item.id}"}
               = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
         %br
-        .social
-          .twitter_button
-            = link_to image_tag('twitter_24x24.png'), '#'
-            = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
-            = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
-          .facebook_button
-            = link_to image_tag('facebook_24x24.png'), '#'
-            = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
-            = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
-          = link_to "Share", '#'
+        = form_tag [current_user, @item, 'share'], :remote => true do
+          .social
+            .twitter_button
+              = link_to image_tag('twitter_24x24.png'), '#'
+              = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
+            .facebook_button
+              = link_to image_tag('facebook_24x24.png'), '#'
+              = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
+            = submit_tag "Share"
       %br/
       %p.fields
         %strong Added on: 

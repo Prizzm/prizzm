@@ -61,6 +61,8 @@ gem "omniauth"
 gem "fb_graph"
 gem "twitter"
 
+gem 'rake', '0.8.7'
+
 group :development, :test do
   gem "sqlite3-ruby", :require => 'sqlite3'
   gem "ruby-debug19", :require => 'ruby-debug'

@@ -1,5 +1,5 @@
 class Facebook
-  def self.post_interaction(message, token)
+  def self.post_message(message, token)
     fb_auth = FbGraph::Auth.new(Facebook.config[:app_id], Facebook.config[:app_secret])
     me = FbGraph::User.me(token).fetch
     me.feed!(:message => message)

@@ -27,6 +27,30 @@ class ItemsController < InheritedResources::Base
     head :ok
   end
 
+  def share
+    user_id = params[:user_id]
+    item_id = params[:item_id]
+
+    @shared_fb = params[:item]['shared_facebook'].blank? ? false : true
+    @shared_tt = params[:item]['shared_twitter'].blank? ? false : true
+    item_show_page = request.url.chomp('/share')
+    first_name = User.find_by_id(user_id).first_name
+    item_name = Item.find_by_id(item_id).name
+
+    message = "User #{first_name} has just left an opinion on #{item_name} on Prizzm. #{item_show_page}"
+
+    if @shared_tt
+      TwitterConfig.update_config(current_user.tt_token, current_user.tt_secret)
+      Twitter.update(message) 
+    end
+    Facebook.post_message(message, current_user.access_token) if @shared_fb
+
+    respond_to do |format|
+      format.html { }
+      format.js { render 'share' }
+    end
+  end
+
   private 
   # Apply a layout or not, based on the controller action:
   # If we are looking at a single item, use the normal application layout.

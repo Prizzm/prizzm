@@ -10,7 +10,9 @@ Prizzm::Application.routes.draw do
   devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :users do
-    resources :items 
+    resources :items do
+      match 'share' => 'items#share'
+    end
     resources :interactions
   end
 
