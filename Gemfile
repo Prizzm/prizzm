@@ -27,6 +27,8 @@ gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
 
 # Gem for uploading images.  More flexible than "paperclip"
 gem "carrierwave", :git => 'https://github.com/jnicklas/carrierwave.git'
+#gem 'carrierwave', :git => 'git://github.com/sid137/carrierwave.git'
+#gem 'carrierwave', :path => '/home/sid137/tracking/carrierwave'
 gem "fog"
 
 # Apparently needed to make the uploadify multifile uploader work 

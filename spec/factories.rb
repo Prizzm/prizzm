@@ -15,11 +15,14 @@ Factory.define :company do |company|
   company.url {"http://www.#{Forgery::Internet.domain_name}"}
 end 
 
-# Create a company with a random number of images
+# Create a company with a random number of images.  We used a fixed image with a
+# file extension, due to a Carrierwave bug
 Factory.define :company_with_images, :parent => :company do |company|
-  company.after_build do |c|
-    (1..5).random.times do
-      c.add_image_from_url {"http://lorempixum.com/600/600/" }
+  company.after_create do |c|
+    #(1..5).random.times do
+    2.times do
+      c.add_image_from_url "http://www.google.com/images/logos/ps_logo2.png" 
+      #c.add_image_from_url "http://lorempixum.com/600/600" 
     end
   end 
 end 
