@@ -88,6 +88,8 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
     attr_required (0.0.3)
+    autotest-rails (4.1.0)
+      ZenTest
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     childprocess (0.1.9)
@@ -319,9 +321,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   acts_as_list
   ajaxful_rating
   annotate-models
+  autotest-rails
   best_in_place!
   capybara!
   carrierwave!

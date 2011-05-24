@@ -92,6 +92,6 @@ group :development, :test do
   gem "rspec-core", "2.6.0"
   gem "rspec-rails", '2.6.0' #, '2.5.0'
   gem 'shoulda-matchers'
-  # gem "ZenTest"
-  # gem "autotest-rails"
+  gem "ZenTest"
+  gem "autotest-rails"
 end
