@@ -14,8 +14,10 @@ CarrierWave.configure do |config|
      config.storage = :fog
   elsif Rails.env.development?
      config.storage = :file
+     config.storage = :fog
   elsif Rails.env.test?
      config.storage = :file
+     config.storage = :fog
      #config.enable_processing = false
   end
 end

@@ -1,5 +1,10 @@
 require 'spec_helper'
 
+def rest_response url
+  # https://github.com/archiloque/rest-client
+  RestClient.get(url){|response, request, result| response }
+end
+
 describe Company do
 
   describe "model attributes" do
@@ -51,19 +56,39 @@ describe Company do
     end
 
     describe "once uploaded" do
-      subject {Factory :company_with_images} 
+      describe "using the :fog backend" do
+        subject {Factory :company_with_images} 
 
-      it "should be accessible from a URL" do
-        image_url = subject.images.first.image.url
-        get image_url
-        response.should be_success
+        # This test only passes beecause the S3 host is specified in the url.
+        # When using CarrierWave :file storage, the host isn't specified and it
+        # fails
+        it "should be accessible from a URL" do
+          image_url = subject.images.first.image.url
+          rest_response(image_url).code.should eq(200)
+        end
       end
+
+      describe "using the :file backend" do
+        subject {Factory :company_with_images} 
+
+        # This test fails for the reason above
+        it "should be accessible from a URL" do
+          pending "switch storage backends in the test, and verify"
+          image_url = subject.images.first.image.url
+          rest_response(image_url).code.should eq(200)
+        end
+      end
+
     end
  
     describe "when deleting images" do
       subject {Factory :company_with_images} 
 
-      it "should remove images from the server when they are deleted", :long_term => true do
+      it "should remove images from the server when they are deleted" do
+        image_url = subject.images.last.image.url
+        rest_response(image_url).code.should eq(200)
+        subject.images.last.destroy
+        rest_response(image_url).code.should eq(403)
       end
     end
   end

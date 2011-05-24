@@ -360,6 +360,7 @@ DEPENDENCIES
   rake (= 0.8.7)
   randexp
   random_data
+  rest-client
   rmagick
   rspec-core (= 2.6.0)
   rspec-rails (= 2.6.0)
