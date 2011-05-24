@@ -3,6 +3,31 @@ require 'nokogiri'
 
 TEST_ITEMS = Marshal.load File.read(File.join(Rails.root, 'lib', 'items.txt'))
 
+
+# Company with all attributes filled in
+Factory.define :company do |company|
+  company.email { Forgery::Internet.email_address }
+  company.address { Forgery::Address.street_address }
+  company.phone_number { Forgery::Address.phone }
+  company.secondary_number { Forgery::Address.phone }
+  company.contact_name { "#{Forgery::Name.first_name} #{Forgery::Name.last_name}" }
+  company.industry { %w(Technology Fashion Health Art Science Business).rand }
+  company.url {"http://www.#{Forgery::Internet.domain_name}"}
+end 
+
+# Create a company with a random number of images
+Factory.define :company_with_images, :parent => :company do |company|
+  company.after_build do |c|
+    (1..5).random.times do
+      c.add_image_from_url {"http://lorempixum.com/600/600/" }
+    end
+  end 
+end 
+
+
+
+
+
 Factory.define :profile do |profile|
   profile.first_name { Forgery::Name.first_name }
   profile.last_name { Forgery::Name.last_name }
@@ -22,11 +47,6 @@ end
 # Table name: items
 Factory.define :item do |item|
   item.itemtype { Faker::Company.bs }
-  item.email { Forgery::Internet.email_address }
-  item.contact_name { "#{Forgery::Name.first_name} #{Forgery::Name.last_name}" }
-  item.address { Forgery::Address.street_address }
-  item.phone_number { Forgery::Address.phone }
-  item.secondary_number { Forgery::Address.phone }
   item.facebook
   item.twitter
   item.rating { [1,2,3].rand }

@@ -18,4 +18,14 @@ describe Company do
     it {should have_many(:images)}
     it {should have_many(:images).dependent(:destroy)}
   end
+
+  context "images" do
+    subject {Factory :company} 
+
+    describe "when uploading images" do
+      it "should be able to add an image from a URL" do
+        expect {subject.add_image_from_url "http://lorempixum.com/600/600"}.to change(subject.images, :count).from(0).to(1)
+      end
+    end
+  end
 end
