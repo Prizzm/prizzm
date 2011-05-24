@@ -26,6 +26,11 @@ describe Company do
       it "should be able to add an image from a URL" do
         expect {subject.add_image_from_url "http://lorempixum.com/600/600"}.to change(subject.images, :count).from(0).to(1)
       end
+
+      it "should be able to add an image from a file" do
+        image_data = File.open(Rails.root.join('spec/fixtures/test-image.png'))
+        expect {subject.add_image_from_file image_data}.to change(subject.images, :count).from(0).to(1)
+      end
     end
   end
 end
