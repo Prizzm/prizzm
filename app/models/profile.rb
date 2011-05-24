@@ -1,19 +1,3 @@
-# == Schema Information
-# Schema version: 20110426103432
-#
-# Table name: profiles
-#
-#  id           :integer         not null, primary key
-#  first_name   :string(255)
-#  last_name    :string(255)
-#  phone_number :string(255)
-#  photo_url    :string(255)
-#  location     :string(255)
-#  user_id      :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#
-
 class Profile < ActiveRecord::Base
   belongs_to :user
   before_save :ensure_photo_present
