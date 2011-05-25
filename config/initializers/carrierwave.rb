@@ -10,14 +10,14 @@ CarrierWave.configure do |config|
   config.fog_host = "http://#{config.fog_directory}.s3.amazonaws.com"
   config.fog_public = true
   
-  if Rails.env.production?
-     config.storage = :fog
-  elsif Rails.env.development?
-     config.storage = :file
-     config.storage = :fog
-  elsif Rails.env.test?
-     config.storage = :file
-     config.storage = :fog
-     #config.enable_processing = false
-  end
+  #if Rails.env.production?
+     #config.storage = :fog
+  #elsif Rails.env.development?
+     #config.storage = :file
+     ##config.storage = :fog
+  #elsif Rails.env.test?
+     #config.storage = :file
+     #config.storage = :fog
+     ##config.enable_processing = false
+  #end
 end

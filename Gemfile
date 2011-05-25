@@ -20,6 +20,7 @@ gem "ajaxful_rating"
 # Test helper to make placeholder images
 gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
+gem "nokogiri"
 
 # Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
