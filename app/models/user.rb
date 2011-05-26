@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_one  :profile
   has_many :items, :order => "position"
   has_many :products, :through => :items
-  has_many :interactions, :through => :items
+  has_many :interactions
 
 
   # Setup accessible (or protected) attributes for your model
