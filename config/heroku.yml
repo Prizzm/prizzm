@@ -18,17 +18,32 @@ config:
   # choose the configuration settings for all environments
   all:
     BUNDLE_WITHOUT: "development:test"
-    CONFIG_VAR1: "config1"
-    CONFIG_VAR2: "config2"
 
   # you can also override configuration settings for each environment
   production:
-    CONFIG_VAR1: "config1-production"
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID:
+    FACEBOOK_APP_SECRET:
+    FACEBOOK_PERMISSIONS:
   staging:
-    CONFIG_VAR1: "config1-staging"
+    PRIZZM_S3_ACCESS_KEY_ID:     
+     PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID:
+    FACEBOOK_APP_SECRET:
+    FACEBOOK_PERMISSIONS:
   development:
     PRIZZM_S3_ACCESS_KEY_ID:     
     PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID:
+    FACEBOOK_APP_SECRET:
+    FACEBOOK_PERMISSIONS:
+  demo:
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID:
+    FACEBOOK_APP_SECRET:
+    FACEBOOK_PERMISSIONS:
 
 collaborators:
   # Be sure to add yourself as a collaborator, otherwise your
@@ -41,6 +56,12 @@ domains:
   production:
     - "prizzm.com"
     - "www.prizzm.com"
+  staging:
+    - "staging.prizzm.com"
+  demo:
+    - "demo.prizzm.com"
+  development:
+    - "development.prizzm.com"
 
 addons:
   all:
