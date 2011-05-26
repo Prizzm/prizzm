@@ -26,7 +26,7 @@
 
     .column
       %p.fields
-        %strong Description:
+        %strong Do you like your #{@item.name}?
         %br/
         = text_area_tag 'item', @item.description, :width => '70'
       .fields
