@@ -10,7 +10,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @item = Item.find(session[:new_item])
         @user.items << @item
         sign_in_and_redirect @user, :event => :authentication
-        message = {:message => "#{@user.first_name} has just left an opinion on the #{@item.name} on Prizzm.", :link => url_for(@item), :picture => @item.images.first.image.url}
+        message = {:message => "#{@user.first_name} has just left an opinion on the #{@item.name} on Prizzm.", :link => url_for([@user, @item]), :picture => @item.images.first.image.url}
         puts message
         Facebook.post_message(message, current_user.access_token) 
       else
