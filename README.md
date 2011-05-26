@@ -129,3 +129,18 @@ Secret api keys and other things are stored in environmental variables on
 heroku.  See http://devcenter.heroku.com/articles/config-vars for details
 
 Ensure that files listed in SECRETS are never shared publicly
+
+
+
+
+# Facebook
+
+## Publishing to the Wall
+
+Use the "Facebook" model which provides the Facebook.post_message method. 
+
+Facebook.post_message(message, auth_token)
+
+parameters
+   message -  hash, where the format is specified here  http://developers.facebook.com/docs/reference/api/post/
+   auth_token

@@ -37,13 +37,13 @@ class ItemsController < InheritedResources::Base
     first_name = User.find_by_id(user_id).first_name
     item_name = Item.find_by_id(item_id).name
 
-    message = "User #{first_name} has just left an opinion on #{item_name} on Prizzm. #{item_show_page}"
-
+    message = "#{first_name} has just left an opinion on #{item_name} on Prizzm. #{item_show_page}"
+    fb_message = {:message => "#{first_name} has just left an opinion on #{item_name} on Prizzm", :link => item_show_page}
     if @shared_tt
       TwitterConfig.update_config(current_user.tt_token, current_user.tt_secret)
       Twitter.update(message) 
     end
-    Facebook.post_message(message, current_user.access_token) if @shared_fb
+    Facebook.post_message(fb_message, current_user.access_token) if @shared_fb
 
     respond_to do |format|
       format.html { }

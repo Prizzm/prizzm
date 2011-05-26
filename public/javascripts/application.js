@@ -68,6 +68,13 @@ $(document).ready(function(){
     } 
   });
 
+
+  // For Facebook posting messages
+  $('.share_orphan').live('click', function() {
+      window.name = 'parent_of_facebook';
+      window.open($('#omniauth_fb_login_path').val(), 'sign_in_facebook', 'height=600,width=800,scrollbars=yes');
+  });
+
   function checkWinFacebook() {
     if ((window.opener != null) && (window.opener.name == "parent_of_facebook")) {
       var opener = window.opener;

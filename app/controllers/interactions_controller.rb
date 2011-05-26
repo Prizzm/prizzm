@@ -9,11 +9,12 @@ class InteractionsController < InheritedResources::Base
     success.html {
       interaction = params[:interaction]
       render :partial => 'home/interaction', :locals  => {:interaction  => resource}
-      Facebook.post_message(interaction[:description], current_user.access_token) unless interaction[:shared_facebook].nil?
+      message = {:message => interaction[:description]}
+      Facebook.post_message(message, current_user.access_token) unless interaction[:shared_facebook].nil?
       unless interaction[:shared_twitter].nil?
         TwitterConfig.update_config(@user.tt_token, @user.tt_secret)
         Twitter::Client.new
-        Twitter.update(interaction[:description]) 
+        Twitter.update(message[:message]) 
       end
     }
   end

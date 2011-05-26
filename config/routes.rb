@@ -23,6 +23,9 @@ Prizzm::Application.routes.draw do
     resources :images, :only => [:create, :destroy]
   end
 
+  get '/product/:id' => 'orphan_items#show'
+  post '/product/:id' => 'orphan_items#share'
+
   post 'items/sort', :as => :sort_items
   post 'items/rate', :as => :update_item_rating
   post 'interactions/rate', :as => :update_interaction_rating
