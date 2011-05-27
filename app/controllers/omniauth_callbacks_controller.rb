@@ -3,7 +3,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_facebook_oauth(env["omniauth.auth"], current_user)
 
     if @user.persisted?
-      p "Item: " + session[:new_item]
       flash[:notice] = "Signed in successfully."
       if signup_share?
         flash[:notice] = "thanks for sharing item #{session[:new_item]}"
