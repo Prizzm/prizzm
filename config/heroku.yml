@@ -18,6 +18,7 @@ config:
   # choose the configuration settings for all environments
   all:
     BUNDLE_WITHOUT: "development:test"
+    RACK_ENV: 'production'
 
   # you can also override configuration settings for each environment
   production:
@@ -54,8 +55,7 @@ collaborators:
 
 domains:
   production:
-    - "prizzm.com"
-    - "www.prizzm.com"
+    - "beta.prizzm.com"
   staging:
     - "staging.prizzm.com"
   demo:
@@ -65,18 +65,15 @@ domains:
 
 addons:
   all:
+    - amazon_rds
     - custom_domains:basic
+    - cron:daily
     # add any other addons here
-    - logging:basic
+    - logging:expanded
     - newrelic:standard
     - releases:basic
     - sendgrid:free
     - shared-database:5mb
     - stillalive:basic
     - cron:daily
-
-
-  production:
     - ssl:piggyback
-    # - newrelic:bronze
-    # production env specific addons here
