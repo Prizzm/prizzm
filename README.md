@@ -1,7 +1,31 @@
 # Prizzm.com
 
-
+  
 ## Project Setup
+
+
+### Git
+
+The code sits in 4 git branches: development, demo, master, and staging.
+These four branches track 4 remote branches - development, demo, production, and
+staging respectively.  These remotes point to the master branches of 4 heroku applications prizzm-dvelopment, prizzm-demo, prizzm-production, and prizzm-staging.
+
+Weehn deploying, switch to the branch you want to deploy from, and type
+
+git push
+
+If you want to deploy to production from master however, you must do 
+
+git push production
+
+as the master branch default remote points to github ffor automatic pushees and
+pulls.
+
+When deploying a branch to heroku, don't forgt to push the branch tot github.
+Or use the rake task to simplify this
+
+rake demo heroku:deploy
+
 
 ### Development Machine
 
