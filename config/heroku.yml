@@ -1,0 +1,87 @@
+apps:
+  # map the environments to your desired heroku app names
+  # for example,
+  #   production: awesomeapp
+  # would create the RACK_ENV=production
+  # and deploy to http://awesomeapp.heroku.com
+  production: prizzm-production
+  staging: prizzm-staging
+  demo: prizzm-demo
+  development: prizzm-development
+
+stacks:
+  # choose the stacks you want to use for each app.
+  # the all: setting sets the default
+  all: bamboo-mri-1.9.2
+
+config:
+  # choose the configuration settings for all environments
+  all:
+    BUNDLE_WITHOUT: "development:test"
+    RACK_ENV: 'production'
+
+  # you can also override configuration settings for each environment
+  production:
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID:
+    FACEBOOK_APP_SECRET:
+    FACEBOOK_PERMISSIONS:
+    TWITTER_CONSUMER_SECRET:
+    TWITTER_CONSUMER_KEY:
+  staging:
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID: 219987458019926
+    FACEBOOK_APP_SECRET: 552404c3616b757d91db280c5c88dffd
+    FACEBOOK_PERMISSIONS:
+    TWITTER_CONSUMER_SECRET:
+    TWITTER_CONSUMER_KEY:
+  development:
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID: 112580742162789
+    FACEBOOK_APP_SECRET: 6a319db0427508d9f1efccc888ae3b6d
+    FACEBOOK_PERMISSIONS:
+    TWITTER_CONSUMER_SECRET:
+    TWITTER_CONSUMER_KEY:
+  demo:
+    PRIZZM_S3_ACCESS_KEY_ID:     
+    PRIZZM_S3_SECRET_ACCESS_KEY:
+    FACEBOOK_APP_ID: 164939960234998
+    FACEBOOK_APP_SECRET: a808566e8b6c12a53436d15fa9851a5e
+    FACEBOOK_PERMISSIONS:
+    TWITTER_CONSUMER_SECRET:
+    TWITTER_CONSUMER_KEY:
+
+collaborators:
+  # Be sure to add yourself as a collaborator, otherwise your
+  # access to the app will be revoked.
+  all:
+    - "sid137@gmail.com"
+    - "ndgiang84@gmail.com"
+
+domains:
+  production:
+    - "beta.prizzm.com"
+  staging:
+    - "staging.prizzm.com"
+  demo:
+    - "demo.prizzm.com"
+  development:
+    - "development.prizzm.com"
+
+addons:
+  all:
+    - amazon_rds
+    - custom_domains:basic
+    - cron:daily
+    # add any other addons here
+    - logging:expanded
+    - newrelic:standard
+    - releases:basic
+    - sendgrid:free
+    - shared-database:5mb
+    - stillalive:basic
+    - cron:daily
+    - ssl:piggyback
