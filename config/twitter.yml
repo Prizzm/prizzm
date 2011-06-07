@@ -16,5 +16,5 @@ test:
 
 production:
   <<: *defaults
-  con_id: Inmt9dXau1r2jR3bpbhtQ
-  con_secret: QqZj7aZcgP6T8vB98IkvBZ3V2nLP54lls7yEXNvg0
+  con_id: ENV['PRODUCTION_TWITTER_CONSUMER_KEY']
+  con_secret: ENV['PRODUCTION_TWITTER_CONSUMER_SECRET']

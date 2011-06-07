@@ -1,0 +1,10 @@
+if [[ -s "lib/rvm/prizzm.gems" ]] ; then
+  rvm gemset import lib/rvm/prizzm.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
+fi
+
+if [[ -s "secret-credentials" ]] ; then
+  source ./secret-credentials
+else
+  echo "Error: Make sure to download the 'secret-credentials.sh directory, and place it in the project root directory'"
+fi
+

@@ -1,4 +1,5 @@
 tags
+secret-credentials
 log/*.log  
 *.swp
 *.swo

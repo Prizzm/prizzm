@@ -71,7 +71,8 @@ gem 'rails-erd'
 gem "rest-client"
 
 group :development, :test do
-  gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
+  #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
+  gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
 
   gem "sqlite3-ruby", :require => 'sqlite3'
   gem "ruby-debug19", :require => 'ruby-debug'
