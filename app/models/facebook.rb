@@ -18,6 +18,5 @@ class Facebook
     else
       YAML.load(ERB.new(File.read("#{Rails.root}/config/facebook.yml")).result)[Rails.env].symbolize_keys
     end
-    puts @config.inspect
   end
 end
