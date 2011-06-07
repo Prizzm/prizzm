@@ -1,3 +1,5 @@
+require 'erb'
+
 class Facebook
   # http://developers.facebook.com/docs/reference/api/post
   def self.post_message(message, token)
@@ -14,7 +16,7 @@ class Facebook
         :perms      => ENV['fb_perms']
       }
     else
-      YAML.load_file("#{Rails.root}/config/facebook.yml")[Rails.env].symbolize_keys
+      YAML.load(ERB.new(File.read("#{Rails.root}/config/facebook.yml")).result)[Rails.env].symbolize_keys
     end
   end
 end
