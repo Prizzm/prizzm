@@ -66,11 +66,11 @@ gem "twitter"
 
 gem 'rake', '0.8.7'
 
-gem 'rails-erd'
 
 gem "rest-client"
 
 group :development, :test do
+  gem 'rails-erd'
   #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
 

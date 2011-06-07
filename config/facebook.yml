@@ -17,6 +17,6 @@ test:
 
 production:
   <<: *defaults
-  app_id: ENV['FACEBOOK_APP_ID']
-  app_secret: ENV['FACEBOOK_APP_SECRET']
+  app_id: <%= ENV['FACEBOOK_APP_ID'] %>
+  app_secret: <%= ENV['FACEBOOK_APP_SECRET'] %>
 
