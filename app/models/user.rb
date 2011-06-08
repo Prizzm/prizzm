@@ -5,13 +5,12 @@ class User < ActiveRecord::Base
 
   has_one  :profile
   has_many :items, :order => "position"
-  has_many :interactions
+  has_many :interactions, :through => :items
   has_many :products, :through => :items
 
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :profile_attributes, :access_token
-  delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo_url, :photo_url=,  :to  => :profile
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes, :access_token
+  delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo, :photo=,  :to  => :profile
 
   accepts_nested_attributes_for :profile
 
@@ -54,9 +53,10 @@ class User < ActiveRecord::Base
 
         Profile.create(:user_id => user.id,
                        :first_name => info['first_name'], 
-                       :last_name => info['last_name'],
-                       :photo_url => info['image'])
+                       :last_name => info['last_name']
+                      )
         user.save
+        #add_image_from_url info['image']
         user
       end
     else
@@ -84,10 +84,10 @@ class User < ActiveRecord::Base
 
         Profile.create(:user_id => user.id,
                        :first_name => info['name'],
-                       :photo_url => info['image'],
                        :location => info['location']
                       )
         user.save
+        #add_image_from_url info['image']
         user
       end
     else
@@ -105,5 +105,16 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+
+
+  ## Duplicated methods from Imageable Module, to let use handle single photo
+  #upload case
+  def add_image_from_url url
+    self.photo.create(:remote_image_url => url)
+  end 
+
+  def add_image_from_file image_data
+    self.photo.create(image_data)
   end
 end

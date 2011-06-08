@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe User do
   describe "model attributes" do
-    pending "tested by devise itself"
+    it "should be tested by devise itself" do
+    end
   end
 
   describe "associations" do
@@ -16,6 +17,7 @@ describe User do
     
     context "mass assignment" do
       it {should allow_mass_assignment_of(:email)} 
+      it {should allow_mass_assignment_of(:photo)} 
       it {should allow_mass_assignment_of(:password)} 
       it {should allow_mass_assignment_of(:password_confirmation)} 
       it {should allow_mass_assignment_of(:remember_me)} 
@@ -30,4 +32,19 @@ describe User do
       end
     end
   end
+
+  describe "when creating" do
+    
+    context "from a Facebook account" do
+      subject Factory :user_from_facebook 
+      its(:photo) {should have_dimensions(50, 50)}
+      
+    end
+
+    context "from a  Twitter account" do
+      subject Factory :user_from_twitter 
+      its(:photo) {should have_dimensions(50, 50)}
+    end
+  end
+
 end

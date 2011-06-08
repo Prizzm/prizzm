@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20110608012659) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.string   "photo_url"
+    t.string   "photo"
     t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at"
