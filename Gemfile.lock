@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: e1091daced2513a2d2ce15ae4033d9da1ced9f7e
+  revision: bde12170fb64b2be8f2231884d822462439ef29c
   specs:
-    capybara (1.0.0.beta1)
+    capybara (1.0.0.rc1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -282,11 +282,11 @@ GEM
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
       rspec-mocks (~> 2.6.0)
-    rspec-core (2.6.0)
+    rspec-core (2.6.4)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.6.0)
-    rspec-rails (2.6.0)
+    rspec-rails (2.6.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
@@ -380,8 +380,8 @@ DEPENDENCIES
   random_data
   rest-client
   rmagick
-  rspec-core (= 2.6.0)
-  rspec-rails (= 2.6.0)
+  rspec-core (= 2.6.4)
+  rspec-rails
   ruby-debug19
   selenium-webdriver
   shoulda-matchers!

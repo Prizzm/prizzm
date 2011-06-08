@@ -4,8 +4,12 @@ class CreateProducts < ActiveRecord::Migration
       t.references :company
 
       t.string :name
-      t.string :type
+      t.string :product_type
+      t.string :price
       t.string :upc
+      t.text    :url
+      t.text    :description
+      t.integer :rating
 
       t.timestamps
     end

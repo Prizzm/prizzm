@@ -99,8 +99,8 @@ group :development, :test do
   gem "launchy"
   gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
-  gem "rspec-core", "2.6.0"
-  gem "rspec-rails", '2.6.0' #, '2.5.0'
+  gem "rspec-core", "2.6.4"
+  gem "rspec-rails"# , '2.6.0' #, '2.5.0'
   #gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers.git'
   gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
   gem "ZenTest"

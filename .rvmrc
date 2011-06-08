@@ -8,3 +8,5 @@ else
   echo "Error: Make sure to download the 'secret-credentials.sh directory, and place it in the project root directory'"
 fi
 
+
+export PATH=./bin:${PATH//:\.\/bin:} 

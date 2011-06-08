@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523235159) do
+ActiveRecord::Schema.define(:version => 20110608012659) do
 
   create_table "companies", :force => true do |t|
     t.string   "email"
@@ -51,22 +51,17 @@ ActiveRecord::Schema.define(:version => 20110523235159) do
     t.datetime "updated_at"
   end
 
+  create_table "item_images", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "items", :force => true do |t|
-    t.text     "description"
-    t.string   "name"
-    t.string   "itemtype"
-    t.string   "price"
-    t.string   "sku"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "industry"
-    t.string   "email"
-    t.string   "contact_name"
-    t.string   "address"
-    t.string   "phone_number"
-    t.string   "secondary_number"
-    t.text     "url"
+    t.text     "review"
     t.integer  "rating"
+    t.string   "sku"
     t.integer  "position"
     t.integer  "user_id"
     t.integer  "product_id"
@@ -74,11 +69,22 @@ ActiveRecord::Schema.define(:version => 20110523235159) do
     t.datetime "updated_at"
   end
 
+  create_table "product_images", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", :force => true do |t|
     t.integer  "company_id"
     t.string   "name"
-    t.string   "type"
+    t.string   "product_type"
+    t.string   "price"
     t.string   "upc"
+    t.text     "url"
+    t.text     "description"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

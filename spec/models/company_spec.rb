@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-def rest_response url
-  # https://github.com/archiloque/rest-client
-  RestClient.get(url){|response, request, result| response }
-end
 
 describe Company do
 

@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
-TEST_ITEMS = Marshal.load File.read(File.join(Rails.root, 'lib', 'items.txt'))
+TEST_PRODUCTS = Marshal.load File.read(File.join(Rails.root, 'lib', 'items.txt'))
 
 
 # Company with all attributes filled in
@@ -28,6 +28,19 @@ Factory.define :company_with_images, :parent => :company do |company|
 end 
 
 
+Factory.define :product do |product|
+  product.upc
+  product.rating { [1,2,3].rand }
+  product.after_create do |p|
+    test_product = TEST_PRODUCTS.rand
+    p.product_type = test_product.category
+    p.name = test_product.title #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
+    p.url = test_product.url
+    desc = Nokogiri::HTML(open(p.url)).at_css('#wc-condensed')
+    p.description = desc.text unless desc.nil?
+    p.add_image_from_url test_product.images.image.largeimage
+  end
+end 
 
 
 
@@ -49,18 +62,16 @@ end
 
 # Table name: items
 Factory.define :item do |item|
-  item.itemtype { Faker::Company.bs }
-  item.facebook
-  item.twitter
   item.rating { [1,2,3].rand }
-  item.after_build do |i|
-    test_item = TEST_ITEMS.rand
-    i.industry = test_item.category
-    i.name = test_item.title #using the 'randexp' gem to create a random realistic sounding word, using a Regexp
-    i.url = test_item.url
-    desc = Nokogiri::HTML(open(i.url)).at_css('#wc-condensed')
-    i.description = desc.text unless desc.nil?
-    i.add_image_from_url test_item.images.image.largeimage
+  item.review
+  item.sku
+end
+
+Factory.define :item_with_images, :parent => :item do |item|
+  item.after_create do |i|
+    2.times do
+      i.add_image_from_url "http://www.google.com/images/logos/ps_logo2.png" 
+    end
   end
 end 
 
