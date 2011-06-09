@@ -1,0 +1,1 @@
+include CarrierWave::Test::Matchers

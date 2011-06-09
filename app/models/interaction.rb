@@ -17,9 +17,10 @@
 #
 
 class Interaction < ActiveRecord::Base
-  belongs_to :user
-  has_many :tags, :dependent => :nullify  
-  has_many :items, :through => :tags
+  #belongs_to :user
+  #has_many :tags, :dependent => :nullify  
+  #has_many :items, :through => :tags
+  belongs_to :item
 
   attr_accessor :new_items
 

@@ -11,6 +11,8 @@ describe Item do
     it {should belong_to(:user)}
     it {should have_many(:images)}
     it {should have_many(:images).dependent(:destroy)}
+    it {should have_many(:interactions)}
+    it {should have_many(:interactions).dependent(:destroy)}
   end
 
 

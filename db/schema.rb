@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20110608012659) do
     t.boolean  "shared_facebook"
     t.boolean  "shared_twitter"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

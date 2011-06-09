@@ -5,12 +5,11 @@ class User < ActiveRecord::Base
 
   has_one  :profile
   has_many :items, :order => "position"
-  has_many :interactions, :through => :items
   has_many :products, :through => :items
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes, :access_token
-  delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo, :photo=,  :to  => :profile
+  delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo,  :to  => :profile
 
   accepts_nested_attributes_for :profile
 
@@ -22,19 +21,8 @@ class User < ActiveRecord::Base
     new_record?
   end
 
-  def make_real
-    10.times do
-      item = Factory :item
-      self.items << item
-    end
-    10.times do
-      interaction = Factory :interaction
-      self.interactions << interaction
-    end
-    self.save
-  end
 
-  def self.find_for_facebook_oauth(access_token, user)
+  def self.find_for_facebook_oauth(access_token, user=nil)
     data = access_token['extra']['user_hash']
     info = access_token['user_info']
     credentials = access_token['credentials']
@@ -50,13 +38,8 @@ class User < ActiveRecord::Base
         email = data['email'] || info['email']
         user = User.create!(:email => email, :password => Devise.friendly_token[0,20])
         user.access_token = credentials['token']
-
-        Profile.create(:user_id => user.id,
-                       :first_name => info['first_name'], 
-                       :last_name => info['last_name']
-                      )
+        user.create_profile( :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"])
         user.save
-        #add_image_from_url info['image']
         user
       end
     else
@@ -67,7 +50,8 @@ class User < ActiveRecord::Base
     end
   end 
 
-  def self.find_for_twitter_oauth(access_token, user)
+  def self.find_for_twitter_oauth(access_token, user=nil)
+    #pp access_token
     credentials = access_token['credentials']
     info = access_token['user_info']
 
@@ -78,16 +62,11 @@ class User < ActiveRecord::Base
         user
       else
         # Create new Prizzm account with Twitter account information.
-        user = User.create!(:email => "email@prizzm.com", :password => Devise.friendly_token[0, 20])
+        user = User.create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20])
         user.tt_token = credentials['token']
         user.tt_secret = credentials['secret']
-
-        Profile.create(:user_id => user.id,
-                       :first_name => info['name'],
-                       :location => info['location']
-                      )
+        user.create_profile( :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
         user.save
-        #add_image_from_url info['image']
         user
       end
     else
@@ -108,13 +87,18 @@ class User < ActiveRecord::Base
   end
 
 
-  ## Duplicated methods from Imageable Module, to let use handle single photo
-  #upload case
-  def add_image_from_url url
-    self.photo.create(:remote_image_url => url)
-  end 
 
-  def add_image_from_file image_data
-    self.photo.create(image_data)
+  ####   Testing function
+   
+  def make_real
+    10.times do
+      item = Factory :item
+      self.items << item
+    end
+    10.times do
+      interaction = Factory :interaction
+      self.interactions << interaction
+    end
+    self.save
   end
 end

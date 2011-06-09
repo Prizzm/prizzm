@@ -80,6 +80,8 @@ group :development, :test do
   # nice table displays in Rails console
   gem "hirb"
 
+  gem "facebook_test_users", :git => "git://github.com/sid137/facebook_test_users.git"
+
   # Allows us to push the local development database up to Heroku, and pull the
   # heroku db down locally
   gem "yaml_db"

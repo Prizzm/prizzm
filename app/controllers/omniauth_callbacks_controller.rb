@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.find_for_facebook_oauth(env["omniauth.auth"], current_user)
-
+    pp env["omniauth.auth"]
     if @user.persisted?
       flash[:notice] = "Signed in successfully."
       if signup_share?
