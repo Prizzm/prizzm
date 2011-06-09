@@ -68,7 +68,7 @@ gem 'rake', '0.8.7'
 
 
 gem "rest-client"
-gem 'rails-erd'
+gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 
 group :development, :test do
   #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"

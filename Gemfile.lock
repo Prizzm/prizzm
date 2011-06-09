@@ -61,6 +61,15 @@ GIT
   specs:
     placehold (0.0.0)
 
+GIT
+  remote: https://github.com/voormedia/rails-erd.git
+  revision: 4207d238bdfc690575c76b91637793fd9804dc66
+  specs:
+    rails-erd (0.4.5)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      ruby-graphviz (~> 0.9.18)
+
 PATH
   remote: /home/sid137/tracking/shoulda-matchers
   specs:
@@ -268,10 +277,6 @@ GEM
       activesupport (= 3.0.6)
       bundler (~> 1.0)
       railties (= 3.0.6)
-    rails-erd (0.4.5)
-      activerecord (~> 3.0)
-      activesupport (~> 3.0)
-      ruby-graphviz (~> 0.9.18)
     railties (3.0.6)
       actionpack (= 3.0.6)
       activesupport (= 3.0.6)
@@ -384,7 +389,7 @@ DEPENDENCIES
   placehold!
   rack-test
   rails (= 3.0.6)
-  rails-erd
+  rails-erd!
   rake (= 0.8.7)
   randexp
   random_data
