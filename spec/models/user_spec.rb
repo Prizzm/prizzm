@@ -61,6 +61,19 @@ describe User do
         new_twitter_user.photo.should have_dimensions(50, 50)
       end 
     end
+    
+    context "from the Prizzm interface" do
+      it "should be able to create a new user in Prizzm" do
+        User.find_by_email('test@email.com').should be_nil
+        user = Factory :user, :email => 'test@email.com'
+        User.find_by_email('test@email.com').should == user
+      end
+
+      it "should have a default photo" do
+        user = Factory :user
+        user.photo.url.should_not be_nil
+      end 
+    end
   end
 
 end

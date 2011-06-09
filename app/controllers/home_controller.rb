@@ -3,7 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @user = current_user
-    @interactions = current_user.interactions.order('created_at desc').all   
 
     respond_to do |format|
       format.html 

@@ -95,10 +95,6 @@ class User < ActiveRecord::Base
       item = Factory :item
       self.items << item
     end
-    10.times do
-      interaction = Factory :interaction
-      self.interactions << interaction
-    end
     self.save
   end
 end

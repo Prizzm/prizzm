@@ -49,7 +49,6 @@ Factory.define :profile do |profile|
   profile.last_name { Forgery::Name.last_name }
   profile.phone_number { Forgery::Address.phone }
   profile.location { Forgery::Address.street_address }
-  profile.remote_photo_url {"http://lorempixum.com/200/200/people/" + (1..10).to_a.rand.to_s }
 end 
 
 Factory.define :user do |user|
