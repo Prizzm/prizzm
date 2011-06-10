@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Prizzm::Application.config.session_store :cookie_store, :key => '_charles_items_3_session'
+Prizzm::Application.config.session_store :cookie_store, :key => '_prizzm_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

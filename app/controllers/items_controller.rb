@@ -3,9 +3,9 @@ class ItemsController < InheritedResources::Base
   respond_to :html, :json
   layout :determine_layout
 
-  create! do |success, failure| 
-    success.html {redirect_to root_path}
-  end
+  #c#r#e#a#t#e#! #d#o #|#s#u#c#c#e#s#s#, #f#a#i#l#u#r#e#| 
+    #s#u#c#c#e#s#s#.#h#t#m#l #{#r#e#d#i#r#e#c#t#_#t#o #r#o#o#t#_#p#a#t#h#}
+  #e#n#d
 
   update! do |success, failure| 
     success.html {redirect_to root_path}

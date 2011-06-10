@@ -34,7 +34,9 @@ describe "Home page shows lists Users's Items" do
       sign_in
       click_link "add-item-link"
       new_item = Factory.build :item
-      fill_in "name", :with => 
+      fill_in "Name", :with => new_item.name
+      fill_in "Review", :with => new_item.review
+      click_on "Create Item"
     end
   end
 end

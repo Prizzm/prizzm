@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
    
   def make_real
     10.times do
-      item = Factory :item
+      item = Factory :item_with_images
       self.items << item
     end
     self.save

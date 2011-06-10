@@ -10,66 +10,27 @@
         %br/
         #{best_in_place @item, :name, :path => [current_user, @item] }
       %p.fields
-        %strong Contact Name:
+        %strong Review:
         %br/
-        #{best_in_place @item, :contact_name, :path => [current_user, @item] }
+        #{best_in_place @item, :review, :path => [current_user, @item] }
       %p.fields
-        %strong Address:
-        %br/
-        #{best_in_place @item, :address, :path => [current_user, @item] }
-      %p.fields
-        %strong Phone Number:
-        %br/
-        #{best_in_place @item, :phone_number, :path => [current_user, @item] }
-      %p.fields
-        %strong Secondary Number:
-        %br/
-        #{best_in_place @item, :secondary_number, :path => [current_user, @item] }
-
-    .column
-      %p.fields
-        %strong Industry:
-        %br/
-        #{best_in_place @item, :industry, :path => [current_user, @item] }
-      %p.fields
-        %strong URL:
-        %br/
-        = link_to @item.url, @item.url
-      %p.fields
-        %strong Email:
-        %br/
-        #{best_in_place @item, :email, :path => [current_user, @item] }
-        %br/
-        #{mail_to @item.email}
-      %p.fields
-        %strong Facebook:
-        %br/
-        #{best_in_place @item, :facebook, :path => [current_user, @item] }
-      %p.fields
-        %strong Twitter:
-        %br/
-        #{best_in_place @item, :twitter, :path => [current_user, @item] }
-    .column
-      %p.fields
-        %strong Description:
-        %br/
-        #{best_in_place @item, :description, :path => [current_user, @item] }
-      .fields
         %strong Rating:
         %div{:id => "item_#{@item.id}_rating", :class => "rating"}
           = form_for [@user, @item], :remote => true do |f|
             %div{:id => "stars-wrapper-#{@item.id}"}
               = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
-        %br
-        = form_tag [current_user, @item, 'share'], :remote => true do
-          .social
-            .twitter_button
-              = link_to image_tag('twitter_24x24.png'), '#'
-              = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
-            .facebook_button
-              = link_to image_tag('facebook_24x24.png'), '#'
-              = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
-            = submit_tag "Share"
+
+    .column
+    .column
+      = form_tag [current_user, @item, 'share'], :remote => true do
+        .social
+          .twitter_button
+            = link_to image_tag('twitter_24x24.png'), '#'
+            = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
+          .facebook_button
+            = link_to image_tag('facebook_24x24.png'), '#'
+            = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
+          = submit_tag "Share"
       %br/
       %p.fields
         %strong Added on: 
@@ -84,17 +45,9 @@
   #image-field
     /%p= image_tag @item.images.first.image.url, :width => "100%"
   .clear
-  
-
-  = form_for [@item, Image.new], :html => {:multipart => true} do |f|
-    Enter a URL for your image:
-    = f.text_field :remote_image_url
-    = f.hidden_field :image_cache
-    = f.submit 'Upload Photo'
-
 
 #photos
-  = fields_for Image.new do |f|
+  = fields_for ItemImage.new do |f|
     = f.file_field :image, :rel => item_images_path(@item)                        
 
 = photo_uploadify
