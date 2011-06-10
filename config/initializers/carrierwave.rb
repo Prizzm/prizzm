@@ -10,6 +10,7 @@ CarrierWave.configure do |config|
   config.fog_host = "http://#{config.fog_directory}.s3.amazonaws.com"
   config.fog_public = true
   
+  config.delete_cache_id_after_storage = false
   #if Rails.env.production?
      #config.storage = :fog
   #elsif Rails.env.development?
