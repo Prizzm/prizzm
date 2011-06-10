@@ -1787,7 +1787,7 @@ body #container #main #items {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 910px;
+  width: 750px;
   display: -moz-box;
   display: -webkit-box;
   display: box;
@@ -1850,7 +1850,7 @@ body #container #main #items #items_feed #add-item .add-item-text {
 }
 /* line 313, ../../app/stylesheets/main.sass */
 body #container #main #items #items_feed .items td.rating {
-  width: 50px;
+  width: 90px;
 }
 /* line 315, ../../app/stylesheets/main.sass */
 body #container #main #items-details {
