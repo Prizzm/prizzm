@@ -48,34 +48,3 @@
                         cancelShow: false
                       });
 
-
-
-#interactions
-  #new_interaction_box
-    .prompt_phrase How was the service?
-    #interaction_input_box
-      = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
-        = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
-        = f.submit 'Save'
-        .social
-          .twitter_button
-            = link_to image_tag('twitter_24x24.png'), '#'
-            = check_box_tag "interaction[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => 'interaction_shared_tt'
-          .facebook_button
-            = link_to image_tag('facebook_24x24.png'), '#'
-            = check_box_tag "interaction[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
-        #interaction_stars
-          = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
-        = f.hidden_field :new_items
-        .clear
-      :javascript
-        $("#interaction_stars").stars({
-          inputType: "select",
-          cancelShow: false
-        });
-  #interactions_feed= render :partial => 'interaction', :collection => @interactions
-
-  #items_search
-    #search_results
-    /= render 'layouts/custom_search_json'
-

@@ -12,9 +12,18 @@ test = Factory :user, {:email => 'test@test.com', :password => 'password', :prof
 sidney.make_real
 test.make_real
 
+bryna_nicole = Company.create({
+  :email => "bryna@prizzm.com",
+  :url => "http://shopbryna.com/",
+  :phone_number => "877-294-BAGS (6047)",
+  :industry => "Fashion",
+  :contact_name => "Bryna Nicole"
+})
 
-bryna1 = Item.create({
-  :itemtype => 'Hand Bag',
+bryna_nicole.add_image_from_url "http://shopbryna.com/images/logo.gif"
+
+bryna1 = Product.create({
+  :product_type => 'Hand Bag',
   :rating => 3,
   :name  => 'Serrano Hobo',
   :url  => 'http://shopbryna.com/store/serrano-hobo-ikat.html',
@@ -30,9 +39,8 @@ bryna1.add_image_from_url "http://shopbryna.com/store/media/catalog/product/f/i/
 
 
 
-
-bryna2 = Item.create({
-  :itemtype => 'Hand Bag',
+bryna2 = Product.create({
+  :product_type => 'Hand Bag',
   :rating => 3,
   :name  => 'Hermann Mini',
   :url  => 'http://shopbryna.com/store/hermann-mini.html',
@@ -46,5 +54,4 @@ bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/f/i/
 bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/f/i/file_8_1.jpg"
 
 
-test.items << bryna1
-test.items << bryna2
+bryna_nicole.products << [bryna1, bryna2]
