@@ -25,7 +25,7 @@
               /%td.position= item.position
               %td.name= link_to item.name, [current_user, item]
               /%td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
-              %td.description= truncate item.description, :length => 30
+              %td.description= truncate item.review, :length => 30
               %td.rating
                 .social
                   .twitter_button

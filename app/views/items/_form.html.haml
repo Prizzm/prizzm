@@ -5,8 +5,8 @@
 = semantic_form_for [current_user, @item] do |form|
   = form.inputs do
     = form.input :name
-    = form.input :description
-    = form.input :url, :as => :string
+    = form.input :review
+    = form.input :sku
     %div{:id => "stars-wrapper-new-item"}
       = form.label 'stars-wrapper-new-item', "Rate"
       = form.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Item do
   describe "model attributes" do
+    it {should have_db_column(:name).of_type(:string)}
     it {should have_db_column(:review).of_type(:text)}
     it {should have_db_column(:rating).of_type(:integer)}
   end

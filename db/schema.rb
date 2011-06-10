@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20110608012659) do
   end
 
   create_table "items", :force => true do |t|
+    t.string   "name"
     t.text     "review"
     t.integer  "rating"
     t.string   "sku"
