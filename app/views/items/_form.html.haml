@@ -11,21 +11,6 @@
       = form.label 'stars-wrapper-new-item', "Rate"
       = form.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
 
-  %p= link_to "More options...", '#', :id => 'more-item-options'
-
-  #advanced-new-item
-    = form.inputs do
-      = form.input :contact_name
-      = form.input :email
-      = form.input :itemtype 
-      = form.input :industry
-      = form.input :address
-      = form.input :phone_number, :as => :string
-      = form.input :secondary_number
-      = form.input :facebook
-      = form.input :twitter
-      /= form.input :photo_url, :as => :string
-
   :javascript
     $("#stars-wrapper-new-item").stars({
       inputType: "select",
@@ -35,14 +20,3 @@
   = form.buttons do
     = form.commit_button 
 
-:javascript
-  $('#more-item-options').click(function(event){
-    $('#advanced-new-item').toggle();
-    if ($(this).html() == 'More options...') {
-      $(this).html('Less options');
-    } else {
-      $(this).html('More options...'); 
-    }
-
-    return false;
-  });

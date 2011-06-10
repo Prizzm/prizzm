@@ -33,6 +33,8 @@ describe "Home page shows lists Users's Items" do
     it "should allow the user to add a new item" do
       sign_in
       click_link "add-item-link"
+      new_item = Factory.build :item
+      fill_in "name", :with => 
     end
   end
 end

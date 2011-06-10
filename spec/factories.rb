@@ -64,13 +64,26 @@ Factory.define :item do |item|
   item.rating { [1,2,3].rand }
   item.review
   item.sku
+  item.after_build do |i|
+    test_product = TEST_PRODUCTS.rand
+    i.name = test_product.title 
+    desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
+    i.review = desc.text unless desc.nil?
+    #i.add_image_from_url test_product.images.image.largeimage
+  end
 end
 
 Factory.define :item_with_images, :parent => :item do |item|
+  item.rating { [1,2,3].rand }
+  item.review
+  item.sku
   item.after_create do |i|
-    2.times do
-      i.add_image_from_url "http://www.google.com/images/logos/ps_logo2.png" 
-    end
+    test_product = TEST_PRODUCTS.rand
+    i.name = test_product.title 
+    desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
+    i.review = desc.text unless desc.nil?
+    puts test_product.images.image.largeimage
+    i.add_image_from_url test_product.images.image.largeimage
   end
 end 
 
