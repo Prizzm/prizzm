@@ -37,6 +37,8 @@ describe "Home page shows lists Users's Items" do
       fill_in "Name", :with => new_item.name
       fill_in "Review", :with => new_item.review
       click_on "Create Item"
+      page.should have_content "Item was successfully created."
+      page.should have_content new_item.name
     end
   end
 end
