@@ -19,6 +19,7 @@ config:
   all:
     BUNDLE_WITHOUT: "development:test"
     RACK_ENV: 'production'
+    HOPTOAD_API_KEY: <%= ENV['HOPTOAD_API_KEY'] %>
 
   # you can also override configuration settings for each environment
   production:
