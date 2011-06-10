@@ -31,6 +31,7 @@ class InteractionsController < InheritedResources::Base
     end
   end
 
+  # BUG not working due to interactions model rewrite
   def rate
     current_user.interactions.find(params[:object_id]).update_attribute(:rating, params[:rating])
     head :ok

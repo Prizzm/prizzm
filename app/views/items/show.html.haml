@@ -18,7 +18,7 @@
         %div{:id => "item_#{@item.id}_rating", :class => "rating"}
           = form_for [@user, @item], :remote => true do |f|
             %div{:id => "stars-wrapper-#{@item.id}"}
-              = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+              = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
 
     .column
     .column
@@ -56,7 +56,7 @@
 
 #new_interaction_box
   #interaction_input_box
-    = form_for [current_user, @interaction = Interaction.new], :remote => true do |f|
+    = form_for [@item, @interaction = Interaction.new], :remote => true do |f|
       = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts"
       = f.submit 'Save', :id => 'item-interaction-submit'
       .social

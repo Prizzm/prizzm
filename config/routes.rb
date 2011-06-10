@@ -13,13 +13,13 @@ Prizzm::Application.routes.draw do
     resources :items do
       match 'share' => 'items#share'
     end
-    resources :interactions
   end
 
   match '/items/:item_id/images/:id/index/:index' => 'images#destroy'
 
   resources :interactions
   resources :items do
+    resources :interactions
     resources :images, :only => [:create, :destroy]
   end
 

@@ -1,7 +1,7 @@
 %div{:class => 'interaction-content', :id => "interaction-#{interaction.id}-content"}
-  .interaction-user= interaction.user.name
+  .interaction-user= interaction.item.user.name
   .user-image
-    .interaction-profile-image= image_tag interaction.user.photo.url
+    .interaction-profile-image= image_tag interaction.item.user.photo.url
   .user-content
     .interaction-description= interaction.description
     .interaction-contact= interaction.contact
