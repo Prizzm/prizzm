@@ -12,7 +12,7 @@
 development: &defaults
   app_id: <%= ENV['SID137_FACEBOOK_APP_ID'] || ENV['LOCALHOST_FACEBOOK_APP_ID'] || '145939862144756' %>
   app_secret: <%= ENV['SID137_FACEBOOK_APP_SECRET'] || ENV['LOCALHOST_FACEBOOK_APP_SECRET'] || '123453a717380f9c6f32d4016c09e012' %>
-  perms: user_about_me,user_photo_video_tags,user_photos,user_status,user_videos,email,read_friendlists,read_insights,read_requests,read_stream,xmpp_login,ads_management,publish_stream,sms,offline_access
+  perms: user_about_me,user_status,email,publish_stream,offline_access
 
 
 test:

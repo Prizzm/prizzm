@@ -21,7 +21,7 @@
         - current_user.items.each do |item|
           %tr{:id => "item_#{item.id}"}
             .item_info
-              %td.check_box= check_box_tag "item_#{item.id}_tag", nil, false, :class => "checkbox-tag", :'data-item-id' => item.id
+              %td.thumb= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
               /%td.position= item.position
               %td.name= link_to item.name, [current_user, item]
               /%td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
