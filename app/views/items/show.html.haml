@@ -68,7 +68,6 @@
           = f.check_box :shared_facebook, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
       #interaction_stars
         = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
-      = f.hidden_field :new_items, :value => @item.id
       .clear
 
 - if @item.interactions.count == 0

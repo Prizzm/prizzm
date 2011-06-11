@@ -125,16 +125,16 @@ $(document).ready(function(){
    * the item id to the list of interaction items.  If it is unchecked, we will
    * remove the item from the list of interaction items.
    */
-  $('#interaction_submit').click(function(){
-      // First get a list of all the checked Items
-      var checked_items = new Array();
-      $('#items input[type="checkbox"]:checked').each(function(){
-        checked_items.push(this.getAttribute('data-item-id'));
-      });
+  /*$('#interaction_submit').click(function(){*/
+  /*// First get a list of all the checked Items*/
+  /*var checked_items = new Array();*/
+  /*$('#items input[type="checkbox"]:checked').each(function(){*/
+  /*checked_items.push(this.getAttribute('data-item-id'));*/
+  /*});*/
 
-      // Then add this list of items to the new_interaction form to be submitted
-      $('#interaction_new_items').val(checked_items);
-  });
+  /*// Then add this list of items to the new_interaction form to be submitted*/
+  /*$('#interaction_new_items').val(checked_items);*/
+  /*});*/
 
   /* This prepends the new interaction to our list of interactions, so that it
    * shows up at the top on our page, without us having to refresh the page

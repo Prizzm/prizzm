@@ -1,14 +1,12 @@
-class InteractionsController < InheritedResources::Base
-  belongs_to :user, :optional => true
-  respond_to :html, :json
-  layout nil
+class InteractionsController < ApplicationController
 
-
-  create! do |success, failure| 
-    flash = nil
-    success.html {
-      interaction = params[:interaction]
-      render :partial => 'home/interaction', :locals  => {:interaction  => resource}
+  def create
+    interaction = params[:interaction]
+    @interaction = Interaction.new(params[:interaction])
+    if @interaction.save
+      respond_to do |format|
+        format.js {render :partial => 'home/interaction', :locals  => {:interaction  => @interacton}}
+      end 
       message = {:message => interaction[:description]}
       Facebook.post_message(message, current_user.access_token) unless interaction[:shared_facebook].nil?
       unless interaction[:shared_twitter].nil?
@@ -16,20 +14,11 @@ class InteractionsController < InheritedResources::Base
         Twitter::Client.new
         Twitter.update(message[:message]) 
       end
-    }
-  end
+    else
 
-  update! do |success, failure| 
-    success.html {redirect_to home_path}
-  end
-
-  def destroy
-    @interaction = current_user.interactions.find(params[:id])
-    super do |format|
-      format.json  { render :json => params[:id] }
-      format.html {redirect_to home_path}
     end
   end
+
 
   # BUG not working due to interactions model rewrite
   def rate

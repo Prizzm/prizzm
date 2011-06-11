@@ -13,6 +13,7 @@ describe "A User adding an Interaction" do
       page.should have_content "ITEM DETAILS - #{@item.name}"
       fill_in "interaction-input", :with  => "My Interaction"
       click_button "Save"
+      page.should have_content "My Interaction"
     end
   end
 end
