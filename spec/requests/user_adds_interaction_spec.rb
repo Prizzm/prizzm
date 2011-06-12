@@ -8,7 +8,7 @@ describe "A User adding an Interaction" do
   end
 
   describe "when looking at an Item detail page" do
-    it "should be able to add an interaction for that Item" do
+    it "should be able to add an interaction for that Item", :js => true do
       sign_in_and_view_item
       page.should have_content "ITEM DETAILS - #{@item.name}"
       fill_in "interaction-input", :with  => "My Interaction"
