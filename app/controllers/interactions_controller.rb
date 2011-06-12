@@ -7,7 +7,7 @@ class InteractionsController < ApplicationController
     @item.interactions << @interaction
     if @interaction.save
       respond_to do |format|
-        format.js {render :partial => 'home/interaction', :locals  => {:interaction  => @interaction}}
+        format.html {render :partial => 'home/interaction', :locals  => {:interaction  => @interaction}}
       end 
       message = {:message => interaction[:description]}
       #Facebook.post_message(message, current_user.access_token) unless interaction[:shared_facebook].nil?
