@@ -147,6 +147,7 @@ $(document).ready(function(){
       // Add the newly created interaction to the page, and alert the user.
       $('#interactions_feed').prepend(xhr.responseText);
       $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
+      console.log(xhr.responseText);
 
       //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
       $(':input','#new_interaction')
