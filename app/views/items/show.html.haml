@@ -76,8 +76,9 @@
 - else 
   %h2.headline Interactions for: #{@item.name}
   %hr
-  #interactions
-    #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
+
+#interactions
+  #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
 :javascript
   $("#stars-wrapper-#{@item.id}").stars({

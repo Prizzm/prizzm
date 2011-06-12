@@ -27,3 +27,9 @@ RSpec.configure do |config|
 
   config.filter_run_excluding :long_term => true
 end
+# Unleash the power of selenium
+# http://selenium.googlecode.com/svn/trunk/docs/api/rb/Selenium/WebDriver/Driver.html
+# eexplained at
+# http://jumpstartlab.com/resources/testing-ruby/integration-testing-with-rspec-capybara-and-selenium/
+# use a page.driver.browser during a :js => true test to get a
+# Selenium::WebDriver::Driver object
