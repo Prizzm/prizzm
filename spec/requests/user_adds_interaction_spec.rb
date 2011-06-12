@@ -23,7 +23,10 @@ describe "A User adding an Interaction" do
       click_button "item-interaction-submit"
       page.should have_content "My Interaction"
       click_link "Delete Interaction"
-      page.should_not have_content "My Interaction"
+      wait_until do
+        page.evaluate_script('$.active') == 0
+      end
+      page.should have_no_content "My Interaction"
     end
   end
 end

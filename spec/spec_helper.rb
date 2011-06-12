@@ -6,7 +6,7 @@ require 'rspec/rails'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
+Capybara.default_wait_time = 5
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -33,3 +33,4 @@ end
 # http://jumpstartlab.com/resources/testing-ruby/integration-testing-with-rspec-capybara-and-selenium/
 # use a page.driver.browser during a :js => true test to get a
 # Selenium::WebDriver::Driver object
+# http://forum.jquery.com/topic/simulating-autocomplete-with-selenium
