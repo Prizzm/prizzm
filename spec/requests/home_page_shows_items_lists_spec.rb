@@ -27,18 +27,4 @@ describe "Home page shows lists Users's Items" do
       page.should have_content "Things I Have"
     end
   end
-
-  context "and wants to add a new item" do
-
-    it "should allow the user to add a new item" do
-      sign_in
-      click_link "add-item-link"
-      new_item = Factory.build :item
-      fill_in "Name", :with => new_item.name
-      fill_in "Review", :with => new_item.review
-      click_on "Create Item"
-      page.should have_content "Item was successfully created."
-      page.should have_content new_item.name
-    end
-  end
 end
