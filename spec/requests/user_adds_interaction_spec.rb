@@ -23,7 +23,6 @@ describe "A User adding an Interaction" do
       click_button "Save"
       page.should have_content "My Interaction"
       click_link "Delete Interaction"
-      #page.should have_no_content "My Interaction"
       should_be_hidden "My Interaction"
     end
   end
