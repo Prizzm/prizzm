@@ -7,6 +7,8 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Capybara.default_wait_time = 5
+#Capybara.ignore_hidden_elements = true
+Capybara.ignore_hidden_elements = false
 RSpec.configure do |config|
   # == Mock Framework
   #

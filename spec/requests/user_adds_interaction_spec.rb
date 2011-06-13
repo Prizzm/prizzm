@@ -20,13 +20,11 @@ describe "A User adding an Interaction" do
       sign_in_and_view_item
       page.should have_content "ITEM DETAILS - #{@item.name}"
       fill_in "interaction-input", :with  => "My Interaction"
-      click_button "item-interaction-submit"
+      click_button "Save"
       page.should have_content "My Interaction"
       click_link "Delete Interaction"
-      wait_until do
-        page.evaluate_script('$.active') == 0
-      end
-      page.should have_no_content "My Interaction"
+      #page.should have_no_content "My Interaction"
+      should_be_hidden "My Interaction"
     end
   end
 end
