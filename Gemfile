@@ -87,6 +87,8 @@ group :development, :test do
   # heroku db down locally
   gem "yaml_db"
 
+  gem "escape_utils"
+
   # Sass and Blueprint based css framework for dev machine
   # use "compass compile . " to compile css before deployment
   gem "compass", ">=0.11.1"
