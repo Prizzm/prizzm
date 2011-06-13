@@ -67,6 +67,7 @@ Factory.define :item do |item|
   item.after_build do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
+    i.url = test_product.url
     desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
     i.review = desc.text unless desc.nil?
     #i.add_image_from_url test_product.images.image.largeimage
@@ -80,6 +81,7 @@ Factory.define :item_with_images, :parent => :item do |item|
   item.after_create do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
+    i.url = test_product.url
     desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
     i.review = desc.text unless desc.nil?
     puts test_product.images.image.largeimage

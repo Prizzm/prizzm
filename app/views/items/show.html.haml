@@ -37,7 +37,7 @@
         = @item.created_at.strftime('%D')
       %p.fields 
         %strong Last updated on:
-        = @item.updated_at.strftime('%D')
+        = link_to @item.url, @item.url
 
 
   = render 'images'
