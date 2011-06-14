@@ -1787,7 +1787,7 @@ body #container #main #items {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 750px;
+  width: 950px;
   display: -moz-box;
   display: -webkit-box;
   display: box;
@@ -1853,6 +1853,10 @@ body #container #main #items #items_feed .items td.rating {
   width: 90px;
 }
 /* line 315, ../../app/stylesheets/main.sass */
+body #container #main #items #items_feed .items td.review {
+  width: 200px;
+}
+/* line 317, ../../app/stylesheets/main.sass */
 body #container #main #items-details {
   margin: 1px 0 0 9px;
   min-height: 650px;
@@ -1881,7 +1885,7 @@ body #container #main #items-details {
   background-image: linear-gradient(left top, #ffffff, #dddddd);
   overflow-x: hidden;
 }
-/* line 342, ../../app/stylesheets/main.sass */
+/* line 344, ../../app/stylesheets/main.sass */
 body #container #main #items-details .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1892,83 +1896,83 @@ body #container #main #items-details .prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 351, ../../app/stylesheets/main.sass */
+/* line 353, ../../app/stylesheets/main.sass */
 body #container #main #items-details p {
   padding: 10px 5px 10px 10px;
   margin: 0;
 }
 
-/* line 355, ../../app/stylesheets/main.sass */
+/* line 357, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 359, ../../app/stylesheets/main.sass */
+/* line 361, ../../app/stylesheets/main.sass */
 #facebox fieldset {
   border: none;
   padding: 0;
 }
 
-/* line 364, ../../app/stylesheets/main.sass */
+/* line 366, ../../app/stylesheets/main.sass */
 #facebox form label {
   margin: 8px 6px 3px 2px;
   float: left;
   width: 110px;
   text-align: right;
 }
-/* line 369, ../../app/stylesheets/main.sass */
+/* line 371, ../../app/stylesheets/main.sass */
 #facebox form ol, #facebox form ul {
   list-style: none outside none;
   padding: 0;
 }
-/* line 372, ../../app/stylesheets/main.sass */
+/* line 374, ../../app/stylesheets/main.sass */
 #facebox form ol li, #facebox form ul li {
   margin-bottom: 10px;
   overflow: hidden;
 }
-/* line 375, ../../app/stylesheets/main.sass */
+/* line 377, ../../app/stylesheets/main.sass */
 #facebox form textarea {
   height: 100px;
   min-width: 200px;
   width: 250px;
 }
-/* line 379, ../../app/stylesheets/main.sass */
+/* line 381, ../../app/stylesheets/main.sass */
 #facebox form input {
   width: 250px;
 }
-/* line 381, ../../app/stylesheets/main.sass */
+/* line 383, ../../app/stylesheets/main.sass */
 #facebox form .commit {
   text-align: right;
   padding-right: 70px;
 }
-/* line 384, ../../app/stylesheets/main.sass */
+/* line 386, ../../app/stylesheets/main.sass */
 #facebox form .commit input {
   width: auto;
 }
 
-/* line 387, ../../app/stylesheets/main.sass */
+/* line 389, ../../app/stylesheets/main.sass */
 #stars-wrapper-new-item .ui-stars-star {
   padding-top: 8px;
 }
 
-/* line 390, ../../app/stylesheets/main.sass */
+/* line 392, ../../app/stylesheets/main.sass */
 .clear {
   clear: both;
 }
 
-/* line 393, ../../app/stylesheets/main.sass */
+/* line 395, ../../app/stylesheets/main.sass */
 #item-interaction-submit {
   margin-right: 22px;
   display: none;
 }
 
-/* line 397, ../../app/stylesheets/main.sass */
+/* line 399, ../../app/stylesheets/main.sass */
 .hover {
   background-color: #dcedeb;
 }
 
-/* line 400, ../../app/stylesheets/main.sass */
+/* line 402, ../../app/stylesheets/main.sass */
 .box {
   background: none repeat scroll 0 0 #464e53;
   margin-bottom: 20px;
@@ -1981,7 +1985,7 @@ body #container #main #items-details p {
   border-radius: 7px;
 }
 
-/* line 406, ../../app/stylesheets/main.sass */
+/* line 408, ../../app/stylesheets/main.sass */
 legend {
   background: none repeat scroll 0 0 white;
   border: 1px solid #bbbbbb;
@@ -1995,34 +1999,29 @@ legend {
   border-radius: 7px;
 }
 
-/* line 413, ../../app/stylesheets/main.sass */
+/* line 415, ../../app/stylesheets/main.sass */
 #login-page {
   margin: auto;
   padding: 5em 0 12em;
   width: 400px;
 }
 
-/* line 418, ../../app/stylesheets/main.sass */
+/* line 420, ../../app/stylesheets/main.sass */
 .box label {
   color: white;
 }
 
-/* line 421, ../../app/stylesheets/main.sass */
+/* line 423, ../../app/stylesheets/main.sass */
 #advanced-new-item {
   display: none;
 }
 
-/* line 424, ../../app/stylesheets/main.sass */
+/* line 426, ../../app/stylesheets/main.sass */
 #share_box {
   float: right;
 }
 
-/* line 427, ../../app/stylesheets/main.sass */
+/* line 429, ../../app/stylesheets/main.sass */
 #share_warning .alert {
   width: 190px;
-}
-
-/* line 431, ../../app/stylesheets/main.sass */
-.ui-autocomplete-loading {
-  background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
 }

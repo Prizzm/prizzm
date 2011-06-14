@@ -13,8 +13,13 @@ class Item < ActiveRecord::Base
 
   acts_as_list :scope => :user
 
+  after_initialize :default_values
 
 
+
+  def default_values
+    self.privacy ||= 'private'
+  end 
 
   # convience methods
   def has_product?
