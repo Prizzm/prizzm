@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one  :profile
-  has_many :items, :order => "position"
+  has_many :items#, :order => "position"
   has_many :products, :through => :items
 
   # Setup accessible (or protected) attributes for your model

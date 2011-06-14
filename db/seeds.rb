@@ -13,6 +13,7 @@ sidney.make_real
 test.make_real
 
 bryna_nicole = Company.create({
+  :name => "Bryna Nicole", 
   :email => "bryna@prizzm.com",
   :url => "http://shopbryna.com/",
   :phone_number => "877-294-BAGS (6047)",

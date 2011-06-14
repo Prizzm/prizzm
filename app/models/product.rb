@@ -6,4 +6,9 @@ class Product < ActiveRecord::Base
   has_many :items,  :dependent => :nullify
   has_many :users, :through => :items
 
+
+  # JQuery autocomplete expects a 'label attribute'
+  def label
+    name
+  end 
 end

@@ -8,19 +8,27 @@
     = form.input :review
     = form.input :sku
     = form.input :url, :as => :string
+    = form.input :product_id, :as => :hidden
     %div{:id => "stars-wrapper-new-item"}
       = form.label 'stars-wrapper-new-item', "Rate"
       = form.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-  :javascript
-    $(document).ready(function(){
-      $('#item_name').autocomplete({source: "#{products_path}"});
-    });
 
-  :javascript
-    $("#stars-wrapper-new-item").stars({
-      inputType: "select",
-      cancelShow: false
-    });
+    = show_stars_for "#stars-wrapper-new-item"
+    :javascript
+      $(document).ready(function(){
+        $('#item_name').autocomplete({
+          delay: 50,
+          source: "#{products_path}",
+          select: function(event, ui){
+            //store selected.object_id to hidden field value
+            var product_id = ui.item.id;
+            console.log('Product id: ' + product_id);
+            $('#item_product_id').val(product_id);
+            console.log('Hidden val: ' + $('#item_product_id').val());
+          }
+
+        });
+      });
 
   = form.buttons do
     = form.commit_button 

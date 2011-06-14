@@ -4,6 +4,18 @@ module ApplicationHelper
     user
   end
 
+  def show_stars_for element
+    %Q{
+    <script>
+      $(document).ready(function(){
+        $("#{element}").stars({
+          inputType: "select",
+          cancelShow: false
+        });
+      });
+    </script>
+    }.gsub(/[\n ]+/, ' ').strip.html_safe
+  end
 
   def photo_uploadify
     # Putting the uploadify trigger script in the helper gives us

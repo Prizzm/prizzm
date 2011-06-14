@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    #@products = Product.all(:conditions => ["name like ?", params[:q] +'%'])
+    #@products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
     #pp @products
     @products = Product.order('name ASC')
     respond_to do |format|
-      format.html {render :text  => @products.map{|p| "#{p.name}"}}
+      format.html {render :json  => @products.to_json(:methods => :label, :only => [:label, :id])  } 
     end 
   end 
 end

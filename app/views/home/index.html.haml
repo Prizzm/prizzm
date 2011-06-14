@@ -14,17 +14,23 @@
         %tr
           %th 
           %th Name
+          %th Brand
           %th Review
           %th Rating
       %tbody
         /= render :partial => "home/item", :collection => @user.items
-        - current_user.items.each do |item|
+        - current_user.items.recently_updated.each do |item|
           %tr{:id => "item_#{item.id}"}
             .item_info
               %td.thumb= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
               /%td.position= item.position
-              %td.name= link_to item.name, [current_user, item]
+              %td.name
+                = link_to item.name, [current_user, item]
               /%td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
+              %td.brand
+                -if item.has_product?
+                  = item.parent_company.name 
+                  = image_tag item.product.company.images.first.image.thumb.url if item.has_product?
               %td.description= truncate item.review, :length => 30
               %td.rating
                 .social
@@ -39,12 +45,14 @@
                     %div{:id => "stars-wrapper-#{item.id}"}
                       = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
                     :javascript
-                      $("#stars-wrapper-#{item.id}").stars({
-                        inputType: "select",
-                        callback: function(ui, type, value, event){
-                          var item = #{item.id};
-                          update_rating('items', item,value);
-                        },
-                        cancelShow: false
+                      $(document).ready(function(){
+                        $("#stars-wrapper-#{item.id}").stars({
+                          inputType: "select",
+                          callback: function(ui, type, value, event){
+                            var item = #{item.id};
+                            update_rating('items', item,value);
+                          },
+                          cancelShow: false
+                        });
                       });
 
