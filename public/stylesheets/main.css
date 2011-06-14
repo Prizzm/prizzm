@@ -2021,3 +2021,8 @@ legend {
 #share_warning .alert {
   width: 190px;
 }
+
+/* line 431, ../../app/stylesheets/main.sass */
+.ui-autocomplete-loading {
+  background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+}

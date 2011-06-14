@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20110608012659) do
     t.text     "url"
     t.integer  "rating"
     t.string   "sku"
+    t.string   "privacy"
     t.integer  "position"
     t.integer  "user_id"
     t.integer  "product_id"

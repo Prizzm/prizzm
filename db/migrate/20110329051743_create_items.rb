@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.text :url
       t.integer :rating
       t.string :sku
+      t.string :privacy
 
       t.integer :position
 
