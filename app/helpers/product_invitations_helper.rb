@@ -1,0 +1,2 @@
+module ProductInvitationsHelper
+end

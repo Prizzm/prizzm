@@ -9,6 +9,8 @@ class Item < ActiveRecord::Base
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
   has_many :interactions, :dependent => :destroy
 
+  accepts_nested_attributes_for :images, :interactions
+
   scope :recently_updated, order('created_at DESC')
 
   acts_as_list :scope => :user

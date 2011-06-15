@@ -1,4 +1,6 @@
 Prizzm::Application.routes.draw do
+  resources :product_invitations
+
   resources :products
 
   resources :companies
