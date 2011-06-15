@@ -1,0 +1,17 @@
+#url-preview-window
+  %iframe#url-preview
+
+
+:javascript
+  $(document).ready(function(){
+    $('#item-urls a').live({
+      mouseenter: function(){
+        $('#url-preview-window').show();
+        $('#url-preview').val('src', this.href);
+          console.log( this.href);
+      },
+      mouseleave: function(){
+        $('#url-preview-window').hide();
+      }
+    });
+  });

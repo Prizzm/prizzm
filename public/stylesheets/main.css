@@ -2025,3 +2025,16 @@ legend {
 #share_warning .alert {
   width: 190px;
 }
+
+/* line 434, ../../app/stylesheets/main.sass */
+#item-privacy-control {
+  width: 100px;
+}
+
+/* line 437, ../../app/stylesheets/main.sass */
+#url-preview-window {
+  border: 1px solid red;
+  display: hidden;
+  width: 302px;
+  height: 300px;
+}

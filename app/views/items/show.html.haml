@@ -21,6 +21,8 @@
               = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
 
     .column
+      %p.fields
+        = render 'privacy_controls'
     .column
       = form_tag [current_user, @item, 'share'], :remote => true do
         .social
@@ -37,10 +39,10 @@
         = @item.created_at.strftime('%D')
       %p.fields 
         %strong Last updated on:
-        = link_to @item.url, @item.url
+        #item-urls= link_to @item.url, @item.url
 
 
-  = render 'privacy_controls'
+  = render 'url_preview'
 
   = render 'images'
 
