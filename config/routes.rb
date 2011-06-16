@@ -28,6 +28,8 @@ Prizzm::Application.routes.draw do
   get  '/invitation/:id' => 'product_invitations#view_invitation', :as  => 'view_item_invitation'
   post '/invitation/:id' => 'product_invitations#accept_invitation', :as => 'accept_item_invitation'
 
+  get 'shared/item/:id' => 'shared_items#show', :as => "shared_item"
+
   post 'items/sort', :as => :sort_items
   post 'items/rate', :as => :update_item_rating
   post 'interactions/rate', :as => :update_interaction_rating

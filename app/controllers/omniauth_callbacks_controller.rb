@@ -29,11 +29,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end 
 
     def process_accepted_product_invitation
-      @item = Item.create(:product_id => session[:new_item])
+      @item = Item.create(:product_id => session[:new_item], :privacy => 'public')
       flash[:notice] = "Thanks for talking about your #{@item.product.name}"
       @user.items << @item
       # Must change to public URL once it exists
-      message = {:message => "#{@user.first_name} has just left an opinion on the #{@item.product.name} on Prizzm.", :link => url_for([@user, @item]), :picture => @item.product.images.first.image.url}
+      message = {:message => "#{@user.first_name} has just left an opinion on the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => @item.product.images.first.image.url}
       puts message
       Facebook.post_message(message, @user.access_token) 
       sign_in_and_redirect @user, :event => :authentication

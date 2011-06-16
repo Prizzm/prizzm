@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   include Imageable
+  include Rails.application.routes.url_helpers
 
   belongs_to :user
   belongs_to :product
@@ -31,4 +32,5 @@ class Item < ActiveRecord::Base
   def parent_company
     product.company if has_product?
   end
+
 end
