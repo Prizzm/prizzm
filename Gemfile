@@ -72,6 +72,7 @@ gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 group :development, :test do
   gem "taps"
 
+
   #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
 
@@ -100,7 +101,7 @@ group :development, :test do
 
   gem "selenium-webdriver"
   gem "rack-test"
-  gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
+  gem "capybara", :require => 'capybara/rspec'
   gem "launchy"
   gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 

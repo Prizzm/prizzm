@@ -4,44 +4,15 @@
     #loading.loader
     #slideshow.slideshow
   #caption.caption-container
-#thumbs.navigation{:data => {:itemid => @item.id}}
+#thumbs.navigation{:data => {:itemid => @product.id}}
   %ul.thumbs.noscript
-    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
+    = render :partial => 'image_thumbnail', :collection => @product.images, :as => :img
 
 %div(style="clear: both;")
 
-/ 
-  As the delete image URL changes through javascript depending on which image we're looking at, 
-  we can't have the url rendered on the page, but must suply it based on the current image.
-  So we will do that by using javascript
-
-= link_to "Delete Image", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json
 
 :javascript
   jQuery(document).ready(function($) {
-    $('#delete-image-link').live('ajax:success', function(event, data, status, xhr){
-      var index = data + ''; 
-      console.log('Image deleted at Index: ' + index);
-      $('body').trigger('removeImage', index);
-    });
-  });
-
-
-
-
-
-:javascript
-  jQuery(document).ready(function($) {
-      // Custom helper functions for Gallery
-
-      var setDeleteImageLink = function(index){
-        var itemId = $('#thumbs').data('itemid');
-        var imageId = $('#thumbs ul li').eq(index).data('imageid');
-        $('#delete-image-link').attr('href', '/items/' + itemId + '/images/'+imageId+'/index/'+index);
-      }
-
-      // End Custom Functions
-      //-------------------------------------
 
       // We only want these styles applied when javascript is enabled
       $('div.navigation').css({'width' : '300px', 'float' : 'left'});

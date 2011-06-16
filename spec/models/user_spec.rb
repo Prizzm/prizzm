@@ -7,8 +7,8 @@ describe User do
   end
 
   describe "associations" do
-    it {should have_one(:profile)}
-    it {should have_many(:items)}
+    it {should have_one(:profile).dependent(:destroy)}
+    it {should have_many(:items).dependent(:destroy)}
     it {should have_many(:products).through(:items)}
   end
 
