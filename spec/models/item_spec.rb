@@ -59,4 +59,20 @@ describe Item do
       end
     end
   end
+
+
+  context "concerning privacy" do
+    context "when private" do
+      it "should not allow vistors to view the item's shared page" do
+        pending  
+      end
+    end
+    
+
+    context "wheen public" do
+      it "should allow visitors to view the item's shared page" do
+        pending
+      end
+    end
+  end
 end
