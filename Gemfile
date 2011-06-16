@@ -17,7 +17,7 @@ gem "devise", :git => "https://github.com/plataformatec/devise.git"
 gem "ajaxful_rating"
 
 # Test helper to make placeholder images
-gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
+# gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
 gem "nokogiri"
 
@@ -105,7 +105,7 @@ group :development, :test do
   gem "rspec-core", "2.6.4"
   gem "rspec-rails"# , '2.6.0' #, '2.5.0'
   #gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers.git'
-  gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
+  #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
   gem "ZenTest"
   gem "autotest-rails"
 end
