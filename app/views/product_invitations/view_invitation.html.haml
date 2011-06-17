@@ -1,0 +1,66 @@
+= link_to "Back", home_path
+
+#item-details
+  %h2#title.headline Thank you Janet for purchasing the - #{@product.name}
+
+
+  #text-fields
+    .column
+      %p.fields
+        %strong Name:
+        %br/
+        = @product.name
+      %p.fields
+        %strong Category:
+        %br/
+        = @product.product_type
+      %p.fields
+        %strong URL:
+        %br/
+        = link_to @product.url, @product.url
+      %p.fields
+        %br/
+        %br/
+        %p
+        %strong Please leave your rating for this item:
+
+    .column
+      %p.fields
+        %strong Do you like your #{@product.name}?
+        %br/
+        = text_area_tag 'item', @product.description, :width => '70'
+      .fields
+        %strong
+          %p
+        %div{:id => "new_item_rating", :class => "rating"}
+          = form_for @item, :url => accept_item_invitation_path(@product)  do |f|
+            %div{:id => "stars-wrapper"}
+              = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+    .column
+      %p.fields
+  #share_box
+    = link_to image_tag('share_facebook.png'), user_omniauth_authorize_path(:facebook) 
+    #share_warning
+      .alert Share this item on your Facebook wall, and invite your friends to see your review
+  = render 'images'
+
+
+
+  #image-field
+    /%p= image_tag @product.images.first.image.url, :width => "100%"
+  .clear
+  
+
+
+
+
+:javascript
+  $("#stars-wrapper").stars({
+    inputType: "select",
+    cancelShow: false
+  });
+
+  $("#interaction_stars").stars({
+    inputType: "select",
+    cancelShow: false
+  });

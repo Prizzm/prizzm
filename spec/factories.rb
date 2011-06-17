@@ -67,11 +67,15 @@ Factory.define :item do |item|
   item.after_build do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
+    i.url = test_product.url
     desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
     i.review = desc.text unless desc.nil?
-    #i.add_image_from_url test_product.images.image.largeimage
   end
 end
+
+Factory.define :item_image do |item_image|
+  item_image.image { File.open(Rails.root.join('spec/fixtures/test-image.png')) }
+end 
 
 Factory.define :item_with_images, :parent => :item do |item|
   item.rating { [1,2,3].rand }
@@ -80,6 +84,7 @@ Factory.define :item_with_images, :parent => :item do |item|
   item.after_create do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
+    i.url = test_product.url
     desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
     i.review = desc.text unless desc.nil?
     puts test_product.images.image.largeimage
@@ -88,9 +93,6 @@ Factory.define :item_with_images, :parent => :item do |item|
 end 
 
 Factory.define :interaction do |interaction|
-  interaction.time_start { Random.date.to_datetime}
-  interaction.time_end { |i| i.time_start + 1.day }
-  interaction.contact { ["Email", "Phone", "Prizzm", "Video"].random }
   interaction.description { Faker::Company.bs }
   interaction.rating { [1,2,3].rand }
 end

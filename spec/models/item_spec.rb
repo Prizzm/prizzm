@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Item do
   describe "model attributes" do
     it {should have_db_column(:name).of_type(:string)}
+    it {should have_db_column(:privacy).of_type(:string)}
     it {should have_db_column(:review).of_type(:text)}
     it {should have_db_column(:rating).of_type(:integer)}
   end
@@ -10,78 +11,67 @@ describe Item do
   describe "associations" do
     it {should belong_to(:product)}
     it {should belong_to(:user)}
-    it {should have_many(:images)}
     it {should have_many(:images).dependent(:destroy)}
-    it {should have_many(:interactions)}
     it {should have_many(:interactions).dependent(:destroy)}
   end
 
+  context "attribute defaults" do
+    its(:privacy) {should eq('private')} 
+  end
 
-  context "images" do
-    context "when uploading images" do
-      subject {Factory :item} 
-
-      describe "that come from a URL" do
-        it "should be able to add an image from a URL it has an extension" do
-          expect {subject.add_image_from_url "http://www.google.com/images/logos/ps_logo2.png"}.to change(subject.images, :count).by(1)
-        end
-
-        # There is a bug in ImageMagick.  It uses the file extension to
-        # determine thw filetype, and thus how to process the image.  If no
-        # extension is provided, it throws the error "no encode delegate for this
-        # image format".  As carrierwave uses ImageMagick, it bugs when we try
-        # to process files with no extension.. (weather from URL or Local).  
-        # The solution would be to detect the file.content_type, and then
-        # rename the file accordingly, providing an extension before processing
-        # it.  I haven't been able to successfully hack Carrierwave to do this.
-        it "should be able to add an image from a URL it does not have an extension" do
-          pending "Bug in Carrierwave/ImmageMagick"
-          expect {subject.add_image_from_url "http://lorempixum.com/600/600"}.to change(subject.images, :count).by(1)
-        end
-      end
- 
-      # We assume that the filetypes are rerstricted by extension on the client
-      # side
-      it "should be able to add an image from a file" do
-        image_data = File.open(Rails.root.join('spec/fixtures/test-image.png'))
-        expect {subject.add_image_from_file image_data}.to change(subject.images, :count).by(1)
-      end
+  context "when creating associated objects" do
+    before :each do
+      @item = Factory.build :item
+    end
+    
+    it "should be able to add an interaction" do
+      @interaction = Factory.build :interaction
+      params = {:item => @item.attributes.merge(:interactions_attributes  => [@interaction.attributes]) }
+      @saved_item = Item.create(params[:item])
+      @saved_item.should have(1).interaction
+      @saved_item.interactions.first.should_not be_new_record
     end
 
-    describe "once uploaded" do
-      describe "using the :fog backend" do
-        subject {Factory :item_with_images} 
-
-        # This test only passes beecause the S3 host is specified in the url.
-        # When using CarrierWave :file storage, the host isn't specified and it
-        # fails
-        it "should be accessible from a URL" do
-          image_url = subject.images.first.image.url
-          rest_response(image_url).code.should eq(200)
-        end
-      end
-
-      describe "using the :file backend" do
-        subject {Factory :item_with_images} 
-
-        # This test fails for the reason above
-        it "should be accessible from a URL" do
-          pending "switch storage backends in the test, and verify"
-          image_url = subject.images.first.image.url
-          rest_response(image_url).code.should eq(200)
-        end
-      end
-
+    it "should be able to add images" do
+      pending "tests"
+      item_image = Factory.build :item_image
+      params = {:item => @item.attributes.merge(:images_attributes  => [item_image.attributes]) }
+      @saved_item = Item.create(params[:item])
+      @saved_item.should have(1).image
+      @saved_item.images.should_not be_new_record
     end
- 
-    describe "when deleting images" do
-      subject {Factory :item_with_images} 
+  end
+      
+  context "convenience methods" do
+    before :each do
+      @item = Factory :item
+      @product = Factory :product
+      @product.items << @item
+    end
 
-      it "should remove images from the server when they are deleted" do
-        image_url = subject.images.last.image.url
-        rest_response(image_url).code.should eq(200)
-        subject.images.last.destroy
-        rest_response(image_url).code.should eq(403)
+    context "items associated with a product" do
+      it "should respond to 'has_product? with a boolean'" do
+        @item.has_product?.should be_true
+      end
+
+      it "should respond to 'parent_company' with a Company" do
+        @item.parent_company.should eq(@product.company)
+      end
+    end
+  end
+
+
+  context "concerning privacy" do
+    context "when private" do
+      it "should not allow vistors to view the item's shared page" do
+        pending  
+      end
+    end
+    
+
+    context "wheen public" do
+      it "should allow visitors to view the item's shared page" do
+        pending
       end
     end
   end

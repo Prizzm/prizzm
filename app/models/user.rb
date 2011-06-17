@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_one  :profile
-  has_many :items, :order => "position"
+  has_one  :profile, :dependent => :destroy
+  has_many :items, :dependent => :destroy
   has_many :products, :through => :items
 
   # Setup accessible (or protected) attributes for your model
@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
         user
       end
     else
-      # Already sign in.
+      # Already signed in.
       user.access_token = credentials['token']
       user.save
       user
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
         user
       end
     else
-      # Already sign in.
+      # Already signed in.
       user.tt_token = credentials['token']
       user.tt_secret = credentials['secret']
       user.save
@@ -84,17 +84,5 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
-  end
-
-
-
-  ####   Testing function
-   
-  def make_real
-    10.times do
-      item = Factory :item_with_images
-      self.items << item
-    end
-    self.save
   end
 end

@@ -3,8 +3,10 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :name
       t.text :review
+      t.text :url
       t.integer :rating
       t.string :sku
+      t.string :privacy
 
       t.integer :position
 

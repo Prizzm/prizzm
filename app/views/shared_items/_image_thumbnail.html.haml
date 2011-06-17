@@ -1,0 +1,9 @@
+%li{:data => {:imageid => img.id}}
+  %a.thumb{:href => img.image.url, :name => "leaf", :title => "Title #0"}
+    %img{:alt => "Title #0", :src => img.image.thumb.url}/
+  .caption
+    /
+      .download
+        %a{:href => img.image.url} Download Original
+      .image-title Title #0
+      .image-desc Description

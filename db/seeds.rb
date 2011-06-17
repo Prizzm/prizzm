@@ -7,12 +7,22 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # create a test user
+
+
+def make_real user
+  5.times do
+    item = Factory :item_with_images
+    user.items << item
+  end
+end
+
 sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Sidney', :last_name => 'Burks'}) } 
 test = Factory :user, {:email => 'test@test.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Test', :last_name => 'User'}) } 
-sidney.make_real
-test.make_real
+make_real sidney
+make_real test
 
 bryna_nicole = Company.create({
+  :name => "Bryna Nicole", 
   :email => "bryna@prizzm.com",
   :url => "http://shopbryna.com/",
   :phone_number => "877-294-BAGS (6047)",

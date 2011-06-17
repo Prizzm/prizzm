@@ -1,6 +1,6 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
-gem 'rails', '3.0.8' #, :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
 gem "haml-rails"
 gem "jquery-rails"
 
@@ -65,12 +65,14 @@ gem "twitter"
 
 gem 'rake', '0.8.7'
 
+gem "jammit"
 
 gem "rest-client"
 gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 
 group :development, :test do
   gem "taps"
+
 
   #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
@@ -87,6 +89,8 @@ group :development, :test do
   # heroku db down locally
   gem "yaml_db"
 
+  gem "escape_utils"
+
   # Sass and Blueprint based css framework for dev machine
   # use "compass compile . " to compile css before deployment
   gem "compass", ">=0.11.1"
@@ -98,7 +102,7 @@ group :development, :test do
 
   gem "selenium-webdriver"
   gem "rack-test"
-  gem "capybara", :git => 'git://github.com/jnicklas/capybara.git', :require => 'capybara/rspec'
+  gem "capybara", :require => 'capybara/rspec'
   gem "launchy"
   gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 

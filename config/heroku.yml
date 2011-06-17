@@ -70,6 +70,7 @@ domains:
   production:
     - "prizzm.com"
     - "www.prizzm.com"
+    - "beta.prizzm.com"
   staging:
     - "staging.prizzm.com"
   demo:

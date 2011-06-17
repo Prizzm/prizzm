@@ -3,12 +3,10 @@ class ItemsController < InheritedResources::Base
   respond_to :html, :json
   layout :determine_layout
 
-  #c#r#e#a#t#e#! #d#o #|#s#u#c#c#e#s#s#, #f#a#i#l#u#r#e#| 
-    #s#u#c#c#e#s#s#.#h#t#m#l #{#r#e#d#i#r#e#c#t#_#t#o #r#o#o#t#_#p#a#t#h#}
-  #e#n#d
 
   update! do |success, failure| 
     success.html {redirect_to root_path}
+    success.json {head :ok}
   end
   
   def sort
@@ -18,10 +16,11 @@ class ItemsController < InheritedResources::Base
     head :ok
   end
 
-  # Update the rating on an Item belonging to a User.  The item.id and rating
-  # are submitted via AJAX as a parameter.  Find Item in the database with the
-  # corresponding ID and update its rating attribute with the supplied rating
-  # value.
+  def update_privacy
+
+    current_user.items.find(params[:id]).update_attributes(:privacy, params[:privacy])
+  end 
+
   def rate
     current_user.items.find(params[:object_id]).update_attribute(:rating, params[:rating])
     head :ok

@@ -1,0 +1,29 @@
+= link_to "Back", home_path
+
+#item-details
+  %h2#title.headline #{@item.name} has been shared with you by #{@item.user.first_name}
+  = image_tag @item.user.photo.url
+  #text-fields
+    .column
+      %p.fields
+        %strong Name:
+        %br/
+        = @item.name
+      %p.fields
+        %strong Review:
+        %br/
+        = @item.review
+      %p.fields
+        %strong Rating:
+        %div{:id => "item_#{@item.id}_rating", :class => "rating"}
+          = form_for Item.new do |f|
+            %div{:id => "stars-wrapper"}
+              = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
+
+  = render 'images'
+
+:javascript
+  $("#stars-wrapper").stars({
+    inputType: "select",
+    cancelShow: false
+  });

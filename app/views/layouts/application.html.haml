@@ -3,16 +3,14 @@
   %head
     %meta(charset='utf-8')
     %title  Prizzm
-    = stylesheet_link_tag :all#, :recursive => true
-    /= stylesheet_link_tag "edit_in_place", "facebox", "jquery.ui.stars"
-    /= stylesheet_link_tag "main"
-    /= stylesheet_link_tag "galleriffic/basic"
     = csrf_meta_tag
     = favicon_link_tag
+    = include_stylesheets :app
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js'
-    = javascript_include_tag :all, :recursive => true
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'
+    = include_javascripts :app
     = hoptoad_javascript_notifier
+
     = yield :javascripts
   %body
     #top
