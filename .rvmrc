@@ -1,4 +1,4 @@
-# Text color variables
+# Output text color variables
 txtund=$(tput sgr 0 1)     # Underline
 txtbld=$(tput bold)        # Bold
 txtred=$(tput setaf 1)     # Red
@@ -25,11 +25,11 @@ warn=${bldred}
 
 
 export PROJECT_NAME='prizzm'
-export SETUP_DIR='prizzm_setup'
+export SETUP_DIR=${PROJECT_NAME}_setup
 export PATH=./bin:${PATH//:\.\/bin:} 
 
-if [[ -s "$SETUP_DIR/rvm/prizzm.gems" ]] ; then
-  rvm gemset import $SETUP_DIR/rvm/prizzm.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
+if [[ -s "$SETUP_DIR/rvm/$PROJECT_NAME.gems" ]] ; then
+  rvm gemset import $SETUP_DIR/rvm/$PROJECT_NAME.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
 fi
 
 if [[ -s "$SETUP_DIR/secret-credentials" ]] ; then
