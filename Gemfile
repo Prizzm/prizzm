@@ -1,6 +1,6 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
-gem 'rails', '3.0.8' #, :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
 gem "haml-rails"
 gem "jquery-rails"
 
@@ -65,6 +65,7 @@ gem "twitter"
 
 gem 'rake', '0.8.7'
 
+gem "jammit"
 
 gem "rest-client"
 gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"

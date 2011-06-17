@@ -7,6 +7,7 @@ class ProductInvitationsController < ApplicationController
     session[:new_item] = params[:id]
   end 
 
+  # TODO: Find a way to accept params for omniauth route
   def accept_invitation
     @item = Item.create(params[:item])
     flash[:notice] = "Thanks for sharing item #{@item.product.name}"
