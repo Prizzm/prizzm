@@ -1,12 +1,52 @@
-if [[ -s "lib/rvm/prizzm.gems" ]] ; then
-  rvm gemset import lib/rvm/prizzm.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
-fi
+# Text color variables
+txtund=$(tput sgr 0 1)     # Underline
+txtbld=$(tput bold)        # Bold
+txtred=$(tput setaf 1)     # Red
+txtgrn=$(tput setaf 2)     # Green
+txtylw=$(tput setaf 3)     # Yellow
+txtblu=$(tput setaf 4)     # Blue
+txtpur=$(tput setaf 5)     # Purple
+txtcyn=$(tput setaf 6)     # Cyan
+txtwht=$(tput setaf 7)     # White
+txtrst=$(tput sgr0)        # Text reset
+txtund=$(tput sgr 0 1)           # Underline
+txtbld=$(tput bold)              # Bold
+bldred=${txtbld}$(tput setaf 1)  #  red
+bldblu=${txtbld}$(tput setaf 4)  #  blue
+bldylw=${txtbld}$(tput setaf 3)  #  yellow
+bldwht=${txtbld}$(tput setaf 7)  #  white
+bldgrn=${txtbld}${txtgrn}
+alert=${bldgrn}
+txtrst=$(tput sgr0)              # Reset
+info=${bldwht}         # Feedback
+pass=${bldblu}
+warn=${bldred}
 
-if [[ -s "secret-credentials" ]] ; then
-  source ./secret-credentials
-else
-  echo "Error: Make sure to download the 'secret-credentials.sh directory, and place it in the project root directory'"
-fi
 
 
+export PROJECT_NAME='prizzm'
+export SETUP_DIR='prizzm_setup'
 export PATH=./bin:${PATH//:\.\/bin:} 
+
+if [[ -s "$SETUP_DIR/rvm/prizzm.gems" ]] ; then
+  rvm gemset import $SETUP_DIR/rvm/prizzm.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
+fi
+
+if [[ -s "$SETUP_DIR/secret-credentials" ]] ; then
+  source $SETUP_DIR/secret-credentials
+  echo "${info} * ${alert} Setting the environment variables listed in: ${info} $SETUP_DIR/secret_credentials"
+else
+  echo "${info} * ${warn} Error: Make sure to download the ${info} secret-credentials ${warn} file from ${bldylw}Sidney, 
+  ${warn} and place it in the ${info} $SETUP_DIR/ ${warn} directory"
+fi
+
+# If we have already created a symlink to our cusom githooks
+if [[ -h ".git/hooks" ]] ; then
+  # do nothing.
+else
+  #remove the git exmple hooks and create the symlink
+  rm -rf .git/hooks
+  ln -s $SETUP_DIR/git_hooks .git/hooks
+  echo "${info} * ${alert} Activating custom git hooks in: ${info} $SETUP_DIR/git_hooks"
+fi
+
