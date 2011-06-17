@@ -4,12 +4,14 @@
   %h2#title.headline Thank you Janet for purchasing the - #{@product.name}
 
 
+= form_for @item, :url => accept_item_invitation_path  do |f|
   #text-fields
     .column
       %p.fields
         %strong Name:
         %br/
         = @product.name
+        = f.hidden_field :name, :value => @product.name
       %p.fields
         %strong Category:
         %br/
@@ -28,18 +30,18 @@
       %p.fields
         %strong Do you like your #{@product.name}?
         %br/
-        = text_area_tag 'item', @product.description, :width => '70'
+        = f.text_area :review, :value => @product.description
       .fields
         %strong
           %p
         %div{:id => "new_item_rating", :class => "rating"}
-          = form_for @item, :url => accept_item_invitation_path(@product)  do |f|
-            %div{:id => "stars-wrapper"}
-              = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+          %div{:id => "stars-wrapper"}
+            = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
     .column
       %p.fields
+    = f.submit "Share on FB" 
   #share_box
-    = link_to image_tag('share_facebook.png'), user_omniauth_authorize_path(:facebook) 
+    /= link_to image_tag('share_facebook.png'), user_omniauth_authorize_path(:facebook) 
     #share_warning
       .alert Share this item on your Facebook wall, and invite your friends to see your review
   = render 'images'

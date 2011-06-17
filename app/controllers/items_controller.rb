@@ -17,7 +17,6 @@ class ItemsController < InheritedResources::Base
   end
 
   def update_privacy
-
     current_user.items.find(params[:id]).update_attributes(:privacy, params[:privacy])
   end 
 

@@ -1,0 +1,25 @@
+
+# Output text color variables
+txtund=$(tput sgr 0 1)     # Underline
+txtbld=$(tput bold)        # Bold
+txtred=$(tput setaf 1)     # Red
+txtgrn=$(tput setaf 2)     # Green
+txtylw=$(tput setaf 3)     # Yellow
+txtblu=$(tput setaf 4)     # Blue
+txtpur=$(tput setaf 5)     # Purple
+txtcyn=$(tput setaf 6)     # Cyan
+txtwht=$(tput setaf 7)     # White
+txtrst=$(tput sgr0)        # Text reset
+txtund=$(tput sgr 0 1)           # Underline
+txtbld=$(tput bold)              # Bold
+bldred=${txtbld}$(tput setaf 1)  #  red
+bldblu=${txtbld}$(tput setaf 4)  #  blue
+bldylw=${txtbld}$(tput setaf 3)  #  yellow
+bldwht=${txtbld}$(tput setaf 7)  #  white
+bldgrn=${txtbld}${txtgrn}
+alert=${bldgrn}
+txtrst=$(tput sgr0)              # Reset
+info=${bldwht}         # Feedback
+pass=${bldblu}
+warn=${bldred}
+

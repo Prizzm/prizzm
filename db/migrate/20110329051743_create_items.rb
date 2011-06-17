@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :rating
       t.string :sku
       t.string :privacy
+      t.string :invitation_status
 
       t.integer :position
 

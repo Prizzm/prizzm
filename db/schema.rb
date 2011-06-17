@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110615141515) do
     t.integer  "rating"
     t.string   "sku"
     t.string   "privacy"
+    t.string   "invitation_status"
     t.integer  "position"
     t.integer  "user_id"
     t.integer  "product_id"
