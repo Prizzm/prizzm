@@ -1,0 +1,37 @@
+## Heroku command shortcuts
+# Taken from comments here:
+# http://jqr.github.com/2010/08/27/easy-heroku-deploys-with-heroku-san.html
+#
+# Example usage:
+#
+#     development db:push
+#
+#     Pushes the local db to the development server
+
+
+function staging() { heroku $@ --app $(basename `pwd`)-staging ;}
+function production() { heroku $@ --app $(basename `pwd`)-production ;}
+function demo() { heroku $@ --app $(basename `pwd`)-demo ;}
+function development() { heroku $@ --app $(basename `pwd`)-development ;}
+alias stage='staging'
+alias dev='development'
+alias prod='production'
+
+
+
+function find_and_replace  {
+# Usage: find_and_replace $target $replacement
+#
+# Recursively search the files in the child directories for the target string,
+# and replace the target string in place with replacement
+#
+# Improvements:  Could pass options to ack to improve filetypes searched
+
+    target=$1
+    replacement=$2
+    ack -l $target | xargs -n 1 sed -i "s/$target/$replacement/g"
+}
+
+
+
+
