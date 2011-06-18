@@ -8,6 +8,8 @@
 #
 #     Pushes the local db to the development server
 
+source $SETUP_DIR_PATH/colors
+
 function deploy() {
   echo "${info} Compiling css with 'compass compile .''"
   compass compile .
