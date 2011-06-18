@@ -10,7 +10,7 @@
 #
 #     Pushes the local db to the development server
 
-
+ 
 function deploy() {
   server=${1:=development}
   echo "${alert} Compiling css with 'compass compile .'${txtrst}"
