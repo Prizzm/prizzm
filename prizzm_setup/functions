@@ -8,17 +8,16 @@
 #
 #     Pushes the local db to the development server
 
-source $SETUP_DIR_PATH/colors
 
 function deploy() {
-  echo "${info} Compiling css with 'compass compile .''"
+  echo "${alert} Compiling css with 'compass compile .'${txtrst}"
   compass compile .
-  echo "${info} Packaging assets with 'jammit'"
+  echo "${alert} Packaging assets with 'jammit'${txtrst}"
   jammit  
   git add public/assets
-  git commit -am "Deploment - predeploy script"
+  git commit -am "Deploment - predeploy script${txtrst}"
   # Need to add line to remove these commits from history..using autosquash
-  echo "${info} Deploying code to heroku"
+  echo "${alert} Deploying code to heroku"
   rake $1 deploy  
 }
 alias dep='deploy'
