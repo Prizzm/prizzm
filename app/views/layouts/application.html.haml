@@ -14,7 +14,8 @@
     = yield :javascripts
   %body
     #top
-      #logo= link_to "Prizzm", root_url
+      #logo
+        = link_to image_tag( '/images/prizzm-logo.png', { :width=>"168", :height=>"42", :alt=>"Prizzm" }), root_url
       - if signed_in?
         #user_menu
           %ul
