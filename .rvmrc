@@ -22,12 +22,12 @@ fi
 # If we have already created a symlink to our custom githooks
 if [[ -h ".git/hooks" ]] ; then
   # do nothing.
-  echo "${info} * ${alert} Activating custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
+  echo "${info} * ${alert} Using custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
 else
   #remove the git example hooks and create the symlink
   rm -rf .git/hooks
   ln -s ../$SETUP_DIR_PATH/git_hooks .git/hooks
-  echo "${info} * ${alert} Activating custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
+  echo "${info} * ${alert} Installing custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
 fi
 
 # Load some useful shell aliases

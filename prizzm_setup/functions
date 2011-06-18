@@ -8,7 +8,18 @@
 #
 #     Pushes the local db to the development server
 
-
+function deploy() {
+  echo "${info} Compiling css with 'compass compile .''"
+  compass compile .
+  echo "${info} Packaging assets with 'jammit'"
+  jammit  
+  git add public/assets
+  git commit -am "Deploment - predeploy script"
+  # Need to add line to remove these commits from history..using autosquash
+  echo "${info} Deploying code to heroku"
+  rake $1 deploy  
+}
+alias dep='deploy'
 
 function staging() { heroku $@ --app $(basename `pwd`)-staging ;}
 function production() { heroku $@ --app $(basename `pwd`)-production ;}
@@ -17,7 +28,6 @@ function development() { heroku $@ --app $(basename `pwd`)-development ;}
 alias stage='staging'
 alias dev='development'
 alias prod='production'
-alias lil='lol'
 
 
 
