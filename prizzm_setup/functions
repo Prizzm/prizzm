@@ -22,6 +22,7 @@ function deploy() {
   git commit -am "Deploment - predeploy script${txtrst}..."
   echo "${alert} Deploying code to heroku${txtrst}..."
   rake $server deploy  
+  echo "${bldylw} Don't forget to push your changes to github! ${alert}'git push origin master'"
 }
 alias dep='deploy'
 
