@@ -1,44 +1,22 @@
-# Output text color variables
-txtund=$(tput sgr 0 1)     # Underline
-txtbld=$(tput bold)        # Bold
-txtred=$(tput setaf 1)     # Red
-txtgrn=$(tput setaf 2)     # Green
-txtylw=$(tput setaf 3)     # Yellow
-txtblu=$(tput setaf 4)     # Blue
-txtpur=$(tput setaf 5)     # Purple
-txtcyn=$(tput setaf 6)     # Cyan
-txtwht=$(tput setaf 7)     # White
-txtrst=$(tput sgr0)        # Text reset
-txtund=$(tput sgr 0 1)           # Underline
-txtbld=$(tput bold)              # Bold
-bldred=${txtbld}$(tput setaf 1)  #  red
-bldblu=${txtbld}$(tput setaf 4)  #  blue
-bldylw=${txtbld}$(tput setaf 3)  #  yellow
-bldwht=${txtbld}$(tput setaf 7)  #  white
-bldgrn=${txtbld}${txtgrn}
-alert=${bldgrn}
-txtrst=$(tput sgr0)              # Reset
-info=${bldwht}         # Feedback
-pass=${bldblu}
-warn=${bldred}
-
-
+#!/bin/zsh
+# /* vim: set filetype=sh : */   
 
 export PROJECT_NAME='prizzm'
+export PROJECT_ROOT=`pwd`
 export SETUP_DIR=${PROJECT_NAME}_setup
-export PATH=./bin:${PATH//:\.\/bin:} 
+export SETUP_DIR_PATH=$PROJECT_ROOT/$SETUP_DIR
 
+# Activate shell substitutions for color output
+source $SETUP_DIR_PATH/colors
 
-if [[ -s "$SETUP_DIR/rvm/$PROJECT_NAME.gems" ]] ; then
-  rvm gemset import $SETUP_DIR/rvm/$PROJECT_NAME.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
-fi
-
-if [[ -s "$SETUP_DIR/secret-credentials" ]] ; then
-  source $SETUP_DIR/secret-credentials
-  echo "${info} * ${alert} Setting the environment variables listed in: ${info} $SETUP_DIR/secret_credentials"
+# Load the secret API keys into the environment, that we don't want to store in
+# source control
+if [[ -s "$SETUP_DIR_PATH/secret-credentials" ]] ; then
+  echo "${info} * ${alert} Setting the environment variables listed in: ${info} ./$SETUP_DIR/secret-credentials"
+  source $SETUP_DIR_PATH/secret-credentials
 else
   echo "${info} * ${warn} Error: Make sure to download the ${info} secret-credentials ${warn} file from ${bldylw}Sidney, 
-  ${warn} and place it in the ${info} $SETUP_DIR/ ${warn} directory"
+  ${warn} and place it in the ${info} ./$SETUP_DIR/ ${warn} directory"
 fi
 
 # If we have already created a symlink to our custom githooks
@@ -47,17 +25,20 @@ if [[ -h ".git/hooks" ]] ; then
 else
   #remove the git example hooks and create the symlink
   rm -rf .git/hooks
-  ln -s ../$SETUP_DIR/git_hooks .git/hooks
-  echo "${info} * ${alert} Activating custom git hooks in: ${info} $SETUP_DIR/git_hooks"
+  ln -s ../$SETUP_DIR_PATH/git_hooks .git/hooks
+  echo "${info} * ${alert} Activating custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
 fi
 
+# Load some useful shell aliases
+echo "${info} * ${alert} Loading useful shell aliases from: ${info} ./$SETUP_DIR/aliases"
+source $SETUP_DIR_PATH/aliases
 
+# Load other useful shell functions
+echo "${info} * ${alert} Loading useful shell functions from: ${info} ./$SETUP_DIR/functions"
+source $SETUP_DIR_PATH/functions
 
-echo "${info} * ${alert} Loading useful shell aliases from: ${info} $SETUP_DIR/aliases"
-source $SETUP_DIR/aliases
+# Allow access to other useful programs
+echo "${info} * ${alert} Adding utilities directory to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin"
+export PATH=$PROJECT_ROOT/bin:$PATH
+export PATH=$SETUP_DIR_PATH/bin:$PATH
 
-echo "${info} * ${alert} Loading useful shell functions from: ${info} $SETUP_DIR/functions"
-source $SETUP_DIR/functions
-
-# echo "${info} * ${alert} Adding utilities directory to path: ${info} $SETUP_DIR/bin"
-# export PATH=$PATH:$SETUP_DIR/bin

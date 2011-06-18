@@ -9,6 +9,7 @@
 #     Pushes the local db to the development server
 
 
+
 function staging() { heroku $@ --app $(basename `pwd`)-staging ;}
 function production() { heroku $@ --app $(basename `pwd`)-production ;}
 function demo() { heroku $@ --app $(basename `pwd`)-demo ;}
@@ -16,6 +17,7 @@ function development() { heroku $@ --app $(basename `pwd`)-development ;}
 alias stage='staging'
 alias dev='development'
 alias prod='production'
+alias lil='lol'
 
 
 

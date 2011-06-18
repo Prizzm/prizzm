@@ -40,24 +40,13 @@ ImageMagick 6.6.9.8
 
 ### Environment Variables
 
-For any API keys are passwords that are necessary, specify those in
-environmental variables, and add the variable to the list here.
+For any API keys are passwords that are necessary, specify those in the
+prizzm_setup/secret_credentials file as environment variables.  We then load
+those env vars in the config/heroku.yml file, and use the heroku rails gem to
+add them to our production server environmeent, by running
 
+bundle exec rake development heroku:setup
 
-Provided by Sidney:
-
-HOPTOAD_API_KEY             => 
-NEW_RELIC_APPNAME           => 
-NEW_RELIC_ID                => 
-NEW_RELIC_LICENSE_KEY       => 
-PRIZZM_S3_ACCESS_KEY_ID     => 
-PRIZZM_S3_SECRET_ACCESS_KEY => 
-
-
-Provided by Giang:
-
-
-Provided by Charles:
 
 
 ### Gems
@@ -101,35 +90,6 @@ https://github.com/sid137/charles5
 
 
 
-## Heroku Config
-
-=== radiant-beach-401
-
-Web URL:        http://radiant-beach-401.heroku.com/
-
-Domain name:    http://www.prizzm.com/
-
-Git Repo:       git@heroku.com:radiant-beach-401.git
-
-Dynos:          1
-
-Workers:        0
-
-Repo size:      20M
-
-Slug size:      13M
-
-Stack:          bamboo-mri-1.9.2
-
-Data size:      240k
-
-Addons:         Custom Domains, Basic Logging, Shared Database 5MB
-
-Owner:          sid137@gmail.com
-
-Collaborators:  ndgiang84@gmail.com
-
-
 ## Hoptoad Exceptions
 http://sid137.hoptoadapp.com
 
@@ -152,9 +112,7 @@ TODO
 Secret api keys and other things are stored in environmental variables on
 heroku.  See http://devcenter.heroku.com/articles/config-vars for details
 
-Ensure that files listed in SECRETS are never shared publicly
-
-
+Ensure that files listed in prizzm_setup/secret-credentials are never shared publicly
 
 
 # Facebook
