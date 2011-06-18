@@ -1,5 +1,0 @@
-#!/bin/sh
-
-#echo "Packaging assets with Jammit..."
-#jammit
-#git add public/assets
