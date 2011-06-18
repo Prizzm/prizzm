@@ -1,25 +1,45 @@
+#!/bin/zsh
+# /* vim: set filetype=sh : */   
+
 export PROJECT_NAME='prizzm'
 export PROJECT_ROOT=`pwd`
 export SETUP_DIR=${PROJECT_NAME}_setup
-export SETUP_DIR_PATH=`pwd`/$SETUP_DIR
-export PATH=./bin:${PATH//:\.\/bin:} 
+export SETUP_DIR_PATH=$PROJECT_ROOT/$SETUP_DIR
 
-# Activate shell subtitutions for color output
+# Activate shell substitutions for color output
 source $SETUP_DIR_PATH/colors
 
-if [[ -s "$SETUP_DIR/rvm/$PROJECT_NAME.gems" ]] ; then
-  rvm gemset import $SETUP_DIR_PATH/rvm/$PROJECT_NAME.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
-fi
+#  First time setup
+#
+
+# Install project ruby version if not installed, and activated it
+#rvm_install_on_use_flag=1
+
+# Compile ruby for 64-bit architecture on MacOSX
+#rvm_archflags="-arch x86_64"
+
+# Compile faster
+#rvm_make_flags="-j 3"
+
+# return to defaul RVM when leaving project
+#rvm_project_rvmrc_default=1
+
+#rvm use 1.9.2-p180 #@$PROJECT_NAME --create
+
+# Need to run only on first install
+#echo "${alert} Installing project gems..."
+#bundle install --binstubs  | grep -v 'Using' | grep -v 'complete' | sed '/^$/d'
+
 
 
 # Load the secret API keys into the environment, that we don't want to store in
 # source control
-if [[ -s "$SETUP_DIR/secret-credentials" ]] ; then
+if [[ -s "$SETUP_DIR_PATH/secret-credentials" ]] ; then
+  echo "${info} * ${alert} Setting the environment variables listed in: ${info} ./$SETUP_DIR/secret-credentials"
   source $SETUP_DIR_PATH/secret-credentials
-  echo "${info} * ${alert} Setting the environment variables listed in: ${info} $SETUP_DIR/secret-credentials"
 else
   echo "${info} * ${warn} Error: Make sure to download the ${info} secret-credentials ${warn} file from ${bldylw}Sidney, 
-  ${warn} and place it in the ${info} $SETUP_DIR/ ${warn} directory"
+  ${warn} and place it in the ${info} ./$SETUP_DIR/ ${warn} directory"
 fi
 
 # If we have already created a symlink to our custom githooks
@@ -29,18 +49,19 @@ else
   #remove the git example hooks and create the symlink
   rm -rf .git/hooks
   ln -s ../$SETUP_DIR_PATH/git_hooks .git/hooks
-  echo "${info} * ${alert} Activating custom git hooks in: ${info} $SETUP_DIR/git_hooks"
+  echo "${info} * ${alert} Activating custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
 fi
 
-
 # Load some useful shell aliases
-echo "${info} * ${alert} Loading useful shell aliases from: ${info} $SETUP_DIR/aliases"
+echo "${info} * ${alert} Loading useful shell aliases from: ${info} ./$SETUP_DIR/aliases"
 source $SETUP_DIR_PATH/aliases
 
 # Load other useful shell functions
-echo "${info} * ${alert} Loading useful shell functions from: ${info} $SETUP_DIR/functions"
+echo "${info} * ${alert} Loading useful shell functions from: ${info} ./$SETUP_DIR/functions"
 source $SETUP_DIR_PATH/functions
 
 # Allow access to other useful programs
-echo "${info} * ${alert} Adding utilities directory to path: ${info} $SETUP_DIR/bin"
-export PATH=$PATH:$SETUP_DIR_PATH/bin
+echo "${info} * ${alert} Adding utilities directory to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin"
+export PATH=$PROJECT_ROOT/bin:$PATH
+export PATH=$SETUP_DIR_PATH/bin:$PATH
+
