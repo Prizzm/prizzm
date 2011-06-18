@@ -17,7 +17,7 @@ function deploy() {
   git add public/assets
   git commit -am "Deploment - predeploy script${txtrst}"
   # Need to add line to remove these commits from history..using autosquash
-  echo "${alert} Deploying code to heroku"
+  echo "${alert} Deploying code to heroku${txtrst}"
   rake $1 deploy  
 }
 alias dep='deploy'
