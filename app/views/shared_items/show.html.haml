@@ -16,7 +16,7 @@
       %p.fields
         %strong Rating:
         %div{:id => "item_#{@item.id}_rating", :class => "rating"}
-          = form_for Item.new do |f|
+          = form_for @item do |f|
             %div{:id => "stars-wrapper"}
               = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
 
@@ -25,5 +25,6 @@
 :javascript
   $("#stars-wrapper").stars({
     inputType: "select",
-    cancelShow: false
+    cancelShow: false,
+    disabled: true
   });

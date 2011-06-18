@@ -39,7 +39,7 @@
             = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
     .column
       %p.fields
-    = f.submit "Share on FB" 
+    = f.submit "Share on FB", :class => 'share_orphan'
   #share_box
     /= link_to image_tag('share_facebook.png'), user_omniauth_authorize_path(:facebook) 
     #share_warning
