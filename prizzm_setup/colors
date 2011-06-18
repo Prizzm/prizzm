@@ -1,4 +1,5 @@
 #!/bin/bash
+# /* vim: set filetype=sh : */   
 
 # Output text color variables
 txtund=$(tput sgr 0 1)     # Underline

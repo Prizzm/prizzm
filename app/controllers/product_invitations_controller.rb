@@ -24,7 +24,6 @@ class ProductInvitationsController < ApplicationController
       @user.items << @item
       @item.update_attribute(:invitation_status, 'complete')
       message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => @item.product.images.first.image.url}
-      puts message
       Facebook.post_message(message, @user.access_token) 
       sign_in_and_redirect @user, :event => :authentication
     else

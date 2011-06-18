@@ -73,6 +73,7 @@ gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 group :development, :test do
   gem "taps"
 
+  gem "heroku"
 
   #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"

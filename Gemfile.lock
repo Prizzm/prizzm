@@ -394,6 +394,7 @@ DEPENDENCIES
   formtastic
   haml-rails
   hashie
+  heroku
   heroku-rails!
   hirb
   hoptoad_notifier
