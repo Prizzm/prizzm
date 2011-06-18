@@ -12,34 +12,34 @@ source $SETUP_DIR_PATH/colors
 # Load the secret API keys into the environment, that we don't want to store in
 # source control
 if [[ -s "$SETUP_DIR_PATH/secret-credentials" ]] ; then
-  echo "${info} * ${alert} Setting the environment variables listed in: ${info} ./$SETUP_DIR/secret-credentials"
+  echo "${info} * ${alert} Setting the environment variables listed in: ${info} ./$SETUP_DIR/secret-credentials ${txtrst}"
   source $SETUP_DIR_PATH/secret-credentials
 else
   echo "${info} * ${warn} Error: Make sure to download the ${info} secret-credentials ${warn} file from ${bldylw}Sidney, 
-  ${warn} and place it in the ${info} ./$SETUP_DIR/ ${warn} directory"
+  ${warn} and place it in the ${info} ./$SETUP_DIR/ ${warn} directory ${txtrst}"
 fi
 
 # If we have already created a symlink to our custom githooks
 if [[ -h ".git/hooks" ]] ; then
   # do nothing.
-  echo "${info} * ${alert} Using custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
+  echo "${info} * ${alert} Using custom git hooks in: ${info} ./$SETUP_DIR/git_hooks ${txtrst}"
 else
   #remove the git example hooks and create the symlink
   rm -rf .git/hooks
   ln -s ../$SETUP_DIR_PATH/git_hooks .git/hooks
-  echo "${info} * ${alert} Installing custom git hooks in: ${info} ./$SETUP_DIR/git_hooks"
+  echo "${info} * ${alert} Installing custom git hooks in: ${info} ./$SETUP_DIR/git_hooks ${txtrst}"
 fi
 
 # Load some useful shell aliases
-echo "${info} * ${alert} Loading useful shell aliases from: ${info} ./$SETUP_DIR/aliases"
+echo "${info} * ${alert} Loading useful shell aliases from: ${info} ./$SETUP_DIR/aliases ${txtrst}"
 source $SETUP_DIR_PATH/aliases
 
 # Load other useful shell functions
-echo "${info} * ${alert} Loading useful shell functions from: ${info} ./$SETUP_DIR/functions"
+echo "${info} * ${alert} Loading useful shell functions from: ${info} ./$SETUP_DIR/functions ${txtrst}"
 source $SETUP_DIR_PATH/functions
 
 # Allow access to other useful programs
-echo "${info} * ${alert} Adding utilities directory to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin"
+echo "${info} * ${alert} Adding utilities directory to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin ${txtrst}"
 export PATH=$PROJECT_ROOT/bin:$PATH
 export PATH=$SETUP_DIR_PATH/bin:$PATH
 
