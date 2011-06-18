@@ -39,7 +39,7 @@ echo "${info} * ${alert} Loading useful shell functions from: ${info} ./$SETUP_D
 source $SETUP_DIR_PATH/functions
 
 # Allow access to other useful programs
-echo "${info} * ${alert} Adding utilities directory to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin ${txtrst}"
+echo "${info} * ${alert} Adding utilities directories to PATH: ${info} ./bin ${bldylw} and ${info} ./$SETUP_DIR/bin ${txtrst}"
 export PATH=$PROJECT_ROOT/bin:$PATH
 export PATH=$SETUP_DIR_PATH/bin:$PATH
 
