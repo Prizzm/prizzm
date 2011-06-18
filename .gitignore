@@ -14,3 +14,5 @@ db/*.sqlite3
 vendor/bundle
 public/uploads
 *live.js
+nbproject/*
+nbproject/**/*
