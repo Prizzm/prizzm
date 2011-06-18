@@ -90,7 +90,7 @@ $(document).ready(function(){
     }
   }
 
-  checkWinFacebook();
+  /*checkWinFacebook();*/
 
   // For Twitter posting message
   $('.shared_tt_checkbox').live('click', function() {
@@ -117,7 +117,7 @@ $(document).ready(function(){
     }
   }
 
-  checkWinTwitter();
+  /*checkWinTwitter();*/
 
   /* Now we need to configure the checkboxes to create an association between
    * the items, and the interaction that is being created.  First we will bind a
