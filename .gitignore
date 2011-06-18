@@ -16,3 +16,4 @@ public/uploads
 *live.js
 nbproject/*
 nbproject/**/*
+.DS_Store
