@@ -1,0 +1,37 @@
+%tr{:id => "item_#{item.id}"}
+  .item_info
+    %td.thumb= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
+    /%td.position= item.position
+    %td.name
+      = link_to item.name, [current_user, item]
+    /%td.itemtype= best_in_place item, :itemtype, :path => [current_user, item]
+    %td.brand
+      -if item.has_product?
+        = item.parent_company.name 
+        = image_tag item.product.company.images.first.image.thumb.url if item.has_product?
+    %td.review= truncate item.review, :length => 30
+    %td.rating
+      .social
+        .twitter_button
+          = link_to image_tag('twitter_24x24.png'), '#'
+          = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{item.id}"
+        .facebook_button
+          = link_to image_tag('facebook_24x24.png'), '#'
+          = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{item.id}"
+      %div(id="item_#{item.id}_rating" class="rating")
+        = form_for [@user, item], :remote => true do |f|
+          %div{:id => "stars-wrapper-#{item.id}"}
+            = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+          :javascript
+            $(document).ready(function(){
+              $("#stars-wrapper-#{item.id}").stars({
+                inputType: "select",
+                callback: function(ui, type, value, event){
+                  var item = #{item.id};
+                  update_rating('items', item,value);
+                },
+                cancelShow: false
+              });
+            });
+    %td.posession= item.possession_status.capitalize
+
