@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def wanted_items
+    items.where("possession_status == 'want'")
+  end
+
+  def owned_items
+    items.where("possession_status == 'have'")
+  end
+
   def password_require?
     new_record?
   end

@@ -5,6 +5,7 @@
 = semantic_form_for [current_user, @item] do |form|
   = form.inputs do
     = form.input :name
+    = form.input :possession_status, :label => 'Have/Want', :as => :select, :collection =>  {'Have' => 'have', 'Want' => 'want'}, :prompt => false
     = form.input :review
     = form.input :sku
     = form.input :url, :as => :string
