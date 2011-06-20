@@ -11,7 +11,8 @@ gem 'inherited_resources'
 gem "acts_as_list"
 
 # Used to simplify user registrations and logins
-gem "devise", :git => "https://github.com/plataformatec/devise.git"
+# Pined to ref, as there is problem on devise HEAD
+gem "devise", :git => "https://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
 
 # Might not be used
 gem "ajaxful_rating"
@@ -70,7 +71,24 @@ gem "jammit"
 gem "rest-client"
 gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 
+# WebThump API Gem
+gem "simplificator-rwebthumb", :require => 'rwebthumb'
+ 
 group :development, :test do
+  gem "guard"
+  gem "guard-ego"
+  gem "guard-bundler"
+  gem "guard-jammit"
+  gem "guard-rails", :git => 'https://github.com/sid137/guard-rails.git' 
+  gem "guard-rspec"
+  gem "guard-shell"
+  gem "guard-compass"
+  gem 'rb-fsevent', :require => false 
+  gem "rb-inotify", :require => false
+  gem "libnotify", :require => false
+  #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
+
+ 
   gem "taps"
 
   gem "heroku"
@@ -111,6 +129,7 @@ group :development, :test do
   gem "rspec-rails"# , '2.6.0' #, '2.5.0'
   #gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers.git'
   #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
+  gem 'shoulda-matchers', :git => 'https://github.com/sid137/shoulda-matchers.git'
   gem "ZenTest"
   gem "autotest-rails"
 end
