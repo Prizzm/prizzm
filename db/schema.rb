@@ -60,13 +60,14 @@ ActiveRecord::Schema.define(:version => 20110615141515) do
   end
 
   create_table "items", :force => true do |t|
-    t.string   "name"
-    t.text     "review"
     t.text     "url"
-    t.integer  "rating"
+    t.text     "review"
     t.string   "sku"
+    t.string   "name"
     t.string   "privacy"
     t.string   "invitation_status"
+    t.string   "possession_status"
+    t.integer  "rating"
     t.integer  "position"
     t.integer  "user_id"
     t.integer  "product_id"

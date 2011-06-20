@@ -23,16 +23,6 @@
     .column
       %p.fields
         = render 'privacy_controls'
-    .column
-      = form_tag [current_user, @item, 'share'], :remote => true do
-        .social
-          .twitter_button
-            = link_to image_tag('twitter_24x24.png'), '#'
-            = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
-          .facebook_button
-            = link_to image_tag('facebook_24x24.png'), '#'
-            = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
-          = submit_tag "Share"
       %br/
       %p.fields
         %strong Added on: 
@@ -41,8 +31,8 @@
         %strong Last updated on:
         #item-urls= link_to @item.url, @item.url
 
-
-  = render 'url_preview'
+    .column
+      = render 'url_preview'
 
   = render 'images'
 

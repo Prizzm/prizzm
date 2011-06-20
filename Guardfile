@@ -1,5 +1,38 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+# :project_path: path to the compass project directory (from guard working directory)
+# :configuration_file: path to your compass configuration file (from guard working directory)
+guard 'compass', :configuration_file => 'config/compass.rb' do
+  watch(/^app\/stylesheets\/(.*)\.s[ac]ss/)
+end
+
+
+# https://github.com/mockko/livereload#readme
+#
+# :api_version => '1.4'    # default '1.6'
+# :host => '127.3.3.1'     # default '0.0.0.0'
+# :port => '12345'         # default '35729'
+# :apply_js_live => false  # default true
+# :apply_css_live => false # default true
+# :grace_period => 0.5     # default 0 (seconds)
+guard 'livereload' do
+  watch(%r{app/.+\.(erb|haml)})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{(public/|app/assets).+\.(css|js|html)})
+  watch(%r{(app/assets/.+\.css)\.scss}) { |m| m[1] }
+  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
+  watch(%r{config/locales/.+\.yml})
+end
+
+
+
+# Runs jammit coommand every time a js or css file is modified
+guard 'jammit' do
+  watch(/^public\/javascripts\/(.*)\.js/)
+  watch(/^public\/stylesheets\/(.*)\.css/)
+end
+
+
 
 # https://github.com/guard/guard-rails
 #
@@ -24,15 +57,6 @@ end
 
 
 
-guard 'compass', :configuration_file => 'config/compass.rb' do
-  watch(/^app\/stylesheets\/(.*)\.s[ac]ss/)
-end
-
-# Runs jammit coommand every time a js or css file is modified
-guard 'jammit' do
-  watch(/^public\/javascripts\/(.*)\.js/)
-  watch(/^public\/stylesheets\/(.*)\.css/)
-end
  
 #guard 'rspec', :version => 2 do
   # Rails example
@@ -58,3 +82,4 @@ end
 guard 'ego' do
   watch('Guardfile')
 end
+

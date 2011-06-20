@@ -83,7 +83,6 @@ body
     background: -o-linear-gradient(#333333, #111111)
     +last
     #logo
-      a
       position: absolute
       left: 330px
     #user_menu
@@ -430,11 +429,14 @@ legend
 #item-privacy-control
   width: 100px
 
-#url-preview-window
-  border: 1px solid red
+iframe#url-preview-window
+  zoom: 10%
+  border: 2px solid black
   display: hidden
-  width: 302px
+  width: 350px
   height: 300px
 
 
+#item-urls a
+  +link-colors(black, #BABABA)
 

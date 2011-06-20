@@ -13,15 +13,20 @@
  
 function deploy() {
   server=${1:=development}
+
   echo "${alert} Compiling css with 'compass compile .'${txtrst}..."
   compass compile .
+  
   echo "${alert} Packaging assets with 'jammit'${txtrst}..."
   jammit  
-  git add public/assets
+
   # Need to add line to remove these commits from history..using autosquash
+  git add public/assets
   git commit -m "Deploment - predeploy script${txtrst}..."
+ 
   echo "${alert} Deploying code to heroku${txtrst}..."
   rake $server deploy  
+  
   echo "${bldylw} Don't forget to push your changes to github! ${alert}'git push origin master'${txtrst}"
 }
 alias dep='deploy'
@@ -33,7 +38,6 @@ function development() { heroku $@ --app $(basename `pwd`)-development ;}
 alias stage='staging'
 alias dev='development'
 alias prod='production'
-
 
 
 function find_and_replace  {

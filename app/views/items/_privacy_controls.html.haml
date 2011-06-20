@@ -1,34 +1,14 @@
+
+#item-privacy-control= button_to "#{privacy_display_for @item}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item"
 #current-privacy-indicator
   = @item.privacy
 
-#item-privacy-control
-
-:javascript
-  $(document).ready(function(){
-    $('#item-privacy-control').slider({
-      max: 2,
-      animate: "fast",
-      slide: function(event, ui){
-        $('#current-privacy-indicator').html(ui.value);
-        var privacy = ui.value
-        $.ajax({
-          url: "#{url_for [current_user, @item]}",
-          type: 'PUT',
-          contentType: 'application/json',
-          dataType: 'json',
-          data: {
-            privacy: privacy
-          }, 
-          success: function(data, testStatus, jqXHR){
-            console.log(data);
-            if (privacy == 1) {
-              console.log('Opening post controls');
-            } else {
-              console.log('Closing post controls');
-            }
-          }
-        });
-      }
-    });
-  });
-
+= form_tag @item, :remote => true do
+  .social
+    .twitter_button
+      = link_to image_tag('twitter_24x24.png'), '#'
+      = check_box_tag "item[shared_twitter]", 1, false, :class => 'shared_tt_checkbox', :id => "item_shared_tt_#{@item.id}"
+    .facebook_button
+      = link_to image_tag('facebook_24x24.png'), '#'
+      = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
+    = submit_tag "Share"

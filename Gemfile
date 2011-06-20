@@ -73,7 +73,7 @@ gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
 
 # WebThump API Gem
 gem "simplificator-rwebthumb", :require => 'rwebthumb'
- 
+  
 group :development, :test do
   gem "guard"
   gem "guard-ego"
@@ -83,6 +83,7 @@ group :development, :test do
   gem "guard-rspec"
   gem "guard-shell"
   gem "guard-compass"
+  gem "guard-livereload"
   gem 'rb-fsevent', :require => false 
   gem "rb-inotify", :require => false
   gem "libnotify", :require => false

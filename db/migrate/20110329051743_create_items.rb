@@ -1,14 +1,16 @@
 class CreateItems < ActiveRecord::Migration
   def self.up
     create_table :items do |t|
-      t.string :name
-      t.text :review
       t.text :url
-      t.integer :rating
+      t.text :review
+
       t.string :sku
+      t.string :name
       t.string :privacy
       t.string :invitation_status
+      t.string :possession_status
 
+      t.integer :rating
       t.integer :position
 
       t.references :user

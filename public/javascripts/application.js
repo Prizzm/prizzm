@@ -68,7 +68,7 @@ $(document).ready(function(){
     } 
   });
 
-
+ 
   // For Facebook posting messages
   $('.share_orphan').live('click', function() {
       window.name = 'parent_of_facebook';

@@ -4,7 +4,10 @@ describe Item do
   describe "model attributes" do
     it {should have_db_column(:name).of_type(:string)}
     it {should have_db_column(:privacy).of_type(:string)}
+    it {should have_db_column(:invitation_status).of_type(:string)}
+    it {should have_db_column(:possession_status).of_type(:string)}
     it {should have_db_column(:review).of_type(:text)}
+    it {should have_db_column(:url).of_type(:text)}
     it {should have_db_column(:rating).of_type(:integer)}
   end
 
@@ -17,6 +20,7 @@ describe Item do
 
   context "attribute defaults" do
     its(:privacy) {should eq('private')} 
+    its(:possession_status) {should eq('want')} 
   end
 
   context "when creating associated objects" do

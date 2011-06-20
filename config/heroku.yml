@@ -13,13 +13,15 @@ stacks:
   # choose the stacks you want to use for each app.
   # the all: setting sets the default
   all: bamboo-mri-1.9.2
-
+ 
 config:
   # choose the configuration settings for all environments
   all:
     BUNDLE_WITHOUT: "development:test"
     RACK_ENV: 'production'
     HOPTOAD_API_KEY: <%= ENV['HOPTOAD_API_KEY'] %>
+    WEBTHUMB_API_KEY: <%= ENV['WEBTHUMB_API_KEY'] %>
+    WEBTHUMB_USER_ID: <%= ENV['WEBTHUMB_USER_ID'] %>
 
   # you can also override configuration settings for each environment
   production:

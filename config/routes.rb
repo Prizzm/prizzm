@@ -31,6 +31,7 @@ Prizzm::Application.routes.draw do
   # FIXME:  Should be using a 'GET' for routes that have side effects, but we
   # can't redirect using a 'POST' method.  Used in omniauth_callback/product_invitations
   get '/process_invitation' => 'product_invitations#process_accepted_product_invitation', :as => 'process_accepted_product_invitation'
+  put '/update_item_privacy/:id' => 'items_controller#update_privacy', :as => 'update_item_privacy'
 
   # Rouutess for item sharing use cases
   get 'shared/item/:id' => 'shared_items#show', :as => "shared_item"

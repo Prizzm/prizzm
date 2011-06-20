@@ -24,6 +24,7 @@ class Item < ActiveRecord::Base
 
   def default_values
     self.privacy ||= 'private'
+    self.possession_status ||= 'want'
   end 
 
   # convience methods
