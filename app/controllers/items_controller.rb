@@ -11,8 +11,10 @@ class ItemsController < InheritedResources::Base
   
   def sort
     @user = current_user
-    find_changed_item_ids
-    update_item_ordering
+    @item = Item.find(params[:id]) 
+    @item.update_attribute(:possession_status,  params[:possession_status])
+    #find_changed_item_ids
+    #update_item_ordering
     head :ok
   end
 

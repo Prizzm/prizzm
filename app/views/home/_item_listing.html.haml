@@ -1,4 +1,4 @@
-%tr{:id => "item_#{item.id}"}
+%tr(id="item_#{item.id}" data-itemid="#{item.id}")
   .item_info
     %td.thumb= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
     /%td.position= item.position
@@ -33,5 +33,5 @@
                 cancelShow: false
               });
             });
-    %td.posession= item.possession_status.capitalize
+    /%td.posession= item.possession_status.capitalize
 

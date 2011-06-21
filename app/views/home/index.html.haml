@@ -17,7 +17,6 @@
           %th Brand
           %th Review
           %th Rating
-          %th Have/Want
       %tbody#have-tbody.connectedSortable(data-possession='have')
         = render :partial => "home/item_listing", :collection => @user.owned_items.recently_updated, :as => :item
 
@@ -36,7 +35,6 @@
           %th Brand
           %th Review
           %th Rating
-          %th Have/Want
       %tbody#want-tbody.connectedSortable(data-possession='want')
         = render :partial => "home/item_listing", :collection => @user.wanted_items.recently_updated, :as => :item
 
@@ -59,10 +57,13 @@
       var new_table_order = $(this).sortable('toArray');
       var user_id = $('table.interactions').attr('data-user');
       var possession_status = $(this).data('possession');
+      var moved_item_id = $(ui.item).data('itemid');
+      console.log(moved_item_id);
       $.post('/items/sort', {
         new_item_order: new_table_order, 
         old_item_order: this.old_table_order, 
         user_id: user_id,
+        id: moved_item_id,
         possession_status: possession_status 
       }) //post order to rails
       $(this).find('.item_info').removeClass('hover');
