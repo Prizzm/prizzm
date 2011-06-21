@@ -1773,54 +1773,28 @@ body #container #main #interactions #interactions_feed .interaction-content .use
   height: 55px;
 }
 /* line 274, ../../app/stylesheets/main.sass */
-body #container #main #items {
+body #container #main #have_items {
+  margin-bottom: 3em;
+}
+/* line 276, ../../app/stylesheets/main.sass */
+body #container #main #have_items, body #container #main #want_items {
   margin-left: 9px;
-  min-height: 650px;
-  height: auto !important;
-  height: 650px;
   display: inline;
   float: left;
   margin-right: 0;
   width: 950px;
-  display: -moz-box;
-  display: -webkit-box;
-  display: -ms-box;
-  display: box;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
-  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: -moz-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: -o-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: -ms-linear-gradient(left top, #ffffff, #dddddd);
-  background-image: linear-gradient(left top, #ffffff, #dddddd);
   margin-top: 1px;
 }
 /* line 147, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #container #main #items {
+* html body #container #main #have_items, * html body #container #main #want_items {
   overflow-x: hidden;
 }
-/* line 284, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed #search_term {
-  margin-left: 10px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  width: 417px;
-}
-/* line 288, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed .applet-title {
+/* line 286, ../../app/stylesheets/main.sass */
+body #container #main #have_items #have_items_feed .applet-title, body #container #main #have_items #want_items_feed .applet-title, body #container #main #want_items #have_items_feed .applet-title, body #container #main #want_items #want_items_feed .applet-title {
   color: #999999;
   font-family: "Helvetica Neue,Helvetica";
   font-size: 18px;
@@ -1829,8 +1803,8 @@ body #container #main #items #items_feed .applet-title {
   padding-top: 8px;
   padding-left: 150px;
 }
-/* line 296, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed #add-item {
+/* line 294, ../../app/stylesheets/main.sass */
+body #container #main #have_items #have_items_feed #add-item-have, body #container #main #have_items #have_items_feed #add-item-want, body #container #main #have_items #want_items_feed #add-item-have, body #container #main #have_items #want_items_feed #add-item-want, body #container #main #want_items #have_items_feed #add-item-have, body #container #main #want_items #have_items_feed #add-item-want, body #container #main #want_items #want_items_feed #add-item-have, body #container #main #want_items #want_items_feed #add-item-want {
   float: right;
   display: inline-block;
   width: 100px;
@@ -1838,21 +1812,21 @@ body #container #main #items #items_feed #add-item {
   vertical-align: middle;
   padding: 5px 0 4px 5px;
 }
-/* line 303, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed #add-item .add-item-text {
+/* line 301, ../../app/stylesheets/main.sass */
+body #container #main #have_items #have_items_feed #add-item-have .add-item-text, body #container #main #have_items #have_items_feed #add-item-want .add-item-text, body #container #main #have_items #want_items_feed #add-item-have .add-item-text, body #container #main #have_items #want_items_feed #add-item-want .add-item-text, body #container #main #want_items #have_items_feed #add-item-have .add-item-text, body #container #main #want_items #have_items_feed #add-item-want .add-item-text, body #container #main #want_items #want_items_feed #add-item-have .add-item-text, body #container #main #want_items #want_items_feed #add-item-want .add-item-text {
   display: inline-block;
   height: 32px;
   vertical-align: bottom;
 }
-/* line 307, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed .items td.rating {
+/* line 305, ../../app/stylesheets/main.sass */
+body #container #main #have_items #have_items_feed .items td.rating, body #container #main #have_items #want_items_feed .items td.rating, body #container #main #want_items #have_items_feed .items td.rating, body #container #main #want_items #want_items_feed .items td.rating {
   width: 90px;
 }
-/* line 309, ../../app/stylesheets/main.sass */
-body #container #main #items #items_feed .items td.review {
+/* line 307, ../../app/stylesheets/main.sass */
+body #container #main #have_items #have_items_feed .items td.review, body #container #main #have_items #want_items_feed .items td.review, body #container #main #want_items #have_items_feed .items td.review, body #container #main #want_items #want_items_feed .items td.review {
   width: 200px;
 }
-/* line 311, ../../app/stylesheets/main.sass */
+/* line 309, ../../app/stylesheets/main.sass */
 body #container #main #items-details {
   margin: 1px 0 0 9px;
   min-height: 650px;
@@ -1881,7 +1855,7 @@ body #container #main #items-details {
   background-image: linear-gradient(left top, #ffffff, #dddddd);
   overflow-x: hidden;
 }
-/* line 338, ../../app/stylesheets/main.sass */
+/* line 336, ../../app/stylesheets/main.sass */
 body #container #main #items-details .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1892,83 +1866,83 @@ body #container #main #items-details .prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 347, ../../app/stylesheets/main.sass */
+/* line 345, ../../app/stylesheets/main.sass */
 body #container #main #items-details p {
   padding: 10px 5px 10px 10px;
   margin: 0;
 }
 
-/* line 351, ../../app/stylesheets/main.sass */
+/* line 349, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 355, ../../app/stylesheets/main.sass */
+/* line 353, ../../app/stylesheets/main.sass */
 #facebox fieldset {
   border: none;
   padding: 0;
 }
 
-/* line 360, ../../app/stylesheets/main.sass */
+/* line 358, ../../app/stylesheets/main.sass */
 #facebox form label {
   margin: 8px 6px 3px 2px;
   float: left;
   width: 110px;
   text-align: right;
 }
-/* line 365, ../../app/stylesheets/main.sass */
+/* line 363, ../../app/stylesheets/main.sass */
 #facebox form ol, #facebox form ul {
   list-style: none outside none;
   padding: 0;
 }
-/* line 368, ../../app/stylesheets/main.sass */
+/* line 366, ../../app/stylesheets/main.sass */
 #facebox form ol li, #facebox form ul li {
   margin-bottom: 10px;
   overflow: hidden;
 }
-/* line 371, ../../app/stylesheets/main.sass */
+/* line 369, ../../app/stylesheets/main.sass */
 #facebox form textarea {
   height: 100px;
   min-width: 200px;
   width: 250px;
 }
-/* line 375, ../../app/stylesheets/main.sass */
+/* line 373, ../../app/stylesheets/main.sass */
 #facebox form input {
   width: 250px;
 }
-/* line 377, ../../app/stylesheets/main.sass */
+/* line 375, ../../app/stylesheets/main.sass */
 #facebox form .commit {
   text-align: right;
   padding-right: 70px;
 }
-/* line 380, ../../app/stylesheets/main.sass */
+/* line 378, ../../app/stylesheets/main.sass */
 #facebox form .commit input {
   width: auto;
 }
 
-/* line 383, ../../app/stylesheets/main.sass */
+/* line 381, ../../app/stylesheets/main.sass */
 #stars-wrapper-new-item .ui-stars-star {
   padding-top: 8px;
 }
 
-/* line 386, ../../app/stylesheets/main.sass */
+/* line 384, ../../app/stylesheets/main.sass */
 .clear {
   clear: both;
 }
 
-/* line 389, ../../app/stylesheets/main.sass */
+/* line 387, ../../app/stylesheets/main.sass */
 #item-interaction-submit {
   margin-right: 22px;
   display: none;
 }
 
-/* line 393, ../../app/stylesheets/main.sass */
+/* line 391, ../../app/stylesheets/main.sass */
 .hover {
   background-color: white;
 }
 
-/* line 397, ../../app/stylesheets/main.sass */
+/* line 395, ../../app/stylesheets/main.sass */
 .box {
   background: none repeat scroll 0 0 #464e53;
   margin-bottom: 20px;
@@ -1981,7 +1955,7 @@ body #container #main #items-details p {
   border-radius: 7px;
 }
 
-/* line 403, ../../app/stylesheets/main.sass */
+/* line 401, ../../app/stylesheets/main.sass */
 legend {
   background: none repeat scroll 0 0 white;
   border: 1px solid #bbbbbb;
@@ -1995,39 +1969,39 @@ legend {
   border-radius: 7px;
 }
 
-/* line 410, ../../app/stylesheets/main.sass */
+/* line 408, ../../app/stylesheets/main.sass */
 #login-page {
   margin: auto;
   padding: 5em 0 12em;
   width: 400px;
 }
 
-/* line 415, ../../app/stylesheets/main.sass */
+/* line 413, ../../app/stylesheets/main.sass */
 .box label {
   color: white;
 }
 
-/* line 418, ../../app/stylesheets/main.sass */
+/* line 416, ../../app/stylesheets/main.sass */
 #advanced-new-item {
   display: none;
 }
 
-/* line 421, ../../app/stylesheets/main.sass */
+/* line 419, ../../app/stylesheets/main.sass */
 #share_box {
   float: right;
 }
 
-/* line 424, ../../app/stylesheets/main.sass */
+/* line 422, ../../app/stylesheets/main.sass */
 #share_warning .alert {
   width: 190px;
 }
 
-/* line 429, ../../app/stylesheets/main.sass */
+/* line 427, ../../app/stylesheets/main.sass */
 #item-privacy-control {
   width: 100px;
 }
 
-/* line 432, ../../app/stylesheets/main.sass */
+/* line 430, ../../app/stylesheets/main.sass */
 iframe#url-preview-window {
   zoom: 10%;
   border: 2px solid black;
@@ -2036,7 +2010,7 @@ iframe#url-preview-window {
   height: 300px;
 }
 
-/* line 440, ../../app/stylesheets/main.sass */
+/* line 438, ../../app/stylesheets/main.sass */
 #item-urls a {
   color: black;
 }

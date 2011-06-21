@@ -9,8 +9,10 @@ Prizzm::Application.routes.draw do
   root :to => 'home#index'
 
   resource :profile
-  devise_for :users, :path => "accounts", :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks" }
-
+  devise_for :users, :path => "accounts", 
+            :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions" },
+            :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+ 
   resources :users do
     resources :items do
       match 'share' => 'items#share'

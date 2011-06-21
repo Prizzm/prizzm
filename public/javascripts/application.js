@@ -181,33 +181,4 @@ $(document).ready(function(){
       $(this).removeClass('hover');
   });
 
-  //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
-  var fixHelper = function(e, ui) {
-    ui.children().each(function() {
-      $(this).width($(this).width());
-    });
-    return ui;
-  };
-
-  var getStartOrder = function(event, ui){
-    this.old_table_order = $(this).sortable('toArray').toString();
-    this.old_table_order = $(this).sortable('toArray');
-  };
-
-  var saveOrder = function(event,ui){
-    var new_table_order = $(this).sortable('toArray');
-    var user_id = $('table.interactions').attr('data-user');
-    $.post('/items/sort', {
-      new_item_order: new_table_order, 
-      old_item_order: this.old_table_order, 
-      user_id: user_id
-    }) //post order to rails
-    $(this).find('.item_info').removeClass('hover');
-  };
-
-  $('tbody').sortable({
-    helper: fixHelper,
-    start: getStartOrder, 
-    update: saveOrder
-  }).disableSelection();
 });

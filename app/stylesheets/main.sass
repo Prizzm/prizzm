@@ -271,20 +271,18 @@ body
               margin-right: 10px
             .user-content
               +min-height(55px)
-      #items
+      #have_items
+        +append-bottom(3em)
+      #have_items, #want_items
         margin-left: 9px
-        +min-height(650px)
+        //+min-height(650px)
         +column(24, true)
-        +display-box
-        +border-radius(5px)
+        //+display-box
+        //+border-radius(5px)
         +box-shadow
-        +background-image(linear-gradient(left top, white, #dddddd))
+        //+background-image(linear-gradient(left top, white, #dddddd))
         margin-top: 1px
-        #items_feed
-          #search_term
-            margin-left: 10px
-            +border-radius(5px)
-            width: 417px
+        #have_items_feed, #want_items_feed
           .applet-title
             color: #999999
             font-family: "Helvetica Neue,Helvetica"
@@ -293,7 +291,7 @@ body
             display: inline-block
             padding-top: 8px
             padding-left: 150px
-          #add-item
+          #add-item-have, #add-item-want
             float: right
             display: inline-block
             width: 100px

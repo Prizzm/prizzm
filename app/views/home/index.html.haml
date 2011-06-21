@@ -2,13 +2,13 @@
   #user_info
     .user_name #{@user.name}
 
-#items
-  #items_feed
+#have_items
+  #have_items_feed
     .applet-title
       Things I Have
-    #add-item
+    #add-item-have
       .add-item-text Add Item
-      = link_to image_tag('add.png', :id => 'add-item-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-link', :title => 'Add an item'
+      = link_to image_tag('add.png', :id => 'add-item-have-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-have-link', :title => 'Add an item'
     %table.items
       %thead
         %tr
@@ -18,7 +18,63 @@
           %th Review
           %th Rating
           %th Have/Want
-      %tbody
+      %tbody#have-tbody.connectedSortable(data-possession='have')
         = render :partial => "home/item_listing", :collection => @user.owned_items.recently_updated, :as => :item
+
+#want_items
+  #want_items_feed
+    .applet-title
+      Things I Want
+    #add-item-want
+      .add-item-text Add Item
+      = link_to image_tag('add.png', :id => 'add-item-want-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-want-link', :title => 'Add an item'
+    %table.items
+      %thead
+        %tr
+          %th 
+          %th Name
+          %th Brand
+          %th Review
+          %th Rating
+          %th Have/Want
+      %tbody#want-tbody.connectedSortable(data-possession='want')
         = render :partial => "home/item_listing", :collection => @user.wanted_items.recently_updated, :as => :item
+
+:javascript
+  $(document).ready(function(){
+    //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
+    var fixHelper = function(e, ui) {
+      ui.children().each(function() {
+        $(this).width($(this).width());
+      });
+      return ui;
+    };
+
+    var getStartOrder = function(event, ui){
+      this.old_table_order = $(this).sortable('toArray').toString();
+      this.old_table_order = $(this).sortable('toArray');
+    };
+
+    var saveOrder = function(event,ui){
+      var new_table_order = $(this).sortable('toArray');
+      var user_id = $('table.interactions').attr('data-user');
+      var possession_status = $(this).data('possession');
+      $.post('/items/sort', {
+        new_item_order: new_table_order, 
+        old_item_order: this.old_table_order, 
+        user_id: user_id,
+        possession_status: possession_status 
+      }) //post order to rails
+      $(this).find('.item_info').removeClass('hover');
+      console.log("new poss: " + possession_status);
+    };
+
+    $('#have-tbody, #want-tbody').sortable({
+      helper: fixHelper,
+      start: getStartOrder, 
+      update: saveOrder,
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+
+  });
 

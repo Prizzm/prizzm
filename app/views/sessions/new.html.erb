@@ -1,0 +1,57 @@
+  <div id="login-page">
+    <div class="box">
+      <div id="forms" class="block">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <fieldset class="login">
+            <legend>Login</legend>
+            <span class="login-text">
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </span>
+            <span class="login-text">
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </span>
+            <% if devise_mapping.rememberable? -%>
+              <p>
+                <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+              </p>
+            <% end -%> 
+            <%= submit_tag 'Log in', :class => "confirm button" %>
+            <%= render :partial => "devise/shared/links" %>
+            <script type="text/javascript">
+              $('#user_email').focus();
+            </script>
+
+            <%- if controller_name != 'sessions' %>
+              <%= link_to "Sign in", new_session_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+              <% link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+              <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.omniauthable? %>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+              <% end -%>
+            <% end -%>
+          </fieldset>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
