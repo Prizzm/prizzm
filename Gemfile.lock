@@ -216,6 +216,7 @@ GEM
     hoptoad_notifier (2.4.11)
       activesupport
       builder
+    hpricot (0.8.4)
     httpclient (2.2.1)
     i18n (0.5.0)
     inherited_resources (1.2.2)
@@ -442,6 +443,7 @@ DEPENDENCIES
   heroku-rails!
   hirb
   hoptoad_notifier
+  hpricot
   inherited_resources
   jammit
   jquery-rails

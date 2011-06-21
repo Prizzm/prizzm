@@ -17,3 +17,4 @@ public/uploads
 nbproject/*
 nbproject/**/*
 .DS_Store
+pivotal/*

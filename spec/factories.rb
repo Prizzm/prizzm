@@ -62,8 +62,8 @@ end
 # Table name: items
 Factory.define :item do |item|
   item.rating { [1,2,3].rand }
-  item.review
   item.sku
+  item.possession_status {["have", "want"].rand}
   item.after_build do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
@@ -79,8 +79,8 @@ end
 
 Factory.define :item_with_images, :parent => :item do |item|
   item.rating { [1,2,3].rand }
-  item.review
   item.sku
+  item.possession_status {["have", "want"].rand}
   item.after_create do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 

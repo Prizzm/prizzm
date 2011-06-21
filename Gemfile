@@ -88,7 +88,9 @@ group :development, :test do
   gem "rb-inotify", :require => false
   gem "libnotify", :require => false
   #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
-
+ 
+  # Needed to run html2haml to convert html to haml
+  gem "hpricot"
  
   gem "taps"
 

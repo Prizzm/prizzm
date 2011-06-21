@@ -18,6 +18,7 @@
           %th Review
           %th Rating
       %tbody#have-tbody.connectedSortable(data-possession='have')
+        %tr
         = render :partial => "home/item_listing", :collection => @user.owned_items.recently_updated, :as => :item
 
 #want_items

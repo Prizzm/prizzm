@@ -6,5 +6,8 @@ javascripts:
 stylesheets:
   app:
     - public/stylesheets/*.css
-    - public/stylesheets/**/*.css
-
+  login:
+    - public/stylesheets/login/*.css
+  ie: 
+    - public/stylesheets/ie/*.css
+ 

@@ -10,7 +10,7 @@
 
 
 def make_real user
-  5.times do
+  8.times do
     item = Factory :item_with_images
     user.items << item
   end
