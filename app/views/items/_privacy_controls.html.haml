@@ -1,7 +1,7 @@
 
-#item-privacy-control= link_to "#{privacy_display_for @item}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item", :id => "item-privacy-control"
+#item-privacy-control= link_to "#{@item.privacy.capitalize}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item", :id => "item-privacy-control"
 #current-privacy-indicator
-  = @item.privacy
+  = new_privacy_message @item
 
 = form_tag @item, :remote => true do
   .social
@@ -16,5 +16,5 @@
 :javascript
   $('#item-privacy-control').live('ajax:success', function(event, data, status, xhr){
     $('#current-privacy-indicator').html(data.message);
-    $(this).text(data.next_privacy);
+    $(this).html(data.next_privacy);
   });

@@ -42,6 +42,7 @@
     #footerContent.clear.clearfix
       #copyright Prizzm &copy; 2011
       #footerLinks
+        = link_to 'sitemap', '#'
         sitemap | privacy policy | about
   /= render 'layouts/google_analytics'
   /= javascript_include_tag 'http://livejs.com/live.js' if Rails.env.development?

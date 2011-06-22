@@ -2,7 +2,7 @@ class ItemsController < InheritedResources::Base
   belongs_to :user
   respond_to :html, :json
   layout :determine_layout
-
+  helper_method :new_privacy_message
 
   def show
     @user = current_user
@@ -26,8 +26,7 @@ class ItemsController < InheritedResources::Base
   def update_privacy
     @item = current_user.items.find(params[:id])
     @item.update_attribute(:privacy, new_item_privacy(@item.privacy))
-    puts @item.privacy
-    render :json => {:item_privacy  => @item.privacy.capitalize, :message => new_privacy_message(@item), :next_privacy => @item.privacy }
+    render :json => {:item_privacy  => @item.privacy.capitalize, :message => new_privacy_message(@item), :next_privacy => @item.privacy.capitalize }
   end 
 
   def rate
@@ -59,6 +58,15 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+  def new_privacy_message item
+    case item.privacy
+    when "private"
+      "Click here to make public"
+    when "public"
+      "Click here to make private"
+    end
+  end
+
   private 
   # Apply a layout or not, based on the controller action:
   # If we are looking at a single item, use the normal application layout.
@@ -68,20 +76,11 @@ class ItemsController < InheritedResources::Base
     end 
 
 
-    def new_privacy_message item
-      case item.privacy
-      when "private"
-        "Click here to make public"
-      when "public"
-        "Click here to make private"
-      end
-    end
 
     def new_item_privacy privacy
       if privacy == "private"
         "public"
       else
-
         "private"
       end
     end 
