@@ -1379,11 +1379,13 @@ body {
   min-height: 900px;
   height: auto !important;
   height: 900px;
-  background-color: #deefff;
-  background-color: #dee4f2;
-  background-repeat: no-repeat;
+  background-color: #cccccc;
+  color: #333333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
-/* line 74, ../../app/stylesheets/main.sass */
+/* line 79, ../../app/stylesheets/main.sass */
 body #top {
   position: fixed;
   width: 100%;
@@ -1403,17 +1405,22 @@ body #top {
   background: -o-linear-gradient(#333333, #111111);
   margin-right: 0;
 }
-/* line 85, ../../app/stylesheets/main.sass */
-body #top #logo {
-  position: absolute;
-  left: 330px;
+/* line 90, ../../app/stylesheets/main.sass */
+body #top #topContent {
+  width: 1030px;
+  margin: 0 auto;
 }
-/* line 88, ../../app/stylesheets/main.sass */
-body #top #user_menu {
+/* line 93, ../../app/stylesheets/main.sass */
+body #top #topContent #logo {
+  width: 168px;
+  float: left;
+}
+/* line 99, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu {
   float: right;
 }
-/* line 90, ../../app/stylesheets/main.sass */
-body #top #user_menu ul {
+/* line 101, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1421,7 +1428,7 @@ body #top #user_menu ul {
   *zoom: 1;
 }
 /* line 60, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body #top #user_menu ul li {
+body #top #topContent #user_menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -1432,26 +1439,26 @@ body #top #user_menu ul li {
   padding-right: 4px;
 }
 /* line 48, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body #top #user_menu ul li:first-child, body #top #user_menu ul li.first {
+body #top #topContent #user_menu ul li:first-child, body #top #topContent #user_menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body #top #user_menu ul li:last-child {
+body #top #topContent #user_menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body #top #user_menu ul li.last {
+body #top #topContent #user_menu ul li.last {
   padding-right: 0;
 }
-/* line 92, ../../app/stylesheets/main.sass */
-body #top #user_menu ul li {
+/* line 103, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul li {
   min-height: 42px;
   height: auto !important;
   height: 42px;
   padding: 0;
 }
-/* line 95, ../../app/stylesheets/main.sass */
-body #top #user_menu ul li img {
+/* line 106, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul li img {
   width: 25px;
   height: 25px;
   -moz-box-shadow: 0px 0px 5px #333333;
@@ -1459,8 +1466,8 @@ body #top #user_menu ul li img {
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
 }
-/* line 99, ../../app/stylesheets/main.sass */
-body #top #user_menu ul li a {
+/* line 110, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul li a {
   vertical-align: -12px;
   text-decoration: none;
   color: #bababa;
@@ -1472,47 +1479,64 @@ body #top #user_menu ul li a {
   line-height: 19.5px;
 }
 /* line 4, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
-body #top #user_menu ul li a:hover {
+body #top #topContent #user_menu ul li a:hover {
   text-decoration: underline;
 }
 /* line 24, ../../vendor/bundle/ruby/1.9.1/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
-body #top #user_menu ul li a:hover {
+body #top #topContent #user_menu ul li a:hover {
   color: white;
 }
-/* line 104, ../../app/stylesheets/main.sass */
-body #top #user_menu ul li a:hover {
+/* line 115, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul li a:hover {
   background-color: #383838;
   text-decoration: none;
 }
-/* line 112, ../../app/stylesheets/main.sass */
-body #top #user_menu ul li .active {
+/* line 123, ../../app/stylesheets/main.sass */
+body #top #topContent #user_menu ul li .active {
   background-color: #0a0a0a;
 }
-/* line 115, ../../app/stylesheets/main.sass */
+/* line 125, ../../app/stylesheets/main.sass */
 body #header {
-  width: 100%;
-  margin-right: 0;
+  background-color: white;
+  width: 1030px;
+  margin: 0 auto;
   min-height: 70px;
   height: auto !important;
   height: 70px;
-  margin-bottom: 2px;
 }
-/* line 120, ../../app/stylesheets/main.sass */
+/* line 131, ../../app/stylesheets/main.sass */
 body #header .notice, body #header .alert, body #header .warning, body #header .error, body #header .alert {
-  display: block;
-  width: 350px;
-  margin: 0 auto;
   margin-top: 50px;
   text-align: center;
 }
-/* line 124, ../../app/stylesheets/main.sass */
+/* line 135, ../../app/stylesheets/main.sass */
 body #header .notice {
   background-color: #e6efc2;
   border: 2px solid #dddddd;
   color: #264409;
   border-color: #c6d880;
 }
-/* line 130, ../../app/stylesheets/main.sass */
+/* line 140, ../../app/stylesheets/main.sass */
+body #footer {
+  width: 100%;
+  padding: 20px 0;
+  background-color: black;
+  color: white;
+}
+/* line 145, ../../app/stylesheets/main.sass */
+body #footer #footerContent {
+  width: 1030px;
+  margin: 0 auto;
+}
+/* line 148, ../../app/stylesheets/main.sass */
+body #footer #footerContent #copyright {
+  float: left;
+}
+/* line 150, ../../app/stylesheets/main.sass */
+body #footer #footerContent #footerLinks {
+  float: right;
+}
+/* line 152, ../../app/stylesheets/main.sass */
 body #user_profile {
   display: block;
   width: 350px;
@@ -1524,12 +1548,12 @@ body #user_profile {
   float: left;
   margin-left: 10px;
 }
-/* line 137, ../../app/stylesheets/main.sass */
+/* line 159, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo {
   display: inline;
   float: left;
 }
-/* line 139, ../../app/stylesheets/main.sass */
+/* line 161, ../../app/stylesheets/main.sass */
 body #user_profile #user-profile-photo img {
   width: 20px;
   height: 20px;
@@ -1538,7 +1562,7 @@ body #user_profile #user-profile-photo img {
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
 }
-/* line 143, ../../app/stylesheets/main.sass */
+/* line 165, ../../app/stylesheets/main.sass */
 body #user_profile #user-name {
   text-align: center;
   clear: both;
@@ -1547,7 +1571,7 @@ body #user_profile #user-name {
   font-weight: bold;
   color: #565050;
 }
-/* line 150, ../../app/stylesheets/main.sass */
+/* line 172, ../../app/stylesheets/main.sass */
 body #user_profile #user-email {
   text-align: center;
   clear: both;
@@ -1556,72 +1580,74 @@ body #user_profile #user-email {
   font-weight: 700;
   color: #565050;
 }
-/* line 158, ../../app/stylesheets/main.sass */
+/* line 180, ../../app/stylesheets/main.sass */
 body #container {
   width: 1030px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 160, ../../app/stylesheets/main.sass */
+/* line 182, ../../app/stylesheets/main.sass */
 body #container #main {
   min-height: 650px;
   height: auto !important;
   height: 650px;
+  padding: 20px;
+  background-color: white;
 }
-/* line 162, ../../app/stylesheets/main.sass */
+/* line 186, ../../app/stylesheets/main.sass */
 body #container #main .headline {
   background-color: #c3d9ff;
   padding-left: 10px;
   margin-top: 10px;
 }
-/* line 166, ../../app/stylesheets/main.sass */
+/* line 190, ../../app/stylesheets/main.sass */
 body #container #main #item-details {
   margin-top: 10px;
 }
-/* line 168, ../../app/stylesheets/main.sass */
+/* line 192, ../../app/stylesheets/main.sass */
 body #container #main #item-details #text-fields {
   float: left;
   width: 770px;
   margin: 0 10px;
 }
-/* line 172, ../../app/stylesheets/main.sass */
+/* line 196, ../../app/stylesheets/main.sass */
 body #container #main #item-details #text-fields .column, body #container #main #item-details #text-fields .span-1, body #container #main #item-details #text-fields .span-2, body #container #main #item-details #text-fields .span-3, body #container #main #item-details #text-fields .span-4, body #container #main #item-details #text-fields .span-5, body #container #main #item-details #text-fields .span-6, body #container #main #item-details #text-fields .span-7, body #container #main #item-details #text-fields .span-8, body #container #main #item-details #text-fields .span-9, body #container #main #item-details #text-fields .span-10, body #container #main #item-details #text-fields .span-11, body #container #main #item-details #text-fields .span-12, body #container #main #item-details #text-fields .span-13, body #container #main #item-details #text-fields .span-14, body #container #main #item-details #text-fields .span-15, body #container #main #item-details #text-fields .span-16, body #container #main #item-details #text-fields .span-17, body #container #main #item-details #text-fields .span-18, body #container #main #item-details #text-fields .span-19, body #container #main #item-details #text-fields .span-20, body #container #main #item-details #text-fields .span-21, body #container #main #item-details #text-fields .span-22, body #container #main #item-details #text-fields .span-23, body #container #main #item-details #text-fields .span-24, body #container #main #item-details #text-fields .span-25, body #container #main #item-details #text-fields .span-26 {
   padding-right: 22px;
   width: 230px;
   margin: 0;
   float: left;
 }
-/* line 177, ../../app/stylesheets/main.sass */
+/* line 201, ../../app/stylesheets/main.sass */
 body #container #main #item-details #text-fields .column .fields, body #container #main #item-details #text-fields .span-1 .fields, body #container #main #item-details #text-fields .span-2 .fields, body #container #main #item-details #text-fields .span-3 .fields, body #container #main #item-details #text-fields .span-4 .fields, body #container #main #item-details #text-fields .span-5 .fields, body #container #main #item-details #text-fields .span-6 .fields, body #container #main #item-details #text-fields .span-7 .fields, body #container #main #item-details #text-fields .span-8 .fields, body #container #main #item-details #text-fields .span-9 .fields, body #container #main #item-details #text-fields .span-10 .fields, body #container #main #item-details #text-fields .span-11 .fields, body #container #main #item-details #text-fields .span-12 .fields, body #container #main #item-details #text-fields .span-13 .fields, body #container #main #item-details #text-fields .span-14 .fields, body #container #main #item-details #text-fields .span-15 .fields, body #container #main #item-details #text-fields .span-16 .fields, body #container #main #item-details #text-fields .span-17 .fields, body #container #main #item-details #text-fields .span-18 .fields, body #container #main #item-details #text-fields .span-19 .fields, body #container #main #item-details #text-fields .span-20 .fields, body #container #main #item-details #text-fields .span-21 .fields, body #container #main #item-details #text-fields .span-22 .fields, body #container #main #item-details #text-fields .span-23 .fields, body #container #main #item-details #text-fields .span-24 .fields, body #container #main #item-details #text-fields .span-25 .fields, body #container #main #item-details #text-fields .span-26 .fields {
   margin: 0 0 10px;
   min-height: 25px;
   text-align: justify;
 }
-/* line 181, ../../app/stylesheets/main.sass */
+/* line 205, ../../app/stylesheets/main.sass */
 body #container #main #item-details #image-field {
   width: 285px;
   float: left;
 }
-/* line 184, ../../app/stylesheets/main.sass */
+/* line 208, ../../app/stylesheets/main.sass */
 body #container #main #new_interaction_box {
   width: 550px;
 }
-/* line 187, ../../app/stylesheets/main.sass */
+/* line 211, ../../app/stylesheets/main.sass */
 body #container #main #new_interaction_box form textarea {
   height: 80px;
   width: 550px;
 }
-/* line 190, ../../app/stylesheets/main.sass */
+/* line 214, ../../app/stylesheets/main.sass */
 body #container #main #new_interaction_box form #interaction_stars, body #container #main #new_interaction_box form .social, body #container #main #new_interaction_box form #item-interaction-submit {
   float: right;
   margin-right: 10px;
 }
-/* line 193, ../../app/stylesheets/main.sass */
+/* line 217, ../../app/stylesheets/main.sass */
 body #container #main #new_interaction_box form #interaction_stars .twitter_button, body #container #main #new_interaction_box form #interaction_stars .facebook_button, body #container #main #new_interaction_box form .social .twitter_button, body #container #main #new_interaction_box form .social .facebook_button, body #container #main #new_interaction_box form #item-interaction-submit .twitter_button, body #container #main #new_interaction_box form #item-interaction-submit .facebook_button {
   display: inline;
 }
-/* line 195, ../../app/stylesheets/main.sass */
+/* line 219, ../../app/stylesheets/main.sass */
 body #container #main .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1632,7 +1658,7 @@ body #container #main .prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 204, ../../app/stylesheets/main.sass */
+/* line 228, ../../app/stylesheets/main.sass */
 body #container #main #interactions {
   margin-left: 15px;
   display: inline;
@@ -1660,20 +1686,20 @@ body #container #main #interactions {
 * html body #container #main #interactions {
   overflow-x: hidden;
 }
-/* line 213, ../../app/stylesheets/main.sass */
+/* line 237, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box {
   padding-bottom: 20px;
   border-bottom: 2px solid #ebebeb;
 }
-/* line 216, ../../app/stylesheets/main.sass */
+/* line 240, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box {
   margin-right: 0;
 }
-/* line 218, ../../app/stylesheets/main.sass */
+/* line 242, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form {
   position: relative;
 }
-/* line 220, ../../app/stylesheets/main.sass */
+/* line 244, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form textarea#interaction-input {
   overflow-y: auto;
   -moz-border-radius: 5px;
@@ -1688,13 +1714,13 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   height: 25px;
   margin-bottom: 30px;
 }
-/* line 226, ../../app/stylesheets/main.sass */
+/* line 250, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_stars {
   display: none;
   float: right;
   margin-right: 10px;
 }
-/* line 230, ../../app/stylesheets/main.sass */
+/* line 254, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social {
   display: inline;
   float: right;
@@ -1702,32 +1728,32 @@ body #container #main #interactions #new_interaction_box #interaction_input_box 
   float: right;
   margin-right: 10px;
 }
-/* line 235, ../../app/stylesheets/main.sass */
+/* line 259, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social img, body #container #main #interactions #new_interaction_box #interaction_input_box form .social input {
   display: none;
 }
-/* line 237, ../../app/stylesheets/main.sass */
+/* line 261, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .facebook_button {
   display: inline;
   display: inline;
   float: right;
 }
-/* line 240, ../../app/stylesheets/main.sass */
+/* line 264, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form .social .twitter_button {
   display: inline;
   float: right;
   display: inline;
 }
-/* line 243, ../../app/stylesheets/main.sass */
+/* line 267, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_input_box form #interaction_submit {
   display: none;
   margin-right: 22px;
 }
-/* line 246, ../../app/stylesheets/main.sass */
+/* line 270, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box {
   display: none;
 }
-/* line 248, ../../app/stylesheets/main.sass */
+/* line 272, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social {
   position: relative;
   width: 120px;
@@ -1736,19 +1762,19 @@ body #container #main #interactions #new_interaction_box #interaction_tool_box .
   top: -19px;
   right: 120px;
 }
-/* line 254, ../../app/stylesheets/main.sass */
+/* line 278, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .facebook_button {
   width: 60px;
   display: inline;
   float: right;
 }
-/* line 257, ../../app/stylesheets/main.sass */
+/* line 281, ../../app/stylesheets/main.sass */
 body #container #main #interactions #new_interaction_box #interaction_tool_box .social .twitter_button {
   display: inline;
   float: right;
   width: 60px;
 }
-/* line 261, ../../app/stylesheets/main.sass */
+/* line 285, ../../app/stylesheets/main.sass */
 body #container #main #interactions #interactions_feed .interaction-content {
   min-height: 90.5px;
   height: auto !important;
@@ -1760,23 +1786,23 @@ body #container #main #interactions #interactions_feed .interaction-content {
   text-align: left;
   vertical-align: baseline;
 }
-/* line 269, ../../app/stylesheets/main.sass */
+/* line 293, ../../app/stylesheets/main.sass */
 body #container #main #interactions #interactions_feed .interaction-content .user-image {
   display: inline;
   float: left;
   margin-right: 10px;
 }
-/* line 272, ../../app/stylesheets/main.sass */
+/* line 296, ../../app/stylesheets/main.sass */
 body #container #main #interactions #interactions_feed .interaction-content .user-content {
   min-height: 55px;
   height: auto !important;
   height: 55px;
 }
-/* line 274, ../../app/stylesheets/main.sass */
+/* line 298, ../../app/stylesheets/main.sass */
 body #container #main #have_items {
   margin-bottom: 3em;
 }
-/* line 276, ../../app/stylesheets/main.sass */
+/* line 300, ../../app/stylesheets/main.sass */
 body #container #main #have_items, body #container #main #want_items {
   margin-left: 9px;
   display: inline;
@@ -1793,7 +1819,7 @@ body #container #main #have_items, body #container #main #want_items {
 * html body #container #main #have_items, * html body #container #main #want_items {
   overflow-x: hidden;
 }
-/* line 286, ../../app/stylesheets/main.sass */
+/* line 310, ../../app/stylesheets/main.sass */
 body #container #main #have_items #have_items_feed .applet-title, body #container #main #have_items #want_items_feed .applet-title, body #container #main #want_items #have_items_feed .applet-title, body #container #main #want_items #want_items_feed .applet-title {
   color: #999999;
   font-family: "Helvetica Neue,Helvetica";
@@ -1803,7 +1829,7 @@ body #container #main #have_items #have_items_feed .applet-title, body #containe
   padding-top: 8px;
   padding-left: 150px;
 }
-/* line 294, ../../app/stylesheets/main.sass */
+/* line 318, ../../app/stylesheets/main.sass */
 body #container #main #have_items #have_items_feed #add-item-have, body #container #main #have_items #have_items_feed #add-item-want, body #container #main #have_items #want_items_feed #add-item-have, body #container #main #have_items #want_items_feed #add-item-want, body #container #main #want_items #have_items_feed #add-item-have, body #container #main #want_items #have_items_feed #add-item-want, body #container #main #want_items #want_items_feed #add-item-have, body #container #main #want_items #want_items_feed #add-item-want {
   float: right;
   display: inline-block;
@@ -1812,21 +1838,21 @@ body #container #main #have_items #have_items_feed #add-item-have, body #contain
   vertical-align: middle;
   padding: 5px 0 4px 5px;
 }
-/* line 301, ../../app/stylesheets/main.sass */
+/* line 325, ../../app/stylesheets/main.sass */
 body #container #main #have_items #have_items_feed #add-item-have .add-item-text, body #container #main #have_items #have_items_feed #add-item-want .add-item-text, body #container #main #have_items #want_items_feed #add-item-have .add-item-text, body #container #main #have_items #want_items_feed #add-item-want .add-item-text, body #container #main #want_items #have_items_feed #add-item-have .add-item-text, body #container #main #want_items #have_items_feed #add-item-want .add-item-text, body #container #main #want_items #want_items_feed #add-item-have .add-item-text, body #container #main #want_items #want_items_feed #add-item-want .add-item-text {
   display: inline-block;
   height: 32px;
   vertical-align: bottom;
 }
-/* line 305, ../../app/stylesheets/main.sass */
+/* line 329, ../../app/stylesheets/main.sass */
 body #container #main #have_items #have_items_feed .items td.rating, body #container #main #have_items #want_items_feed .items td.rating, body #container #main #want_items #have_items_feed .items td.rating, body #container #main #want_items #want_items_feed .items td.rating {
   width: 90px;
 }
-/* line 307, ../../app/stylesheets/main.sass */
+/* line 331, ../../app/stylesheets/main.sass */
 body #container #main #have_items #have_items_feed .items td.review, body #container #main #have_items #want_items_feed .items td.review, body #container #main #want_items #have_items_feed .items td.review, body #container #main #want_items #want_items_feed .items td.review {
   width: 200px;
 }
-/* line 309, ../../app/stylesheets/main.sass */
+/* line 333, ../../app/stylesheets/main.sass */
 body #container #main #items-details {
   margin: 1px 0 0 9px;
   min-height: 650px;
@@ -1855,7 +1881,7 @@ body #container #main #items-details {
   background-image: linear-gradient(left top, #ffffff, #dddddd);
   overflow-x: hidden;
 }
-/* line 336, ../../app/stylesheets/main.sass */
+/* line 360, ../../app/stylesheets/main.sass */
 body #container #main #items-details .prompt_phrase {
   margin-right: 0;
   font-family: "Helvetica Neue,Helvetica";
@@ -1866,83 +1892,83 @@ body #container #main #items-details .prompt_phrase {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 345, ../../app/stylesheets/main.sass */
+/* line 369, ../../app/stylesheets/main.sass */
 body #container #main #items-details p {
   padding: 10px 5px 10px 10px;
   margin: 0;
 }
 
-/* line 349, ../../app/stylesheets/main.sass */
+/* line 373, ../../app/stylesheets/main.sass */
 #facebox .content {
   padding: 30px;
   background-color: white;
 }
 
-/* line 353, ../../app/stylesheets/main.sass */
+/* line 377, ../../app/stylesheets/main.sass */
 #facebox fieldset {
   border: none;
   padding: 0;
 }
 
-/* line 358, ../../app/stylesheets/main.sass */
+/* line 382, ../../app/stylesheets/main.sass */
 #facebox form label {
   margin: 8px 6px 3px 2px;
   float: left;
   width: 110px;
   text-align: right;
 }
-/* line 363, ../../app/stylesheets/main.sass */
+/* line 387, ../../app/stylesheets/main.sass */
 #facebox form ol, #facebox form ul {
   list-style: none outside none;
   padding: 0;
 }
-/* line 366, ../../app/stylesheets/main.sass */
+/* line 390, ../../app/stylesheets/main.sass */
 #facebox form ol li, #facebox form ul li {
   margin-bottom: 10px;
   overflow: hidden;
 }
-/* line 369, ../../app/stylesheets/main.sass */
+/* line 393, ../../app/stylesheets/main.sass */
 #facebox form textarea {
   height: 100px;
   min-width: 200px;
   width: 250px;
 }
-/* line 373, ../../app/stylesheets/main.sass */
+/* line 397, ../../app/stylesheets/main.sass */
 #facebox form input {
   width: 250px;
 }
-/* line 375, ../../app/stylesheets/main.sass */
+/* line 399, ../../app/stylesheets/main.sass */
 #facebox form .commit {
   text-align: right;
   padding-right: 70px;
 }
-/* line 378, ../../app/stylesheets/main.sass */
+/* line 402, ../../app/stylesheets/main.sass */
 #facebox form .commit input {
   width: auto;
 }
 
-/* line 381, ../../app/stylesheets/main.sass */
+/* line 405, ../../app/stylesheets/main.sass */
 #stars-wrapper-new-item .ui-stars-star {
   padding-top: 8px;
 }
 
-/* line 384, ../../app/stylesheets/main.sass */
+/* line 408, ../../app/stylesheets/main.sass */
 .clear {
   clear: both;
 }
 
-/* line 387, ../../app/stylesheets/main.sass */
+/* line 411, ../../app/stylesheets/main.sass */
 #item-interaction-submit {
   margin-right: 22px;
   display: none;
 }
 
-/* line 391, ../../app/stylesheets/main.sass */
+/* line 415, ../../app/stylesheets/main.sass */
 .hover {
   background-color: white;
 }
 
-/* line 395, ../../app/stylesheets/main.sass */
+/* line 419, ../../app/stylesheets/main.sass */
 .box {
   background: none repeat scroll 0 0 #464e53;
   margin-bottom: 20px;
@@ -1955,7 +1981,7 @@ body #container #main #items-details p {
   border-radius: 7px;
 }
 
-/* line 401, ../../app/stylesheets/main.sass */
+/* line 425, ../../app/stylesheets/main.sass */
 legend {
   background: none repeat scroll 0 0 white;
   border: 1px solid #bbbbbb;
@@ -1969,39 +1995,39 @@ legend {
   border-radius: 7px;
 }
 
-/* line 408, ../../app/stylesheets/main.sass */
+/* line 432, ../../app/stylesheets/main.sass */
 #login-page {
   margin: auto;
   padding: 5em 0 12em;
   width: 400px;
 }
 
-/* line 413, ../../app/stylesheets/main.sass */
+/* line 437, ../../app/stylesheets/main.sass */
 .box label {
   color: white;
 }
 
-/* line 416, ../../app/stylesheets/main.sass */
+/* line 440, ../../app/stylesheets/main.sass */
 #advanced-new-item {
   display: none;
 }
 
-/* line 419, ../../app/stylesheets/main.sass */
+/* line 443, ../../app/stylesheets/main.sass */
 #share_box {
   float: right;
 }
 
-/* line 422, ../../app/stylesheets/main.sass */
+/* line 446, ../../app/stylesheets/main.sass */
 #share_warning .alert {
   width: 190px;
 }
 
-/* line 427, ../../app/stylesheets/main.sass */
+/* line 451, ../../app/stylesheets/main.sass */
 #item-privacy-control {
   width: 100px;
 }
 
-/* line 430, ../../app/stylesheets/main.sass */
+/* line 454, ../../app/stylesheets/main.sass */
 iframe#url-preview-window {
   zoom: 10%;
   border: 2px solid black;
@@ -2010,7 +2036,7 @@ iframe#url-preview-window {
   height: 300px;
 }
 
-/* line 438, ../../app/stylesheets/main.sass */
+/* line 462, ../../app/stylesheets/main.sass */
 #item-urls a {
   color: black;
 }

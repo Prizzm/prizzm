@@ -3,11 +3,11 @@
 @import blueprint/reset
 // Here is where you can define your constants for your application and to configure the blueprint framework.
 // Feel free to delete these if you want keep the defaults:
-  
+ 
 $blueprint-grid-columns : 26
 $blueprint-grid-width   : 30px
 $blueprint-grid-margin  : 10px
-    
+   
 // If you change your grid column dimensions
 // you can make a new grid background image from the command line like this:
 // compass grid-img 30+10x16
@@ -67,9 +67,14 @@ $right_columns: $blueprint_grid_columns - $middle_columns - 1
 
 body
   +min-height(900px)
-  background-color: #DEEFFF
-  background-color: #DEE4F2
-  background-repeat: no-repeat
+  // background-color: #DEEFFF
+  // background-color: #DEE4F2
+  // background-repeat: no-repeat
+  background-color: #CCC
+  color: #333
+  font-family: verdana, arial, helvetica, sans-serif
+  font-size:   13px
+  line-height: 18px
 
   #top
     position: fixed
@@ -82,43 +87,49 @@ body
     +background-image(linear-gradient(center top, #333333, #111111))
     background: -o-linear-gradient(#333333, #111111)
     +last
-    #logo
-      position: absolute
-      left: 330px
-    #user_menu
-      float: right      
-      ul
-        +horizontal-list
-        li
-          +min-height($top_height)
-          padding: 0
-          img
-            width: 25px
-            height: 25px
-            +box-shadow
-          a
-            vertical-align: -12px
-            +hover-link
-            +link-colors(#BABABA, white)
-            padding: 10px 30px 
-            &:hover 
-              background-color: #383838
-              text-decoration: none
-            border-right: 1px solid gray
-            font-size: 12px
-            font-weight: 700
-            font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans"
-            line-height: 19.5px
-          .active
-            background-color: #0A0A0A
- 
+    #topContent
+      width: 1030px
+      margin: 0 auto
+      #logo
+        width: 168px
+        float: left
+      //  a
+      //  position: absolute
+      //  left: 330px
+      #user_menu
+        float: right      
+        ul
+          +horizontal-list
+          li
+            +min-height($top_height)
+            padding: 0
+            img
+              width: 25px
+              height: 25px
+              +box-shadow
+            a
+              vertical-align: -12px
+              +hover-link
+              +link-colors(#BABABA, white)
+              padding: 10px 30px 
+              &:hover 
+                background-color: #383838
+                text-decoration: none
+              border-right: 1px solid gray
+              font-size: 12px
+              font-weight: 700
+              font-family: "Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans"
+              line-height: 19.5px
+            .active
+              background-color: #0A0A0A
   #header
-    width: 100%
-    +last
+    background-color: #fff
+    width: 1030px
+    margin: 0 auto
+    // +last
     +min-height($flash-message-height)
-    margin-bottom: 2px
     .notice, .alert, .warning, .error
-      +horizontal-center(350px)
+      // +horizontal-center(350px)
       +prepend-top(50px)
       text-align: center
     .notice
@@ -126,7 +137,18 @@ body
       border: 2px solid #dddddd
       color: #264409
       border-color: #c6d880
-
+  #footer
+    width: 100%
+    padding: 20px 0
+    background-color: #000
+    color: #fff
+    #footerContent
+      width: 1030px
+      margin: 0 auto
+      #copyright
+        float: left
+      #footerLinks
+        float: right
   #user_profile
     +horizontal-center(350px)
     position: relative
@@ -159,6 +181,8 @@ body
     +container
     #main  
       +min-height(650px)
+      padding: 20px
+      background-color: #FFF
       .headline
         background-color: #c3d9ff
         padding-left: 10px
