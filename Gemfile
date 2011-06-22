@@ -132,7 +132,7 @@ group :development, :test do
   gem "rspec-rails"# , '2.6.0' #, '2.5.0'
   #gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers.git'
   #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
-  gem 'shoulda-matchers', :git => 'https://github.com/sid137/shoulda-matchers.git'
+  # gem 'shoulda-matchers', :git => 'https://github.com/sid137/shoulda-matchers.git'
   gem "ZenTest"
   gem "autotest-rails"
 end

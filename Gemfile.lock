@@ -52,12 +52,6 @@ GIT
       guard (>= 0.2.2)
 
 GIT
-  remote: https://github.com/sid137/shoulda-matchers.git
-  revision: 1a08e46e11cda08d6368d5366bd643fbf4cc63c0
-  specs:
-    shoulda-matchers (1.0.0.beta2)
-
-GIT
   remote: https://github.com/voormedia/rails-erd.git
   revision: 643c3ab9aa811758d278d3ddab0268f47e2b97d9
   specs:
@@ -466,7 +460,6 @@ DEPENDENCIES
   rspec-rails
   ruby-debug19
   selenium-webdriver
-  shoulda-matchers!
   simplificator-rwebthumb
   sqlite3-ruby
   taps
