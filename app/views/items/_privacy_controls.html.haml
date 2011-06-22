@@ -1,5 +1,5 @@
 
-#item-privacy-control= button_to "#{privacy_display_for @item}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item"
+#item-privacy-control= link_to "#{privacy_display_for @item}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item", :id => "item-privacy-control"
 #current-privacy-indicator
   = @item.privacy
 
@@ -12,3 +12,6 @@
       = link_to image_tag('facebook_24x24.png'), '#'
       = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
     = submit_tag "Share"
+
+:javascript
+  $()

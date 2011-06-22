@@ -19,7 +19,11 @@ class ItemsController < InheritedResources::Base
   end
 
   def update_privacy
-    current_user.items.find(params[:id]).update_attributes(:privacy, params[:privacy])
+    @item = current_user.items.find(params[:id])
+    @item.update_attribute(:privacy, params[:privacy])
+    puts "Privacy: #{@item.privacy}"
+    pp @item
+    render :json => {:item_privacy  => @item.privacy.capitalize, :message => new_privacy_message(@item) }
   end 
 
   def rate
@@ -59,6 +63,15 @@ class ItemsController < InheritedResources::Base
       ['show'].include?(action_name) ? 'application' : nil 
     end 
 
+
+    def new_privacy_message item
+      case item.privacy
+      when "private"
+        "Click here to make public"
+      when "public"
+        "Click here to make private"
+      end
+    end
   #
     def find_changed_item_ids
       old_item_order = extract_ids(params[:old_item_order])

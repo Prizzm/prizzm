@@ -1,3 +1,4 @@
+
 javascripts:
   app:
     - public/javascripts/*.js
