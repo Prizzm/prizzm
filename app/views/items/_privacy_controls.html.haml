@@ -14,4 +14,7 @@
     = submit_tag "Share"
 
 :javascript
-  $()
+  $('#item-privacy-control').live('ajax:success', function(event, data, status, xhr){
+    $('#current-privacy-indicator').html(data.message);
+    $(this).text(data.next_privacy);
+  });

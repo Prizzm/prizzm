@@ -4,6 +4,11 @@ class ItemsController < InheritedResources::Base
   layout :determine_layout
 
 
+  def show
+    @user = current_user
+    @item = current_user.items.find(params[:id])
+  end
+
   update! do |success, failure| 
     success.html {redirect_to root_path}
     success.json {head :ok}
@@ -20,10 +25,9 @@ class ItemsController < InheritedResources::Base
 
   def update_privacy
     @item = current_user.items.find(params[:id])
-    @item.update_attribute(:privacy, params[:privacy])
-    puts "Privacy: #{@item.privacy}"
-    pp @item
-    render :json => {:item_privacy  => @item.privacy.capitalize, :message => new_privacy_message(@item) }
+    @item.update_attribute(:privacy, new_item_privacy(@item.privacy))
+    puts @item.privacy
+    render :json => {:item_privacy  => @item.privacy.capitalize, :message => new_privacy_message(@item), :next_privacy => @item.privacy }
   end 
 
   def rate
@@ -72,6 +76,15 @@ class ItemsController < InheritedResources::Base
         "Click here to make private"
       end
     end
+
+    def new_item_privacy privacy
+      if privacy == "private"
+        "public"
+      else
+
+        "private"
+      end
+    end 
   #
     def find_changed_item_ids
       old_item_order = extract_ids(params[:old_item_order])
@@ -95,4 +108,5 @@ class ItemsController < InheritedResources::Base
     def extract_ids items
       items.map{|item| item.delete('item_').to_i}
     end
+
 end

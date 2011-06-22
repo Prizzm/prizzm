@@ -4,15 +4,7 @@ module ApplicationHelper
     user
   end
 
-  def privacy_display_for item
-    case item.privacy
-    when 'private'
-      "Private"
-    when 'public'
-      "Public"
-    else
-    end
-  end 
+
 
   def show_stars_for element
     %Q{
