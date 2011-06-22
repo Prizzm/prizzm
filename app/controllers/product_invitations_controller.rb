@@ -19,6 +19,7 @@ class ProductInvitationsController < ApplicationController
   def process_accepted_product_invitation
     if session[:accepted_item]
       @item = Item.find(session[:accepted_item])
+      session[:accepted_item] = nil
       @item.add_image_from_url @item.product.images.first.image.url
       @user = current_user 
       flash[:notice] = "Thanks for talking about your #{@item.product.name}"
