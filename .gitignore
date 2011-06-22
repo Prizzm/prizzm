@@ -18,3 +18,5 @@ nbproject/*
 nbproject/**/*
 .DS_Store
 pivotal/*
+Gemfile
+Gemfile.lock
