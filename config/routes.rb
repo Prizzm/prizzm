@@ -9,7 +9,7 @@ Prizzm::Application.routes.draw do
   root :to => 'home#index'
 
   resource :profile
-  devise_for :users, :path => "accounts", 
+  devise_for :users, :path => "", 
             :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions" },
             :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
  
