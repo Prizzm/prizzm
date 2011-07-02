@@ -5,11 +5,62 @@ GIT
     database_cleaner (0.6.7)
 
 GIT
+  remote: git://github.com/intridea/omniauth.git
+  revision: b9fe79961ab56041dbf915da708a51227a60cc94
+  ref: b9fe79961ab56041dbf9
+  specs:
+    oa-basic (0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      rest-client (~> 1.6.0)
+    oa-core (0.3.0.rc1)
+    oa-enterprise (0.3.0.rc1)
+      addressable (~> 2.2.6)
+      net-ldap (~> 0.2.2)
+      nokogiri (~> 1.4.2)
+      oa-core (= 0.3.0.rc1)
+      pyu-ruby-sasl (~> 0.0.3.1)
+      rubyntlm (~> 0.1.1)
+    oa-more (0.3.0.rc1)
+      multi_json (~> 1.0.0)
+      oa-core (= 0.3.0.rc1)
+      rest-client (~> 1.6.0)
+    oa-oauth (0.3.0.rc1)
+      faraday (~> 0.7.3)
+      multi_json (~> 1.0.0)
+      multi_xml (~> 0.2.2)
+      oa-core (= 0.3.0.rc1)
+      oauth (~> 0.4.0)
+      oauth2 (~> 0.5.0.rc1)
+    oa-openid (0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      rack-openid (~> 1.3.1)
+      ruby-openid-apps-discovery (~> 1.2.0)
+    omniauth (0.3.0.rc1)
+      oa-basic (= 0.3.0.rc1)
+      oa-core (= 0.3.0.rc1)
+      oa-enterprise (= 0.3.0.rc1)
+      oa-more (= 0.3.0.rc1)
+      oa-oauth (= 0.3.0.rc1)
+      oa-openid (= 0.3.0.rc1)
+
+GIT
   remote: git://github.com/jnicklas/carrierwave.git
   revision: 3850f67ce1b7d25db595c3e2ec28b81ac172467c
   specs:
     carrierwave (0.5.4)
       activesupport (~> 3.0)
+
+GIT
+  remote: git://github.com/jnunemaker/twitter.git
+  revision: 0132ab35966b1220bbfe15c8ef97c30a801fa755
+  specs:
+    twitter (1.6.0)
+      faraday (~> 0.7.3)
+      faraday_middleware (~> 0.7.0.rc.1)
+      hashie (~> 1.0.0)
+      multi_json (~> 1.0.0)
+      multi_xml (~> 0.2.0)
+      simple_oauth (~> 0.1.5)
 
 GIT
   remote: git://github.com/moabite/best_in_place.git
@@ -38,18 +89,20 @@ GIT
       thor (~> 0.14.6)
 
 GIT
-  remote: git://github.com/sid137/guard-rails.git
-  revision: 3c52debcabee2ca7b6419c5e601232b510280c2b
-  specs:
-    guard-rails (0.0.3)
-      guard (>= 0.2.2)
-
-GIT
   remote: git://github.com/sid137/heroku-rails.git
   revision: 76c58092b032831133a39bbdad5f32bf99b6784e
   specs:
     heroku-rails (0.3.2)
       heroku (>= 1.11.0)
+
+GIT
+  remote: git://github.com/technoweenie/faraday.git
+  revision: 0efca1c878e3e902ee5a11b820c69cef778366c6
+  specs:
+    faraday (0.7.3)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.0)
+      rack (< 2, >= 1.1.0)
 
 GIT
   remote: git://github.com/voormedia/rails-erd.git
@@ -103,8 +156,6 @@ GEM
     activesupport (3.0.9)
     acts_as_list (0.1.3)
     addressable (2.2.6)
-    ajaxful_rating (2.2.8.2)
-    annotate-models (1.0.4)
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
     attr_required (0.0.3)
@@ -144,12 +195,8 @@ GEM
       railties (>= 3.0.0)
     faker (0.9.5)
       i18n (~> 0.4)
-    faraday (0.6.1)
-      addressable (~> 2.2.4)
-      multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
-    faraday_middleware (0.6.5)
-      faraday (~> 0.6.0)
+    faraday_middleware (0.7.0.rc1)
+      faraday (~> 0.7.3)
     fb_graph (1.9.1)
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.8.0)
@@ -191,6 +238,8 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 0.4.0)
       json (>= 1.5.1)
+    guard-rails (0.0.2)
+      guard (>= 0.2.2)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
     guard-shell (0.1.1)
@@ -240,33 +289,19 @@ GEM
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.2)
+    net-ldap (0.2.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.1.4)
-    nokogiri (1.5.0)
-    oa-core (0.0.5)
-      rack (~> 1.1)
-    oa-oauth (0.0.1)
-      json
-      nokogiri
-      oa-core (~> 0.0.0)
-      oauth
-      oauth2
-    oa-openid (0.0.5)
-      oa-core (= 0.0.5)
-      rack-openid (~> 1.1.1)
-      ruby-openid-apps-discovery
+    nokogiri (1.4.7)
     oauth (0.4.5)
-    oauth2 (0.4.1)
-      faraday (~> 0.6.1)
-      multi_json (>= 0.0.5)
-    omniauth (0.0.1)
-      oa-core (~> 0.0.0)
-      oa-oauth (~> 0.0.0)
-      oa-openid (~> 0.0.0)
+    oauth2 (0.5.0.rc1)
+      faraday (< 0.8, >= 0.6.1)
+      multi_json (~> 1.0.0)
     open4 (1.1.0)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
+    pyu-ruby-sasl (0.0.3.3)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -277,9 +312,9 @@ GEM
       i18n
       json (>= 1.4.3)
       rack (>= 1.1)
-    rack-openid (1.1.2)
-      rack (>= 0.4)
-      ruby-openid (>= 2.0.3)
+    rack-openid (1.3.1)
+      rack (>= 1.1.0)
+      ruby-openid (>= 2.1.8)
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (3.0.9)
@@ -336,6 +371,7 @@ GEM
       ruby-openid (>= 2.1.7)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    rubyntlm (0.1.1)
     rubyzip (0.9.4)
     sass (3.1.3)
     selenium-webdriver (0.2.2)
@@ -346,7 +382,6 @@ GEM
     sequel (3.20.0)
     sexp_processor (3.0.5)
     simple_oauth (0.1.5)
-    simplificator-rwebthumb (0.2.14)
     sinatra (1.0)
       rack (>= 1.0)
     sqlite3 (1.3.3)
@@ -362,13 +397,6 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    twitter (1.6.0)
-      faraday (~> 0.6.1)
-      faraday_middleware (~> 0.6.3)
-      hashie (~> 1.0.0)
-      multi_json (~> 1.0.0)
-      multi_xml (~> 0.2.0)
-      simple_oauth (~> 0.1.5)
     tzinfo (0.3.29)
     warden (1.0.4)
       rack (>= 1.0)
@@ -384,8 +412,6 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   acts_as_list
-  ajaxful_rating
-  annotate-models
   autotest-rails
   best_in_place!
   capybara
@@ -397,6 +423,7 @@ DEPENDENCIES
   facebook_test_users!
   factory_girl_rails
   faker
+  faraday!
   fb_graph
   flash_cookie_session
   fog
@@ -408,7 +435,7 @@ DEPENDENCIES
   guard-ego
   guard-jammit
   guard-livereload
-  guard-rails!
+  guard-rails
   guard-rspec
   guard-shell
   haml-rails
@@ -425,7 +452,7 @@ DEPENDENCIES
   libnotify
   lorempixum
   nokogiri
-  omniauth
+  omniauth!
   rack-test
   rails (= 3.0.9)
   rails-erd!
@@ -440,8 +467,7 @@ DEPENDENCIES
   rspec-rails
   ruby-debug19
   selenium-webdriver
-  simplificator-rwebthumb
   sqlite3-ruby
   taps
-  twitter
+  twitter!
   yaml_db

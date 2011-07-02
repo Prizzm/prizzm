@@ -1,6 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
 gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
+gem 'rake', '0.8.7'
 gem "haml-rails"
 gem "jquery-rails"
 
@@ -14,13 +15,6 @@ gem "acts_as_list"
 # Pined to ref, as there is problem on devise HEAD
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
 
-# Might not be used
-gem "ajaxful_rating"
-
-# Test helper to make placeholder images
-# gem "placehold", :git => 'git://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
-
-gem "nokogiri"
 
 # Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'
@@ -28,8 +22,6 @@ gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'
 
 # Gem for uploading images.  More flexible than "paperclip"
 gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'
-#gem 'carrierwave', :git => 'git://github.com/sid137/carrierwave.git'
-#gem 'carrierwave', :path => '/home/sid137/tracking/carrierwave'
 gem "fog"
 
 # Apparently needed to make the uploadify multifile uploader work 
@@ -39,19 +31,9 @@ gem "flash_cookie_session"
 # ImageMagick
 gem "rmagick"
 
-# Easily create database models for site simulation
-gem "factory_girl_rails"
-
-# Useful for fake data generation
-gem "faker"
-gem "randexp"
-gem "random_data"
-gem 'forgery'
-gem "lorempixum", :require => 'lorempixum'
 
 gem "hashie"
 # gem 'aws-s3', :require => 'aws/s3'
-# gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Provides a shorter syntax for building forms
 gem 'formtastic'
@@ -60,26 +42,24 @@ gem 'formtastic'
 gem "hoptoad_notifier"
 
 # Social Media Gems FB Connect, FB, and Twitter
-gem "omniauth"
+gem "faraday", :git => "git://github.com/technoweenie/faraday.git"
+gem "omniauth", :git => "git://github.com/intridea/omniauth.git" ,:ref => "b9fe79961ab56041dbf9"
 gem "fb_graph"
-gem "twitter"
+gem "twitter", :git => 'git://github.com/jnunemaker/twitter.git'
 
-gem 'rake', '0.8.7'
 
 gem "jammit"
 
 gem "rest-client"
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
+gem "nokogiri"
 
-# WebThump API Gem
-gem "simplificator-rwebthumb", :require => 'rwebthumb'
-   
 group :development, :test do
   gem "guard"
   gem "guard-ego"
   gem "guard-bundler"
   gem "guard-jammit"
-  gem "guard-rails", :git => 'git://github.com/sid137/guard-rails.git' 
+  gem "guard-rails"
   gem "guard-rspec"
   gem "guard-shell"
   gem "guard-compass"
@@ -87,8 +67,19 @@ group :development, :test do
   gem 'rb-fsevent', :require => false 
   gem "rb-inotify", :require => false
   gem "libnotify", :require => false
-  #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
  
+
+  # Easily create database models for site simulation
+  gem "factory_girl_rails"
+
+  # Useful for fake data generation
+  gem "faker"
+  gem "randexp"
+  gem "random_data"
+  gem 'forgery'
+  gem "lorempixum", :require => 'lorempixum'
+
+
   # Needed to run html2haml to convert html to haml
   gem "hpricot"
  
@@ -119,7 +110,6 @@ group :development, :test do
 
   # Print a header in app/model/*.rb files, listing the db columns present for
   # each model
-  gem "annotate-models"
 
 
   gem "selenium-webdriver"
@@ -131,8 +121,7 @@ group :development, :test do
   gem "rspec-core", "2.6.4"
   gem "rspec-rails"# , '2.6.0' #, '2.5.0'
   #gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
-  #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
-  # gem 'shoulda-matchers', :git => 'git://github.com/sid137/shoulda-matchers.git'
+  #gem 'shoulda-matchers', :git => 'git://github.com/sid137/shoulda-matchers.git'
   gem "ZenTest"
   gem "autotest-rails"
 end
