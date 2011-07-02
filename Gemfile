@@ -12,22 +12,22 @@ gem "acts_as_list"
 
 # Used to simplify user registrations and logins
 # Pined to ref, as there is problem on devise HEAD
-gem "devise", :git => "https://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
+gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
 
 # Might not be used
 gem "ajaxful_rating"
 
 # Test helper to make placeholder images
-# gem "placehold", :git => 'https://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
+# gem "placehold", :git => 'git://github.com/sid137/placehold.git'#:path => '/home/sid137/dev/placehold'
 
 gem "nokogiri"
 
 # Facilitates Edit-in-place functionality for certain data fields
-gem "best_in_place", :git => 'https://github.com/moabite/best_in_place.git'
+gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'
 
 
 # Gem for uploading images.  More flexible than "paperclip"
-gem "carrierwave", :git => 'https://github.com/jnicklas/carrierwave.git'
+gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'
 #gem 'carrierwave', :git => 'git://github.com/sid137/carrierwave.git'
 #gem 'carrierwave', :path => '/home/sid137/tracking/carrierwave'
 gem "fog"
@@ -69,17 +69,17 @@ gem 'rake', '0.8.7'
 gem "jammit"
 
 gem "rest-client"
-gem 'rails-erd', :git => "https://github.com/voormedia/rails-erd.git"
+gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 
 # WebThump API Gem
 gem "simplificator-rwebthumb", :require => 'rwebthumb'
-  
+   
 group :development, :test do
   gem "guard"
   gem "guard-ego"
   gem "guard-bundler"
   gem "guard-jammit"
-  gem "guard-rails", :git => 'https://github.com/sid137/guard-rails.git' 
+  gem "guard-rails", :git => 'git://github.com/sid137/guard-rails.git' 
   gem "guard-rspec"
   gem "guard-shell"
   gem "guard-compass"
@@ -96,7 +96,7 @@ group :development, :test do
 
   gem "heroku"
 
-  #gem "heroku-rails", :git => "https://github.com/railsjedi/heroku-rails.git"
+  #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
 
   gem "sqlite3-ruby", :require => 'sqlite3'
@@ -126,13 +126,13 @@ group :development, :test do
   gem "rack-test"
   gem "capybara", :require => 'capybara/rspec'
   gem "launchy"
-  gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
+  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
 
   gem "rspec-core", "2.6.4"
   gem "rspec-rails"# , '2.6.0' #, '2.5.0'
-  #gem 'shoulda-matchers', :git => 'https://github.com/thoughtbot/shoulda-matchers.git'
+  #gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
   #gem 'shoulda-matchers', :path => '/home/sid137/tracking/shoulda-matchers'
-  # gem 'shoulda-matchers', :git => 'https://github.com/sid137/shoulda-matchers.git'
+  # gem 'shoulda-matchers', :git => 'git://github.com/sid137/shoulda-matchers.git'
   gem "ZenTest"
   gem "autotest-rails"
 end
