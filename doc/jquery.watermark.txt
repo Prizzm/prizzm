@@ -1,0 +1,3 @@
+http://plugins.jquery.com/project/jq-watermark
+http://code.google.com/p/jq-watermark/wiki/Instructions
+

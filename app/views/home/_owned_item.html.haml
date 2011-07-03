@@ -1,0 +1,24 @@
+.row(id="item_#{item.id}" data-itemid="#{item.id}")
+  .cell.image= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
+  .cell
+    %h2= link_to item.name, [current_user, item]
+    .clear
+    = link_to "Write a review", '#'
+    = link_to item.privacy, '#', :class => "#{item.privacy} status"
+    %div(id="item_#{item.id}_rating" class="rating")
+      = form_for [@user, item], :remote => true do |f|
+        %div{:id => "stars-wrapper-#{item.id}"}
+          = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+        :javascript
+          $(document).ready(function(){
+            $("#stars-wrapper-#{item.id}").stars({
+              inputType: "select",
+              callback: function(ui, type, value, event){
+                var item = #{item.id};
+                update_rating('items', item,value);
+              },
+              cancelShow: false
+            });
+          });
+  .cell= link_to "Recommend", '#', :class => "button"
+
