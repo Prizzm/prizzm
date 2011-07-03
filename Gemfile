@@ -42,10 +42,10 @@ gem 'formtastic'
 gem "hoptoad_notifier"
 
 # Social Media Gems FB Connect, FB, and Twitter
-gem "faraday", :git => "git://github.com/technoweenie/faraday.git"
-gem "omniauth", :git => "git://github.com/intridea/omniauth.git"# ,:ref => "b9fe79961ab56041dbf9"
+#gem "faraday", :git => "git://github.com/technoweenie/faraday.git"
+gem "omniauth", '0.2.6' #:git => "git://github.com/intridea/omniauth.git"# ,:ref => "b9fe79961ab56041dbf9"
 gem "fb_graph"
-gem "twitter", :git => 'git://github.com/jnunemaker/twitter.git'
+gem "twitter"#, :git => 'git://github.com/jnunemaker/twitter.git'
 
 
 gem "jammit"

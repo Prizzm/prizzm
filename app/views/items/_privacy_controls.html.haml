@@ -2,6 +2,11 @@
 #item-privacy-control= link_to "#{@item.privacy.capitalize}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy}_item", :id => "item-privacy-control"
 #current-privacy-indicator
   = new_privacy_message @item
+:javascript
+  $('#item-privacy-control').live('ajax:success', function(event, data, status, xhr){
+    $('#current-privacy-indicator').html(data.message);
+    $(this).html(data.next_privacy);
+  });
 
 = form_tag @item, :remote => true do
   .social
@@ -13,8 +18,3 @@
       = check_box_tag "item[shared_facebook]", 1, false, :class => 'shared_fb_checkbox', :id => "item_shared_fb_#{@item.id}"
     = submit_tag "Share"
 
-:javascript
-  $('#item-privacy-control').live('ajax:success', function(event, data, status, xhr){
-    $('#current-privacy-indicator').html(data.message);
-    $(this).html(data.next_privacy);
-  });
