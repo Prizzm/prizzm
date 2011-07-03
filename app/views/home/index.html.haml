@@ -13,9 +13,19 @@
     .clear
     = link_to '{{ customer_count }} people have this', '#'
     Rating {{ rating }}
+    %div{:id => "stars-wrapper-{{ id }}"}
+      %select= options_for_select([1, 2, 3, 4, 5], :selected =>'{{ rating }}' )
+
   .cell 
     = link_to "I have this", '#', :class => "button"
     = link_to "I want this", '#', :class => "button"
+  :plain
+    <script>
+    $("#stars-wrapper-{{ id }}").stars({
+      inputType: "select",
+      disabled: true
+    });
+    </script>
 
 :javascript
   $(document).ready(function(){
@@ -30,9 +40,10 @@
       }
     })
     .data( "autocomplete" )._renderItem = function( ul, item ) {
-      console.log($.dump(item));
       var template = $('#product-autocomplete-result-template').html();
+      console.log(template);
       var autocomplete_html = _.template(template, item);
+      console.log(autocomplete_html);
       return $( "<li></li>" )
         .data( "item.autocomplete", item )
         .append(autocomplete_html)
