@@ -1,7 +1,9 @@
 Prizzm::Application.routes.draw do
   resources :product_invitations
 
-  resources :products
+  resources :products do
+    get 'search', :on => :collection
+  end
 
   resources :companies
 

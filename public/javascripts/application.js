@@ -181,4 +181,8 @@ $(document).ready(function(){
       $(this).removeClass('hover');
   });
 
+  _.templateSettings = {
+    interpolate: /\{\{(.+?)\}\}/g
+  }
 });
+

@@ -63,6 +63,13 @@ GIT
       simple_oauth (~> 0.1.5)
 
 GIT
+  remote: git://github.com/johnbintz/guard-rails.git
+  revision: 7429b1fbf5585b20c2634d69eb6cfcc1355e07e9
+  specs:
+    guard-rails (0.0.3)
+      guard (>= 0.2.2)
+
+GIT
   remote: git://github.com/moabite/best_in_place.git
   revision: 55f8fdc3ab7c37167d72eaf82f8b471146169890
   specs:
@@ -229,8 +236,6 @@ GEM
     guard-compass (0.0.6)
       compass (>= 0.10.5)
       guard (>= 0.2.1)
-    guard-ego (0.0.1)
-      guard (>= 0.2.1)
     guard-jammit (0.1.0)
       guard
       jammit
@@ -238,8 +243,6 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 0.4.0)
       json (>= 1.5.1)
-    guard-rails (0.0.2)
-      guard (>= 0.2.2)
     guard-rspec (0.4.0)
       guard (>= 0.4.0)
     guard-shell (0.1.1)
@@ -432,10 +435,9 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-compass
-  guard-ego
   guard-jammit
   guard-livereload
-  guard-rails
+  guard-rails!
   guard-rspec
   guard-shell
   haml-rails

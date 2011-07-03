@@ -55,11 +55,14 @@ gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 gem "nokogiri"
 
 group :development, :test do
+
+  gem "sqlite3-ruby", :require => 'sqlite3'
+  gem "ruby-debug19", :require => 'ruby-debug'
+
   gem "guard"
-  gem "guard-ego"
   gem "guard-bundler"
   gem "guard-jammit"
-  gem "guard-rails"
+  gem "guard-rails", :git => "git://github.com/johnbintz/guard-rails.git"
   gem "guard-rspec"
   gem "guard-shell"
   gem "guard-compass"
@@ -83,15 +86,10 @@ group :development, :test do
   # Needed to run html2haml to convert html to haml
   gem "hpricot"
  
-  gem "taps"
-
   gem "heroku"
-
+  gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
-
-  gem "sqlite3-ruby", :require => 'sqlite3'
-  gem "ruby-debug19", :require => 'ruby-debug'
 
   # nice table displays in Rails console
   gem "hirb"
@@ -110,7 +108,6 @@ group :development, :test do
 
   # Print a header in app/model/*.rb files, listing the db columns present for
   # each model
-
 
   gem "selenium-webdriver"
   gem "rack-test"

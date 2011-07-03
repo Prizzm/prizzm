@@ -1,43 +1,57 @@
-- content_for :user_header do
-  #user_info
-    .user_name #{@user.name}
+%p
+%p
+%p
+%p
+%p
+= text_field_tag :search, nil, :class => "jq_watermark", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
 
-#have_items
-  #have_items_feed
-    .applet-title
-      Things I Have
-    #add-item-have
-      .add-item-text Add Item
-      = link_to image_tag('add.png', :id => 'add-item-have-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-have-link', :title => 'Add an item'
-    %table.items
-      %thead
-        %tr
-          %th 
-          %th Name
-          %th Brand
-          %th Review
-          %th Rating
-      %tbody#have-tbody.connectedSortable(data-possession='have')
-        %tr
-        = render :partial => "home/item_listing", :collection => @user.owned_items.recently_updated, :as => :item
+%script(type="text/html" id="product-autocomplete-result-template")
+  .cell.img
+    %img(src='{{ main_image_thumb }}')
+  .cell
+    %h2= link_to '{{ label }}', '#'
+    .clear
+    = link_to '{{ customer_count }} people have this', '#'
+    Rating {{ rating }}
+  .cell 
+    = link_to "I have this", '#', :class => "button"
+    = link_to "I want this", '#', :class => "button"
 
-#want_items
-  #want_items_feed
-    .applet-title
-      Things I Want
-    #add-item-want
-      .add-item-text Add Item
-      = link_to image_tag('add.png', :id => 'add-item-want-button'), new_user_item_path(@user), :rel => 'facebox', :id => 'add-item-want-link', :title => 'Add an item'
-    %table.items
-      %thead
-        %tr
-          %th 
-          %th Name
-          %th Brand
-          %th Review
-          %th Rating
-      %tbody#want-tbody.connectedSortable(data-possession='want')
-        = render :partial => "home/item_listing", :collection => @user.wanted_items.recently_updated, :as => :item
+:javascript
+  $(document).ready(function(){
+    $('#product-search-input').autocomplete({
+      delay: 50,
+      source: "#{search_products_path}",
+      select: function(event, ui){
+        //store selected.object_id to hidden field value
+        var product_id = ui.item.id;
+        console.log('Product id: ' + $.dump(ui));
+        $('#item_product_id').val(product_id);
+      }
+    })
+    .data( "autocomplete" )._renderItem = function( ul, item ) {
+      console.log($.dump(item));
+      var template = $('#product-autocomplete-result-template').html();
+      var autocomplete_html = _.template(template, item);
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append(autocomplete_html)
+        .appendTo( ul );
+    };
+  });
+
+%article#own
+  %header.clearfix
+    %h1 Items you own
+  .table#have-list.connectedSortable(data-possession='have')
+    = render :partial => "home/owned_item", :collection => @user.owned_items.recently_updated, :as => :item
+
+%article#own
+  %header.clearfix
+    %h1 Wishlist
+  .table#want-list.connectedSortable(data-possession='want')
+    = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item
+
 
 :javascript
   $(document).ready(function(){
@@ -71,7 +85,7 @@
       console.log("new poss: " + possession_status);
     };
 
-    $('#have-tbody, #want-tbody').sortable({
+    $('#have-list, #want-list').sortable({
       helper: fixHelper,
       start: getStartOrder, 
       update: saveOrder,
