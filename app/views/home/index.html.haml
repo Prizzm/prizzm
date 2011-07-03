@@ -63,6 +63,11 @@
   .table#want-list.connectedSortable(data-possession='want')
     = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item
 
+:javascript
+  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
+    $(this).html(data.item_privacy);
+    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
+  });
 
 :javascript
   $(document).ready(function(){

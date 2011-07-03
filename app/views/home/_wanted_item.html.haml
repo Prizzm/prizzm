@@ -4,6 +4,6 @@
     %h2= link_to item.name, [current_user, item]
     .clear
     = link_to "Request Recommendation", '#'
-    = link_to item.privacy, '#', :class => "#{item.privacy} status"
+    = link_to "#{item.privacy.upcase}",  update_item_privacy_path(item), :remote => true, :method => :put, :class => "#{item.privacy} status privacy_control"
   .cell= link_to "Find Offers", '#', :class => "button"
 
