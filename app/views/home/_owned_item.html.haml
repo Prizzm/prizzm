@@ -4,8 +4,7 @@
     %h2= link_to item.name, [current_user, item]
     .clear
     = link_to "Write a review", '#'
-    = link_to item.privacy, '#', :class => "#{item.privacy} status"
-    = link_to "#{@item.privacy.upcase}",  update_item_privacy_path(@item), :remote => true, :method => :put, :class => "#{@item.privacy} status privacy_control"
+    = link_to "#{item.privacy.upcase}",  update_item_privacy_path(item), :remote => true, :method => :put, :class => "#{item.privacy} status privacy_control"
     %div(id="item_#{item.id}_rating" class="rating")
       = form_for [@user, item], :remote => true do |f|
         %div{:id => "stars-wrapper-#{item.id}"}
@@ -23,11 +22,8 @@
           });
   .cell= link_to "Recommend", '#', :class => "button"
 
-#item-privacy-control
-#current-privacy-indicator
-  = new_privacy_message @item
 :javascript
   $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
-    console.log(data.message);
-    $(this).html(data.next_privacy);
+    $(this).html(data.item_privacy);
+    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
   });
