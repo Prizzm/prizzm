@@ -14,7 +14,7 @@
     = link_to '{{ customer_count }} people have this', '#'
     Rating {{ rating }}
     %div{:id => "stars-wrapper-{{ id }}"}
-      %select= options_for_select([1, 2, 3, 4, 5], :selected =>'{{ rating }}' )
+      %select= options_for_select([1, 2, 3, 4, 5])
 
   .cell 
     = link_to "I have this", '#', :class => "button"
@@ -35,19 +35,21 @@
       select: function(event, ui){
         //store selected.object_id to hidden field value
         var product_id = ui.item.id;
-        console.log('Product id: ' + $.dump(ui));
         $('#item_product_id').val(product_id);
       }
     })
     .data( "autocomplete" )._renderItem = function( ul, item ) {
       var template = $('#product-autocomplete-result-template').html();
-      console.log(template);
-      var autocomplete_html = _.template(template, item);
-      console.log(autocomplete_html);
-      return $( "<li></li>" )
+      var parsed_template = _.template(template, item);
+      var target_option = 'value="' + item.rating + '"';    // do simple string replace to select option, as I can't get Jquery
+      var selected_option = target_option + ' selected="selected"';
+      var autocomplete_html = parsed_template.replace(target_option, selected_option);
+      var returnVal = $( "<li></li>" )
         .data( "item.autocomplete", item )
         .append(autocomplete_html)
         .appendTo( ul );
+      $("#stars-wrapper-"+item.id).stars({ inputType: "select", disabled: true });
+      return returnVal;
     };
   });
 
