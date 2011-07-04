@@ -1,4 +1,13 @@
 $(document).ready(function(){
+  // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
+  // request to toggle te privacy.  Tis script sets a return handler, to show
+  // the updateed privacy mode, and toggle the css class.
+  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
+    $(this).html(data.item_privacy);
+    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
+  });
+
+
   //Fading Links Using Jquery
   $.fn.dwFadingLinks = function(settings) {
 	settings = jQuery.extend({

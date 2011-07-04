@@ -6,4 +6,8 @@ class WantedItemsController < ApplicationController
   def show
   end
 
+  def owners_view
+    @item = current_user.items.find(params[:id]) 
+  end 
+
 end

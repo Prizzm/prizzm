@@ -19,13 +19,6 @@
   .cell 
     = link_to "I have this", '#', :class => "button"
     = link_to "I want this", '#', :class => "button"
-  :plain
-    <script>
-    $("#stars-wrapper-{{ id }}").stars({
-      inputType: "select",
-      disabled: true
-    });
-    </script>
 
 :javascript
   $(document).ready(function(){
@@ -53,6 +46,7 @@
     };
   });
 
+
 %article#own
   %header.clearfix
     %h1 Items you own
@@ -64,12 +58,6 @@
     %h1 Wishlist
   .table#want-list.connectedSortable(data-possession='want')
     = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item
-
-:javascript
-  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
-    $(this).html(data.item_privacy);
-    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
-  });
 
 :javascript
   $(document).ready(function(){

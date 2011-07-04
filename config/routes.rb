@@ -1,12 +1,14 @@
 Prizzm::Application.routes.draw do
   resources :product_invitations
 
+  # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
   end
 
   resources :companies
 
+  # Routes for main page
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
 
@@ -16,6 +18,12 @@ Prizzm::Application.routes.draw do
             :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+
+  # Wanted items
+  get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
+
+  # Owned Items
+  get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
  
   resources :users do
     resources :items do
