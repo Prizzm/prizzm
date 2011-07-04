@@ -6,6 +6,10 @@ class ProductsController < ApplicationController
     end 
   end 
 
+  def show
+    @product = Product.find(params[:id])
+  end 
+
   def search
     #@products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
     # limit results to 6 or so, we we don't reach browser parallel download

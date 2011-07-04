@@ -1,15 +1,38 @@
-%p#notice= notice
+= link_to "Back", home_path
 
-%p
-  %b Namee:
-  = @product.namee
-%p
-  %b Type:
-  = @product.type
-%p
-  %b Upc:
-  = @product.upc
+#item-details
+  %h2#title.headline Product page for - #{@product.name}
 
-= link_to 'Edit', edit_product_path(@product)
-\|
-= link_to 'Back', products_path
+  #text-fields
+    .column
+      %p.fields
+        %strong Name:
+        %br/
+        = @product.name
+      %p.fields
+        %strong Description:
+        %br/
+        = @product.description
+      %p.fields
+        %strong Rating:
+        %div{:id => "item_#{@product.id}_rating", :class => "rating"}
+          = form_for [@user, @product], :remote => true do |f|
+            %div{:id => "stars-wrapper-#{@product.id}"}
+              = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
+
+    .column
+      %p.fields
+      %br/
+      %p.fields
+        %strong Added on: 
+        = @product.created_at.strftime('%D')
+
+    .column
+
+  = render 'products/images'
+
+  #image-field
+    /%p= image_tag @product.images.first.image.url, :width => "100%"
+  .clear
+
+

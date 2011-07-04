@@ -9,7 +9,7 @@
   .cell.img
     %img(src='{{ main_image_thumb }}')
   .cell
-    %h2= link_to '{{ label }}', '#'
+    %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
     .clear
     = link_to '{{ customer_count }} people have this', '#'
     Rating {{ rating }}
