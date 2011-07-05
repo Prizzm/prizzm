@@ -4,20 +4,31 @@
 	
 	*:focus {
 		outline: none;
+		border: 0;
 	}
-	
+
 	body {
 		background: #f8f8f8;
 	}
 	
-	#bar {
+	ul {
+        margin: 0;
+    }
+	
+	#headerBar {
 		height: 45px;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid #d9e6ff;
 		background: #6a80b5 url('../images/bg_pat.png');
 	}
 	
+	#userBar {
+		height: 35px;
+		border-bottom: 1px solid #fff;
+		background: #cdd9f1;
+	}
+	
 	#main {
-		margin-top: -45px;
+		margin-top: -82px;
 	}
 	
     #main > header {
@@ -43,7 +54,6 @@
 		}
 		
 		  header nav li {
-			margin-left: 10px;
 			display: inline-block;
 		  }
 		  
@@ -66,10 +76,11 @@
 		
 		header form {
 			margin-top: 7px;
+			position: relative;
 		}
 		
 		  header form input[type=text] {
-			padding: 7px 94px 7px 7px;
+			padding: 7px 116px 7px 7px;
 			width: 100%;
             border: 0;
             color: #c5c5c5;
@@ -84,21 +95,16 @@
 		  }
           
           header form input[type=submit] {
-            margin-left: -109px;
             padding: 5px 11px 4px;
             border: 0;
             color: #fff;
             font-size: 0.9em;
             font-weight: bolder;
+		position: absolute;
+		top: 3px;
+		right: 3px;
           }
-          
-          
-          @-moz-document url-prefix() {
-              header form input[type=submit] {
-                margin-left: -114px;
-              }
-          }
-          
+
           header:hover #results{
             visibility: visible;
           }
@@ -126,13 +132,45 @@
             padding: 0;
             float: left;
           }
-          
-          
-	#content, aside {
-		padding-top: 15px;
+	
+	#userBit {
+		margin-bottom: 15px;
+		height: 35px;
 	}
 	
-	  article {
+	  #userBit div {
+		padding: 10px 0 0;
+	  }
+	
+	  #userBit nav {
+		height: 35px;
+		text-align: right;
+	  }
+	
+	  #userBit  ul li{
+		display: inline-block;
+		
+	  }
+	  
+	    #userBit  ul li a {
+			margin-left: -5px;
+			padding: 10px 8px 6px;
+			display: block;
+			border-bottom: 2px solid #cdd9f1;
+			text-decoration: none;
+	    }
+		
+        #userBit ul li a:hover {
+            background: #d9e1f1;
+            border-bottom: 2px solid #d9e1f1;
+        }
+        
+		#userBit ul li a.active {
+		    background: #d9e1f1;
+			border-bottom: 2px solid #8eaff0;
+		}
+
+	article {
 		margin-bottom: 10px;
 		border: 1px solid #d5d5d5;
 		background: #fff;
@@ -140,7 +178,7 @@
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-	  }
+	}
         article header {
 			padding: 5px 5px 5px;
             background: #e9edf5;
@@ -302,17 +340,21 @@
             box-shadow: none;
         }
         
-        aside article .table {
+        aside article .table, aside article ul {
             border: 0;
             font-size: 0.85em;
         }
         
+		aside article .cell, aside article ul li {
+			padding: 5px 0;
+		}
+		
         aside article .row:hover{
 			background: none;
 		}
         
         aside article .cell.img {
-            width: 40px;
+            width: 50px;
         }
             aside article .cell.img img{
                 width: 40px;
@@ -325,6 +367,14 @@
         
         aside article h1 {
             font-size: 1.1em;
+        }
+        
+        aside article ul li {
+            border-bottom: 1px solid #e7e7e7;
+        }
+        
+        aside article ul li a {
+            display: block;
         }
     
     #copyright {

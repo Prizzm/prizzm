@@ -11,10 +11,9 @@ class ProductsController < ApplicationController
   end 
 
   def search
-    #@products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
     # limit results to 6 or so, we we don't reach browser parallel download
-    # limit
     products = Product.order('name ASC')
+    products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
     render :json  => autocomplete_info_for(products)   
   end 
 
