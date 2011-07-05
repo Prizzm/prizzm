@@ -1,0 +1,52 @@
+%header
+  %h1.grid_2
+    = link_to 'Prizzm'
+  = form_tag '', :class => "grid_6" do
+    = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
+    = submit_tag "ADD NEW ITEM"
+- if signed_in?
+  %nav.grid_4
+    %ul
+      %li= link_to 'Dashboard', home_url, :class => "active"
+      %li= link_to 'Browse'
+
+%script(type="text/html" id="product-autocomplete-result-template")
+  .cell.img
+    %img(src='{{ main_image_thumb }}')
+  .cell
+    %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
+    .clear
+    = link_to '{{ customer_count }} people have this', '#'
+    Rating {{ rating }}
+    %div{:id => "stars-wrapper-{{ id }}"}
+      %select= options_for_select([1, 2, 3, 4, 5])
+
+  .cell 
+    = link_to "I have this", '#', :class => "button"
+    = link_to "I want this", '#', :class => "button"
+
+:javascript
+  $(document).ready(function(){
+    $('#product-search-input').autocomplete({
+      delay: 50,
+      source: "#{search_products_path}",
+      select: function(event, ui){
+        //store selected.object_id to hidden field value
+        var product_id = ui.item.id;
+        $('#item_product_id').val(product_id);
+      }
+    })
+    .data( "autocomplete" )._renderItem = function( ul, item ) {
+      var template = $('#product-autocomplete-result-template').html();
+      var parsed_template = _.template(template, item);
+      var target_option = 'value="' + item.rating + '"';    // do simple string replace to select option, as I can't get Jquery
+      var selected_option = target_option + ' selected="selected"';
+      var autocomplete_html = parsed_template.replace(target_option, selected_option);
+      var returnVal = $( "<li class="row"></li>" )
+        .data( "item.autocomplete", item )
+        .append(autocomplete_html)
+        .appendTo( ul );
+      $("#stars-wrapper-"+item.id).stars({ inputType: "select", disabled: true });
+      return returnVal;
+    };
+  });

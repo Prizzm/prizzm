@@ -1,0 +1,10 @@
+%article#own
+  %header.clearfix
+    %h1 Items you own
+    %ul
+      %li= link_to '5', :class => "active"
+      %li= link_to '10'
+      %li= link_to '20'
+      %li= link_to 'View All'
+  .table#have-list.connectedSortable(data-possession='have')
+    = render :partial => "home/owned_item", :collection => @user.owned_items.recently_updated, :as => :item
