@@ -12,24 +12,15 @@
     = hoptoad_javascript_notifier
     = yield :javascripts
   %body
-    #top
-      #topContent
-        #logo
-          = link_to image_tag( '/images/prizzm-logo.png', { :width=>"168", :height=>"42", :alt=>"Prizzm" }), root_url
-        - if signed_in?
-          #user_menu
-            %ul
-              %li= link_to 'Home', home_url, :class => "active"
-              %li= link_to 'Contact Customer Service', '#'
-              %li
-                = link_to current_user.name, edit_user_registration_path
-                = link_to 'Logout', destroy_user_session_url
-  #header
-    - flash.each do |type, value|
-      .flash{ :class => type.to_s }
-        = value     
-  #container
-    #main
+    #headerBar
+    #userBar
+    #main.container_12
+      %header
+        = render 'layouts/header'
+      #userBit
+        = render 'layouts/userbit'
+      .clear  
+ 
       - if current_user
         = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
         = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
@@ -38,10 +29,12 @@
         = hidden_field_tag "processing_fb_id", ""
         = hidden_field_tag "processing_tt_id", ""
       = yield
-  #footer
-    #footerContent.clear.clearfix
-      #copyright Prizzm &copy; 2011
-      #footerLinks
-        = link_to 'sitemap', '#'
-        sitemap | privacy policy | about
+
+      .clear
+      %footer
+        #copyright
+          Copyright Prizzm 2011. Brought to you by a group of whitty guys.
+          - flash.each do |type, value|
+            .flash{ :class => type.to_s }
+              = value 
   /= render 'layouts/google_analytics'
