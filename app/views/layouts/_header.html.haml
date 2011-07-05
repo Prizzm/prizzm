@@ -3,12 +3,13 @@
     = link_to 'Prizzm'
   = form_tag '', :class => "grid_6" do
     = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
-    = submit_tag "ADD NEW ITEM"
+    = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
 - if signed_in?
   %nav.grid_4
     %ul
       %li= link_to 'Dashboard', home_url, :class => "active"
       %li= link_to 'Browse'
+
 
 
 %script(type="text/html" id="product-autocomplete-result-template")
@@ -79,56 +80,4 @@
   });
 
 
-%article#own
-  %header.clearfix
-    %h1 Items you own
-  .table#have-list.connectedSortable(data-possession='have')
-    = render :partial => "home/owned_item", :collection => @user.owned_items.recently_updated, :as => :item
-
-%article#own
-  %header.clearfix
-    %h1 Wishlist
-  .table#want-list.connectedSortable(data-possession='want')
-    = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item
-
-:javascript
-  $(document).ready(function(){
-    //http://devblog.foliotek.com/2009/07/23/make-table-rows-sortable-using-jquery-ui-sortable/
-    var fixHelper = function(e, ui) {
-      ui.children().each(function() {
-        $(this).width($(this).width());
-      });
-      return ui;
-    };
-
-    var getStartOrder = function(event, ui){
-      this.old_table_order = $(this).sortable('toArray').toString();
-      this.old_table_order = $(this).sortable('toArray');
-    };
-
-    var saveOrder = function(event,ui){
-      var new_table_order = $(this).sortable('toArray');
-      var user_id = $('table.interactions').attr('data-user');
-      var possession_status = $(this).data('possession');
-      var moved_item_id = $(ui.item).data('itemid');
-      console.log(moved_item_id);
-      $.post('/items/sort', {
-        new_item_order: new_table_order, 
-        old_item_order: this.old_table_order, 
-        user_id: user_id,
-        id: moved_item_id,
-        possession_status: possession_status 
-      }) //post order to rails
-      $(this).find('.item_info').removeClass('hover');
-      console.log("new poss: " + possession_status);
-    };
-
-    $('#have-list, #want-list').sortable({
-      helper: fixHelper,
-      start: getStartOrder, 
-      update: saveOrder,
-      connectWith: ".connectedSortable"
-    }).disableSelection();
-
-  });
 
