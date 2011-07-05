@@ -1,11 +1,11 @@
 .row(id="item_#{item.id}" data-itemid="#{item.id}")
-  .cell.image= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
+  .cell.img= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
   .cell
     %h2= link_to item.name, owners_owned_item_view_path(item)
     .clear
     = link_to "Write a review", owners_owned_item_view_path(item)
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
-    %div(id="item_#{item.id}_rating" class="rating")
+    %div(id="item_#{item.id}_rating")
       = form_for [@user, item], :remote => true do |f|
         %div{:id => "stars-wrapper-#{item.id}"}
           = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}

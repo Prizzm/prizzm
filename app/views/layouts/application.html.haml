@@ -16,29 +16,9 @@
     #userBar
     #main.container_12
       %header
-        %h1.grid_2
-          %a{:href => ""} Prizzm
-        %form.grid_6{:action => ""}
-          %input{:placeholder => "Keywords, Tags, Items, SKU...", :type => "text"}/
-          %input{:type => "submit", :value => "ADD NEW ITEM"}/
-        %nav.grid_4
-          %ul
-            %li= link_to 'Dashboard', home_url, :class => "active"
-            %li
-              %a{:href => ""} Browse
+        = render 'layouts/header'
       #userBit
-        .grid_4
-          Welcome
-          = link_to current_user.name, edit_user_registration_path
-        %nav.grid_8
-          %ul
-            %li
-              %a{:href => ""} Notifications (3)
-            %li
-              %a{:href => ""} Inbox
-            %li
-              %a{:href => ""} Your Cases
-            %li= link_to 'Logout', destroy_user_session_url
+        = render 'layouts/userbit'
       .clear  
  
       - if current_user
@@ -54,4 +34,7 @@
       %footer
         #copyright
           Copyright Prizzm 2011. Brought to you by a group of whitty guys.
+          - flash.each do |type, value|
+            .flash{ :class => type.to_s }
+              = value 
   /= render 'layouts/google_analytics'

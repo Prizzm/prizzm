@@ -1,5 +1,5 @@
 .row(id="item_#{item.id}" data-itemid="#{item.id}")
-  .cell.image= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
+  .cell.img= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
   .cell
     %h2= link_to item.name, owners_wanted_item_view_path(item)
     .clear

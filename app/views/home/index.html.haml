@@ -1,90 +1,10 @@
-%p
-%p
-%p
-%p
-%p
-#product-search-submit-button(style="display: none") Search
-= text_field_tag :search, nil, :class => "jq_watermark", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
+#content.grid_8
+  = render 'owned_list'
+  = render 'wanted_list'
 
-%script(type="text/html" id="product-autocomplete-result-template")
-  .product-autocomplete-result
-    .cell.img
-      %img(src='{{ main_image_thumb }}')
-    .cell
-      %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
-      .clear
-      = link_to '{{ customer_count }} people have this', '#'
-      %span Rating {{ rating }}
-      %div{:id => "stars-wrapper-{{ id }}"}
-        %select= options_for_select([1, 2, 3, 4, 5])
-    .cell 
-      = link_to "I have this", '#', :class => "button"
-      = link_to "I want this", '#', :class => "button"
-
-:javascript
-  $(document).ready(function(){
-
-    //$('.product-autocomplete-result a').live( 'click', function(){
-      //console.log($(this).attr('href'));
-      //console.log(this.href);
-      //window.location = this.href;
-    //});
-
-    $.ui.autocomplete.prototype._renderItem = function( ul, item ) {
-      var template = document.getElementById('product-autocomplete-result-template').innerHTML;
-      var parsed_template = _.template(template, item);
-      var target_option = 'value="' + item.rating + '"';    
-      var selected_option = target_option + ' selected="selected"';
-      var autocomplete_html = parsed_template.replace(target_option, selected_option).replace(/^\s+|\s+$/g, '') ;
-      var node = '<a>'+autocomplete_html+'</a>';
-      console.log(node);
-      console.log($(node).html());
-      var returnVal = $( "<li></li>" )
-        .data( "item.autocomplete", item )
-        .append('<a>' + autocomplete_html+'</a>')
-        .appendTo( ul );
-      $("#stars-wrapper-"+item.id).stars({ inputType: "select", disabled: true });
-      return returnVal;
-    };
-
-    $('#product-search-input').autocomplete({
-      delay: 50,
-      source: function(request, response) {
-        $.ajax({
-          url: "#{search_products_path}",
-          dataType: 'json',
-          data: request,
-          success: function(data) {
-            if (data.length < 1) {
-              $('#product-search-submit-button').show();
-            } else {
-              $('#product-search-submit-button').hide();
-            }
-            response(data);
-          }
-        });
-      },
-      select: function( event, ui ) {
-      // add new item when selected
-        console.log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
-      }
-   })
-  });
-
-
-%article#own
-  %header.clearfix
-    %h1 Items you own
-  .table#have-list.connectedSortable(data-possession='have')
-    = render :partial => "home/owned_item", :collection => @user.owned_items.recently_updated, :as => :item
-
-%article#own
-  %header.clearfix
-    %h1 Wishlist
-  .table#want-list.connectedSortable(data-possession='want')
-    = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item
+%aside.grid_4
+  = render 'live_feed'
+  = render 'recommendations'
 
 :javascript
   $(document).ready(function(){
