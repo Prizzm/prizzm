@@ -13,13 +13,23 @@ class ProductsController < ApplicationController
   def search
     # limit results to 6 or so, we we don't reach browser parallel download
     products = Product.order('name ASC')
-    products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
+    #products = Product.all(:conditions => ["name like ?", params[:term] +'%'])
+    #products = Product.all(:conditions => ["name like ?", params[:query] +'%'])
     render :json  => autocomplete_info_for(products)   
   end 
 
 private
   
   def autocomplete_info_for products
-    products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
+    #results = products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
+    #results = products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
+    query = params[:query]
+    p "Products: "
+    pp products
+    suggestions =  products.collect { |p| p.name}
+    data = results
+    output = {:query => query, :suggestions => suggestions, :data => data }
+    puts output
+    output
   end
 end

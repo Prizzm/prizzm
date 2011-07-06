@@ -25,11 +25,12 @@
       = link_to "I have this", '#', :class => "button"
       = link_to "I want this", '#', :class => "button"
 
+%src(src="jquery.autocomplete.js")
 :javascript
   $(document).ready(function(){
 
     $('#product-search-input').autocomplete({
-
+      serviceUrl: "#{search_products_path}"
     });
   });
 :plain
