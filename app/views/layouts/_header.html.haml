@@ -28,24 +28,21 @@
 :javascript
   $(document).ready(function(){
 
-    //$('.product-autocomplete-result a').live( 'click', function(){
-      //console.log($(this).attr('href'));
-      //console.log(this.href);
-      //window.location = this.href;
-    //});
+    $('#product-search-input').autocomplete({
 
+    });
+  });
+:plain
     $.ui.autocomplete.prototype._renderItem = function( ul, item ) {
       var template = document.getElementById('product-autocomplete-result-template').innerHTML;
       var parsed_template = _.template(template, item);
       var target_option = 'value="' + item.rating + '"';    
       var selected_option = target_option + ' selected="selected"';
       var autocomplete_html = parsed_template.replace(target_option, selected_option).replace(/^\s+|\s+$/g, '') ;
-      var node = '<a>'+autocomplete_html+'</a>';
-      console.log(node);
-      console.log($(node).html());
       var returnVal = $( "<li></li>" )
         .data( "item.autocomplete", item )
-        .append('<a>' + autocomplete_html+'</a>')
+        //.append(autocomplete_html)
+        .append('<a>Something</a>')
         .appendTo( ul );
       $("#stars-wrapper-"+item.id).stars({ inputType: "select", disabled: true });
       return returnVal;

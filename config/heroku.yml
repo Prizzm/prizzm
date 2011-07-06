@@ -86,7 +86,6 @@ addons:
   all:
     - amazon_rds
     - custom_domains:basic
-    - cron:daily
     # add any other addons here
     - logging:expanded
     - newrelic:standard
