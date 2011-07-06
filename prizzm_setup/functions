@@ -12,8 +12,8 @@
  
  
 function deploy() {
-  server=${1:=development}
-
+  #server=${1:=development}
+  server=development
   echo "${alert} Compiling css with 'compass compile .'${txtrst}..."
   compass compile .
   
