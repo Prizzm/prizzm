@@ -24,17 +24,18 @@
     .cell 
       = link_to "I have this", '#', :class => "button"
       = link_to "I want this", '#', :class => "button"
+:plain
+  <style>
+  .autocomplete-item {
+    height: 50px; 
+    width: 150px; 
+  }
+  </style>
 
-%src(src="jquery.autocomplete.js")
 :javascript
   $(document).ready(function(){
 
-    $('#product-search-input').autocomplete({
-      serviceUrl: "#{search_products_path}"
-    });
-  });
-:plain
-    $.ui.autocomplete.prototype._renderItem = function( ul, item ) {
+   $.ui.autocomplete.prototype._renderItem = function( ul, item ) {
       var template = document.getElementById('product-autocomplete-result-template').innerHTML;
       var parsed_template = _.template(template, item);
       var target_option = 'value="' + item.rating + '"';    
@@ -42,8 +43,7 @@
       var autocomplete_html = parsed_template.replace(target_option, selected_option).replace(/^\s+|\s+$/g, '') ;
       var returnVal = $( "<li></li>" )
         .data( "item.autocomplete", item )
-        //.append(autocomplete_html)
-        .append('<a>Something</a>')
+        .append('<a class="autocomplete-item"></a>'+autocomplete_html)
         .appendTo( ul );
       $("#stars-wrapper-"+item.id).stars({ inputType: "select", disabled: true });
       return returnVal;

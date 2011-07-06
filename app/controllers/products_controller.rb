@@ -21,15 +21,12 @@ class ProductsController < ApplicationController
 private
   
   def autocomplete_info_for products
-    #results = products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
-    #results = products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
-    query = params[:query]
-    p "Products: "
-    pp products
-    suggestions =  products.collect { |p| p.name}
-    data = results
-    output = {:query => query, :suggestions => suggestions, :data => data }
-    puts output
-    output
+    #query = params[:query]
+    #suggestions =  products.collect { |p| p.name}
+    #data = products.collect do |p| 
+      #{:label => p.label, :main_image_thumb => p.main_image_thumb, :customer_count => p.customer_count, :id => p.id, :rating => p.rating}
+    #end
+    #output = {:query => query, :suggestions => suggestions, :data => data }
+    results = products.to_json(:methods => [:label, :main_image_thumb, :customer_count], :only => [:id, :rating])
   end
 end
