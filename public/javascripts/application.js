@@ -38,17 +38,6 @@ $(document).ready(function(){
   // Initialize facebox model windows if they are used
   $('a[rel*=facebox]').facebox();
 
-  /* This function is used to send the updated ratings to the Rails controller
-   * via ajax.  As we do not need to read the response (we just assume it works,
-   * we can use a simple AJAX Post.
-   */
-  update_rating = function(key, object, rating){
-    $.post('/' + key + '/rate', {
-      object_id: object,
-      rating: rating
-    });
-  };
-
   /*  Here we configure the effects that occur when we click on the input box.
    *  The text_area expands in size, we add a class to it to highlight it, and we
    *  show three other objects that were previously hidden.  Finally, after we
@@ -188,6 +177,37 @@ $(document).ready(function(){
   });
   $('.interaction-content').live('mouseleave', function(){
       $(this).removeClass('hover');
+  });
+
+
+
+  /* Privacy controls to adjust item privace
+   */
+  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
+    $(this).html(data.item_privacy);
+    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
+  });
+
+
+  /* This function is used to send the updated ratings to the Rails controller
+   * via ajax.  As we do not need to read the response (we just assume it works,
+   * we can use a simple AJAX Post.
+   */
+  update_rating = function(key, object, rating){
+    $.post('/' + key + '/rate', {
+      object_id: object,
+      rating: rating
+    });
+  };
+
+
+  /* Customized jquery.ui.stars plugin 
+   */
+  $(".rateable-item").stars({
+    callback: function(ui, type, value, event){
+      var item = ui.element.data('itemid');
+      update_rating('items', item, value);
+    }
   });
 
   _.templateSettings = {

@@ -7,23 +7,6 @@
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
     %div(id="item_#{item.id}_rating")
       = form_for [@user, item], :remote => true do |f|
-        %div{:id => "stars-wrapper-#{item.id}"}
+        %div{:id => "stars-wrapper-#{item.id}", :class => "rateable-item", :data => {:itemid => "#{item.id}"}}
           = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-        :javascript
-          $(document).ready(function(){
-            $("#stars-wrapper-#{item.id}").stars({
-              inputType: "select",
-              callback: function(ui, type, value, event){
-                var item = #{item.id};
-                update_rating('items', item,value);
-              },
-              cancelShow: false
-            });
-          });
   .cell= link_to "Recommend", '#', :class => "button"
-
-:javascript
-  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
-    $(this).html(data.item_privacy);
-    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
-  });

@@ -18,7 +18,7 @@
       %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
       .clear
       = link_to '{{ customer_count }} people have this', '#'
-      %div{:id => "stars-wrapper-{{ id }}", :class => "rating"}
+      %div{:id => "stars-wrapper-{{ id }}", :class => "autocomplete-rating rating", :disabled => "disable"}
         %select= options_for_select([1, 2, 3, 4, 5])
     .cell 
       = link_to "I have this", '#', :class => "button"
@@ -26,6 +26,7 @@
 
 %script(src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js" charset="utf-8")
 :javascript
+
   function autocompleteFormatter(query, results) {
     var template = document.getElementById('product-autocomplete-result-template').innerHTML;
     
@@ -35,9 +36,10 @@
       var target_option = 'value="' + product.rating + '"';    
       var selected_option = target_option + ' selected="selected"';
       var autocomplete_html = parsed_template.replace(target_option, selected_option);
-      return $(autocomplete_html).stars({ inputType: "select", disabled: true }).html();
+      return $(autocomplete_html).stars().html();
     });
   }
+
 
   YUI().use('autocomplete', 'autocomplete-highlighters', function(Y){
     Y.one('body').addClass('yui3-skin-sam');
@@ -64,6 +66,7 @@
           $('#product-search-submit-button').hide();
         }
     });
+
 
   });
 
