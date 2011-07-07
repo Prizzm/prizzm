@@ -133,6 +133,13 @@
             background: #fff !important;
             z-index: 999 !important;
           }
+
+          .yui3-aclist-content {
+            border: none !important;
+            -webkit-box-shadow: 0 !important;
+            -moz-box-shadow: 0 !important;
+            box-shadow: 0 !important;
+          }
 	
 	#userBit {
 		margin-bottom: 15px;
