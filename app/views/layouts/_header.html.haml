@@ -3,6 +3,7 @@
 = form_tag '', :class => "grid_6" do
   = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
   = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
+  = submit_tag "", :id => 'mag-glass'
 - if signed_in?
   %nav.grid_4
     %ul
@@ -14,7 +15,7 @@
   .product-autocomplete-result
     .cell.img
       %img(src='{{ main_image_thumb }}')
-    .cell
+    .cell.desc
       %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
       .clear
       = link_to '{{ customer_count }} people have this', '#'
@@ -61,9 +62,11 @@
 
     inputNode.ac.on('results', function(event){
         if (event.results.length < 1) {
+          $('#mag-glass').hide();
           $('#product-search-submit-button').show();
         } else {
           $('#product-search-submit-button').hide();
+          $('#mag-glass').show();
         }
     });
 
