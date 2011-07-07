@@ -3,6 +3,10 @@ class WantedItemsController < ApplicationController
     @item = Item.new(:possession_status => 'want')
   end
 
+  def create
+    
+  end
+
   def show
   end
 

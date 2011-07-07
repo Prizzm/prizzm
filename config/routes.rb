@@ -10,15 +10,13 @@ Prizzm::Application.routes.draw do
 
 
 
-  resources :owned_items, :only => [:create], :path => '/owned'
-  resources :wanted_items, :only => [:create], :path => '/wanted'
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
+  post '/wanted/:id' => 'wanted_items#create', :as => 'add_wanted_item'
 
   # Owned Items
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
-
-
+  post '/owned/:id' => 'owned_items#create', :as => 'add_owned_item'
 
 
 
