@@ -42,26 +42,27 @@
   YUI().use('autocomplete', 'autocomplete-highlighters', function(Y){
     Y.one('body').addClass('yui3-skin-sam');
 
-    Y.one('#product-search-input').plug(Y.Plugin.AutoComplete, {
+    var inputNode = Y.one('#product-search-input');
+
+    inputNode.plug(Y.Plugin.AutoComplete, {
       resultHighlighter: 'phraseMatch',
       source: "#{search_products_path}?query={query}",
       queryDelay: 50,
       activateFirstItem: true,
       resultFormatter: autocompleteFormatter,
-      resultTextLocator: 'label',
+      resultTextLocator: 'label'
+    });
 
-      results: function(event){
-        console.log($.dump(event));
+    inputNode.ac.on('select', function(event){
+      console.log($.dump(event));
+    });
+
+    inputNode.ac.on('results', function(event){
         if (event.results.length < 1) {
           $('#product-search-submit-button').show();
-          console.log('button vivsible');
-          console.log(event.results.length);
         } else {
-          console.log('hidden');
-          console.log(event.results.length);
           $('#product-search-submit-button').hide();
         }
-      }
     });
 
   });

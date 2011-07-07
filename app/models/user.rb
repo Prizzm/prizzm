@@ -29,6 +29,13 @@ class User < ActiveRecord::Base
     new_record?
   end
 
+  def wants product
+    items.create
+  end
+
+  def owns product
+
+  end
 
   def self.find_for_facebook_oauth(access_token, user=nil)
     data = access_token['extra']['user_hash']
