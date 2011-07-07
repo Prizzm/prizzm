@@ -8,6 +8,21 @@ Prizzm::Application.routes.draw do
 
   resources :companies
 
+
+
+  resources :owned_items, :only => [:create], :path => '/owned'
+  resources :wanted_items, :only => [:create], :path => '/wanted'
+  # Wanted items
+  get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
+
+  # Owned Items
+  get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
+
+
+
+
+
+
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
@@ -19,11 +34,6 @@ Prizzm::Application.routes.draw do
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
 
-  # Wanted items
-  get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
-
-  # Owned Items
-  get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
  
   resources :users do
     resources :items do
