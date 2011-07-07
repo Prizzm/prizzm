@@ -1,50 +1,55 @@
+
+
 = link_to "Back", home_path
-
-#item-details
-  %h2#title.headline ITEM DETAILS - #{@item.name}
-
-  #text-fields
-    .column
-      %p.fields
-        %strong Name:
-        %br/
-        #{best_in_place @item, :name, :path => [current_user, @item] }
-      %p.fields
-        %strong Review:
-        %br/
-        #{best_in_place @item, :review, :path => [current_user, @item] }
-      %p.fields
-        %strong Rating:
-        %div{:id => "item_#{@item.id}_rating", :class => "rating"}
-          = form_for [@user, @item], :remote => true do |f|
-            %div{:id => "stars-wrapper-#{@item.id}"}
-              = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
-
-    .column
-      %p.fields
-        = render 'privacy_controls'
-      %br/
-      %p.fields
-        %strong Added on: 
-        = @item.created_at.strftime('%D')
-      %p.fields 
-        %strong Last updated on:
-        #item-urls= link_to @item.url, @item.url
-
-    .column
-      = render 'url_preview'
-
+%aside.grid_4
   = render 'images'
 
   #image-field
     /%p= image_tag @item.images.first.image.url, :width => "100%"
   .clear
 
-#photos
-  = fields_for ItemImage.new do |f|
-    = f.file_field :image, :rel => item_images_path(@item)                        
+  #photos
+    = fields_for ItemImage.new do |f|
+      = f.file_field :image, :rel => item_images_path(@item)                        
 
 = photo_uploadify
+#content.grid_8
+
+  #item-details
+    %h2#title.headline ITEM DETAILS - #{@item.name}
+
+    #text-fields
+      .column
+        %p.fields
+          %strong Name:
+          %br/
+          #{best_in_place @item, :name, :path => [current_user, @item] }
+        %p.fields
+          %strong Review:
+          %br/
+          #{best_in_place @item, :review, :path => [current_user, @item] }
+        %p.fields
+          %strong Rating:
+          %div{:id => "item_#{@item.id}_rating", :class => "rating"}
+            = form_for [@user, @item], :remote => true do |f|
+              %div{:id => "stars-wrapper-#{@item.id}"}
+                = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
+
+      .column
+        %p.fields
+          = render 'privacy_controls'
+        %br/
+        %p.fields
+          %strong Added on: 
+          = @item.created_at.strftime('%D')
+        %p.fields 
+          %strong Last updated on:
+          #item-urls= link_to @item.url, @item.url
+
+      .column
+        = render 'url_preview'
+
+  
 
 
 

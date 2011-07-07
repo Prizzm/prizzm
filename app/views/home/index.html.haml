@@ -1,9 +1,12 @@
+- content_for :page_style do
+  = stylesheet_link_tag 'dashboard'
+
 #content.grid_8
   = render 'owned_list'
   = render 'wanted_list'
 
 %aside.grid_4
-  = render 'live_feed'
+  = render 'your_feed'
   = render 'recommendations'
 
 :javascript
