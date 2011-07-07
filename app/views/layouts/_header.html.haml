@@ -1,9 +1,8 @@
-%header
-  %h1.grid_2
-    = link_to 'Prizzm'
-  = form_tag '', :class => "grid_6" do
-    = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
-    = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
+%h1.grid_2
+  = link_to 'Prizzm'
+= form_tag '', :class => "grid_6" do
+  = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
+  = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
 - if signed_in?
   %nav.grid_4
     %ul

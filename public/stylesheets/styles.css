@@ -133,6 +133,13 @@
             background: #fff !important;
             z-index: 999 !important;
           }
+
+          .yui3-aclist-content {
+            border: none !important;
+            -webkit-box-shadow: 0 !important;
+            -moz-box-shadow: 0 !important;
+            box-shadow: 0 !important;
+          }
 	
 	#userBit {
 		margin-bottom: 15px;
@@ -155,7 +162,7 @@
 	  
 	    #userBit  ul li a {
 			margin-left: -5px;
-			padding: 10px 8px 6px;
+			padding: 10px 8px 8px;
 			display: block;
 			border-bottom: 2px solid #cdd9f1;
 			text-decoration: none;
