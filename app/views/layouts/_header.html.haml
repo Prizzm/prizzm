@@ -1,5 +1,5 @@
 %h1.grid_2
-  = link_to 'Prizzm'
+  = link_to 'Prizzm', home_url
 = form_tag '', :class => "grid_6" do
   = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
   = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
@@ -8,6 +8,7 @@
     %ul
       %li= link_to 'Dashboard', home_url, :class => "active"
       %li= link_to 'Browse'
+      %li= link_to 'Live feed'
 
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result

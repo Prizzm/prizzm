@@ -1,9 +1,10 @@
 .grid_4
   Welcome
-  = link_to current_user.name, edit_user_registration_path
+  = link_to current_user.name
 %nav.grid_8
   %ul
     %li= link_to 'Inbox (10)'
     %li= link_to 'Your Cases'
     %li= link_to 'Offers'
+    %li= link_to 'Settings', edit_user_registration_path
     %li= link_to 'Logout', destroy_user_session_url

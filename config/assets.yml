@@ -6,7 +6,11 @@ javascripts:
 
 stylesheets:
   app:
-    - public/stylesheets/*.css
+    - public/stylesheets/960.css
+    - public/stylesheets/boilerplate.css
+    - public/stylesheets/app.css
+    - public/stylesheets/fonts.css
+    - public/stylesheets/jquery.ui.stars.css
   login:
     - public/stylesheets/login/*.css
   ie: 
