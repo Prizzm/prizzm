@@ -18,7 +18,7 @@
       %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
       .clear
       = link_to '{{ customer_count }} people have this', '#'
-      %div{:id => "stars-wrapper-{{ id }}", :class => ".autocomplete-stars-wrapper"}
+      %div{:id => "stars-wrapper-{{ id }}", :class => "rating"}
         %select= options_for_select([1, 2, 3, 4, 5])
     .cell 
       = link_to "I have this", '#', :class => "button"
