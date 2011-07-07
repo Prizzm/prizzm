@@ -19,17 +19,18 @@
 
 $.widget('ui.stars', {
 	options: {
-		inputType: 'radio', // [radio|select]
+		inputType: 'select', // [radio|select]
 		split: 0, // decrease number of stars by splitting each star into pieces [2|3|4|...]
 		disabled: false, // set to [true] to make the stars initially disabled
 		cancelTitle: 'Cancel Rating',
 		cancelValue: 0, // default value of Cancel btn.
-		cancelShow: true,
+		cancelShow: false,
 		disableValue: true, // set to [false] to not disable the hidden input when Cancel btn is clicked, so the value will present in POST data.
 		oneVoteOnly: false,
 		showTitles: false,
 		captionEl: null, // jQuery object - target for text captions 
 		callback: null, // function(ui, type, value, event)
+
 
 		/*
 		 * CSS classes
@@ -113,6 +114,11 @@ $.widget('ui.stars', {
 		 */
 		o.items = starId;
 
+        /* We need to set a marker of where to insert the rendered stars,
+         * else the append messes everything up in th HTML layout for the
+         * disabled stars. After THAT, we can safely remove old content */
+        var insertion_point = this.$selec.parent();
+
 		/*
 		 * Remove old content
 		 */
@@ -124,7 +130,7 @@ $.widget('ui.stars', {
 		this.$cancel = $('<div/>').addClass(o.cancelClass).append( $('<a/>').attr('title', o.showTitles ? o.cancelTitle : '').text(o.cancelValue) );
 		o.cancelShow &= !o.disabled && !o.oneVoteOnly;
 		o.cancelShow && this.element.append(this.$cancel);
-		this.element.append(this.$stars);
+        insertion_point.append(this.$stars);
 
 		/*
 		 * Initial selection
@@ -139,7 +145,7 @@ $.widget('ui.stars', {
 		 * The only FORM element, that has been linked to the stars control. The value field is updated on each Star click event
 		 */
 		this.$value = $("<input type='hidden' name='"+o.name+"' value='"+o.value+"' />");
-		this.element.append(this.$value);
+		insertion_point.append(this.$value);
 
 
 		/*
