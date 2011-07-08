@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     # limit results to 6 or so, we we don't reach browser parallel download
     # products = Product.order('name ASC')
     products = Product.all(:conditions => ["name like ?", params[:query] +'%'])
+    p products
     #products = Product.where {name =~ "#{params[:query]}%" }
     render :json  => autocomplete_info_for(products)   
   end 
