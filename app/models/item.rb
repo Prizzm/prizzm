@@ -20,11 +20,15 @@ class Item < ActiveRecord::Base
 
   after_initialize :default_values
 
+  def initialize(*args)
+    super
+    default_values
+  end
 
-
-  def default_values
-    self.privacy ||= 'private'
-    self.possession_status ||= 'want'
+  def self.create_from_product(product, options = {})
+    item = Item.create({:name => product.name, :description => product.description, :rating => product.rating,  :url => product.url}.merge(options))
+    item.product = product
+    item
   end 
 
   # convience methods
@@ -35,5 +39,13 @@ class Item < ActiveRecord::Base
   def parent_company
     product.company if has_product?
   end
+
+private
+
+  def default_values
+    self.privacy ||= 'private'
+    self.possession_status ||= 'want'
+    rescue ActiveModel::MissingAttributeError
+  end 
 
 end

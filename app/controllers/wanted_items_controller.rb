@@ -4,7 +4,9 @@ class WantedItemsController < ApplicationController
   end
 
   def create
-    
+    product = Product.find(params[:product_id])
+    @item = current_user.wants product
+    redirect_to owners_wanted_item_view_path(@item.id)
   end
 
   def show

@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.text :url
       t.text :review
+      t.text :description
 
       t.string :sku
       t.string :name
@@ -12,6 +13,8 @@ class CreateItems < ActiveRecord::Migration
 
       t.integer :rating
       t.integer :position
+      t.integer :asking_price
+
 
       t.references :user
       t.references :product

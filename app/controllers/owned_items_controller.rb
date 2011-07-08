@@ -4,6 +4,9 @@ class OwnedItemsController < ApplicationController
   end 
 
   def create
-    puts params
+    # Crerate/sign in user if not
+    product = Product.find(params[:product_id])
+    @item = current_user.owns product
+    redirect_to owners_owned_item_view_path(@item.id)
   end
 end

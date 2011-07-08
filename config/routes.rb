@@ -12,11 +12,11 @@ Prizzm::Application.routes.draw do
 
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
-  post '/wanted/:id' => 'wanted_items#create', :as => 'add_wanted_item'
+  post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'
 
   # Owned Items
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
-  post '/owned/:id' => 'owned_items#create', :as => 'add_owned_item'
+  post '/owned/:product_id' => 'owned_items#create', :as => 'add_owned_item'
 
 
 

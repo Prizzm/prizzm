@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110615141515) do
   create_table "items", :force => true do |t|
     t.text     "url"
     t.text     "review"
+    t.text     "description"
     t.string   "sku"
     t.string   "name"
     t.string   "privacy"
