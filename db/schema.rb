@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110615141515) do
     t.string   "possession_status"
     t.integer  "rating"
     t.integer  "position"
+    t.integer  "asking_price"
     t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at"
