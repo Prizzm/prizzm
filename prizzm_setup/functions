@@ -22,7 +22,7 @@ function deploy() {
 
   # Need to add line to remove these commits from history..using autosquash
   git add public/assets
-  git commit -m "Deploment - predeploy script${txtrst}..."
+  git commit -m "Deploment - predeploy script..."
  
   echo "${alert} Deploying code to heroku${txtrst}..."
   rake $server deploy  && git push origin master
