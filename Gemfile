@@ -57,6 +57,9 @@ gem "nokogiri"
 gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 group :development, :test do
+  ##gem "activerecord-postgresql-adapter"
+
+  gem "pg"
 
   gem "sqlite3-ruby", :require => 'sqlite3'
   gem "ruby-debug19", :require => 'ruby-debug'
