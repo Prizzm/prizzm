@@ -1,5 +1,14 @@
 # SQLite version 3.x
 #   gem install sqlite3
+postgres:
+  adapter: postgrersql
+  encoding: unicode
+  host: localhost
+  database: prizzm_development
+  pool: 5
+  username: sid137
+  password: test
+
 development:
   adapter: sqlite3
   database: db/development.sqlite3

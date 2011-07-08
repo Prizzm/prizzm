@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
     products = Product.all(:conditions => ["name like ?", params[:query] +'%'])
     p products
     #products = Product.where {name =~ "#{params[:query]}%" }
-    render :json  => autocomplete_info_for(products)   
+    #render :json  => autocomplete_info_for(products)   
+    render :json  => autocomplete_info_for(Product.all)   
   end 
 
 private
