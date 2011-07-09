@@ -54,10 +54,9 @@ gem "rest-client"
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 gem "nokogiri"
 
-gem "squeel"  # Last officially released gem
+#gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 group :development, :test do
-  ##gem "activerecord-postgresql-adapter"
 
   gem "pg"
 
