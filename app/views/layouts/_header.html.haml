@@ -1,6 +1,6 @@
 %h1.grid_2
   = link_to 'Prizzm', home_url
-= form_tag '', :class => "grid_6" do
+= form_tag items_path, :class => "grid_6" do
   = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
   = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
   = submit_tag "", :id => 'mag-glass'

@@ -4,6 +4,17 @@ class ItemsController < InheritedResources::Base
   layout :determine_layout
   helper_method :new_privacy_message
 
+
+  def create
+    @item = Item.create(:name => params[:search])
+    current_user.items << @item
+    redirect_to owners_wanted_item_view_path(@item)
+  end
+
+  def edit
+    @item = current_user.find(params[:id])
+  end
+
   def show
     @user = current_user
     @item = current_user.items.find(params[:id])

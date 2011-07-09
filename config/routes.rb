@@ -1,19 +1,23 @@
 Prizzm::Application.routes.draw do
-  resources :product_invitations
+
+  # Routes for main page
+  match "/home" => "home#index", :as  => "home"
+  root :to => 'home#index'
 
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
   end
 
-  resources :companies
-
-
 
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
   post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'
   get '/public/wants/:id' => 'wanted_items#public_view', :as => 'public_wanted_item'
+
+  get  '/ask/:item_id' => 'social#new_recommendation_request', :as => 'new_advice'
+  post '/ask/:item_id' => 'social#send_recommendation_request', :as => 'publish_advice'
+
 
   # Owned Items
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
@@ -23,13 +27,9 @@ Prizzm::Application.routes.draw do
   get  '/recommend/:item_id' => 'social#create_recommendation', :as => 'create_recommendation'
   post '/recommend/:item_id' => 'social#publish_recommendation', :as => 'publish_recommendation'
 
-  get  '/ask/:item_id' => 'social#new_recommendation_request', :as => 'new_advice'
-  post '/ask/:item_id' => 'social#send_recommendation_request', :as => 'publish_advice'
 
-  # Routes for main page
-  match "/home" => "home#index", :as  => "home"
-  root :to => 'home#index'
 
+  # User Login and account registration
   resource :profile
   devise_for :users, :path => "accounts", 
             :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions" },
@@ -37,6 +37,8 @@ Prizzm::Application.routes.draw do
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
 
+  ######################
+  resources :companies
  
   resources :users do
     resources :items do
@@ -53,6 +55,7 @@ Prizzm::Application.routes.draw do
   end
 
   # Routes for item invitation use cases
+  resources :product_invitations
   get  '/invitation/:id'    => 'product_invitations#view_invitation', :as  => 'view_item_invitation'
   post '/invitation'        => 'product_invitations#accept_invitation', :as => 'accept_item_invitation'
   # FIXME:  Should be using a 'GET' for routes that have side effects, but we
@@ -67,5 +70,4 @@ Prizzm::Application.routes.draw do
   post 'items/rate', :as => :update_item_rating
   post 'interactions/rate', :as => :update_interaction_rating
 
-  get '/fake' => "home#make_data", :as  => :fake
 end
