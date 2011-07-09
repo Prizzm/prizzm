@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end 
 
   def owns product
-    if already_wants? product
+    if already_owns? product
       item = wanted_items.where(:product_id => product.id).first
     else
       item = Item.create_from_product(product, :possession_status => 'have')

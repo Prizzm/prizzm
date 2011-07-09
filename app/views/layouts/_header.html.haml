@@ -17,7 +17,7 @@
     .cell.img
       %img(src='{{ main_image_thumb }}')
     .cell.desc
-      %h2= link_to '{{ label }}', CGI::unescape(product_path('{{ id }}'))
+      %h2= link_to '{{ name }}', CGI::unescape(product_path('{{ id }}'))
       .clear
       = link_to '{{ customer_count }} people have this', '#'
       %div{:id => "stars-wrapper-{{ id }}", :class => "autocomplete-rating rating", :disabled => "disable"}
@@ -54,7 +54,7 @@
       source: "#{search_products_path}?query={query}",
       queryDelay: 50,
       resultFormatter: autocompleteFormatter,
-      resultTextLocator: 'label'
+      resultTextLocator: 'name'
     });
 
     inputNode.ac.on('select', function(event){

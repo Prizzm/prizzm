@@ -14,6 +14,14 @@ class ItemsController < InheritedResources::Base
     success.json {head :ok}
   end
   
+  def destroy
+    @item = current_user.items.find(params[:id])    
+    @item.destroy
+    respond_to do |format|
+      format.json {render :json => params[:id]}
+    end 
+  end
+
   def sort
     @user = current_user
     @item = Item.find(params[:id]) 

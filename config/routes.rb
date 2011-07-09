@@ -19,6 +19,8 @@ Prizzm::Application.routes.draw do
   post '/owned/:product_id' => 'owned_items#create', :as => 'add_owned_item'
 
 
+  get  '/recommend/:item_id' => 'social#create_recommendation', :as => 'create_recommendation'
+  post '/recommend/:item_id' => 'social#publish_recommendation', :as => 'publish_recommendation'
 
 
   # Routes for main page

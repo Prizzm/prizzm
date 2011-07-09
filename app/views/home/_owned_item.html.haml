@@ -3,10 +3,11 @@
   .cell
     %h2= link_to item.name, owners_owned_item_view_path(item)
     .clear
+    .delete-item= link_to 'Delete from list', [current_user, item],  :remote => true, :method => :delete
     = link_to "Write a review", owners_owned_item_view_path(item)
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
     %div(id="item_#{item.id}_rating")
       = form_for [@user, item], :remote => true do |f|
         %div{:id => "stars-wrapper-#{item.id}", :class => "rateable-item", :data => {:itemid => "#{item.id}"}}
           = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-  .cell= link_to "Recommend", '#', :class => "button"
+  .cell= link_to "Recommend", create_recommendation_path(item.id), :class => "button" 

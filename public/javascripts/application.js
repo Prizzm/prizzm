@@ -146,6 +146,11 @@ $(document).ready(function(){
     $('#interaction-' + interactionid + '-content').fadeOut();
   });
 
+  $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    var itemid = data + '';
+    console.log(data);
+    $('#item_'+itemid).fadeOut();
+  });
   /* This  creates the blue highlight effect as we mouseover the interactions
    * list, by adding the 'hover' class to the div on mouseover, and removing
    * it as the mouse moves away

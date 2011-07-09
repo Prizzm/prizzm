@@ -8,19 +8,6 @@ class Product < ActiveRecord::Base
 
 
   begin "methods for product search autocomplete"
-    # JQuery autocomplete expects a 'label attribute'
-    def label
-      name
-    end 
-
-    def main_image
-      images.first.image.url
-    end
-
-    def main_image_thumb
-      images.first.image.thumb.url
-    end
-
     def customer_count
       users.count
     end 
