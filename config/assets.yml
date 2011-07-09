@@ -1,3 +1,5 @@
+allow_debugging: on
+package_assets: always
 
 javascripts:
   app:
