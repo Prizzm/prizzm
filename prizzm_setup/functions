@@ -1,3 +1,4 @@
+#!/bin/bash
 # /* vim: set filetype=sh : */   
 #
 ## Heroku command shortcuts
@@ -9,11 +10,48 @@
 #     development db:push
 #
 #     Pushes the local db to the development server
+function kill_all_ruby_processes(){
+  echo "${alert} Killing all ruby processes'${txtrst}..."
+  ps ux | grep ruby | grep -v 'grep ruby' | awk '{print $2}' | xargs kill -9 &> /dev/null
+}
+alias kar='kill_all_ruby_processes'
+
  
- 
+function db() {
+    action="${1:?Usage: 'db push server' or 'db pull server'}"
+    server=${2:-development}
+
+    case "$server" in
+    dev )
+        server=development
+        ;;
+    development )
+        ;;
+    demo )
+        ;;
+    * )
+        echo "${bldred}You shouldn't be deploying to $server ${txtrst}"
+        return 1;
+        ;;
+    esac
+
+    case "$action" in
+    push )
+        echo "${alert} Pushing database to prizzm-$server ${txtrst}..."
+        ;;
+    pull )
+        echo "${alert} Pulling database from prizzm-$server ${txtrst}..."
+        ;;
+    * )
+        echo "${bldred} Invalid command. What are you trying to do here? ${txtrst}"
+        return 1;
+        ;;
+    esac
+    heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_$server --confirm prizzm-$server
+}
+
 function deploy() {
-  #server=${1:=development}
-  server=development
+  server=${1:-development}
   echo "${alert} Compiling css with 'compass compile .'${txtrst}..."
   compass compile .
   
@@ -26,10 +64,29 @@ function deploy() {
  
   echo "${alert} Deploying code to heroku${txtrst}..."
   rake $server deploy  && git push origin master
-  
-  echo "${bldylw} Don't forget to push your changes to github! ${alert}'git push origin master'${txtrst}"
+
+  if [ $? -ne 0 ]; then
+    echo "${bldred} Don't forget to push your changes to github! ${alert}'git push origin master'${txtrst}"
+  else
+    echo "${bldylw} Your code has been synchronized with GitHub${txtrst}"
+  fi
+
 }
 alias dep='deploy'
+
+function release() {
+  server=${1:-development}
+  kill_all_ruby_processes
+
+  echo "${alert} Rebuilding database from scratch with seed data'${txtrst}..."
+  rds
+
+  db push $server
+  deploy $server
+}
+alias rel='release'
+
+
 
 function staging() { heroku $@ --app $(basename `pwd`)-staging ;}
 function production() { heroku $@ --app $(basename `pwd`)-production ;}
