@@ -27,7 +27,10 @@ class Item < ActiveRecord::Base
 
   def self.create_from_product(product, options = {})
     item = Item.create({:name => product.name, :description => product.description, :rating => product.rating,  :url => product.url}.merge(options))
+    # TODO: This is really slowing down the add item process..  gotta get this
+    # outta here
     item.add_image_from_url product.main_image
+    #############
     item.product = product
     item
   end 

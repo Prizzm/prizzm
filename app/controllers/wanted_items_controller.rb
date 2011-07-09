@@ -16,4 +16,8 @@ class WantedItemsController < ApplicationController
     @item = current_user.items.find(params[:id]) 
   end 
 
+  def public_view
+    @item = Item.find(params[:id]) 
+  end
+
 end

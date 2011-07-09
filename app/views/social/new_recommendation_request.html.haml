@@ -1,0 +1,5 @@
+%h2 We will send this recommendation out to your Facebook followers
+
+= form_tag publish_advice_path do
+  = text_area_tag :message, "Should I buy this thing?"
+  = submit_tag "Ask for Advice"

@@ -4,23 +4,32 @@ class SocialController < ApplicationController
   end
 
   def publish_recommendation
-    item = Item.find(params[:item_id])
+    item = current_user.items.find(params[:item_id])
     message = {
       :message => params[:message], 
-      :picture => item.product.main_image_thumb, 
-      :link => "http://www.google.com",
-      :caption => "Great caption",
+      :picture => item.main_image_thumb, 
+      :link => public_owned_item_url(item), 
       :description => item.description
     }
     Facebook.post_message(message, current_user.access_token) 
 
-    redirect_to home_url, :notice => "You item has been published"
+    redirect_to home_url, :notice => "You item recomendation has been published"
   end
 
-  def new_recomendation_request
+  def new_recommendation_request
   end
 
   def send_recommendation_request
+    item = current_user.items.find(params[:item_id])
+    message = {
+      :message => params[:message], 
+      :picture => item.main_image_thumb, 
+      :link => public_wanted_item_url(item), 
+      :description => item.description
+    }
+    Facebook.post_message(message, current_user.access_token) 
+
+    redirect_to home_url, :notice => "You message has been published"
   end
 
 end
