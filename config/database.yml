@@ -9,29 +9,15 @@ postgres: &pgsql
   password: prizzm
 
 development:
-<% if ENV['RAILS_USE_POSTGRES'] %>
   <<: *pgsql
   database: prizzm_development
-<% else %>
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-<% end %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-<% if ENV['RAILS_USE_POSTGRES'] %>
   <<: *pgsql
   database: prizzm_test
-<% else %>
-  adapter: sqlite3
-  #database: ":memory:"
-  database: /dev/shm/test.sqlite3
-  verbosity: quiet
-<% end %>
 
 production:
   adapter: sqlite3

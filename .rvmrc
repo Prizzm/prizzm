@@ -5,6 +5,8 @@ export PROJECT_NAME='prizzm'
 export PROJECT_ROOT=`pwd`
 export SETUP_DIR=${PROJECT_NAME}_setup
 export SETUP_DIR_PATH=$PROJECT_ROOT/$SETUP_DIR
+export RAILS_USE_POSTGRES=true
+
 
 # Activate shell substitutions for color output
 source $SETUP_DIR_PATH/colors
