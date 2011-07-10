@@ -29,7 +29,7 @@
     #interaction_input_box
       = form_for [@item, @interaction = Interaction.new], :remote => true do |f|
         #share-input
-          = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts", :placeholder => "Share your thoughts"
+          = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts...", :placeholder => "Share your thoughts..."
           #interaction_stars
             = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
           .cancel
@@ -83,12 +83,7 @@
   
   $("#interaction-input").autoGrow();
   
-  $('.cancel').hide();
-  $('.social').hide();
-  $('#interaction_stars').hide();
-  $('#item-interaction-submit').hide();
-  
-  $('.edit').editable('http://www.example.com/save.php', {
+  $('#review .edit').editable('http://www.example.com/save.php', {
     indicator : "Saving...",
     type      : "textarea",
     submit    : 'OK',
@@ -97,4 +92,3 @@
     onblur    : "ignore",
     cssclass  : "review-input"
   });
-

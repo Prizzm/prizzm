@@ -3,8 +3,8 @@
   .cell
     %h2= link_to item.name, owners_wanted_item_view_path(item)
     .clear
-    .delete-item= link_to 'Delete from list', [current_user, item],  :remote => true, :method => :delete
     = link_to "Request Recommendation", new_advice_path(item)
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
   .cell= link_to "Find Offers", '#', :class => "button"
+  .cell.delete-item= link_to 'Delete from list', [current_user, item],  :remote => true, :method => :delete, :class => "ir cancel"
 

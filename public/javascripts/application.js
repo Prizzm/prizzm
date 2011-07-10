@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  clearInteraction();
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  Tis script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
@@ -22,10 +23,8 @@ $(document).ready(function(){
    *  show three other objects that were previously hidden.  Finally, after we
    *  lose focus from the text_area, we remove the highlighting
    */
-
-
-
-  $('#interaction-input').focus(function(){
+  
+ $('#interaction-input').focus(function(){
     $(this).addClass('input-active');
     $('#interaction_submit').show();
     $('#share-input .cancel').show();
@@ -45,7 +44,6 @@ $(document).ready(function(){
     $('#item-interaction-submit').hide();
     $('#interaction-input').val('');
   }
-
 
   // For Facebook posting messages
   $('.shared_fb_checkbox').live('click', function() {
