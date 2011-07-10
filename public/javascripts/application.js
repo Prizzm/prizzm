@@ -23,17 +23,29 @@ $(document).ready(function(){
    *  lose focus from the text_area, we remove the highlighting
    */
 
+
+
   $('#interaction-input').focus(function(){
     $(this).addClass('input-active');
-    $(this).height(80);
     $('#interaction_submit').show();
-    $('.social img,input').show();
+    $('#share-input .cancel').show();
+    $('#new_interaction_box .social').show();
     $('#interaction_stars').show();
+    $('#item-interaction-submit').show();
   });
 
-  $('#interaction-input').blur(function(){
-    $(this).removeClass('input-active');
-  });
+  $('#share-input .cancel').click(clearInteraction);
+  $('#item-interaction-submit').click(clearInteraction);
+  
+  function clearInteraction(){
+    $('#interaction-input').removeClass('input-active');
+    $('#share-input .cancel').hide();
+    $('#new_interaction_box .social').hide();
+    $('#interaction_stars').hide();
+    $('#item-interaction-submit').hide();
+    $('#interaction-input').val('');
+  }
+
 
   // For Facebook posting messages
   $('.shared_fb_checkbox').live('click', function() {

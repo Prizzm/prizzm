@@ -13,6 +13,9 @@ stylesheets:
     - public/stylesheets/app.css
     - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
+  items-page:
+    - public/stylesheets/item-public.css
+    - public/stylesheets/galleriffic-3.css
   login:
     - public/stylesheets/login/*.css
   ie: 
