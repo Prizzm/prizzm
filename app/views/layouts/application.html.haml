@@ -19,7 +19,8 @@
       %header
         = render 'layouts/header'
       #userBit
-        = render 'layouts/userbit'
+        - if user_signed_in?
+          = render 'layouts/userbit'
       .clear  
  
       - if current_user
