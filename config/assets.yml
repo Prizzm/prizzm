@@ -1,12 +1,23 @@
 allow_debugging: on
-package_assets: on
+package_assets: always
 compress_assets: on
 gzip_assets: on
 
 javascripts:
   app:
-    - public/javascripts/*.js
-    - public/javascripts/**/*.js
+    - public/javascripts/rails.js
+    - public/javascripts/application.js
+    - public/javascripts/underscore-min.js
+    - public/javascripts/jquery.dump.js
+    - public/javascripts/facebox.js
+    - public/javascripts/jquery.autogrow.js
+    - public/javascripts/jquery.jeditable.js
+    - public/javascripts/jquery.jeditable.autogrow.js
+    - public/javascripts/jquery.uploadify.v2.1.4.min.js
+    - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/swfobject.js
+    - public/javascripts/ratings/*.js
+    - public/javascripts/galleriffic/*.js
 
 stylesheets:
   app:

@@ -38,16 +38,17 @@ function db() {
     case "$action" in
     push )
         echo "${alert} Pushing database to prizzm-$server ${txtrst}..."
+        heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_$server --confirm prizzm-$server
         ;;
     pull )
         echo "${alert} Pulling database from prizzm-$server ${txtrst}..."
+        heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_development --confirm prizzm-$server
         ;;
     * )
         echo "${bldred} Invalid command. What are you trying to do here? ${txtrst}"
         return 1;
         ;;
     esac
-    heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_$server --confirm prizzm-$server
 }
 
 function deploy() {

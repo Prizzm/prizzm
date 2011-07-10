@@ -12,8 +12,6 @@ $(document).ready(function(){
    * interactivity on the site
    */
 
-  // Initialize best in place edit in place helper
-  $(".best_in_place").best_in_place();
 
   // Initialize facebox model windows if they are used
   $('a[rel*=facebox]').facebox();
