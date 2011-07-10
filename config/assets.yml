@@ -1,5 +1,7 @@
 allow_debugging: on
 package_assets: on
+compress_assets: on
+gzip_assets: on
 
 javascripts:
   app:
@@ -10,7 +12,7 @@ stylesheets:
   app:
     - public/stylesheets/960.css
     - public/stylesheets/boilerplate.css
-    - public/stylesheets/app.css
+    - public/stylesheets/main.css
     - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
   items-page:
