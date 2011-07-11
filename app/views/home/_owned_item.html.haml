@@ -3,7 +3,7 @@
   .cell
     %h2= link_to item.name, owners_owned_item_view_path(item)
     .clear
-    = link_to "Write a review", owners_owned_item_view_path(item)
+    = link_to "Write a review", owners_owned_item_view_path(item) + '#write_review'
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
     %div(id="item_#{item.id}_rating")
       = form_for [@user, item], :remote => true do |f|
