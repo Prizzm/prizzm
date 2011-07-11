@@ -37,34 +37,36 @@ module ApplicationHelper
     #   parameters into something Rails will actually use.
 
     session_key_name = Rails.application.config.session_options[:key]
-    %Q{
+    content_for :jquery do
+      %Q{
 
-    <script type='text/javascript'>
-      $(document).ready(function() {
-        $('input#image_image').uploadify({
-          script : '#{item_images_path(@item)}',
-          fileDataName    : 'image[image]',
-          uploader        : '/assets/uploadify.swf',
-          cancelImg       : '/images/cancel.png',
-          fileDesc        : 'Images',
-          fileExt         : '*.png;*.jpg;*.gif;*.JPG',
-          sizeLimit       : #{10.megabytes},
-          queueSizeLimit  : 24,
-          multi           : true,
-          auto            : true,
-          buttonText      : 'ADD IMAGES',
-          scriptData      : {
-            '_http_accept': 'application/javascript',
-            '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
-            'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
-          },
-          onComplete      : function(event, id, object, response, data){ 
-            $('body').trigger('insertImage', response);
-          }
+      <script type='text/javascript'>
+        $(document).ready(function() {
+          $('input#image_image').uploadify({
+            script : '#{item_images_path(@item)}',
+            fileDataName    : 'image[image]',
+            uploader        : '/assets/uploadify.swf',
+            cancelImg       : '/images/cancel.png',
+            fileDesc        : 'Images',
+            fileExt         : '*.png;*.jpg;*.gif;*.JPG',
+            sizeLimit       : #{10.megabytes},
+            queueSizeLimit  : 24,
+            multi           : true,
+            auto            : true,
+            buttonText      : 'ADD IMAGES',
+            scriptData      : {
+              '_http_accept': 'application/javascript',
+              '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
+              'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
+            },
+            onComplete      : function(event, id, object, response, data){ 
+              $('body').trigger('insertImage', response);
+            }
+          });
         });
-      });
-    </script>
+      </script>
 
-    }.gsub(/[\n ]+/, ' ').strip.html_safe
+      }.gsub(/[\n ]+/, ' ').strip.html_safe
+    end
   end
 end
