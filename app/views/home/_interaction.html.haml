@@ -10,12 +10,16 @@
   %div{:id => "interaction-#{interaction.id}-rating", :class => "rating"}
     = form_for interaction, :remote => true do |f|
       = f.collection_select :rating, [1, 2, 3], :to_s, :to_s, {}
+
+- content_for :jquery do
   :javascript
-    $("#interaction-#{interaction.id}-rating").stars({
-      inputType: "select",
-      cancelShow: false,
-      callback: function(ui, type, value, event){
-        var interaction = #{interaction.id};
-        update_rating('interactions', interaction,value);
-      }
+    $(document).ready(function(){
+      $("#interaction-#{interaction.id}-rating").stars({
+        inputType: "select",
+        cancelShow: false,
+        callback: function(ui, type, value, event){
+          var interaction = #{interaction.id};
+          update_rating('interactions', interaction,value);
+        }
+      });
     });

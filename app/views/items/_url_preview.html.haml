@@ -1,19 +1,20 @@
 #url-preview-window
   %iframe#url-preview(scrolling='no' height='300px' width='350px')
 
-
-:javascript
-  $(document).ready(function(){
-    $('#item-urls a').live({
-      mouseenter: function(){
-        $('#url-preview-window').show();
-        //$('#url-preview').val('src', this.href);
-        document.getElementById('url-preview').src = this.href;
-        document.getElementById('url-preview').style.height = 300;
-        document.getElementById('url-preview').style.width = 302;
-      },
-      mouseleave: function(){
-        $('#url-preview-window').hide();
-      }
+- content_for :jquery do
+  :javascript
+    $(document).ready(function(){
+      $('#item-urls a').live({
+        mouseenter: function(){
+          $('#url-preview-window').show();
+          //$('#url-preview').val('src', this.href);
+          document.getElementById('url-preview').src = this.href;
+          document.getElementById('url-preview').style.height = 300;
+          document.getElementById('url-preview').style.width = 302;
+        },
+        mouseleave: function(){
+          $('#url-preview-window').hide();
+        }
+      });
     });
-  });
+

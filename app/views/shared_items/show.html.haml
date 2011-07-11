@@ -22,9 +22,12 @@
 
   = render 'images'
 
-:javascript
-  $("#stars-wrapper").stars({
-    inputType: "select",
-    cancelShow: false,
-    disabled: true
-  });
+- content_for :jquery do
+  :javascript
+    $(document).ready(function(){
+      $("#stars-wrapper").stars({
+        inputType: "select",
+        cancelShow: false,
+        disabled: true
+      });
+    });

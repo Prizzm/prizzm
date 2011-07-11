@@ -54,15 +54,16 @@
   
 
 
+- content_for :jquery do
+  :javascript
+    $(document).ready(function(){
+      $("#stars-wrapper").stars({
+        inputType: "select",
+        cancelShow: false
+      });
 
-
-:javascript
-  $("#stars-wrapper").stars({
-    inputType: "select",
-    cancelShow: false
-  });
-
-  $("#interaction_stars").stars({
-    inputType: "select",
-    cancelShow: false
-  });
+      $("#interaction_stars").stars({
+        inputType: "select",
+        cancelShow: false
+      });
+    });

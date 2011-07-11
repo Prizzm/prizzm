@@ -6,11 +6,6 @@
     = csrf_meta_tag
     = favicon_link_tag
     = include_stylesheets :app
-    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'
-    = include_javascripts :app
-    = hoptoad_javascript_notifier
-    = yield :javascripts
     = yield :page_style
   %body
     #headerBar
@@ -39,4 +34,5 @@
           - flash.each do |type, value|
             .flash{ :class => type.to_s }
               = value 
+    = render 'layouts/javascripts'
   /= render 'layouts/google_analytics'

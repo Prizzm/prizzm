@@ -79,17 +79,20 @@
 #interactions
   #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
-:javascript
-  $("#stars-wrapper-#{@item.id}").stars({
-    inputType: "select",
-    callback: function(ui, type, value, event){
-      var item = #{@item.id};
-      update_rating('items', item,value);
-    },
-    cancelShow: false
-  });
+- content_for :jquery do
+  :javascript
+    $(document).ready(function(){
+      $("#stars-wrapper-#{@item.id}").stars({
+        inputType: "select",
+        callback: function(ui, type, value, event){
+          var item = #{@item.id};
+          update_rating('items', item,value);
+        },
+        cancelShow: false
+      });
 
-  $("#interaction_stars").stars({
-    inputType: "select",
-    cancelShow: false
-  });
+      $("#interaction_stars").stars({
+        inputType: "select",
+        cancelShow: false
+      });
+    });

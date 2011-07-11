@@ -17,21 +17,16 @@
 
 = link_to "Delete Image", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json
 
-:javascript
-  jQuery(document).ready(function($) {
-    $('#delete-image-link').live('ajax:success', function(event, data, status, xhr){
-      var index = data + ''; 
-      console.log('Image deleted at Index: ' + index);
-      $('body').trigger('removeImage', index);
-    });
-  });
 
+- content_for :jquery do
+  :javascript
+    $(document).ready(function(){
+      $('#delete-image-link').live('ajax:success', function(event, data, status, xhr){
+        var index = data + ''; 
+        console.log('Image deleted at Index: ' + index);
+        $('body').trigger('removeImage', index);
+      });
 
-
-
-
-:javascript
-  jQuery(document).ready(function($) {
       // Custom helper functions for Gallery
 
       var setDeleteImageLink = function(index){
@@ -189,6 +184,5 @@
 
           return false;
       });
+    });
 
-      /****************************************************************************************/
-  });
