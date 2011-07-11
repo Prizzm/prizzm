@@ -85,13 +85,16 @@
       
       $("#interaction-input").autoGrow();
       
-      $('#review .edit').editable('http://www.example.com/save.php', {
+      $('#review .edit').editable("#{update_item_review_path(@item)}", {
         indicator : "Saving...",
         type      : "textarea",
         submit    : 'OK',
+        method    : 'PUT',
         cancel    : 'cancel',
-        tooltip   : "Click to edit...",
-        onblur    : "ignore",
+        tooltip   : "Click to edit your review...",
+        onblur    : "submit",
+        submitdata: {id: #{@item.id}},
+        name      : "review",
         cssclass  : "review-input"
       });
     });

@@ -42,6 +42,12 @@ class ItemsController < InheritedResources::Base
     head :ok
   end
 
+  def update_review
+    @item = current_user.items.find(params[:id])
+    @item.update_attribute(:review, params[:review])
+    render :json => @item.review
+  end 
+
   def update_privacy
     @item = current_user.items.find(params[:id])
     old_privacy = @item.privacy
