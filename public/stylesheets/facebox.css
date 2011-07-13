@@ -18,24 +18,13 @@
   box-shadow:0 0 18px rgba(0,0,0,0.4);
 }
 
-#facebox .title {
-  background: #666;
-  -webkit-border-radius:4px 4px 0 0;
-  -moz-border-radius:4px 4px 0 0;
-  border-radius:4px 4px 0 0;
-  padding: 3px 0 3px 10px;
-  color: #c3d9ff;
-  font-weight: bold;
-  font-size: larger;
-}
-
 #facebox .content {
   display:table;
-  width: 470px;
+  width: 370px;
   padding: 10px;
   background: #fff;
-  -webkit-border-radius:0 0 4px 4px;
-  -moz-border-radius:0 0 4px 4px;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
   border-radius:4px;
 }
 
@@ -48,13 +37,13 @@
 
 #facebox .close{
   position:absolute;
-  top:3px;
+  top:5px;
   right:5px;
   padding:2px;
-  background:#666;
+  background:#fff;
 }
 #facebox .close img{
-  opacity:0.5;
+  opacity:0.3;
 }
 #facebox .close:hover img{
   opacity:1.0;

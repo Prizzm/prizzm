@@ -15,7 +15,8 @@
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result
     .cell.img
-      %img(src='{{ main_image_thumb }}')
+      = link_to "{{ main_image_thumb }}", :rel => 'facebox' do
+        %img(src='{{ main_image_thumb }}')
     .cell.desc
       %h2= link_to '{{ name }}', CGI::unescape(product_path('{{ id }}'))
       .clear
@@ -23,14 +24,15 @@
       %div{:id => "stars-wrapper-{{ id }}", :class => "autocomplete-rating rating", :disabled => "disable"}
         %select= options_for_select([1, 2, 3, 4, 5])
     .cell 
-      = link_to "I have this", CGI::unescape(add_owned_item_path('{{ id }}')), :method => :post, :class => "button"
-      = link_to "I want this", CGI::unescape(add_wanted_item_path('{{ id }}')), :method => :post, :class => "button"
+      = link_to "I have this", CGI::unescape(add_owned_item_path('{{ id }}')), :method => :post, :class => "button", :rel => "facebox"
+      = link_to "I want this", CGI::unescape(add_wanted_item_path('{{ id }}')), :method => :post, :class => "button", :rel => "facebox"
 
 - content_for :jquery do
   :javascript
     $(document).ready(function(){
       function autocompleteFormatter(query, results) {
         var template = document.getElementById('product-autocomplete-result-template').innerHTML;
+        // template = template.replace(/nofollow/g, "facebox"); 
         
         console.log(results);
         return _.map(results, function(result){
@@ -38,6 +40,8 @@
           var parsed_template = _.template(template, product);
           var target_option = 'value="' + product.rating + '"';    
           var selected_option = target_option + ' selected="selected"';
+          //rel hack until 3.1 is stable
+          // https://github.com/rails/rails/pull/1796
           var autocomplete_html = parsed_template.replace(target_option, selected_option);
           return $(autocomplete_html).stars().html();
         });
@@ -62,6 +66,8 @@
         });
 
         inputNode.ac.on('results', function(event){
+            // Initialize facebox model windows if they are used
+
             if (event.results.length < 1) {
               $('#mag-glass').hide();
               $('#product-search-submit-button').show();

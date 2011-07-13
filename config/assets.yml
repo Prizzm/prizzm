@@ -1,15 +1,15 @@
 allow_debugging: on
-package_assets: always
+package_assets: on
 compress_assets: on
 gzip_assets: on
 
 javascripts:
   app:
+    - public/javascripts/facebox.js
     - public/javascripts/rails.js
     - public/javascripts/application.js
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
-    - public/javascripts/facebox.js
     - public/javascripts/jquery.autogrow.js
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
@@ -25,6 +25,7 @@ stylesheets:
     - public/stylesheets/boilerplate.css
     - public/stylesheets/main.css
     - public/stylesheets/fonts.css
+    - public/stylesheets/facebox.css
     - public/stylesheets/jquery.ui.stars.css
   items-page:
     - public/stylesheets/item-public.css
