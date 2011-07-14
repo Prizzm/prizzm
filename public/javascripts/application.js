@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  clearInteraction();
+  $('.openDisplay').nyroModal();
+	
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  Tis script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
@@ -12,36 +13,6 @@ $(document).ready(function(){
    * interactivity on the site
    */
 
-
-  // Initialize facebox model windows if they are used
-  $('a[rel*=facebox]').facebox();
-
-  /*  Here we configure the effects that occur when we click on the input box.
-   *  The text_area expands in size, we add a class to it to highlight it, and we
-   *  show three other objects that were previously hidden.  Finally, after we
-   *  lose focus from the text_area, we remove the highlighting
-   */
-  
- $('#interaction-input').focus(function(){
-    $(this).addClass('input-active');
-    $('#interaction_submit').show();
-    $('#share-input .cancel').show();
-    $('#new_interaction_box .social').show();
-    $('#interaction_stars').show();
-    $('#item-interaction-submit').show();
-  });
-
-  $('#share-input .cancel').click(clearInteraction);
-  $('#item-interaction-submit').click(clearInteraction);
-  
-  function clearInteraction(){
-    $('#interaction-input').removeClass('input-active');
-    $('#share-input .cancel').hide();
-    $('#new_interaction_box .social').hide();
-    $('#interaction_stars').hide();
-    $('#item-interaction-submit').hide();
-    $('#interaction-input').val('');
-  }
 
   // For Facebook posting messages
   $('.shared_fb_checkbox').live('click', function() {
@@ -110,66 +81,6 @@ $(document).ready(function(){
    * the item id to the list of interaction items.  If it is unchecked, we will
    * remove the item from the list of interaction items.
    */
-  /*$('#interaction_submit').click(function(){*/
-  /*// First get a list of all the checked Items*/
-  /*var checked_items = new Array();*/
-  /*$('#items input[type="checkbox"]:checked').each(function(){*/
-  /*checked_items.push(this.getAttribute('data-item-id'));*/
-  /*});*/
-
-  /*// Then add this list of items to the new_interaction form to be submitted*/
-  /*$('#interaction_new_items').val(checked_items);*/
-  /*});*/
-
-  /* This prepends the new interaction to our list of interactions, so that it
-   * shows up at the top on our page, without us having to refresh the page
-   * manually.
-   * Once the new interaction is added to the page, we'd like to signal the user
-   * so that it grabs their attention.
-  */
-  $('#new_interaction')
-    .live('ajax:success', function(event, data, status, xhr){
-      // Add the newly created interaction to the page, and alert the user.
-      $('#interactions_feed').prepend(xhr.responseText);
-      $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
-
-      //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
-      $(':input','#new_interaction')
-        .not(':button, :submit, :reset, :hidden')
-        .val('')
-        .removeAttr('checked')
-        .removeAttr('selected');
-
-      $('#new_interaction')[0].reset();
-    });
-
-  /* This is where we handle the deleted interactions */
-  /* The code sets up an event handler on the #interactions_feed element, so if
-   * any of its child interactions are deleted, it gets handled here.  This
-   * helps us avoid having to set up n event handlers on the page, by just
-   * setting one on the parent element
-   */
-  $('#interactions_feed').delegate('a', 'ajax:success', function(event, data, status, xhr){
-    var interactionid = data + '';
-    $('#interaction-' + interactionid + '-content').fadeOut();
-  });
-
-  $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
-    var itemid = data + '';
-    $('#item_'+itemid).fadeOut();
-  });
-  /* This  creates the blue highlight effect as we mouseover the interactions
-   * list, by adding the 'hover' class to the div on mouseover, and removing
-   * it as the mouse moves away
-   */
-
-  $('.interaction-content').live('mouseenter', function(){
-      $(this).addClass('hover');
-  });
-  $('.interaction-content').live('mouseleave', function(){
-      $(this).removeClass('hover');
-  });
-
 
 
   /* Privacy controls to adjust item privace
@@ -205,4 +116,3 @@ $(document).ready(function(){
     interpolate: /\{\{(.+?)\}\}/g
   }
 });
-

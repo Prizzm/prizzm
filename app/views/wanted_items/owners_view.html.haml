@@ -30,9 +30,7 @@
     #interaction_input_box
       = form_for [@item, @interaction = Interaction.new], :remote => true do |f|
         #share-input
-          = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts...", :placeholder => "Share your thoughts..."
-          #interaction_stars
-            = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+          = f.text_area :description, :id => 'interaction-input', :'data-text' => "Ask your friends...", :placeholder => "Ask your friends what they think..."
           .cancel
         .clear
         %ul.social
@@ -44,17 +42,10 @@
             facebook
             = f.check_box :shared_facebook, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
         .clear
-        = f.submit 'Share', :id => 'item-interaction-submit', :class => "button"
+        = f.submit 'Ask Friends', :id => 'item-interaction-submit', :class => "button"
         
         .clear
-
-  #interactions
-    - if @item.interactions.count == 0
-      Be the first to share your thoughts!
-    - else
-       
-    #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
-
+        
 %aside.grid_3
   %article#ask
     %header.clearfix
@@ -63,24 +54,37 @@
   %article#survey
     %header.clearfix
       %h1 Survey
-
-#interactions
-  #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
-
+      
 - content_for :jquery do
   :javascript
     $(document).ready(function(){
+      clearInteraction();
+      
+      $('#interaction-input').focus(function(){
+    	$(this).addClass('input-active');
+    	$('#interaction_submit').show();
+    	$('#share-input .cancel').show();
+    	$('#new_interaction_box .social').show();
+    	$('#item-interaction-submit').show();
+      });
+
+      $('#share-input .cancel').click(clearInteraction);
+      $('#item-interaction-submit').click(clearInteraction);
+
+      function clearInteraction(){
+        $('#interaction-input').removeClass('input-active');
+    	$('#share-input .cancel').hide();
+    	$('#new_interaction_box .social').hide();
+    	$('#item-interaction-submit').hide();
+    	$('#interaction-input').val('');
+      }
+
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
-        callback: function(ui, type, value, event){
+    	callback: function(ui, type, value, event){
           var item = #{@item.id};
           update_rating('items', item,value);
         },
-        cancelShow: false
-      });
-
-      $("#interaction_stars").stars({
-        inputType: "select",
         cancelShow: false
       });
       

@@ -5,8 +5,8 @@ postgres: &pgsql
   encoding: unicode
   host: localhost
   pool: 5
-  username: prizzm
-  password: 
+  username: geoff
+  password: chong1
 
 #development:
 #  <<: *pgsql
@@ -17,8 +17,8 @@ development:
   encoding: unicode
   database: prizzm_development
   pool: 5
-  username: prizzm
-  password:
+  username: geoff
+  password: chong1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
