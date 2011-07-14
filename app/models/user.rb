@@ -1,19 +1,13 @@
 class User < ActiveRecord::Base
   include UserImageable
-  #extend Loginable
-  #include Loginable
   include Models::User::DeviseExt
-
-
 
   has_one  :profile, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_many :products, :through => :items
 
-  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes, :access_token
+  attr_accessible :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes
   delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo,  :to  => :profile
 
   accepts_nested_attributes_for :profile

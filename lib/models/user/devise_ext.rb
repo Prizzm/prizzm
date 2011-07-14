@@ -8,6 +8,7 @@ module Models
 
       included do
         devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+        attr_accessible :email, :password, :password_confirmation, :remember_me, :access_token
       end
       
       module ClassMethods
@@ -25,7 +26,7 @@ module Models
             else 
               # Create new acc on Prizzm with FB acc information.
               email = data['email'] || info['email']
-              user = User.create!(:email => email, :password => Devise.friendly_token[0,20])
+              user = create!(:email => email, :password => Devise.friendly_token[0,20])
               user.access_token = credentials['token']
               user.create_profile( :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"])
               user.save
@@ -47,11 +48,11 @@ module Models
           # Not signed in.
           if user.nil?
             # Already signed up with Twitter.
-            if user = User.find_by_tt_token_and_tt_secret(credentials['token'], credentials['secret'])
+            if user = find_by_tt_token_and_tt_secret(credentials['token'], credentials['secret'])
               user
             else
               # Create new Prizzm account with Twitter account information.
-              user = User.create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20])
+              user = create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20])
               user.tt_token = credentials['token']
               user.tt_secret = credentials['secret']
               user.create_profile( :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
