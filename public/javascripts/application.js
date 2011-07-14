@@ -112,6 +112,12 @@ $(document).ready(function(){
     }
   });
 
+  /*Code to delete items frrom the main page*/
+  $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    var itemid = data + '';
+    $('#item_'+itemid).fadeOut();
+  });
+
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   }

@@ -5,9 +5,7 @@ gzip_assets: on
 
 javascripts:
   app:
-    - public/javascripts/facebox.js
     - public/javascripts/rails.js
-    - public/javascripts/application.js
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
     - public/javascripts/jquery.autogrow.js
@@ -19,6 +17,7 @@ javascripts:
     - public/javascripts/swfobject.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
+    - public/javascripts/application.js
 
 stylesheets:
   app:
@@ -26,7 +25,6 @@ stylesheets:
     - public/stylesheets/boilerplate.css
     - public/stylesheets/main.css
     - public/stylesheets/fonts.css
-    - public/stylesheets/facebox.css
     - public/stylesheets/jquery.ui.stars.css
   items-page:
     - public/stylesheets/item-public.css
