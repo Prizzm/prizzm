@@ -1,4 +1,13 @@
 module Loginable
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  def self.included(base)
+    base.send :devise, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  end
+
+  def password_require?
+    new_record?
+  end
 
   def find_for_facebook_oauth(access_token, user=nil)
     data = access_token['extra']['user_hash']

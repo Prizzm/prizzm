@@ -32,7 +32,7 @@
     $(document).ready(function(){
       function autocompleteFormatter(query, results) {
         var template = document.getElementById('product-autocomplete-result-template').innerHTML;
-        // template = template.replace(/nofollow/g, "facebox"); 
+        template = template.replace(/nofollow/g, "facebox"); 
         
         console.log(results);
         return _.map(results, function(result){

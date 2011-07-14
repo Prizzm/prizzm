@@ -20,9 +20,18 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id])
   end
 
-  update! do |success, failure| 
-    success.html {redirect_to root_path}
-    success.json {head :ok}
+  def update 
+    @item = current_user.items.find(params[:id])
+    if @item.update_attributes(params[:item])
+      respond_to do |format|
+        if @item.possession_status == 'have'
+          format.html {redirect_to owners_owned_item_view_path}
+        else
+          format.html {redirect_to owners_wanted_item_view_path}
+        end
+        format.json {head :ok}
+      end 
+    end
   end
   
   def destroy

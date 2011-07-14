@@ -16,11 +16,14 @@ $(document).ready(function(){
 
 
   // Initialize facebox model windows if they are used
-  $('a[rel*=facebox]').facebox();
-  $(document).bind('change', docChanged) ;
-  function docChanged() {
-    $('a[rel*=facebox][class!="faceboxed"]').addClass("faceboxed").facebox();
-  }
+  //$('a[rel*=facebox]').facebox();
+  /*$(document).bind('change', docChanged) ;*/
+  /*function docChanged() {*/
+  /*$('a[rel*=facebox][class!="faceboxed"]').addClass("faceboxed").facebox();*/
+  /*}*/
+  $("a[rel*=facebox]").live("DOMNodeInserted", function() {
+    $(this).facebox();
+  });
 
   /*  Here we configure the effects that occur when we click on the input box.
    *  The text_area expands in size, we add a class to it to highlight it, and we

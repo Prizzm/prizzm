@@ -4,8 +4,10 @@ class OwnedItemsController < ApplicationController
     # Crerate/sign in user if not
     product = Product.find(params[:product_id])
     @item = current_user.owns product
-    redirect_to owners_owned_item_view_path(@item.id)
+    #redirect_to owners_owned_item_view_path(@item.id)
+    render 'create_review'
   end
+
 
   def owners_view
     @item = current_user.items.find(params[:id]) 

@@ -4,6 +4,8 @@ Prizzm::Application.routes.draw do
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
 
+  match "/profile/:id" => "profile#show", :as => "profile"
+
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection

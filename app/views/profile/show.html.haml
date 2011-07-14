@@ -1,0 +1,26 @@
+%h1= @user.name
+%br
+%p= image_tag @user.main_image
+
+
+%h1 Notifications
+
+
+%h1 Wanted Items
+- @user.items.public.wanted.each do |item|
+  = link_to public_wanted_item_path item do
+    %p= item.name
+    %p= image_tag item.main_image_thumb
+
+
+
+
+%h1 Owned Items
+- @user.items.public.owned.each do |item|
+  = link_to public_owned_item_path item do
+    %p= item.name
+    %p= image_tag item.main_image_thumb
+
+%h1 Following
+
+%h1 Followed By:

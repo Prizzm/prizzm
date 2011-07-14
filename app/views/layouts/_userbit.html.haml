@@ -1,6 +1,7 @@
 .grid_4
   Welcome
-  = link_to current_user.name
+  /= link_to current_user.name, edit_user_registration_path
+  = link_to current_user.name, profile_path(current_user)
 %nav.grid_8
   %ul
     %li= link_to 'Inbox (10)'

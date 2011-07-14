@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  extend Loginable
+  include UserImageable
+  #extend Loginable
+  #include Loginable
+  include Models::User::DeviseExt
+
+
 
   has_one  :profile, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_many :products, :through => :items
+
+  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes, :access_token
@@ -19,28 +23,24 @@ class User < ActiveRecord::Base
   end
 
   def wanted_items
-    items.where("possession_status = ?", 'want')
+    items.wanted
   end
 
   def owned_items
-    items.where("possession_status = ?",  'have')
-  end
-
-  def password_require?
-    new_record?
+    items.owned
   end
 
   def already_wants? product
-    wanted_items.collect(&:product_id).include? product.id
+    items.wanted.collect(&:product_id).include? product.id
   end
 
   def already_owns? product
-    owned_items.collect(&:product_id).include? product.id
+    items.owned.collect(&:product_id).include? product.id
   end
 
   def wants product
     if already_wants? product
-      item = wanted_items.where(:product_id => product.id).first
+      item = items.wanted.where(:product_id => product.id).first
     else
       item = Item.create_from_product(product, :possession_status => 'want')
       self.items << item
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
 
   def owns product
     if already_owns? product
-      item = wanted_items.where(:product_id => product.id).first
+      item = items.owned.where(:product_id => product.id).first
     else
       item = Item.create_from_product(product, :possession_status => 'have')
       self.items << item

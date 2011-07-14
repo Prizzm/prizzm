@@ -5,8 +5,6 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
 
-  #has_many :tags, :dependent => :nullify
-  #has_many :interactions, :through => :tags
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
   has_many :interactions, :dependent => :destroy
 
@@ -15,6 +13,10 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :images, :interactions
 
   scope :recently_updated, order('created_at DESC')
+  scope :owned, where(:possession_status => 'have')
+  scope :wanted, where(:possession_status => 'want')
+  scope :public, where(:privacy => 'public')
+  scope :private, where(:privacy => 'private')
 
   acts_as_list :scope => :user
 
