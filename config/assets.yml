@@ -15,6 +15,7 @@ javascripts:
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
     - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/jquery.nyroModal.js
     - public/javascripts/swfobject.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js

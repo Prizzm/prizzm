@@ -14,12 +14,12 @@ h3 {
 	font-size: 1.3em;
 }
 
-#review {
+#review, #reason {
 	margin: 10px 0;
 	position: relative;
 }
 
-  #review a {
+  #review a, #reason a {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -28,6 +28,10 @@ h3 {
 #new_interaction {
 	position: relative;
 	border-bottom: 1px solid #e7e7e7;
+}
+
+#new_interaction.ask {
+	border-bottom: none;
 }
 
 #interaction-input, .edit form textarea{
@@ -58,7 +62,7 @@ h3 {
 	right: 10px;
 }
 
-#item-interaction-submit {
+#item-interaction-submit, #item-ask-submit {
 	margin: 10px 0;
 }
 
