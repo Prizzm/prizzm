@@ -1,3 +1,6 @@
+#  For gem extraction:
+#  Dd route to config/routes.rb
+#  initializer,t
 module Models
   module User
     module DeviseExt

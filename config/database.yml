@@ -6,7 +6,7 @@ postgres: &pgsql
   host: localhost
   pool: 5
   username: prizzm
-  password: 
+  password: prizzm
 
 #development:
 #  <<: *pgsql
@@ -18,7 +18,7 @@ development:
   database: prizzm_development
   pool: 5
   username: prizzm
-  password:
+  password: prizzm
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -33,7 +33,7 @@ test:
   database: prizzm_test
   pool: 5
   username: prizzm
-  password:
+  password: prizzm
 
 production:
   adapter: sqlite3
