@@ -36,7 +36,7 @@ h3 {
 
 #interaction-input, .edit form textarea{
 	padding: 10px;
-	width: 438px !important;
+	width: 95% !important;
 	border: 1px solid #e7e7e7;
 	font-size: 1.1em;
 	max-height: 17px;
@@ -45,10 +45,6 @@ h3 {
 
 .input-active, .edit form textarea{
 	background-image: none !important;
-}
-
-.edit form textarea{
-	max-height: 100%;
 }
 
 #share-input {
@@ -90,11 +86,32 @@ ul.social {
 	list-style: none;
 	margin: 0;
 	padding: 5px;
-	max-width: 100%;
+	width: 97%;
 	background: #fff;
 	border: 1px solid #e7e7e7;
 }
 
 ul.social li {
 	display: inline-block;
+}
+
+aside article .cell, aside article ul li {
+  padding: 0;
+}
+
+aside article header {
+	margin-bottom: 5px;
+}
+
+.grid_6 ul.social .button {
+	padding: 3px 20px 3px 7px !important;
+}
+
+.grid_6 ul.social .cancel {
+	top: 3px;
+}
+
+ul li .cancel{
+	top: 2px;
+	right: 2px;
 }

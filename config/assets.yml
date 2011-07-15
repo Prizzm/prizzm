@@ -13,8 +13,8 @@ javascripts:
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
     - public/javascripts/jquery.watermark.min.js
-    - public/javascripts/jquery.nyroModal.js
     - public/javascripts/swfobject.js
+    - public/javascripts/jquery.colorbox-min.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
@@ -26,6 +26,7 @@ stylesheets:
     - public/stylesheets/main.css
     - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
+    - public/stylesheets/colorbox.css
   items-page:
     - public/stylesheets/item-public.css
     - public/stylesheets/galleriffic-3.css
