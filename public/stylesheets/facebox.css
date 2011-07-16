@@ -60,6 +60,7 @@
 }
 
 #facebox #message {
+	margin-bottom: 5px;
 	padding: 10px;
 	width: 93% !important;
 	border: 1px solid #e7e7e7;
@@ -78,7 +79,7 @@
 
 #facebox ul.social {
 	list-style: none;
-	margin: 0;
+	margin: 5px 0 0 0;
 	padding: 5px;
 	width: 96%;
 	background: #fff;

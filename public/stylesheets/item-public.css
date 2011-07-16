@@ -112,6 +112,8 @@ aside article header {
 }
 
 ul li .cancel{
+	width: 13px;
+	height: 14px;
 	top: 3px;
 	right: 2px;
 	opacity: 0.3;
