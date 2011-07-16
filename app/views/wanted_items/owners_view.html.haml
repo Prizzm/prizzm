@@ -34,13 +34,13 @@
           .cancel
         .clear
         %ul.social
-          %li Share to: 
-          %li.twitter_button
+          %li Share to 
+          %li.button.twitter
             twitter
-            = f.check_box :shared_twitter, :class => 'shared_tt_checkbox', :id => 'interaction_shared_tt'
-          %li.facebook_button
+            .cancel
+          %li.button.fb
             facebook
-            = f.check_box :shared_facebook, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
+            .cancel
         .clear
         = f.submit 'Share', :id => 'item-interaction-submit', :class => "button"
         
