@@ -1,0 +1,130 @@
+#facebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: left;
+}
+
+
+#facebox .popup{
+  position:relative;
+  border:1px solid #acacac;
+  
+  -webkit-box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 4px 16px rgba(0,0,0,0.2);
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+}
+
+#facebox .content {
+  display:table;
+  padding: 35px 40px;
+  background: #fff;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+}
+
+#facebox .content > p:first-child{
+  margin-top:0;
+}
+#facebox .content > p:last-child{
+  margin-bottom:0;
+}
+
+#facebox .close{
+  position:absolute;
+  top:5px;
+  right:5px;
+  padding:2px;
+  background:#fff;
+}
+#facebox .close img{
+  opacity:0.3;
+}
+#facebox .close:hover img{
+  opacity:1.0;
+}
+
+#facebox .loading {
+  text-align: center;
+}
+
+#facebox .image {
+  text-align: center;
+}
+
+#facebox img {
+  border: 0;
+  margin: 0;
+}
+
+#facebox #message {
+	padding: 10px;
+	width: 93% !important;
+	border: 1px solid #e7e7e7;
+	font-size: 1.1em;
+	background: #fff no-repeat url('../images/write.png') 422px;
+}
+
+#facebox h1 {
+	line-height: 140%;
+	font: normal 20px arial,sans-serif;
+}
+
+#facebox form {
+	margin: 15px 0;
+}
+
+#facebox ul.social {
+	list-style: none;
+	margin: 0;
+	padding: 5px;
+	width: 96%;
+	background: #fff;
+	border: 1px solid #e7e7e7;
+}
+
+#facebox ul.social li {
+	display: inline-block;
+}
+
+#facebox ul li .cancel{
+	margin: 0 !important;
+	top: 3px;
+	right: 2px;
+	opacity: 0.3;
+	visibility: visible;
+	position: absolute;
+	background: url('../images/cancel-light.png');
+}
+
+#facebox ul li .cancel:hover {
+	opacity: 0.5;
+}
+
+#facebox ul.social .button{
+	padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#facebox input[name=commit]{
+	margin-top: 10px;
+}
+
+#facebox_overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+}
+
+.facebox_hide {
+  z-index:-100;
+}
+
+.facebox_overlayBG {
+  background-color: #fff;
+  z-index: 99;
+}

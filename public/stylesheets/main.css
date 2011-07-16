@@ -8,7 +8,7 @@
 	}
 
 	body {
-		background: #f8f8f8;
+		background: #fff;
 	}
 	
 	ul {
@@ -23,7 +23,6 @@
 	
 	#userBar {
 		height: 35px;
-		border-bottom: 1px solid #fff;
 		background: #cdd9f1;
 	}
 	
@@ -469,6 +468,33 @@
 		display: block;
 		background: url('../images/cancel.png');
 		cursor: pointer;
+	}
+	
+	input[name=commit]{
+		float: right;
+		border: solid 1px #3079ED;
+		color: #fff !important;
+		font-weight: bold;
+		
+		background: #499bea; /* Old browsers */
+		background: -moz-linear-gradient(top, #499bea 0%, #207ce5 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#499bea), color-stop(100%,#207ce5)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #499bea 0%,#207ce5 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #499bea 0%,#207ce5 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #499bea 0%,#207ce5 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, #499bea 0%,#207ce5 100%); /* W3C */
+	}
+	
+	input[name=commit]:hover {
+		background: #3f97e9; /* Old browsers */
+		background: -moz-linear-gradient(top, #3f97e9 0%, #1a77e2 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f97e9), color-stop(100%,#1a77e2)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f97e9', endColorstr='#1a77e2',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* W3C */
 	}
 	
 /* ============================= */

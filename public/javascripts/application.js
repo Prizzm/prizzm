@@ -11,12 +11,7 @@ $(document).ready(function(){
    * interactivity on the site
    */
   $(".autogrow").autoGrow();
-  $(".colorbox").colorbox({
-	transition: "none",
-	initialHeight: "auto",
-	initialWidth: "auto"
-  });
-
+  $(".facebox").facebox();
   clearInteraction();
    
   $('#interaction-input').focus(function(){

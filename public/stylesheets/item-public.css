@@ -108,10 +108,16 @@ aside article header {
 }
 
 .grid_6 ul.social .cancel {
-	top: 3px;
+	top: 4px;
 }
 
 ul li .cancel{
-	top: 2px;
+	top: 3px;
 	right: 2px;
+	opacity: 0.3;
+	background: url('../images/cancel-light.png');
+}
+
+ul li .cancel:hover {
+	opacity: 0.5;
 }
