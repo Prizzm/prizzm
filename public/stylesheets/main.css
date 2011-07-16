@@ -359,6 +359,10 @@
 			padding-bottom: 3px;
 		}
 		
+		aside input[name=commit] {
+			padding: 3px 12px !important;
+		}
+		
 		aside form textarea:focus {
 			border: 1px solid #e7e7e7;
 		}
