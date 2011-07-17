@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -7,22 +8,15 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # create a test user
+#
+#  Functions defined in lib/deefinitions/test_data.rb
+
+User.destroy_all
+Item.destroy_all
+Product.destroy_all
+Company.destroy_all
 
 
-def make_real user
-  8.times do
-    item = Factory :item_with_images
-    user.items << item
-  end
-end
-
-#sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Sidney', :last_name => 'Burks'}) } 
-#make_real sidney
-
-#test = Factory :user, {:email => 'test@test.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Test', :last_name => 'User'}) } 
-#make_real test
-
-1000.times { Factory :user }
 
 bryna_nicole = Company.create({
   :name => "Bryna Nicole", 
@@ -68,3 +62,29 @@ bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/f/i/
 
 
 bryna_nicole.products << [bryna1, bryna2]
+
+
+
+
+
+
+
+
+
+sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Sidney', :last_name => 'Burks'}) } 
+test = Factory :user, {:email => 'test@test.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Test', :last_name => 'User'}) } 
+30.times do
+  user = Factory :user 
+  user.follow bryna_nicole
+  user.follow bryna1
+  user.follow bryna2
+end
+
+set_follows sidney
+#make_real test
+
+sidney.follow bryna1
+sidney.follow bryna2
+sidney.follow bryna_nicole
+make_real sidney
+
