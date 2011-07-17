@@ -36,6 +36,12 @@ GIT
       warden (~> 1.0.3)
 
 GIT
+  remote: git://github.com/sid137/acts_as_follower.git
+  revision: c47f53541865b49c3ae21b1044cfa67c38f0084b
+  specs:
+    acts_as_follower (0.0.0)
+
+GIT
   remote: git://github.com/sid137/facebook_test_users.git
   revision: 271326ff46bc43303fbe4f18701b95832953d946
   specs:
@@ -60,11 +66,6 @@ GIT
       activesupport (~> 3.0)
       choice (~> 0.1.4)
       ruby-graphviz (~> 1.0)
-
-PATH
-  remote: /home/sid137/tracking/acts_as_follower
-  specs:
-    acts_as_follower (0.0.0)
 
 GEM
   remote: http://rubygems.org/
