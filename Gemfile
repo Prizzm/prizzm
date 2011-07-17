@@ -33,6 +33,7 @@ gem "flash_cookie_session"
 # ImageMagick
 gem "rmagick"
 
+gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
 
 gem "hashie"
 # gem 'aws-s3', :require => 'aws/s3'

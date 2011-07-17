@@ -12,7 +12,7 @@
 
 %h1 Wanted Items
 - @user.items.public.wanted.each do |item|
-  = link_to public_wanted_item_path item do
+  = link_to public_wanted_item_path item.user, item do
     %p= item.name
     %p= image_tag item.main_image_thumb
 
@@ -21,7 +21,7 @@
 
 %h1 Owned Items
 - @user.items.public.owned.each do |item|
-  = link_to public_owned_item_path item do
+  = link_to public_owned_item_path item.user, item do
     %p= item.name
     %p= image_tag item.main_image_thumb
 

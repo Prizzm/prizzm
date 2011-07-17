@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :items, :dependent => :destroy
   has_many :products, :through => :items
 
+  has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :phone_number, :location, :photo, :profile_attributes
   delegate :first_name, :last_name,  :phone_number, :phone_number=, :location, :location=, :photo,  :to  => :profile
