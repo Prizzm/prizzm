@@ -188,6 +188,7 @@
 		
 		.yui3-aclist-list .cell {
 			padding: 5px;
+			width: 20%;
 		}
 		
 		.yui3-aclist-item-active, .yui3-aclist-item-hover {
@@ -204,7 +205,7 @@
 		}
 
         .yui3-aclist-item .cell.desc {
-			width: 322px;
+			width: 80%;
 		}
 	
 	#userBit {

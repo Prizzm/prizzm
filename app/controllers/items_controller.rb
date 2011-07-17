@@ -3,8 +3,11 @@ class ItemsController < InheritedResources::Base
   respond_to :html, :json
   layout :determine_layout
   helper_method :new_privacy_message
-
-
+  
+  
+  def new
+  end
+  
   def create
     @item = Item.create(:name => params[:search])
     current_user.items << @item
