@@ -6,6 +6,7 @@ module ApplicationHelper
 
 
 
+
   def show_stars_for element
     %Q{
     <script>
