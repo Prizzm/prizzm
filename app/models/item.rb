@@ -19,6 +19,7 @@ class Item < ActiveRecord::Base
   scope :private, where(:privacy => 'private')
 
   acts_as_list :scope => :user
+  acts_as_followable
 
   after_initialize :default_values
 

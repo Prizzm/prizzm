@@ -61,6 +61,11 @@ GIT
       choice (~> 0.1.4)
       ruby-graphviz (~> 1.0)
 
+PATH
+  remote: /home/sid137/tracking/acts_as_follower
+  specs:
+    acts_as_follower (0.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -399,6 +404,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  acts_as_follower!
   acts_as_list
   autotest-rails
   best_in_place!

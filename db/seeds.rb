@@ -22,6 +22,8 @@ end
 #test = Factory :user, {:email => 'test@test.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Test', :last_name => 'User'}) } 
 #make_real test
 
+1000.times { Factory :user }
+
 bryna_nicole = Company.create({
   :name => "Bryna Nicole", 
   :email => "bryna@prizzm.com",
