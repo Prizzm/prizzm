@@ -1,0 +1,15 @@
+Ask your friends on your social network for some advice!
+= form_tag publish_advice_path(@item) do
+  = text_area_tag :message, "Should I buy this thing?"
+  .clear
+  %ul.social
+    %li Ask your 
+    %li.button.twitter
+      twitter
+      .cancel
+    %li.button.fb
+      facebook
+      .cancel
+  .clear
+  = submit_tag "Ask", :class => "button"
+  .clear

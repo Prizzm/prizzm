@@ -1,6 +1,4 @@
 $(document).ready(function(){
-  $('.openDisplay').nyroModal();
-	
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  Tis script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
@@ -12,7 +10,62 @@ $(document).ready(function(){
   /* Here, we initialize some of the Javascript plugins used for display, and
    * interactivity on the site
    */
+  $(".autogrow").autoGrow();
+  $(".facebox").facebox();
+  clearInteraction();
+   
+  $('#interaction-input').focus(function(){
+    $(this).addClass('input-active');
+    $('#interaction_submit').show();
+    $('#share-input .cancel').show();
+    $('#new_interaction_box .social').show();
+    $('#item-interaction-submit').show();
+  });
 
+  $('#share-input .cancel').click(clearInteraction);
+  $('#item-interaction-submit').click(clearInteraction);
+
+  function clearInteraction(){
+    $('#interaction-input').removeClass('input-active');
+    $('#share-input .cancel').hide();
+    $('#new_interaction_box .social').hide();
+    $('#item-interaction-submit').hide();
+    $('#interaction-input').val('');
+  }
+
+  $('#new_interaction')
+    .live('ajax:success', function(event, data, status, xhr){
+    // Add the newly created interaction to the page, and alert the user.
+    $('#interactions_feed').prepend(xhr.responseText);
+    $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
+
+    //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
+    $(':input','#new_interaction')
+    .not(':button, :submit, :reset, :hidden')
+    .val('')
+    .removeAttr('checked')
+    .removeAttr('selected');
+
+    $('#new_interaction')[0].reset();
+  });
+
+  $('#interactions_feed').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    var interactionid = data + '';
+    $('#interaction-' + interactionid + '-content').fadeOut();
+  });
+
+  $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    var itemid = data + '';
+    $('#item_'+itemid).fadeOut();
+  });
+
+  $('.interaction-content').live('mouseenter', function(){
+    $(this).addClass('hover');
+  });
+
+  $('.interaction-content').live('mouseleave', function(){
+    $(this).removeClass('hover');
+  });
 
   // For Facebook posting messages
   $('.shared_fb_checkbox').live('click', function() {

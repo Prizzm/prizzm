@@ -1,5 +1,16 @@
-%h2 We will send this recommendation out to your Facebook followers
+%h1
+  Ask friends
 
+Ask your friends on your social network for some advice!
 = form_tag publish_advice_path do
-  = text_area_tag :message, "Should I buy this thing?"
-  = submit_tag "Ask for Advice"
+  = text_area_tag :message, "Should I buy this thing?", :class => "autogrow"
+  %ul.social
+    %li Share to 
+    %li.button.twitter
+      twitter
+      .cancel
+    %li.button.fb
+      facebook
+      .cancel
+  .clear
+  = submit_tag "Send", :class => "button"

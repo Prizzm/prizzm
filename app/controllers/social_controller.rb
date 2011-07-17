@@ -17,6 +17,7 @@ class SocialController < ApplicationController
   end
 
   def new_recommendation_request
+    render :layout => nil
   end
 
   def send_recommendation_request
