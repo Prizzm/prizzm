@@ -112,5 +112,8 @@ function find_and_replace  {
 }
 
 
-
+function pull {
+    rm public/assets/*.gz
+    git pull
+}
 

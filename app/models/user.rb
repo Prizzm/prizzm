@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
+  acts_as_follower
+  acts_as_followable
+
   def name
     "#{first_name} #{last_name}"
   end

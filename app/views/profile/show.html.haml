@@ -2,7 +2,11 @@
 %br
 %p= image_tag @user.main_image
 
+%p= link_to "Edit your Profile", edit_user_registration_path
+%p= link_to "Edit your Privacy Settings", edit_user_registration_path
+%p= link_to "Edit your Email Settings", edit_user_registration_path
 
+%h1 Your Recent activvity
 %h1 Notifications
 
 
@@ -21,6 +25,28 @@
     %p= item.name
     %p= image_tag item.main_image_thumb
 
-%h1 Following
+%h1 Is following #{followed_users = @user.following_users_count} people
+- if followed_users > 0
+  - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
+    %p= link_to user.name, profile_path(user)
 
-%h1 Followed By:
+
+%h1 Is followed by #{followers = @user.followers_count} people
+- if followers > 0
+  - @user.followers.sort {|a,b| a.name <=> b.name }.each do |follower|
+    %p= link_to follower.name, profile_path(follower)
+
+%h1 Is following  #{followed_items = @user.following_items_count} Items
+- if followed_items > 0
+  - @user.following_items.each do |item|
+    %p= link_to item.name, '#'
+
+%h1 Is following  #{followed_products = @user.following_products_count} Products
+- if followed_products > 0
+  - @user.following_products.each do |product|
+    %p= link_to product.name, product_path(product)
+
+%h1 Is following  #{followed_companies = @user.following_companies_count} Companies
+- if followed_companies > 0
+  - @user.following_companies.each do |company|
+    %p= link_to company.name, company_path(company)

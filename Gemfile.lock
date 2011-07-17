@@ -36,6 +36,12 @@ GIT
       warden (~> 1.0.3)
 
 GIT
+  remote: git://github.com/sid137/acts_as_follower.git
+  revision: c47f53541865b49c3ae21b1044cfa67c38f0084b
+  specs:
+    acts_as_follower (0.0.0)
+
+GIT
   remote: git://github.com/sid137/facebook_test_users.git
   revision: 271326ff46bc43303fbe4f18701b95832953d946
   specs:
@@ -399,6 +405,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  acts_as_follower!
   acts_as_list
   autotest-rails
   best_in_place!

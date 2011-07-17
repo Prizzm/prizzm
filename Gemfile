@@ -15,6 +15,8 @@ gem "acts_as_list"
 # Pined to ref, as there is problem on devise HEAD
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
 
+#gem "acts_as_follower", :path => '/home/sid137/tracking/acts_as_follower'
+gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 
 # Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'

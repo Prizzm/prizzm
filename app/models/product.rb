@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   has_many :items,  :dependent => :nullify
   has_many :users, :through => :items
 
+  acts_as_followable
 
   begin "methods for product search autocomplete"
     def customer_count
