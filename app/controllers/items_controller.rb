@@ -4,11 +4,22 @@ class ItemsController < InheritedResources::Base
   layout :determine_layout
   helper_method :new_privacy_message
 
+  def new
+    @item = Item.new
+  end
 
   def create
-    @item = Item.create(:name => params[:search])
+    if params[:search]
+      @item = Item.create(:name => params[:search])
+    else
+      @item = Item.create(params[:item])
+    end
     current_user.items << @item
-    redirect_to owners_wanted_item_view_path(@item)
+    if @item.possession_status == 'want'
+      redirect_to owners_wanted_item_view_path(@item)
+    elsif @item.possession_status == 'have'
+      redirect_to owners_owned_item_view_path(@item)
+    end
   end
 
   def edit

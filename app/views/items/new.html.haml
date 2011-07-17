@@ -1,1 +1,23 @@
-= render 'form'
+
+= include_stylesheets :app
+-#  
+  Using the formtastic form builder gem here. HTML options can be supplied and customized with options on the README page
+  http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
+  https://github.com/justinfrench/formtastic
+= form_for [current_user, @item] do |f|
+  %p= f.text_field :name, :value => "name"
+  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
+  %p= f.text_area :review, :value => "review"
+  #stars-wrapper-new-item
+    = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
+  %p= f.submit "add Item"
+
+= render 'layouts/javascripts'
+:javascript
+  $(document).ready(function(){
+    $('#stars-wrapper-new-item').stars({});
+  
+    if (document.location.hash === "#owned"){
+      $('#item_possession_status').val('have');
+    }
+  });

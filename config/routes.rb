@@ -30,6 +30,8 @@ Prizzm::Application.routes.draw do
   post '/recommend/:item_id' => 'social#publish_recommendation', :as => 'publish_recommendation'
 
 
+  # Following things
+  resources :follows
 
   # User Login and account registration
   resource :profile
