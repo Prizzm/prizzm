@@ -80,11 +80,16 @@ test = Factory :user, {:email => 'test@test.com', :password => 'password', :prof
   user.follow bryna2
 end
 
-set_follows sidney
-#make_real test
 
+set_follows sidney
 sidney.follow bryna1
 sidney.follow bryna2
 sidney.follow bryna_nicole
 make_real sidney
+
+set_follows test
+test.follow bryna1
+test.follow bryna2
+test.follow bryna_nicole
+make_real test
 
