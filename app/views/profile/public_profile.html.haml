@@ -2,6 +2,8 @@
 %br
 %p= image_tag @user.main_image
 
+%p= follow_link_for @user
+%p= block_link_for @user
 %p= link_to "Edit your Profile", edit_user_registration_path
 %p= link_to "Edit your Privacy Settings", edit_user_registration_path
 %p= link_to "Edit your Email Settings", edit_user_registration_path
@@ -12,7 +14,7 @@
 
 %h1 Wanted Items
 - @user.items.public.wanted.each do |item|
-  = link_to public_wanted_item_path item do
+  = link_to item_path_for(item) do
     %p= item.name
     %p= image_tag item.main_image_thumb
 
@@ -21,7 +23,7 @@
 
 %h1 Owned Items
 - @user.items.public.owned.each do |item|
-  = link_to public_owned_item_path item do
+  = link_to item_path_for(item) do
     %p= item.name
     %p= image_tag item.main_image_thumb
 

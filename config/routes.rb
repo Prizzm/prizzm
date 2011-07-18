@@ -15,7 +15,7 @@ Prizzm::Application.routes.draw do
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
   post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'
-  get '/public/wants/:id' => 'wanted_items#public_view', :as => 'public_wanted_item'
+  get '/:user_id/wants/:id' => 'wanted_items#public_view', :as => 'public_wanted_item'
 
   get  '/ask/:item_id' => 'social#new_recommendation_request', :as => 'new_advice'
   post '/ask/:item_id' => 'social#send_recommendation_request', :as => 'publish_advice'
@@ -24,14 +24,17 @@ Prizzm::Application.routes.draw do
   # Owned Items
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
   post '/owned/:product_id' => 'owned_items#create', :as => 'add_owned_item'
-  get '/public/owns/:id' => 'owned_items#public_view', :as => 'public_owned_item'
+  get '/:user_id/owns/:id' => 'owned_items#public_view', :as => 'public_owned_item'
 
   get  '/recommend/:item_id' => 'social#create_recommendation', :as => 'create_recommendation'
   post '/recommend/:item_id' => 'social#publish_recommendation', :as => 'publish_recommendation'
 
 
   # Following things
-  resources :follows
+  post '/follow/:object/:id' => 'follows#follow', :as => 'follow'
+  delete '/unfollow/:object/:id' => 'follows#unfollow', :as => 'unfollow'
+  post '/block/:id' => 'follows#block', :as => 'block'
+  delete '/unblock/:id' => 'follows#unblock', :as => 'unblock'
 
   # User Login and account registration
   resource :profile

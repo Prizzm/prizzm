@@ -22,6 +22,9 @@
   %b Contact name:
   = @company.contact_name
 
+%p
+  = follow_link_for @company
+
 = link_to 'Edit', edit_company_path(@company)
 \|
 = link_to 'Back', companies_path
