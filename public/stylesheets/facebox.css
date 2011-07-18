@@ -20,6 +20,7 @@
   display:table;
   padding: 35px 40px;
   background: #fff;
+  width: 550px;
 }
 
 #facebox .content > p:first-child{
@@ -61,21 +62,11 @@
 	padding: 10px;
 	border: 1px solid #e7e7e7;
 	font-size: 1.1em;
-	background: #fff no-repeat url('../images/write.png') 422px;
 }
 
-  #facebox input[type=text] {
-	width: 93%;
+  #facebox input[type=text], #facebox textarea{
+	width: 96%;
   }
-  
-  #facebox textarea {
-	width: 93%;
-  }
-  
-  #facebox textarea.rec_extend {
-	width: 95%;
-  }
-
 
 #facebox h1 {
 	line-height: 140%;
@@ -89,7 +80,7 @@
 #facebox ul.social {
 	list-style: none;
 	padding: 5px;
-	width: 96%;
+	width: 98%;
 	background: #fff;
 	border: 1px solid #e7e7e7;
 }
