@@ -1,5 +1,5 @@
 %h2 We will send this recommendation out to your Facebook followers
 
 = form_tag publish_recommendation_path do
-  = text_area_tag :message, "I'd like to recommend this to you"
-  = submit_tag "Send Recommendation"
+  = text_area_tag :message, "I'd like to recommend this to you", :class => "rec_extend"
+  = submit_tag "Recommend", :class => "button"

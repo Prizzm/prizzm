@@ -56,14 +56,26 @@
   margin: 0;
 }
 
-#facebox #message {
+#facebox textarea, #facebox input[type=text] {
 	margin-bottom: 3px;
 	padding: 10px;
-	width: 93% !important;
 	border: 1px solid #e7e7e7;
 	font-size: 1.1em;
 	background: #fff no-repeat url('../images/write.png') 422px;
 }
+
+  #facebox input[type=text] {
+	width: 93%;
+  }
+  
+  #facebox textarea {
+	width: 93%;
+  }
+  
+  #facebox textarea.rec_extend {
+	width: 95%;
+  }
+
 
 #facebox h1 {
 	line-height: 140%;
@@ -108,6 +120,7 @@
 #facebox input[name=commit]{
 	margin-top: 10px;
 }
+
 
 #facebox_overlay {
   position: fixed;
