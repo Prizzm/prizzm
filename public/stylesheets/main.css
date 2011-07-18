@@ -503,6 +503,10 @@
 		background: linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* W3C */
 	}
 	
+	.shared_checkbox{
+		display: none;
+	}
+	
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */

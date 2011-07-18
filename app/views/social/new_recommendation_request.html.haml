@@ -1,7 +1,6 @@
-%h1
-  Ask friends
-
+%h1 Ask friends
 Ask your friends on your social network for some advice!
+
 = form_tag publish_advice_path do
   = text_area_tag :message, "Should I buy this thing?", :class => "autogrow"
   %ul.social
@@ -9,8 +8,11 @@ Ask your friends on your social network for some advice!
     %li.button.twitter
       twitter
       .cancel
+      /= f.check_box :shared_twitter, :class => 'shared_tt_checkbox', :id => 'interaction_shared_tt'
     %li.button.fb
       facebook
+      .cancel
+      /= f.check_box :shared_facebook, :class => 'shared_fb_checkbox', :id => 'interaction_shared_fb'
       .cancel
   .clear
   = submit_tag "Send", :class => "button"

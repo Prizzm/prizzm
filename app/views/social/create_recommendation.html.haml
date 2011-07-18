@@ -8,8 +8,11 @@ Recommend this item to your friends on your social networks!
     %li.button.twitter
       twitter
       .cancel
+      /= f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
     %li.button.fb
       facebook
+      .cancel
+      /= f.check_box :shared_facebook, :class => 'shared_checkbox', :id => 'interaction_shared_fb', :checked => "true"
       .cancel
   .clear
   = submit_tag "Recommend", :class => "button"

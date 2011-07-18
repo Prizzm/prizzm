@@ -36,9 +36,11 @@
           %li.button.twitter
             twitter
             .cancel
+            = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
           %li.button.fb
             facebook
             .cancel
+            = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
         .clear
         = f.submit 'Share', :id => 'item-interaction-submit', :class => "button"
         

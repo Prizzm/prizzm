@@ -7,9 +7,11 @@ Ask your friends on your social network for some advice!
     %li.button.twitter
       twitter
       .cancel
+      /= f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
     %li.button.fb
       facebook
       .cancel
+      /= f.check_box :shared_facebook, :class => 'shared_checkbox', :id => 'interaction_shared_fb', :checked => "true"
   .clear
   = submit_tag "Ask", :class => "button"
   .clear
