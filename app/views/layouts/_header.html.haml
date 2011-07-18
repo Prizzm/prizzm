@@ -24,8 +24,8 @@
       %div{:id => "stars-wrapper-{{ id }}", :class => "autocomplete-rating rating", :disabled => "disable"}
         %select= options_for_select([1, 2, 3, 4, 5])
     .cell 
-      = link_to "I have this", CGI::unescape(add_owned_item_path('{{ id }}')), :class => "button facebox"
-      = link_to "I want this", CGI::unescape(add_wanted_item_path('{{ id }}')), :class => "button facebox"
+      = link_to "I have this", CGI::unescape(add_owned_item_path('{{ id }}')), :method => :post, :class => "button facebox"
+      = link_to "I want this", CGI::unescape(add_wanted_item_path('{{ id }}')), :method => :post, :class => "button facebox"
 
 - content_for :jquery do
   :javascript

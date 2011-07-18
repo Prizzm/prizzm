@@ -12,7 +12,9 @@ Give us a few details about this item and what you think of it!
   #stars-wrapper-new-item
     = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
   %p= f.submit "add Item", :class => "button"
-
+  
+  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
+  
 :javascript
   $(document).ready(function(){
     $('#stars-wrapper-new-item').stars({});
