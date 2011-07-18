@@ -2,6 +2,8 @@
 %br
 %p= image_tag @user.main_image
 
+%p= follow_link_for @user
+%p= block_link_for @user
 %p= link_to "Edit your Profile", edit_user_registration_path
 %p= link_to "Edit your Privacy Settings", edit_user_registration_path
 %p= link_to "Edit your Email Settings", edit_user_registration_path

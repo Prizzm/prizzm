@@ -31,7 +31,10 @@ Prizzm::Application.routes.draw do
 
 
   # Following things
-  resources :follows
+  post '/follow/:object/:id' => 'follows#follow', :as => 'follow'
+  delete '/unfollow/:object/:id' => 'follows#unfollow', :as => 'unfollow'
+  post '/block/:id' => 'follows#block', :as => 'block'
+  delete '/unblock/:id' => 'follows#unblock', :as => 'unblock'
 
   # User Login and account registration
   resource :profile

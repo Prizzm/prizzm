@@ -7,6 +7,18 @@ $(document).ready(function(){
     $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
   });
   
+  // jax control for following links
+  // Unfortunately has a strong binding to follow_controller json reesponse as
+  // well as code in linkhelper.rb and routinghlper.rb
+  $('.follow_control').live('ajax:success', function(event, data, status, xhr){
+    $(this).replaceWith(data.link);
+  });
+
+  // Sames as above for follow and privacy links
+  $('.block_control').live('ajax:success', function(event, data, status, xhr){
+    $(this).replaceWith(data.link);
+  });
+
   /* Here, we initialize some of the Javascript plugins used for display, and
    * interactivity on the site
    */

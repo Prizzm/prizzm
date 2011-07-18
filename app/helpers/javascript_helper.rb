@@ -1,5 +1,6 @@
 module JavascriptHelper
 
+  
   def show_stars_for element
     %Q{
     <script>
