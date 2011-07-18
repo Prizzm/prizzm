@@ -55,6 +55,7 @@ $(document).ready(function(){
   });
 
   $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
+    console.log(data);
     var itemid = data + '';
     $('#item_'+itemid).fadeOut();
   });

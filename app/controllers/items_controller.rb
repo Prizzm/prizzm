@@ -49,7 +49,7 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id])    
     @item.destroy
     respond_to do |format|
-      format.json {render :json => params[:id]}
+      format.json {render :json => @item.id}
     end 
   end
 
