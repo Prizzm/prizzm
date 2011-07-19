@@ -21,6 +21,9 @@ gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 # Facilitates Edit-in-place functionality for certain data fields
 gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'
 
+# Default model values
+# https://github.com/FooBarWidget/default_value_for
+gem "default_value_for"
 
 # Gem for uploading images.  More flexible than "paperclip"
 gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'

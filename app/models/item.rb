@@ -23,12 +23,8 @@ class Item < ActiveRecord::Base
   acts_as_list :scope => :user
   acts_as_followable
 
-  after_initialize :default_values
-
-  def initialize(*args)
-    super
-    default_values
-  end
+  default_value_for :privacy, 'private'
+  default_value_for :possession_status, 'want'
 
   def self.create_from_product(product, options = {})
     item = Item.create({:name => product.name, :description => product.description, :rating => product.rating,  :url => product.url}.merge(options))
@@ -49,12 +45,5 @@ class Item < ActiveRecord::Base
     product.company if has_product?
   end
 
-private
-
-  def default_values
-    self.privacy ||= 'private'
-    self.possession_status ||= 'want'
-    rescue ActiveModel::MissingAttributeError
-  end 
 
 end
