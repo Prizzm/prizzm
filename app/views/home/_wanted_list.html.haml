@@ -6,6 +6,6 @@
       %li= link_to '10'
       %li= link_to '20'
       %li= link_to 'View All'
-      %li.addItem= link_to 'add item', new_item_path + "#wanted", :class => 'colorbox'
+      %li.addItem= link_to 'add item', new_item_path + "#wanted", :class => 'facebox'
   .table#want-list.connectedSortable(data-possession='want')
     = render :partial => "home/wanted_item", :collection => @user.wanted_items.recently_updated, :as => :item

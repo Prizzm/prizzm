@@ -72,7 +72,6 @@
 
     if (data.ajax) fillFaceboxFromAjax(data.ajax, klass)
     else if (data.image) fillFaceboxFromImage(data.image, klass)
-    else if (data.div) fillFaceboxFromHref(data.div, klass)
     else if ($.isFunction(data)) data.call($)
     else $.facebox.reveal(data, klass)
   }
@@ -235,15 +234,7 @@
   //   image: blah.extension
   //    ajax: anything else
   function fillFaceboxFromHref(href, klass) {
-    // div
-    if (href.match(/#/)) {
-      var url    = window.location.href.split('#')[0]
-      var target = href.replace(url,'')
-      if (target == '#') return
-      $.facebox.reveal($(target).html(), klass)
-
-    // image
-    } else if (href.match($.facebox.settings.imageTypesRegexp)) {
+    if (href.match($.facebox.settings.imageTypesRegexp)) {
       fillFaceboxFromImage(href, klass)
     // ajax
     } else {

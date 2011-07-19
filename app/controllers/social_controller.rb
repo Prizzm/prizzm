@@ -1,6 +1,7 @@
 class SocialController < ApplicationController
 
   def create_recommendation
+	render :layout => nil
   end
 
   def publish_recommendation

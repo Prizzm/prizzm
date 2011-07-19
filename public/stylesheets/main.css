@@ -135,6 +135,10 @@
             -moz-box-shadow: 0 !important;
             box-shadow: 0 !important;
           }
+          
+    .yui3-aclist-list {
+		width: 100%;
+    }
 
 	.yui3-aclist-list .cell > a {
 		margin-right: 10px;
@@ -188,6 +192,7 @@
 		
 		.yui3-aclist-list .cell {
 			padding: 5px;
+			width: 35%;
 		}
 		
 		.yui3-aclist-item-active, .yui3-aclist-item-hover {
@@ -200,11 +205,11 @@
 		}
 		
 		.yui3-aclist-item .cell.img {
-			width: 60px;
+			width: 13%;
 		}
 
         .yui3-aclist-item .cell.desc {
-			width: 322px;
+			width: 52%;
 		}
 	
 	#userBit {
@@ -496,6 +501,10 @@
 		background: -ms-linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* IE10+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f97e9', endColorstr='#1a77e2',GradientType=0 ); /* IE6-9 */
 		background: linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* W3C */
+	}
+	
+	.shared_checkbox{
+		display: none;
 	}
 	
 /* ============================= */

@@ -9,7 +9,7 @@
       = form_for [@user, item], :remote => true do |f|
         %div{:id => "stars-wrapper-#{item.id}", :class => "rateable-item", :data => {:itemid => "#{item.id}"}}
           = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-  .cell= link_to "Recommend", create_recommendation_path(item.id), :class => "button"
+  .cell= link_to "Recommend", create_recommendation_path(item.id), :class => "button facebox"
   .cell.delete-item= link_to 'Delete from list', [current_user, item],  :remote => true, :method => :delete, :class => "ir cancel"
 
     

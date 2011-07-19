@@ -1,5 +1,18 @@
-%h2 We will send this recommendation out to your Facebook followers
+%h1 Send a recommendation
+Recommend this item to your friends on your social networks!
 
 = form_tag publish_recommendation_path do
-  = text_area_tag :message, "I'd like to recommend this to you"
-  = submit_tag "Send Recommendation"
+  = text_area_tag :message, "I'd like to recommend this to you", :class => "autogrow"
+  %ul.social
+    %li Send to 
+    %li.button.twitter
+      twitter
+      .cancel
+      /= f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
+    %li.button.fb
+      facebook
+      .cancel
+      /= f.check_box :shared_facebook, :class => 'shared_checkbox', :id => 'interaction_shared_fb', :checked => "true"
+      .cancel
+  .clear
+  = submit_tag "Recommend", :class => "button"

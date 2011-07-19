@@ -1,7 +1,7 @@
 %h1.grid_2
   = link_to 'Prizzm', home_url
 = form_tag items_path, :class => "grid_6" do
-  = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Keywords, Tags, Items, SKU..."
+  = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Find products to add..."
   = submit_tag "ADD NEW ITEM", :id => 'product-search-submit-button', :style => 'display: none'
   = submit_tag "", :id => 'mag-glass'
 
@@ -15,7 +15,7 @@
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result
     .cell.img
-      = link_to "{{ main_image_thumb }}", :rel => 'facebox' do
+      = link_to "{{ main_image_thumb }}" do
         %img(src='{{ main_image_thumb }}')
     .cell.desc
       %h2= link_to '{{ name }}', CGI::unescape(product_path('{{ id }}'))
@@ -32,9 +32,7 @@
     $(document).ready(function(){
       function autocompleteFormatter(query, results) {
         var template = document.getElementById('product-autocomplete-result-template').innerHTML;
-        template = template.replace(/nofollow/g, "facebox"); 
         
-        console.log(results);
         return _.map(results, function(result){
           var product = result.raw;
           var parsed_template = _.template(template, product);

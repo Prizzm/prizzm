@@ -1,18 +1,20 @@
-
-= include_stylesheets :app
+%h1
+  Add an item to your list
+Give us a few details about this item and what you think of it!
 -#  
   Using the formtastic form builder gem here. HTML options can be supplied and customized with options on the README page
   http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
   https://github.com/justinfrench/formtastic
 = form_for [current_user, @item] do |f|
-  %p= f.text_field :name, :value => "name"
-  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
-  %p= f.text_area :review, :value => "review"
+  %p= f.text_field :name, :class => "jq_watermark", :placeholder => "Product name"
+  /%p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
+  %p= f.text_area :review, :class => "jq_watermark", :placeholder => "What's your review?"
   #stars-wrapper-new-item
     = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-  %p= f.submit "add Item"
-
-= render 'layouts/javascripts'
+  %p= f.submit "add Item", :class => "button"
+  
+  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
+  
 :javascript
   $(document).ready(function(){
     $('#stars-wrapper-new-item').stars({});
