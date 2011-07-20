@@ -58,7 +58,7 @@ Give us a few details about this item and what you think of it!
     function createDisplay(){
       $('#item_possession_status').val('Select');
       if(window.itemNamePrefil == null){
-        $('#facebox input').attr({
+        $('#facebox input#item_name').attr({
           disabled: "true"
         });
         $('#facebox textarea').attr({
