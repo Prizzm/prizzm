@@ -45,7 +45,9 @@ Prizzm::Application.routes.draw do
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
 
   ######################
-  resources :companies
+  resources :companies do
+    resources :addresses
+  end 
  
   resources :users do
     resources :items do

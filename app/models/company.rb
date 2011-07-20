@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
 
   has_many :products, :dependent => :nullify  
   has_many :images, :class_name => 'CompanyImage', :dependent => :destroy
+  has_many :addresses
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
   

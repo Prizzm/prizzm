@@ -25,6 +25,25 @@
 %p
   = follow_link_for @company
 
+%p
+  %b Addresses:
+- @company.addresses.each do |address|  
+  %p
+  Address:
+  = address.address  
+%p
+%p Add a address:
+= form_for([@company, @company.addresses.build]) do |f|
+  %p
+  = f.label :address_type 
+  = f.text_field :address_type 
+  %p
+  = f.label :address
+  = f.text_field :address
+	
+  %p
+  = f.submit 
+ 
 = link_to 'Edit', edit_company_path(@company)
 \|
 = link_to 'Back', companies_path
