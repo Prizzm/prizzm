@@ -6,20 +6,78 @@ Give us a few details about this item and what you think of it!
   http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
   https://github.com/justinfrench/formtastic
 = form_for [current_user, @item] do |f|
-  %p= f.text_field :name, :class => "jq_watermark", :placeholder => "Product name"
-  /%p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
-  %p= f.text_area :review, :class => "jq_watermark", :placeholder => "What's your review?"
+  %p= f.collection_select :possession_status, ['Select', 'I have', 'I want'], :to_s, :to_s, {}
+  %p= f.text_field :name, :class => "jq_watermark", :title => "Product name"
+  .clearfix
+  %p= f.text_area :review, :class => "jq_watermark"
   #stars-wrapper-new-item
     = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
   %p= f.submit "add Item", :class => "button"
   
-  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
-  
 :javascript
   $(document).ready(function(){
+    
     $('#stars-wrapper-new-item').stars({});
-  
-    if (document.location.hash === "#owned"){
-      $('#item_possession_status').val('have');
+    
+    if (window.linkHash == "#owned"){
+      $('select').attr("disabled", "true");
+      ownedDisplay();
+    } else if (window.linkHash == "#wanted") {
+      $('select').attr("disabled", "true");
+      wantedDisplay();
+    } else {
+      createDisplay();
     }
+    
+    $('select').change(function(){
+      if($(this).val() == "I have"){
+        ownedDisplay();
+      } else if ($(this).val() == "I want") {
+        wantedDisplay();
+      } else {
+        createDisplay();
+      }
+    });
+    
+    function ownedDisplay(){
+      resetDisplay();
+      $('#item_name').focus();
+      $('#item_possession_status').val('I have');
+      $('textarea').attr("title", "What's your review?");
+      $('#stars-wrapper-new-item').show();
+      $('.jq_watermark').watermark();
+    }
+    
+    function wantedDisplay(){
+      resetDisplay();
+      $('#item_name').focus();
+      $('#item_possession_status').val('I want');
+      $('textarea').attr("title", "Why do you want this?");
+      $('#stars-wrapper-new-item').hide();
+      $('.jq_watermark').watermark();
+    }
+    
+    function createDisplay(){
+      $('#item_possession_status').val('Select');
+      
+      $('#facebox input').attr({
+        disabled: "true"
+      });
+      
+      $('#facebox textarea').attr({
+        title: "Make a selection first!",
+        disabled: "true"
+      });
+      
+      $('.jq_watermark').watermark();
+      $('#stars-wrapper-new-item').hide();
+    }
+    
+    function resetDisplay() {
+      $('input').removeAttr("disabled");
+      $('textarea').removeAttr("disabled");
+      $('textarea').removeAttr("title");
+      $('#stars-wrapper-new-item').show();
+    }
+    
   });

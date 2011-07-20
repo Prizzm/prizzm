@@ -60,7 +60,7 @@ background: linear-gradient(top, #a0d773 0%,#8dc163 100%); /* W3C */
 			border-radius: 3px;
 		  }
 		  
-		  article header .addItem, header form input[type=submit]{
+		  article header .addItem{
 			-webkit-border-radius: 3px;
 			-moz-border-radius: 3px;
 			border-radius: 3px;

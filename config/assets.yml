@@ -1,5 +1,5 @@
 allow_debugging: on
-package_assets: always
+package_assets: on
 compress_assets: on
 gzip_assets: on
 
