@@ -6,7 +6,7 @@ Give us a few details about this item and what you think of it!
   http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
   https://github.com/justinfrench/formtastic
 = form_for [current_user, @item] do |f|
-  %p= f.collection_select :possession_status, ['Select', 'I have', 'I want'], :to_s, :to_s, {}
+  %p= f.collection_select :possession_status, ['Select', 'have', 'want'], :to_s, :to_s, {}
   %p= f.text_field :name, :class => "jq_watermark", :title => "Product name"
   .clearfix
   %p= f.text_area :review, :class => "jq_watermark"
@@ -20,19 +20,17 @@ Give us a few details about this item and what you think of it!
     $('#stars-wrapper-new-item').stars({});
     
     if (window.linkHash == "#owned"){
-      $('select').attr("disabled", "true");
       ownedDisplay();
     } else if (window.linkHash == "#wanted") {
-      $('select').attr("disabled", "true");
       wantedDisplay();
     } else {
       createDisplay();
     }
     
     $('select').change(function(){
-      if($(this).val() == "I have"){
+      if($(this).val() == "have"){
         ownedDisplay();
-      } else if ($(this).val() == "I want") {
+      } else if ($(this).val() == "want") {
         wantedDisplay();
       } else {
         createDisplay();
@@ -41,42 +39,50 @@ Give us a few details about this item and what you think of it!
     
     function ownedDisplay(){
       resetDisplay();
-      $('#item_name').focus();
-      $('#item_possession_status').val('I have');
+      $('#item_possession_status').val('have');
+      $('#facebox textarea').attr('class', "jq_watermark");
       $('textarea').attr("title", "What's your review?");
-      $('#stars-wrapper-new-item').show();
       $('.jq_watermark').watermark();
+      $('#stars-wrapper-new-item').show();
     }
     
     function wantedDisplay(){
       resetDisplay();
-      $('#item_name').focus();
-      $('#item_possession_status').val('I want');
+      $('#item_possession_status').val('want');
+      $('#facebox textarea').attr('class', "jq_watermark");
       $('textarea').attr("title", "Why do you want this?");
-      $('#stars-wrapper-new-item').hide();
       $('.jq_watermark').watermark();
+      $('#stars-wrapper-new-item').hide();
     }
     
     function createDisplay(){
       $('#item_possession_status').val('Select');
-      
-      $('#facebox input').attr({
-        disabled: "true"
-      });
-      
-      $('#facebox textarea').attr({
-        title: "Make a selection first!",
-        disabled: "true"
-      });
-      
-      $('.jq_watermark').watermark();
+      if(window.itemNamePrefil == null){
+        $('#facebox input').attr({
+          disabled: "true"
+        });
+        $('#facebox textarea').attr({
+          disabled: "true"
+        });
+      } else {
+        $('#facebox input#item_name').attr({
+          value: window.itemNamePrefil
+        });
+        $('#facebox textarea').attr({
+          disabled: "true"
+        });
+        $('#facebox textarea').removeAttr('class');
+        $('#facebox textarea').focus();
+        window.itemNamePrefil = null;
+      }
+
       $('#stars-wrapper-new-item').hide();
     }
     
     function resetDisplay() {
-      $('input').removeAttr("disabled");
-      $('textarea').removeAttr("disabled");
-      $('textarea').removeAttr("title");
+      $('#facebox input#item_name').removeAttr("disabled");
+      $('#facebox textarea').removeAttr("disabled");
+      $('#facebox textarea').removeAttr("class");
       $('#stars-wrapper-new-item').show();
     }
     

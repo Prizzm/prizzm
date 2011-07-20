@@ -29,6 +29,10 @@ $(document).ready(function(){
 	  }
    });
    
+    $('#product-search-submit-button').click(function() {
+	  window.itemNamePrefil = $('#product-search-input').val();
+	});
+   
    $(".shared_checkbox").prop("checked", true);
   
   $("ul.social .cancel").click(function(){
