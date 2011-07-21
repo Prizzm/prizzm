@@ -44,6 +44,4 @@ class Item < ActiveRecord::Base
   def parent_company
     product.company if has_product?
   end
-
-
 end

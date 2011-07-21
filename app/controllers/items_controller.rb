@@ -20,6 +20,7 @@ class ItemsController < InheritedResources::Base
     elsif @item.possession_status == 'have'
       redirect_to owners_owned_item_view_path(@item)
     end
+    ActivityLogger.user_create_item :user => current_user, :item => @item
   end
 
   def edit
@@ -29,6 +30,7 @@ class ItemsController < InheritedResources::Base
   def show
     @user = current_user
     @item = current_user.items.find(params[:id])
+    #ActivityLogger.log_event("user.watch.item", {:user => current_user, :item => @item})
   end
 
   def update 
@@ -43,6 +45,7 @@ class ItemsController < InheritedResources::Base
         format.json {head :ok}
       end 
     end
+    ActivityLogger.user_update_item :user => current_user, :item => @item
   end
   
   def destroy
@@ -51,6 +54,8 @@ class ItemsController < InheritedResources::Base
     respond_to do |format|
       format.json {render :json => @item.id}
     end 
+    #ActivityLogger.log_event("user.delete.item", {:user => current_user, :item => @item})
+    ActivityLogger.user_delete_item :user => current_user, :item => @item
   end
 
   def sort
@@ -66,6 +71,7 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id])
     @item.update_attribute(:review, params[:review])
     render :json => @item.review
+    ActivityLogger.user_review_item :user => current_user, :item => @item
   end 
 
   def update_privacy
@@ -73,10 +79,13 @@ class ItemsController < InheritedResources::Base
     old_privacy = @item.privacy
     @item.update_attribute(:privacy, new_item_privacy(@item.privacy))
     render :json => {:item_privacy  => @item.privacy,  :old_privacy => old_privacy }
+    ActivityLogger.user_change_privacy_item :user => current_user, :item => @item
   end 
 
   def rate
-    current_user.items.find(params[:object_id]).update_attribute(:rating, params[:rating])
+    @item = current_user.items.find(params[:object_id])
+    @item.update_attribute(:rating, params[:rating])
+    ActivityLogger.user_rate_item  :user => current_user, :item => @item
     head :ok
   end
 
@@ -102,6 +111,8 @@ class ItemsController < InheritedResources::Base
       format.html { }
       format.js { render 'share' }
     end
+    #ActivityLogger.log_event("user.share.item", {:user => current_user, :item => @item})
+    ActivityLogger.user_share_item :user => current_user, :item => @item
   end
 
 

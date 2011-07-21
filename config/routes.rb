@@ -78,4 +78,5 @@ Prizzm::Application.routes.draw do
   post 'items/rate', :as => :update_item_rating
   post 'interactions/rate', :as => :update_interaction_rating
 
+  get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
 end

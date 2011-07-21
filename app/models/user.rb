@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   include UserImageable
   include Models::User::DeviseExt
 
+  after_create :log_creation
+  after_destroy :log_destruction
+
   has_one  :profile, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_many :products, :through => :items
@@ -43,6 +46,7 @@ class User < ActiveRecord::Base
     else
       item = Item.create_from_product(product, :possession_status => 'want')
       self.items << item
+      ActivityLogger.user_want_product :user => self, :item => item, :product => product
     end
     item
   end 
@@ -53,8 +57,21 @@ class User < ActiveRecord::Base
     else
       item = Item.create_from_product(product, :possession_status => 'have')
       self.items << item
+      ActivityLogger.user_own_product :user => self, :item => item, :product => product
     end
     item
   end
 
+  def to_notification
+    {:id => self.id, :email => email}
+  end
+
+  protected
+  def log_creation
+    ActivityLogger.user_join :user => self
+  end 
+
+  def log_destruction
+    ActivityLogger.user_quit :user => self
+  end
 end

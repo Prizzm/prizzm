@@ -9,11 +9,11 @@
       %p.fields
         %strong Name:
         %br/
-        #{best_in_place @item, :name, :path => [current_user, @item] }
+        = @item.name
       %p.fields
         %strong Category:
         %br/
-        #{best_in_place @item, :itemtype, :path => [current_user, @item] }
+        = @item.review
       %p.fields
         %strong URL:
         %br/

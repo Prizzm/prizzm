@@ -9,11 +9,11 @@
       %p.fields
         %strong Name:
         %br/
-        #{best_in_place @item, :name, :path => [current_user, @item] }
+        = @item.name
       %p.fields
         %strong Review:
         %br/
-        #{best_in_place @item, :review, :path => [current_user, @item] }
+      = @item.review
       %p.fields
         %strong Rating:
         %div{:id => "item_#{@item.id}_rating", :class => "rating"}
