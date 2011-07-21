@@ -22,7 +22,24 @@ $(document).ready(function(){
   /* Here, we initialize some of the Javascript plugins used for display, and
    * interactivity on the site
    */
-  $(".autogrow").autoGrow();
+
+   $('a').click(function(){
+	  if(this.hash != null){
+		   window.linkHash = this.hash;
+	  }
+   });
+   
+    $('#product-search-submit-button').click(function() {
+	  window.itemNamePrefil = $('#product-search-input').val();
+	});
+   
+   $(".shared_checkbox").prop("checked", true);
+  
+  $("ul.social .cancel").click(function(){
+	  $("#interaction_shared_tt").prop("checked", false);
+	  $("li.button.twitter").hide();
+  });
+  
   $(".facebox").facebox();
   clearInteraction();
    
@@ -55,8 +72,6 @@ $(document).ready(function(){
     $(':input','#new_interaction')
     .not(':button, :submit, :reset, :hidden')
     .val('')
-    .removeAttr('checked')
-    .removeAttr('selected');
 
     $('#new_interaction')[0].reset();
   });

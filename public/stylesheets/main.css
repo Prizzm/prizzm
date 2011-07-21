@@ -73,12 +73,12 @@
 			border-radius: 3px;
 		  }
 		
-		header form {
+		header #search{
 			margin-top: 7px;
 			position: relative;
 		}
 		
-		  header form input[type=text] {
+		  header input[type=text] {
 			padding: 7px 116px 7px 7px;
 			width: 100%;
             border: 0;
@@ -93,7 +93,7 @@
 			box-sizing: border-box;
 		  }
           
-          header form input[type=submit], header form input#mag-glass{
+          header #product-search-submit-button, header input#mag-glass{
             padding: 5px 11px 4px;
             border: 0;
             color: #fff;
@@ -104,7 +104,26 @@
 			right: -6px;
           }
           
-          header form input#mag-glass{
+          header #product-search-submit-button{
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			
+			background: #a9db80; /* Old browsers */
+			background: -moz-linear-gradient(top, #a9db80 0%, #96c56f 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9db80), color-stop(100%,#96c56f)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #a9db80 0%,#96c56f 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #a9db80 0%,#96c56f 100%); /* Opera11.10+ */
+			background: -ms-linear-gradient(top, #a9db80 0%,#96c56f 100%); /* IE10+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9db80', endColorstr='#96c56f',GradientType=0 ); /* IE6-9 */
+			background: linear-gradient(top, #a9db80 0%,#96c56f 100%); /* W3C */
+		  }
+		  
+		  header a#product-search-submit-button {
+			text-decoration: none;
+		  }
+          
+          header input#mag-glass{
 			background: no-repeat url('../images/mag-glass.png');
           }
           

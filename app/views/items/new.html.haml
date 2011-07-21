@@ -6,20 +6,84 @@ Give us a few details about this item and what you think of it!
   http://rdoc.info/github/justinfrench/formtastic/master/file/README.textile or in the original Github repository
   https://github.com/justinfrench/formtastic
 = form_for [current_user, @item] do |f|
-  %p= f.text_field :name, :class => "jq_watermark", :placeholder => "Product name"
-  /%p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
-  %p= f.text_area :review, :class => "jq_watermark", :placeholder => "What's your review?"
+  %p= f.collection_select :possession_status, ['Select', 'have', 'want'], :to_s, :to_s, {}
+  %p= f.text_field :name, :class => "jq_watermark", :title => "Product name"
+  .clearfix
+  %p= f.text_area :review, :class => "jq_watermark"
   #stars-wrapper-new-item
     = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
   %p= f.submit "add Item", :class => "button"
   
-  %p= f.collection_select :possession_status, ['have', 'want'], :to_s, :to_s, {}
-  
 :javascript
   $(document).ready(function(){
+    
     $('#stars-wrapper-new-item').stars({});
-  
-    if (document.location.hash === "#owned"){
-      $('#item_possession_status').val('have');
+    
+    if (window.linkHash == "#owned"){
+      ownedDisplay();
+    } else if (window.linkHash == "#wanted") {
+      wantedDisplay();
+    } else {
+      createDisplay();
     }
+    
+    $('select').change(function(){
+      if($(this).val() == "have"){
+        ownedDisplay();
+      } else if ($(this).val() == "want") {
+        wantedDisplay();
+      } else {
+        createDisplay();
+      }
+    });
+    
+    function ownedDisplay(){
+      resetDisplay();
+      $('#item_possession_status').val('have');
+      $('#facebox textarea').attr('class', "jq_watermark");
+      $('textarea').attr("title", "What's your review?");
+      $('.jq_watermark').watermark();
+      $('#stars-wrapper-new-item').show();
+    }
+    
+    function wantedDisplay(){
+      resetDisplay();
+      $('#item_possession_status').val('want');
+      $('#facebox textarea').attr('class', "jq_watermark");
+      $('textarea').attr("title", "Why do you want this?");
+      $('.jq_watermark').watermark();
+      $('#stars-wrapper-new-item').hide();
+    }
+    
+    function createDisplay(){
+      $('#item_possession_status').val('Select');
+      if(window.itemNamePrefil == null){
+        $('#facebox input#item_name').attr({
+          disabled: "true"
+        });
+        $('#facebox textarea').attr({
+          disabled: "true"
+        });
+      } else {
+        $('#facebox input#item_name').attr({
+          value: window.itemNamePrefil
+        });
+        $('#facebox textarea').attr({
+          disabled: "true"
+        });
+        $('#facebox textarea').removeAttr('class');
+        $('#facebox textarea').focus();
+        window.itemNamePrefil = null;
+      }
+
+      $('#stars-wrapper-new-item').hide();
+    }
+    
+    function resetDisplay() {
+      $('#facebox input#item_name').removeAttr("disabled");
+      $('#facebox textarea').removeAttr("disabled");
+      $('#facebox textarea').removeAttr("class");
+      $('#stars-wrapper-new-item').show();
+    }
+    
   });

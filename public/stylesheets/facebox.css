@@ -57,16 +57,35 @@
   margin: 0;
 }
 
-#facebox textarea, #facebox input[type=text] {
+#facebox textarea, #facebox input[type=text], #item_possession_status{
 	margin-bottom: 3px;
 	padding: 10px;
 	border: 1px solid #e7e7e7;
 	font-size: 1.1em;
+	width: 550px;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
-
-  #facebox input[type=text], #facebox textarea{
-	width: 96%;
+  #facebox textarea {
+	max-height: 150px;
   }
+  
+  #facebox #item_name {
+	width: 459px;
+	float: left;
+  }
+  
+  #facebox #item_possession_status {
+	margin-right: 5px;
+	padding: 9px 10px;
+	width: 86px;
+	float: left;
+	background: #fff;
+	cursor: pointer;
+  }
+  
 
 #facebox h1 {
 	line-height: 140%;
