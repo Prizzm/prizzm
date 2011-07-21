@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_one  :profile, :dependent => :destroy
   has_many :items, :dependent => :destroy
   has_many :products, :through => :items
+  # TODO: When object gets destroyed, needs to destroy all subscriptions
+  has_many :subscriptions, :dependent => :destroy
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
 
@@ -60,6 +62,10 @@ class User < ActiveRecord::Base
       ActivityLogger.user_own_product :user => self, :item => item, :product => product
     end
     item
+  end
+
+  def subscribe_to object
+    subscriptions << object
   end
 
   def to_notification

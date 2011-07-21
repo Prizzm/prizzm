@@ -470,6 +470,7 @@ DEPENDENCIES
   rspec-rails
   ruby-debug19
   selenium-webdriver
+  sinatra
   sqlite3-ruby
   taps
   twitter

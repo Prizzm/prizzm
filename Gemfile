@@ -9,6 +9,7 @@ gem "hoptoad_notifier"
 # asset packaging
 gem "jammit"
 
+gem "sinatra"
 
 # Used to simplify user registrations and logins
 # Pined to ref, as there is problem on devise HEAD

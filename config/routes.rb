@@ -81,4 +81,6 @@ Prizzm::Application.routes.draw do
   post 'interactions/rate', :as => :update_interaction_rating
 
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
+
+  match '/events', :to => EventMonitor
 end
