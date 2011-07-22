@@ -83,4 +83,7 @@ Prizzm::Application.routes.draw do
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
 
   match '/events', :to => EventMonitor
+
+  # Cloudmailin incomming email controller
+  post '/incoming_mails' => 'incoming_mails#create'
 end
