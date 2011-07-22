@@ -15,7 +15,9 @@ module Prizzm
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib/definitions)
+    config.autoload_paths += %W(#{config.root}/lib/gems/**/)
     config.autoload_paths += %W(#{config.root}/lib/models/user)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.autoload_paths += Dir["#{config.root}/lib/models/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).

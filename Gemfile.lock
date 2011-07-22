@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/sid137/acts_as_follower.git
-  revision: c47f53541865b49c3ae21b1044cfa67c38f0084b
+  revision: 43ae06e94ed9b797d611c5294967b5b98a79b48d
   specs:
     acts_as_follower (0.0.0)
 

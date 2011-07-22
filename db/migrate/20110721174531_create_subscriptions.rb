@@ -2,8 +2,7 @@ class CreateSubscriptions < ActiveRecord::Migration
   def self.up
     create_table :subscriptions do |t|
       t.references :user
-      t.references :object
-
+      t.references :subscribable, :polymorphic => true
       t.timestamps
     end
   end
