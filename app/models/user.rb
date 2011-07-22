@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  validates_uniqueness_of  :subscriptions, :scope => [:user_id, :subscribable_id, :subscribable_type]
+  #validates_uniqueness_of  :subscriptions, :scope => [:user_id, :subscribable_id, :subscribable_type]
 
   acts_as_follower
   acts_as_followable
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_to object
-    subscriptions << Subscription.create(:subscribable => object)
+    subscriptions << Subscription.create(:subscribable => object) unless subscribes_to? object
   end
 
   def subscribes_to? object

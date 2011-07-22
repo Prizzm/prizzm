@@ -89,6 +89,7 @@ addons:
     - custom_domains:basic
     # add any other addons here
     - logging:expanded
+    - mongolab:starter
     - newrelic:standard
     - releases:basic
     - sendgrid:free
