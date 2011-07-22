@@ -1,2 +1,2 @@
-class CompaniesController < ApplicationController
+class CompaniesController < InheritedResources::Base
 end
