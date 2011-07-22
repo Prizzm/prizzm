@@ -86,6 +86,8 @@ domains:
 addons:
   all:
     - amazon_rds
+    - blitz
+    - cloudmailin
     - custom_domains:basic
     # add any other addons here
     - logging:expanded
