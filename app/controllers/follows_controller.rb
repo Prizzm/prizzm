@@ -12,7 +12,6 @@ class FollowsController < ApplicationController
     render :json => {:following => false, :link => view_context.follow_link_for(@object)}
     ActivityLogger.user_unfollow_object :user => current_user, :object => @object
   end
-  end
 
   def block
     user = User.find(params[:id])
