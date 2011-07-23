@@ -22,6 +22,8 @@ config:
     HOPTOAD_API_KEY: <%= ENV['HOPTOAD_API_KEY'] %>
     WEBTHUMB_API_KEY: <%= ENV['WEBTHUMB_API_KEY'] %>
     WEBTHUMB_USER_ID: <%= ENV['WEBTHUMB_USER_ID'] %>
+    SIMPLEWORKER_ACCESS_KEY: <%= ENV['SIMPLEWORKER_ACCESS_KEY'] %>
+    SIMPLEWORKER_SECRET_KEY: <%= ENV['SIMPLEWORKER_SECRET_KEY'] %>
 
   # you can also override configuration settings for each environment
   production:
@@ -93,9 +95,10 @@ addons:
     - logging:expanded
     - mongolab:starter
     - newrelic:standard
-    - releases:basic
+    - releases:advanced
     - sendgrid:free
     - shared-database:5mb
+    - simple_worker
     - stillalive:basic
     - cron:daily
     - ssl:piggyback

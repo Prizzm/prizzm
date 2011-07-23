@@ -1,0 +1,10 @@
+# Fill in your AWS Access Key ID and Secret Access Key
+# http://aws.amazon.com/security-credentials
+development:
+  access_key_id: <%= ENV['PRIZZM_S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['PRIZZM_S3_SECRET_ACCESS_KEY'] %>
+  simple_db_consistent_reads: false
+
+production:
+  <<: *development
+  simple_db_consistent_reads: true

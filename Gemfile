@@ -25,6 +25,9 @@ gem "mongoid"
 gem "mongo"
 gem "bson_ext"
 
+gem "simple_worker"
+
+gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-for-ruby.git"
 # Default model values
 # https://github.com/FooBarWidget/default_value_for
 gem "default_value_for"
