@@ -98,7 +98,7 @@ group :development, :test do
   # Needed to run html2haml to convert html to haml
   gem "hpricot"
  
-  gem "heroku"
+  #gem "heroku"
   gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"

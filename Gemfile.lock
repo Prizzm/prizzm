@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: git://github.com/sid137/heroku-rails.git
-  revision: 76c58092b032831133a39bbdad5f32bf99b6784e
+  revision: c75aa7c59faf09bc03bdecb7ba0fce36c85bae6b
   specs:
     heroku-rails (0.3.2)
       heroku (>= 1.11.0)
@@ -211,7 +211,7 @@ GEM
       railties (~> 3.0)
     has_scope (0.5.0)
     hashie (1.0.0)
-    heroku (2.3.6)
+    heroku (2.4.0)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
       term-ansicolor (~> 1.0.5)
@@ -397,7 +397,7 @@ GEM
       sequel (~> 3.20.0)
       sinatra (~> 1.0.0)
       sqlite3-ruby (~> 1.2)
-    term-ansicolor (1.0.5)
+    term-ansicolor (1.0.6)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -454,7 +454,6 @@ DEPENDENCIES
   guard-shell
   haml-rails
   hashie
-  heroku
   heroku-rails!
   hirb
   hoptoad_notifier
