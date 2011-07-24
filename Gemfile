@@ -26,6 +26,8 @@ gem "mongo"
 gem "bson_ext"
 
 gem "simple_worker"
+gem "delayed_job"
+gem "hirefireapp"
 
 gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-for-ruby.git"
 # Default model values
