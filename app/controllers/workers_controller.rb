@@ -1,4 +1,4 @@
-class WorkersController < ApplicationControlleer
+class WorkersController < ApplicationController
 
   def test
     log_worker = LogWorker.new
