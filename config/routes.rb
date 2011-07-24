@@ -86,4 +86,5 @@ Prizzm::Application.routes.draw do
 
   # Cloudmailin incomming email controller
   post '/incoming_mails' => 'incoming_mails#create'
+  get '/worker' => 'workers#test'
 end
