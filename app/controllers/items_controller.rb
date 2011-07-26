@@ -74,6 +74,13 @@ class ItemsController < InheritedResources::Base
     ActivityLogger.user_review_item :user => current_user, :item => @item
   end 
 
+  def update_item_name
+    @item = current_user.items.find(params[:id])
+    @item.update_attribute(:name, params[:name])
+    render :json => @item.name
+    ActivityLogger.user_name_item :user => current_user, :item => @item
+  end
+
   def update_privacy
     @item = current_user.items.find(params[:id])
     old_privacy = @item.privacy
