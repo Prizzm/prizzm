@@ -470,6 +470,7 @@ DEPENDENCIES
   guard-shell
   haml-rails
   hashie
+  heroku
   heroku-rails!
   hirb
   hirefireapp
