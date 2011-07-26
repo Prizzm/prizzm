@@ -5,23 +5,33 @@ module HerokuResqueAutoScale
     class << self
       @@heroku = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_API_KEY'])
 
+      @@sns_topic = AWS::SNS.new.topics[ENV['AWS_SNS_HEROKU_WORKERS']]
+
       def workers
         @@heroku.info(ENV['HEROKU_APP'])[:workers].to_i
       end
 
       def workers=(qty)
         @@heroku.set_workers(ENV['HEROKU_APP'], qty)
+        notify_scaling(qty)
       end
 
       def job_count
         Resque.info[:pending].to_i
+      end
+
+      def notify_scaling qty
+        @@sns_topic.publish("Heroku background workers just changed to: #{qty}")
       end
     end
   end
 
   def after_perform_scale_down(*args)
     # Nothing fancy, just shut everything down if we have no jobs
-    Scaler.workers = 0 if Scaler.job_count.zero?
+    if Scaler.job_count.zero?
+      Scaler.workers = 0 
+      Scaler.notify_scaling 0
+    end
   end
 
   def after_enqueue_scale_up(*args)

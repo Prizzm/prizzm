@@ -26,6 +26,7 @@ config:
     SIMPLEWORKER_SECRET_KEY: <%= ENV['SIMPLEWORKER_SECRET_KEY'] %>
     HEROKU_USER: <%= ENV['HEROKU_USER'] %>
     HEROKU_API_KEY: <%= ENV['HEROKU_API_KEY'] %>
+    AWS_SNS_HEROKU_WORKERS: <%= ENV['AWS_SNS_HEROKU_WORKERS'] %>
 
   # you can also override configuration settings for each environment
   production:
