@@ -5,7 +5,7 @@ SimpleWorker.configure do |config|
   config.access_key = ENV['SIMPLEWORKER_ACCESS_KEY']
   config.secret_key = ENV['SIMPLEWORKER_SECRET_KEY']
   # Use the line below if you're using an ActiveRecord database
-  config.auto_merge = true
+  config.auto_merge = false
   #config.database = Rails.configuration.database_configuration[Rails.env]
   #config.global_attributes[:mongodb_settings] = MONGO_CONFIG[Rails.env]
   #config.global_attributes[:aws_settings] =  AWS_CONFIG[Rails.env]

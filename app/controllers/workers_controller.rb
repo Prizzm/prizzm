@@ -1,8 +1,11 @@
+require 'simple_worker'
+
 class WorkersController < ApplicationController
 
   def test
-    log_worker = LogWorker.new
-    log_worker.queue
+    worker = HelloWorker.new
+    worker.some_param = "Passing in arrg"
+    worker.queue
   end
 
 end

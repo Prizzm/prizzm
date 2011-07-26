@@ -22,12 +22,13 @@ gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 gem "acts_as_list"
 
 gem "mongoid"
-gem "mongo"
 gem "bson_ext"
 
-gem "simple_worker"
+#gem "simple_worker", :git => "git://github.com/sid137/simple_worker.git"
+gem "simple_worker", :path => "/home/sid137/tracking/simple_worker"
 gem "delayed_job"
 gem "hirefireapp"
+gem "resque"
 
 gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-for-ruby.git"
 # Default model values

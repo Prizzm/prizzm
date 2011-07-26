@@ -24,6 +24,8 @@ config:
     WEBTHUMB_USER_ID: <%= ENV['WEBTHUMB_USER_ID'] %>
     SIMPLEWORKER_ACCESS_KEY: <%= ENV['SIMPLEWORKER_ACCESS_KEY'] %>
     SIMPLEWORKER_SECRET_KEY: <%= ENV['SIMPLEWORKER_SECRET_KEY'] %>
+    HEROKU_USER: <%= ENV['HEROKU_USER'] %>
+    HEROKU_API_KEY: <%= ENV['HEROKU_API_KEY'] %>
 
   # you can also override configuration settings for each environment
   production:
@@ -35,6 +37,7 @@ config:
     TWITTER_CONSUMER_KEY: <%= ENV['PRODUCTION_TWITTER_CONSUMER_KEY'] %>
     ASSET_HOST: 'assets.prizzm.com'
     FACEBOOK_PERMISSIONS:
+    HEROKU_APP: 'prizzm-production'
   staging:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['STAGING_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["STAGING_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -44,6 +47,7 @@ config:
     TWITTER_CONSUMER_KEY: <%= ENV['STAGING_TWITTER_CONSUMER_KEY'] %>
     ASSET_HOST: 'assets-staging.prizzm.com'
     FACEBOOK_PERMISSIONS:
+    HEROKU_APP: 'prizzm-staging'
   development:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['DEVELOPMENT_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["DEVELOPMENT_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -53,6 +57,7 @@ config:
     TWITTER_CONSUMER_KEY: <%= ENV['DEVELOPMENT_TWITTER_CONSUMER_KEY'] %>
     ASSET_HOST: 'assets-development.prizzm.com'
     FACEBOOK_PERMISSIONS:
+    HEROKU_APP: 'prizzm-development'
   demo:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['DEMO_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["DEMO_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -62,6 +67,7 @@ config:
     TWITTER_CONSUMER_KEY: <%= ENV['DEMO_TWITTER_CONSUMER_KEY'] %>
     ASSET_HOST: 'assets-demo.prizzm.com'
     FACEBOOK_PERMISSIONS:
+    HEROKU_APP: 'prizzm-demo'
 
 collaborators:
   # Be sure to add yourself as a collaborator, otherwise your
@@ -95,6 +101,7 @@ addons:
     - logging:expanded
     - mongolab:starter
     - newrelic:standard
+    - redistogo:nano
     - releases:advanced
     - sendgrid:free
     - shared-database:5mb
