@@ -1,5 +1,3 @@
-require 'simple_worker'
-
 class WorkersController < ApplicationController
 
   def test
