@@ -29,16 +29,14 @@
   %b Addresses:
 - @company.addresses.each do |address|  
   %p
-  Address:
+  %b= address.address_type 
   = address.address  
-%p
-%p Add a address:
-= form_for([@company, @company.addresses.build]) do |f|
+%p 
+  %b Add a Contact Point: 
+= form_for([@company, @company.addresses.build]) do |f| 
   %p
-  = f.label :address_type 
-  = f.text_field :address_type 
-  %p
-  = f.label :address
+  = f.collection_select :address_type, ['Street Address', 'Facebook', 'Twitter', 'Phone Number'], :to_s, :to_s, {}
+  /= f.label :address
   = f.text_field :address
 	
   %p
