@@ -1,17 +1,15 @@
-require 'simple_worker'
+class HelloWorker 
+  #extend HerokuResqueAutoScale if Rails.env.production?
 
-class HelloWorker < SimpleWorker::Base
+  @queue = :test_queue
 
-
-  attr_accessor :some_param
-
-  def run
-    log "Starting HelloWorker #{Time.now}\n"
-    log "Hey. I'm a worker job, showing how this cloud-based worker thing works."
-    log "I'll sleep for a little bit so you can see the workers running!"
-    log "some_param --> #{some_param}\n"
-    log "Done running HelloWorker #{Time.now}"
+  def self.perform
+    puts "Working"
+    puts "access key: #{ENV['AMAZON_ACCESS_KEY_ID']}"
+    puts " secret key #{ENV['AMAZON_SECRET_ACCESS_KEY']}"
+    pp ENV
+    ses = AWS::SimpleEmailService.new
+    sleep(5)
+    ses.send_email(:to => "sid137@gmail.com", :from => "notifications@prizzm.com", :subject => "Sent from Resque", :body_text => "Nice Job!" )
   end
-
-
 end

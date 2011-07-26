@@ -4,7 +4,7 @@ class WorkersController < ApplicationController
     #worker = HelloWorker.new
     #worker.some_param = "Passing in arrg"
     #worker.queue
-    HelloJob.perform
+    Resque.enqueue HelloWorker
   end
 
 end
