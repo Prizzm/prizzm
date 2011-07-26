@@ -29,6 +29,7 @@ gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
 gem "delayed_job"
 gem "hirefireapp"
 gem "resque"
+gem "heroku"
 
 gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-for-ruby.git"
 # Default model values
@@ -101,7 +102,6 @@ group :development, :test do
   # Needed to run html2haml to convert html to haml
   gem "hpricot"
  
-  #gem "heroku"
   gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
