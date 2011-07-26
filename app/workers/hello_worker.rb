@@ -1,3 +1,4 @@
+require 'pp'
 class HelloWorker 
   #extend HerokuResqueAutoScale if Rails.env.production?
 
@@ -5,7 +6,6 @@ class HelloWorker
 
   def self.perform
     puts "Working"
-    sleep(5)
     puts "access key: #{ENV['AMAZON_ACCESS_KEY_ID']}"
     puts " secret key #{ENV['AMAZON_SECRET_ACCESS_KEY']}"
     pp ENV
