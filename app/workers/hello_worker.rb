@@ -5,11 +5,12 @@ class HelloWorker
 
   def self.perform
     puts "Working"
+    sleep(5)
     puts "access key: #{ENV['AMAZON_ACCESS_KEY_ID']}"
     puts " secret key #{ENV['AMAZON_SECRET_ACCESS_KEY']}"
     pp ENV
+    @events = Notification.all.to_a
     ses = AWS::SimpleEmailService.new
-    sleep(5)
-    ses.send_email(:to => "sid137@gmail.com", :from => "notifications@prizzm.com", :subject => "Sent from Resque", :body_text => "Nice Job!" )
+    ses.send_email(:to => "sid137@gmail.com", :from => "notifications@prizzm.com", :subject => "Sent from Resque", :body_text => "#{pp @events}" )
   end
 end
