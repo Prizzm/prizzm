@@ -30,7 +30,6 @@ module HerokuResqueAutoScale
     # Nothing fancy, just shut everything down if we have no jobs
     if Scaler.job_count.zero?
       Scaler.workers = 0 
-      Scaler.notify_scaling 0
     end
   end
 

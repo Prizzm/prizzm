@@ -26,8 +26,8 @@ gem "bson_ext"
 
 gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
 #gem "simple_worker", :path => "/home/sid137/tracking/simple_worker"
-gem "delayed_job"
-gem "hirefireapp"
+#gem "delayed_job"
+#gem "hirefireapp"
 gem "resque"
 gem "heroku"
 
