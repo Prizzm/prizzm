@@ -13,7 +13,7 @@ module HerokuResqueAutoScale
 
       def workers=(qty)
         @@heroku.set_workers(ENV['HEROKU_APP'], qty)
-        notify_scaling(qty)
+        notify_scaling(qty) if qty > 1
       end
 
       def job_count

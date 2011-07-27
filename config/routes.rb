@@ -89,4 +89,5 @@ Prizzm::Application.routes.draw do
   get '/worker' => 'workers#test'
 
   mount Resque::Server, at: '/resque'
+  get '/documentation' => redirect("http://substance.io/#sid137/prizzm")
 end
