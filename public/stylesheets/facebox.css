@@ -72,7 +72,7 @@
 	max-height: 150px;
   }
   
-  #facebox #item_name {
+  #facebox #new_item #item_name {
 	width: 459px;
 	float: left;
   }

@@ -123,3 +123,8 @@ ul li .cancel{
 ul li .cancel:hover {
 	opacity: 0.5;
 }
+
+#editItemPop #item_name{
+	width: 100%;
+	float: none;
+}

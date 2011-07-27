@@ -22,8 +22,7 @@
   
   #review
     %h3 Review
-    .edit
-      = @item.review
+    = @item.review
 
   #new_interaction_box
     #interaction_input_box
@@ -54,10 +53,10 @@
        
     #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
-  #edit-item
-    = link_to "Edit", edit_owned_item_path(@item.id), :class => "facebox"
-
 %aside.grid_3
+  %article#edit-item
+    = link_to "Edit page", edit_owned_item_path(@item.id), :class => "facebox button red"
+  
   %article#ask
     %header.clearfix
       %h1 Ask your friends
@@ -70,16 +69,6 @@
 - content_for :jquery do
   :javascript
     $(document).ready(function(){
-      $('#item-name .edit').editable("#{update_item_name_path}", {
-        indicator  : "Saving...",
-        submit     : "OK",
-        cancel     : "Cancel",
-        method     : "PUT",
-        tooltip    : "Click to edit item name ...",
-        name       : "name",
-        submitdata : { id: #{@item.id} },
-        cssclass   : "name-input",
-      });
 
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
@@ -93,19 +82,6 @@
       $("#interaction_stars").stars({
         inputType: "select",
         cancelShow: false
-      });
-  
-      $('#review .edit').editable("#{update_item_review_path(@item)}", {
-        indicator : "Saving...",
-        type      : "textarea",
-        submit    : 'OK',
-        method    : 'PUT',
-        cancel    : 'cancel',
-        tooltip   : "Click to edit your review...",
-        onblur    : "submit",
-        submitdata: {id: #{@item.id}},
-        name      : "review",
-        cssclass  : "review-input"
       });
 
       if (document.location.hash === "#write_review"){
