@@ -7,6 +7,7 @@ class Item < ActiveRecord::Base
 
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
   has_many :interactions, :dependent => :destroy
+  has_many :subscriptions, :dependent => :destroy, :as => :subscribable
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
 
@@ -44,6 +45,4 @@ class Item < ActiveRecord::Base
   def parent_company
     product.company if has_product?
   end
-
-
 end

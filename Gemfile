@@ -4,12 +4,12 @@ gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
 gem 'rake', '0.8.7'
 gem "haml-rails"
 gem "jquery-rails"
+# Sends notifications of errors on Production app
+gem "hoptoad_notifier"
+# asset packaging
+gem "jammit"
 
-# Gem to abstract away the dplication common in standard restful controllers
-gem 'inherited_resources'
-
-# Allows us to keep an order of a user's items in their collection
-gem "acts_as_list"
+gem "sinatra"
 
 # Used to simplify user registrations and logins
 # Pined to ref, as there is problem on devise HEAD
@@ -18,9 +18,20 @@ gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964
 #gem "acts_as_follower", :path => '/home/sid137/tracking/acts_as_follower'
 gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 
-# Facilitates Edit-in-place functionality for certain data fields
-gem "best_in_place", :git => 'git://github.com/moabite/best_in_place.git'
+# Allows us to keep an order of a user's items in their collection
+gem "acts_as_list"
 
+gem "mongoid"
+gem "bson_ext"
+
+#gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
+#gem "simple_worker", :path => "/home/sid137/tracking/simple_worker"
+#gem "delayed_job"
+#gem "hirefireapp"
+gem "resque", :require => 'resque/server'
+gem "heroku"
+
+gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-for-ruby.git"
 # Default model values
 # https://github.com/FooBarWidget/default_value_for
 gem "default_value_for"
@@ -29,23 +40,11 @@ gem "default_value_for"
 gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'
 gem "fog"
 
-# Apparently needed to make the uploadify multifile uploader work 
-gem "flash_cookie_session"
-
 # Used to that we can resize images uploaded through carrierwave, using
 # ImageMagick
 gem "rmagick"
 
 gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
-
-gem "hashie"
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Provides a shorter syntax for building forms
-gem 'formtastic'
-
-# Sends notifications of errors on Production app
-gem "hoptoad_notifier"
 
 # Social Media Gems FB Connect, FB, and Twitter
 #gem "faraday", :git => "git://github.com/technoweenie/faraday.git"
@@ -54,11 +53,18 @@ gem "fb_graph"
 gem "twitter"#, :git => 'git://github.com/jnunemaker/twitter.git'
 
 
-gem "jammit"
-
-gem "rest-client"
+# Why is this in production?
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
+gem "rest-client"
 gem "nokogiri"
+gem "hashie"
+
+
+# TO GO  -  I don't need these dependencies.. get rid of them
+# Gem to abstract away the dplication common in standard restful controllers
+gem 'inherited_resources'
+# Apparently needed to make the uploadify multifile uploader work 
+gem "flash_cookie_session"
 
 #gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
@@ -96,7 +102,6 @@ group :development, :test do
   # Needed to run html2haml to convert html to haml
   gem "hpricot"
  
-  gem "heroku"
   gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
   gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
