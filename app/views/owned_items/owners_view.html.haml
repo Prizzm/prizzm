@@ -54,6 +54,9 @@
        
     #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
+  #edit-item
+    = link_to "Edit", edit_owned_item_path(@item.id), :class => "facebox"
+
 %aside.grid_3
   %article#ask
     %header.clearfix

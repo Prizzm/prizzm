@@ -1,0 +1,10 @@
+%h1 Edit item
+
+= form_for @item, :url => update_owned_item_path do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :review
+  = f.text_area :review
+
+  = f.submit "Submit"

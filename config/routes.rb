@@ -11,7 +11,6 @@ Prizzm::Application.routes.draw do
     get 'search', :on => :collection
   end
 
-
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
   post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'
@@ -22,6 +21,8 @@ Prizzm::Application.routes.draw do
 
 
   # Owned Items
+  get '/owned/:id/edit' => 'owned_items#edit', :as => 'edit_owned_item'
+  match '/owned/:id/update' => 'owned_items#update', :as => 'update_owned_item'
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
   post '/owned/:product_id' => 'owned_items#create', :as => 'add_owned_item'
   get '/:user_id/owns/:id' => 'owned_items#public_view', :as => 'public_owned_item'
