@@ -185,7 +185,7 @@ header {
     }
     
     #banner ul li.share {
-        background: no-repeat url('/images/landing/share-banner.png') right;
+        /*background: no-repeat url('/images/landing/share-banner.png') right;*/
     }
 
   #banner h2 {

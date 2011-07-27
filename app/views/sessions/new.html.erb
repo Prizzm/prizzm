@@ -17,11 +17,26 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <%= stylesheet_link_tag 'boilerplate', '960', 'landing', 'font' -%>
+    <%= stylesheet_link_tag 'boilerplate', '960', 'landing', 'font', 'nivo-slider' -%>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" -%>
+    <%= javascript_include_tag 'jquery.nivo.slider.pack' -%>
     <%= csrf_meta_tag %>
   </head>
 
   <body>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#banner-slider').nivoSlider({
+          effect: 'slideInLeft',
+          animSpeed: 500,
+          pauseTime: 3000,
+          startSlide: 0,
+          pauseOnHover: true,
+          directionNav: false,
+          controlNav: false
+        });
+      });
+    </script>
     <div id="blackbar"></div>
     <div id="bannerbar"><span></span></div>
     <div id="searchbar"></div>
@@ -66,9 +81,11 @@
       <div id="banner" class="grid_12">
         <ul>
           <li class="share">
-            <h2>Share your opinion, <br />with companies and friends.</h2>
-            <p>Having a problem with a product or company? Share your experience on Prizzm, tell your friends about it and get help from our community!</p>
-            <a href="" class="button">Start sharing now!</a>
+            <div id="banner-slider">
+              <img src="/images/landing/temp.png" />
+              <img src="/images/landing/temp.png" />
+              <img src="/images/landing/temp.png" />
+            </div>
           </li>
         </ul>
       </div>
