@@ -11,6 +11,9 @@
   = photo_uploadify
 
 .grid_6
+  #edit-item
+    = link_to "Edit", edit_owned_item_path(@item.id), :class => "facebox"
+  
   #item-name
     %h2.edit Your #{@item.name}
   %div{:id => "stats"}
@@ -54,9 +57,6 @@
     #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
 
 %aside.grid_3
-  %article#edit-item
-    = link_to "Edit page", edit_owned_item_path(@item.id), :class => "facebox button red"
-  
   %article#ask
     %header.clearfix
       %h1 Ask your friends
