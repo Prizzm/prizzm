@@ -16,10 +16,18 @@ module Imageable
   end
 
   def main_image
-    images.first.image.url
+    begin
+      images.first.image.url 
+    rescue
+      "default-missing-image.jpg" 
+    end
   end
 
   def main_image_thumb
-    images.first.image.thumb.url
+    begin
+      images.first.image.thumb.url
+    rescue
+      "default-missing-image-thumb.jpg" 
+    end
   end
 end

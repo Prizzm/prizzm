@@ -27,10 +27,8 @@ module Models
               # Create new acc on Prizzm with FB acc information.
               email = data['email'] || info['email']
               user = create!(:email => email, :password => Devise.friendly_token[0,20], 
-                             :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"])
-              user.access_token = credentials['token']
-              user.save
-              user
+                             :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"], 
+                             :access_token => credentials['token'])
             end
           else
             # Already signed in.

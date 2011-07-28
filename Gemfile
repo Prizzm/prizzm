@@ -46,6 +46,7 @@ gem "fog"
 # ImageMagick
 gem "rmagick"
 
+# allows us to have seo friendly urls for our objects
 gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
 
 # Social Media Gems FB Connect, FB, and Twitter

@@ -2,6 +2,6 @@
 class ItemImageUploader < ImageUploader
   # Provide a default URL as a default if there hasn't been a file uploaded:
    def default_url
-     "/images/default-item-image.png" 
+     "/images/default-item-image.jpg" 
    end
 end
