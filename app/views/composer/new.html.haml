@@ -1,0 +1,62 @@
+= form_tag :url => link_composer_path, :remote => true do 
+  = text_area_tag "Stuff", nil, :class => 'composition'
+  #composition-stage
+/put html template here
+add forms fieelds
+submit
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      //http://daringfireball.net/2010/07/improved_regex_for_matching_urls
+      var pattern = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’"']))/gi
+
+      function validURL(str) {
+        return pattern.test(str);
+      }
+
+      function resizeImage(Image){
+        var maxImageWidth = 100;
+        var maxImageHeight = 100;
+
+        var h = Image.height;
+        var w =Image.width;
+        
+        // get resize factory to fit boundary
+        var hfactor   = maxImageHeight / h;
+        var wfactor = maxImageWidth / w;
+        
+        // take smaller one
+        factor = Math.min(hfactor, wfactor);
+        
+        Image.width = w * factor;
+        Image.height = h * factor;
+      }
+
+      $('.composition').live('keyup', function(event){
+        content = $(this).val();
+        if (validURL(content)) {
+          $.ajax({
+            type: 'POST', 
+            url: '#{link_composer_path}', 
+            data: {url: content},
+            success: function (data) {
+              page = $(data);
+              console.log(data);
+              var title = page.html();
+              var image_picker = $('<div id="slider" class="image_picker"></div>' );
+              var images = $(data).find('img');
+              console.log($.dump(images));
+              _.each(images, function(img){
+                if (validURL(img.src) && (img.height > 15) && (img.width > 15)) {
+                    resizeImage(img);
+                    image_picker.append(img);
+                }
+              });
+              console.log(title);
+              return $('#composition-stage').html(image_picker);
+            }
+          });
+        }
+      });
+    });

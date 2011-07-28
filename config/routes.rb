@@ -12,6 +12,10 @@ Prizzm::Application.routes.draw do
   end
 
 
+  # compositions
+  get '/composer/new' => 'composer#new', :as => 'new_composition'
+  post '/composer/link' => 'composer#link', :as => 'link_composer'
+
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
   post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'

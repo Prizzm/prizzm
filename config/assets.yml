@@ -13,6 +13,7 @@ javascripts:
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
     - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/jquery.nivo.slider.js
     - public/javascripts/swfobject.js
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
@@ -26,6 +27,7 @@ stylesheets:
     - public/stylesheets/main.css
     - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
+    - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
   items-page:
     - public/stylesheets/item-public.css

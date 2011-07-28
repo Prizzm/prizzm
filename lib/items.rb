@@ -11,6 +11,7 @@ items = %w(iphone tablet wii toyota guitar)
 items.each do |item|
   response = endpoint.to_uri.get(:op => "search", :key => PRODUCTWIKI_API_KEY, :q => item).deserialise.to_mash
   results = response.pw_api_results.products.product
+  pp results
   data << results
 end
 

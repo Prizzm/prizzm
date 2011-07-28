@@ -1,0 +1,2 @@
+module ComposerHelper
+end
