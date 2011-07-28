@@ -26,9 +26,9 @@ module Models
             else 
               # Create new acc on Prizzm with FB acc information.
               email = data['email'] || info['email']
-              user = create!(:email => email, :password => Devise.friendly_token[0,20])
+              user = create!(:email => email, :password => Devise.friendly_token[0,20], 
+                             :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"])
               user.access_token = credentials['token']
-              user.create_profile( :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"])
               user.save
               user
             end
@@ -52,10 +52,10 @@ module Models
               user
             else
               # Create new Prizzm account with Twitter account information.
-              user = create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20])
+              user = create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20], 
+                             :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
               user.tt_token = credentials['token']
               user.tt_secret = credentials['secret']
-              user.create_profile( :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
               user.save
               user
             end

@@ -1,6 +1,9 @@
 class Follow < ActiveRecord::Base
   extend ActsAsFollower::FollowerLib
   
+  after_create :log_follow
+  after_destroy :log_unfollow
+
   scope :for_follower,        lambda { |follower| where(["follower_id = ? AND follower_type = ?", follower.id, parent_class_name(follower)]) }
   scope :for_followable,      lambda { |followable| where(["followable_id = ? AND followable_type = ?", followable.id, parent_class_name(followable)]) }
   scope :for_follower_type,   lambda { |follower_type| where("follower_type = ?", follower_type) }
@@ -18,4 +21,19 @@ class Follow < ActiveRecord::Base
     self.update_attribute(:blocked, true)
   end
   
+protected
+  def log_follow
+    user = User.find(follower_id)
+    object = followable_type.constantize.find followable_id
+    user.subscribe_to object
+    ActivityLogger.user_follow_object :user => user, :object => object
+  end 
+
+  def log_unfollow
+    user = User.find(follower_id)
+    object = followable_type.constantize.find followable_id
+    user.unsubscribe_from object
+    ActivityLogger.user_unfollow_object :user => user, :object => object
+  end
+
 end

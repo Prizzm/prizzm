@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721174531) do
+ActiveRecord::Schema.define(:version => 20110728125421) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -124,17 +124,6 @@ ActiveRecord::Schema.define(:version => 20110721174531) do
     t.datetime "updated_at"
   end
 
-  create_table "profiles", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone_number"
-    t.string   "photo"
-    t.string   "location"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "slugs", :force => true do |t|
     t.string   "name"
     t.integer  "sluggable_id"
@@ -177,6 +166,11 @@ ActiveRecord::Schema.define(:version => 20110721174531) do
     t.string   "access_token"
     t.string   "tt_token"
     t.string   "tt_secret"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "photo"
+    t.string   "location"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

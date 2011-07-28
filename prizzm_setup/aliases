@@ -24,6 +24,8 @@ alias rn='bundle exec rake notes'
 # Generate Entity-Relational diagram for data moddel, and place in docs/ERD.pdf
 alias erd='bundle exec rake erd inheritance=true polymorphism=true notation=bachman orientation=vertical filename=doc/ERD'
 
+alias hack='ack --type-add TYPE=.haml'
+
 
 # Run rspec tests for all, or some code
 alias rs='bundle exec rspec'

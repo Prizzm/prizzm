@@ -9,10 +9,10 @@ module UserImageable
   #e#n#d
 
   def main_image
-    profile.photo.url
+    photo.url
   end
 
   def main_image_thumb
-    profile.photo.thumb.url
+    photo.thumb.url
   end
 end

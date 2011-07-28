@@ -10,7 +10,12 @@ CarrierWave.configure do |config|
   config.fog_host = "http://#{config.fog_directory}.s3.amazonaws.com"
   config.fog_public = true
   
+  # Crap...why was this here again?
   config.delete_cache_id_after_storage = false
+  # Why don't we make it :filee in development?  Well, one problem is, what if I
+  # generate a DB locally, and want to push it to the server.  The DB I push
+  # will non longeer represent what I have due to the missing server images
+  
   #if Rails.env.production?
      #config.storage = :fog
   #elsif Rails.env.development?

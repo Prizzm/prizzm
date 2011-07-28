@@ -44,19 +44,14 @@ Factory.define :product do |product|
 end 
 
 
-
-Factory.define :profile do |profile|
-  profile.first_name { Forgery::Name.first_name }
-  profile.last_name { Forgery::Name.last_name }
-  profile.phone_number { Forgery::Address.phone }
-  profile.location { Forgery::Address.street_address }
-end 
-
 Factory.define :user do |user|
   user.email { Forgery::Internet.email_address }
   user.password {Forgery::Basic.password }
   user.password_confirmation {|u| u.password }
-  user.association :profile
+  user.first_name { Forgery::Name.first_name }
+  user.last_name { Forgery::Name.last_name }
+  user.phone_number { Forgery::Address.phone }
+  user.location { Forgery::Address.street_address }
 end 
 
 

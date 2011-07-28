@@ -15,6 +15,7 @@ User.destroy_all
 Item.destroy_all
 Product.destroy_all
 Company.destroy_all
+Notification.destroy_all
 
 
 
@@ -71,13 +72,15 @@ bryna_nicole.products << [bryna1, bryna2]
 
 
 
-sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Sidney', :last_name => 'Burks'}) } 
-test = Factory :user, {:email => 'test@test.com', :password => 'password', :profile => Factory(:profile, {:first_name => 'Test', :last_name => 'User'}) } 
+sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :first_name => 'Sidney', :last_name => 'Burks'}
+test = Factory :user, {:email => 'test@test.com', :password => 'password', :first_name => 'Test', :last_name => 'User'}
+
 30.times do
   user = Factory :user 
   user.follow bryna_nicole
   user.follow bryna1
   user.follow bryna2
+  add_default_items_for user
 end
 
 
@@ -85,11 +88,11 @@ set_follows sidney
 sidney.follow bryna1
 sidney.follow bryna2
 sidney.follow bryna_nicole
-make_real sidney
+add_real_items_for sidney
 
 set_follows test
 test.follow bryna1
 test.follow bryna2
 test.follow bryna_nicole
-make_real test
+add_real_items_for test
 

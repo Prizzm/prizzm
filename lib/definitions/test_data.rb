@@ -9,9 +9,17 @@ def set_follows user, type=:users
   end 
 end 
 
-def make_real user
+def add_real_items_for user
   RANDOM[:items].times do
     item = Factory :item_with_images
+    with_probability(0.7) { item.privacy = 'public' }
+    user.items << item
+  end
+end
+
+def add_default_items_for user
+  RANDOM[:items].times do
+    item = Factory :item
     with_probability(0.7) { item.privacy = 'public' }
     user.items << item
   end
