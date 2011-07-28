@@ -495,7 +495,7 @@
 		cursor: pointer;
 	}
 	
-	input[name=commit]{
+	input[name=commit], .button.blue{
 		float: right;
 		border: solid 1px #3079ED;
 		color: #fff !important;
@@ -511,7 +511,7 @@
 		background: linear-gradient(top, #499bea 0%,#207ce5 100%); /* W3C */
 	}
 	
-	input[name=commit]:hover {
+	input[name=commit]:hover, .button.blue:hover {
 		background: #3f97e9; /* Old browsers */
 		background: -moz-linear-gradient(top, #3f97e9 0%, #1a77e2 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f97e9), color-stop(100%,#1a77e2)); /* Chrome,Safari4+ */
@@ -520,6 +520,35 @@
 		background: -ms-linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* IE10+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f97e9', endColorstr='#1a77e2',GradientType=0 ); /* IE6-9 */
 		background: linear-gradient(top, #3f97e9 0%,#1a77e2 100%); /* W3C */
+	}
+	
+	.button.red{
+		float: right;
+		border: solid 1px #BF3131;
+		color: #fff !important;
+		font-weight: bold;
+		
+		text-shadow: 0 1px rgba(0,0,0,0.1);
+		
+		background: #d14836; /* Old browsers */
+		background: -moz-linear-gradient(top, #d14836 0%, #dd4b39 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d14836), color-stop(100%,#dd4b39)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #d14836 0%,#dd4b39 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #d14836 0%,#dd4b39 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #d14836 0%,#dd4b39 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d14836', endColorstr='#dd4b39',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, #d14836 0%,#dd4b39 100%); /* W3C */
+	}
+	
+	.button.red:hover {
+		background: #cf422f; /* Old browsers */
+		background: -moz-linear-gradient(top, #cf422f 0%, #db432f 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cf422f), color-stop(100%,#db432f)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #cf422f 0%,#db432f 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #cf422f 0%,#db432f 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #cf422f 0%,#db432f 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf422f', endColorstr='#db432f',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, #cf422f 0%,#db432f 100%); /* W3C */
 	}
 	
 	.shared_checkbox{

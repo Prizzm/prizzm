@@ -11,11 +11,14 @@ Prizzm::Application.routes.draw do
     get 'search', :on => :collection
   end
 
+<<<<<<< HEAD
 
   # compositions
   get '/composer/new' => 'composer#new', :as => 'new_composition'
   post '/composer/link' => 'composer#link', :as => 'link_composer'
 
+=======
+>>>>>>> 0d7be03b9a3318cfed9316c3b898f3a0eb81ac53
   # Wanted items
   get '/wanted/:id' => 'wanted_items#owners_view', :as => 'owners_wanted_item_view'
   post '/wanted/:product_id' => 'wanted_items#create', :as => 'add_wanted_item'
@@ -26,6 +29,8 @@ Prizzm::Application.routes.draw do
 
 
   # Owned Items
+  get '/owned/:id/edit' => 'owned_items#edit', :as => 'edit_owned_item'
+  match '/owned/:id/update' => 'owned_items#update', :as => 'update_owned_item'
   get '/owned/:id' => 'owned_items#owners_view', :as => 'owners_owned_item_view'
   post '/owned/:product_id' => 'owned_items#create', :as => 'add_owned_item'
   get '/:user_id/owns/:id' => 'owned_items#public_view', :as => 'public_owned_item'
@@ -76,6 +81,7 @@ Prizzm::Application.routes.draw do
   get '/process_invitation' => 'product_invitations#process_accepted_product_invitation', :as => 'process_accepted_product_invitation'
   put '/update_item_privacy/:id' => 'items#update_privacy', :as => 'update_item_privacy'
   put '/update_item_review/:id' => 'items#update_review', :as => 'update_item_review'
+  put '/update_item_name' => 'items#update_item_name', :as => 'update_item_name'
 
   # Rouutess for item sharing use cases
   get 'shared/item/:id' => 'shared_items#show', :as => "shared_item"

@@ -11,7 +11,11 @@
   = photo_uploadify
 
 .grid_6
-  %h2 Your #{@item.name}
+  #edit-item
+    = link_to "Edit", edit_owned_item_path(@item.id), :class => "facebox"
+  
+  #item-name
+    %h2.edit Your #{@item.name}
   %div{:id => "stats"}
     %div{:id => "item_#{@item.id}_rating", :class => "rating"}
       = form_for [@user, @item], :remote => true do |f|
@@ -21,8 +25,7 @@
   
   #review
     %h3 Review
-    .edit
-      = @item.review
+    = @item.review
 
   #new_interaction_box
     #interaction_input_box
@@ -66,6 +69,7 @@
 - content_for :jquery do
   :javascript
     $(document).ready(function(){
+
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
     	callback: function(ui, type, value, event){
@@ -78,19 +82,6 @@
       $("#interaction_stars").stars({
         inputType: "select",
         cancelShow: false
-      });
-  
-      $('#review .edit').editable("#{update_item_review_path(@item)}", {
-        indicator : "Saving...",
-        type      : "textarea",
-        submit    : 'OK',
-        method    : 'PUT',
-        cancel    : 'cancel',
-        tooltip   : "Click to edit your review...",
-        onblur    : "submit",
-        submitdata: {id: #{@item.id}},
-        name      : "review",
-        cssclass  : "review-input"
       });
 
       if (document.location.hash === "#write_review"){

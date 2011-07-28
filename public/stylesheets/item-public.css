@@ -1,3 +1,7 @@
+.grid_6 {
+	position: relative;
+}
+
 h2 {
 	margin-top: 0;
 	color: #6e84b8;
@@ -122,4 +126,10 @@ ul li .cancel{
 
 ul li .cancel:hover {
 	opacity: 0.5;
+}
+
+#edit-item {
+	position: absolute;
+	top: 0;
+	right: 0;
 }

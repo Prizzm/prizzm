@@ -1,0 +1,8 @@
+%h1 Edit your item
+Get something wrong? Don't worry, you can edit your item name and review.
+
+= form_for @item, :url => update_owned_item_path do |f|
+  = f.text_field :name
+  = f.text_area :review
+
+  = f.submit "Save", :id => 'item-interaction-submit', :class => "button"
