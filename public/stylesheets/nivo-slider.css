@@ -48,8 +48,9 @@
 .nivo-caption {
 	position:absolute;
 	left:0px;
+  top: 50px;
 	bottom:0px;
-	background:#000;
+	background:none;
 	color:#fff;
 	opacity:0.8; /* Overridden by captionOpacity setting */
 	width:100%;
@@ -59,9 +60,12 @@
 	padding:5px;
 	margin:0;
 }
-.nivo-caption a {
-	display:inline !important;
+
+.nivo-caption a.button {
+	/*display:inline !important;*/
+  display: block;
 }
+
 .nivo-html-caption {
     display:none;
 }

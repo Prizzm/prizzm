@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <%= stylesheet_link_tag 'boilerplate', '960', 'landing', 'font', 'nivo-slider' -%>
+    <%= stylesheet_link_tag 'boilerplate', '960', 'landing', 'font', 'default-nivo', 'nivo-slider' -%>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" -%>
     <%= javascript_include_tag 'jquery.nivo.slider.pack' -%>
     <%= csrf_meta_tag %>
@@ -30,10 +30,15 @@
           effect: 'slideInLeft',
           animSpeed: 500,
           pauseTime: 3000,
-          startSlide: 0,
           pauseOnHover: true,
           directionNav: false,
-          controlNav: false
+          startSlide: 0,
+          captionOpacity: 1,
+          directionNav: true
+        });
+        
+        $('#login').click(function(){
+          $('#login-drop').slideDown();
         });
       });
     </script>
@@ -54,14 +59,14 @@
         <ul class="grid_2">
           <li><a href="">Help</a></li>
           <li id="login">
-            <a href="">Login</a>
+            <a>Login</a>
             <div id="login-drop">
               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                 <%#= link_to new_registration_path(resource_name), :id => "signup", :class => "round" do %>
                 <%# end %>
                 <%= f.text_field :email, :class => "round", :placeholder => "email" %>
                 <%= f.password_field :password, :class => "round", :placeholder => "password" %>
-                <%= image_submit_tag "button-submit.png", :class => "round grad", :id => "submit",  :alt => "Go!" %>
+                <%= f.submit :id => "submit", :value => "login" %>
                 <span><input type="checkbox" checked="true" /> Remember me </span>
                 <a href="<%= new_password_path(resource_name) %>" id="forgot" class="clearfix">Forgot something?</a>
               <% end %>
@@ -81,11 +86,29 @@
       <div id="banner" class="grid_12">
         <ul>
           <li class="share">
-            <div id="banner-slider">
-              <img src="/images/landing/temp.png" />
-              <img src="/images/landing/temp.png" />
-              <img src="/images/landing/temp.png" />
+            <div class="slider-wrapper theme-default">
+              <div id="banner-slider">
+                <img src="/images/landing/share-banner-wide.png" title="#caption1" />
+                <img src="/images/landing/share-banner-wide.png" title="#caption2" />
+                <img src="/images/landing/share-banner-wide.png" title="#caption3" />
+              </div>
             </div>
+
+              <div id="caption1" class="nivo-html-caption">
+                <h2>Share your opinion, <br />with companies and friends.</h2>
+                <p>Having a problem with a product or company? Share your experience on Prizzm, tell your friends about it and get help from our community!</p>
+                <a href="" class="button">Start sharing now!</a>
+              </div>
+              <div id="caption2" class="nivo-html-caption">
+                <h2>Share your opinion, <br />with companies and friends.</h2>
+                <p>Having a problem with a product or company? Share your experience on Prizzm, tell your friends about it and get help from our community!</p>
+                <a href="" class="button">Start sharing now!</a>
+              </div>
+              <div id="caption3" class="nivo-html-caption">
+                <h2>Share your opinion, <br />with companies and friends.</h2>
+                <p>Having a problem with a product or company? Share your experience on Prizzm, tell your friends about it and get help from our community!</p>
+                <a href="" class="button">Start sharing now!</a>
+              </div>
           </li>
         </ul>
       </div>
