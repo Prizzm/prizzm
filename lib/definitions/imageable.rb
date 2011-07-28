@@ -8,6 +8,13 @@ module Imageable
     self.images.create(image_data)
   end
 
+  def add_image_from_path path
+    image = File.open(path)
+    new_image = self.images.create
+    new_image.image.store! image
+    new_image.save!
+  end
+
   def main_image
     images.first.image.url
   end

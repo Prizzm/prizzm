@@ -149,7 +149,8 @@ ActiveRecord::Schema.define(:version => 20110721174531) do
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "object_id"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

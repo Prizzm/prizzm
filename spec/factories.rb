@@ -38,7 +38,8 @@ Factory.define :product do |product|
     p.url = test_product.url
     desc = Nokogiri::HTML(open(p.url)).at_css('#wc-condensed')
     p.description = desc.text unless desc.nil?
-    p.add_image_from_url test_product.images.image.largeimage
+    #p.add_image_from_url test_product.images.image.largeimage
+    p.add_image_from_path Rails.root.join('lib/images/', test_product.image_filename) 
   end
 end 
 
@@ -61,15 +62,14 @@ end
 
 # Table name: items
 Factory.define :item do |item|
-  item.rating { [1,2,3].rand }
+  item.rating { [1,2,3,4,5].rand }
   item.sku
   item.possession_status {["have", "want"].rand}
   item.after_build do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
     i.url = test_product.url
-    desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
-    i.review = desc.text unless desc.nil?
+    i.review = test_product.description
   end
 end
 
@@ -78,17 +78,14 @@ Factory.define :item_image do |item_image|
 end 
 
 Factory.define :item_with_images, :parent => :item do |item|
-  item.rating { [1,2,3].rand }
-  item.sku
-  item.possession_status {["have", "want"].rand}
   item.after_create do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 
     i.url = test_product.url
-    desc = Nokogiri::HTML(open(test_product.url)).at_css('#wc-condensed')
-    i.review = desc.text unless desc.nil?
-    puts test_product.images.image.largeimage
-    i.add_image_from_url test_product.images.image.largeimage
+    i.review = test_product.description
+
+    puts "Loading: #{Rails.root.join('lib/images/', test_product.image_filename) }"
+    i.add_image_from_path Rails.root.join('lib/images/', test_product.image_filename) 
   end
 end 
 

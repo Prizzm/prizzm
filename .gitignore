@@ -13,6 +13,7 @@ tmp/**/*
 db/data.yml
 db/*.sqlite3
 vendor/bundle
+lib/images
 public/uploads
 *live.js
 nbproject/*
