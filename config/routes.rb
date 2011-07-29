@@ -1,5 +1,7 @@
 Prizzm::Application.routes.draw do
 
+  get "feeds/show"
+
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
   root :to => 'home#index'
@@ -90,11 +92,16 @@ Prizzm::Application.routes.draw do
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
 
   match '/events', :to => EventMonitor
+  match '/subscriptions', :to => EventMonitor
 
   # Cloudmailin incomming email controller
   post '/incoming_mails' => 'incoming_mails#create'
   get '/worker' => 'workers#test'
 
+  # Live Feed
+  get '/feed' => 'feeds#show', :as => 'feed'
+
+  #  To use to monitor backgorund tasks
   mount Resque::Server, at: '/resque'
   get '/documentation' => redirect("http://substance.io/#sid137/prizzm")
 end

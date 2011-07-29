@@ -9,6 +9,10 @@ class EventMonitor < Sinatra::Base
     haml :index
   end
 
+  get '/subscriptions' do
+    @events = Subscription.all.to_a
+    haml :index
+  end
 end
 
 

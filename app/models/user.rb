@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
   include UserImageable
   include Models::User::DeviseExt
 
-  after_create :log_creation
+  after_create [:create_user_stream, :log_creation] 
   after_destroy :log_destruction
   after_save :log_update
+
 
   #has_one  :profile, :dependent => :destroy
   has_many :items, :dependent => :destroy, :after_add => [:subscribe_to_item]
@@ -19,10 +20,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :phone_number, :location, :photo
 
-
-
-  
-  
   
   #validates_uniqueness_of  :subscriptions, :scope => [:user_id, :subscribable_id, :subscribable_type]
 
@@ -40,6 +37,17 @@ class User < ActiveRecord::Base
   def owned_items
     items.owned
   end
+
+
+
+  # Feed stuff
+  def stream
+    Stream.where(:user_id => id).first
+  end
+
+
+
+
 
   # Returns 'true' if user has the product in their wanted items collection,
   # otherwise returns false
@@ -63,7 +71,7 @@ class User < ActiveRecord::Base
     else
       item = Item.create_from_product(product, :possession_status => 'want')
       self.items << item
-      ActivityLogger.user_want_product :user => self, :item => item, :product => product
+      ActivityLogger.user_want_product :for => [self, item, product], :from => self
     end
     item
   end 
@@ -78,7 +86,7 @@ class User < ActiveRecord::Base
     else
       item = Item.create_from_product(product, :possession_status => 'have')
       self.items << item
-      ActivityLogger.user_own_product :user => self, :item => item, :product => product
+      ActivityLogger.user_own_product :for => [self, item, product], :from => self
     end
     item
   end
@@ -127,17 +135,22 @@ protected
     subscribe_to item 
   end
 
+  def create_user_stream
+    subscribe_to self
+    Stream.create(:user_id => self.id)
+  end
+
   # Logs the event that the user has created an account on the site
   def log_creation
-    ActivityLogger.user_join :user => self
+    ActivityLogger.user_join :from => self, :for => self
   end 
 
   # Logs the event that the user has deleted their account on the site
   def log_destruction
-    ActivityLogger.user_quit :user => self
+    ActivityLogger.user_quit :from => self, :for => self
   end
 
   def log_update
-    ActivityLogger.user_update_profile :user => self
+    ActivityLogger.user_update_profile :from => self, :for => self
   end
 end

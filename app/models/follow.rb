@@ -26,14 +26,16 @@ protected
     user = User.find(follower_id)
     object = followable_type.constantize.find followable_id
     user.subscribe_to object
-    ActivityLogger.user_follow_object :user => user, :object => object
+    event = "user_follow_#{object.class.to_s.downcase}"
+    ActivityLogger.send(event, :from => user, :for => [ user, object])
   end 
 
   def log_unfollow
     user = User.find(follower_id)
     object = followable_type.constantize.find followable_id
     user.unsubscribe_from object
-    ActivityLogger.user_unfollow_object :user => user, :object => object
+    event = "user_unfollow_#{object.class.to_s.downcase}"
+    ActivityLogger.send(event, :from => user, :for => [ user, object])
   end
 
 end
