@@ -1,7 +1,7 @@
 development:
-  #host: localhost
-  #database: prizzm_development
-  uri: <%= ENV['MONGOLAB_URI'] %>
+  host: localhost
+  database: prizzm_development
+  #uri: <%= ENV['MONGOLAB_URI'] %>
 
 test:
   host: localhost
