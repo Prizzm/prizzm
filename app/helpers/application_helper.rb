@@ -28,18 +28,49 @@ module ApplicationHelper
     when "user.update.profile"
       output = "#{linked_subject} #{past} updated #{possession} profile"
     when "user.follow.user"
-      followed = event["data"][0]["email"]
-      output << " now following user #{followed}"
+      user = event["data"][0]
+      followed = user["name"]
+      output << " now following user "
+      output << link_to(followed, profile_path(user["id"]))
     when "user.follow.product"
-      followed = event["data"][0]["name"]
-      output << " now following the #{followed} "
+      product = event["data"][0]
+      followed = product["name"]
+      output << " now following the "
+      output << link_to(followed, product_path(product["id"]))
     when "user.follow.company"
-      followed = event["data"][0]["name"]
-      output << " now following the #{followed} "
-    when "user.rate.item"
-      output << " just left a rating for "
-    when "user.change.privacy.item"
-      output << " sharing "
+      company = event["data"][0]
+      followed = company["name"]
+      output << " now following "
+      output << link_to(followed, company_path(company["id"]))
+    when "user.add.item"
+      item = event["data"][0]
+      output << " added the "
+      output << link_to(item["name"], item_path(item["id"]))
+      output << " to their items"
+    when "user.remove.item"
+    when "user.update.item.rating"
+      item = event["data"][0]
+      output << " just left a rating of #{pluralize(item["rating"], 'star')} for the "
+      # TODO: Differentiate betweeen public link and private link
+      # Might want to start handling this in the controller, instead of having 4
+      # routes  public/private   want/have
+      output << link_to(item["name"], item_path(item["id"]))
+    when "user.update.item.privacy"
+      item = event["data"][0]
+      output << " just changed the privacy settings for the "
+      output << link_to(item["name"], item_path(item["id"]))
+    when "user.update.item.name"
+      item = event["data"][0]
+      output << " changed the name for the "
+      output << link_to(item["name"], item_path(item["id"]))
+    when "user.update.item.review"
+      item = event["data"][0]
+      output << " updated their review for the "
+      output << link_to(item["name"], item_path(item["id"]))
+    when "user.update.item.url"
+      item = event["data"][0]
+      output << " added a new URL for the "
+      output << link_to(item["name"], item_path(item["id"]))
     else
       "nothiing"
     end

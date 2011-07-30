@@ -22,15 +22,17 @@ module ActivityLogger
     #  all ar obects have a to_notification method defined by default, as it is
     #  loaded at the top of this file 
     user = payload[:from]
-    from = {:class => user.class.to_s, :id => user.id, :name => user.name}
+    from = user.to_notification
 
     #  force objects into 1-level array, remove [nil] if no :for is specified
-    source_user = [payload[:from]]
+    #  Copies source user into target array as well
+    source_user = [user]
     targets = (source_user + [payload[:for]].flatten.reject{ |i| i.nil?}).uniq
     dest = targets.collect do |o|
       {:class => o.class.to_s, :id => o.id }
     end
 
+    changes = payload[:changes]
     # add target objects to data array, but remove duplication
 
     payload_data = [payload[:data]].flatten.reject{ |i| i.nil?}
@@ -45,7 +47,7 @@ module ActivityLogger
         object   # TODO: figure out what to do for this case
       end
     end 
-    payload = {:from => from, :about => dest, :data => info}
+    payload = {:from => from, :about => dest, :changes => changes, :data => info }
     log =  {:event => name, :time => Time.now.to_i}.merge(payload)
     Notification.create(log)
 

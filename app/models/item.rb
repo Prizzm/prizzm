@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
 
+  after_update :notify_attribute_changes
+
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
   has_many :interactions, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
@@ -45,4 +47,25 @@ class Item < ActiveRecord::Base
   def parent_company
     product.company if has_product?
   end
+
+protected
+
+  #  This method dectects which attributes were changed from the model update,
+  #  and sends a notification signalling each attribute change.  This provides
+  #  several benefits over signalling the atribute changes in the controller.
+  #  First, we can emit notifications directly from teh model, thus aid in test
+  #  data generation and unit testing.  Second, we can have the notifications all
+  #  in one central place, as opposed to being scattered throughout the
+  #  controllers
+  def notify_attribute_changes
+    return unless changed?
+    ignore = ["updated_at", "user_id"]
+    changes.each do |change|
+      Rails.logger.debug "Item changed #{change.inspect}"
+      property = change[0]
+      delta = change[1]
+      event_name = "user_update_item_#{property}" 
+      ActivityLogger.send(event_name,  :from => self.user, :for => [self], :changes => delta) unless ignore.include? property
+    end 
+  end 
 end

@@ -15,14 +15,15 @@ class FollowsController < ApplicationController
     user = User.find(params[:id])
     current_user.block user
     render :json => {:blocked => true, :link => view_context.block_link_for(user)}
-    ActivityLogger.user_block_user :user => current_user, :blocked => user
+    ActivityLogger.user_block_user :from => current_user, :data => user
+    
   end 
 
   def unblock
     user = User.find(params[:id])
     current_user.unblock user
     render :json => {:blocked => false, :link => view_context.block_link_for(user)}
-    ActivityLogger.user_unblock_user :user => current_user, :unblocked => user
+    ActivityLogger.user_unblock_user :from => current_user, :data => user
   end 
 
 protected
