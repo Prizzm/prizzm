@@ -5,10 +5,13 @@
   = render 'items/images'
   .clear
 
+  %br/
   = fields_for ItemImage.new do |f|
     = f.file_field :image, :rel => item_images_path(@item)                        
 
   = photo_uploadify
+
+  #addimage-loader{:style => "display: none"}
 
 .grid_6
   #edit-item
@@ -72,7 +75,7 @@
 
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
-    	callback: function(ui, type, value, event){
+        callback: function(ui, type, value, event){
           var item = #{@item.id};
           update_rating('items', item,value);
         },
@@ -85,7 +88,7 @@
       });
 
       if (document.location.hash === "#write_review"){
-    	$('#review .edit').trigger('click.editable');
+        $('#review .edit').trigger('click.editable');
       }
       
     });
