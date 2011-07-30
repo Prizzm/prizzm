@@ -6,11 +6,13 @@
   = render 'items/images'
   .clear
 
+  %br/
   = fields_for ItemImage.new do |f|
     = f.file_field :image, :rel => item_images_path(@item)                        
 
   = photo_uploadify
 
+  #addimage-loader{:style => "display: none"}
 .grid_6
   %h2 Your #{@item.name}
   %div{:id => "stats"}
