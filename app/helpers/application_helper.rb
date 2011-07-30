@@ -74,6 +74,7 @@ module ApplicationHelper
     else
       "nothiing"
     end
+    output << "  #{time_ago_in_words Time.at(time)} ago "
     output.html_safe
   end
 end

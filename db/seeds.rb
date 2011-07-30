@@ -77,13 +77,13 @@ bryna_nicole.products << [bryna1, bryna2]
 sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :first_name => 'Sidney', :last_name => 'Burks'}
 test = Factory :user, {:email => 'test@test.com', :password => 'password', :first_name => 'Test', :last_name => 'User'}
 
-#30.times do
-#  user = Factory :user 
-#  user.follow bryna_nicole
-#  user.follow bryna1
-#  user.follow bryna2
-#  add_default_items_for user
-#end
+30.times do
+  user = Factory :user 
+  user.follow bryna_nicole
+  user.follow bryna1
+  user.follow bryna2
+  add_default_items_for user
+end
 
 
 set_follows sidney

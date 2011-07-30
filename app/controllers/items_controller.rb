@@ -109,7 +109,7 @@ class ItemsController < InheritedResources::Base
       format.html { }
       format.js { render 'share' }
     end
-    ActivityLogger.user_share_item :from => current_user, :for => [current_user,  @item], :data => @item
+    ActivityLogger.user_share_item :from => current_user, :for => [@item], :data => [:message => fb_message]
   end
 
 

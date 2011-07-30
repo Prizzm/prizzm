@@ -12,8 +12,9 @@ javascripts:
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
-    - public/javascripts/jquery.watermark.min.js
     - public/javascripts/jquery.nivo.slider.js
+    - public/javascripts/jquery.timeago.js
+    - public/javascripts/jquery.watermark.min.js
     - public/javascripts/swfobject.js
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
