@@ -58,12 +58,9 @@ protected
   #  in one central place, as opposed to being scattered throughout the
   #  controllers
   def notify_attribute_changes
-    return unless changed?
     ignore = ["updated_at", "user_id"]
-    changes.each do |change|
-      Rails.logger.debug "Item changed #{change.inspect}"
-      property = change[0]
-      delta = change[1]
+    changed.each do |property|
+      delta = changes[property]
       event_name = "user_update_item_#{property}" 
       ActivityLogger.send(event_name,  :from => self.user, :for => [self], :changes => delta) unless ignore.include? property
     end 
