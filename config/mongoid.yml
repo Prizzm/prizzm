@@ -1,7 +1,11 @@
+<% if ENV['PUSH_DEMO'] %>
+development:
+  uri: <%= ENV['MONGOLAB_URI'] %>
+<% else %>
 development:
   host: localhost
   database: prizzm_development
-  #uri: <%= ENV['MONGOLAB_URI'] %>
+<% end %>
 
 test:
   host: localhost

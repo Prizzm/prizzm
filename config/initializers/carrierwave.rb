@@ -16,14 +16,14 @@ CarrierWave.configure do |config|
   # generate a DB locally, and want to push it to the server.  The DB I push
   # will non longeer represent what I have due to the missing server images
   
-  #if Rails.env.production?
+  if Rails.env.production? || ENV['PUSH_DEMO'] 
+     config.storage = :fog
+  elsif Rails.env.development?
+     config.storage = :file
      #config.storage = :fog
-  #elsif Rails.env.development?
-     #config.storage = :file
-     ##config.storage = :fog
-  #elsif Rails.env.test?
-     #config.storage = :file
+  elsif Rails.env.test?
+     config.storage = :file
      #config.storage = :fog
-     ##config.enable_processing = false
-  #end
+     config.enable_processing = false
+  end
 end
