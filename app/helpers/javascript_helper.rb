@@ -37,7 +37,7 @@ module JavascriptHelper
 
       <script type='text/javascript'>
         $(document).ready(function() {
-          $('input#image_image').uploadify({
+          $('input#item_image_image').uploadify({
             script : '#{item_images_path(@item)}',
             fileDataName    : 'image[image]',
             uploader        : '/assets/uploadify.swf',
@@ -54,8 +54,13 @@ module JavascriptHelper
               '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
               'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
             },
+            onOpen          : function() {
+              $('#addimage-loader').css('display', 'inline-block');
+              $('#item_image_imageQueue').css('display', 'inline-block');
+            },
             onComplete      : function(event, id, object, response, data){ 
               $('body').trigger('insertImage', response);
+              $('#addimage-loader').css('display', 'none');
             }
           });
         });

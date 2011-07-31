@@ -42,7 +42,7 @@ div.slideshow {
 }
 div.slideshow span.image-wrapper {
 	display: block;
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 }
@@ -124,4 +124,23 @@ div.pagination span.current {
 div.pagination span.ellipsis {
 	border: none;
 	padding: 5px 0 3px 2px;
+}
+
+#gallery.content {
+  overflow: hidden;
+}
+
+#item_image_imageUploader {
+  position: relative;
+  top: -39px;
+  left: 120px;
+}
+
+#addimage-loader {
+  background-image: url('/images/loading.gif');
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 10px;
+  left: 5px;
 }

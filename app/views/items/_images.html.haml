@@ -13,7 +13,8 @@
   we can't have the url rendered on the page, but must suply it based on the current image.
   So we will do that by using javascript
 - if @item.images.count > 0
-  = link_to "Delete Image", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json
+  %br/
+  = link_to "Delete Image", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
 
 - content_for :jquery do
   :javascript
@@ -69,7 +70,7 @@
       // Initialize Advanced Galleriffic Gallery
       var gallery = $('#thumbs').galleriffic({
           delay:                     2500,
-          numThumbs:                 10,
+          numThumbs:                 9,
           preloadAhead:              10,
           enableTopPager:            true,
           enableBottomPager:         true,
