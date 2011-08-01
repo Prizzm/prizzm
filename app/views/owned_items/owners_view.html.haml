@@ -29,16 +29,15 @@
     %h3 Review
     = @item.review
 
-  #new_interaction_box
-    #interaction_input_box
-      = render :partial => 'comments/form', :locals => {:commentable => @item}
+  = comment_form_for @item
 
-  #interactions
-    - if @item.comments.count == 0
-      Be the first to comment!
-    - else
-       
-    #interactions_feed= render :partial => 'comments/comment', :collection => @item.comments.order('created_at desc')
+  #comments_feed
+    #comments
+      - if @item.comments.count == 0
+        Be the first to comment!
+      - else
+        Comments on this item:
+        = comment_collection_for @item
 
 %aside.grid_3
   %article#ask
@@ -63,15 +62,8 @@
         cancelShow: false
       });
 
-      $("#interaction_stars").stars({
-        inputType: "select",
-        cancelShow: false
-      });
-
       if (document.location.hash === "#write_review"){
         $('#review .edit').trigger('click.editable');
       }
-      
     });
-
 

@@ -1,13 +1,8 @@
-%div{:class => 'interaction-content', :id => "interaction-#{comment.id}-content"}
-  .interaction-user= comment.user.name
+%div{:class => 'comment-content', :id => "comment-#{comment.id}-content"}
+  .comment-user= comment.user.name
   .user-image
-    .interaction-profile-image= image_tag comment.user.photo.url
+    .comment-profile-image= image_tag comment.user.photo.url
   .user-content
-    .interaction-description= comment.comment
-  .interaction-created-at #{time_ago_in_words(comment.created_at)} ago
-  .delete-interaction= link_to 'Delete Comment', comment, :'data-interactionid' => comment.id, :class => 'delete-interaction-link', :remote => true, :'data-method' => :delete, :'data-type' => :json
-
-- content_for :jquery do
-  :javascript
-    $(document).ready(function(){
-    });
+    .comment-comment= comment.comment
+  .comment-created-at #{time_ago_in_words(comment.created_at)} ago
+  .delete-comment= link_to 'Delete Comment', comment_path(commentable.class.to_s.underscore,  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'delete-comment-link', :remote => true, :'data-method' => :delete, :'data-type' => :json

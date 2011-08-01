@@ -28,35 +28,16 @@
     .edit
       = @item.review
 
-  #new_interaction_box
-    #interaction_input_box
-      = form_for [@item, @interaction = Interaction.new], :remote => true do |f|
-        #share-input
-          = f.text_area :description, :id => 'interaction-input', :'data-text' => "Share your thoughts...", :placeholder => "Share your thoughts..."
-          .cancel
-        .clear
-        %ul.social
-          %li Share to 
-          %li.button.twitter
-            twitter
-            .cancel
-            = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
-          %li.button.fb
-            facebook
-            .cancel
-            = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
-        .clear
-        = f.submit 'Share', :id => 'item-interaction-submit', :class => "button"
-        
-        .clear
-        
-  #interactions
-    - if @item.interactions.count == 0
-      Be the first to share your thoughts!
-    - else
-       
-    #interactions_feed= render :partial => 'home/interaction', :collection => @item.interactions.order('created_at desc')
-        
+  = comment_form_for @item
+
+  #comments_feed
+    #comments
+      - if @item.comments.count == 0
+        Be the first to comment!
+      - else
+        Comments on this item:
+        = comment_collection_for @item
+
 %aside.grid_3
   %article#ask
     %header.clearfix
@@ -70,6 +51,7 @@
 - content_for :jquery do
   :javascript
     $(document).ready(function(){
+
       $("#stars-wrapper-#{@item.id}").stars({
         inputType: "select",
     	callback: function(ui, type, value, event){
@@ -79,7 +61,6 @@
         cancelShow: false
       });
       
-      $("#interaction-input").autoGrow();
       
       $('#review .edit').editable("#{update_item_review_path(@item)}", {
         indicator : "Saving...",

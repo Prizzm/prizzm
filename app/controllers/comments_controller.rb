@@ -6,11 +6,17 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @commentable }
-      else
-        format.html { render :action => 'new' }
+        format.html {render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment}}
       end
     end
+  end
+
+  def destroy
+    @comment = @commentable.comments.find(params[:id])    
+    @comment.destroy
+    respond_to do |format|
+      format.json {render :json => params[:id]}
+    end 
   end
 
 protected

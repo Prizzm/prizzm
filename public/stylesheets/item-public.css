@@ -133,3 +133,32 @@ ul li .cancel:hover {
 	top: 0;
 	right: 0;
 }
+
+#new_comment {
+	position: relative;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+#new_comment.ask {
+	border-bottom: none;
+}
+
+#comment_comment, .edit form textarea{
+	padding: 10px;
+	width: 95% !important;
+	border: 1px solid #e7e7e7;
+	font-size: 1.1em;
+	max-height: 17px;
+	background: #fff no-repeat url('../images/write.png') 422px;
+}
+
+
+#comment_submit, #item-ask-submit {
+	margin: 10px 0;
+}
+
+#comments {
+	margin-top: 5px;
+	padding-top: 5px;
+}
+

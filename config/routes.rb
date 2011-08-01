@@ -107,6 +107,8 @@ Prizzm::Application.routes.draw do
 
   # Comments - this route makes the comments controller response to a
   # polymorphic types
-  resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
+  scope '/:commentable_type/:commentable_id' do
+    resources :comments 
+  end
 
 end

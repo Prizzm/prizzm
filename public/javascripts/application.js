@@ -36,64 +36,18 @@ $(document).ready(function(){
    $(".shared_checkbox").prop("checked", true);
   
   $("ul.social .cancel").click(function(){
-	  $("#interaction_shared_tt").prop("checked", false);
+	  $("#comment_shared_tt").prop("checked", false);
 	  $("li.button.twitter").hide();
   });
   
   $(".facebox").facebox();
-  clearInteraction();
    
-  $('#interaction-input').focus(function(){
-    $(this).addClass('input-active');
-    $('#interaction_submit').show();
-    $('#share-input .cancel').show();
-    $('#new_interaction_box .social').show();
-    $('#item-interaction-submit').show();
-  });
-
-  $('#share-input .cancel').click(clearInteraction);
-  $('#item-interaction-submit').click(clearInteraction);
-
-  function clearInteraction(){
-    $('#interaction-input').removeClass('input-active');
-    $('#share-input .cancel').hide();
-    $('#new_interaction_box .social').hide();
-    $('#item-interaction-submit').hide();
-    $('#interaction-input').val('');
-  }
-
-  $('#new_interaction')
-    .live('ajax:success', function(event, data, status, xhr){
-    // Add the newly created interaction to the page, and alert the user.
-    $('#interactions_feed').prepend(xhr.responseText);
-    $('#interactions_feed .interaction-content:first-child').effect('highlight', {}, 2000)
-
-    //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
-    $(':input','#new_interaction')
-    .not(':button, :submit, :reset, :hidden')
-    .val('')
-
-    $('#new_interaction')[0].reset();
-  });
-
-  $('#interactions_feed').delegate('a', 'ajax:success', function(event, data, status, xhr){
-    var interactionid = data + '';
-    $('#interaction-' + interactionid + '-content').fadeOut();
-  });
-
   $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
     console.log(data);
     var itemid = data + '';
     $('#item_'+itemid).fadeOut();
   });
 
-  $('.interaction-content').live('mouseenter', function(){
-    $(this).addClass('hover');
-  });
-
-  $('.interaction-content').live('mouseleave', function(){
-    $(this).removeClass('hover');
-  });
 
   // For Facebook posting messages
   $('.shared_fb_checkbox').live('click', function() {
@@ -202,4 +156,8 @@ $(document).ready(function(){
   _.templateSettings = {
     interpolate: /\{\{(.+?)\}\}/g
   }
+
+
+
+
 });

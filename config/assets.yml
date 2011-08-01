@@ -1,5 +1,5 @@
 allow_debugging: on
-package_assets: always
+package_assets: on
 compress_assets: on
 gzip_assets: on
 
@@ -20,13 +20,13 @@ javascripts:
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
+    - public/javascripts/application/comments.js
 
 stylesheets:
   app:
     - public/stylesheets/960.css
     - public/stylesheets/boilerplate.css
     - public/stylesheets/main.css
-    - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
