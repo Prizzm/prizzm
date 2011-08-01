@@ -25,6 +25,7 @@ class Item < ActiveRecord::Base
 
   acts_as_list :scope => :user
   acts_as_followable
+  acts_as_commentable
 
   default_value_for :privacy, 'private'
   default_value_for :possession_status, 'want'

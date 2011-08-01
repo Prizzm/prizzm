@@ -27,15 +27,16 @@ module ActivityLogger
     #  force objects into 1-level array, remove [nil] if no :for is specified
     #  Copies source user into target array as well
     source_user = [user]
-    targets = (source_user + [payload[:for]].flatten.reject{ |i| i.nil?}).uniq
+    for_list = [payload[:for]].flatten.compact
+    targets = (source_user + for_list).uniq
     dest = targets.collect do |o|
       {:class => o.class.to_s, :id => o.id }
     end
 
     changes = payload[:changes]
-    # add target objects to data array, but remove duplication
 
-    payload_data = [payload[:data]].flatten.reject{ |i| i.nil?}
+    # add target objects to data array, but remove duplication
+    payload_data = [payload[:data]].flatten.compact
     data = (targets - source_user + payload_data).uniq
     info = data.collect do |object|
       begin
@@ -49,13 +50,16 @@ module ActivityLogger
     end 
     payload = {:from => from, :about => dest, :changes => changes, :data => info }
     log =  {:event => name, :time => Time.now.to_i}.merge(payload)
-    Notification.create(log)
+
+
+
 
     # TODO: Put all of the following in a background task
-    #Resque.enqueue "something"
+    #Resque.enqueue "log"
+
+    Notification.create(log)
 
     # find subscribers to this event
-    #log = Notification.last
     subscriber_ids = log[:about].collect do |object|
       subscriptions = Subscription.where(:subscribable_type => object[:class], :subscribable_id => object[:id]).all
       subscriptions.collect {|s| s.user_id }

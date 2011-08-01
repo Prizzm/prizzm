@@ -104,4 +104,9 @@ Prizzm::Application.routes.draw do
   #  To use to monitor backgorund tasks
   mount Resque::Server, at: '/resque'
   get '/documentation' => redirect("http://substance.io/#sid137/prizzm")
+
+  # Comments - this route makes the comments controller response to a
+  # polymorphic types
+  resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
+
 end

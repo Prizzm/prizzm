@@ -20,6 +20,7 @@ gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 
 # Allows us to keep an order of a user's items in their collection
 gem "acts_as_list"
+gem "acts_as_commentable"
 
 gem "mongoid"
 gem "bson_ext"
@@ -48,6 +49,10 @@ gem "rmagick"
 
 # allows us to have seo friendly urls for our objects
 gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
+
+# allows model and sitewide settings
+# https://github.com/100hz/rails-settings
+gem "rails-settings", :git => "git://github.com/100hz/rails-settings.git"
 
 # Social Media Gems FB Connect, FB, and Twitter
 #gem "faraday", :git => "git://github.com/technoweenie/faraday.git"

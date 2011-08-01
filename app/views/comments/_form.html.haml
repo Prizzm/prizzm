@@ -1,0 +1,20 @@
+= form_for :comment, :url => comments_path(commentable.class.to_s.underscore, commentable.id), :remote => true do |f| 
+  #share-input
+    = f.text_area :comment, :id => 'interaction-input', :'data-text' => "Share your thoughts...", :placeholder => "Share your thoughts..."
+    .cancel
+  .clear
+  %ul.social
+    %li Share to 
+    %li.button.twitter
+      twitter
+      .cancel
+      = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
+    %li.button.fb
+      facebook
+      .cancel
+      = f.check_box :shared_twitter, :class => 'shared_checkbox', :id => 'interaction_shared_tt', :checked => "true"
+  .clear
+  = f.submit 'Share', :id => 'item-interaction-submit', :class => "button"
+        
+  .clear
+
