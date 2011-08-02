@@ -4,7 +4,8 @@ Prizzm::Application.routes.draw do
 
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
-  root :to => 'home#index'
+  root :to => 'home#dashboard'
+  get '/dashboard' => "home#dashboard", :as => "dashboard"
 
   match "/profile/:id" => "profile#show", :as => "profile"
 

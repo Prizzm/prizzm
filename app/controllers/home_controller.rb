@@ -10,6 +10,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def dashboard
+
+  end
+
   def make_data
     current_user.make_real
     redirect_to home_url
