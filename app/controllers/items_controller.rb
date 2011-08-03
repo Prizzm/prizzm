@@ -1,4 +1,7 @@
 class ItemsController < InheritedResources::Base
+  # TODO: Look into using as hash slice to whitelist params
+  # http://as.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Slice.html
+  #
   belongs_to :user
   respond_to :html, :json
   layout :determine_layout

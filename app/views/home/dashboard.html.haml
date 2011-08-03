@@ -67,38 +67,11 @@
             %h3
               %span trending brands
             %ul
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://shopbryna.com/images/logo.gif"}/
-                  Byrna
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/4842/brand.gif"}/
-                  Apple
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/1413/brand.gif"}/
-                  Volkswagen
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://shopbryna.com/images/logo.gif"}/
-                  Byrna
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/4842/brand.gif"}/
-                  Apple
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/1413/brand.gif"}/
-                  Volkswagen
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/4842/brand.gif"}/
-                  Apple
-              %li
-                %a{:href => ""}
-                  %img{:alt => "", :src => "http://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0010/1413/brand.gif"}/
-                  Volkswagen
+              - trending_brands.each do |company|
+                %li
+                  = link_to '#' do
+                    = image_tag company.main_image
+                    = company.name
             %a.fr{:href => ""} View all
           .clear
           .clear

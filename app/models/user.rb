@@ -132,8 +132,14 @@ class User < ActiveRecord::Base
 
   def events_where event_names
     event_names = [event_names].flatten
+    event_names_re = event_names.collect do |name|
+      Regexp.new(name)
+    end 
+    # FIXME: Becomming O(nm) n feed items, m event names
     stream.feed.find_all do |e|
-      event_names.include? e["event"]
+      event_names_re.any? do |regexp|
+        regexp =~ e["event"] 
+      end 
     end
   end
 

@@ -1,26 +1,28 @@
 module FeedsHelper
+  def trending_brands
+    [Company.first] * 8 #limit(8).to_a
+  end
 
   def following_list_for user, opts = {:limit => 4 }
     user.events_where("user.follow.user").last(opts[:limit])
   end
 
+  # TODO: add generic regexes
   def events_about_users opts = {:limit => 4 }
-    events = "user.follow.user"
-    # user.update.item.*
-    # user.comment.*
-    # user.add.item
+    # FIXME: TO nooisy for your own items.. neeeds better filtering, for
+    # example, removingn events about items conceerning actions I took
+    #events = %w(user.follow.user user.update.item.* user.comment.* user.add.item)
+    events = %w(user.follow.user user.comment.* )
     current_user.events_where(events).last(opts[:limit])
   end
 
   def events_about_products opts = {:limit => 4 }
-    # user.comment.product
-    events = "user.follow.product"
+    events = %w(user.follow.product user.comment.product)
     current_user.events_where(events).last(opts[:limit])
   end
 
   def events_about_companies opts = {:limit => 4 }
-    # user.comment.company
-    events = "user.follow.company"
+    events = %w(user.follow.company user.comment.company)
     current_user.events_where(events).last(opts[:limit])
   end
 
