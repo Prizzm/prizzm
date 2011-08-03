@@ -35,11 +35,11 @@
           = link_to "prizm", root_url
         %nav.grid_9
           %ul
-            %li= link_to 'Dashboard', home_url, :class => "active"
-            %li= link_to 'Browse'
+            %li= link_to 'Dashboard', dashboard_path, :class => "active"
+            %li= link_to 'Browse', home_path
             %li= link_to 'Profile'
             %li= link_to 'Account'
-            %li= link_to 'Live feed', feed_path
+            /%li= link_to 'Live feed', feed_path
         %form#search.grid_11{:action => ""}
           %input{:placeholder => "Find products and companies", :type => "text"}/
           %input{:type => "submit", :value => ""}/
