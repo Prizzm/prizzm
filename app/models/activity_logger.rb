@@ -1,5 +1,7 @@
 class ActiveRecord::Base
   def to_notification
+    # TODO:  Add the following method attributes for objets that have them.
+    #:image => self.main_image, :slug => slug.name
     attributes
   end
 end

@@ -3,6 +3,11 @@ module FeedsHelper
     [Company.first] * 8 #limit(8).to_a
   end
 
+  def latest_reviews
+    # FIXME: Put as a scope on notifications... not here
+    Notification.where(event: "user.update.item.review").limit(3).order_by(:time, :asc).to_a
+  end
+
   def following_list_for user, opts = {:limit => 4 }
     user.events_where("user.follow.user").last(opts[:limit])
   end

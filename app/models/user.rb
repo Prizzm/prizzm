@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
   end
 
   def to_notification
-    {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email}
+    {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email, :image => self.main_image, :slug => slug.name}
   end
 
   def events_where event_names

@@ -69,7 +69,7 @@
             %ul
               - trending_brands.each do |company|
                 %li
-                  = link_to '#' do
+                  = link_to company_path(company) do
                     = image_tag company.main_image
                     = company.name
             %a.fr{:href => ""} View all
@@ -79,36 +79,16 @@
             %h3
               %span latest reviews
             %ul
-              %li
-                %img{:alt => "", :src => "http://ohsogeoff.com/images/me.png"}/
-                .fl
-                  %h4 G7th Performance Guitar Capos
-                  %p
-                    Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often...
-                    = succeed "." do
-                      %a{:href => ""} Read more
-                  .rating
-                .clear
-              %li
-                %img{:alt => "", :src => "http://ohsogeoff.com/images/me.png"}/
-                .fl
-                  %h4 G7th Performance Guitar Capos
-                  %p
-                    Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often...
-                    = succeed "." do
-                      %a{:href => ""} Read more
-                  .rating
-                .clear
-              %li
-                %img{:alt => "", :src => "http://ohsogeoff.com/images/me.png"}/
-                .fl
-                  %h4 G7th Performance Guitar Capos
-                  %p
-                    Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often...
-                    = succeed "." do
-                      %a{:href => ""} Read more
-                  .rating
-                .clear
+              - latest_reviews.each do |review|
+                %li
+                  = image_tag review.from["image"]
+                  .fl
+                    %h4= review.data[0]["name"]
+                    %p
+                      = truncate(review.data[0]["review"], :length => 160)
+                      %br= link_to "Read more", '#'
+                    .rating
+                  .clear
           %section#mo-re-ca.grid_9
             %h3
               %span most recent cases
