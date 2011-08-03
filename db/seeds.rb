@@ -19,6 +19,9 @@ Notification.destroy_all
 Subscription.destroy_all
 Stream.destroy_all
 
+#Comment.destroy_all
+#Follow.destroy_all
+
 
 
 bryna_nicole = Company.create({
@@ -82,7 +85,7 @@ test = Factory :user, {:email => 'test@test.com', :password => 'password', :firs
   user.follow bryna_nicole
   user.follow bryna1
   user.follow bryna2
-  add_default_items_for user
+  add_real_items_for user
 end
 
 

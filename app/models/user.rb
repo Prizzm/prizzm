@@ -130,6 +130,13 @@ class User < ActiveRecord::Base
     {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email}
   end
 
+  def events_where event_names
+    event_names = [event_names].flatten
+    stream.feed.find_all do |e|
+      event_names.include? e["event"]
+    end
+  end
+
 protected
 
   # This is a callback on teh items association, executed after an item is added

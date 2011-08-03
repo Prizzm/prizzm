@@ -1,9 +1,36 @@
 module FeedsHelper
 
-  def format_feed_item event
+  def following_list_for user, opts = {:limit => 4 }
+    user.events_where("user.follow.user").last(opts[:limit])
+  end
+
+  def events_about_users opts = {:limit => 4 }
+    events = "user.follow.user"
+    # user.update.item.*
+    # user.comment.*
+    # user.add.item
+    current_user.events_where(events).last(opts[:limit])
+  end
+
+  def events_about_products opts = {:limit => 4 }
+    # user.comment.product
+    events = "user.follow.product"
+    current_user.events_where(events).last(opts[:limit])
+  end
+
+  def events_about_companies opts = {:limit => 4 }
+    # user.comment.company
+    events = "user.follow.company"
+    current_user.events_where(events).last(opts[:limit])
+  end
+
+
+
+  def format_feed_item event, opts = {:timestamp => true}
     name = event["event"] 
     time = event["time"]
     user = event["from"]
+
     if user["id"] == current_user.id 
       subject = "You" 
       verb = " are "
@@ -25,13 +52,13 @@ module FeedsHelper
       output = "#{linked_subject} #{past} updated #{possession} profile"
     when "user.follow.user"
       user = event["data"][0]
-      followed = user["name"]
-      output << " now following user "
+      followed = user["id"] == current_user.id ? "You" : user["name"]
+      output << " following "
       output << link_to(followed, profile_path(user["id"]))
     when "user.follow.product"
       product = event["data"][0]
       followed = product["name"]
-      output << " now following the "
+      output << " following the "
       output << link_to(followed, product_path(product["id"]))
     when "user.follow.company"
       company = event["data"][0]
@@ -74,7 +101,7 @@ module FeedsHelper
     else
       "nothiing"
     end
-    output << "  #{time_ago_in_words Time.at(time)} ago "
+    output << raw("<br /> #{time_ago_in_words Time.at(time)} ago ") if opts[:timestamp]
     output.html_safe
   end
 
