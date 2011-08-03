@@ -29,10 +29,9 @@
 
       .clear
       %footer
-        #copyright
-          Copyright Prizzm 2011. Brought to you by a group of whitty guys.
-          - flash.each do |type, value|
-            .flash{ :class => type.to_s }
-              = value 
+        = render "layouts/footer"
+        - flash.each do |type, value|
+          .flash{ :class => type.to_s }
+            = value 
     = render 'layouts/javascripts'
   /= render 'layouts/google_analytics'

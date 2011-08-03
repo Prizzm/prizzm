@@ -24,22 +24,22 @@
     %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/app.css?v=2", :rel => "stylesheet"}/
     %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/dashboard.css?v=2", :rel => "stylesheet"}/
   %body
+
+
+
     #prizzmbar
     #hbar
     #container.container_24
       %header
         %h1.grid_4
-          %a{:href => "http://ohsogeoff.com/"} prizzm
+          = link_to "prizm", root_url
         %nav.grid_9
           %ul
-            %li
-              %a{:href => ""} Dashboard
-            %li
-              %a{:href => ""} Browse
-            %li
-              %a{:href => ""} Profile
-            %li
-              %a{:href => ""} Account
+            %li= link_to 'Dashboard', home_url, :class => "active"
+            %li= link_to 'Browse'
+            %li= link_to 'Profile'
+            %li= link_to 'Account'
+            %li= link_to 'Live feed', feed_path
         %form#search.grid_11{:action => ""}
           %input{:placeholder => "Find products and companies", :type => "text"}/
           %input{:type => "submit", :value => ""}/
@@ -49,6 +49,11 @@
           .grid_19
             .buttons
               %a.button.add{:href => ""} Write a review
+
+
+
+
+
         #content.grid_19
           #helptool
             %ul
@@ -131,69 +136,4 @@
                   .cell
                     = format_feed_item event,  :timestamp => true
       .clear
-    / end of #container
 
-    %footer
-      %ul.container_24
-        %li.grid_4
-          %h5 Prizzm
-          %ul
-            %li
-              %a{:href => ""} Home
-            %li
-              %a{:href => ""} Why Prizzm?
-            %li
-              %a{:href => ""} Tour
-            %li
-              %a.alt{:href => ""} Start adding things!
-            %li
-              %a{:href => ""} Login
-        %li.grid_4
-          %h5 Company
-          %ul
-            %li
-              %a{:href => ""} About us
-            %li
-              %a{:href => ""} Customers
-            %li
-              %a{:href => ""} Careers
-        %li.grid_4
-          %h5 Support
-          %ul
-            %li
-              %a{:href => ""} Help centre
-            %li
-              %a{:href => ""} API
-        %li.grid_4
-          %h5 Partners
-          %ul
-            %li Coming soon
-        %li.grid_4
-          %h5 Get in touch
-          %ul
-            %li
-              %a{:href => ""}
-                42 Golden Gate Bridge
-                %br>/
-                San Francisco
-            %li
-              %a{:href => ""} +90 000 000
-            %li
-              %a{:href => ""} contact@prizzm.com
-        %li.grid_4
-          %h5 Blog
-          %ul
-            %li Maybe a blog?
-      .clear
-      #copyright
-        Prizzm.com © . Prizzm LLC, all rights reserved .
-        %a{:href => ""} Terms
-        \&amp;
-        %a{:href => ""} Privacy
-      .clear
-      #hiddenlpsubmitdiv{:style => "display: none; "}
-      :javascript
-        try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}
-        
-          
-    
