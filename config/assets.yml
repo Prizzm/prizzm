@@ -24,9 +24,7 @@ javascripts:
 
 stylesheets:
   app:
-    - public/stylesheets/960.css
-    - public/stylesheets/boilerplate.css
-    - public/stylesheets/main.css
+    - public/stylesheets/global.css
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css

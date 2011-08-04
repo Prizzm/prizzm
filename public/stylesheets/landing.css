@@ -392,7 +392,66 @@ header {
   #p-saying a:hover {
     text-decoration: underline;
   }
+
+  #content {
+    margin-top: 15px;
+  }
+
+  section.grid_24 h3 {
+    text-align: center;
+  }
+
+  section h3 {
+    background: url("../images/landing/header-line.png") repeat-x scroll center center transparent;
+    font-family: ChaparralProRegular,Times New Roman,serif;
+    font-size: 1.8em;
+    font-variant: small-caps;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
   
+  section h3 span {
+    color: #545454;
+    padding-right: 10px;
+    text-shadow: 0 1px #FFFFFF;
+  }
+  
+  section h3 span {
+    background: none repeat scroll 0 0 #F7F7F7;
+    padding: 0 5px;
+  }
+
+  section h3 em {
+    color: #4E8FCC;
+    font-style: normal;
+  }
+  
+  em {
+    font-weight: bold;
+  }
+
+  #banner .bigbutton {
+    width: 230px;
+  }
+  
+  a:link {
+  }
+  
+  .bigbutton {
+    -moz-border-radius: 3px 3px 3px 3px;
+    background: -moz-linear-gradient(center top , #CDEB8E 0%, #A5C956 100%) repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 5px;
+    text-align: center;
+    text-shadow: 1px 1px #84A93F;
+  }
+  
+  a {
+    text-decoration: none;
+  }
   
 /* END MAIN CONTENT */
 
