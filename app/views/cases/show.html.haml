@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @case.title
+%p
+  %b Description:
+  = @case.description
+%p
+  %b Date:
+  = @case.date
+%p
+  %b Case reference:
+  = @case.case_reference
+%p
+  %b User:
+  = @case.user
+%p
+  %b Company:
+  = @case.company
+%p
+  %b Item:
+  = @case.item
+
+= link_to 'Edit', edit_case_path(@case)
+\|
+= link_to 'Back', cases_path

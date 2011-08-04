@@ -9,7 +9,7 @@
       %h2.grid_5 Dashboard
       .grid_19
         .buttons
-          %a.button.add{:href => ""} Write a review
+          = link_to "Add an Item", new_item_path + "#create", :id => 'action-button', :class => " button add facebox"
 
     #content.grid_19
       #helptool
