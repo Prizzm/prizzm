@@ -177,6 +177,6 @@ protected
   end
 
   def log_update
-    ActivityLogger.user_update_profile :from => self
+    #ActivityLogger.user_update_profile :from => self
   end
 end

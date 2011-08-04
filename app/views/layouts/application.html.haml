@@ -8,30 +8,24 @@
     = include_stylesheets :app
     = yield :page_style
   %body
-    #headerBar
-    #userBar
-    #main.container_12
-      %header
-        = render 'layouts/header'
-      #userBit
-        - if user_signed_in?
-          = render 'layouts/userbit'
-      .clear  
- 
-      - if current_user
-        = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
-        = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
-        = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
-        = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
-        = hidden_field_tag "processing_fb_id", ""
-        = hidden_field_tag "processing_tt_id", ""
-      = yield
+    #prizzmbar
 
-      .clear
-      %footer
-        = render "layouts/footer"
-        - flash.each do |type, value|
-          .flash{ :class => type.to_s }
-            = value 
-    = render 'layouts/javascripts'
+    - if current_user
+      = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
+      = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
+      = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+      = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+      = hidden_field_tag "processing_fb_id", ""
+      = hidden_field_tag "processing_tt_id", ""
+
+    = yield
+
+    .clear
+
+    %footer
+      = render "layouts/footer"
+      - flash.each do |type, value|
+        .flash{ :class => type.to_s }
+          = value 
+  = render 'layouts/javascripts'
   /= render 'layouts/google_analytics'

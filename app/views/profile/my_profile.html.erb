@@ -1,0 +1,78 @@
+<%- content_for :page_style do -%>
+  <%= include_stylesheets :profile -%>
+<%- end -%>
+
+<div id="hbar"></div>
+<div id="subbar"></div>
+  
+<div id="container" class="container_24">
+  <header>
+    <h1 class="grid_4"><a href="/">prizzm</a></h1>
+    <nav class="grid_9">
+      <ul>
+        <li><%= link_to "Dashboard", dashboard_path -%></li>
+        <li><%= link_to "Browse", home_path -%></li>
+        <li><a href="">Profile</a></li>
+        <li><a href="">Account</a></li>
+      </ul>
+    </nav>
+    <form id="search" class="grid_11" action="">
+      <input type="text" placeholder="Find products and companies" />
+      <input type="submit" value="" />
+    </form>
+  </header>
+    
+  <div id="main">
+    <header>
+      <%= image_tag @user.main_image, :class => "grid_5 profilePic", :alt => "" -%>
+      <h2 class="grid_5"><%= @user.name -%></h2>
+      <div class="grid_14">
+        <div class="buttons">
+          <%= link_to "Edit profile", edit_user_registration_path, :class => "button red" -%>
+        </div>
+      </div>
+    </header>
+    
+    <ul id="socialbit" class="grid_19">
+      <li>
+        <h3>Following <%= @user.following_users_count -%> People</h3>
+        <a href="">View all</a>
+      </li>
+      <li>
+        <h3>Followed by <%= @user.followers_count -%> People</h3>
+        <a href="">View all</a>
+      </li>
+      <li>
+        <h3>Following <%= @user.following_companies_count -%> Companies</h3>
+        <a href="">View all</a>
+      </li>
+      <li>
+        <h3>Following <%= @user.following_products_count -%> Products</h3>
+        <a href="">View all</a>
+      </li>
+    </ul>
+    
+    <aside class="grid_5">
+      <nav><ul>
+        <li><a class="active" href="">My recent activity</a></li>
+        <li><a href="">What I have</a></li>
+        <li><a href="">What I want</a></li>
+        <li><a href="">My cases</a></li>
+      </ul></nav>
+    </aside>
+    
+    <div id="content" class="grid_19">
+      <div id="helptool">
+        <ul>
+          <li>
+            <h3>To be assigned...</h3>
+            Still thinking of the messages here.
+          </li>
+        </ul>
+        <div class="close"></div>
+      </div>
+    </div>
+  
+    <div class="clear"></div>
+  </div>
+</div> <!-- end of #container -->

@@ -342,3 +342,78 @@ a.alt {
     color: #cae987 !important;
 }
 
+#prizzmbar {
+    height: 43px;
+    background: #344c85 url('../images/bg_pat.png');
+}
+
+#hbar {
+	height: 53px;
+	background: #f3f3f3;
+}
+
+#container > header {
+  height: 42px;
+}
+
+header {
+  -moz-box-sizing: border-box;
+}
+
+#container > header h1 a {
+  background: url("../images/s-logo.png") no-repeat scroll 0 6px transparent;
+  color: #FFFFFF;
+  display: block;
+  font-family: Museo500,serif;
+  font-size: 1.7em;
+  font-variant: small-caps;
+  font-weight: normal;
+  padding: 7px 0 0 30px;
+}
+
+#container > header nav li {
+  display: inline-block;
+}
+
+#container > header nav a {
+  color: #FFFFFF;
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 12px 5px;
+}
+
+header a, footer a {
+  text-decoration: none;
+}
+
+#search {
+  margin-top: 5px;
+  position: relative;
+}
+
+#search input[type="text"] {
+  -moz-border-radius: 3px 3px 3px 3px;
+  -moz-box-sizing: border-box;
+  border: 1px solid #283A64;
+  color: #B8B8B8;
+  font-size: 1em;
+  padding: 7px;
+  width: 100%;
+}
+
+#search input[type="submit"] {
+  background: url("../images/s-mag.png") no-repeat scroll right center transparent;
+  border-left: 1px solid #D6D6D6;
+  border-width: 0 0 0 1px;
+  height: 24px;
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  width: 22px;
+}
+ 
+label, input[type="button"], input[type="submit"], button {
+  cursor: pointer;
+}
+

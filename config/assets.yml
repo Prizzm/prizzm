@@ -28,6 +28,7 @@ stylesheets:
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
+    - public/stylesheets/font.css
   items-page:
     - public/stylesheets/item-public.css
     - public/stylesheets/galleriffic-3.css
@@ -35,3 +36,5 @@ stylesheets:
     - public/stylesheets/login/*.css
   ie: 
     - public/stylesheets/ie/*.css
+  profile:
+    - public/stylesheets/profile.css
