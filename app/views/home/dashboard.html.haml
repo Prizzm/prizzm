@@ -1,139 +1,95 @@
-!!!
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]--> 
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]--> 
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]--> 
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]--> 
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]--> 
-%html.no-js(lang='en')
-  %head
-    %meta{:charset => "utf-8"}/
-    %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+- content_for :page_style do
+  = include_stylesheets :dashboard
 
-    %title Prizzm - Your voice about your products
-    %meta(name="description" content="")
-    %meta(name="author" content="")
+#hbar
 
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %link{:href => "http://ohsogeoff.com/favicon.ico", :rel => "shortcut icon"}/
-    %link{:href => "http://ohsogeoff.com/apple-touch-icon.png", :rel => "apple-touch-icon"}/
-    
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/boilerplate.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/960.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/fonts.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/main.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/app.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "http://ohsogeoff.com/sandbox/prizzm/css/dashboard.css?v=2", :rel => "stylesheet"}/
-  %body
+#container.container_24
+  #main
+    %header
+      %h2.grid_5 Dashboard
+      .grid_19
+        .buttons
+          %a.button.add{:href => ""} Write a review
 
-
-
-    #prizzmbar
-    #hbar
-    #container.container_24
-      %header
-        %h1.grid_4
-          = link_to "prizm", root_url
-        %nav.grid_9
-          %ul
-            %li= link_to 'Dashboard', dashboard_path, :class => "active"
-            %li= link_to 'Browse', home_path
-            %li= link_to 'Profile'
-            %li= link_to 'Account'
-            /%li= link_to 'Live feed', feed_path
-        %form#search.grid_11{:action => ""}
-          %input{:placeholder => "Find products and companies", :type => "text"}/
-          %input{:type => "submit", :value => ""}/
-      #main
-        %header
-          %h2.grid_5 Dashboard
-          .grid_19
-            .buttons
-              %a.button.add{:href => ""} Write a review
-
-
-
-
-
-        #content.grid_19
-          #helptool
-            %ul
-              %li
-                %h3 Find brands
-                Find the brands of things you own.
-              %li
-                %h3 Review their products
-                Give an honest review about your experience with their products.
-              %li
-                %h3 Share them!
-                Help the community by sharing your reviews.
-            .close
-            
-          %section#tr-br.grid_18
-            %h3
-              %span trending brands
-            %ul
-              - trending_brands.each do |company|
-                %li
-                  = link_to company_path(company) do
-                    = image_tag company.main_image
-                    = company.name
-            %a.fr{:href => ""} View all
-          .clear
-          .clear
-          %section#la-rev.grid_9
-            %h3
-              %span latest reviews
-            %ul
-              - latest_reviews.each do |review|
-                %li
-                  = image_tag review.from["image"]
-                  .fl
-                    %h4= review.data[0]["name"]
-                    %p
-                      = truncate(review.data[0]["review"], :length => 160)
-                      %br= link_to "Read more", '#'
-                    .rating
-                  .clear
-          %section#mo-re-ca.grid_9
-            %h3
-              %span most recent cases
-            %ul
-              %li
-                %a{:href => ""}
-                  %img.fl{:alt => "", :src => ""}/
-                .desc.fl
-                .clear
-        %aside.grid_5
-          %article
-            %h4.fl People following
-            %a.small.fr{:href => ""} View all
-            .clear
-            .table
-              - events_about_users.each do |event|
-                .row
-                  .cell.img
-                  .cell
-                    = format_feed_item event,  :timestamp => true
-
-          %article
-            %h4.fl Products following
-            %a.small.fr{:href => ""} View all
-            .clear
-            .table
-              - events_about_products.each do |event|
-                .row
-                  .cell.img
-                  .cell
-                    = format_feed_item event,  :timestamp => true
-          %article
-            %h4.fl Brands following
-            %a.small.fr{:href => ""} View all
-            .clear
-            .table
-              - events_about_companies.each do |event|
-                .row
-                  .cell.img
-                  .cell
-                    = format_feed_item event,  :timestamp => true
+    #content.grid_19
+      #helptool
+        %ul
+          %li
+            %h3 Find brands
+            Find the brands of things you own.
+          %li
+            %h3 Review their products
+            Give an honest review about your experience with their products.
+          %li
+            %h3 Share them!
+            Help the community by sharing your reviews.
+        .close
+        
+      %section#tr-br.grid_18
+        %h3
+          %span trending brands
+        %ul
+          - trending_brands.each do |company|
+            %li
+              = link_to company_path(company) do
+                = image_tag company.main_image
+                = company.name
+        %a.fr{:href => ""} View all
       .clear
+      .clear
+      %section#la-rev.grid_9
+        %h3
+          %span latest reviews
+        %ul
+          - latest_reviews.each do |review|
+            %li
+              = image_tag review.from["image"]
+              .fl
+                %h4= review.data[0]["name"]
+                %p
+                  = truncate(review.data[0]["review"], :length => 160)
+                  %br= link_to "Read more", '#'
+                .rating
+              .clear
+      %section#mo-re-ca.grid_9
+        %h3
+          %span most recent cases
+        %ul
+          %li
+            %a{:href => ""}
+              %img.fl{:alt => "", :src => ""}/
+            .desc.fl
+            .clear
+    %aside.grid_5
+      %article
+        %h4.fl People following
+        %a.small.fr{:href => ""} View all
+        .clear
+        .table
+          - events_about_users.each do |event|
+            .row
+              .cell.img
+              .cell
+                = format_feed_item event,  :timestamp => true
 
+      %article
+        %h4.fl Products following
+        %a.small.fr{:href => ""} View all
+        .clear
+        .table
+          - events_about_products.each do |event|
+            .row
+              .cell.img
+              .cell
+                = format_feed_item event,  :timestamp => true
+      %article
+        %h4.fl Brands following
+        %a.small.fr{:href => ""} View all
+        .clear
+        .table
+          - events_about_companies.each do |event|
+            .row
+              .cell.img
+              .cell
+                = format_feed_item event,  :timestamp => true
+  .clear

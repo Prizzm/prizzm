@@ -11,8 +11,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    render :layout => nil
-
   end
 
   def make_data

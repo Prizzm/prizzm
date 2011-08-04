@@ -436,3 +436,45 @@ label, input[type="button"], input[type="submit"], button {
   cursor: pointer;
 }
 
+#helptool {
+  -moz-border-radius: 3px 3px 3px 3px;
+  background: none repeat scroll 0 0 #CFE1F1;
+  margin: 0 0 10px;
+  padding: 5px;
+  position: relative;
+}
+
+#helptool ul {
+  list-style: none outside none;
+  margin: 0;
+}
+
+#helptool li {
+  display: inline-block;
+  vertical-align: top;
+  width: 226px;
+}
+
+#helptool h3 {
+  margin-bottom: 5px;
+}
+
+#content section {
+  margin-bottom: 15px;
+}
+
+section h3 span {
+  background: none repeat scroll 0 0 #FFFFFF;
+}
+
+aside h4 {
+  padding-bottom: 3px;
+}
+
+aside a.fr {
+  text-decoration: none;
+}
+
+.small {
+  font-size: 0.8em;
+}
