@@ -24,12 +24,11 @@ javascripts:
 
 stylesheets:
   app:
-    - public/stylesheets/960.css
-    - public/stylesheets/boilerplate.css
-    - public/stylesheets/main.css
+    - public/stylesheets/global.css
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
+    - public/stylesheets/font.css
   items-page:
     - public/stylesheets/item-public.css
     - public/stylesheets/galleriffic-3.css
@@ -37,3 +36,7 @@ stylesheets:
     - public/stylesheets/login/*.css
   ie: 
     - public/stylesheets/ie/*.css
+  profile:
+    - public/stylesheets/profile.css
+  dashboard:
+    - public/stylesheets/dashboard.css
