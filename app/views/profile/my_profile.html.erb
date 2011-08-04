@@ -6,22 +6,6 @@
 <div id="subbar"></div>
   
 <div id="container" class="container_24">
-  <header>
-    <h1 class="grid_4"><a href="/">prizzm</a></h1>
-    <nav class="grid_9">
-      <ul>
-        <li><%= link_to "Dashboard", dashboard_path -%></li>
-        <li><%= link_to "Browse", home_path -%></li>
-        <li><a href="">Profile</a></li>
-        <li><a href="">Account</a></li>
-      </ul>
-    </nav>
-    <form id="search" class="grid_11" action="">
-      <input type="text" placeholder="Find products and companies" />
-      <input type="submit" value="" />
-    </form>
-  </header>
-    
   <div id="main">
     <header>
       <%= image_tag @user.main_image, :class => "grid_5 profilePic", :alt => "" -%>

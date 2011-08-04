@@ -352,15 +352,18 @@ a.alt {
 	background: #f3f3f3;
 }
 
-#container > header {
+#prizzmbar > header {
   height: 42px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
 }
 
 header {
   -moz-box-sizing: border-box;
 }
 
-#container > header h1 a {
+#prizzmbar > header h1 a {
   background: url("../images/s-logo.png") no-repeat scroll 0 6px transparent;
   color: #FFFFFF;
   display: block;
@@ -371,16 +374,32 @@ header {
   padding: 7px 0 0 30px;
 }
 
-#container > header nav li {
+#prizzmbar > header nav li {
   display: inline-block;
 }
 
-#container > header nav a {
+#prizzmbar > header nav a {
   color: #FFFFFF;
   display: block;
   font-size: 1.1em;
   font-weight: bold;
   padding: 12px 5px;
+}
+
+#prizzmbar > header nav a:hover {
+	background: #283a64;
+}
+
+#prizzmbar .grid_4 {
+  width: 150px;
+}
+
+#prizzmbar .grid_9 {
+  width: 350px;
+}
+
+#prizzmbar .grid_11 {
+  width: 430px;
 }
 
 header a, footer a {

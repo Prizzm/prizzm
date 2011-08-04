@@ -20,7 +20,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 }
 
 #container {
-	margin-top: -227px;
+	margin-top: -185px;
 }
 
 header .grid_14 {
@@ -112,6 +112,3 @@ footer {
   margin-bottom: 5px;
 }
 
-#container > header nav a:hover {
-	background: #283a64;
-}
