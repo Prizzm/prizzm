@@ -1,6 +1,6 @@
 module FeedsHelper
   def trending_brands
-    [Company.first] * 8 #limit(8).to_a
+    [Company.first] * 4 #limit(8).to_a
   end
 
   def latest_reviews

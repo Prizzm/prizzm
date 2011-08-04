@@ -1,5 +1,7 @@
 Prizzm::Application.routes.draw do
 
+  resources :cases
+
   get "feeds/show"
 
   # Routes for main page
