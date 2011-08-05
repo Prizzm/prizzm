@@ -1,69 +1,135 @@
-- content_for :page_style do
-  = include_stylesheets 'items-page'
-
-%aside.grid_3
-  = render 'items/images'
+#container.container_24
+  %header
+    %h1.grid_5
+      %a{:href => "/", :rel => "index"} PRIZZM
+    %nav.grid_15
+      %ul
+        %li
+          %a{:href => ""} Why Prizzm?
+        %li
+          %a{:href => ""} Tour
+        %li
+          %a.alt{:href => ""} Start adding things!
+    %ul.grid_4
+      %li
+        %a{:href => ""} Help
+      %li#login
+        %a{:href => ""} Login
+        #login-drop
+          %form
+            %input{:placeholder => "Email", :type => "text"}/
+            %input{:placeholder => "Password", :type => "password"}/
+            %span
+              %input{:checked => "true", :type => "checkbox"}/
+              Remember me
+            %a{:href => ""} Forgot something?
+            %input{:type => "submit", :value => "login"}/
+          %ul
+            %li
+              %a{:href => ""}
+                %img{:src => "images/fb-login-button.png"}/
+            %li
+              %a{:href => ""}
+                %img{:src => "images/login-with-twitter.png"}/
+  #main
+    %header
+      %h2.grid_5 Bryna Nicole Bag
+      .grid_19
+        .buttons
+          %a.button.add{:href => ""} Write your own review
+    %aside.grid_5
+      %img.bigthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+      %article
+        %ul#usergallery
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+          %li
+            %a{:href => ""}
+              %img.smallthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+    #content.grid_13
+      %section#review
+        .title Review
+        %h1 This is your review
+        %p
+          You can express your view on this product and even share it with your friends! This is just a
+          %em sample
+          you can edit this just by clicking the "Edit review" in the top right of this section.
+        %h2 Stuck for ideas?
+        %ul
+          %li Did you like this product?
+          %li What did you like or dislike about it?
+          %li Would you buy more products like this from Bryna?
+          %li What do you recommend for people who want this product?
+        %h3 Sharing it!
+        %p
+          You also have the option of sharing your review with your social networks! Simply edit your
+          %em visibility
+          settings.
+        %h3 Add photo's
+        Want to show people how the bag looks on you? Its easy to drag and drop to upload your photos.
+        #footerbit
+          Written 31st July 2011 - Edited 2 hours ago |
+          %a{:href => ""} 10 Comments
+      %ul#comments.table
+        %li.row
+          .cell.img
+            %img{:src => "images/me.png"}/
+          .cell.comm
+            %a{:href => ""} Geoffrey Chong
+            \- This is what a comment looks like! Does it look familiar? :)
+        %li.row
+          .cell.img
+            %img{:src => "images/me.png"}/
+          .cell.comm
+            %a{:href => ""} Geoffrey Chong
+            \- This is what a comment looks like! Does it look familiar? :)
+        %li.row
+          .cell.img
+            %img{:src => "images/me.png"}/
+          .cell.comm
+            %a{:href => ""} Geoffrey Chong
+            \- This is what a comment looks like! Does it look familiar? :)
+        %li.row
+          .cell.img
+            %img{:src => "images/me.png"}/
+          .cell.comm
+            %a{:href => ""} Geoffrey Chong
+            \- This is what a comment looks like! Does it look familiar? :)
+        %li.row
+          .cell.img
+            %img{:src => "images/me.png"}/
+          .cell.comm
+            %a{:href => ""} Geoffrey Chong
+            \- This is what a comment looks like! Does it look familiar? :)
+      %a{:href => ""} Sign up to post a comment!
+    %aside.grid_6
+      %article
+        %h4 Owner of this product
+        %img.userthumb.fl{:alt => "", :src => "images/me.png"}/
+        %h5 Geoffrey Chong
+        %a{:href => ""} Follow
+        %a{:href => ""} View profile
+      %article
+        #rating.recommended I recommend this
+      %article
+        %h4 Who else owns this?
+        Grid of people's profile images who own this same product.
+      %article
+        %h4 What other people are saying
+        Reserved for a feed of other people's reviews.
+    .clear
   .clear
-
-  %br/
-  = fields_for ItemImage.new do |f|
-    = f.file_field :image, :rel => item_images_path(@item)                        
-
-  = photo_uploadify
-
-  #addimage-loader{:style => "display: none"}
-.grid_6
-  #edit-item
-    = link_to "Edit", edit_owned_item_path(@item.id), :class => "facebox"
-  
-  #item-name
-    %h2.edit Your #{@item.name}
-  %div{:id => "stats"}
-    %div{:id => "item_#{@item.id}_rating", :class => "rating"}
-      = form_for [@user, @item], :remote => true do |f|
-        %div{:id => "stars-wrapper-#{@item.id}"}
-          = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
-      = render :partial => 'items/privacy_controls', :locals => {:item => @item }
-  
-  #review
-    %h3 Review
-    = @item.review
-
-  = comment_form_for @item
-
-  #comments_feed
-    #comments
-      - if @item.comments.count == 0
-        Be the first to comment!
-      - else
-        Comments on this item:
-        = comment_collection_for @item
-
-%aside.grid_3
-  %article#ask
-    %header.clearfix
-      %h1 Ask your friends
-    = render 'social/item_ask_friends'
-  
-  %article#survey
-    %header.clearfix
-      %h1 Survey
-
-- content_for :jquery do
-  :javascript
-    $(document).ready(function(){
-
-      $("#stars-wrapper-#{@item.id}").stars({
-        inputType: "select",
-        callback: function(ui, type, value, event){
-          var item = #{@item.id};
-          update_rating('items', item,value);
-        },
-        cancelShow: false
-      });
-
-      if (document.location.hash === "#write_review"){
-        $('#review .edit').trigger('click.editable');
-      }
-    });
-
+/ end of #container

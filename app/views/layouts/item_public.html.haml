@@ -1,0 +1,27 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = favicon_link_tag
+    = include_stylesheets :app
+    = include_stylesheets :public
+    = include_stylesheets :item_detail
+    = yield :page_style
+    
+  %body
+    #blackbar
+    #hbar
+      
+    = yield
+
+    .clear
+
+    %footer
+      = render "layouts/footer"
+      - flash.each do |type, value|
+        .flash{ :class => type.to_s }
+          = value 
+    = render 'layouts/javascripts'
+  /= render 'layouts/google_analytics'

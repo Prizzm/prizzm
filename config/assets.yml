@@ -26,16 +26,19 @@ stylesheets:
   app:
     - public/stylesheets/global.css
     - public/stylesheets/fonts.css
-    - public/stylesheets/application.css
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
-  items-page:
-    - public/stylesheets/item-public.css
     - public/stylesheets/galleriffic-3.css
+  logged_in:
+    - public/stylesheets/application-logged-in.css
+  public:
+    - public/stylesheets/application-public.css
+
+  item_public:
+    - public/stylesheets/item-public.css
   item_detail:
     - public/stylesheets/item-detail.css
-    - public/stylesheets/galleriffic-3.css
   login:
     - public/stylesheets/login/*.css
   ie: 

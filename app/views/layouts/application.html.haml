@@ -5,8 +5,7 @@
     %title  Prizzm
     = csrf_meta_tag
     = favicon_link_tag
-    = include_stylesheets :app
-    = yield :page_style
+    = render 'layouts/stylesheets'
     
   %body
     #prizzmbar

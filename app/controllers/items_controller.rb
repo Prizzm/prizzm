@@ -31,7 +31,7 @@ class ItemsController < InheritedResources::Base
     if @item.user == current_user
       render "show_private_item"
     elsif @item.privacy == "public"
-      render "show_public_item"
+      render "show_public_item", :layout => "item_public.html.haml"
     end
   end
 
