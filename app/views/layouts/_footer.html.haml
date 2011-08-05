@@ -3,11 +3,11 @@
     %h5 Prizzm
     %ul
       %li
-        %a{:href => ""} Home
+        = link_to "Home", root_path
       %li
-        %a{:href => ""} Why Prizzm?
+        Why Prizzm?
       %li
-        %a{:href => ""} Tour
+        Tour
       %li
         %a.alt{:href => ""} Start adding things!
       %li
@@ -18,16 +18,16 @@
       %li
         %a{:href => ""} About us
       %li
-        %a{:href => ""} Customers
+        Customers
       %li
-        %a{:href => ""} Careers
+        Careers
   %li.grid_4
     %h5 Support
     %ul
       %li
-        %a{:href => ""} Help centre
+        Help centre
       %li
-        %a{:href => ""} API
+        API
   %li.grid_4
     %h5 Partners
     %ul
@@ -36,21 +36,14 @@
     %h5 Get in touch
     %ul
       %li
-        %a{:href => ""}
-          42 Golden Gate Bridge
-          %br>/
-          San Francisco
-      %li
-        %a{:href => ""} +90 000 000
-      %li
         %a{:href => ""} contact@prizzm.com
   %li.grid_4
     %h5 Blog
     %ul
-      %li Maybe a blog?
+      %li= link_to "Blog", "http://www.prizzm.com"
 .clear
 #copyright
-  Prizzm.com © . Prizzm LLC, all rights reserved .
+  Prizzm.com © . Prizzm Inc, all rights reserved .
   %a{:href => ""} Terms
   \&amp;
   %a{:href => ""} Privacy
