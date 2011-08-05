@@ -1,0 +1,38 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = favicon_link_tag
+    = include_stylesheets :app
+    = yield :page_style
+    
+  %body
+    #prizzmbar
+    #hbar
+
+    #subbar
+
+    #container.container_24
+      %header
+        = render "layouts/header2"
+
+      - if current_user
+        = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
+        = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
+        = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
+        = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
+        = hidden_field_tag "processing_fb_id", ""
+        = hidden_field_tag "processing_tt_id", ""
+
+      #main
+        = yield
+
+    %footer
+      = render "layouts/footer"
+      - flash.each do |type, value|
+        .flash{ :class => type.to_s }
+          = value 
+    = render 'layouts/javascripts'
+  /= render 'layouts/google_analytics'
