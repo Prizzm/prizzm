@@ -12,7 +12,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 .profilePic {
 	padding: 5px;
 	background: #fff;
-  height: 155px;
+    height: 150px;
 }
 
 .grid_19 {
@@ -20,7 +20,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 }
 
 #container {
-	margin-top: -185px;
+	margin-top: -227px;
 }
 
 header .grid_14 {
@@ -75,40 +75,3 @@ aside  nav li{
 footer {
 	margin-top: 0;
 }
-
-#main > header {
-  height: 53px;
-  margin-bottom: 0;
-  padding-top: 13px;
-}
-
-#main > header h2 {
-  font-size: 1.8em;
-  font-weight: normal;
-}
-
-#main .buttons {
-  float: right;
-}
-
-#content {
-  min-height: 500px;
-}
-
-#helptool {
-  -moz-border-radius: 3px 3px 3px 3px;
-  background: none repeat scroll 0 0 #CFE1F1;
-  margin: 0 0 10px;
-  padding: 5px;
-  position: relative;
-}
-
-#helptool ul {
-  list-style: none outside none;
-  margin: 0;
-}
-
-#helptool h3 {
-  margin-bottom: 5px;
-}
-
