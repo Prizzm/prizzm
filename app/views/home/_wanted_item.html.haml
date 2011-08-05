@@ -1,7 +1,7 @@
 .row(id="item_#{item.id}" data-itemid="#{item.id}")
   .cell.img= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
   .cell
-    %h2= link_to item.name, owners_wanted_item_view_path(item)
+    %h2= link_to item.name, item_path(item)
     .clear
     = link_to "Request Recommendation", new_advice_path(item), :class => 'facebox'
     = render :partial => 'items/privacy_controls', :locals => {:item => item }
