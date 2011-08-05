@@ -1,0 +1,11 @@
+%h1{:class => "grid_4"}= link_to "prizzm", "/"
+%nav{:class => "grid_9"}
+  %ul
+    %li= link_to "Dashboard", dashboard_path
+    %li= link_to "My Stuff", home_path
+    %li= link_to "Profile", profile_path(current_user)
+    %li= link_to "Logout", destroy_user_session_url
+
+= form_tag "#", { :id => "search", :class => "grid_11"} do 
+  %input{:type => "text", :placeholder => "Find products and companies"}
+  %input{:type => "submit", :value => ""}

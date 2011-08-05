@@ -56,9 +56,12 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.text     "url"
     t.string   "industry"
     t.string   "contact_name"
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true
 
   create_table "company_images", :force => true do |t|
     t.integer  "company_id"
@@ -119,11 +122,14 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.integer  "rating"
     t.integer  "position"
     t.integer  "asking_price"
+    t.string   "cached_slug"
     t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "items", ["cached_slug"], :name => "index_items_on_cached_slug", :unique => true
 
   create_table "product_images", :force => true do |t|
     t.integer  "product_id"
@@ -146,9 +152,12 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.text     "url"
     t.text     "description"
     t.integer  "rating"
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["cached_slug"], :name => "index_products_on_cached_slug", :unique => true
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -197,8 +206,10 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.string   "phone_number"
     t.string   "photo"
     t.string   "location"
+    t.string   "cached_slug"
   end
 
+  add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

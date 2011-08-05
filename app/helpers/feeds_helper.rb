@@ -49,7 +49,7 @@ module FeedsHelper
       possession = " their "
       past = " has "
     end
-    linked_subject = link_to subject, profile_path(user["id"])
+    linked_subject = link_to subject, profile_path(user["slug"])
 
     output = linked_subject + verb
     case name
@@ -61,21 +61,21 @@ module FeedsHelper
       user = event["data"][0]
       followed = user["id"] == current_user.id ? "You" : user["name"]
       output << " following "
-      output << link_to(followed, profile_path(user["id"]))
+      output << link_to(followed, profile_path(user["slug"]))
     when "user.follow.product"
       product = event["data"][0]
       followed = product["name"]
       output << " following the "
-      output << link_to(followed, product_path(product["id"]))
+      output << link_to(followed, product_path(product["cached_slug"]))
     when "user.follow.company"
       company = event["data"][0]
       followed = company["name"]
       output << " now following "
-      output << link_to(followed, company_path(company["id"]))
+      output << link_to(followed, company_path(company["cached_slug"]))
     when "user.add.item"
       item = event["data"][0]
       output << " added the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
       output << " to their items"
     when "user.remove.item"
     when "user.update.item.rating"
@@ -84,27 +84,27 @@ module FeedsHelper
       # TODO: Differentiate betweeen public link and private link
       # Might want to start handling this in the controller, instead of having 4
       # routes  public/private   want/have
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.privacy"
       item = event["data"][0]
       output << " just changed the privacy settings for the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.name"
       item = event["data"][0]
       output << " changed the name for the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.review"
       item = event["data"][0]
       output << " updated their review for the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.url"
       item = event["data"][0]
       output << " added a new URL for the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.comment.item"
       item = event["data"][0]
       output << " left a comment about the "
-      output << link_to(item["name"], item_path(item["id"]))
+      output << link_to(item["name"], item_path(item["cached_slug"]))
     else
       "nothiing"
     end

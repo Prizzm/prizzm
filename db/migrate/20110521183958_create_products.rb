@@ -11,8 +11,11 @@ class CreateProducts < ActiveRecord::Migration
       t.text    :description
       t.integer :rating
 
+      t.string :cached_slug
       t.timestamps
     end
+    
+    add_index  :products, :cached_slug, :unique => true
   end
 
   def self.down

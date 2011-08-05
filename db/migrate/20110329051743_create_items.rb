@@ -15,11 +15,14 @@ class CreateItems < ActiveRecord::Migration
       t.integer :position
       t.integer :asking_price
 
+      t.string :cached_slug
 
       t.references :user
       t.references :product
       t.timestamps
     end
+
+    add_index  :items, :cached_slug, :unique => true
   end
 
   def self.down

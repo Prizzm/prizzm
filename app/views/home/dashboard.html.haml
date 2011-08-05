@@ -1,7 +1,6 @@
 - content_for :page_style do
   = include_stylesheets :dashboard
 
-#hbar
 
 #container.container_24
   #main
@@ -48,7 +47,7 @@
                 %h4= review.data[0]["name"]
                 %p
                   = truncate(review.data[0]["review"], :length => 160)
-                  %br= link_to "Read more", '#'
+                  %br= link_to "Read more", item_path(review.data[0]["cached_slug"])
                 .rating
               .clear
       %section#mo-re-ca.grid_9

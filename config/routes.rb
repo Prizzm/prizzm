@@ -60,6 +60,8 @@ Prizzm::Application.routes.draw do
     resources :addresses
   end 
  
+  resources :items 
+
   resources :users do
     resources :items do
       match 'share' => 'items#share'

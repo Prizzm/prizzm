@@ -18,11 +18,7 @@ class ItemsController < InheritedResources::Base
       @item = Item.create(params[:item])
     end
     current_user.items << @item
-    if @item.possession_status == 'want'
-      redirect_to owners_wanted_item_view_path(@item)
-    elsif @item.possession_status == 'have'
-      redirect_to owners_owned_item_view_path(@item)
-    end
+    redirect_to @item
   end
 
   def edit
@@ -30,8 +26,13 @@ class ItemsController < InheritedResources::Base
   end
 
   def show
-    @user = current_user
-    @item = current_user.items.find(params[:id])
+    #@item = current_user.items.find(params[:id])
+    @item = Item.find(params[:id])
+    if @item.user == current_user
+      render "show_private_item"
+    elsif @item.privacy == "public"
+      render "show_public_item"
+    end
   end
 
   def update 
