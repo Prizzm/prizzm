@@ -1,6 +1,5 @@
 #content {
 	width: 718px;
-  min-height: 500px;
 }
 
 #tr-br ul{
@@ -122,45 +121,3 @@ aside .table {
       section .grid_12 h3 span {
         padding: 0 10px 0 0;
       }
-
-/* 
- * Applied new CSS to Dashboard. - Giang NGUYEN 
- */
-
-#container {
-  margin-top: -53px;
-}
-
-.container_24 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
-}
-
-#main > header {
-  height: 53px;
-  margin-bottom: 10px;
-  padding-top: 13px;
-}
-
-#main > header h2 {
-  font-size: 1.8em;
-  font-weight: normal;
-}
-
-.container_24 .grid_5 {
-  width: 190px;
-}
-
-#main .buttons {
-  float: right;
-}
-
-aside article {
-  margin-bottom: 25px;
-}
-
-aside .row {
-  display: block;
-  margin-bottom: 10px;
-}

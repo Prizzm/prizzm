@@ -1,94 +1,92 @@
 - content_for :page_style do
   = include_stylesheets :dashboard
 
+#main
+  %header
+    %h2.grid_5 Dashboard
+    .grid_19
+      .buttons
+        = link_to "Add an Item", new_item_path + "#create", :id => 'action-button', :class => " button add facebox"
 
-#container.container_24
-  #main
-    %header
-      %h2.grid_5 Dashboard
-      .grid_19
-        .buttons
-          = link_to "Add an Item", new_item_path + "#create", :id => 'action-button', :class => " button add facebox"
-
-    #content.grid_19
-      #helptool
-        %ul
+  #content.grid_19
+    #helptool
+      %ul
+        %li
+          %h3 Find brands
+          Find the brands of things you own.
+        %li
+          %h3 Review their products
+          Give an honest review about your experience with their products.
+        %li
+          %h3 Share them!
+          Help the community by sharing your reviews.
+      .close
+      
+    %section#tr-br.grid_18
+      %h3
+        %span trending brands
+      %ul
+        - trending_brands.each do |company|
           %li
-            %h3 Find brands
-            Find the brands of things you own.
+            = link_to company_path(company) do
+              = image_tag company.main_image
+              = company.name
+      %a.fr{:href => ""} View all
+    .clear
+    .clear
+    %section#la-rev.grid_9
+      %h3
+        %span latest reviews
+      %ul
+        - latest_reviews.each do |review|
           %li
-            %h3 Review their products
-            Give an honest review about your experience with their products.
-          %li
-            %h3 Share them!
-            Help the community by sharing your reviews.
-        .close
-        
-      %section#tr-br.grid_18
-        %h3
-          %span trending brands
-        %ul
-          - trending_brands.each do |company|
-            %li
-              = link_to company_path(company) do
-                = image_tag company.main_image
-                = company.name
-        %a.fr{:href => ""} View all
-      .clear
-      .clear
-      %section#la-rev.grid_9
-        %h3
-          %span latest reviews
-        %ul
-          - latest_reviews.each do |review|
-            %li
-              = image_tag review.from["image"]
-              .fl
-                %h4= review.data[0]["name"]
-                %p
-                  = truncate(review.data[0]["review"], :length => 160)
-                  %br= link_to "Read more", item_path(review.data[0]["cached_slug"])
-                .rating
-              .clear
-      %section#mo-re-ca.grid_9
-        %h3
-          %span most recent cases
-        %ul
-          %li
-            %a{:href => ""}
-              %img.fl{:alt => "", :src => ""}/
-            .desc.fl
+            = image_tag review.from["image"]
+            .fl
+              %h4= review.data[0]["name"]
+              %p
+                = truncate(review.data[0]["review"], :length => 160)
+                %br= link_to "Read more", item_path(review.data[0]["cached_slug"])
+              .rating
             .clear
-    %aside.grid_5
-      %article
-        %h4.fl People following
-        %a.small.fr{:href => ""} View all
-        .clear
-        .table
-          - events_about_users.each do |event|
-            .row
-              .cell.img
-              .cell
-                = format_feed_item event,  :timestamp => true
+    %section#mo-re-ca.grid_9
+      %h3
+        %span most recent cases
+      %ul
+        %li
+          %a{:href => ""}
+            %img.fl{:alt => "", :src => ""}/
+          .desc.fl
+          .clear
+  %aside.grid_5
+    %article
+      %h4.fl People following
+      %a.small.fr{:href => ""} View all
+      .clear
+      .table
+        - events_about_users.each do |event|
+          .row
+            .cell.img
+            .cell
+              = format_feed_item event,  :timestamp => true
 
-      %article
-        %h4.fl Products following
-        %a.small.fr{:href => ""} View all
-        .clear
-        .table
-          - events_about_products.each do |event|
-            .row
-              .cell.img
-              .cell
-                = format_feed_item event,  :timestamp => true
-      %article
-        %h4.fl Brands following
-        %a.small.fr{:href => ""} View all
-        .clear
-        .table
-          - events_about_companies.each do |event|
-            .row
-              .cell.img
-              .cell
-                = format_feed_item event,  :timestamp => true
-  .clear
+    %article
+      %h4.fl Products following
+      %a.small.fr{:href => ""} View all
+      .clear
+      .table
+        - events_about_products.each do |event|
+          .row
+            .cell.img
+            .cell
+              = format_feed_item event,  :timestamp => true
+    %article
+      %h4.fl Brands following
+      %a.small.fr{:href => ""} View all
+      .clear
+      .table
+        - events_about_companies.each do |event|
+          .row
+            .cell.img
+            .cell
+              = format_feed_item event,  :timestamp => true
+.clear

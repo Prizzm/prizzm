@@ -25,7 +25,8 @@ javascripts:
 stylesheets:
   app:
     - public/stylesheets/global.css
-    - public/stylesheets/font.css
+    - public/stylesheets/fonts.css
+    - public/stylesheets/application.css
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
