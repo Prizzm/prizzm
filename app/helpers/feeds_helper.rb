@@ -63,7 +63,7 @@ module FeedsHelper
       output << " following "
       output << link_to(followed, profile_path(user["slug"]))
     when "user.follow.product"
-      product = event["data"][0]
+      product = event["data"][0] 
       followed = product["name"]
       output << " following the "
       output << link_to(followed, product_path(product["cached_slug"]))

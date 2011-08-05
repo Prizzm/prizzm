@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
   has_many :interactions, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
 
-  has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
+  has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true
 
   # TODO: Add an Item_URL model along with a has_many association Item_URL
   # should have an thumbnail image
