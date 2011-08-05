@@ -1,232 +1,129 @@
-<!doctype html>
-/[if lt IE 7 ] <html lang="en" class="no-js ie6">
-/[if IE 7 ] <html lang="en" class="no-js ie7">
-/[if IE 8 ] <html lang="en" class="no-js ie8">
-/[if IE 9 ] <html lang="en" class="no-js ie9">
-/ [if (gt IE 9)|!(IE)]><!
-%html.no-js{:lang => "en"}
-  / <![endif]
-  %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %title Prizzm - Your voice about your products
-    %meta{:content => "", :name => "description"}/
-    %meta{:content => "", :name => "author"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
-    %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
-    %link{:href => "css/global.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "css/fonts.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "css/app.css?v=2", :rel => "stylesheet"}/
-    %link{:href => "css/item-detail.css?v=2", :rel => "stylesheet"}/
-    %script{:src => "js/libs/modernizr-1.6.min.js"}
-  %body
-    #prizzmbar
-    #hbar
-    #container.container_24
-      %header
-      %h1.grid_4
-        %a{:href => "/"} prizzm
-      %nav.grid_9
-      %ul
-        %li
-          %a{:href => ""} Dashboard
-        %li
-          %a{:href => ""} Browse
-        %li
-          %a{:href => ""} Profile
-        %li
-          %a{:href => ""} Account
-      %form#search.grid_11{:action => ""}
-        %input{:placeholder => "Find products and companies", :type => "text"}/
-        %input{:type => "submit", :value => ""}/
-      #main
-        %header
-        %h2.grid_5 Bryna Nicole Bag
-        .grid_19
-        %aside.grid_5
-        %img.bigthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
-        %article
-        #usergallery
-          Add your photo's here
-          %br/
-          %em Drag and Drop
-        %input#graburl{:placeholder => "Add a URL", :type => "text"}/
-        #content.grid_13
-          #helptool
-            %ul
-              %li
-                %h3 Write your review
-                Give an honest review about your experience with their products.
-              %li
-                %h3 Sharing
-                You can easily share your review with your friends on your social networks.
-              %li
-                %h3 Ask your friends
-                Need advice from your friends? Its easy to ask your social networks a quick question!
-            .close
-          %section#review
-          %a.edit-cntrl{:href => ""} Edit review
-          .title Review
-          %h1 This is your review
-          %p
-            You can express your view on this product and even share it with your friends! This is just a
-            %em sample
-            you can edit this just by clicking the "Edit review" in the top right of this section.
-          %h2 Stuck for ideas?
-          %ul
-            %li Did you like this product?
-            %li What did you like or dislike about it?
-            %li Would you buy more products like this from Bryna?
-            %li What do you recommend for people who want this product?
-          %h3 Sharing it!
-          %p
-            You also have the option of sharing your review with your social networks! Simply edit your
-            %em visibility
-            settings.
-          %h3 Add photo's
-          Want to show people how the bag looks on you? Its easy to drag and drop to upload your photos.
-          %ul#comments.table
-            %li.row
-              .cell.img
-                %img{:src => "images/me.png"}/
-              .cell.comm
-                %a{:href => ""} Geoffrey Chong
-                \- This is what a comment looks like! Does it look familiar? :)
-            %li.row
-              .cell.img
-                %img{:src => "images/me.png"}/
-              .cell.comm
-                %a{:href => ""} Geoffrey Chong
-                \- This is what a comment looks like! Does it look familiar? :)
-            %li.row
-              .cell.img
-                %img{:src => "images/me.png"}/
-              .cell.comm
-                %a{:href => ""} Geoffrey Chong
-                \- This is what a comment looks like! Does it look familiar? :)
-            %li.row
-              .cell.img
-                %img{:src => "images/me.png"}/
-              .cell.comm
-                %a{:href => ""} Geoffrey Chong
-                \- This is what a comment looks like! Does it look familiar? :)
-            %li.row
-              .cell.img
-                %img{:src => "images/me.png"}/
-              .cell.comm
-                %a{:href => ""} Geoffrey Chong
-                \- This is what a comment looks like! Does it look familiar? :)
-        %aside.grid_6
-          %article
-        %h4 What do you think about the product?
-        %select
-          %option No opinion
-          %option I recommend this!
-          %option Horrible!
-        %article
-        %h4 Publish
-        .table
-          /
-            <div class="row">
-            <div class="cell">
-            <a href="" class="button edit">Edit review</a>
-            </div>
-            </div>
-          .row
-            .cell.left Status:
-            .cell.right Sample/Draft/Published
-          .row
-            .cell.left Visibility:
-            .cell.right
-              %em Private
-              %a{:href => ""} Edit
-          .row
-            .cell.left Share link:
-            .cell.right
-              %input{:type => "text", :value => "http://prizzm.com/products/Serrano_Hobo"}/
-        %article
-        %h4 Who else owns this?
-        Grid of people's profile images who own this same product.
-        %article
-        %h4 Ask your friends for advice
-        %form.table
-          .row
-            .cell
-              %input{:type => "text"}/
-          .row
-            .cell.left Ask your
-            .cell.right
-              %ul.sharebts
-                %li.sharebt.fb
-                  facebook
-                  .close
-                %li.sharebt.twitter
-                  twitter
-                  .close
-          %a.button.fr{:href => ""} Ask
-        %article
-        %h4 What other people are saying
-        Reserved for a feed of other people's reviews.
-        .clear
-      .clear
-    / end of #container
-    %footer
-    %ul.container_24
-      %li.grid_4
-        %h5 Prizzm
-        %ul
-          %li
-            %a{:href => ""} Home
-          %li
-            %a{:href => ""} Why Prizzm?
-          %li
-            %a{:href => ""} Tour
-          %li
-            %a.alt{:href => ""} Start adding things!
-          %li
-            %a{:href => ""} Login
-      %li.grid_4
-        %h5 Company
-        %ul
-          %li
-            %a{:href => ""} About us
-          %li
-            %a{:href => ""} Customers
-          %li
-            %a{:href => ""} Careers
-      %li.grid_4
-        %h5 Support
-        %ul
-          %li
-            %a{:href => ""} Help centre
-          %li
-            %a{:href => ""} API
-      %li.grid_4
-        %h5 Partners
-        %ul
-          %li Coming soon
-      %li.grid_4
-        %h5 Get in touch
-        %ul
-          %li
-            %a{:href => ""}
-              42 Golden Gate Bridge
-              %br>/
-              San Francisco
-          %li
-            %a{:href => ""} +90 000 000
-          %li
-            %a{:href => ""} contact@prizzm.com
-      %li.grid_4
-        %h5 Blog
-        %ul
-          %li
-            Maybe a blog?
-    .clear
-    #copyright
-      Prizzm.com &copy; . Prizzm LLC, all rights reserved .
-      %a{:href => ""} Terms
-      \&
-      %a{:href => ""} Privacy
-    .clear
+%header
+%h2.grid_5 Bryna Nicole Bag
+.grid_19
+%aside.grid_5
+%img.bigthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
+%article
+#usergallery
+  Add your photo's here
+  %br/
+  %em Drag and Drop
+%input#graburl{:placeholder => "Add a URL", :type => "text"}/
+#content.grid_13
+  #helptool
+    %ul
+      %li
+        %h3 Write your review
+        Give an honest review about your experience with their products.
+      %li
+        %h3 Sharing
+        You can easily share your review with your friends on your social networks.
+      %li
+        %h3 Ask your friends
+        Need advice from your friends? Its easy to ask your social networks a quick question!
+    .close
+  %section#review
+  %a.edit-cntrl{:href => ""} Edit review
+  .title Review
+  %h1 This is your review
+  %p
+    You can express your view on this product and even share it with your friends! This is just a
+    %em sample
+    you can edit this just by clicking the "Edit review" in the top right of this section.
+  %h2 Stuck for ideas?
+  %ul
+    %li Did you like this product?
+    %li What did you like or dislike about it?
+    %li Would you buy more products like this from Bryna?
+    %li What do you recommend for people who want this product?
+  %h3 Sharing it!
+  %p
+    You also have the option of sharing your review with your social networks! Simply edit your
+    %em visibility
+    settings.
+  %h3 Add photo's
+  Want to show people how the bag looks on you? Its easy to drag and drop to upload your photos.
+  %ul#comments.table
+    %li.row
+      .cell.img
+        %img{:src => "images/me.png"}/
+      .cell.comm
+        %a{:href => ""} Geoffrey Chong
+        \- This is what a comment looks like! Does it look familiar? :)
+    %li.row
+      .cell.img
+        %img{:src => "images/me.png"}/
+      .cell.comm
+        %a{:href => ""} Geoffrey Chong
+        \- This is what a comment looks like! Does it look familiar? :)
+    %li.row
+      .cell.img
+        %img{:src => "images/me.png"}/
+      .cell.comm
+        %a{:href => ""} Geoffrey Chong
+        \- This is what a comment looks like! Does it look familiar? :)
+    %li.row
+      .cell.img
+        %img{:src => "images/me.png"}/
+      .cell.comm
+        %a{:href => ""} Geoffrey Chong
+        \- This is what a comment looks like! Does it look familiar? :)
+    %li.row
+      .cell.img
+        %img{:src => "images/me.png"}/
+      .cell.comm
+        %a{:href => ""} Geoffrey Chong
+        \- This is what a comment looks like! Does it look familiar? :)
+%aside.grid_6
+  %article
+%h4 What do you think about the product?
+%select
+  %option No opinion
+  %option I recommend this!
+  %option Horrible!
+%article
+%h4 Publish
+.table
+  /
+    <div class="row">
+    <div class="cell">
+    <a href="" class="button edit">Edit review</a>
+    </div>
+    </div>
+  .row
+    .cell.left Status:
+    .cell.right Sample/Draft/Published
+  .row
+    .cell.left Visibility:
+    .cell.right
+      %em Private
+      %a{:href => ""} Edit
+  .row
+    .cell.left Share link:
+    .cell.right
+      %input{:type => "text", :value => "http://prizzm.com/products/Serrano_Hobo"}/
+%article
+%h4 Who else owns this?
+Grid of people's profile images who own this same product.
+%article
+%h4 Ask your friends for advice
+%form.table
+  .row
+    .cell
+      %input{:type => "text"}/
+  .row
+    .cell.left Ask your
+    .cell.right
+      %ul.sharebts
+        %li.sharebt.fb
+          facebook
+          .close
+        %li.sharebt.twitter
+          twitter
+          .close
+  %a.button.fr{:href => ""} Ask
+%article
+%h4 What other people are saying
+Reserved for a feed of other people's reviews.
+.clear
+.clear
