@@ -8,7 +8,7 @@
 
   %ul.list-display
     - @user.owned_items.each do |item|
-      %li
+      %li{:id => "item_#{item.id}"}
         = link_to(item) do
           %h2= item.name
           = image_tag item.main_image

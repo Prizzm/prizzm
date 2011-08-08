@@ -4,7 +4,7 @@
 
   %ul.list-display
     - @user.wanted_items.publicly.each do |item|
-      %li{:id => "item_#{item.id}"}
+      %li
         = link_to(item) do
           %h2= item.name
           = image_tag item.main_image
