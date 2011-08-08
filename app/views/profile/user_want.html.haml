@@ -8,9 +8,11 @@
 
   %ul.list-display
     - @user.wanted_items.each do |item|
-      %li
+      %li{:id => "item_#{item.id}"}
         = link_to(item) do
           %h2= item.name
           = image_tag item.main_image
           %p= truncate item.review, :length => 110
           Read review
+          .cell.delete-item= link_to 'Delete',  [current_user, item],  :remote => true, :method => :delete
+

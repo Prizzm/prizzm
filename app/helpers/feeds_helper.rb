@@ -14,12 +14,12 @@ module FeedsHelper
 
   def events_from_me 
     events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
-    current_user.events_where(events).keep_if {|e| e["from"]["id"] == current_user.id }
+    current_user.events_where(events).keep_if {|e| e["from"]["id"] == current_user.id }.reverse
   end
 
   def events_from_user user=current_user
     events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
-    feed = user.events_where(events).keep_if {|e| e["from"]["id"] == user.id }
+    feed = user.events_where(events).keep_if {|e| e["from"]["id"] == user.id }.reverse
     feed.delete_if {|e| e["private"] == true}
   end
 

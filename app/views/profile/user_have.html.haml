@@ -14,3 +14,4 @@
           = image_tag item.main_image
           %p= truncate item.review, :length => 110
           Read review
+          .cell.delete-item= link_to 'Delete',  [current_user, item],  :remote => true, :method => :delete
