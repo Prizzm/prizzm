@@ -13,17 +13,18 @@
     %th
     %th
 
-  - @cases.each do |case|
+
+  - @cases.each do |c|
     %tr
-      %td= case.title
-      %td= case.description
-      %td= case.date
-      %td= case.case_reference
-      %td= case.user
-      %td= case.company
-      %td= case.item
-      %td= link_to 'Show', case
-      %td= link_to 'Edit', edit_case_path(case)
-      %td= link_to 'Destroy', case, :confirm => 'Are you sure?', :method => :delete
+      %td= c.title
+      %td= c.description
+      %td= c.date
+      %td= c.case_reference
+      %td= c.user.name
+      %td= c.company.try(:name)
+      %td= c.item.try(:name)
+      %td= link_to 'Show', c
+      %td= link_to 'Edit', edit_case_path(c)
+      %td= link_to 'Destroy', c, :confirm => 'Are you sure?', :method => :delete
 
 %br= link_to 'New Case', new_case_path

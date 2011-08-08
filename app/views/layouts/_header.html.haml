@@ -1,16 +1,16 @@
-%h1.grid_2
-  = link_to 'Prizzm', home_url
-#search.grid_6
-  = text_field_tag :search, nil, :class => "jq_watermark grid_6", :id => "product-search-input", :title => "Find products to add..."
-  = link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'
-  = submit_tag "", :id => 'mag-glass'
+%h1.grid_4= link_to "prizzm", "/"
+%nav.grid_9
+  %ul
+    %li= link_to "Dashboard", dashboard_path
+    %li= link_to "My Stuff", home_path
+    %li= link_to "Profile", profile_path(current_user)
+    %li= link_to "Logout", destroy_user_session_url
 
-- if signed_in?
-  %nav.grid_4
-    %ul
-      %li= link_to 'Dashboard', home_url, :class => "active"
-      %li= link_to 'Browse'
-      %li= link_to 'Live feed', feed_path
+= form_tag "#", { :class => "search grid_11"} do 
+  = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
+  /%input{:type => "submit", :value => ""}
+  /= link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'
+
 
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result
@@ -76,7 +76,6 @@
             }
         });
       });
-
       
       
     });

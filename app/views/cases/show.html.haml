@@ -14,14 +14,18 @@
   = @case.case_reference
 %p
   %b User:
-  = @case.user
+  = @case.user.name
 %p
   %b Company:
-  = @case.company
+  = @case.company.try(:name)
 %p
   %b Item:
-  = @case.item
+  = @case.item.try(:name)
 
 = link_to 'Edit', edit_case_path(@case)
 \|
 = link_to 'Back', cases_path
+
+
+
+= render :partial => 'shared/privacy_controls', :locals => {:object => @case }

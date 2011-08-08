@@ -39,11 +39,7 @@ class ItemsController < InheritedResources::Base
     @item = current_user.items.find(params[:id])
     if @item.update_attributes(params[:item])
       respond_to do |format|
-        if @item.possession_status == 'have'
-          format.html {redirect_to owners_owned_item_view_path}
-        else
-          format.html {redirect_to owners_wanted_item_view_path}
-        end
+        format.html {redirect_to @item}
         format.json {head :ok}
       end 
     end
@@ -55,15 +51,6 @@ class ItemsController < InheritedResources::Base
     respond_to do |format|
       format.json {render :json => @item.id}
     end 
-  end
-
-  def sort
-    @user = current_user
-    @item = Item.find(params[:id]) 
-    @item.update_attribute(:possession_status,  params[:possession_status])
-    #find_changed_item_ids
-    #update_item_ordering
-    head :ok
   end
 
   def update_review
@@ -134,28 +121,4 @@ class ItemsController < InheritedResources::Base
         "private"
       end
     end 
-  #
-    def find_changed_item_ids
-      old_item_order = extract_ids(params[:old_item_order])
-      new_item_order = extract_ids(params[:new_item_order])
-      @old_item_ids = []
-      @new_item_ids = []
-      new_item_order.each_with_index do |item, index| 
-        (old_item_order[index] == item) ? nil : (@new_item_ids << item; @old_item_ids << old_item_order[index]) 
-      end
-    end
-
-    def update_item_ordering
-      old_items = @user.items.find @old_item_ids
-      old_positions = old_items.map{|o| o.position }
-      @new_item_ids.each_with_index do |item_id, index|
-        item = @user.items.find(item_id)
-        item.update_attribute(:position, old_positions[index])
-      end 
-    end
-  
-    def extract_ids items
-      items.map{|item| item.delete('item_').to_i}
-    end
-
 end

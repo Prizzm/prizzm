@@ -6,6 +6,7 @@
     = csrf_meta_tag
     = favicon_link_tag
     = render 'layouts/stylesheets'
+    = include_stylesheets :profile 
     
   %body
     #prizzmbar
@@ -15,17 +16,38 @@
 
     #container.container_24
       %header
-        = render "layouts/header2"
-
-      - if current_user
-        = hidden_field_tag "omniauth_tt_login_path", omniauth_authorize_path(User.new, 'twitter')
-        = hidden_field_tag "omniauth_fb_login_path", omniauth_authorize_path(User.new, 'facebook')
-        = hidden_field_tag "is_signed_in_fb", !current_user.access_token.blank?
-        = hidden_field_tag "is_signed_in_tt", !current_user.tt_token.blank?
-        = hidden_field_tag "processing_fb_id", ""
-        = hidden_field_tag "processing_tt_id", ""
-
+        = render "layouts/header"
       #main
+        %header
+          /= image_tag @user.main_image, :class => "grid_4 profilePic", :alt => "" 
+          = image_tag 'me.png', :class => "grid_4 profilePic", :alt => "" 
+          %h2.grid_5= @user.name
+          .grid_14
+            .buttons
+              = link_to "Edit profile", edit_user_registration_path, :class => "edit button red"
+
+        %ul#socialbit.grid_19
+          %li
+            %h3 Following #{pluralize @user.following_users_count, "Person"}
+            = link_to "View all", '#'
+          %li
+            %h3 Followed by #{pluralize @user.followers_count, "Person"}
+            = link_to "View all", '#'
+          %li
+            %h3 Following #{pluralize @user.following_companies_count, "Company"}
+            = link_to "View all", '#'
+          %li
+            %h3 Following #{pluralize @user.following_products_count, "Product"}
+            = link_to "View all", '#'
+      
+        %aside.grid_4
+          %nav
+            %ul
+              %li= link_to "My recent activity", profile_path(@user), :class => tab_for(profile_path(@user))
+              %li= link_to "What I have", have_path(@user), :class => tab_for(have_path(@user))
+              %li= link_to "What I want", want_path(@user), :class => tab_for(want_path(@user))
+              %li= link_to "My cases", cases_path, :class => tab_for(cases_path)
+
         = yield
 
     %footer
@@ -33,5 +55,5 @@
       - flash.each do |type, value|
         .flash{ :class => type.to_s }
           = value 
+    = render 'layouts/social_utils'
     = render 'layouts/javascripts'
-  /= render 'layouts/google_analytics'

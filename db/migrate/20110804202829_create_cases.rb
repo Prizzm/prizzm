@@ -5,6 +5,8 @@ class CreateCases < ActiveRecord::Migration
       t.text :description
       t.date :date
       t.string :case_reference
+      t.string :privacy
+
       t.references :user
       t.references :company
       t.references :item

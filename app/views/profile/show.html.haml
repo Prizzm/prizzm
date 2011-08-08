@@ -1,0 +1,26 @@
+#content.grid_19
+  #helptool
+    %h3 Your profile
+    This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
+    .close
+
+  %h2 Recent Activity
+
+  %h3 Option 1
+
+  %ul.activity-feed
+    - events_from_user(@user).each do |event|
+      %li
+        = image_tag "me.png", :class => "smallthumb fl"
+        .fl= format_feed_item event
+        .clear
+
+%aside.grid_4
+  %article
+    %h4 About #{@user.first_name}
+    Short about me?
+  %article
+    %h4 Notes
+    Public notes for profile readers.
+
+.clear

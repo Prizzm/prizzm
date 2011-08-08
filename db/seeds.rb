@@ -12,15 +12,18 @@
 #  Functions defined in lib/deefinitions/test_data.rb
 
 User.destroy_all
-Item.destroy_all
 Product.destroy_all
 Company.destroy_all
 Notification.destroy_all
-Subscription.destroy_all
-Stream.destroy_all
 
-#Comment.destroy_all
-#Follow.destroy_all
+# These should be destroyed by the above, but I will leave the explicit destroys
+# here for now until I can proove it
+Item.destroy_all
+Comment.destroy_all
+Follow.destroy_all
+Case.destroy_all
+Stream.destroy_all
+Subscription.destroy_all 
 
 
 

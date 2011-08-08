@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.text     "description"
     t.date     "date"
     t.string   "case_reference"
+    t.string   "privacy"
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "item_id"

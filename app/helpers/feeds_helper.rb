@@ -12,6 +12,11 @@ module FeedsHelper
     user.events_where("user.follow.user").last(opts[:limit])
   end
 
+  def events_from_user user=current_user
+    events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
+    user.events_where(events)
+  end
+
   # TODO: add generic regexes
   def events_about_users opts = {:limit => 4 }
     # FIXME: TO nooisy for your own items.. neeeds better filtering, for
@@ -49,7 +54,7 @@ module FeedsHelper
       possession = " their "
       past = " has "
     end
-    linked_subject = link_to subject, profile_path(user["slug"])
+    linked_subject = link_to subject, profile_path(user["slug"]), :class => "user"
 
     output = linked_subject + verb
     case name
@@ -108,7 +113,7 @@ module FeedsHelper
     else
       "nothiing"
     end
-    output << raw("<br /> #{time_ago_in_words Time.at(time)} ago ") if opts[:timestamp]
+    output << raw("<div class='timebit'> #{time_ago_in_words Time.at(time)} ago </div> ") if opts[:timestamp]
     output.html_safe
   end
 

@@ -2,6 +2,9 @@
 	width: 718px;
 }
 
+a.button { margin: 0; }
+a.button.right { margin-right: 10px;}
+
 #tr-br ul{
 	margin: 0;
 	list-style: none;
@@ -44,7 +47,7 @@
 	}
 
 #la-rev, #mo-re-ca {
-	width: 339px;
+	width: 349px;
 }	
 
 #la-rev ul {

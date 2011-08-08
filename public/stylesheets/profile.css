@@ -4,7 +4,7 @@
 a.active { color: #d14836 !important; font-weight: bold;}
 
 #subbar {
-	height: 130px;
+	height: 100px;
 	background: #eee;
 	border-bottom: 1px solid #dadada;
 }
@@ -12,19 +12,20 @@ a.active { color: #d14836 !important; font-weight: bold;}
 .profilePic {
 	padding: 5px;
 	background: #fff;
-    height: 150px;
 }
 
 .grid_19 {
 	width: 740px !important;
 }
 
+.edit.button { margin: 0; }
+
 #container {
-	margin-top: -227px;
+	margin-top: -196px;
 }
 
 header .grid_14 {
-	width: 540px !important;
+	width: 580px !important;
 }
 
 #main > header {
@@ -34,7 +35,7 @@ header .grid_14 {
 #socialbit {
 	margin: 0;
 	padding-top: 10px;
-	height: 132px;
+	height: 101px;
 	list-style: none;
 	
 	-webkit-box-sizing: border-box;
@@ -51,7 +52,7 @@ header .grid_14 {
 	display: inline-block;
   }
   
-  #socialbit a {
+  #socialbit a, ul.activity-feed li a{
 	color: #476ab3 !important;
   }
 
@@ -68,8 +69,74 @@ header .grid_14 {
 	box-sizing: border-box;
 }
 
+h2 {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+ul.activity-feed , ul.list-display {
+	margin: 0;
+	list-style: none;
+}
+
+ul.activity-feed li {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+ul.activity-feed li a.user {
+	font-weight: bold;
+	color: #5D5D5D !important;
+	text-decoration: none !important;
+}
+
+ul.activity-feed li a, ul.list-display li a {
+	text-decoration: underline !important;
+}
+
+.timebit {
+	color: #ccc;
+}
+
+ul.list-display li{
+	margin: 0 5px 5px 0;
+	padding: 5px;
+    width: 284px;
+	float: left;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+ul.list-display li:hover {
+	background: #f3f3f3;
+}
+
+ul.list-display li img {
+	margin-right: 10px;
+	width: 80px;
+	float: left;
+}
+
+ul.list-display li h2 {
+	margin-bottom: 5px;
+	font-size: 1.1em;
+}
+
+img.smallthumb {
+	margin-right: 5px;
+}
+
 aside  nav li{
 	margin-bottom: 10px;
+}
+
+aside h4 {
+	margin-bottom: 10px;
+    padding-bottom: 3px;
+	border-bottom: 1px solid #F3F3F3;
 }
 
 footer {
