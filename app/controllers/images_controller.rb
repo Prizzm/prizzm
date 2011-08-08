@@ -3,13 +3,13 @@ class ImagesController < ApplicationController
   before_filter :find_item
   before_filter :find_or_build_image, :except => :create
 
-
   def create
     @image = @item.images.build params[:image]
     respond_to do |format|
       if @image.save
         format.js do
-          render :text => render_to_string(:partial => 'items/image_thumbnail', :locals => {:img => @image})
+          html = render_to_string(:partial => 'items/image_thumbnail', :locals => {:img => @image})
+          render :text => html
         end
       else
         flash[:error] = "We were unable to upload your image"

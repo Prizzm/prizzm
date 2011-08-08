@@ -27,7 +27,7 @@ div.nav-controls {
 div.slideshow-container {
 	position: relative;
 	clear: both;
-	height: 250px; /* This should be set to be at least the height of the largest image in the slideshow */
+	height: 200px; /* This should be set to be at least the height of the largest image in the slideshow */
 }
 div.loader {
 	position: absolute;
@@ -55,6 +55,7 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 }
 div.slideshow img {
 	vertical-align: middle;
+  width: 100%;
 }
 
 div.image-title {
@@ -67,6 +68,11 @@ div.image-desc {
 }
 div.navigation {
 	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
+  width: 182px !important;
+  -moz-border-radius: 3px 3px 3px 3px;
+  background: none repeat scroll 0 0 #ECF4F5;
+  border: 1px dashed #9FC3C9;
+  padding-left: 8px;
 }
 ul.thumbs {
 	clear: both;
@@ -96,10 +102,10 @@ ul.thumbs img {
 }
 div.pagination {
 	clear: both;
+  float: left;
+  margin: 5px 0;
 }
 div.navigation div.top {
-	margin-bottom: 12px;
-	height: 11px;
 }
 div.navigation div.bottom {
 	margin-top: 12px;
@@ -128,12 +134,15 @@ div.pagination span.ellipsis {
 
 #gallery.content {
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 #item_image_imageUploader {
   position: relative;
-  top: -39px;
-  left: 120px;
+  top: -29px;
+  left: 75px;
+  height: 29px;
+  overflow: hidden;
 }
 
 #addimage-loader {

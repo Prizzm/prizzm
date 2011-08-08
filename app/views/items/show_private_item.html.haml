@@ -4,14 +4,22 @@
 %header
   %h2.grid_5 Bryna Nicole Bag
   .grid_19
+
 %aside.grid_5
-  %img.bigthumb{:alt => "", :src => "http://goo.gl/8gvgn"}/
   %article
-    #usergallery
-      Add your photo's here
-      %br/
-      %em Drag and Drop
-    %input#graburl{:placeholder => "Add a URL", :type => "text"}/
+    = render 'images'
+
+    = fields_for ItemImage.new do |f|
+      = f.file_field :image, :rel => item_images_path(@item)                        
+    = photo_uploadify
+
+    = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
+      = fields_for :image do |builder|
+        = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
+        %div{:style => "display:none"}
+          = builder.submit
+    .loading{:style => "display:none"}
+
 #content.grid_13
   #helptool
     %ul
@@ -129,3 +137,16 @@
     %h4 What other people are saying
     Reserved for a feed of other people's reviews.
 .clear
+
+- content_for :jquery do
+  :javascript
+    $(document).ready(function() {
+      $('#add-remote-image').bind('submit', function() {
+        $('.loading').show();
+      });
+      $('#add-remote-image').bind('ajax:complete', function(e, xhr, settings) {
+        $('.loading').hide();
+        $('#graburl').val('');
+        $('body').trigger('insertImage', xhr.responseText);
+      });
+    });

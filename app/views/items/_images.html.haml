@@ -14,7 +14,7 @@
   So we will do that by using javascript
 - if @item.images.count > 0
   %br/
-  = link_to "Delete Image", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
+  = link_to "Delete", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
 
 - content_for :jquery do
   :javascript
@@ -70,7 +70,7 @@
       // Initialize Advanced Galleriffic Gallery
       var gallery = $('#thumbs').galleriffic({
           delay:                     2500,
-          numThumbs:                 9,
+          numThumbs:                 6,
           preloadAhead:              10,
           enableTopPager:            true,
           enableBottomPager:         true,
