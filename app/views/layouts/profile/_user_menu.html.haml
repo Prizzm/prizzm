@@ -1,0 +1,5 @@
+%ul
+  %li= link_to "My recent activity", profile_path(@user), :class => tab_for(profile_path(@user))
+  %li= link_to "What I have", have_path(@user), :class => tab_for(have_path(@user))
+  %li= link_to "What I want", want_path(@user), :class => tab_for(want_path(@user))
+  %li= link_to "My cases", cases_path, :class => tab_for(cases_path)

@@ -1,0 +1,6 @@
+- name = @user.first_name
+%ul
+  %li= link_to "#{name}'s recent activity", profile_path(@user), :class => tab_for(profile_path(@user))
+  %li= link_to "What #{name} has", have_path(@user), :class => tab_for(have_path(@user))
+  %li= link_to "What #{name} wants", want_path(@user), :class => tab_for(want_path(@user))
+  %li= link_to "#{name}'s cases", cases_path, :class => tab_for(cases_path)

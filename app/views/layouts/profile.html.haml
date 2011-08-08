@@ -24,7 +24,10 @@
           %h2.grid_5= @user.name
           .grid_14
             .buttons
-              = link_to "Edit profile", edit_user_registration_path, :class => "edit button red"
+              - if your_profile?
+                = link_to "Edit profile", edit_user_registration_path, :class => "edit button red"
+              - else
+                = follow_link_for @user
 
         %ul#socialbit.grid_19
           %li
@@ -42,11 +45,10 @@
       
         %aside.grid_4
           %nav
-            %ul
-              %li= link_to "My recent activity", profile_path(@user), :class => tab_for(profile_path(@user))
-              %li= link_to "What I have", have_path(@user), :class => tab_for(have_path(@user))
-              %li= link_to "What I want", want_path(@user), :class => tab_for(want_path(@user))
-              %li= link_to "My cases", cases_path, :class => tab_for(cases_path)
+            - if your_profile?
+              = render 'layouts/profile/user_menu'
+            - else
+              = render 'layouts/profile/other_menu'
 
         = yield
 

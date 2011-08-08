@@ -1,10 +1,14 @@
 module LinkHelper
 
   def follow_link_for object
+    if object.is_a? User
+      name = object.first_name
+    end
+
     if current_user.following? object 
-      link_to "Unfollow", follow_path_for(object), :class => 'follow_control unfollow', :method => :delete, :remote => true
+      link_to "Unfollow #{name}", follow_path_for(object), :class => 'follow_control unfollow edit button red', :method => :delete, :remote => true
     else
-      link_to "Follow", follow_path_for(object), :class => 'follow_control follow', :method => :post, :remote => true
+      link_to "Follow #{name}", follow_path_for(object), :class => 'follow_control follow edit button blue', :method => :post, :remote => true
     end
   end
 
