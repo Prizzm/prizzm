@@ -12,6 +12,11 @@ module FeedsHelper
     user.events_where("user.follow.user").last(opts[:limit])
   end
 
+  def events_from_me 
+    events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
+    current_user.events_where(events).keep_if {|e| e["from"]["id"] == current_user.id }
+  end
+
   def events_from_user user=current_user
     events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
     user.events_where(events)
