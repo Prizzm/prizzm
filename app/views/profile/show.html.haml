@@ -7,7 +7,7 @@
   %h2 Recent Activity
 
   %ul.activity-feed
-    - events_from_user(@user).each do |event|
+    - events_from_me.each do |event|
       %li
         = image_tag event["from"]["image"], :class => "smallthumb fl"
         .fl= format_feed_item event
