@@ -1,0 +1,12 @@
+#content.grid_15
+
+  %h2 What #{@user.first_name} has
+
+  %ul.list-display
+    - @user.owned_items.publicly.each do |item|
+      %li
+        = link_to(item) do
+          %h2= item.name
+          = image_tag item.main_image
+          %p= truncate item.review, :length => 110
+          Read review
