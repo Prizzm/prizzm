@@ -19,7 +19,8 @@ module FeedsHelper
 
   def events_from_user user=current_user
     events = %w(user.follow.* user.update.item.* user.comment.* user.add.item)
-    user.events_where(events)
+    feed = user.events_where(events).keep_if {|e| e["from"]["id"] == user.id }
+    feed.delete_if {|e| e["private"] == true}
   end
 
   # TODO: add generic regexes

@@ -20,8 +20,8 @@ class Item < ActiveRecord::Base
   scope :recently_updated, order('created_at DESC')
   scope :owned, where(:possession_status => 'have')
   scope :wanted, where(:possession_status => 'want')
-  scope :public, where(:privacy => 'public')
-  scope :private, where(:privacy => 'private')
+  scope :publicly, where(:privacy => 'public')
+  scope :privately, where(:privacy => 'private')
 
   acts_as_list :scope => :user
   acts_as_followable
