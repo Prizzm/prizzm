@@ -1,4 +1,9 @@
-RANDOM = { :users => 20, :items => 8, :products => 5 }
+if ENV['PUSH_DEMO'] == true
+  RANDOM = { :users => 5, :items => 15, :products => 5 }
+else
+  RANDOM = { :users => 20, :items => 8, :products => 5 }
+end
+
 
 def set_follows user, type=:users
   klass = type.to_s.classify.constantize

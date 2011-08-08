@@ -49,6 +49,9 @@ class Item < ActiveRecord::Base
     product.company if has_product?
   end
 
+  def is_public?
+    privacy == "public"
+  end
 protected
 
   #  This method dectects which attributes were changed from the model update,

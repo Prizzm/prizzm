@@ -102,20 +102,15 @@
         </div>
         </div>
       .row
-        .cell.left Status:
-        .cell.right Sample/Draft/Published
-      .row
         .cell.left Visibility:
         .cell.right
-          %em Private
-          %a{:href => ""} Edit
-      .row
-        .cell.left Share link:
-        .cell.right
-          %input{:type => "text", :value => "http://prizzm.com/products/Serrano_Hobo"}/
-  %article
-    %h4 Who else owns this?
-    Grid of people's profile images who own this same product.
+          %em #{@item.privacy.capitalize}
+          %a{:href => ""} Change
+      - if @item.is_public?
+        .row
+          .cell.left Share link:
+          .cell.right
+            %input{:type => "text", :value => item_url(@item)}/
   %article
     %h4 Ask your friends for advice
     %form.table
@@ -134,7 +129,7 @@
               .close
       %a.button.fr{:href => ""} Ask
   %article
-    %h4 What other people are saying
+    %h4 Feeds
     Reserved for a feed of other people's reviews.
 .clear
 

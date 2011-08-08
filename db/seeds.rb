@@ -88,6 +88,8 @@ if ENV['PUSH_DEMO'] == true
 else
   numb = 30
 end
+
+
 numb.times do
   user = Factory :user 
   user.follow bryna_nicole
