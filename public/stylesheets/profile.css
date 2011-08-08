@@ -12,6 +12,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 .profilePic {
 	padding: 5px;
 	background: #fff;
+    height: 115px; 
 }
 
 .grid_19 {
