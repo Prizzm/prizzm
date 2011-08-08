@@ -1,0 +1,16 @@
+#content.grid_16
+  #helptool
+    %h3 Your profile
+    This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
+    .close
+
+  %h2 What I have
+
+  %ul.list-display
+    - @user.owned_items.each do |item|
+      %li
+        = link_to(item) do
+          %h2= item.name
+          = image_tag item.main_image
+          %p= truncate item.review, :length => 110
+          Read review

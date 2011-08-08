@@ -50,6 +50,16 @@
 
         = yield
 
+        %aside.grid_4
+          %article
+            %h4 About #{@user.first_name}
+            Short about me?
+          %article
+            %h4 Notes
+            Public notes for profile readers.
+
+        .clear
+
     %footer
       = render "layouts/footer"
       - flash.each do |type, value|
