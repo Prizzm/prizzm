@@ -20,7 +20,7 @@
       #main
         %header
           /= image_tag @user.main_image, :class => "grid_4 profilePic", :alt => "" 
-          = image_tag 'me.png', :class => "grid_4 profilePic", :alt => "" 
+          = image_tag @user.main_image, :class => "grid_4 profilePic", :alt => "" 
           %h2.grid_5= @user.name
           .grid_14
             .buttons

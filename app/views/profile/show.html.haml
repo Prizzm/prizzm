@@ -9,6 +9,6 @@
   %ul.activity-feed
     - events_from_user(@user).each do |event|
       %li
-        = image_tag "me.png", :class => "smallthumb fl"
+        = image_tag event["from"]["image"], :class => "smallthumb fl"
         .fl= format_feed_item event
         .clear
