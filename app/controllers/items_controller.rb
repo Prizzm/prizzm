@@ -9,6 +9,7 @@ class ItemsController < InheritedResources::Base
 
   def new
     @item = Item.new
+    @item.images.build
   end
 
   def create

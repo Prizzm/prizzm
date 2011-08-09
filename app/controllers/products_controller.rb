@@ -16,10 +16,15 @@ class ProductsController < ApplicationController
     products = Product.where("name ILIKE ?", params[:query]+'%')
     render :json  => autocomplete_info_for(products)   
   end 
+  
+  def static_search
+    #expires_in 2.days.from_now, :private => true
+    render :layout => nil
+  end
 
 private
   
   def autocomplete_info_for products
-    results = products.to_json(:methods => [:name, :main_image_thumb, :customer_count], :only => [:id, :rating])
+    results = products.to_json(:methods => [:name, :main_image_thumb, :main_image, :customer_count, :url, :description], :only => [:id, :rating])
   end
 end

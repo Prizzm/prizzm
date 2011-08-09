@@ -6,7 +6,7 @@
     %li= link_to "Profile", profile_path(current_user)
     %li= link_to "Logout", destroy_user_session_url
 
-= form_tag "#", { :class => "search grid_11"} do 
+= form_tag "#", { :id => "search_form", :class => "search grid_11"} do 
   = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
   /%input{:type => "submit", :value => ""}
   /= link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'
@@ -76,6 +76,20 @@
             }
         });
       });
+      
+      // TODO: Enable search functionality
+      // disabled it as some of the things are not complete
+      // and need to give more thought on how to handle search for product/companies
+      /*
+      $("#search_form").submit(function(){
+        if ($("#product-search-input").val()){
+            window.product_search_term = $("#product-search-input").val();
+            $.facebox({ ajax : "/products/static_search.html"});
+            //this.reset();
+        }
+        return false;
+      });
+      */
       
       
     });

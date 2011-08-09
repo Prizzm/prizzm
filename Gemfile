@@ -64,6 +64,7 @@ gem "twitter"#, :git => 'git://github.com/jnunemaker/twitter.git'
 # Why is this in production?
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 gem "rest-client"
+gem "mechanize"
 gem "nokogiri"
 gem "hashie"
 

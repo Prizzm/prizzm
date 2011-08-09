@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :product
+  
+  before_update :pre_process
 
   after_update :notify_attribute_changes
 
@@ -29,7 +31,11 @@ class Item < ActiveRecord::Base
 
   default_value_for :privacy, 'private'
   default_value_for :possession_status, 'want'
+  
+  attr_accessor :image_url
 
+  # TODO: not using it for now
+  # doing it on client side, consider refactoring
   def self.create_from_product(product, options = {})
     item = Item.create({:name => product.name, :description => product.description, :rating => product.rating,  :url => product.url}.merge(options))
     # TODO: This is really slowing down the add item process..  gotta get this
@@ -69,4 +75,11 @@ protected
       ActivityLogger.send(event_name,  :from => self.user, :for => [self], :changes => delta) unless ignore.include? property
     end 
   end 
+  
+  def pre_process
+    if !self.image_url.blank?
+      self.images = []
+      add_image_from_url self.image_url
+    end
+  end
 end

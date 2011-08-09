@@ -1,3 +1,5 @@
+= include_stylesheets :item_new
+
 %h1
   Add an item to your list
 Give us a few details about this item and what you think of it!
@@ -7,12 +9,57 @@ Give us a few details about this item and what you think of it!
   https://github.com/justinfrench/formtastic
 = form_for [current_user, @item] do |f|
   %p= f.collection_select :possession_status, ['Select', 'have', 'want'], :to_s, :to_s, {}
-  %p= f.text_field :name, :class => "jq_watermark", :title => "Product name"
+  %p{:style => "position:relative;"}
+    = f.text_field :name, :class => "jq_watermark", :title => "Product/Service name"
   .clearfix
-  %p= f.text_area :review, :class => "jq_watermark"
+  %p
+    #url_and_dropdown_container{:style => "position:relative;"}
+      = f.text_field :url, :class => "jq_watermark", :title => "URL", :autocomplete => "off"
+      .hide#main-dropdown
+        %ul#dropdown
+          %li
+            .result_item
+              .r_title Test Title
+              .r_desc This is some long description and something more. What do you think about it?
+              .r_vurl www.facebook.com
+          %li
+            .result_item
+              .r_title Test Title
+              .r_desc This is some long description and something more. What do you think about it?
+              .r_vurl www.facebook.com
+  = f.hidden_field :product_id
+  = f.hidden_field :image_url
+
+  %p{:style => "display:none;"}= f.text_area :description, :class => "jq_watermark", :title => "Description"
+
+  #url_preview
+    #img_selector_parent
+      %table
+        %tr
+          %td#img_selector{ :align => "center" }
+            -# = image_tag "loading.gif", :style => "display:block;"
+        %tr
+          %td#img_controls{ :align => "center" }
+            %button#prev_image{ :disabled => 'disabled' } &lt;
+            %button#next_image{ :disabled => 'disabled' } &gt;
+
+      -#title_and_description
+        -#page_title
+        -#page_description
+
+  %p= f.text_area :review, :class => "jq_watermark", :title => "Review"
+
+  -#%p{:style => "position:relative;"}
+    = f.hidden_field :company_id
+    = text_field_tag "item_company_name", "", :class => "jq_watermark", :title => "Company Name"
+  
   #stars-wrapper-new-item
     = f.collection_select :rating, [1, 2, 3, 4, 5], :to_s, :to_s, {}
-  %p= f.submit "add Item", :class => "button"
+  %p
+    = f.submit "clear All", :class => "button", :id => "clear_item_fields"
+    = f.submit "add Item", :class => "button"
+  
+#offscreen_div
   
 :javascript
   $(document).ready(function(){
@@ -35,13 +82,15 @@ Give us a few details about this item and what you think of it!
       } else {
         createDisplay();
       }
+      $('#facebox input#item_name').focus();
+      updateWatermarks();
     });
     
     function ownedDisplay(){
       resetDisplay();
       $('#item_possession_status').val('have');
       $('#facebox textarea').attr('class', "jq_watermark");
-      $('textarea').attr("title", "What's your review?");
+      $('textarea #item_review').attr("title", "What's your review?");
       $('.jq_watermark').watermark();
       $('#stars-wrapper-new-item').show();
     }
@@ -61,6 +110,9 @@ Give us a few details about this item and what you think of it!
         $('#facebox input#item_name').attr({
           disabled: "true"
         });
+        $('#facebox input#item_url').attr({
+            disabled: "true"
+          });
         $('#facebox textarea').attr({
           disabled: "true"
         });
@@ -74,16 +126,323 @@ Give us a few details about this item and what you think of it!
         $('#facebox textarea').removeAttr('class');
         $('#facebox textarea').focus();
         window.itemNamePrefil = null;
+        
+        if(window.itemUrlPrefil == null){
+          $('#facebox input#item_url').attr({
+            disabled: "true"
+          });
+        }
+        else
+        {
+          $('#facebox input#item_url').removeAttr("disabled");
+          $('#facebox input#item_url').attr({
+            value: window.itemUrlPrefil
+          });
+          window.itemUrlPrefil = null;
+        }
+        
       }
+      
+      $('.jq_watermark').watermark();
 
       $('#stars-wrapper-new-item').hide();
     }
     
     function resetDisplay() {
       $('#facebox input#item_name').removeAttr("disabled");
+      $('#facebox input#item_url').removeAttr("disabled");
+      $('#facebox input#item_company_name').removeAttr("disabled");
       $('#facebox textarea').removeAttr("disabled");
       $('#facebox textarea').removeAttr("class");
       $('#stars-wrapper-new-item').show();
     }
+    
+    function updateWatermarks(){
+      if ($('#facebox input#item_name').val()){
+        $('#facebox #item_description').attr("title", "Describe " + $('#facebox input#item_name').val());
+        $('#facebox #item_description').attr("data-jq-watermark", "");
+        $('#facebox #item_description').parent().replaceWith(function(){
+          return $("#item_description", this);
+        });
+        $('#facebox #item_description').watermark();
+
+        if ($('#facebox #item_possession_status').val() == "want"){
+          $('#facebox #item_review').attr("title", "Why do you want " + $('#facebox input#item_name').val() + "?");
+          $('#facebox #item_review').attr("data-jq-watermark", "");
+          $('#facebox #item_review').parent().replaceWith(function(){
+            return $("#item_review", this);
+          });
+          $('#facebox #item_review').watermark();
+        }
+        else
+        {
+          $('#facebox #item_review').attr("title", "What do you think of " + $('#facebox input#item_name').val() + "?");
+          $('#facebox #item_review').attr("data-jq-watermark", "");
+          $('#facebox #item_review').parent().replaceWith(function(){
+            return $("#item_review", this);
+          });
+          $('#facebox #item_review').watermark();
+        }
+      }
+    }
+
+    updateWatermarks();
+
+    $('#facebox input#item_name').change(function(){
+      updateWatermarks();
+    });
+
+    $('#facebox input#item_name').bind('paste', function(){
+      setTimeout(function(){
+        updateWatermarks();
+      }, 50);
+    });
+
+    $("#search-by-title").click(function(){
+      if ($('#facebox input#item_name').val()){
+        window.product_search_term = $('#facebox input#item_name').val();
+        $.facebox({ ajax : "/products/static_search"});
+      }
+      return false;
+    });
+    
+    // Image fetching code
+    
+    var image_elems = [];
+    
+    var current_image_indx = null;
+    var total_images = 0;
+    var waittimeout_timeout_id = null;
+
+    function select_image(indx){
+      current_image_indx = indx;
+      $("#img_selector img").css({ "display" : "none"});
+      var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
+      current_img.css({"display" : "block"});
+      $("#facebox input#item_image_url").val(current_img.attr("src"));
+    }
+
+    function toggle_navigation(){
+      if (current_image_indx + 1 < total_images){
+        $("#next_image").removeAttr('disabled');
+      }
+      else
+      {
+        $("#next_image").attr('disabled', 'disabled');
+      }
+      if (current_image_indx > 0){
+        $("#prev_image").removeAttr('disabled');
+      }
+      else
+      {
+        $("#prev_image").attr('disabled', 'disabled');
+      }
+    }
+    
+    function clear_images(){
+      $("#img_selector").html("");
+    }
+    
+    function hide_all(){
+      //$("#img_selector_parent").css({ 'display' : 'none' });
+      $("#img_selector").html("");
+    }
+
+    function reset_all(){
+      current_image_indx = null;
+      total_images = 0;
+      
+      if (waittimeout_timeout_id){
+        clearTimeout(waittimeout_timeout_id);
+      }
+
+      waittimeout_timeout_id = null;
+      
+      $("#img_selector_parent").css({ "display" : "block" });
+      $("#img_selector").html('#{ image_tag 'loading.gif', :style => 'display:block;' }');
+      
+      toggle_navigation();
+    }
+    
+    function append_image(image_elem){
+      if (current_image_indx == null){
+        $("#img_selector").html("");
+      }
+      image_elem.appendTo("#img_selector");
+      total_images++;
+      if ( current_image_indx == null ){
+        select_image(0);
+      }
+
+      toggle_navigation();
+    }
+
+    function load_images(images){
+      $("#img_selector").html('#{ image_tag 'loading.gif', :style => 'display:block;' }');
+      
+      if (images.length == 0){
+        hide_all();
+      }
+      else
+      {
+        waittimeout_timeout_id = setTimeout(function(){
+          // if no image appended after 5 seconds hide it
+          if (!total_images || total_images <= 0){
+            hide_all();
+          }
+          waittimeout_timeout_id = null;
+        }, 5000);
+      }
+      
+      for (var image in images){
+        var new_img = $("<img src='"+ images[image] +"' />");
+        new_img.appendTo("#offscreen_div");
+        new_img.load(function(){
+          if ($(this).width() > 50 && $(this).height() > 50){
+            append_image($(this));
+          }
+        });
+      }
+    }
+
+    $("#prev_image").click(function(){
+      select_image((current_image_indx - 1 + total_images) % total_images);
+      toggle_navigation();
+      return false;
+    });
+
+    $("#next_image").click(function(){
+      select_image((current_image_indx + 1) % total_images);
+      toggle_navigation();
+      return false;
+    });
+    
+    var url_re = /(?:(?:https?):\/\/|[-A-Z0-9]+\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:;,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:;,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:;,.]*\)|[A-Z0-9+&@#\/%=~_|$])/i;
+    var last_processed_url = null;
+    
+    function process_url(){
+    
+      if ( $("#facebox input#item_url").attr('readonly') ){
+        return;
+      }
+
+      var matches = $("#facebox input#item_url").val().match(url_re);
+
+      if (!matches) {
+        if (last_processed_url){
+          hide_all();
+        }
+        return;
+      }
+
+      var url = matches[0];
+      
+      if (last_processed_url && last_processed_url == url){
+        return;
+      }
+      
+      last_processed_url = url;
+      
+      reset_all();
+      
+      $.post(
+          '/home/scrape',
+          {url: url},  
+          function(json) {
+            if ( !json ) { hide_all(); } // page not found
+            //alert("So this is resp " + JSON.stringify(json) );
+            load_images(json.images);
+            //$("#debug").val(json.doc);
+            //$("#page_title").html(json.title);
+            //$("#page_description").html(json.description);
+          },
+          "json"
+      );
+    }
+    
+    $('#facebox input#item_url').focus(function(){
+      if (!$(this).val() && !$(this).attr('readonly')){
+        if ($("#facebox input#item_name").val()){
+          googleWebSearch({q:$("#facebox input#item_name").val(), resultsDiv: $("#dropdown")});
+        }
+      }
+    });
+
+    $('#facebox input#item_url').click(function(){
+      if ($("#facebox input#item_name").val() && !$(this).attr('readonly')){
+        googleWebSearch({q:$("#facebox input#item_name").val(), resultsDiv: $("#dropdown")});
+      }
+    });
+    
+    $('#facebox input#item_url').change(function(){
+      process_url();
+    });
+    
+    $('#facebox input#item_url').bind("paste", function(){
+      setTimeout(function(){
+        process_url();
+      }, 50);
+    });
+    
+    process_url();
+    
+    //autocomplete for product
+    $('#facebox input#item_name').autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: '#{search_products_path}',
+          data : {query:request.term},
+          dataType: "json",
+          success: function(r){
+            if (r.length <= 0){
+              return;
+            }
+
+            var resp_data = $.map(r, function(elem, i){
+              return $.extend({label:elem.name}, elem);
+            });
+            
+            //alert(JSON.stringify(resp_data));
+
+            response(resp_data);
+          }
+        });
+      },
+      select:function(event, ui){
+      
+        $("#facebox #item_product_id").val(ui.item.id);
+
+        $("#facebox #item_name").attr('readonly', 'readonly');
+        $("#facebox #item_url").attr('readonly', 'readonly');
+        $("#facebox #item_description").attr('readonly', 'readonly');
+        
+        $("#facebox #item_name").val(ui.item.name);
+        $("#facebox #item_name").change();
+      
+        $("#facebox #item_url").val(ui.item.url);
+        $("#facebox #item_url").change();
+        
+        $("#facebox #item_description").parent().parent().css({ display : '' });
+        $("#facebox #item_description").val(ui.item.description);
+        $("#facebox #item_description").change();
+        
+        $("#img_selector img").css({ "display" : "none"});
+        var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
+        current_img.css({"display" : "block"});
+        
+        var new_image = $("<img src='"+ui.item.main_image+"' />");
+        append_image(new_image);
+        $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
+      }
+    }).data( "autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li style='height:40px;'></li>" ).data( "item.autocomplete", item ).append( "<a style='width:100%;height:100%;display:block;padding:0;'>" + "<img style='float:left;height:38px;width:38px;' src='" + item.main_image_thumb + "'>" + "<span style='float:left;padding:10px 5px;'>" + item.label + "</span>" + "</a>" ).appendTo( ul );
+    };
+
+    $("#clear_item_fields").click(function(){
+      $.facebox({
+        ajax : "#{ new_item_path }"
+      });
+      return false;
+    });
     
   });

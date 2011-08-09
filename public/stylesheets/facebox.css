@@ -71,21 +71,7 @@
   #facebox textarea {
 	max-height: 150px;
   }
-  
-  #facebox #new_item #item_name {
-	width: 459px;
-	float: left;
-  }
-  
-  #facebox #item_possession_status {
-	margin-right: 5px;
-	padding: 9px 10px;
-	width: 86px;
-	float: left;
-	background: #fff;
-	cursor: pointer;
-  }
-  
+
 
 #facebox h1 {
 	line-height: 140%;

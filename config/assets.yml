@@ -27,6 +27,8 @@ stylesheets:
     - public/stylesheets/global.css
     - public/stylesheets/fonts.css
     - public/stylesheets/jquery.ui.stars.css
+    - public/stylesheets/jquery.ui.autocomplete.css
+    - public/stylesheets/jquery.ui.theme.css
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
     - public/stylesheets/galleriffic-3.css
@@ -39,6 +41,10 @@ stylesheets:
     - public/stylesheets/item-public.css
   item_detail:
     - public/stylesheets/item-detail.css
+  item_new:
+    - public/stylesheets/item-new.css
+  search_results:
+    - public/stylesheets/search-results.css
   login:
     - public/stylesheets/login/*.css
   ie: 

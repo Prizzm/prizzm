@@ -1,0 +1,162 @@
+= include_stylesheets :search_results
+
+#product-search-results
+
+  You searched for
+  %b
+    %span{:id => "search-term"}
+    
+  %br
+  %br
+
+  Prizzm Search
+  .results-section#prizzm-results
+    %a.prizzm-results-link{:href => "#"} This is a prizzm intternal database product
+    
+  %br
+
+  .hidden{:style=>"display:none"}
+    Web Search
+    .results-section#web-results
+      Searching Web
+      -# %a.web-results-link{:href => "http://www.apple.com/ipodnano/"} This is a web search result link
+  
+  %br
+  
+  %button#create-custom-item Create New Item
+
+:javascript
+  (function(){
+    var q = window.product_search_term;
+    
+    function productSearch(q){
+      $("#product-search-results #search-term").html(q);
+      
+      $("#product-search-results #prizzm-results").html("Searching Prizzm Database");
+
+      var productResultDiv = $("#product-search-results #prizzm-results");
+
+      $("#product-search-results #prizzm-results").html("Searching in Prizzm Database");
+      
+      $.ajax({
+        type: "GET",
+        url: '#{search_products_path}',
+        data : {query:q},
+        dataType: "json",
+        success: function(r){
+          if (r.length <= 0){
+            productResultDiv.html("Nothing found");
+            return;
+          }
+
+          var template = document.getElementById('product-autocomplete-result-template').innerHTML;
+
+          $("#product-search-results #prizzm-results").html("");
+
+          var result_html = _.map(r, function(result){
+            var product = result;
+            var parsed_template = _.template(template, product);
+            var target_option = 'value="' + product.rating + '"';    
+            var selected_option = target_option + ' selected="selected"';
+            //rel hack until 3.1 is stable
+            // https://github.com/rails/rails/pull/1796
+            var autocomplete_html = parsed_template.replace(target_option, selected_option);
+            var ret_val = $(autocomplete_html).stars().html();
+            return ret_val;
+          });
+          
+          $("#product-search-results #prizzm-results").append(result_html.toString());
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          alert("Nothing found!!");
+        }
+      });
+
+      var web_results = $("#product-search-results #web-results");
+      
+      var config = {
+        type		: 'web',
+        append		: false,
+        perPage		: 3,			// A maximum of 8 is allowed by Google
+        page		: 0				// The start page
+      }
+      
+      function googleSearch(settings){
+		
+        // If no parameters are supplied to the function,
+        // it takes its defaults from the config object above:
+        
+        settings = $.extend({},config,settings);
+        settings.term = settings.term;
+        
+        // URL of Google's AJAX search API
+        var apiURL = 'http://ajax.googleapis.com/ajax/services/search/'+settings.type+'?v=1.0&callback=?';
+        var resultsDiv = $("#product-search-results #web-results");
+        
+        resultsDiv.html("Searching Web");
+        
+        $.getJSON(apiURL,{q:settings.term,rsz:settings.perPage,start:settings.page*settings.perPage},function(r){
+
+          var results = r.responseData.results;
+          
+          //alert(JSON.stringify(results));
+          
+          resultsDiv.html("");
+          
+          if (results.length){
+            for (var i=0, len = results.length; i < len ; i++){
+              var r = results[i];
+              
+              r.content = r.content.replace(/\<b\>/g, "").replace(/\<\/b\>/g, "");
+              
+              var new_item = $("<li>" + 
+                           "<a class='result_item' href='"+ r.unescapedUrl +"'>" +
+                           "<span class='r_title'>"+ r.titleNoFormatting +"</span><br />" +
+                           "<span class='r_desc'>"+ r.content +"</span><br />" +
+                           "<span class='r_vurl'>"+r.unescapedUrl+"</span>" +
+                           "</a>" +
+                           "</li>");
+
+              new_item.children("a").click(function(){
+                window.itemNamePrefil = q;
+                window.itemUrlPrefil = $(this).attr("href");
+                $.facebox({ ajax : '/items/new' } );
+                return false;
+              });
+              
+              new_item.appendTo(resultsDiv);
+            }
+          }
+          else
+          {
+            resultsDiv.html("No result found on web");
+          }
+
+        });
+      }
+      
+      config.term = q;
+      googleSearch();
+            
+      $("#create-custom-item").click(function(){
+        window.itemNamePrefil = q;
+        $.facebox({ ajax : '/items/new' } );
+        return false;
+      });
+
+    }
+    
+    productSearch(q);
+    
+    /*
+    $("#product-search-results .prizzm-results-link").click(function(){
+      window.itemNamePrefil = q;
+      window.itemUrlPrefil = $(this).attr("href");
+      $.facebox({ ajax : '/items/new' } );
+      return false;
+    });
+    */
+    
+    $("#create-custom-item").html("Create New Item");
+    
+  })();
