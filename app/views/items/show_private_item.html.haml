@@ -104,8 +104,9 @@
       .row
         .cell.left Visibility:
         .cell.right
-          %em #{@item.privacy.capitalize}
-          %a{:href => ""} Change
+          = render :partial => 'items/privacy_controls', :locals => {:item => @item }
+          /%em #{@item.privacy.capitalize}
+          /%a{:href => ""} Change
       - if @item.is_public?
         .row
           .cell.left Share link:
