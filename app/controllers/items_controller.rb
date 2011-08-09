@@ -28,6 +28,7 @@ class ItemsController < InheritedResources::Base
   def show
     #@item = current_user.items.find(params[:id])
     @item = Item.find(params[:id])
+
     if @item.user == current_user
       render "show_private_item"
     elsif @item.privacy == "public"

@@ -54,37 +54,10 @@
       settings.
     %h3 Add photo's
     Want to show people how the bag looks on you? Its easy to drag and drop to upload your photos.
+  %section#new-comment
+    = render 'comments/form', :commentable => @item
   %ul#comments.table
-    %li.row
-      .cell.img
-        %img{:src => "images/me.png"}/
-      .cell.comm
-        %a{:href => ""} Geoffrey Chong
-        \- This is what a comment looks like! Does it look familiar? :)
-    %li.row
-      .cell.img
-        %img{:src => "images/me.png"}/
-      .cell.comm
-        %a{:href => ""} Geoffrey Chong
-        \- This is what a comment looks like! Does it look familiar? :)
-    %li.row
-      .cell.img
-        %img{:src => "images/me.png"}/
-      .cell.comm
-        %a{:href => ""} Geoffrey Chong
-        \- This is what a comment looks like! Does it look familiar? :)
-    %li.row
-      .cell.img
-        %img{:src => "images/me.png"}/
-      .cell.comm
-        %a{:href => ""} Geoffrey Chong
-        \- This is what a comment looks like! Does it look familiar? :)
-    %li.row
-      .cell.img
-        %img{:src => "images/me.png"}/
-      .cell.comm
-        %a{:href => ""} Geoffrey Chong
-        \- This is what a comment looks like! Does it look familiar? :)
+    = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
 %aside.grid_6
   %article
     %h4 What do you think about the product?
@@ -138,10 +111,10 @@
   :javascript
     $(document).ready(function() {
       $('#add-remote-image').bind('submit', function() {
-        $('.loading').show();
+        $('.loading', 'aside').show();
       });
       $('#add-remote-image').bind('ajax:complete', function(e, xhr, settings) {
-        $('.loading').hide();
+        $('.loading', 'aside').hide();
         $('#graburl').val('');
         $('body').trigger('insertImage', xhr.responseText);
       });

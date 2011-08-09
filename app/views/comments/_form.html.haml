@@ -1,9 +1,22 @@
 #new_comment_box
   #comment_input_box
-    = form_for :comment,  :url => comments_path(commentable.class.to_s.underscore, commentable.id), :html => {:id => "new_comment"}, :remote => true do |f| 
+    = form_for :comment,  :url => comments_path(commentable.class.to_s.underscore, commentable.id), :format => :js, :html => { :id => "new_comment" }, :remote => true do |f| 
       #share-input
         = f.text_area :comment, :'data-text' => "Comment on this review...", :placeholder => "Comment on this review..."
         .cancel
       .clear
       = f.submit 'Comment', :class => "button"
+      .loading{:style => "display:none;float:left"}
       .clear
+
+- content_for :jquery do
+  :javascript
+    $(document).ready(function() {
+      $('#new_comment').bind('ajax:beforeSend', function() {
+        $('.loading', '#new_comment_box').show();
+      });
+
+      $('#new_comment').bind('ajax:complete', function() {
+        $('.loading','#new_comment_box').hide();
+      });
+    });

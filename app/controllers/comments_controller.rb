@@ -4,18 +4,23 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
+
     respond_to do |format|
       if @comment.save
-        format.html {render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment}}
+        format.html { render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment} }
+        format.js   { }
       end
     end
   end
 
   def destroy
-    @comment = @commentable.comments.find(params[:id])    
-    @comment.destroy
+    comment = @commentable.comments.find(params[:id])    
+    @comment_id = comment.id
+    comment.destroy
+
     respond_to do |format|
-      format.json {render :json => params[:id]}
+      format.json { render :json => params[:id] }
+      format.js   { }
     end 
   end
 

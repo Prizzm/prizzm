@@ -118,6 +118,14 @@ div#usergallery, #graburl {
     box-sizing: border-box;
 }
 
+#new_comment #share-input textarea {
+  padding: 5px;
+  height: 80px;
+  margin-bottom: 10px;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
 ul#comments {
     margin: 15px 0 0;
     width: 100%;
