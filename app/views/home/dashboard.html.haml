@@ -44,14 +44,14 @@
     %h3
       %span latest reviews
     %ul
-      - latest_reviews.each do |review|
+      - latest_reviews.each do |item|
         %li
-          = image_tag review.from["image"]
+          = image_tag item.main_image
           .fl
-            %h4= review.data[0]["name"]
+            %h4= item.name
             %p
-              = truncate(review.data[0]["review"], :length => 160)
-              %br= link_to "Read more", item_path(review.data[0]["cached_slug"])
+              = truncate(item.review, :length => 160)
+              %br= link_to "Read more", item_path(item)
             .rating
           .clear
   %section#mo-re-ca.grid_9
