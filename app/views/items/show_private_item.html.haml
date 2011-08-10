@@ -93,8 +93,10 @@
 - content_for :jquery do
   :javascript
     $(document).ready(function() {
-      $('#item_review').ckeditor();
-      var editor = $('#item_review').ckeditorGet();
+      CKEDITOR.replace('item_review',{
+        customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+      });
+
       var editor_data = CKEDITOR.instances.item_review.getData();
       //console.log(editor_data);
 
