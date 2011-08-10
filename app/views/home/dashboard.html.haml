@@ -58,11 +58,16 @@
     %h3
       %span most recent cases
     %ul
-      %li
-        %a{:href => ""}
-          %img.fl{:alt => "", :src => ""}/
-        .desc.fl
-        .clear
+      - recent_cases.each do |user_case|
+        %li
+          /= image_tag review.from["image"]
+          .fl
+            %h4= user_case.title
+            %p
+              = truncate(user_case.description, :length => 160)
+              %br= link_to "Read more", case_path(user_case)
+            .rating
+          .clear
 %aside.grid_5
   %article
     %h4.fl People following

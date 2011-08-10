@@ -19,7 +19,8 @@ class Item < ActiveRecord::Base
   # should have an thumbnail image
   accepts_nested_attributes_for :images, :interactions
 
-  scope :recently_updated, order('created_at DESC')
+  scope :recently_updated, order('updated_at DESC')
+  scope :recently_created, order('created_at DESC')
   scope :owned, where(:possession_status => 'have')
   scope :wanted, where(:possession_status => 'want')
   scope :publicly, where(:privacy => 'public')

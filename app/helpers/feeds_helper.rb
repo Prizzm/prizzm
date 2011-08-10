@@ -8,6 +8,11 @@ module FeedsHelper
     Notification.where(event: "user.update.item.review").limit(3).order_by(:time, :asc).to_a
   end
 
+  def recent_cases
+    #Item.publicly.recently_updated.limit(3)
+    Case.limit(3)
+  end
+
   def following_list_for user, opts = {:limit => 4 }
     user.events_where("user.follow.user").last(opts[:limit])
   end
