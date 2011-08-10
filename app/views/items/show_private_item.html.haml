@@ -34,7 +34,6 @@
         Need advice from your friends? Its easy to ask your social networks a quick question!
     .close
   %section#review
-    %a.edit-cntrl{:href => ""} Edit review
     .title Review
     = form_for @item, :remote => true, :method => :put do |f|
       = f.text_area :review
