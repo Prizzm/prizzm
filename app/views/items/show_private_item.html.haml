@@ -34,10 +34,13 @@
         Need advice from your friends? Its easy to ask your social networks a quick question!
     .close
   %section#review
+    = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     .title Review
-    = form_for @item, :remote => true, :method => :put do |f|
-      = f.text_area :review
-      = f.submit 'Save'
+    #rendered-review= raw @item.review
+    #review-editor
+      = form_for @item, :remote => true, :method => :put do |f|
+        = f.text_area :review
+        = f.submit 'Save'
     #review_status 
   %section#new-comment
     = render 'comments/form', :commentable => @item
@@ -96,18 +99,36 @@
   = javascript_include_tag 'ckeditor/ckeditor.js'
 
   :javascript
+
     $(document).ready(function() {
-      CKEDITOR.replace('item_review',{
-        customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+      var editor;
+
+      function showEditor(){
+        editor = CKEDITOR.replace('item_review',{
+          customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+        });
+      }
+
+      $('#edit-review-link').click(function(){
+        showEditor();
+        $('#rendered-review').hide();
+        $('#review-editor').show();
       });
 
-      var editor_data = CKEDITOR.instances.item_review.getData();
 
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
-        $('#review_status').html("Your review has been updated");
-        $('#review_status').effect("highlight", {}, 5000);
-        $('#review_status').fadeOut();
+        var editor_data = CKEDITOR.instances.item_review.getData();
+        $('#rendered-review').html(editor_data);
+        $('#rendered-review').show();
+        $('form.edit_item textarea').val(editor_data);
+        $('#review-editor').hide();
+        editor.destroy();
       });
+
+
+
+
+
 
       $('#add-remote-image').bind('submit', function() {
         $('.loading', 'aside').show();

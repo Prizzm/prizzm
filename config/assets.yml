@@ -41,6 +41,7 @@ stylesheets:
     - public/stylesheets/item-public.css
   item_detail:
     - public/stylesheets/item-detail.css
+    - public/stylesheets/ckeditor.css
   item_new:
     - public/stylesheets/item-new.css
   search_results:
