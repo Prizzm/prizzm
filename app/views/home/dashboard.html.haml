@@ -50,7 +50,7 @@
           .fl
             %h4= item.name
             %p
-              = truncate(item.review, :length => 160)
+              = truncate(strip_tags(item.review), :length => 160)
               %br= link_to "Read more", item_path(item)
             .rating
           .clear
@@ -64,7 +64,7 @@
           .fl
             %h4= user_case.title
             %p
-              = truncate(user_case.description, :length => 160)
+              = truncate(strip_tags(user_case.description), :length => 160)
               %br= link_to "Read more", case_path(user_case)
             .rating
           .clear

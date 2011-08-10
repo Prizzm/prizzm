@@ -10,5 +10,5 @@
         = link_to(item) do
           %h3= item.name
           = image_tag item.main_image
-          %p= truncate item.review, :length => 110
+          %p= truncate strip_tags(item.review), :length => 110
           Read review
