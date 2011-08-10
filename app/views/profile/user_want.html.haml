@@ -20,4 +20,4 @@
             = render :partial => 'items/privacy_controls', :locals => {:item => item }
           = image_tag item.main_image
           %p= truncate item.review, :length => 110
-          Read review
+          = review_instruction_for item
