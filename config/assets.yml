@@ -15,13 +15,14 @@ javascripts:
     - public/javascripts/jquery.nivo.slider.js
     - public/javascripts/jquery.timeago.js
     - public/javascripts/jquery.watermark.min.js
-    - public/javascripts/ckeditor/ckeditor.js
     - public/javascripts/swfobject.js
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
     - public/javascripts/application/comments.js
+    - public/javascripts/ckeditor/ckeditor.js
+    - public/javascripts/ckeditor/adapters/jquery.js
 
 stylesheets:
   app:

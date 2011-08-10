@@ -3,7 +3,7 @@ class ItemsController < InheritedResources::Base
   # http://as.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Slice.html
   #
   belongs_to :user
-  respond_to :html, :json
+  respond_to :html, :json, :js
   layout :determine_layout
   helper_method :new_privacy_message
 
@@ -43,6 +43,7 @@ class ItemsController < InheritedResources::Base
       respond_to do |format|
         format.html {redirect_to @item}
         format.json {head :ok}
+        format.js {head :ok}
       end 
     end
   end
