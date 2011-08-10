@@ -1,7 +1,15 @@
 #content.grid_15
   #helptool
-    %h3 Your profile
-    This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
+    %ul
+      %li
+        = link_to new_item_path + "#create", :id => "action-button", :class => "facebox" do 
+          %h3 Start adding things!
+          You can easily add things you have or want to your lists just by navigating to the respective lists in the menu on the left.
+      %li
+        = link_to cases_path do
+          %h3 Had a problem with a company or service?
+          Open a case and discuss your experience with them! Its quick and easy from your "My cases" page.
+    .clear
     .close
 
   %h2 Recent Activity
@@ -12,3 +20,11 @@
         = image_tag event["from"]["image"], :class => "smallthumb fl"
         .fl= format_feed_item event
         .clear
+
+- content_for :jquery do
+  :javascript
+    $(document).ready(function() {
+      $('.close', '#helptool').bind('click', function() {
+        $('#helptool').slideUp(1000);
+      });
+    });

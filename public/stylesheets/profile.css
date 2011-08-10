@@ -143,3 +143,11 @@ aside h4 {
 footer {
 	margin-top: 0;
 }
+
+#helptool ul li {
+  width: 50%;
+}
+
+#helptool li:last-child {
+  border-left: 0 none;
+}

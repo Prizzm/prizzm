@@ -24,20 +24,20 @@ $(document).ready(function(){
    */
 
    $('a').click(function(){
-	  if(this.hash != null){
-		   window.linkHash = this.hash;
-	  }
+    if(this.hash != null){
+       window.linkHash = this.hash;
+    }
    });
    
     $('#product-search-submit-button').click(function() {
-	  window.itemNamePrefil = $('#product-search-input').val();
-	});
+    window.itemNamePrefil = $('#product-search-input').val();
+  });
    
    $(".shared_checkbox").prop("checked", true);
   
   $("ul.social .cancel").click(function(){
-	  $("#comment_shared_tt").prop("checked", false);
-	  $("li.button.twitter").hide();
+    $("#comment_shared_tt").prop("checked", false);
+    $("li.button.twitter").hide();
   });
   
   $(".facebox").facebox();
@@ -170,10 +170,10 @@ $(document).ready(function(){
   window.googleWebSearch = function(options){
     
     var config = {
-      type		: 'web',
-      append		: false,
-      perPage		: 3,			// A maximum of 8 is allowed by Google
-      page		: 0				// The start page
+      type    : 'web',
+      append    : false,
+      perPage   : 3,      // A maximum of 8 is allowed by Google
+      page    : 0       // The start page
     }
     
     function googleSearch(settings){
@@ -246,7 +246,4 @@ $(document).ready(function(){
     config.term = options.q;
     googleSearch();
   };
-
-
-
 });
