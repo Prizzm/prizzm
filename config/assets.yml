@@ -21,8 +21,6 @@ javascripts:
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
     - public/javascripts/application/comments.js
-    - public/javascripts/ckeditor/ckeditor.js
-    - public/javascripts/ckeditor/adapters/jquery.js
 
 stylesheets:
   app:

@@ -90,7 +90,9 @@
     Reserved for a feed of other people's reviews.
 .clear
 
-- content_for :jquery do
+- content_for :javascripts do
+  = javascript_include_tag 'ckeditor/ckeditor.js'
+
   :javascript
     $(document).ready(function() {
       CKEDITOR.replace('item_review',{
