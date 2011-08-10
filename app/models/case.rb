@@ -10,6 +10,12 @@ class Case < ActiveRecord::Base
 
   after_create :log_creation 
 
+  scope :recently_updated, order('updated_at DESC')
+  scope :recently_created, order('created_at DESC')
+  scope :publicly, where(:privacy => 'public')
+  scope :privately, where(:privacy => 'private')
+
+
   default_value_for :privacy, 'private'
 
 protected

@@ -15,7 +15,9 @@
           = link_to [current_user, item],  :remote => true, :method => :delete do
             .close
         = link_to(item) do
-          %h3= item.name
+          %h3
+            = item.name
+            = render :partial => 'items/privacy_controls', :locals => {:item => item }
           = image_tag item.main_image
           %p= truncate item.review, :length => 110
           Read review

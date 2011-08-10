@@ -9,8 +9,8 @@ module FeedsHelper
   end
 
   def recent_cases
-    #Item.publicly.recently_updated.limit(3)
-    Case.limit(3)
+    #Case.publicly.recently_updated.limit(3)
+    Case.recently_updated.limit(3)
   end
 
   def following_list_for user, opts = {:limit => 4 }
