@@ -36,7 +36,11 @@
   %section#review
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     .title Review
-    #rendered-review= raw @item.review
+    #rendered-review
+      - if @item.review.blank?
+        = render 'default_review'
+      - else
+        = raw @item.review
     #review-editor
       = form_for @item, :remote => true, :method => :put do |f|
         = f.text_area :review
