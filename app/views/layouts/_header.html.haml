@@ -2,7 +2,7 @@
 %nav.grid_9
   %ul
     %li= link_to "Dashboard", dashboard_path
-    %li= link_to "Profile", profile_path(current_user)
+    %li= link_to "My Profile", profile_path(current_user)
     %li= link_to "Logout", destroy_user_session_url
 
 = form_tag "#", { :id => "search_form", :class => "search grid_11"} do 
