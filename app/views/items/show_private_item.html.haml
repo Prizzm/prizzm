@@ -37,6 +37,7 @@
     = form_for @item, :remote => true, :method => :put do |f|
       = f.text_area :review
       = f.submit 'Save'
+    #review_status 
   %section#new-comment
     = render 'comments/form', :commentable => @item
   %ul#comments.table
@@ -100,6 +101,12 @@
       });
 
       var editor_data = CKEDITOR.instances.item_review.getData();
+
+      $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
+        $('#review_status').html("Your review has been updated");
+        $('#review_status').effect("highlight", {}, 5000);
+        $('#review_status').fadeOut();
+      });
       //console.log(editor_data);
 
 
