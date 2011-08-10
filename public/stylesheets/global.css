@@ -16,6 +16,7 @@ menu, nav, section, summary, time, mark, audio, video {
 }                  
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
     display:block;
+    word-wrap: break-word;
 }
 nav ul { list-style:none; }
 blockquote, q { quotes:none; }
@@ -370,3 +371,69 @@ img.smallthumb {
   width: 32px;
   height: 32px;
 }
+
+.yui3-aclist {
+  z-index: 9999 !important;
+}
+
+.status {
+  padding: 0 2px 2px;
+  font-variant: small-caps;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline;
+}
+
+.status.public {
+  background: #9ed991;
+  color: #235825;
+}
+
+.status.private {
+  background: #d99191;
+  color: #582323;
+}
+
+a.tag {
+  margin-right: 5px;
+  background: #f4e674;
+  color: #a3983b !important;
+  display: inline;
+  font-size: 0.8em;
+  padding: 5px;
+  border: 1px solid #dbcd57;
+  
+  -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+img.bigthumb {
+  margin-bottom: 5px;
+	width: 190px;
+}
+
+.recommended {
+    color: #619866;
+	background: #a7e8ad;
+}
+
+.neutral {
+    color: #7c7c7c;
+	background: #bdbdbd;
+}
+
+.hate {
+    color: #a25959;
+    background: #d88888;
+}
+
+.icon {
+  padding-left: 25px;
+  background: no-repeat url('../images/icons.png');
+}
+
+.phone{ background-position: 0 0;} 
+.world_link{ background-position: 0 -66px;}
+.prizzm { background: none; }

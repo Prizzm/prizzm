@@ -12,7 +12,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 .profilePic {
 	padding: 5px;
 	background: #fff;
-    height: 115px; 
+    height: 115px;
 }
 
 .grid_19 {
@@ -72,7 +72,26 @@ header .grid_14 {
 
 h2 {
 	font-size: 1.5em;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+#content .button {
+  margin-right: 0;
+  float: right;
+}
+
+#content h2{
+  padding-top: 5px;
+  float: left;
+}
+
+#helptool ul li {
+  width: 50%;
+}
+
+#helptool li:last-child {
+  border-left: 0;
 }
 
 ul.activity-feed , ul.list-display {
@@ -92,7 +111,7 @@ ul.activity-feed li a.user {
 	text-decoration: none !important;
 }
 
-ul.activity-feed li a, ul.list-display li a {
+ul.activity-feed li a{
 	text-decoration: underline !important;
 }
 
@@ -100,12 +119,18 @@ ul.activity-feed li a, ul.list-display li a {
 	color: #ccc;
 }
 
+ul.list-display {
+  padding-top: 10px;
+  border-top: 1px solid #F3F3F3;
+}
+
 ul.list-display li{
-	margin: 0 5px 5px 0;
+	margin: 0 5px 10px 0;
 	padding: 5px;
-    width: 284px;
+  width: 284px;
 	float: left;
-	
+	position: relative;
+   
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -121,9 +146,20 @@ ul.list-display li img {
 	float: left;
 }
 
-ul.list-display li h2 {
+ul.list-display li h3 {
 	margin-bottom: 5px;
 	font-size: 1.1em;
+}
+
+
+ul.list-display li .close {
+  top: 5px;
+  right: 5px;
+  visibility: hidden;
+}
+
+ul.list-display li:hover .close {
+  visibility: visible;
 }
 
 img.smallthumb {
@@ -136,18 +172,10 @@ aside  nav li{
 
 aside h4 {
 	margin-bottom: 10px;
-    padding-bottom: 3px;
+  padding-bottom: 3px;
 	border-bottom: 1px solid #F3F3F3;
 }
 
 footer {
 	margin-top: 0;
-}
-
-#helptool ul li {
-  width: 50%;
-}
-
-#helptool li:last-child {
-  border-left: 0 none;
 }

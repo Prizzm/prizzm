@@ -1,5 +1,5 @@
 #helptool li {
-	width: 164px;
+	width: 33.33%;
 }
 
 aside h4, .title {
@@ -27,6 +27,7 @@ section#review {
 	font-size: 14px;
 	border: 1px solid rgba(0,0,0,0.2);
 	font: arial,sans-serif;
+	background: #fff;
 	
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -120,10 +121,15 @@ div#usergallery, #graburl {
 
 #new_comment #share-input textarea {
   padding: 5px;
-  height: 80px;
+  height: 4 0px;
+  width: 100%;
   margin-bottom: 10px;
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.2);
+  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul#comments {
