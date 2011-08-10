@@ -25,6 +25,7 @@ class Item < ActiveRecord::Base
   scope :wanted, where(:possession_status => 'want')
   scope :publicly, where(:privacy => 'public')
   scope :privately, where(:privacy => 'private')
+  scope :with_review, where("review NOT LIKE ''")
 
   acts_as_list :scope => :user
   acts_as_followable

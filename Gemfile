@@ -27,6 +27,8 @@ gem "bson_ext"
 
 gem "curb"
 
+gem "squeel"
+
 #gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
 #gem "simple_worker", :path => "/home/sid137/tracking/simple_worker"
 #gem "delayed_job"
@@ -61,7 +63,7 @@ gem "fb_graph"
 gem "twitter"#, :git => 'git://github.com/jnunemaker/twitter.git'
 
 
-# Why is this in production?
+# TODO: Why is this in production?
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 gem "rest-client"
 gem "mechanize"
