@@ -34,6 +34,8 @@
         Need advice from your friends? Its easy to ask your social networks a quick question!
     .close
   %section#review
+    %a.edit-cntrl{:href => ""} Edit review
+    .title Review
     = form_for @item, :remote => true, :method => :put do |f|
       = f.text_area :review
       = f.submit 'Save'
@@ -107,8 +109,6 @@
         $('#review_status').effect("highlight", {}, 5000);
         $('#review_status').fadeOut();
       });
-      //console.log(editor_data);
-
 
       $('#add-remote-image').bind('submit', function() {
         $('.loading', 'aside').show();
