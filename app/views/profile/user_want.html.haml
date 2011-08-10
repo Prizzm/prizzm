@@ -11,6 +11,9 @@
   %ul.list-display
     - @user.wanted_items.each do |item|
       %li{:id => "item_#{item.id}"}
+        .delete-item
+          = link_to [current_user, item],  :remote => true, :method => :delete do
+            .close
         = link_to(item) do
           %h3= item.name
           = image_tag item.main_image
