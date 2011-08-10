@@ -34,6 +34,9 @@ class ItemsController < InheritedResources::Base
       render "show_private_item"
     elsif @item.privacy == "public"
       render "show_public_item", :layout => "item_public.html.haml"
+    else
+      # User is somehow trying to see someone else's private item
+      redirect_to home_url
     end
   end
 
