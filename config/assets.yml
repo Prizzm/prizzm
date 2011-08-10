@@ -15,6 +15,7 @@ javascripts:
     - public/javascripts/jquery.nivo.slider.js
     - public/javascripts/jquery.timeago.js
     - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/ckeditor/ckeditor.js
     - public/javascripts/swfobject.js
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
