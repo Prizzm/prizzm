@@ -9,22 +9,16 @@
     %ul
       %li
         = link_to new_item_path + "#create", :id => "action-button", :class => "facebox" do 
-          %h3 Add items
-          Its easy to get started by adding things you own! Try finding them in the search bar above, or
-          / Activates add item popup
-          adding your own item!</a>
+          %h3 Add 
+          What do you have or want? Add it!</a>
       %li
         = link_to have_path(current_user) do
-          %h3 Have &amp; Want list
-          Browse through yours, and other people's, things by viewing Have &amp; Want lists on profiles.
-          / Links to Have list on profile
-          Take a look at yours.
+          %h3 Data
+          Prizzm stores *your* data. Private unless shared.  Also browse others profiles, what do your friends have?
       %li
         = link_to new_case_path do
-          %h3 Open a case
-          Record and discuss cases you've had with companies and even share them to get opinions!
-          / Links to Cases on profile
-          Have you had problems with certain services?</a>
+          %h3 Capture
+          Ever have a problem with a product or service? Or call a company? Need to record what they said?  Track your version here...and publicize your "case" if necessary.</a>
     .clear
     .close
   %section#la-rev.grid_9
