@@ -68,32 +68,37 @@ module FeedsHelper
     end
     linked_subject = link_to subject, profile_path(user["slug"]), :class => "user"
 
-    output = linked_subject + verb
+    output = linked_subject 
     case name
     when "user.join"
       output = "#{linked_subject} joined Prizzm"
     when "user.update.profile"
       output = "#{linked_subject} #{past} updated #{possession} profile"
+
     when "user.follow.user"
       user = event["data"][0]
       followed = user["id"] == current_user.id ? "You" : user["name"]
-      output << " following "
+      output << "#{verb} following "
       output << link_to(followed, profile_path(user["slug"]))
     when "user.follow.product"
       product = event["data"][0] 
       followed = product["name"]
-      output << " following the "
+      output << "#{verb} following the "
       output << link_to(followed, product_path(product["cached_slug"]))
     when "user.follow.company"
       company = event["data"][0]
       followed = company["name"]
-      output << " now following "
+      output << "#{verb} now following "
       output << link_to(followed, company_path(company["cached_slug"]))
+
+
+
+
     when "user.add.item"
       item = event["data"][0]
       output << " added the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
-      output << " to their items"
+      output << " to #{possession} items"
     when "user.remove.item"
     when "user.update.item.rating"
       item = event["data"][0]
@@ -112,7 +117,7 @@ module FeedsHelper
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.review"
       item = event["data"][0]
-      output << " updated their review for the "
+      output << " updated #{possession} review for the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.url"
       item = event["data"][0]
@@ -122,6 +127,17 @@ module FeedsHelper
       item = event["data"][0]
       output << " left a comment about the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
+
+
+
+    when "user.open.case"
+      user_case = event["data"][0]
+      output << " opened a case about "
+      output << link_to(item["name"], case_path(user_case["id"]))
+    when "user.close.case"
+      user_case = event["data"][0]
+      output << " closed a case about "
+      output << link_to(item["name"], case_path(user_case["id"]))
     else
       "nothiing"
     end
