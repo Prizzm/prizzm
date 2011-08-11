@@ -60,6 +60,21 @@ class Item < ActiveRecord::Base
   def is_public?
     privacy == "public"
   end
+
+  def is_private?
+    !is_public?
+  end
+
+  def toggle_privacy
+    if privacy == "private"
+      self.privacy = "public"
+    else
+      self.privacy = "private"
+    end
+    save
+  end
+
+
 protected
 
   #  This method dectects which attributes were changed from the model update,

@@ -17,7 +17,7 @@
         = link_to(item) do
           %h3
             = item.name
-            = render :partial => 'items/privacy_controls', :locals => {:item => item }
+            = privacy_control_for item
           = image_tag item.main_image
           %p= truncate strip_tags(item.review), :length => 110
           = review_instruction_for item

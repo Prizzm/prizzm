@@ -5,7 +5,6 @@ class ItemsController < InheritedResources::Base
   belongs_to :user
   respond_to :html, :json, :js
   layout :determine_layout
-  helper_method :new_privacy_message
 
   def new
     @item = Item.new
@@ -32,7 +31,7 @@ class ItemsController < InheritedResources::Base
 
     if @item.user == current_user
       render "show_private_item"
-    elsif @item.privacy == "public"
+    elsif @item.is_public?
       render "show_public_item", :layout => "item_public"
     else
       # User is somehow trying to see someone else's private item
@@ -71,12 +70,6 @@ class ItemsController < InheritedResources::Base
     render :json => @item.name
   end
 
-  def update_privacy
-    @item = current_user.items.find(params[:id])
-    old_privacy = @item.privacy
-    @item.update_attribute(:privacy, new_item_privacy(@item.privacy))
-    render :json => {:item_privacy  => @item.privacy,  :old_privacy => old_privacy }
-  end 
 
   def rate
     @item = current_user.items.find(params[:object_id])
@@ -118,13 +111,4 @@ class ItemsController < InheritedResources::Base
       ['show'].include?(action_name) ? 'application' : nil 
     end 
 
-
-
-    def new_item_privacy privacy
-      if privacy == "private"
-        "public"
-      else
-        "private"
-      end
-    end 
 end

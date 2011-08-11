@@ -3,10 +3,11 @@ $(document).ready(function(){
   // request to toggle te privacy.  Tis script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
   $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
-    $(this).html(data.item_privacy);
-    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
+    $(this).html(data.object_privacy);
+    $(this).toggleClass('private', (data.object_privacy == 'private')); 
   });
   
+
   // jax control for following links
   // Unfortunately has a strong binding to follow_controller json reesponse as
   // well as code in linkhelper.rb and routinghlper.rb
@@ -117,13 +118,6 @@ $(document).ready(function(){
    * remove the item from the list of interaction items.
    */
 
-
-  /* Privacy controls to adjust item privace
-   */
-  $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
-    $(this).html(data.item_privacy);
-    $(this).removeClass(data.old_privacy).addClass(data.item_privacy);
-  });
 
 
   /* This function is used to send the updated ratings to the Rails controller

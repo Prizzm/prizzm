@@ -119,7 +119,7 @@ section h3 span {
 	margin: 0 0 10px;
 	position: relative;
 	background: #cfe1f1;
-  border: 1px solid #b4cce2;
+	border: 1px solid #b4cce2;
 	
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -127,64 +127,63 @@ section h3 span {
 }
 
   #helptool .close {
-	top: 5px;
-	right: 5px;
-	visibility: hidden;
+    top: 5px;
+    right: 5px;
+    visibility: hidden;
   }
   
   #helptool:hover .close {
-	visibility: visible;
+	  visibility: visible;
   }
   
   #helptool ul {
-	margin: 0;
-	list-style: none;
+    margin: 0;
+    list-style: none;
   }
   
     #helptool li {
       float: left;
       vertical-align: top;
       width: 33.33%;
-      
+
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-    }
-    
+	  }
+
     #helptool li:hover {
       background: #e9f0f6;
     }
-	
-    #helptool h3 {
-      margin-bottom: 5px;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-    
-    #helptool li a {
-      padding: 10px;
-      text-decoration: none;
-      color: #444444 !important;
-      display: block;
-      min-height: 100px;
-    }
-    
-    #helptool li a:hover {
-      color: #607890 !important;
-      -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    }
-    
+
     #helptool li:first-child {
       -moz-border-radius: 3px 0 0 3px;
       border-right: 1px solid #B4CCE2;
     }
-    
+
     #helptool li:last-child {
       -moz-border-radius: 0 3px 3px 0;
       border-left: 1px solid #B4CCE2;
+    }   
+
+    #helptool li a {
+      color: #444444 !important;
+      display: block;
+      min-height: 100px;
+      padding: 10px;
+      text-decoration: none;
     }
 
+    #helptool li a:hover {
+      color: #607890 !important;
+      -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }   
+	
+  #helptool h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 
 #content {
 	min-height: 500px;
@@ -247,9 +246,10 @@ ul.sharebts li {
 }
 
   .sharebt .close {
-	top: 3px;
-	right: 2px;
-	opacity: 0.3;
+    top: 4px;
+    right: 2px;
+    opacity: 0.3;
+    background: url('../images/lt-close.png');
   }
   
   .sharebt .close:hover {
