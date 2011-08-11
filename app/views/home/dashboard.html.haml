@@ -37,7 +37,7 @@
           .fl
             %h4= item.name
             %p
-              = truncate(strip_tags(item.review), :length => 160)
+              = truncate(strip_tags(item.review), :length => 40)
               %br= link_to "Read more", item_path(item)
             .rating
           .clear
@@ -51,13 +51,13 @@
           .fl
             %h4= user_case.title
             %p
-              = truncate(strip_tags(user_case.description), :length => 160)
-              %br= link_to "Read more", case_path(user_case)
+              = truncate(strip_tags(user_case.description), :length => 40)
+              = link_to "Read more", case_path(user_case)
             .rating
           .clear
   %section#tr-br.grid_18
     %h3
-      %span trending brands
+      %span brands
     %ul
       - trending_brands.each do |company|
         %li
