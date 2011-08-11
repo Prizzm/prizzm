@@ -44,6 +44,7 @@ Prizzm::Application.routes.draw do
 
 
 
+  put '/privacy/toggle/:object_type/:id' => 'privacy#toggle', :as => 'toggle_privacy'
 
 
 
@@ -119,10 +120,8 @@ Prizzm::Application.routes.draw do
     resources :images, :only => [:create, :destroy]
   end
 
-  put '/update_item_privacy/:id' => 'items#update_privacy', :as => 'update_item_privacy'
   put '/update_item_review/:id' => 'items#update_review', :as => 'update_item_review'
   put '/update_item_name' => 'items#update_item_name', :as => 'update_item_name'
-
   post 'items/rate', :as => :update_item_rating
   ########################################################################################
 

@@ -50,7 +50,15 @@ module ActivityLogger
         object   # TODO: figure out what to do for this case
       end
     end 
-    payload = {:from => from, :about => dest, :changes => changes, :data => info }
+
+    if false
+      object.is_private?
+      privacy = 'private'
+    else
+      privacy = 'public'
+    end
+
+    payload = {:from => from, :about => dest, :changes => changes, :data => info, :privacy => privacy }
     log =  {:event => name, :time => Time.now.to_i}.merge(payload)
 
 

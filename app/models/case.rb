@@ -1,4 +1,6 @@
 class Case < ActiveRecord::Base
+  include Privatizable
+
   belongs_to :user
   belongs_to :company
   belongs_to :item

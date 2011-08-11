@@ -60,7 +60,7 @@
     %ul
       - recent_cases.each do |user_case|
         %li
-          /= image_tag review.from["image"]
+          = image_tag user_case.user.main_image
           .fl
             %h4= user_case.title
             %p

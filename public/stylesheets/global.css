@@ -383,16 +383,14 @@ img.smallthumb {
   -moz-border-radius: 3px;
   border-radius: 3px;
   display: inline;
-}
-
-.status.public {
+  text-decoration: none;
   background: #9ed991;
-  color: #235825;
+  color: #235825 !important;
 }
 
 .status.private {
   background: #d99191;
-  color: #582323;
+  color: #582323 !important;
 }
 
 a.tag {

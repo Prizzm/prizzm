@@ -50,16 +50,16 @@ a.button.right { margin-right: 10px;}
 	width: 349px;
 }	
 
-#la-rev ul {
+#la-rev ul, #mo-re-ca ul {
 	margin: 0;
 	list-style: none;
 }
 	
- #la-rev li {
+ #la-rev li, #mo-re-ca li {
     margin-bottom: 10px;
   }
   
-  #la-rev img {
+  #la-rev img, #mo-re-ca img {
 	margin-right: 6px;
     padding: 5px;
     width: 60px;
@@ -69,15 +69,15 @@ a.button.right { margin-right: 10px;}
     background: #fff;
   }
   
-  #la-rev li  .fl {
+  #la-rev li  .fl, #mo-re-ca fl {
 	width: 76%;
   }
   
-  #la-rev a {
+  #la-rev a, #mo-re-ca a {
     color: #4e8fcc;
   }
   
-  #la-rev a:hover {
+  #la-rev a:hover, #mo-re-ca a:hover {
     text-decoration: underline;
   }
 

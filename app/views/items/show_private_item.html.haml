@@ -66,18 +66,10 @@
   %article
     %h4 Publish
     .table
-      /
-        <div class="row">
-        <div class="cell">
-        <a href="" class="button edit">Edit review</a>
-        </div>
-        </div>
       .row
         .cell.left Visibility:
         .cell.right
-          = render :partial => 'items/privacy_controls', :locals => {:item => @item }
-          /%em #{@item.privacy.capitalize}
-          /%a{:href => ""} Change
+          = privacy_control_for @item
       - if @item.is_public?
         .row
           .cell.left Share link:

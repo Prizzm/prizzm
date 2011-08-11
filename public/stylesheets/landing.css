@@ -14,13 +14,13 @@ a { text-decoration: none; }
 
 #bannerbar {
     height: 355px;
-    background: #344c85 url('/images/landing/bg_pat.png');
+    background: #344c85 url('../images/bg_pat.png');
 }
   
   #bannerbar span {
     height: 400px;
     display: block;
-    background: no-repeat url('/images/landing/spotlight.png') center -175px;
+    background: no-repeat url('../images/spotlight.png') center -175px;
   }
   
 #searchbar {

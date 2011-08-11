@@ -1,0 +1,1 @@
+= link_to "#{object.privacy}", toggle_privacy_path(:object_type => object.class.to_s.underscore, :id => object.id), :remote => true, :method => :put, :class => "#{object.privacy if object.is_private?} status privacy_control"
