@@ -21,6 +21,6 @@ class Case < ActiveRecord::Base
 protected
 
   def log_creation
-    ActivityLogger.user_create_case :from => self.user, :for =>[self.company, self.item] 
+    ActivityLogger.user_open_case :from => self.user, :for =>[self.company, self.item] 
   end 
 end

@@ -58,12 +58,12 @@ module FeedsHelper
     if user["id"] == current_user.id 
       subject = "You" 
       verb = " are "
-      possession = " your "
+      possessive = " your "
       past = " have "
     else
       subject = user["name"]
       verb = " is "
-      possession = " their "
+      possessive = " their "
       past = " has "
     end
     linked_subject = link_to subject, profile_path(user["slug"]), :class => "user"
@@ -73,7 +73,7 @@ module FeedsHelper
     when "user.join"
       output = "#{linked_subject} joined Prizzm"
     when "user.update.profile"
-      output = "#{linked_subject} #{past} updated #{possession} profile"
+      output = "#{linked_subject} #{past} updated #{possessive} profile"
 
     when "user.follow.user"
       user = event["data"][0]
@@ -98,8 +98,11 @@ module FeedsHelper
       item = event["data"][0]
       output << " added the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
-      output << " to #{possession} items"
+      output << " to #{possessive} items"
     when "user.remove.item"
+
+
+
     when "user.update.item.rating"
       item = event["data"][0]
       output << " just left a rating of #{pluralize(item["rating"], 'star')} for the "
@@ -109,7 +112,7 @@ module FeedsHelper
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.privacy"
       item = event["data"][0]
-      output << " just changed the privacy settings for the "
+      output << " changed the privacy settings for the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.name"
       item = event["data"][0]
@@ -117,7 +120,7 @@ module FeedsHelper
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.review"
       item = event["data"][0]
-      output << " updated #{possession} review for the "
+      output << " updated #{possessive} review for the "
       output << link_to(item["name"], item_path(item["cached_slug"]))
     when "user.update.item.url"
       item = event["data"][0]
