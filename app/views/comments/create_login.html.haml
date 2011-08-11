@@ -1,0 +1,18 @@
+#login-popup
+  = form_for :user, :url => user_session_path do |f|
+    = f.label :email, "Email: "
+    = f.text_field :email, :class => "round"
+    = f.label :password, "Password: "
+    = f.password_field :password, :class => "round"
+    = f.submit :id => "submit", :value => "login"
+    %span 
+      %input{:type => "checkbox", :checked => "true"} Remember me
+    = link_to "Forgot something?", new_user_password_path, :id => "forgot", :class => "clearfix"
+  %ul
+    %li= link_to image_tag('/images/landing/fb-login-button.png'), user_omniauth_authorize_path(:facebook)
+    %li= link_to image_tag('/images/landing/login-with-twitter.png'), user_omniauth_authorize_path(:twitter)
+
+:javascript
+  $(document).ready(function() {
+    $('#facebox .content').width('340px');
+  });

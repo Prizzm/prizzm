@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :load_commentable
+  before_filter :load_commentable, :except => [:create_login]
 
   def create
     @comment = @commentable.comments.build(params[:comment])
@@ -22,6 +22,10 @@ class CommentsController < ApplicationController
       format.json { render :json => params[:id] }
       format.js   { }
     end 
+  end
+
+  def create_login
+    render :layout => false
   end
 
 protected
