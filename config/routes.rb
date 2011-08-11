@@ -31,6 +31,8 @@ Prizzm::Application.routes.draw do
     resources :comments 
   end
 
+  get '/comments/create_login' => 'comments#create_login', :as => 'comment_create_login'
+
 
 
   ##############################    NOT YET IMPLEMENTED   #############################

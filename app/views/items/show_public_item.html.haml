@@ -63,38 +63,13 @@
         #footerbit
           Written 31st July 2011 - Edited 2 hours ago |
           %a{:href => ""} 10 Comments
+      - if user_signed_in?
+        %section#new-comment
+          = render 'comments/form', :commentable => @item
+      - else
+        = link_to "Login to post comments!", comment_create_login_path, :class => 'facebox'
       %ul#comments.table
-        %li.row
-          .cell.img
-            %img{:src => "images/me.png"}/
-          .cell.comm
-            %a{:href => ""} Geoffrey Chong
-            \- This is what a comment looks like! Does it look familiar? :)
-        %li.row
-          .cell.img
-            %img{:src => "images/me.png"}/
-          .cell.comm
-            %a{:href => ""} Geoffrey Chong
-            \- This is what a comment looks like! Does it look familiar? :)
-        %li.row
-          .cell.img
-            %img{:src => "images/me.png"}/
-          .cell.comm
-            %a{:href => ""} Geoffrey Chong
-            \- This is what a comment looks like! Does it look familiar? :)
-        %li.row
-          .cell.img
-            %img{:src => "images/me.png"}/
-          .cell.comm
-            %a{:href => ""} Geoffrey Chong
-            \- This is what a comment looks like! Does it look familiar? :)
-        %li.row
-          .cell.img
-            %img{:src => "images/me.png"}/
-          .cell.comm
-            %a{:href => ""} Geoffrey Chong
-            \- This is what a comment looks like! Does it look familiar? :)
-      %a{:href => ""} Sign up to post a comment!
+        = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
     %aside.grid_6
       %article
         %h4 Owner of this product
