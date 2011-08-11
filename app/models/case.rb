@@ -1,4 +1,6 @@
 class Case < ActiveRecord::Base
+  include Privatizable
+
   belongs_to :user
   belongs_to :company
   belongs_to :item
@@ -17,23 +19,6 @@ class Case < ActiveRecord::Base
 
 
   default_value_for :privacy, 'private'
-
-  def is_public?
-    privacy == "public"
-  end
-
-  def is_private?
-    !is_public?
-  end
-
-  def toggle_privacy
-    if privacy == "private"
-      self.privacy = "public"
-    else
-      self.privacy = "private"
-    end
-    save
-  end
 
 protected
 

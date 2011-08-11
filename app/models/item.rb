@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
   include Imageable
+  include Privatizable
+
   include Rails.application.routes.url_helpers
 
   belongs_to :user
@@ -55,23 +57,6 @@ class Item < ActiveRecord::Base
 
   def parent_company
     product.company if has_product?
-  end
-
-  def is_public?
-    privacy == "public"
-  end
-
-  def is_private?
-    !is_public?
-  end
-
-  def toggle_privacy
-    if privacy == "private"
-      self.privacy = "public"
-    else
-      self.privacy = "private"
-    end
-    save
   end
 
 
