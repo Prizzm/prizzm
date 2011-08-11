@@ -27,22 +27,9 @@
           Have you had problems with certain services?</a>
     .clear
     .close
-    
-  %section#tr-br.grid_18
-    %h3
-      %span trending brands
-    %ul
-      - trending_brands.each do |company|
-        %li
-          = link_to company_path(company) do
-            = image_tag company.main_image
-            = company.name
-    %a.fr{:href => ""} View all
-  .clear
-  .clear
   %section#la-rev.grid_9
     %h3
-      %span latest reviews
+      %span public items
     %ul
       - latest_reviews.each do |item|
         %li
@@ -60,7 +47,7 @@
     %ul
       - recent_cases.each do |user_case|
         %li
-          = image_tag user_case.user.main_image
+          /= image_tag review.from["image"]
           .fl
             %h4= user_case.title
             %p
@@ -68,6 +55,18 @@
               %br= link_to "Read more", case_path(user_case)
             .rating
           .clear
+-#  %section#tr-br.grid_18
+-#    %h3
+-#      %span trending brands
+-#    %ul
+-#      - trending_brands.each do |company|
+-#        %li
+-#          = link_to company_path(company) do
+-#            = image_tag company.main_image
+-#            = company.name
+-#    %a.fr{:href => ""} View all
+-#  .clear
+-#  .clear
 %aside.grid_5
   %article
     %h4.fl People following
