@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   has_many :addresses, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
 
-  has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
+  has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true 
   
   acts_as_followable
 end
