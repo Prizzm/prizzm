@@ -12,7 +12,7 @@
   As the delete image URL changes through javascript depending on which image we're looking at, 
   we can't have the url rendered on the page, but must suply it based on the current image.
   So we will do that by using javascript
-- if @item.images.count > 0
+- if (@item.images.count > 0) && (@item.user == current_user)
   %br/
   = link_to "Delete", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
 
