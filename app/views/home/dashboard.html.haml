@@ -26,7 +26,7 @@
       %span public items
     %ul
       - latest_reviews.each do |item|
-        %li
+        %li	
           = image_tag item.main_image
           .fl
             %h4= item.name
@@ -35,6 +35,8 @@
               %br= link_to "Read more", item_path(item)
             .rating
           .clear
+        %br
+ 
   %section#mo-re-ca.grid_9
     %h3
       %span public cases
@@ -49,6 +51,7 @@
               = link_to "Read more", case_path(user_case)
             .rating
           .clear
+        %br
   %section#tr-br.grid_18
     %h3
       %span brands

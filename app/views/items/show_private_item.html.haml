@@ -14,6 +14,9 @@
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
 
+    %br
+    = link_to @item.url, @item.url
+
     = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
       = fields_for :image do |builder|
         = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
@@ -21,7 +24,7 @@
           = builder.submit
     .loading{:style => "display:none"}
 
-    = link_to @item.url, @item.url
+    
 #content.grid_13
   -#commentedbyCO helptool
     %ul

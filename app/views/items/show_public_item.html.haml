@@ -1,13 +1,19 @@
 - content_for :page_style do
   = include_stylesheets :item_detail
 
-%header
-  %h2.grid_5 Bryna Nicole Bag
+%header 
+  %h2.grid_5 #{@item.name}  
   .grid_19
     .buttons
-      %a.button.add{:href => ""} Write your own review
+      %a.button.add{:href => ""} Want It!
+
 %aside.grid_5
   = render 'images'
+  %br
+  %h4
+  %h3= link_to @item.url, @item.url
+
+
 #content.grid_13
   %section#review
     .title Review

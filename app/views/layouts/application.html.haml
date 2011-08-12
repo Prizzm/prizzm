@@ -28,6 +28,8 @@
       = render "layouts/footer"
       - flash.each do |type, value|
         .flash{ :class => type.to_s }
-          = value 
+          = value
+
     = render 'layouts/social_utils'
     = render 'layouts/javascripts'
+
