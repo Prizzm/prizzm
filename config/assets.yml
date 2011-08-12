@@ -52,6 +52,8 @@ stylesheets:
     - public/stylesheets/ie/*.css
   profile:
     - public/stylesheets/profile.css
+  profile_fix:
+    - public/stylesheets/profile-public-fix.css
   dashboard:
     - public/stylesheets/dashboard.css
   case_detail:

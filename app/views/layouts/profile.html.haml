@@ -6,6 +6,7 @@
     = csrf_meta_tag
     = render 'layouts/stylesheets'
     = include_stylesheets :profile 
+    = include_stylesheets :profile_fix unless signed_in?
     = favicon_link_tag
     
   %body
