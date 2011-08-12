@@ -56,3 +56,4 @@ stylesheets:
     - public/stylesheets/dashboard.css
   case_detail:
     - public/stylesheets/case-detail.css
+    - public/stylesheets/ckeditor.css
