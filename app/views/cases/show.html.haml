@@ -11,12 +11,15 @@
     %h4 Company
     %img.bigthumb{:alt => "", :src => "http://goo.gl/4VUd8"}/
     %ul.comp-det
-      %li.icon.phone 1800 00 55 63
+      %li.icon.phone 1 800 00 55 63
       %li.icon.world_link
         %a{:href => "http://www.airnewzealand.com.au/", :target => "_blank"} http://www.airnewzealand.com.au/
   %article
     %h4 Case owner
-    = image_tag @case.user.main_image, :class => "bigthumb"
+    -#= image_tag @case.user.main_image, :class => "userthumb fl"
+    %h5
+    = @case.user.name 
+    %h4
     #usergallery
       Upload your photo's or documents here
       %br/
