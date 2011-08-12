@@ -46,9 +46,7 @@ Prizzm::Application.routes.draw do
 
   put '/privacy/toggle/:object_type/:id' => 'privacy#toggle', :as => 'toggle_privacy'
 
-
-
-
+  get '/:user_id/item/:id' => 'items#show', :as => 'show_item'
 
 
 

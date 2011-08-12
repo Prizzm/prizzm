@@ -1,7 +1,7 @@
 module RoutingHelper
 
   def follow_path_for(object)
-    if current_user.following? object 
+    if current_user && current_user.following?(object)
       unfollow_path(object.class.to_s.downcase, object)
     else
       follow_path(object.class.to_s.downcase, object)

@@ -1,7 +1,4 @@
 class ItemsController < InheritedResources::Base
-  # TODO: Look into using as hash slice to whitelist params
-  # http://as.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Slice.html
-  #
   belongs_to :user
   respond_to :html, :json, :js
   layout :determine_layout
@@ -35,7 +32,7 @@ class ItemsController < InheritedResources::Base
       render "show_public_item"
     else
       # User is somehow trying to see someone else's private item
-      redirect_to home_url
+      redirect_to dashboard_url
     end
   end
 

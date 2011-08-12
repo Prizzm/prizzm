@@ -54,7 +54,7 @@ module FeedsHelper
     time = event["time"]
     user = event["from"]
 
-    if user["id"] == current_user.id 
+    if (current_user && (user["id"] == current_user.id))
       subject = "You" 
       verb = " are "
       possessive = " your "
@@ -76,7 +76,7 @@ module FeedsHelper
 
     when "user.follow.user"
       user = event["data"][0]
-      followed = user["id"] == current_user.id ? "You" : user["name"]
+      followed = (current_user && (user["id"] == current_user.id)) ? "You" : user["name"]
       output << "#{verb} following "
       output << link_to(followed, profile_path(user["slug"]))
     when "user.follow.product"
