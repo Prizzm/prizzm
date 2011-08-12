@@ -1,5 +1,9 @@
 module JavascriptHelper
 
+  def enable_editor
+    render 'javascript/editor'
+  end
+
   
   def show_stars_for element
     %Q{

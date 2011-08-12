@@ -1,5 +1,4 @@
 class CasesController < InheritedResources::Base
-  layout "profile"
   before_filter :load_user
 
   def index

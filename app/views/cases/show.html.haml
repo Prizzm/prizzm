@@ -1,31 +1,131 @@
-%p#notice= notice
+- content_for :page_style do
+  = include_stylesheets :case_detail
 
-%p
-  %b Title:
-  = @case.title
-%p
-  %b Description:
-  = @case.description
-%p
-  %b Date:
-  = @case.date
-%p
-  %b Case reference:
-  = @case.case_reference
-%p
-  %b User:
-  = @case.user.name
-%p
-  %b Company:
-  = @case.company.try(:name)
-%p
-  %b Item:
-  = @case.item.try(:name)
+%header
+  %h2
+    %a.tag.case{:href => ""}> Air New Zealand
+    = @case.title
 
-= link_to 'Edit', edit_case_path(@case)
-\|
-= link_to 'Back', cases_path
+%aside.grid_5
+  %article
+    %h4 Company
+    %img.bigthumb{:alt => "", :src => "http://goo.gl/4VUd8"}/
+    %ul.comp-det
+      %li.icon.phone 1800 00 55 63
+      %li.icon.world_link
+        %a{:href => "http://www.airnewzealand.com.au/", :target => "_blank"} http://www.airnewzealand.com.au/
+  %article
+    %h4 Case owner
+    = image_tag @case.user.main_image, :class => "bigthumb"
+    #usergallery
+      Upload your photo's or documents here
+      %br/
+      %em Drag and Drop
+    %input#graburl{:placeholder => "Add a URL", :type => "text"}/
+
+#content.grid_13
+  #helptool
+    %ul
+      %li
+        %a{:href => ""}
+          %h3 Describe what happened
+          Give an overview of what the problem is and how you approached them.
+      %li
+        %a{:href => ""}
+          %h3 Sharing
+          You can make this case public, and share it on Twitter and Facebook. Or keep it private for your own notes.
+      %li
+        %a{:href => ""}
+          %h3 Connect with others
+          Look for others who have a similar issue, start a discussion about this.
+    .clear
+    .close
+
+  %section#review
+    = link_to "Edit overview", '#', :class => "edit-cntrl", :id => "edit-review-link"
+    .title Case #{@case.case_reference}
+    #rendered-review
+      - if @case.description.blank?
+        = render 'default_case'
+      - else
+        = raw @case.description
+    #review-editor
+      = form_for @case, :remote => true, :method => :put do |f|
+        = f.text_area :description
+        = f.submit 'Save'
+    #review_status 
+
+  = comments_section_for @case
+
+%aside.grid_6
+  %article
+    %h4 Case status
+    %select
+      %option Open
+      %option Closed
+      %option Resolved
+  %article
+    %h4 Publish
+    .table
+      .row
+        .cell.left Visibility:
+        .cell.right
+          = privacy_control_for @case
+      - if @case.is_public?
+        .row
+          .cell.left Share link:
+          .cell.right
+            %input{:type => "text", :value => case_url(@case)}/
+  %article
+    %h4 Share with others
+    %form.table
+      .row
+        .cell
+          %input{:type => "text"}/
+      .row
+        .cell.left Send to
+        .cell.right
+          %ul.sharebts
+            %li.sharebt.fb
+              facebook
+              .close
+            %li.sharebt.twitter
+              twitter
+              .close
+      %a.button.fr{:href => ""} Share
+  %article
+    %h4 Connect to others
+    Reserved for a feed of related cases.
+.clear
 
 
+- content_for :javascripts do
+  = javascript_include_tag 'ckeditor/ckeditor.js'
 
-= render :partial => 'shared/privacy_controls', :locals => {:object => @case }
+  :javascript
+
+    $(document).ready(function() {
+      var editor;
+
+      function showEditor(){
+        editor = CKEDITOR.replace('case_description',{                   //refactor point
+          customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+        });
+      }
+
+      $('#edit-review-link').click(function(){
+        showEditor();
+        $('#rendered-review').hide();
+        $('#review-editor').show();
+      });
+
+
+      $('form.edit_case').live('ajax:success', function(event, data, status, xhr){
+        var editor_data = CKEDITOR.instances.case_description.getData();  //refactor point
+        $('#rendered-review').html(editor_data);
+        $('#rendered-review').show();
+        $('form.edit_case textarea').val(editor_data);                    //refactor point
+        $('#review-editor').hide();
+        editor.destroy();
+      });
+    });

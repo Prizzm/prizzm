@@ -54,3 +54,5 @@ stylesheets:
     - public/stylesheets/profile.css
   dashboard:
     - public/stylesheets/dashboard.css
+  case_detail:
+    - public/stylesheets/case-detail.css

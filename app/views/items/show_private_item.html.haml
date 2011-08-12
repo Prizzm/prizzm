@@ -52,10 +52,7 @@
         = f.text_area :review
         = f.submit 'Save'
     #review_status 
-  %section#new-comment
-    = render 'comments/form', :commentable => @item
-  %ul#comments.table
-    = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
+  = comments_section_for @item
 %aside.grid_6
   %article
     %h4 What do you think about the product?
