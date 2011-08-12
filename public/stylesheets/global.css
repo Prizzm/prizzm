@@ -427,11 +427,13 @@ img.bigthumb {
     background: #d88888;
 }
 
+/*
 .icon {
   /*padding-left: 25px;
-  background: no-repeat url('../images/icons.png');*/
+  background: no-repeat url('../images/icons.png');
   width: 16px;
-}
+}*/
+
 
 .phone{ background-position: 0 0;} 
 .world_link{ background-position: 0 -66px;}
