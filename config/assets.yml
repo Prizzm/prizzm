@@ -32,6 +32,7 @@ stylesheets:
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
     - public/stylesheets/galleriffic-3.css
+    - public/stylesheets/ckeditor.css
   logged_in:
     - public/stylesheets/application-logged-in.css
   public:
@@ -41,7 +42,6 @@ stylesheets:
     - public/stylesheets/item-public.css
   item_detail:
     - public/stylesheets/item-detail.css
-    - public/stylesheets/ckeditor.css
   item_new:
     - public/stylesheets/item-new.css
   search_results:
@@ -56,4 +56,3 @@ stylesheets:
     - public/stylesheets/dashboard.css
   case_detail:
     - public/stylesheets/case-detail.css
-    - public/stylesheets/ckeditor.css
