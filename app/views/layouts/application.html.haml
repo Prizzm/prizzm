@@ -8,12 +8,18 @@
     = render 'layouts/stylesheets'
     
   %body
-    #prizzmbar
+    - if signed_in?
+      #prizzmbar
+    - else
+      #blackbar
     #hbar
       
     #container.container_24
       %header
-        = render "layouts/header"
+        - if signed_in?
+          = render "layouts/header"
+        - else
+          = render "layouts/header_signed_out"
       #main
         = yield
       .clear

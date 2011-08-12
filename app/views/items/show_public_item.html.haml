@@ -1,90 +1,45 @@
-#container.container_24
-  %header
-    %h1.grid_5
-      %a{:href => "/", :rel => "index"} PRIZZM
-    %nav.grid_15
-      %ul
-        %li
-          %a{:href => ""} Why Prizzm?
-        %li
-          %a{:href => ""} Tour
-        %li
-          %a.alt{:href => ""} Start adding things!
-    %ul.grid_4
-      %li
-        %a{:href => ""} Help
-      %li#login
-        %a{:href => ""} Login
-        #login-drop
-          %form
-            %input{:placeholder => "Email", :type => "text"}/
-            %input{:placeholder => "Password", :type => "password"}/
-            %span
-              %input{:checked => "true", :type => "checkbox"}/
-              Remember me
-            %a{:href => ""} Forgot something?
-            %input{:type => "submit", :value => "login"}/
-          %ul
-            %li
-              %a{:href => ""}
-                %img{:src => "images/fb-login-button.png"}/
-            %li
-              %a{:href => ""}
-                %img{:src => "images/login-with-twitter.png"}/
-  #main
-    %header
-      %h2.grid_5 Bryna Nicole Bag
-      .grid_19
-        .buttons
-          %a.button.add{:href => ""} Write your own review
-    %aside.grid_5
-      = render 'images'
-    #content.grid_13
-      %section#review
-        .title Review
-        %h1 This is your review
-        %p
-          You can express your view on this product and even share it with your friends! This is just a
-          %em sample
-          you can edit this just by clicking the "Edit review" in the top right of this section.
-        %h2 Stuck for ideas?
-        %ul
-          %li Did you like this product?
-          %li What did you like or dislike about it?
-          %li Would you buy more products like this from Bryna?
-          %li What do you recommend for people who want this product?
-        %h3 Sharing it!
-        %p
-          You also have the option of sharing your review with your social networks! Simply edit your
-          %em visibility
-          settings.
-        %h3 Add photo's
-        Want to show people how the bag looks on you? Its easy to drag and drop to upload your photos.
-        #footerbit
-          Written 31st July 2011 - Edited 2 hours ago |
-          %a{:href => ""} 10 Comments
-      - if user_signed_in?
-        %section#new-comment
-          = render 'comments/form', :commentable => @item
+- content_for :page_style do
+  = include_stylesheets :item_detail
+
+%header
+  %h2.grid_5 Bryna Nicole Bag
+  .grid_19
+    .buttons
+      %a.button.add{:href => ""} Write your own review
+%aside.grid_5
+  = render 'images'
+#content.grid_13
+  %section#review
+    .title Review
+    #rendered-review
+      - if @item.review.blank?
+        = render 'default_review'
       - else
-        = link_to "Login to post comments!", comment_create_login_path, :class => 'facebox'
-      %ul#comments.table
-        = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
-    %aside.grid_6
-      %article
-        %h4 Owner of this product
-        %img.userthumb.fl{:alt => "", :src => "images/me.png"}/
-        %h5 Geoffrey Chong
-        %a{:href => ""} Follow
-        %a{:href => ""} View profile
-      %article
-        #rating.recommended I recommend this
-      %article
-        %h4 Who else owns this?
-        Grid of people's profile images who own this same product.
-      %article
-        %h4 What other people are saying
-        Reserved for a feed of other people's reviews.
-    .clear
-  .clear
-/ end of #container
+        = raw @item.review
+    #footerbit
+      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
+      %a{:href => ""} #{pluralize @item.comments.count, "Comment"}
+  - if user_signed_in?
+    %section#new-comment
+      = render 'comments/form', :commentable => @item
+  - else
+    = link_to "Login to post comments!", comment_create_login_path, :class => 'facebox'
+  %ul#comments.table
+    = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
+
+%aside.grid_6
+  %article
+    %h4 Owner of this product
+    = image_tag @item.user.main_image, :class => "userthumb fl"
+    %h5= @item.user.name
+    = follow_link_for @item.user
+    = link_to "View profile", profile_path(@item.user)
+  %article
+    #rating.recommended I recommend this
+  %article
+    %h4 Who else owns this?
+    Grid of people's profile images who own this same product.
+  %article
+    %h4 What other people are saying
+    Reserved for a feed of other people's reviews.
+.clear

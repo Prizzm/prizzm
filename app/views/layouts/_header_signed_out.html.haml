@@ -1,0 +1,26 @@
+%h1.grid_5= link_to 'PRIZZM', '/',  :rel => 'index'
+%nav.grid_15
+  %ul
+    %li= link_to 'Why Prizzm?', '#'
+    %li= link_to 'Tour', '#'
+    %li= link_to 'Start adding things!', '#', :class => 'alt'
+%ul.grid_4
+  %li= link_to 'Help', '#'
+  %li#login
+    = link_to 'Login', '#'
+    #login-drop
+      %form
+        %input(type='text' placeholder='Email')
+        %input(type='password' placeholder='Password')
+        %span
+          %input(type='checkbox' checked=true)
+          Remember me
+        = link_to 'Forgot something?', '#'
+        %input(type='submit' value='login')
+      %ul
+        %li
+          = link_to '#' do
+            = image_tag 'fb-login-button.png'
+        %li
+          = link_to '#' do
+            = image_tag 'login-with-twitter'

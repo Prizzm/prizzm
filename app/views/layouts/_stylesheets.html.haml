@@ -1,3 +1,7 @@
 = include_stylesheets :app
-= include_stylesheets :logged_in
+- if signed_in?
+  = include_stylesheets :logged_in
+- else
+  = include_stylesheets :public
+
 = yield :page_style
