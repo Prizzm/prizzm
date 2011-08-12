@@ -1,5 +1,8 @@
 #login-popup
   = form_for :user, :url => user_session_path do |f|
+    = hidden_field_tag "object_id", @object_id
+    = hidden_field_tag "object_type", @object_type
+
     = f.label :email, "Email: "
     = f.text_field :email, :class => "round"
     = f.label :password, "Password: "

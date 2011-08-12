@@ -73,7 +73,7 @@ gem "hashie"
 
 # TO GO  -  I don't need these dependencies.. get rid of them
 # Gem to abstract away the dplication common in standard restful controllers
-gem 'inherited_resources'
+gem 'inherited_resources', :git => "git://github.com/josevalim/inherited_resources.git"
 # Apparently needed to make the uploadify multifile uploader work 
 gem "flash_cookie_session"
 

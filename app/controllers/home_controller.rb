@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:login_popup]
 
   def index
     @user = current_user
@@ -51,4 +51,8 @@ class HomeController < ApplicationController
     render :json => { :images => @images, :title => @title , :description => @desc }
   end
 
+  def login_popup
+    @object_id, @object_type = params[:object_id], params[:object_type]
+    render :layout => false
+  end
 end

@@ -2,7 +2,8 @@ Prizzm::Application.routes.draw do
 
   root :to => 'home#dashboard'
 
-
+  get '/login_popup' => 'home#login_popup', :as => 'login_popup'
+  get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
@@ -30,10 +31,6 @@ Prizzm::Application.routes.draw do
   scope '/:commentable_type/:commentable_id' do
     resources :comments 
   end
-
-  get '/comments/create_login' => 'comments#create_login', :as => 'comment_create_login'
-
-
 
   ##############################    NOT YET IMPLEMENTED   #############################
   # compositions

@@ -26,6 +26,14 @@ GIT
       guard (>= 0.2.2)
 
 GIT
+  remote: git://github.com/josevalim/inherited_resources.git
+  revision: 07bcdbfd30647565c6cb0fc91c2ec43b128b961b
+  specs:
+    inherited_resources (1.2.2)
+      has_scope (~> 0.5.0)
+      responders (~> 0.6.0)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 4964f53a42a3d434ee6d731d6f999d8dae13dada
   ref: 4964f53a42a3d434ee6d731d6f999d8dae13dada
@@ -218,7 +226,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    has_scope (0.5.0)
+    has_scope (0.5.1)
     hashie (1.0.0)
     heroku (2.4.0)
       launchy (>= 0.3.2)
@@ -233,9 +241,6 @@ GEM
       crack (= 0.1.8)
     httpclient (2.2.1)
     i18n (0.5.0)
-    inherited_resources (1.2.2)
-      has_scope (~> 0.5.0)
-      responders (~> 0.6.0)
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     jquery-rails (1.0.12)
@@ -485,7 +490,7 @@ DEPENDENCIES
   hirb
   hoptoad_notifier
   hpricot
-  inherited_resources
+  inherited_resources!
   jammit
   jquery-rails
   launchy

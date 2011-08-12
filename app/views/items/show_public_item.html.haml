@@ -23,7 +23,7 @@
     %section#new-comment
       = render 'comments/form', :commentable => @item
   - else
-    = link_to "Login to post comments!", comment_create_login_path, :class => 'facebox'
+    = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
   %ul#comments.table
     = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
 

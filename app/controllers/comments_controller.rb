@@ -24,10 +24,6 @@ class CommentsController < ApplicationController
     end 
   end
 
-  def create_login
-    render :layout => false
-  end
-
 protected
 
   def load_commentable
