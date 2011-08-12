@@ -428,10 +428,39 @@ img.bigthumb {
 }
 
 .icon {
-  padding-left: 25px;
-  background: no-repeat url('../images/icons.png');
+  /*padding-left: 25px;
+  background: no-repeat url('../images/icons.png');*/
+  width: 16px;
 }
 
 .phone{ background-position: 0 0;} 
 .world_link{ background-position: 0 -66px;}
 .prizzm { background: none; }
+
+a.call {
+  background: url("../images/sprite.png") no-repeat scroll 10px -203px #F3F3F3;
+  padding-left: 35px;
+}
+
+.fb {
+  background: url("../images/sprite.png") no-repeat scroll 0 -316px transparent;
+  height: 16px;
+  padding-left: 25px;
+}
+
+.tt {
+  background: url("../images/sprite.png") no-repeat scroll 0 -352px transparent;
+  height: 16px;
+  padding-left: 25px;
+}
+
+.world_link {
+  background: url("../images/sprite.png") no-repeat scroll 0 -280px transparent;
+  height: 16px;
+  padding-left: 25px;
+}
+
+.phone {
+  background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
+  padding-left: 16px;
+}

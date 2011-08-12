@@ -1,0 +1,152 @@
+aside a, aside a:active, aside a:visited { color: #5d5d5d !important; text-decoration: none; }
+aside a:hover { color: #5d5d5d !important; }
+aside a.active { color: #d14836 !important; font-weight: bold;}
+
+header .button {
+  float: right;
+  margin: 0;
+}
+
+#helptool li {
+	width: 50%;
+}
+
+#helptool li a{
+  min-height: 65px;
+}
+
+#helptool li:last-child {
+  border-left-width: 1px;
+}
+
+
+#content h1 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+aside h4 {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+aside.grid_5 article{
+	margin: 10px 0;
+}
+
+aside nav {
+  padding-top: 10px;
+  border-top: 1px solid #f3f3f3;
+}
+
+aside  nav li{
+	margin-bottom: 10px;
+}
+
+aside ul, section#contact ul, #location ul  {
+    margin: 0;
+    list-style: none;
+  }
+  
+  aside ul.comp-det {
+    padding-top: 5px;
+    border-top: 1px solid #f3f3f3;
+  }
+  
+  aside ul.comp-det li{
+    margin-bottom: 8px;
+  }
+
+
+img.bigthumb {
+	width: 190px;
+}
+
+img.userthumb {
+	padding: 2px;
+	margin-right: 5px;
+	width: 50px;
+	border: 1px solid #d5d5d5;
+}
+
+
+#graburl {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #9fc3c9;
+    text-align: left;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+iframe {
+  width: 100%;
+  height: 250px;
+}
+
+#location{
+  padding-top: 10px;
+  border-top: 1px solid #f3f3f3;
+}
+
+#location .fl, #location .fr {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#location .fl {
+  padding-right: 10px;
+}
+
+.add-address{
+  padding: 10px;
+  background: #f3f3f3 !important;
+}
+
+section#contact {
+  border-top: 1px solid #f3f3f3;
+}
+
+section#contact .table {
+  width: 100%;
+}
+
+section#contact .cell {
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+section#contact  .button {
+  float: right;
+  margin-right: 0;
+}
+
+.add-cont {
+  padding: 10px;
+  background: #f3f3f3 !important;
+}
+
+.add-cont input, .add-cont select{
+  margin-right: 10px;
+}
+
+.recommended {
+    color: #619866;
+    background: #a7e8ad;
+}
+
+.neutral {
+    color: #7c7c7c;
+	background: #bdbdbd;
+}
+
+.hate {
+    color: #a25959;
+    background: #d88888;
+}

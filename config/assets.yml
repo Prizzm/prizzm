@@ -58,3 +58,5 @@ stylesheets:
     - public/stylesheets/dashboard.css
   case_detail:
     - public/stylesheets/case-detail.css
+  company:
+    - public/stylesheets/company.css
