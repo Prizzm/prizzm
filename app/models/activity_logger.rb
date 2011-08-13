@@ -42,7 +42,9 @@ module ActivityLogger
     data = (targets - source_user + payload_data).uniq
     info = data.collect do |object|
       begin
-        doc = object.to_notification.delete_if{|k,v| v.nil?}
+        # FIXME: Delete datetimes for now from objects, until I can implement better
+        # logic
+        doc = object.to_notification.delete_if{|k,v| v.nil? || v.is_a?(Date) || v.is_a?(DateTime) || v.is_a?(Time)}
         doc.delete "created_at"
         doc.delete "updated_at"
         doc.reverse_merge!(:class => object.class.to_s)
@@ -67,6 +69,7 @@ module ActivityLogger
     # TODO: Put all of the following in a background task
     #Resque.enqueue "log"
 
+    Rails.logger.debug log
     Notification.create(log)
 
     # find subscribers to this event
