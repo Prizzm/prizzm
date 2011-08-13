@@ -17,6 +17,8 @@ class Case < ActiveRecord::Base
   scope :publicly, where(:privacy => 'public')
   scope :privately, where(:privacy => 'private')
 
+  has_friendly_id :title, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true 
+
 
   default_value_for :privacy, 'private'
 

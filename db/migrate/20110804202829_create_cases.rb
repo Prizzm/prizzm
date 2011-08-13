@@ -11,8 +11,11 @@ class CreateCases < ActiveRecord::Migration
       t.references :company
       t.references :item
 
+      t.string :cached_slug
       t.timestamps
     end
+
+    add_index  :cases, :cached_slug, :unique => true
   end
 
   def self.down
