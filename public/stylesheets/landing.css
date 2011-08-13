@@ -456,35 +456,20 @@ header {
 /* END MAIN CONTENT */
 
 footer {
-    padding-top: 15px;
-    background: #1f1f1f;
-    color: #6d6d6d;
+  margin: 10px auto;
+  width: 960px;
+  font-size: 0.9em;
 }
-  footer a {
-    color: #fff;
-  }
 
-  footer ul {
-    margin: 0; padding: 0;
-    list-style: none;
-  }
-  
-    footer li > ul li {
-        margin-bottom: 5px;
-    }
-  
-  footer h5 {
-    margin-bottom: 10px;
-    color: #b8b8b8;
-    font-size: 1.3em;
-    font-weight: bold;
-  }
-  
-  footer #copyright {
-    margin: 0 auto;
-    padding: 50px 10px 10px;
-    width: 940px;
-  }
+footer ul {
+  margin: 0;
+  list-style: none;
+}
+
+footer ul li {
+  display: inline-block;
+}
+
 
 /* CLASSES */
 
