@@ -131,15 +131,19 @@ module FeedsHelper
       output << link_to(item["name"], item_path(item["cached_slug"]))
 
 
+    when "user.comment.case"
+      user_case = event["data"][0]
+      output << " left a comment about the case: "
+      output << link_to(user_case["title"], case_path(user_case["id"]))
 
     when "user.open.case"
       user_case = event["data"][0]
-      output << " opened a case about "
-      output << link_to(item["name"], case_path(user_case["id"]))
+      output << " opened a case: "
+      output << link_to(user_case["title"], case_path(user_case["id"]))
     when "user.close.case"
       user_case = event["data"][0]
       output << " closed #{possessive} case for "
-      output << link_to(item["name"], case_path(user_case["id"]))
+      output << link_to(user_case["title"], case_path(user_case["id"]))
     else
       "nothiing"
     end

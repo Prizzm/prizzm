@@ -20,6 +20,7 @@
       %li
         = image_tag event["from"]["image"], :class => "smallthumb fl"
         .fl= format_feed_item event
+        /.fl= event.inspect
         .clear
 
 - content_for :jquery do
