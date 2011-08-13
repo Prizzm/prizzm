@@ -69,7 +69,6 @@ module ActivityLogger
     # TODO: Put all of the following in a background task
     #Resque.enqueue "log"
 
-    Rails.logger.debug log
     Notification.create(log)
 
     # find subscribers to this event

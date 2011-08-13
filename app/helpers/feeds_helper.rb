@@ -138,11 +138,13 @@ module FeedsHelper
       output << link_to(item["name"], case_path(user_case["id"]))
     when "user.close.case"
       user_case = event["data"][0]
-      output << " closed a case about "
+      output << " closed #{possessive} case for "
       output << link_to(item["name"], case_path(user_case["id"]))
     else
       "nothiing"
     end
+
+
     output << raw("<div class='timebit'> #{time_ago_in_words Time.at(time)} ago </div> ") if opts[:timestamp]
     output.html_safe
   end
