@@ -2,8 +2,31 @@
 	width: 718px;
 }
 
+#helptool li {
+  width: 33.33%;
+}
+
 a.button { margin: 0; }
 a.button.right { margin-right: 10px;}
+
+.smallthumb {
+  margin-right: 5px;
+}
+
+.row {
+  width: 100%;
+}
+
+.cell.img {
+  width: 10%;
+  vertical-align: top;
+}
+
+.cell {
+  width: 90%;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #ccc;
+}
 
 #tr-br ul{
 	margin: 0;

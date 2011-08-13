@@ -8,16 +8,15 @@
   = link_to "Add", new_item_path + "#create", :id => "action-button", :class => "add button facebox" 
   .clear
 
-  %ul.list-display
+  %ul.table.list-display
     - @user.wanted_items.each do |item|
-      %li{:id => "item_#{item.id}"}
+      %li.row{:id => "item_#{item.id}"}
+        .cell.img= image_tag item.main_image
+        .cell
+          %h3
+            = link_to(item) do
+              = item.name
+              = privacy_control_for item
         .delete-item
           = link_to [current_user, item],  :remote => true, :method => :delete do
-            .close
-        = link_to(item) do
-          %h3
-            = item.name
-            = privacy_control_for item
-          = image_tag item.main_image
-          %p= truncate strip_tags(item.review), :length => 110
-          = review_instruction_for item
+            .cell.close

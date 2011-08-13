@@ -12,7 +12,7 @@ header .button {
 }
 
 #helptool li:last-child {
-  border: 0;
+  border-left-width: 1px;
 }
 
 aside h4, .title {

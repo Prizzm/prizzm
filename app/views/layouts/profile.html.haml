@@ -38,15 +38,35 @@
         %ul#socialbit.grid_19
           %li
             %h3 Following #{pluralize @user.following_users_count, "Person"}
+            .ufgallery
+              - @user.following_users.take(8).each do |user|
+                = link_to profile_path(user) do
+                  = image_tag user.main_image, :class => "smallthumb"
+            .clear
             = link_to "View all", '#'
           %li
             %h3 Followed by #{pluralize @user.followers_count, "Person"}
+            .ufgallery
+              - @user.followers.take(8).each do |follower|
+                = link_to profile_path(follower) do
+                  = image_tag follower.main_image, :class => "smallthumb"
+            .clear
             = link_to "View all", '#'
           %li
             %h3 Following #{pluralize @user.following_companies_count, "Company"}
+            .ufgallery
+              - @user.following_companies.take(8).each do |company|
+                = link_to company_path(company) do
+                  = image_tag company.main_image, :class => "smallthumb"
+            .clear
             = link_to "View all", '#'
           %li
             %h3 Following #{pluralize @user.following_products_count, "Product"}
+            .ufgallery
+              - @user.following_products.take(8).each do |product|
+                = link_to product_path(product) do
+                  = image_tag product.main_image, :class => "smallthumb"
+            .clear
             = link_to "View all", '#'
       
         %aside.grid_4

@@ -4,7 +4,7 @@
 a.active { color: #d14836 !important; font-weight: bold;}
 
 #subbar {
-	height: 100px;
+	height: 110px;
 	background: #eee;
 	border-bottom: 1px solid #dadada;
 }
@@ -22,7 +22,7 @@ a.active { color: #d14836 !important; font-weight: bold;}
 .edit.button { margin: 0; }
 
 #container {
-	margin-top: -196px;
+	margin-top: -206px;
 }
 
 header .grid_14 {
@@ -35,8 +35,8 @@ header .grid_14 {
 
 #socialbit {
 	margin: 0;
-	padding-top: 10px;
-	height: 101px;
+	padding-top: 3px;
+	height: 111px;
 	list-style: none;
 	
 	-webkit-box-sizing: border-box;
@@ -51,10 +51,15 @@ header .grid_14 {
 	margin-left: 5px;
 	width: 177px;
 	display: inline-block;
+  vertical-align: top;
   }
   
   #socialbit a, ul.activity-feed li a{
 	color: #476ab3 !important;
+  }
+  
+  .ufgallery {
+    margin-top: 3px;
   }
 
 #content, aside {
@@ -91,15 +96,16 @@ h2 {
 }
 
 #helptool li:last-child {
-  border-left: 0;
+  border-left-width: 1px;
 }
 
-ul.activity-feed , ul.list-display {
+ul.activity-feed , ul.list-display, ul.case-list {
 	margin: 0;
 	list-style: none;
+  width: 100%;
 }
 
-ul.activity-feed li {
+ul.activity-feed li, ul.case-list li {
 	margin-bottom: 10px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #ccc;
@@ -119,16 +125,23 @@ ul.activity-feed li a{
 	color: #ccc;
 }
 
-ul.list-display {
+ul.list-display, ul.case-list {
   padding-top: 10px;
+  width: 100%;
   border-top: 1px solid #F3F3F3;
 }
 
-ul.list-display li{
+ul.case-list {
+  padding-top: 3px !important;
+}
+
+ul.case-list .row.header .cell {
+  border-bottom: 1px solid #F3F3F3;
+}
+
+ul.list-display .cell, ul.case-list .cell{
 	margin: 0 5px 10px 0;
-	padding: 5px;
-  width: 284px;
-	float: left;
+  padding: 5px;
 	position: relative;
    
 	-webkit-box-sizing: border-box;
@@ -136,14 +149,16 @@ ul.list-display li{
 	box-sizing: border-box;
 }
 
+ul.case-list .cell {
+  border-bottom: 1px dotted #ccc;
+}
+
 ul.list-display li:hover {
 	background: #f3f3f3;
 }
 
-ul.list-display li img {
-	margin-right: 10px;
-	width: 80px;
-	float: left;
+ul.list-display li .img, ul.list-display .img img {
+	width: 50px;
 }
 
 ul.list-display li h3 {
@@ -151,18 +166,11 @@ ul.list-display li h3 {
 	font-size: 1.1em;
 }
 
-
 ul.list-display li .close {
-  top: 5px;
-  right: 5px;
-  visibility: hidden;
+  top: 10px;
 }
 
-ul.list-display li:hover .close {
-  visibility: visible;
-}
-
-img.smallthumb {
+ul.activity-feed img.smallthumb {
 	margin-right: 5px;
 }
 

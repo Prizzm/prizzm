@@ -4,11 +4,11 @@
   = link_to "Add item", new_item_path + "#create", :id => "action-button", :class => "add button facebox" 
   .clear
 
-  %ul.list-display
+  %ul.table.list-display
     - @user.owned_items.publicly.each do |item|
-      %li
-        = link_to(item) do
-          %h3= item.name
-          = image_tag item.main_image
-          %p= truncate strip_tags(item.review), :length => 110
-          Read review
+      %li.row{:id => "item_#{item.id}"}
+        .cell.img= image_tag item.main_image
+        .cell
+          %h3
+            = link_to(item) do
+              = item.name

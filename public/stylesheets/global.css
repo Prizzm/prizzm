@@ -295,7 +295,32 @@ a.down-big {
     font-size: 16px;
     padding: 10px 15px;
 }
-
+a.call {
+  background: url(../images/sprite.png)  10px -203px no-repeat #f3f3f3;
+  padding-left: 35px;
+}
+.phone{
+  background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
+    padding-left: 16px;
+}
+.world_link{
+  background: url(../images/sprite.png)  0 -280px no-repeat;
+  padding-left: 25px;
+  height: 16px;
+}
+.fb{
+  background: url(../images/sprite.png)  0 -316px no-repeat;
+  padding-left: 25px;
+  height: 16px;
+}
+.tt{
+  background: url(../images/sprite.png)  0 -352px no-repeat;
+  padding-left: 25px;
+  height: 16px;
+}
+.prizzm {
+  background: none;
+}
 
 a.button.red {
 	border: 1px solid transparent;
@@ -325,7 +350,7 @@ a.button.blue, input[type=submit].button.blue {
 	width: 13px;
 	height: 14px;
 	display: block;
-	background: url('../images/close.gif');
+	background: no-repeat url('../images/close.gif');
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -351,6 +376,11 @@ vertical-align: middle;
 
 .row, .yui3-aclist-item {
 display: table-row;
+width: 100%;
+}
+
+.row.header {
+  font-weight: bold;
 }
 
 .table, .yui3-aclist-list {
@@ -359,11 +389,6 @@ display: table;
 
 a.alt {
     color: #cae987 !important;
-}
-
-img.smallthumb {
-	width: 40px;
-	height: 40px;
 }
 
 .loading {
@@ -427,42 +452,18 @@ img.bigthumb {
     background: #d88888;
 }
 
-/*
-.icon {
-  /*padding-left: 25px;
-  background: no-repeat url('../images/icons.png');
-  width: 16px;
-}*/
-
-
-.phone{ background-position: 0 0;} 
-.world_link{ background-position: 0 -66px;}
-.prizzm { background: none; }
-
-a.call {
-  background: url("../images/sprite.png") no-repeat scroll 10px -203px #F3F3F3;
-  padding-left: 35px;
+.ufgallery a {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  border: 1px solid #fff;
 }
 
-.fb {
-  background: url("../images/sprite.png") no-repeat scroll 0 -316px transparent;
-  height: 16px;
-  padding-left: 25px;
+.ufgallery a:hover {
+  border: 1px solid #1992d8;
 }
 
-.tt {
-  background: url("../images/sprite.png") no-repeat scroll 0 -352px transparent;
-  height: 16px;
-  padding-left: 25px;
-}
-
-.world_link {
-  background: url("../images/sprite.png") no-repeat scroll 0 -280px transparent;
-  height: 16px;
-  padding-left: 25px;
-}
-
-.phone {
-  background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
-  padding-left: 16px;
+img.smallthumb {
+	width: 30px;
+  height: 30px;
 }

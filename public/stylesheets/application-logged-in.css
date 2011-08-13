@@ -118,8 +118,6 @@ section h3 span {
 #helptool {
 	margin: 0 0 10px;
 	position: relative;
-	background: #cfe1f1;
-	border: 1px solid #b4cce2;
 	
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -144,7 +142,8 @@ section h3 span {
     #helptool li {
       float: left;
       vertical-align: top;
-      width: 33.33%;
+      background: #cfe1f1;
+      border: 1px solid #b4cce2;
 
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -155,14 +154,18 @@ section h3 span {
       background: #e9f0f6;
     }
 
-    #helptool li:first-child {
+    #helptool li:first-child {  
+      -webkit-border-radius: 3px 0 0 3px;
       -moz-border-radius: 3px 0 0 3px;
-      border-right: 1px solid #B4CCE2;
+      border-radius: 3px 0 0 3px;
+      border-right-width: 0;
     }
 
     #helptool li:last-child {
+      -webkit-border-radius: 0 3px 3px 0;
       -moz-border-radius: 0 3px 3px 0;
-      border-left: 1px solid #B4CCE2;
+      border-radius: 0 3px 3px 0;
+      border-left-width: 0;
     }   
 
     #helptool li a {

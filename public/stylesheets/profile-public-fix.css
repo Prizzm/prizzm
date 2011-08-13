@@ -1,8 +1,12 @@
 #container {
-	margin-top: -209px !important;
+	margin-top: -218px !important;
 }
 
 #socialbit {
 	padding-top: 0;
-	height: 88px !important;
+	height: 108px !important;
+}
+
+#main > header {
+  height: 42px;
 }

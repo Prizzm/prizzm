@@ -30,9 +30,12 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "item_id"
+    t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cases", ["cached_slug"], :name => "index_cases_on_cached_slug", :unique => true
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
