@@ -32,9 +32,9 @@ stylesheets:
     - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
     - public/stylesheets/galleriffic-3.css
-    - public/stylesheets/ckeditor.css
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
+    - public/stylesheets/ckeditor.css
 
   logged_in:
     - public/stylesheets/application-logged-in.css
