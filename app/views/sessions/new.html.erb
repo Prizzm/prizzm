@@ -52,16 +52,17 @@
         <h1 class="grid_5"><a href="/" rel="index">PRIZZM</a></h1>
         <nav class="grid_15">
           <ul>
-            <li><a href="">Why Prizzm?</a></li>
+            <!--
+			<li><a href="">Why Prizzm?</a></li>
             <li><a href="">Tour</a></li>
             <li><a href="" class="alt">Start adding things!</a></li>
-          </ul>
+           -->
+		  </ul>
         </nav>
 
         <ul class="grid_4">
-          <li><a href="">Help</a></li>
           <li id="login">
-            <a href="">Login</a>
+            <a href="" class="alt">Login</a>
             <div id="login-drop">
               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
                 <%#= link_to new_registration_path(resource_name), :id => "signup", :class => "round" do %>
@@ -115,140 +116,39 @@
         </ul>
       </div>
     
-      <form action="" id="search" class="grid_24">
-        <input type="text" placeholder="Start exploring by searching for something you have..." /><input type="submit" value=""/>
-      </form>
+
     
       <div class="clear"></div>
       
-      <div id="content">
-        <section id="brands" class="grid_24">
-          <h3><span>supporting brands</span></h3>
-          <ul>
-            <li><a href=""><img src="/images/landing/bryna.png" /></a></li>
-            <li><a href=""><img src="/images/landing/apple.png" /></a></li>
-            <li><a href=""><img src="/images/landing/volkswagon.png" /></a></li>
-            <li><a href=""><img src="/images/landing/apple.png" /></a></li>
-            <li><a href=""><img src="/images/landing/volkswagon.png" /></a></li>
-            <div class="clear"></div>
-          </ul>
-        </section>
-        <section id="p-buying" class="grid_12">
-          <h3><span>what people are <em>buying</em></span></h3>
-          <ul>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>300 people bought this</p>
-              </a></li>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>60 people bought this</p>
-              </a></li>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>80 people bought this</p>
-              </a></li>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>1000+ people bought this</p>
-              </a></li>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>290 people bought this</p>
-              </a></li>
-            <li><a href="">
-                <img src="http://beta.prizzm.com.s3.amazonaws.com/uploads/item_image/image/13/reell_g7th_performance_guitar_capo_2-400-400.jpg" alt="" />
-                <p>1 person bought this</p>
-              </a></li>
-          </ul>
-        </section>
-        <section id="p-saying" class="grid_12">
-          <h3><span>what people are <em>saying</em></span></h3>
-          <ul>
-            <li>
-              <img src="http://ohsogeoff.com/images/me.png" alt="" />
-              <div class="fl">
-                            <h4>G7th Performance Guitar Capos</h4>
-                  <p>Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often... <a href="">Read more</a>.</p>
-                  <div class="rating"></div>
-                        </div>
-                        <div class="clear"></div>
-            </li>
-            <li>
-              <img src="http://ohsogeoff.com/images/me.png" alt="" />
-              <div class="fl">
-                            <h4>G7th Performance Guitar Capos</h4>
-                  <p>Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often... <a href="">Read more</a>.</p>
-                  <div class="rating"></div>
-                        </div>
-                        <div class="clear"></div>
-            </li>
-            <li>
-              <img src="http://ohsogeoff.com/images/me.png" alt="" />
-              <div class="fl">
-                            <h4>G7th Performance Guitar Capos</h4>
-                  <p>Professional product designer, and avid guitarist Nick Campling designed the G7th guitar capos after years of struggling with the existing capos, which can often... <a href="">Read more</a>.</p>
-                  <div class="rating"></div>
-                        </div>
-                        <div class="clear"></div>
-            </li>
-          </ul>
-        </section>
-        <div class="clear"></div>
-      </div>
       
     </div> <!-- end of #container -->
-    <footer>
-      <ul class="container_24">
-        <li class="grid_4">
-          <h5>Prizzm</h5>
-          <ul>
-            <li><a href="">Home</a></li>
-                    <li><a href="">Why Prizzm?</a></li>
-                    <li><a href="">Tour</a></li>
-                    <li><a class="alt" href="">Start adding things!</a></li>
-                    <li><a href="">Login</a></li>
-          </ul>
-        </li>
-        <li class="grid_4">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="">About us</a></li>
-                    <li><a href="">Customers</a></li>
-                    <li><a href="">Careers</a></li>
-          </ul>
-        </li>
-        <li class="grid_4">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="">Help centre</a></li>
-                    <li><a href="">API</a></li>
-          </ul>
-        </li>
-        <li class="grid_4">
-          <h5>Partners</h5>
-          <ul>
-            <li>Coming soon</li>
-          </ul>
-        </li>
-            <li class="grid_4">
-          <h5>Get in touch</h5>
-          <ul>
-            <li><a href="">42 Golden Gate Bridge<br />San Francisco</a></li>
-                    <li><a href="">+90 000 000</a></li>
-                    <li><a href="">contact@prizzm.com</a></li>
-          </ul>
-        </li>
-            <li class="grid_4">
-          <h5>Blog</h5>
-          <ul>
-            <li>Maybe a blog?</a></li>
-          </ul>
-        </li>
-        <div class="clear"></div>
-      </ul>
-      <div id="copyright">Prizzm.com &copy; . Prizzm LLC, all rights reserved . <a href="">Terms</a> & <a href="">Privacy</a></div>
-        <div class="clear"></div>
-    </footer>
+	<footer> 
+	        <div class='fl' id='copyright'> 
+	          ©2011 Prizzm -
+	          <a href=''>About</a> 
+	          -
+	          <a href=''>Terms</a> 
+	          -
+	          <a href=''>Privacy</a> 
+	        </div> 
+	        <ul class='fr'> 
+	          <li> 
+	            <a href=''>Dashboard</a> 
+	            .
+	          </li> 
+	          <li> 
+	            <a href=''>Browse</a> 
+	            .
+	          </li> 
+	          <li> 
+	            <a href=''>Profile</a> 
+	            .
+	          </li> 
+	          <li> 
+	            <a href=''>Logout</a> 
+	          </li> 
+	        </ul> 
+	        <div class='clear'></div> 
+	</footer>
   </body>
 </html>

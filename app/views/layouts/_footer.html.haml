@@ -1,53 +1,24 @@
-%ul.container_24
-  %li.grid_4
-    %h5 Prizzm
-    %ul
-      %li
-        = link_to "Home", root_path
-      %li
-        Why Prizzm?
-      %li
-        Tour
-      %li
-        %a.alt{:href => ""} Start adding things!
-      %li
-        %a{:href => ""} Login
-  %li.grid_4
-    %h5 Company
-    %ul
-      %li
-        %a{:href => ""} About us
-      %li
-        Customers
-      %li
-        Careers
-  %li.grid_4
-    %h5 Support
-    %ul
-      %li
-        Help centre
-      %li
-        API
-  %li.grid_4
-    %h5 Partners
-    %ul
-      %li Coming soon
-  %li.grid_4
-    %h5 Get in touch
-    %ul
-      %li
-        %a{:href => ""} contact@prizzm.com
-  %li.grid_4
-    %h5 Blog
-    %ul
-      %li= link_to "Blog", "http://www.prizzm.com"
-.clear
-#copyright
-  Prizzm.com © . Prizzm Inc, all rights reserved .
-  %a{:href => ""} Terms
-  \&amp;
-  %a{:href => ""} Privacy
-.clear
+%footer
+  #copyright.fl
+    \©2011 Prizzm -
+    %a{:href => ""} About
+    \-
+    %a{:href => ""} Terms
+    \-
+    %a{:href => ""} Privacy
+  %ul.fr
+    %li
+      %a{:href => ""} Dashboard
+      \.
+    %li
+      %a{:href => ""} Browse
+      \.
+    %li
+      %a{:href => ""} Profile
+      \.
+    %li
+      %a{:href => ""} Logout
+  .clear
 #hiddenlpsubmitdiv{:style => "display: none; "}
 :javascript
   try{for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ d.innerText=i; } } d.dispatchEvent(customEvent); form.lpsubmitorig2(); } } }}catch(e){}
