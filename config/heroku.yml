@@ -100,6 +100,7 @@ addons:
     - cloudmailin
     - custom_domains:basic
     # add any other addons here
+    - cron:daily
     - logging:expanded
     - mongolab:starter
     - newrelic:standard
@@ -109,5 +110,5 @@ addons:
     - shared-database:5mb
     - simple_worker
     - stillalive:basic
-    - cron:daily
     - ssl:piggyback
+    - pgbackups
