@@ -2,7 +2,7 @@
   = include_stylesheets :company, :logged_in
 
 %header
-  %h2.grid_19 Apple Inc.
+  %h2.grid_19 #{@company.name}
   .grid_5
     = link_to "Follow", "#", :class => "button red"
 
@@ -20,35 +20,42 @@
   %section
     %h1 About
     %p 
-      Apple Inc. (NASDAQ: AAPL; NYSE: AAPL; previously Apple Computer, Inc.) is an American multinational corporation that designs and markets consumer electronics, computer software, and personal computers. The company's best-known hardware products include the Macintosh line of computers, the iPod, the iPhone and the iPad.
-      %br 
-      \- 
-      = link_to "Wikipedia", "http://en.wikipedia.org/wiki/Apple_inc"
+      add an "about" (or description) in the companies companies model
+      %br
+      = link_to "home", @company.url, :style => "color:#0000FF;text-align:left", :target => "_blank"
+    
+      
   
   %section#location
-    .fl
-      %ul
-        %li 
-          1 Infinite Loop
-          %br/
-          Cupertino, CA 95014
-          %br/
-          USA
-      
-      = form_tag "#", :class => "add-address" do
-        %ul
-          %li= text_field_tag "street", "", :placeholder => "Street"
-          %li= text_field_tag "state", "", :placeholder => "State"
-          %li= text_field_tag "postcode", "", :placeholder => "Post code"
-          %li= text_field_tag "country", "", :placeholder => "Country"
-    
-    .fr
-      %iframe(frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1+Infinite+Loop,+Cupertino,+CA+95014,+USA&amp;aq=0&amp;sll=-32.055866,115.826022&amp;sspn=0.010257,0.01929&amp;ie=UTF8&amp;hq=&amp;hnear=1+Infinite+Loop,+Cupertino,+California+95014&amp;ll=37.330526,-122.029093&amp;spn=0.082171,0.154324&amp;z=13&amp;output=embed")
-      %br/
-      %small
-        = link_to "View Larger Map", "http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1+Infinite+Loop,+Cupertino,+CA+95014,+USA&amp;aq=0&amp;sll=-32.055866,115.826022&amp;sspn=0.010257,0.01929&amp;ie=UTF8&amp;hq=&amp;hnear=1+Infinite+Loop,+Cupertino,+California+95014&amp;z=14&amp;ll=37.330526,-122.029093", :style => "color:#0000FF;text-align:left", :target => "_blank"
+    %small
+    = link_to "Address Map", "http://maps.google.com/maps?q=1+Infinite+Loop,+Cupertino,+CA&hl=en&sll=37.0625,-95.677068&sspn=45.014453,96.767578&z=16", :style => "color:#0000FF;text-align:left", :target => "_blank"
     .clear
+    Reserved for a iframe map... if we really need one 
+
+
+  %section#contact
+    %ul.table
+      - @company.addresses.each do |address| 
+        %li.row
+          .cell.icon
+            %span.fb
+          .cell
+            = address.address_type
+          .cell
+            = address.address
+          .cell= link_to "Go to", "#", :class => "button"
+
   
+    = form_for([@company, @company.addresses.build]) do |f|
+      = f.collection_select :address_type, ['Street Address', 'Phone Number','Website','Twitter','Facebook'], :to_s, :to_s, {}
+      = f.text_field :description
+      = f.text_field :address
+      = f.submit
+
+  %h1 COMMENT: remove below, when above table works... retained for visual formatting
+  %br
+  %br
+	
   %section#contact
     %ul.table
       %li.row
@@ -127,3 +134,5 @@
       %li= link_to "", "#"
       %li= link_to "", "#"
 .clear
+
+
