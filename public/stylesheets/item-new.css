@@ -40,6 +40,8 @@
   background-color:;
 }
 
+#google_search { position:absolute; top:0px; right:0px; background-image:url(/images/mag-glass.png); background-color:Transparent; border:0; padding:0; margin:8px 1px; height:22px; width:22px; cursor:default; }
+
 #main-dropdown { position:absolute; top:38px; left:0; border:1px solid #ddd; background-color:; width:100%;z-index:10000; }
 #dropdown  { list-style-type:none; font-size:13px; }
 #dropdown { padding:0px; margin:0px; }
@@ -47,9 +49,7 @@
 #dropdown a, #dropdown a:visited { text-decoration:none; color:Black; width:98%; display:block; }
 #dropdown a:hover {  }
 
-.result_item  { padding:1%; border:1px solid white; background-color:#fafafa; cursor:pointer; display:block; text-overflow:ellipsis; overflow:hidden; } /* height:30px; */
-.result_item span {  }
-.result_item:hover { background-color:#ffeded; }
+.result_item { border:1px solid #d2d2d2; }
 .result_item  .r_title { font-weight:bold; white-space:nowrap; }
 .result_item  .r_desc { font-weight:normal; white-space:wrap;  }
 .result_item  .r_desc b { font-weight:normal; }

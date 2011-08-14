@@ -15,6 +15,7 @@ Store data about what you have or want. It will be private unless you publicize 
   %p
     #url_and_dropdown_container{:style => "position:relative;"}
       = f.text_field :url, :class => "jq_watermark", :title => "URL", :autocomplete => "off"
+      %button#google_search
       .hide#main-dropdown
         %ul#dropdown
           %li
@@ -110,7 +111,7 @@ Store data about what you have or want. It will be private unless you publicize 
         $('#facebox input#item_name').attr({
           disabled: "true"
         });
-        $('#facebox input#item_url').attr({
+        $('#facebox input#item_url, button#google_search').attr({
             disabled: "true"
           });
         $('#facebox textarea').attr({
@@ -128,13 +129,13 @@ Store data about what you have or want. It will be private unless you publicize 
         window.itemNamePrefil = null;
         
         if(window.itemUrlPrefil == null){
-          $('#facebox input#item_url').attr({
+          $('#facebox input#item_url, #google_search').attr({
             disabled: "true"
           });
         }
         else
         {
-          $('#facebox input#item_url').removeAttr("disabled");
+          $('#facebox input#item_url, #google_search').removeAttr("disabled");
           $('#facebox input#item_url').attr({
             value: window.itemUrlPrefil
           });
@@ -150,7 +151,7 @@ Store data about what you have or want. It will be private unless you publicize 
     
     function resetDisplay() {
       $('#facebox input#item_name').removeAttr("disabled");
-      $('#facebox input#item_url').removeAttr("disabled");
+      $('#facebox input#item_url, #google_search').removeAttr("disabled");
       $('#facebox input#item_company_name').removeAttr("disabled");
       $('#facebox textarea').removeAttr("disabled");
       $('#facebox textarea').removeAttr("class");
@@ -360,19 +361,106 @@ Store data about what you have or want. It will be private unless you publicize 
       );
     }
     
+    var search_google_popup_opened = false;
+    
+    $('#facebox input#item_url').autocomplete({
+      source: function(request, response) {
+      
+        if ($("#facebox input#item_name").val()){
+          //googleWebSearch({q:$("#facebox input#item_name").val(), resultsDiv: $("#dropdown")});
+          var config = {
+            type    : 'web',
+            append    : false,
+            perPage   : 3,      // A maximum of 8 is allowed by Google
+            page    : 0       // The start page
+          }
+        
+          // If no parameters are supplied to the function,
+          // it takes its defaults from the config object above:
+          
+          var settings;
+          
+          settings = $.extend({},config,settings);
+          settings.term = $("#facebox input#item_name").val();
+
+          // URL of Google's AJAX search API
+          var apiURL = 'http://ajax.googleapis.com/ajax/services/search/'+settings.type+'?v=1.0&callback=?';
+          //var resultsDiv = options.resultsDiv;
+
+          //resultsDiv.html("Searching Web");
+          
+          $.getJSON(apiURL,{q:settings.term,rsz:settings.perPage,start:settings.page*settings.perPage},function(r){
+
+            var results = r.responseData.results;
+            
+            //alert(JSON.stringify(results));
+
+            if (results.length){
+              //alert(JSON.stringify(results));
+            }
+            
+            var resp_data = $.map(results, function(elem, i){
+              return $.extend({label:elem.url}, elem);
+            });
+            
+            response(resp_data);
+
+          });
+
+        }
+        
+      
+      },
+      open : function(event, ui){
+        search_google_popup_opened = true;
+      },
+      close:function(event, ui){
+        search_google_popup_opened = false;
+      },
+      minLength : 0
+    }).data( "autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li style='display:block;' ></li>" ).data( "item.autocomplete", item ).append("<a style='width:100%;display:block;padding:0px;margin:-1px;overflow:hidden;white-space:wrap;' class='result_item' href='"+ item.unescapedUrl +"'>" +
+                                     "<span class='r_title'>"+ item.titleNoFormatting +"</span><br />" +
+                                     // TODO: hard-coding width to 544px since parent UL gets its width set by some javascript which disables wrapping of text
+                                     "<span class='r_desc' style='width:544px;display:inline-block;'>" + item.content + "</span><br />" + //item.content
+                                     "<span class='r_vurl'>"+item.unescapedUrl+"</span>" +
+                                     "</a>"
+       ).appendTo( ul ); //.data( "item.autocomplete", item )
+    };
+    
+    $("#google_search").click(function(){
+      if (search_google_popup_opened){
+        $('#facebox input#item_url').autocomplete("close");
+      }
+      else {
+        if ($("#facebox input#item_name").val()){
+          $('#facebox input#item_url').autocomplete("search", $("#facebox input#item_name").val());
+        }
+      }
+      return false;
+    });
+    
+    $(document).click(function(){
+      if (search_google_popup_opened){
+        $('#facebox input#item_url').autocomplete("close");
+      }
+    });
+    
     $('#facebox input#item_url').focus(function(){
       if (!$(this).val() && !$(this).attr('readonly')){
         if ($("#facebox input#item_name").val()){
-          googleWebSearch({q:$("#facebox input#item_name").val(), resultsDiv: $("#dropdown")});
+          $('#facebox input#item_url').autocomplete("search", $("#facebox input#item_name").val());
         }
       }
     });
 
+    /*    
     $('#facebox input#item_url').click(function(){
       if ($("#facebox input#item_name").val() && !$(this).attr('readonly')){
         googleWebSearch({q:$("#facebox input#item_name").val(), resultsDiv: $("#dropdown")});
       }
     });
+    */
     
     $('#facebox input#item_url').change(function(){
       process_url();
