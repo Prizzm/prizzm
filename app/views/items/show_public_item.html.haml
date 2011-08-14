@@ -27,11 +27,11 @@
       %a{:href => ""} #{pluralize @item.comments.count, "Comment"}
   - if user_signed_in?
     %section#new-comment
-      = render 'comments/form', :commentable => @item
+      = comment_form_for @item
   - else
     = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
   %ul#comments.table
-    = render :partial => 'comments/comment', :collection => @item.comments.reverse, :locals => { :commentable => @item }
+    = comment_collection_for @item
 
 %aside.grid_6
   %article
