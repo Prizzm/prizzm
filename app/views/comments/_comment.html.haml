@@ -2,7 +2,7 @@
   .cell.img
     = image_tag comment.user.photo.url
   .cell.comm
-    = link_to comment.user.name, "#"
+    = link_to comment.user.name, profile_path(comment.user)
     \- 
     = comment.comment
     %br/
