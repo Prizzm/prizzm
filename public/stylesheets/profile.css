@@ -187,3 +187,67 @@ aside h4 {
 footer {
 	margin-top: 0;
 }
+
+#edit-user form {
+  border-bottom: 1px dashed #393939;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+#edit-user input[type="text"], #edit-user input[type="password"], #edit-user input[type="email"] {
+  -moz-border-radius: 3px 3px 3px 3px;
+  -moz-box-sizing: border-box;
+  border: 1px solid #ccc;
+  color: #666;
+  padding: 5px;
+  width: 60%;
+}
+
+#edit-user input[type="submit"] {
+  width: 100%;
+}
+
+#edit-user li.error > input {
+  border: 1px solid red;
+}
+
+#edit-user li.error > label {
+  color: red;
+}
+
+#edit-user label {
+  width: 140px;
+  display: inline-block;
+  text-align: right;
+  color: #666;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+#edit-user #submit {
+  float: right;
+}
+
+#edit-user span {
+  color: #ccc;
+  float: left;
+}
+
+#edit-user ul {
+ list-style: none outside none;
+ margin: 0 !important;
+ text-align: left;
+}
+
+#edit-user ul li {
+  display: inline-block;
+}
+
+#edit-user a, #edit-user a:active, #edit-user a:visited {
+  text-decoration: none;
+}
+
+#edit-user .error-message {
+  color: red;
+  margin: 0 0 5px 150px;
+}

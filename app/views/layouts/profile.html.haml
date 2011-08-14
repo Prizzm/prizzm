@@ -26,12 +26,12 @@
           = render "layouts/header_signed_out"
       #main
         %header
-          = image_tag @user.main_image, :class => "grid_4 profilePic", :alt => "" 
+          = image_tag @user.photo_url(:big), :class => "grid_4 profilePic", :alt => "" 
           %h2.grid_5= @user.name
           .grid_14
             .buttons
               - if your_profile?
-                = link_to "Edit profile", edit_user_registration_path, :class => "edit button red"
+                = link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
               - else
                 = follow_link_for @user
 

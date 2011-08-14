@@ -1,25 +1,30 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="edit-user">
+  <h2>Edit <%= @user.class.to_s.humanize -%></h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= semantic_form_for(@user, :url => user_registration_path, :html => { :multipart => true }, :remote => true) do |f| %>
+    <%#= devise_error_messages! %>
+    <div class="error"></div>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+    <%- f.inputs do -%>
+      <li>
+        <%= label_tag 'current_photo', "Current photo:" -%>
+        <%= image_tag @user.photo_url(:big) -%>
+      </li>
+      <%= f.input :photo, :as => :file -%>
+      <div id="photo-error" class="error-message"></div>
+      <%= f.input :photo_cache, :as => :hidden -%>
+      <%= f.input :email %>
+      <div id="email-error" class="error-message"></div>
+      <%= f.input :password, :as => :password, :hint => "leave blank if you don't want to change it" -%>
+      <div id="password-error" class="error-message"></div>
+      <%= f.input :password_confirmation, :as => :password %>
+      <%= f.input :current_password, :as => :password, :hint => "we need your current password to confirm your changes" -%>
+      <div id="current-password-error" class="error-message"></div>
+      <%= f.buttons %>
+    <%- end -%>
+  <% end %>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+  <h2>Unhappy?</h2>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
-
-  <p><%= f.submit "Update" %></p>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+  <p><%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "button red" %></p>
+</div>

@@ -5,7 +5,7 @@ gzip_assets: on
 
 javascripts:
   app:
-    - public/javascripts/rails.js
+    - public/javascripts/jquery_ujs.js
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
     - public/javascripts/jquery.autogrow.js
@@ -33,6 +33,9 @@ stylesheets:
     - public/stylesheets/facebox.css
     - public/stylesheets/galleriffic-3.css
     - public/stylesheets/ckeditor.css
+    - public/stylesheets/formtastic.css
+    - public/stylesheets/formtastic_changes.css
+
   logged_in:
     - public/stylesheets/application-logged-in.css
   public:

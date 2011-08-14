@@ -7,7 +7,7 @@ module Models
       extend ActiveSupport::Concern
 
       included do
-        devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+        devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable
         attr_accessible :email, :password, :password_confirmation, :remember_me, :access_token
       end
       

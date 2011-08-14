@@ -42,8 +42,11 @@ gem "aws-sdk"#, :git => "git clone git://github.com/amazonwebservices/aws-sdk-fo
 gem "default_value_for"
 
 # Gem for uploading images.  More flexible than "paperclip"
+# fog is for storing files on Amazon, Google...
+# remotipart is for uploading files with AJAX
 gem "carrierwave", :git => 'git://github.com/jnicklas/carrierwave.git'
 gem "fog"
+gem 'remotipart', '0.3.4'
 
 # Used to that we can resize images uploaded through carrierwave, using
 # ImageMagick
@@ -62,7 +65,6 @@ gem "omniauth", '0.2.6' #:git => "git://github.com/intridea/omniauth.git"# ,:ref
 gem "fb_graph"
 gem "twitter"#, :git => 'git://github.com/jnunemaker/twitter.git'
 
-
 # TODO: Why is this in production?
 gem 'rails-erd', :git => "git://github.com/voormedia/rails-erd.git"
 gem "rest-client"
@@ -70,6 +72,8 @@ gem "mechanize"
 gem "nokogiri"
 gem "hashie"
 
+# For form.
+gem 'formtastic'
 
 # TO GO  -  I don't need these dependencies.. get rid of them
 # Gem to abstract away the dplication common in standard restful controllers

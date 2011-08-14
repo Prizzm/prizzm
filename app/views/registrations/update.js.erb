@@ -1,0 +1,38 @@
+<%= remotipart_response do -%>
+  <%- if @errors.blank? -%>
+    window.location = "<%= profile_path(@user) -%>";
+  <%- else -%>
+    <%- if @errors.keys.include? :photo -%>
+      <%- @errors[:photo].each do |e| -%>
+        $('#edit_user_<%= @user.id -%> #photo-error').html("<%= escape_javascript(e) -%>");
+        $('#user_photo_input').addClass('error');
+      <%- end -%>
+    <%- else -%>
+      $('#user_photo_input').removeClass('error');
+      $('#edit_user_<%= @user.id -%> #photo-error').html('');
+    <%- end -%>
+
+    <%- if @errors.keys.include? :email -%>
+      <%- @errors[:email].each do |e| -%>
+        $('#edit_user_<%= @user.id -%> #email-error').html("<%= escape_javascript(e) -%>");
+        $('#user_email_input').addClass('error');
+      <%- end -%>
+    <%- else -%>
+      $('#user_email_input').removeClass('error');
+        $('#edit_user_<%= @user.id -%> #email-error').html('');
+    <%- end -%>
+
+    <%- if @errors.keys.include? :password -%>
+      <%- @errors[:password].each do |e| -%>
+        $('#edit_user_<%= @user.id -%> #password-error').html("<%= escape_javascript(e) -%>");
+        $('#user_password_input').addClass('error');
+      <%- end -%>
+    <%- else -%>
+      $('#user_password_input').removeClass('error');
+      $('#edit_user_<%= @user.id -%> #password-error').html('');
+    <%- end -%>
+
+    <%- if @errors.keys.include? :current_password -%>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
