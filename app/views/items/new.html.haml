@@ -11,11 +11,11 @@ Store data about what you have or want. It will be private unless you publicize 
   %p= f.collection_select :possession_status, ['Select', 'have', 'want'], :to_s, :to_s, {}
   %p{:style => "position:relative;"}
     = f.text_field :name, :class => "jq_watermark", :title => "Product/Service name"
+    %button#google_search
   .clearfix
   %p
     #url_and_dropdown_container{:style => "position:relative;"}
       = f.text_field :url, :class => "jq_watermark", :title => "URL", :autocomplete => "off"
-      %button#google_search
       .hide#main-dropdown
         %ul#dropdown
           %li
