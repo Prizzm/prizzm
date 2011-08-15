@@ -123,9 +123,14 @@ section#contact .cell {
   border-bottom: 1px dashed #ccc;
 }
 
+section#contact .icon {
+  width: 20px;
+}
+
 section#contact  .button {
   float: right;
   margin-right: 0;
+  width: 32px;
 }
 
 .add-cont {
@@ -135,6 +140,7 @@ section#contact  .button {
 
 .add-cont input, .add-cont select{
   margin-right: 10px;
+  padding: 2px 0;
 }
 
 .recommended {

@@ -53,80 +53,17 @@
       - @company.addresses.each do |address| 
         %li.row
           .cell.icon
-            %span.fb
-          .cell
-            = address.address_type
-          .cell
-            = address.address
-          .cell= link_to "Go to", "#", :class => "button"
+            %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
+          .cell{:title => address.description}= address.description.truncate(30)
+          .cell{:title => address.address}= address.address
+          .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
 
   
-    = form_for([@company, @company.addresses.build]) do |f|
-      = f.collection_select :address_type, ['Street Address', 'Phone Number','Website','Twitter','Facebook'], :to_s, :to_s, {}
-      = f.text_field :description
-      = f.text_field :address
-      = f.submit
-
-  %h1 COMMENT: remove below, when above table works... retained for visual formatting
-  %br
-  %br
-	
-  %section#contact
-    %ul.table
-      %li.row
-        .cell.icon
-          %span.fb
-        .cell Facebook
-        .cell http://www.facebook.com/pages/Apple-Inc/137947732957611
-        .cell= link_to "Go to", "#", :class => "button"
-      %li.row
-        .cell.icon
-          %span.tt
-        .cell Twitter
-        .cell http://twitter.com/apple
-        .cell= link_to "Go to", "#", :class => "button"
-      %li.row
-        .cell.icon
-          %span.world_link
-        .cell Apple Australia
-        .cell http://apple.com/au
-        .cell= link_to "Go to", "#", :class => "button"
-      %li.row
-        .cell.icon
-          %span.world_link
-        .cell Apple Inc
-        .cell http://apple.com
-        .cell= link_to "Go to", "#", :class => "button"
-      %li.row
-        .cell.icon
-          %span.phone
-        .cell Apple Enterprise Sales
-        .cell (877) 412-7753
-        .cell= link_to "Call", "#", :class => "button call"
-      %li.row
-        .cell.icon
-          %span.phone
-        .cell Apple Enterprise Sales
-        .cell (877) 412-7753
-        .cell= link_to "Call", "#", :class => "button call"
-      %li.row
-        .cell.icon
-          %span.phone
-        .cell Apple Enterprise Sales
-        .cell (877) 412-7753
-        .cell= link_to "Call", "#", :class => "button call"
-      %li.row
-        .cell.icon
-          %span.phone
-        .cell Apple Enterprise Sales
-        .cell (877) 412-7753
-        .cell= link_to "Call", "#", :class => "button call"
-    
-    = form_tag "#", :class => "add-cont" do
-      = select_tag "something", options_for_select([["Type", ""],["Phone", ""],["Address", ""],["Website", ""]])
-      = text_field_tag "something", "", :placeholder => "Title" 
-      = text_field_tag "something", "", :placeholder => "Value" 
-      = submit_tag "Add"
+    = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
+      = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
+      = f.text_field :description, :size => "21"
+      = f.text_field :address, :size => "21"
+      = f.submit "Add"
 
 %aside.grid_5
   %article

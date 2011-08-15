@@ -268,22 +268,33 @@ a.call {
 }
 .phone{
   background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
-    padding-left: 16px;
+  padding-left: 16px;
+  display: inline-block;
+  height: 16px;
 }
 .world_link{
   background: url(../images/sprite.png)  0 -280px no-repeat;
   padding-left: 25px;
   height: 16px;
+  display: inline-block;
 }
 .fb{
-  background: url(../images/sprite.png)  0 -316px no-repeat;
+  background: url(../images/sprite.png)  0 -315px no-repeat;
   padding-left: 25px;
-  height: 16px;
+  height: 18px;
+  display: inline-block;
 }
 .tt{
-  background: url(../images/sprite.png)  0 -352px no-repeat;
+  background: url(../images/sprite.png)  0 -350px no-repeat;
   padding-left: 25px;
-  height: 16px;
+  height: 18px;
+  display: inline-block;
+}
+.street {
+  background: url("../images/sprite.png") 0 -101px no-repeat ;
+  padding-left: 25px;
+  height: 18px;
+  display: inline-block;
 }
 .prizzm {
   background: none;
