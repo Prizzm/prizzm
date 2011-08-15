@@ -2,9 +2,9 @@
   .slideshow-container
     #loading.loader
     #slideshow.slideshow
-#thumbs.navigation{:data => {:itemid => @item.id}}
+#thumbs.navigation{:data => {:companyid => @company.id}}
   %ul.thumbs.noscript
-    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
+    = render :partial => 'companies/company_image_thumbnail', :collection => @company.images, :as => :img
 
 %div(style="clear: both;")
 
@@ -12,7 +12,7 @@
   As the delete image URL changes through javascript depending on which image we're looking at, 
   we can't have the url rendered on the page, but must suply it based on the current image.
   So we will do that by using javascript
-- if (@item.images.count > 0) && (@item.user == current_user)
+- if (@company.images.count > 0) && (user_signed_in?)
   %br/
   = link_to "Delete", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
 
@@ -27,9 +27,9 @@
       // Custom helper functions for Gallery
 
       var setDeleteImageLink = function(index){
-        var itemId = $('#thumbs').data('itemid');
+        var companyId = $('#thumbs').data('companyid');
         var imageId = $('#thumbs ul li').eq(index).data('imageid');
-        $('#delete-image-link').attr('href', '/items/' + itemId + '/images/'+imageId+'/index/'+index);
+        $('#delete-image-link').attr('href', '/companies/' + companyId + '/images/'+imageId+'/index/'+index);
       }
 
       // End Custom Functions

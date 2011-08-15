@@ -73,4 +73,43 @@ module JavascriptHelper
       }.gsub(/[\n ]+/, ' ').strip.html_safe
     end
   end
+
+  def company_photo_uploadify
+    session_key_name = Rails.application.config.session_options[:key]
+    content_for :jquery do
+      %Q{
+      <script type='text/javascript'>
+        $(document).ready(function() {
+          $('input#company_image_image').uploadify({
+            script : '#{company_company_images_path(@company)}',
+            fileDataName    : 'image[image]',
+            uploader        : '/assets/uploadify.swf',
+            cancelImg       : '/images/cancel.png',
+            fileDesc        : 'Images',
+            fileExt         : '*.png;*.jpg;*.gif;*.JPG',
+            sizeLimit       : #{10.megabytes},
+            queueSizeLimit  : 24,
+            multi           : true,
+            auto            : true,
+            buttonText      : 'ADD IMAGES',
+            scriptData      : {
+              '_http_accept': 'application/javascript',
+              '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
+              'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
+            },
+            onOpen          : function() {
+              $('#addimage-loader').css('display', 'inline-block');
+              $('#company_company_image_imageQueue').css('display', 'inline-block');
+            },
+            onComplete      : function(event, id, object, response, data){ 
+              $('body').trigger('insertImage', response);
+              $('#addimage-loader').css('display', 'none');
+            }
+          });
+        });
+      </script>
+
+      }.gsub(/[\n ]+/, ' ').strip.html_safe
+    end
+  end
 end

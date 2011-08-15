@@ -109,11 +109,17 @@ Prizzm::Application.routes.draw do
   end
 
   match '/items/:item_id/images/:id/index/:index' => 'images#destroy'
+  match '/companies/:company_id/images/:id/index/:index' => 'company_images#destroy'
 
   resources :items 
   resources :items do
     resources :images, :only => [:create, :destroy]
   end
+
+  resources :companies do
+    resources :company_images, :only => [:create, :destroy]
+  end
+
 
   put '/update_item_review/:id' => 'items#update_review', :as => 'update_item_review'
   put '/update_item_name' => 'items#update_item_name', :as => 'update_item_name'

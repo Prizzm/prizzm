@@ -7,9 +7,23 @@
     = link_to "Follow", "#", :class => "button red"
 
 %aside.grid_5
-  = image_tag "http://goo.gl/4vNEk", :class => "bigthumb"
-  
   %article
+    = render 'company_images'
+
+    = fields_for CompanyImage.new do |f|
+      = f.file_field :image, :rel => company_company_images_path(@company)                        
+    = company_photo_uploadify
+
+    %br
+    = link_to @company.url, @company.url
+
+    = form_tag company_company_images_path(@company), :remote => true, :multipart => true, :id => "add-remote-image" do
+      = fields_for :image do |builder|
+        = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
+        %div{:style => "display:none"}
+          = builder.submit
+    .loading{:style => "display:none"}
+
     %nav
       %ul
         %li= link_to "Information", "#", :class => "active"
@@ -135,4 +149,16 @@
       %li= link_to "", "#"
 .clear
 
+- content_for :javascripts do
+  :javascript
+    $(function() {
+      $('#add-remote-image').bind('submit', function() {
+        $('.loading', 'aside').show();
+      });
 
+      $('#add-remote-image').bind('ajax:complete', function(e, xhr, settings) {
+        $('.loading', 'aside').hide();
+        $('#graburl').val('');
+        $('body').trigger('insertImage', xhr.responseText);
+      });
+    });

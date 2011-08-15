@@ -137,7 +137,7 @@ div.pagination span.ellipsis {
   margin-bottom: 10px;
 }
 
-#item_image_imageUploader {
+#item_image_imageUploader, #company_image_imageUploader {
   position: relative;
   top: -29px;
   left: 75px;

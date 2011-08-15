@@ -1,0 +1,2 @@
+module CompanyImageHelper
+end

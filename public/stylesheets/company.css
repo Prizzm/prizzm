@@ -35,6 +35,7 @@ aside.grid_5 article{
 }
 
 aside nav {
+  margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid #f3f3f3;
 }
@@ -150,3 +151,22 @@ section#contact  .button {
     color: #a25959;
     background: #d88888;
 }
+
+div#usergallery, #graburl {
+  -moz-border-radius: 3px 3px 3px 3px;
+  background: none repeat scroll 0 0 #ECF4F5;
+  border: 1px dashed #9FC3C9;
+  color: #9FC3C9;
+  padding: 15px;
+  text-align: center;
+}
+
+#graburl {
+  -moz-box-sizing: border-box;
+  color: #9FC3C9;
+  margin-top: 5px;
+  padding: 5px;
+  text-align: left;
+  width: 100%;
+}
+
