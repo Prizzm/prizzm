@@ -61,8 +61,8 @@
   
     = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
       = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
-      = f.text_field :description, :size => "21"
-      = f.text_field :address, :size => "21"
+      = f.text_field :description, :size => "19"
+      = f.text_field :address, :size => "19"
       = f.submit "Add"
 
 %aside.grid_5
