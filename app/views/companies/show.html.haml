@@ -54,7 +54,7 @@
         %li.row
           .cell.icon
             %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
-          .cell{:title => address.description}= address.description.truncate(30)
+          .cell{:title => address.description}= address.description.to_s.truncate(30)
           .cell{:title => address.address}= address.address
           .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
 
