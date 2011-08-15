@@ -10,19 +10,20 @@
   %article
     = render 'company_images'
 
-    = fields_for CompanyImage.new do |f|
-      = f.file_field :image, :rel => company_company_images_path(@company)                        
-    = company_photo_uploadify
+    - if user_signed_in?
+      = fields_for CompanyImage.new do |f|
+        = f.file_field :image, :rel => company_company_images_path(@company)                        
+      = company_photo_uploadify
 
-    %br
-    = link_to @company.url, @company.url
+      %br
+      = link_to @company.url, @company.url
 
-    = form_tag company_company_images_path(@company), :remote => true, :multipart => true, :id => "add-remote-image" do
-      = fields_for :image do |builder|
-        = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
-        %div{:style => "display:none"}
-          = builder.submit
-    .loading{:style => "display:none"}
+      = form_tag company_company_images_path(@company), :remote => true, :multipart => true, :id => "add-remote-image" do
+        = fields_for :image do |builder|
+          = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
+          %div{:style => "display:none"}
+            = builder.submit
+      .loading{:style => "display:none"}
 
     %nav
       %ul
