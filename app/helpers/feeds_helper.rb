@@ -1,6 +1,6 @@
 module FeedsHelper
   def trending_brands
-    [Company.first] * 4 #limit(8).to_a
+      Company.find(:all,:limit => 4)  #limit(4).to_a
   end
 
   def latest_reviews
