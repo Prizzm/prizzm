@@ -3,6 +3,12 @@ class CasesController < InheritedResources::Base
 
   def index
     @cases = current_user.cases.all
+    render :layout => 'profile'
+  end
+
+  def new
+    @case = Case.new
+    render :layout => false
   end
 
   def create 
