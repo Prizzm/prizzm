@@ -1,14 +1,15 @@
-= semantic_form_for @case do |f|
-  -if @case.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@case.errors.count, "error")} prohibited this case from being saved:"
-      %ul
-        - @case.errors.full_messages.each do |msg|
-          %li= msg
+#new-case
+  = semantic_form_for @case do |f|
+    -if @case.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@case.errors.count, "error")} prohibited this case from being saved:"
+        %ul
+          - @case.errors.full_messages.each do |msg|
+            %li= msg
 
-  = f.inputs do 
-    = f.input :title
-    = f.input :description
-    = f.input :date
-    = f.input :case_reference
-    = f.buttons
+    = f.inputs do 
+      = f.input :title
+      = f.input :description
+      = f.input :date
+      = f.input :case_reference
+      = f.buttons

@@ -194,7 +194,8 @@ footer {
   padding-bottom: 8px;
 }
 
-#edit-user input[type="text"], #edit-user input[type="password"], #edit-user input[type="email"] {
+#edit-user input[type="text"], #edit-user input[type="password"], #edit-user input[type="email"],
+#new-case input[type="text"], #new-case textarea {
   -moz-border-radius: 3px 3px 3px 3px;
   -moz-box-sizing: border-box;
   border: 1px solid #ccc;
@@ -203,7 +204,8 @@ footer {
   width: 60%;
 }
 
-#edit-user input[type="submit"] {
+#edit-user input[type="submit"],
+#new-case input[type="submit"] {
   width: 100%;
 }
 
@@ -222,6 +224,11 @@ footer {
   color: #666;
   margin-right: 10px;
   padding-top: 5px;
+}
+
+#new-case label {
+  text-align: right;
+  margin-right: 10px;
 }
 
 #edit-user #submit {
