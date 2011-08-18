@@ -1,30 +1,30 @@
-%h1 Listing cases
+#content.grid_15
+  -#helptool
+    %ul
+      %li
+        = link_to "" do 
+          %h3 Start adding things!
+          You can easily add things you have or want to your lists just by navigating to the respective lists in the menu on the left.
+      %li 
+        = link_to "" do
+          %h3 Had a problem with a company or service?
+          Open a case and discuss your experience with them! Its quick and easy from your "My cases" page.
+    .clear
+    .close
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Date
-    %th Case reference
-    %th User
-    %th Company
-    %th Item
-    %th
-    %th
-    %th
+  %h2 Cases
+  = link_to "Open new case", new_case_path, :class => "add button facebox"
+  .clear
 
-
-  - @cases.each do |c|
-    %tr
-      %td= c.title
-      %td= strip_tags(c.description)
-      %td= c.date
-      %td= c.case_reference
-      %td= c.user.name
-      %td= c.company.try(:name)
-      %td= c.item.try(:name)
-      %td= link_to 'Show', c
-      %td= link_to 'Edit', edit_case_path(c)
-      %td= link_to 'Destroy', c, :confirm => 'Are you sure?', :method => :delete
-
-%br= link_to 'New Case', new_case_path
+  %ul.table.case-list
+    %li.row.header
+      .cell Date
+      .cell Ticket name
+      .cell Case no.
+      .cell
+    - @cases.each do |c|
+      %li.row
+        .cell= c.date
+        .cell= c.title
+        .cell
+        .cell= link_to "View", case_path(c), :class => "button"
