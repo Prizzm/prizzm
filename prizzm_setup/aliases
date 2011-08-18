@@ -6,6 +6,9 @@ alias rk='bundle exec rake'
 # Shortcut for heroku command
 alias h='heroku'
 
+# Shortcut to start terminitor
+alias tstart='terminitor start'
+
 # Shortcut to run 'bundle install', and generate tags file for newly installed gems
 alias bi='bundle install; ctags -R .'
 

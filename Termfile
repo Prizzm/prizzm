@@ -1,15 +1,22 @@
 
 window do
-  tab do
-    run "vim"
-  end
+  run "vim"
+
+  tab ''
+
   tab do
     run "rails console"
   end
 
   tab do
+    mongo_lockfile = '/data/db/mongod.lock'
+    if File.exists?(mongo_lockfile)
+      File.unlink mongo_lockfile
+      run "mongod --repair"
+    end
     run "mongod"
   end
+
   tab do
     run "guard"
   end
