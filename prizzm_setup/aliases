@@ -50,7 +50,7 @@ alias ga='git add'
 alias git-pup='git submodule foreach git pull origin master'
 
 alias m='more'
-alias l='ls -lau --color=auto'
+alias l='ls -lau -G'
 
 # Rails
 alias rg='rails generate'

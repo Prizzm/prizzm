@@ -99,8 +99,7 @@ group :development, :test do
   gem "guard-compass"
   gem "guard-livereload"
   gem 'rb-fsevent', :require => false 
-  gem "rb-inotify", :require => false
-  gem "libnotify", :require => false
+  gem "growl"
  
 
   # Easily create database models for site simulation

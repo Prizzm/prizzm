@@ -1,0 +1,17 @@
+
+window do
+  tab do
+    run "vim"
+  end
+  tab do
+    run "rails console"
+  end
+
+  tab do
+    run "mongod"
+  end
+  tab do
+    run "guard"
+  end
+end
+
