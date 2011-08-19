@@ -3,7 +3,7 @@ if Rails.env.development?
   when /darwin/i
     require 'rb-fsevent'
   when /linux/i
-    require 'rb-inotify'
-    require 'libnotify'
+    #require 'rb-inotify'
+    #require 'libnotify'
   end
 end
