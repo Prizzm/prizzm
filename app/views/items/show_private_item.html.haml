@@ -43,8 +43,8 @@
     .clear
     .close
   %section#review
-    = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
-    .title Review
+    = link_to "Edit", '#', :class => "edit-cntrl", :id => "edit-review-link"
+    -#.title Review
     #rendered-review
       - if @item.review.blank?
         = render 'default_review'
