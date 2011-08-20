@@ -59,10 +59,10 @@ class Comment < ActiveRecord::Base
 
 protected
 
-  #  This method dectects which attributes were changed from the model update,
+  #  This method detects which attributes were changed from the model update,
   #  and sends a notification signalling each attribute change.  This provides
-  #  several benefits over signalling the atribute changes in the controller.
-  #  First, we can emit notifications directly from teh model, thus aid in test
+  #  several benefits over signalling the attribute changes in the controller.
+  #  First, we can emit notifications directly from the model, thus aid in test
   #  data generation and unit testing.  Second, we can have the notifications all
   #  in one central place, as opposed to being scattered throughout the
   #  controllers

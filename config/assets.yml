@@ -57,8 +57,8 @@ stylesheets:
     - public/stylesheets/profile.css
   profile_fix:
     - public/stylesheets/profile-public-fix.css
-  dashboard:
-    - public/stylesheets/dashboard.css
+  livef:
+    - public/stylesheets/livef.css
   case_detail:
     - public/stylesheets/case-detail.css
   company:

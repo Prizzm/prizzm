@@ -27,8 +27,8 @@
       #main
         %header
           = image_tag @user.photo_url(:big), :class => "grid_4 profilePic", :alt => "" 
-          %h2.grid_5= @user.name
-          .grid_14
+          %h2.grid_14= @user.name
+          .grid_5
             .buttons
               - if your_profile?
                 = link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
