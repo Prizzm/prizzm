@@ -6,7 +6,7 @@ gem "haml-rails"
 gem "jquery-rails"
 # Sends notifications of errors on Production app
 gem "hoptoad_notifier"
-# asset packaging
+#  asset packaging
 gem "jammit"
 
 gem "sinatra"
