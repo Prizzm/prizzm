@@ -86,10 +86,37 @@ button {  width: auto; overflow: visible; }
   
 }
 
-@media screen and (max-device-width: 480px) {
+@media handheld, only screen and (max-width: 480px) {
+  .userbit {
+    display: none;
+  }
   
+  aside.left {
+    width: 10% !important;
+  }
+  
+  #content {
+    width: 34% !important;
+  }
+  
+  .table {
+    display: block !important;
+  }
+  
+  .fol-f .rv .user.cell img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  aside.right {
+    display: none;
+  }
   
   /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  
 }
 
 @media print {
@@ -268,33 +295,22 @@ a.call {
 }
 .phone{
   background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
-  padding-left: 16px;
-  display: inline-block;
-  height: 16px;
+    padding-left: 16px;
 }
 .world_link{
   background: url(../images/sprite.png)  0 -280px no-repeat;
   padding-left: 25px;
   height: 16px;
-  display: inline-block;
 }
 .fb{
-  background: url(../images/sprite.png)  0 -315px no-repeat;
+  background: url(../images/sprite.png)  0 -316px no-repeat;
   padding-left: 25px;
-  height: 18px;
-  display: inline-block;
+  height: 16px;
 }
 .tt{
-  background: url(../images/sprite.png)  0 -350px no-repeat;
+  background: url(../images/sprite.png)  0 -352px no-repeat;
   padding-left: 25px;
-  height: 18px;
-  display: inline-block;
-}
-.street {
-  background: url("../images/sprite.png") 0 -101px no-repeat ;
-  padding-left: 25px;
-  height: 18px;
-  display: inline-block;
+  height: 16px;
 }
 .prizzm {
   background: none;
@@ -441,9 +457,14 @@ img.smallthumb {
   height: 30px;
 }
 
+img.thumb {
+  width: 50px;
+  height: 50px;
+}
+
 footer {
+  width: 550px;
   margin: 10px auto;
-  width: 960px;
   font-size: 0.9em;
 }
 
@@ -454,4 +475,135 @@ footer ul {
 
 footer ul li {
   display: inline-block;
+}
+
+  .tags {
+    padding: 8px;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #c4cbdc;
+    color: #a7a7a7;
+  }
+  
+	.tags li {
+    padding: 3px 18px 3px 3px;
+    display: inline-block;
+    position: relative;
+    background: #90cbf9;
+    color: #215f94;
+    border: 1px solid #72a7d8;
+    
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  
+  .tags li.gld {
+    background: #F9F390;
+    color: #948D21;
+    border: 1px solid #D8D272;
+  }
+  
+  .tags li.cmp {
+    background: #92f990;
+    color: #379421;
+    border: 1px solid #83d872;
+  }
+  
+  .tags li .close {
+    top: 4px;
+    right: 3px;
+    opacity: 0.6;
+    background-image: url('../images/cancel-light.png');
+  }
+  
+  
+.collapse-comm {
+  padding: 3px 0 5px;
+  border-top: 1px dashed #ccc;
+  text-align: center;
+  background: #f3f3f3;
+  font-variant: small-caps;
+  color: #c5c5c5 !important;
+  display: block;
+  text-decoration: none !important;
+}
+
+.comms {
+  border-top: 1px dashed #ccc;
+}
+  .comms li {
+    display: block;
+    border-bottom: 1px dotted #ccc;
+  }
+
+  .comms .cell {
+  padding: 10px 0;
+    float: left;
+  }
+
+  .comms .cell.img {
+    width: 9%;
+    vertical-align: top;
+  }
+
+  .comms .cell.cont {
+    width: 91%;
+  }
+  
+  .comms .comm-ft {
+    display: block;
+    text-align: right;
+  }
+  
+    .comms .comm-ft a{
+      margin-left: 5px;
+      font-variant: small-caps;
+    }
+
+  .comms .reply {
+    width: 94%;
+    margin-left: 40px !important;
+  }
+    
+.in-comm {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+  
+  .in-comm textarea {
+    padding: 5px;
+    max-width: 464px;
+    min-width: 100%;
+    border: 1px solid #ccc;
+    color: #a7a7a7;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .in-comm .button {
+    margin: 5px 0 0 5px !important;
+    float: right !important;
+  }
+  
+  .in-comm input.button {
+    width: 80px;
+  }
+  
+  .in-comm .sharebts {
+    margin-top: 5px !important;
+    padding: 5px;
+    border: 1px solid #ccc;
+    color: #a7a7a7;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+.empt-f {
+  margin-top: 10px;
+  text-align: center;
 }

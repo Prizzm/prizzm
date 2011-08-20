@@ -1,101 +1,73 @@
 - content_for :page_style do
-  = include_stylesheets :dashboard
+  = include_stylesheets :livef
 
-%header
-  %h2.grid_5 Dashboard
-
-#content.grid_19
-  #helptool
+#content.grid_14
+  %nav.action-menu
     %ul
       %li
-        = link_to new_item_path + "#create", :id => "action-button", :class => "facebox" do 
-          %h3 Add Items 
-          What would you recommend to others? Considering a purchase?</a>
+        = link_to "Have", "", :class => "active"
+        = link_to "Want", ""
+        = link_to "Case", ""
+        = link_to "New Category", ""
+  %form.action.table.addhave{:action => ""}
+    %input{:placeholder => "Item name", :type => "text"}/
+    %input{:placeholder => "Add a URL", :type => "text"}/
+    #url_preview
+      #img_selector_parent{:style => "display: block; "}
+        %table.fl
+          %tbody
+            %tr
+              %td#img_selector{:align => "center"}
+                %img{:src => "http://i.dell.com/images/global/brand/ui/storm80/logo80.gif"}/
+            %tr
+              %td#img_controls{:align => "center"}
+                %button#prev_image{:disabled => "disabled"} <
+                %button#next_image >
+        %textarea.fr{:id => "", :name => "", :placeholder => "What did you think of this product?"}
+        .clear
+    %ul.tags
+      %li.gld
+        Have
+        .close
+      %li.cmp
+        Dell
+        .close
       %li
-        = link_to have_path(current_user) do
-          %h3 My Data
-          Prizzm stores *your* data. Private unless shared.  Also browse others profiles, what do your friends have (that they admit to anyway)?
+        Electronic
+        .close
       %li
-        = link_to new_case_path do
-          %h3 Add a Case
-          Ever have a problem with a product or service? Or call a company and need to record what they said?  Track your version here...and publicize your "case" if necessary.</a>
-    .clear
-    .close
-  %section#la-rev.grid_9
-    %h3
-      %span public items
-    %ul
-      - latest_reviews.each do |item|
-        %li	
-          = image_tag item.main_image
-          .fl
-            %h4= item.name
-            %p
-              = truncate(strip_tags(item.review), :length => 40)
-              %br= link_to "Read more", item_path(item)
-            .rating
-          .clear
-        %br
- 
-  %section#mo-re-ca.grid_9
-    %h3
-      %span public cases
-    %ul
-      - recent_cases.each do |user_case|
-        %li
-          /= image_tag review.from["image"]
-          .fl
-            %h4= user_case.title
-            %p
-              = truncate(strip_tags(user_case.description), :length => 40)
-              = link_to "Read more", case_path(user_case)
-            .rating
-          .clear
-        %br
-  %section#tr-br.grid_18
-    %h3
-      %span brands
-    %ul
-      - trending_brands.each do |company|
-        %li
-          = link_to company_path(company) do
-            = image_tag company.main_image
-            = company.name
-    %a.fr{:href => ""} View all
-  .clear
-  .clear
-%aside.grid_5
+        laptop
+        .close
+      %li
+        Windows
+        .close
+      + Add tags
+    %input.button.blue{:type => "submit", :value => "save"}/
+    %input#clear_item_fields.button{:type => "submit", :value => "clear"}/
+  
+%aside.grid_5.right
   %article
     %h4.fl People following
     %a.small.fr{:href => ""} View all
     .clear
-    .table
-      - events_about_users.each do |event|
-        .row
-          .cell.img
-          .cell
-            = format_feed_item event,  :timestamp => true
+    %ul.usergal
+      %li
+        %a{:href => ""}
+          = image_tag "default-user-avatar.png"
+    
 
   %article
-    %h4.fl Products following
+    %h4.fl Suggested People
     %a.small.fr{:href => ""} View all
     .clear
-    .table
-      - events_about_products.each do |event|
-        .row
-          .cell.img
-          .cell
-            = format_feed_item event,  :timestamp => true
-  %article
-    %h4.fl Brands following
-    %a.small.fr{:href => ""} View all
-    .clear
-    .table
-      - events_about_companies.each do |event|
-        .row
-          .cell.img
-          .cell
-            = format_feed_item event,  :timestamp => true
+    %ul.table
+      %li.row
+        .cell.img
+          %img.smallthumb{:alt => "", :src => "images/me.png"}/
+        .cell.uname Geoffrey Chong
+        .cell.action
+          = link_to "Follow", "", :class => "button blue"
+    
 .clear
 
 - content_for :jquery do
