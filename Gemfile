@@ -20,7 +20,7 @@ gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 
 # Allows us to keep an order of a user's items in their collection
 gem "acts_as_list"
-gem "acts_as_commentable"
+gem "acts_as_commentable_with_threading"
 
 gem "mongoid"
 gem "bson_ext"
@@ -100,7 +100,6 @@ group :development, :test do
   gem "guard-livereload"
   gem 'rb-fsevent', :require => false 
   gem "growl"
-  gem "terminitor"
  
 
   # Easily create database models for site simulation
