@@ -100,6 +100,7 @@ group :development, :test do
   gem "guard-livereload"
   gem 'rb-fsevent', :require => false 
   gem "growl"
+  gem "terminitor"
  
 
   # Easily create database models for site simulation
