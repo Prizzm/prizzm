@@ -24,3 +24,5 @@ Gemfile
 Gemfile.lock
 config/database.yml
 routes.txt
+dump
+latest.dump
