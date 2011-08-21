@@ -6,7 +6,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :product
-  
+  belongs_to :company
+
   before_update :pre_process
 
   after_update :notify_attribute_changes

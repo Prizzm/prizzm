@@ -24,6 +24,7 @@ Prizzm::Application.routes.draw do
 
   resources :companies do
     resources :addresses
+    get 'search', :on => :collection
   end 
 
   # Comments - this route makes the comments controller response to a

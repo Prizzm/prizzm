@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.integer  "asking_price"
     t.string   "cached_slug"
     t.integer  "user_id"
+    t.integer  "company_id"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"

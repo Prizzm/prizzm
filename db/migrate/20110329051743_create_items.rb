@@ -18,6 +18,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :cached_slug
 
       t.references :user
+      t.references :company
       t.references :product
       t.timestamps
     end

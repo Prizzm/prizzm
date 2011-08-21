@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   include Imageable
 
   has_many :products, :dependent => :nullify  
+  has_many :items, :dependent => :nullify
   has_many :images, :class_name => 'CompanyImage', :dependent => :destroy
   has_many :addresses, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
