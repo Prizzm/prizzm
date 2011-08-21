@@ -9,6 +9,7 @@ javascripts:
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
     - public/javascripts/jquery.autogrow.js
+    - public/javascripts/jquery.autosuggest.js
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
@@ -35,6 +36,7 @@ stylesheets:
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/ckeditor.css
+    - public/stylesheets/autosuggest.css
 
   logged_in:
     - public/stylesheets/application-logged-in.css
@@ -57,8 +59,8 @@ stylesheets:
     - public/stylesheets/profile.css
   profile_fix:
     - public/stylesheets/profile-public-fix.css
-  dashboard:
-    - public/stylesheets/dashboard.css
+  livef:
+    - public/stylesheets/livef.css
   case_detail:
     - public/stylesheets/case-detail.css
   company:

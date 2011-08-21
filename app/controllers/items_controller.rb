@@ -1,7 +1,9 @@
 class ItemsController < InheritedResources::Base
   belongs_to :user
   respond_to :html, :json, :js
-  layout :determine_layout
+  #layout :determine_layout
+  #layout :determine_layout
+
 
   def new
     @item = Item.new
@@ -66,7 +68,6 @@ class ItemsController < InheritedResources::Base
     @item.update_attribute(:name, params[:name])
     render :json => @item.name
   end
-
 
   def rate
     @item = current_user.items.find(params[:object_id])

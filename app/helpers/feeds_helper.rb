@@ -1,6 +1,16 @@
 module FeedsHelper
+
+  def people_following
+    current_user.following_users.take(6)
+  end 
+
+  def suggested_people
+    # TODO:  Make not so broke ass
+    User.limit(100).reject {|user| current_user.following? user }.take(5)
+  end 
+
   def trending_brands
-      Company.find(:all,:limit => 4)  #limit(4).to_a
+    Company.find(:all,:limit => 4)  #limit(4).to_a
   end
 
   def latest_reviews

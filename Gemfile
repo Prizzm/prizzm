@@ -6,10 +6,12 @@ gem "haml-rails"
 gem "jquery-rails"
 # Sends notifications of errors on Production app
 gem "hoptoad_notifier"
-# asset packaging
+#  asset packaging
 gem "jammit"
 
 gem "sinatra"
+
+gem "acts-as-taggable-on"
 
 # Used to simplify user registrations and logins
 # Pined to ref, as there is problem on devise HEAD
@@ -20,7 +22,7 @@ gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 
 # Allows us to keep an order of a user's items in their collection
 gem "acts_as_list"
-gem "acts_as_commentable"
+gem "acts_as_commentable_with_threading"
 
 gem "mongoid"
 gem "bson_ext"
@@ -81,6 +83,8 @@ gem 'inherited_resources', :git => "git://github.com/josevalim/inherited_resourc
 # Apparently needed to make the uploadify multifile uploader work 
 gem "flash_cookie_session"
 
+gem "twilio-ruby"
+
 #gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 group :development, :test do
@@ -101,6 +105,9 @@ group :development, :test do
   gem 'rb-fsevent', :require => false 
   gem "growl"
  
+  # Used to create an extermal ssh tunnel
+  #gem "tunnlr_connector", :require => "tunnlr", :git => "https://sid137@github.com/sid137/tunnlr_connector.git"
+  gem "tunnlr_connector", :require => "tunnlr", :path => "/Users/noli/tracking/tunnlr_connector"
 
   # Easily create database models for site simulation
   gem "factory_girl_rails"

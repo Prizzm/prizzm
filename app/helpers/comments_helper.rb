@@ -9,6 +9,6 @@ module CommentsHelper
   end
 
   def comment_collection_for commentable
-    render :partial => 'comments/comment', :collection => commentable.comments.order('created_at asc'), :locals => {:commentable => commentable}
+    render :partial => 'comments/comment', :collection => commentable.comment_threads, :locals => {:commentable => commentable}
   end
 end

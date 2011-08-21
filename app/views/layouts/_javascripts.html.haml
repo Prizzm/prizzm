@@ -1,8 +1,13 @@
 = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"
-= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'
+= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'
 = javascript_include_tag "http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js" 
+= javascript_include_tag "https://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
 = include_javascripts :app
 = javascript_include_tag 'jquery.form.js', 'jquery.remotipart.js'
 = hoptoad_javascript_notifier
 = yield :javascripts
 = yield :jquery
+:javascript
+  // var token = '70bb105c2ba10c8c78e364e179e92c89';
+  // Twilio.Device.setup(token);
+  // Twilio.Device.connect();

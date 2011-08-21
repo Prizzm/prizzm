@@ -113,7 +113,7 @@ function find_and_replace  {
 
 
 function pull {
-    rm public/assets/*.gz
+    rm public/assets/*css*
     git pull
 }
 

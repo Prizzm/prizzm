@@ -33,6 +33,7 @@ class Item < ActiveRecord::Base
   acts_as_list :scope => :user
   acts_as_followable
   acts_as_commentable
+  acts_as_taggable
 
   default_value_for :privacy, 'private'
   default_value_for :possession_status, 'want'

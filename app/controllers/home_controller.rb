@@ -10,6 +10,12 @@ class HomeController < ApplicationController
     end
   end
 
+  def dashboard
+    @user = current_user
+    @item = Item.new
+    @item.images.build
+  end
+
   def scrape
 
     @req_url = params[:url].strip

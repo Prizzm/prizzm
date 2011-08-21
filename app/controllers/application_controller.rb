@@ -3,4 +3,9 @@ class ApplicationController < ActionController::Base
 
   include InheritedResources::DSL
 
+protected
+
+  def object_class object_type
+    object_type.classify.constantize
+  end
 end

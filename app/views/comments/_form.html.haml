@@ -1,8 +1,8 @@
 #new_comment_box
   #comment_input_box
-    = form_for :comment,  :url => comments_path(commentable.class.to_s.underscore, commentable.id), :format => :js, :html => { :id => "new_comment" }, :remote => true do |f| 
+    = form_for :comment,  :url => comments_path(object_type(commentable), commentable.id), :format => :js, :html => { :id => "new_comment" }, :remote => true do |f| 
       #share-input
-        = f.text_area :comment, :'data-text' => "Comment on this review...", :placeholder => "Comment...",  :rows => 3
+        = f.text_area :body, :'data-text' => "Comment on this review...", :placeholder => "Comment...",  :rows => 3
         .cancel
       .clear
       = f.submit 'Comment', :class => "button"

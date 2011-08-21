@@ -1,5 +1,7 @@
 Prizzm::Application.routes.draw do
 
+  resources :members
+
   root :to => 'home#dashboard'
 
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
@@ -8,6 +10,7 @@ Prizzm::Application.routes.draw do
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
   get '/dashboard' => "home#dashboard", :as => "dashboard"
+
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
   get '/:id/wants' => 'profile#want', :as => 'want'
@@ -45,6 +48,7 @@ Prizzm::Application.routes.draw do
   put '/privacy/toggle/:object_type/:id' => 'privacy#toggle', :as => 'toggle_privacy'
 
   get '/:user_id/item/:id' => 'items#show', :as => 'show_item'
+  get '/:user_id/case/:id' => 'cases#show', :as => 'show_item'
 
 
 

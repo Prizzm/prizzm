@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804202829) do
+ActiveRecord::Schema.define(:version => 20110821041012) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -38,11 +38,15 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
   add_index "cases", ["cached_slug"], :name => "index_cases_on_cached_slug", :unique => true
 
   create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.text     "comment"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "body",                           :default => ""
+    t.string   "subject",                        :default => ""
     t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,19 +94,6 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
   create_table "images", :force => true do |t|
     t.integer  "item_id"
     t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "interactions", :force => true do |t|
-    t.datetime "time_start"
-    t.datetime "time_end"
-    t.integer  "rating"
-    t.string   "contact"
-    t.boolean  "shared_facebook"
-    t.boolean  "shared_twitter"
-    t.text     "description"
-    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -184,11 +175,21 @@ ActiveRecord::Schema.define(:version => 20110804202829) do
     t.datetime "updated_at"
   end
 
-  create_table "tags", :force => true do |t|
-    t.integer  "interaction_id"
-    t.integer  "item_id"
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context"
     t.datetime "created_at"
-    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
