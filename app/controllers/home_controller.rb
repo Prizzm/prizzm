@@ -9,11 +9,6 @@ class HomeController < ApplicationController
       format.json  { render :json => @user }
     end
   end
-  
-  def dashboard
-  	@item = Item.new
-  	@item.images.build
-  end
 
   def scrape
 
