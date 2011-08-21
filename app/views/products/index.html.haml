@@ -2,8 +2,7 @@
 
 %table
   %tr
-    %th Namee
-    %th Type
+    %th Name
     %th Upc
     %th
     %th
@@ -11,8 +10,7 @@
 
   - @products.each do |product|
     %tr
-      %td= product.namee
-      %td= product.type
+      %td= product.name
       %td= product.upc
       %td= link_to 'Show', product
       %td= link_to 'Edit', edit_product_path(product)

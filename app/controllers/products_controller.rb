@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.order('name ASC')
-    respond_to do |format|
-      format.html {render :json  => @products.to_json(:methods => :label, :only => [:label, :id])  } 
-    end 
+    @products = Product.all
+    #respond_to do |format|
+      #format.html {render :json  => @products.to_json(:methods => :label, :only => [:label, :id])  } 
+    #end 
   end 
 
   def show

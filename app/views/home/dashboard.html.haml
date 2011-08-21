@@ -48,25 +48,27 @@
 %aside.grid_5.right
   %article
     %h4.fl People following
-    %a.small.fr{:href => ""} View all
+    = link_to "View all", '#', :class => 'small fr'
     .clear
     %ul.usergal
-      %li
-        %a{:href => ""}
-          = image_tag "default-user-avatar.png"
+      - people_following.each do |user|
+        %li
+          = link_to profile_path(user) do
+            = image_tag user.main_image
     
 
   %article
     %h4.fl Suggested People
-    %a.small.fr{:href => ""} View all
+    = link_to "View all", members_path, :class => 'small fr'
     .clear
     %ul.table
-      %li.row
-        .cell.img
-          %img.smallthumb{:alt => "", :src => "images/me.png"}/
-        .cell.uname Geoffrey Chong
-        .cell.action
-          = link_to "Follow", "", :class => "button blue"
+      - suggested_people.each do |person| 
+        %li.row
+          .cell.img
+            = image_tag person.main_image, :class => 'smallthumb'
+          .cell.uname= person.name
+          .cell.action
+            = follow_link_for person
     
 .clear
 
