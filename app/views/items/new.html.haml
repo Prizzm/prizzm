@@ -1,4 +1,4 @@
-/= include_stylesheets :item_new
+= include_stylesheets :item_new
 
 = form_for [current_user, @item], :html => {:class => 'action table addhave'} do |f|
   = f.text_field :name, :placeholder => "Item name"
@@ -104,16 +104,16 @@
       function reset_all(){
         current_image_indx = null;
         total_images = 0;
-        
+
         if (waittimeout_timeout_id){
           clearTimeout(waittimeout_timeout_id);
         }
 
         waittimeout_timeout_id = null;
-        
+
         $("#img_selector_parent").css({ "display" : "block" });
         $("#img_selector").html('#{ image_tag 'loading.gif', :style => 'display:block;' }');
-        
+
         toggle_navigation();
       }
       
@@ -212,10 +212,10 @@
             "json"
         );
       }
-      
+
       var search_google_popup_opened = false;
       var google_search_icon_clicked = false;
-      
+
       $('input#item_url').autocomplete({
         source: function(request, response) {
         
@@ -342,6 +342,11 @@
         select:function(event, ui){
         
           $("#item_product_id").val(ui.item.id);
+          
+          $("#item_name").attr('readonly', 'readonly');
+          $("#item_url").attr('readonly', 'readonly');
+          $("#item_description").attr('readonly', 'readonly');
+          
 
           $("#item_name").val(ui.item.name);
           $("#item_name").change();
@@ -370,6 +375,22 @@
           ajax : "#{ new_item_path }"
         });
         return false;
+      });
+      
+      $("#item_name").change(function(){
+      
+        // TODO: Update the review according to possession status
+        var possession_status = "have";
+        if ( possession_status == "want" ) {
+          var review_placeholder = "Why do you want " + $('#item_name').val() + "?";
+        }
+        else
+        {
+          var review_placeholder = "What do you think of " + $('#item_name').val() + "?";
+        }
+        
+        $('#item_review').attr("placeholder", review_placeholder);
+
       });
       
     });

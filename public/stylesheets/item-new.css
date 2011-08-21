@@ -1,5 +1,16 @@
 #offscreen_div {position:absolute; left:-5000px; width:1px; overflow:hidden; }
 
+#img_selector > img {
+  max-width:100px;
+  max-height:100px;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+  display:none;
+}
+
+/*
+
 #img_selector_parent{
 }
 #img_selector_parent table{ 
@@ -20,14 +31,7 @@
 #img_selector { 
   
 }
-#img_selector > img {
-  max-width:100px;
-  max-height:100px;
-  margin-left:auto;
-  margin-right:auto;
-  vertical-align:middle;
-  display:none;
-}
+
 
 #img_selector_parent table td#img_controls {
   padding:5px 0;
@@ -69,13 +73,13 @@
   text-decoration:none;
 }
 
+*/
+
 /* Following was part of facebox.css */
 
 
+/*
 #facebox #new_item #item_name {
-/* 
- width: 459px;
-*/
 float: left;
 }
 
@@ -100,6 +104,7 @@ p#item_posession_status span {
   width: 430px;
   float: left;
 }
+*/
 
 /*
 #facebox #item_possession_status {
