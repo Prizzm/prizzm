@@ -9,42 +9,9 @@
         = link_to "Want", ""
         = link_to "Case", ""
         = link_to "New Category", ""
-  %form.action.table.addhave{:action => ""}
-    %input{:placeholder => "Item name", :type => "text"}/
-    %input{:placeholder => "Add a URL", :type => "text"}/
-    #url_preview
-      #img_selector_parent{:style => "display: block; "}
-        %table.fl
-          %tbody
-            %tr
-              %td#img_selector{:align => "center"}
-                %img{:src => "http://i.dell.com/images/global/brand/ui/storm80/logo80.gif"}/
-            %tr
-              %td#img_controls{:align => "center"}
-                %button#prev_image{:disabled => "disabled"} <
-                %button#next_image >
-        %textarea.fr{:id => "", :name => "", :placeholder => "What did you think of this product?"}
-        .clear
-    %ul.tags
-      %li.gld
-        Have
-        .close
-      %li.cmp
-        Dell
-        .close
-      %li
-        Electronic
-        .close
-      %li
-        laptop
-        .close
-      %li
-        Windows
-        .close
-      + Add tags
-    %input.button.blue{:type => "submit", :value => "save"}/
-    %input#clear_item_fields.button{:type => "submit", :value => "clear"}/
-  
+
+  = render :template => 'items/new'
+
 %aside.grid_5.right
   %article
     %h4.fl People following
@@ -64,9 +31,10 @@
     %ul.table
       - suggested_people.each do |person| 
         %li.row
-          .cell.img
-            = image_tag person.main_image, :class => 'smallthumb'
-          .cell.uname= person.name
+          = link_to profile_path(person) do
+            .cell.img
+              = image_tag person.main_image, :class => 'smallthumb'
+            .cell.uname= person.name
           .cell.action
             = follow_link_for person
     

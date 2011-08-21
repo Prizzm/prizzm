@@ -11,20 +11,9 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
     @item = Item.new
     @item.images.build
-  end
-
-  def products
-  end
-
-  def brands
-  end
-
-  def people
-  end
-   
-  def cases
   end
 
   def scrape

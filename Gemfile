@@ -11,6 +11,8 @@ gem "jammit"
 
 gem "sinatra"
 
+gem "acts-as-taggable-on"
+
 # Used to simplify user registrations and logins
 # Pined to ref, as there is problem on devise HEAD
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
