@@ -81,6 +81,8 @@ gem 'inherited_resources', :git => "git://github.com/josevalim/inherited_resourc
 # Apparently needed to make the uploadify multifile uploader work 
 gem "flash_cookie_session"
 
+gem "twilio-ruby"
+
 #gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 group :development, :test do
@@ -101,6 +103,9 @@ group :development, :test do
   gem 'rb-fsevent', :require => false 
   gem "growl"
  
+  # Used to create an extermal ssh tunnel
+  #gem "tunnlr_connector", :require => "tunnlr", :git => "https://sid137@github.com/sid137/tunnlr_connector.git"
+  gem "tunnlr_connector", :require => "tunnlr", :path => "/Users/noli/tracking/tunnlr_connector"
 
   # Easily create database models for site simulation
   gem "factory_girl_rails"

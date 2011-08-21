@@ -1,0 +1,5 @@
+username: tunnlr2506
+host: ssh1.tunnlr.com
+password: prizzm
+remote_port: 11950
+local_port: 3000
