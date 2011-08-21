@@ -106,7 +106,7 @@ group :development, :test do
   gem "growl"
  
   # Used to create an extermal ssh tunnel
-  gem "tunnlr_connector", :require => "tunnlr", :git => "https://sid137@github.com/sid137/tunnlr_connector.git"
+  gem "tunnlr_connector", :require => "tunnlr", :git => "git://github.com/sid137/tunnlr_connector.git"
   #gem "tunnlr_connector", :require => "tunnlr", :path => "/Users/noli/tracking/tunnlr_connector"
 
   # Easily create database models for site simulation
