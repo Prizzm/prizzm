@@ -119,7 +119,7 @@ div#usergallery, #graburl {
     box-sizing: border-box;
 }
 
-#new_comment #share-input textarea {
+.new_comment .share-input textarea {
   padding: 5px;
   height: 4 0px;
   width: 100%;
@@ -133,15 +133,20 @@ div#usergallery, #graburl {
 }
 
 ul#comments {
-    margin: 15px 0 0;
-    width: 100%;
-    list-style: none;
+  margin: 15px 0 0;
+  width: 100%;
+  list-style: none;
+  overflow: hidden;
 }
 
 ul#comments li.row{
     padding: 8px 0;
     display: block;
     border-bottom: 1px dotted #cccccc;
+}
+
+ul#comments li.child {
+  margin-left: 35px;
 }
 
 ul#comments li img {
