@@ -119,29 +119,33 @@ div#usergallery, #graburl {
     box-sizing: border-box;
 }
 
-#new_comment #share-input textarea {
+.new_comment .share-input textarea {
   padding: 5px;
   height: 4 0px;
   width: 100%;
   margin-bottom: 10px;
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 ul#comments {
-    margin: 15px 0 0;
-    width: 100%;
-    list-style: none;
+  margin: 15px 0 0;
+  width: 100%;
+  list-style: none;
+  overflow: hidden;
 }
 
 ul#comments li.row{
     padding: 8px 0;
     display: block;
     border-bottom: 1px dotted #cccccc;
+}
+
+ul#comments li.child {
+  margin-left: 35px;
 }
 
 ul#comments li img {

@@ -94,6 +94,22 @@
     $(document).ready(function() {
       var editor;
 
+      // For commment loading animation.
+      $('.new_comment').live('ajax:beforeSend', function() {
+        var cmt = $(this).find('textarea');
+        if ($(cmt).val().trim().length == 0) {
+          alert("Comment can't be empty");
+          return false;
+        };
+
+        $(this).find('.loading').show();
+      });
+
+      $('.new_comment').live('ajax:complete', function() {
+        $(this).find('.loading').hide();
+      });
+      // End loading animation.
+
       function showEditor(){
         editor = CKEDITOR.replace('item_review',{
           customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
