@@ -7,6 +7,8 @@
     = f.text_field :url, :placeholder => "Add a URL"
     .hide#main-dropdown
       %ul#dropdown
+      
+  = f.hidden_field :company_id
 
   = f.hidden_field :product_id
   = f.hidden_field :image_url
@@ -30,6 +32,7 @@
   = f.text_area :review, :placeholder => "Review"
   .clear
   = f.text_field :tag_list, :placeholder => "+ Add tags"
+  = text_field_tag :company_name, "", :placeholder => "Company Name"
   = f.submit "save", :class => "button blue"
   = f.submit "clear", :class => "button", :id => "clear_item_fields"
 
@@ -368,6 +371,9 @@
           var new_image = $("<img src='"+ui.item.main_image+"' />");
           append_image(new_image);
           $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
+          
+          // set company_id
+          $("#item_company_id").val(ui.item.company_id);
         }
       }).data( "autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li style='height:40px;'></li>" ).data( "item.autocomplete", item ).append( "<a style='width:100%;height:100%;display:block;padding:0;'>" + "<img style='float:left;height:38px;width:38px;' src='" + item.main_image_thumb + "'>" + "<span style='float:left;padding:10px 5px;'>" + item.label + "</span>" + "</a>" ).appendTo( ul );
@@ -395,5 +401,13 @@
         $('#item_review').attr("placeholder", review_placeholder);
 
       });
+      
+      var update_item_company = function(company){
+        $("#company_name").val(company.name);
+        $("#item_company_id").val(company.id);
+        $("#company_name").attr("readonly", "readonly");
+      };
+
+      #{ render "items/company_autocomplete.js" }
       
     });

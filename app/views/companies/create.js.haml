@@ -1,0 +1,5 @@
+:plain
+  $.facebox.close();
+  if ( window.company_after_save_handler ) {
+    window.company_after_save_handler(#{ @company.to_json });
+  }

@@ -69,6 +69,12 @@ class ItemsController < InheritedResources::Base
     render :json => @item.name
   end
 
+  def update_company
+    @item = current_user.items.find(params[:id])
+    @company = Company.find(params[:company_id])
+    @item.update_attribute(:company_id, params[:company_id])
+  end
+
   def rate
     @item = current_user.items.find(params[:object_id])
     @item.update_attribute(:rating, params[:rating])
@@ -99,7 +105,6 @@ class ItemsController < InheritedResources::Base
     end
     ActivityLogger.user_share_item :from => current_user, :for => [@item], :data => [:message => fb_message]
   end
-
 
   private 
   # Apply a layout or not, based on the controller action:
