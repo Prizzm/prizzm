@@ -151,7 +151,7 @@ $(document).ready(function(){
     interpolate: /\{\{(.+?)\}\}/g
   }
 
-  // Nested comment.
+  // For nested comment.
   $('.reply-comment').live('click', function(e) {
     e.preventDefault();
     if ($(this).html() == 'Reply') {
