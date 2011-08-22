@@ -32,6 +32,7 @@
   = f.text_area :review, :placeholder => "Review"
   .clear
   = f.text_field :tag_list, :placeholder => "+ Add tags"
+  = text_field_tag :company_name, "", :placeholder => "Company Name"
   = f.submit "save", :class => "button blue"
   = f.submit "clear", :class => "button", :id => "clear_item_fields"
 
@@ -400,5 +401,13 @@
         $('#item_review').attr("placeholder", review_placeholder);
 
       });
+      
+      var update_item_company = function(company){
+        $("#company_name").val(company.name);
+        $("#item_company_id").val(company.id);
+        $("#company_name").attr("readonly", "readonly");
+      };
+
+      #{ render "items/company_autocomplete.js" }
       
     });
