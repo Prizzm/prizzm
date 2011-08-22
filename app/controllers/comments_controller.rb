@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = @commentable.comment_threads.find(params[:id])    
     @comment_id = comment.id
+    @child_ids = comment.children.map { |comment| comment.id }
     comment.destroy
 
     respond_to do |format|
