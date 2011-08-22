@@ -371,9 +371,13 @@
           var new_image = $("<img src='"+ui.item.main_image+"' />");
           append_image(new_image);
           $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
-          
+
           // set company_id
           $("#item_company_id").val(ui.item.company_id);
+          
+          // TODO: Also set Company name
+          $("#company_name").val(ui.item.company_name); // But it is not provided in returned JSON
+          $("#company_name").attr("readonly", "readonly");
         }
       }).data( "autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li style='height:40px;'></li>" ).data( "item.autocomplete", item ).append( "<a style='width:100%;height:100%;display:block;padding:0;'>" + "<img style='float:left;height:38px;width:38px;' src='" + item.main_image_thumb + "'>" + "<span style='float:left;padding:10px 5px;'>" + item.label + "</span>" + "</a>" ).appendTo( ul );

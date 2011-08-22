@@ -15,5 +15,9 @@ class Product < ActiveRecord::Base
     def customer_count
       users.count
     end 
+    
+    def company_name
+      company.name
+    end
   end
 end
