@@ -3,11 +3,10 @@
 = form_for [current_user, @item], :html => {:class => 'action table addhave'} do |f|
   = f.text_field :name, :placeholder => "Item name"
   /%button#google_search
-  %p
-    #url_and_dropdown_container{:style => "position:relative;"}
-      = f.text_field :url, :placeholder => "Add a URL"
-      .hide#main-dropdown
-        %ul#dropdown
+  #url_and_dropdown_container{:style => "position:relative;"}
+    = f.text_field :url, :placeholder => "Add a URL"
+    .hide#main-dropdown
+      %ul#dropdown
 
   = f.hidden_field :product_id
   = f.hidden_field :image_url
@@ -18,14 +17,18 @@
       %table.fl
         %tbody
           %tr
-            %td#img_selector{:align => "center"}
+            %td#img_controls
+              #prev_image{:disabled => "disabled"}
+                = image_tag "prev_img	.png"
+              #next_image{:disabled => "disabled"}
+                = image_tag "next_img.png"
+              .clear
           %tr
-            %td#img_controls{:align => "center"}
-              %button#prev_image{:disabled => "disabled"} &lt;
-              %button#next_image{:disabled => "disabled"} &gt;
-      .clear
+            %td#img_selector
+        .clear
 
   = f.text_area :review, :placeholder => "Review"
+  .clear
   = f.text_field :tag_list, :placeholder => "+ Add tags"
   = f.submit "save", :class => "button blue"
   = f.submit "clear", :class => "button", :id => "clear_item_fields"

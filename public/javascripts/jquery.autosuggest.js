@@ -76,7 +76,7 @@
 				var input_focus = false;
 				
 				// Setup basic elements and render them to the DOM
-				input.wrap('<ul class="as-selections" id="as-selections-'+x+'"></ul>').wrap('<li class="as-original" id="as-original-'+x+'"></li>');
+				input.wrap('<ul class="as-selections tags" id="as-selections-'+x+'"></ul>').wrap('<li class="as-original" id="as-original-'+x+'"></li>');
 				var selections_holder = $("#as-selections-"+x);
 				var org_li = $("#as-original-"+x);				
 				var results_holder = $('<div class="as-results" id="as-results-'+x+'"></div>').hide();
@@ -330,7 +330,7 @@
 							selections_holder.children().removeClass("selected");
 							$(this).addClass("selected");
 						}).mousedown(function(){ input_focus = false; });
-					var close = $('<a class="as-close">&times;</a>').click(function(){
+					var close = $('<a class="as-close close"></a>').click(function(){
 							values_input.val(values_input.val().replace(","+data[opts.selectedValuesProp]+",",","));
 							opts.selectionRemoved.call(this, item);
 							input_focus = true;

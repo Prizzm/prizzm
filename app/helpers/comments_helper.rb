@@ -4,11 +4,11 @@ module CommentsHelper
     render 'comments/comments_section', :commentable => commentable
   end
 
-  def comment_form_for commentable
-    render 'comments/form', :commentable => commentable
+  def comment_form_for commentable, parent_id = nil
+    render 'comments/form', :commentable => commentable, :parent_id => parent_id
   end
 
   def comment_collection_for commentable
-    render :partial => 'comments/comment', :collection => commentable.comment_threads, :locals => {:commentable => commentable}
+    render :partial => 'comments/comment', :collection => commentable.root_comments, :locals => {:commentable => commentable}
   end
 end

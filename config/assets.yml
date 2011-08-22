@@ -36,7 +36,6 @@ stylesheets:
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/ckeditor.css
-    - public/stylesheets/autosuggest.css
 
   logged_in:
     - public/stylesheets/application-logged-in.css
