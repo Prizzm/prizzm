@@ -1,0 +1,59 @@
+// API located at: http://compass-style.org/docs/reference/compass/
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+ 
+$blueprint-grid-columns : 26
+$blueprint-grid-width   : 30px
+$blueprint-grid-margin  : 10px
+   
+// If you change your grid column dimensions
+// you can make a new grid background image from the command line like this:
+// compass grid-img 30+10x16
+@import "blueprint"
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding"
+ 
+// Generate the blueprint framework according to your configuration:
+@import "compass"
+@import "compass/css3"
+@import "compass/css3/font-face"
+@import "compass/css3/text-shadow"
+@import "compass/layout/sticky-footer"
+@import "compass/support"
+@import "compass/typography/lists/horizontal-list"
+@import "compass/typography/links"
+@import "compass/typography/text/replacement"
+@import "compass/typography/lists/inline-block-list"
+@import "compass/utilities/tables/borders"
+@import "compass/utilities/general/float"
+
++blueprint
++blueprint-scaffolding
+
+$blue: #3B5997
+$left_width: 180px
+$middle_width: 495px
+$right_width: 245px
+$container_width: 980px
+$left:  $left_width
+$middle: $middle_width
+$right: $right_width
+$table-border-color: #EBEBEB
+$flash-message-height: 70px
+
+$top_height: 42px
+$nav_height: 57px
+$user_height: 70px
+
+$middle_columns: 25
+$right_columns: $blueprint_grid_columns - $middle_columns - 1
+
+//$blueprint-container-size: $container_width
+
+@mixin horizontal-center($width: 50px) 
+  display: block
+  width: $width
+  margin: 0 auto
+

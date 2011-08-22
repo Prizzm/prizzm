@@ -66,6 +66,7 @@ form.action {
   
   form #url_preview {
   	width: 20%;
+  	height: 100px;
   	float: left;
   	position: relative;
   }
@@ -73,7 +74,7 @@ form.action {
   form #img_controls {
   	padding: 3px;
   	position: absolute;
-  	width: 90%;
+  	width: 89%;
   	background: rgba(0, 0, 0, .5);
   }
   
