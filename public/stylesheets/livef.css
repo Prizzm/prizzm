@@ -61,14 +61,47 @@ form.action {
   }
   
   form.action table {
-    margin-top: 10px;
     width: 20%;
+  }
+  
+  form #url_preview {
+  	width: 20%;
+  	float: left;
+  	position: relative;
+  }
+  
+  form #img_controls {
+  	padding: 3px;
+  	position: absolute;
+  	width: 90%;
+  	background: rgba(0, 0, 0, .5);
+  }
+  
+  form #prev_image, form #next_image{
+  	width: 10px;
+  	height: 10px;
+  	cursor: pointer;
+  }
+  
+  form #prev_image img, form #next_image img{
+  	width: 10px;
+  	height: 10px;
+  }
+  
+  form #prev_image {
+  	float: left;
+  }
+  
+  form #next_image {
+  	float: right;
   }
   
   form.action textarea {
     min-width: 80%;
     max-width: 80%;
     min-height: 100px;
+    height: 100px;
+  	float: left;
   }
   
   form.action input[type=submit].button {
