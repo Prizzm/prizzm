@@ -42,8 +42,8 @@
             %article
               %h4 Personal
               %ul
-                %li= link_to "Have", have_path(@user), :class => tab_for(have_path(@user))
-                %li= link_to "Want", want_path(@user), :class => tab_for(want_path(@user))
+                %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
+                %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
                 %li= link_to "Case"
         = yield
       .clear
