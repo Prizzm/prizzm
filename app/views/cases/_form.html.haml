@@ -1,15 +1,24 @@
 #new-case
-  = semantic_form_for @case do |f|
-    -if @case.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@case.errors.count, "error")} prohibited this case from being saved:"
-        %ul
-          - @case.errors.full_messages.each do |msg|
-            %li= msg
-
-    = f.inputs do 
-      = f.input :title
-      = f.input :description
-      = f.input :date
-      = f.input :case_reference
-      = f.buttons
+  = form_for @case :html => {:class => "action table addcase"} do |f|
+    = f.text_field 'title', :placeholder => "What's your issue?"
+    = text_field_tag 'company_name', :placeholder => "With who?"
+    = f.hidden_field 'company_id'
+    %ul.tags
+      %li.gld
+        Case
+        .close
+      %li.cmp
+        Dell
+        .close
+      %li 
+        Electronic
+        .close
+      %li
+        laptop
+        .close
+      %li
+        Windows
+        .close
+      + Add tags
+    = f.submit 'save', :class => 'button blue'
+    = f.submit 'clear', :class => 'button', :id => 'clear_item_fields'
