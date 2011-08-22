@@ -16,6 +16,9 @@ window do
     end
     run "mongod"
   end
+  tab do
+    run "compass watch ."
+  end
 
   tab do
     run "guard"
