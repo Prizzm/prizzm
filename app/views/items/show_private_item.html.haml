@@ -4,7 +4,7 @@
 %header
   %h2
     -# = link_to "Add Company", new_company_path, :class => 'tag company'
-    = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
+    -# = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
     = @item.name
 
 %aside.grid_5
@@ -40,9 +40,9 @@
         = f.text_area :review
         = f.submit 'Save'
     #review_status 
-  %ul#company
-    .title Companies
-    = render "company_list_item", :company => @item.company
+  .title Company
+  #company
+    = render "company", :company => @item.company
   %br
   = comments_section_for @item
 %aside.grid_6
@@ -133,9 +133,19 @@
       });
 
 
+      var update_item_company = function(company_id){
 
+        $.ajax({
+          type : 'PUT',
+          url: '#{update_item_company_path}',
+          data : {company_id : company_id},
+          dataType: "script",
+          success: function(r){
+            // success
+          }
+        });
 
-
+      };
 
       $('#add-remote-image').bind('submit', function() {
         $('.loading', 'aside').show();
@@ -172,8 +182,18 @@
         select : function(event, ui){
           if ( ui.item.add_new_company ){
             $("input#company_name").val("");
-            alert("Open add item dialog");
             $.facebox({ ajax : "/companies/new?company_name=" + encodeURIComponent(ui.item.value) });
+            window.company_after_save_handler = function(company){
+              alert("Now set it for Item");
+              update_item_company(company.id);
+            };
+            $('#company_name').autocomplete("close");
+            return false;
+          }
+          else
+          {
+            $("input#company_name").val("");
+            update_item_company(ui.item.id);
             $('#company_name').autocomplete("close");
             return false;
           }

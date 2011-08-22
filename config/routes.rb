@@ -14,7 +14,7 @@ Prizzm::Application.routes.draw do
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
   get '/:id/wants' => 'profile#want', :as => 'want'
-  
+
   #route for getting images for a given page URL i.e. scrape
   match "/home/scrape" => "home#scrape", :as  => "scrape"
 
@@ -110,6 +110,7 @@ Prizzm::Application.routes.draw do
   resources :users do
     resources :items do
       match 'share' => 'items#share'
+      match 'set_company' => 'items#set_company'
     end
   end
 
@@ -128,6 +129,7 @@ Prizzm::Application.routes.draw do
 
   put '/update_item_review/:id' => 'items#update_review', :as => 'update_item_review'
   put '/update_item_name' => 'items#update_item_name', :as => 'update_item_name'
+  put '/update_item_company/:id' => 'items#update_company', :as => 'update_item_company'
   post 'items/rate', :as => :update_item_rating
   ########################################################################################
 
