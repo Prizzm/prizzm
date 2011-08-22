@@ -9,6 +9,7 @@ class Case < ActiveRecord::Base
 
   acts_as_followable
   acts_as_commentable
+  acts_as_taggable
 
   after_create :log_creation 
 

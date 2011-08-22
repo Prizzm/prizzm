@@ -32,7 +32,7 @@
   = f.text_area :review, :placeholder => "Review"
   .clear
   = f.text_field :tag_list, :placeholder => "+ Add tags"
-  = text_field_tag :company_name, "", :placeholder => "Company Name"
+  /= text_field_tag :company_name, "", :placeholder => "Company Name"
   = f.submit "save", :class => "button blue"
   = f.submit "clear", :class => "button", :id => "clear_item_fields"
 
@@ -49,9 +49,9 @@
         {value: "want", name: "want"}
       ];
 
-      $('#item_tag_list').autoSuggest(data,
+      $('#item_tag_list').autoSuggest("#{search_companies_path}",
         {
-          preFill: "have, Dell, electronics",
+          preFill: "have",
           neverSubmit: true
         }
       );
