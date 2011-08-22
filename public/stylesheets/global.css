@@ -551,6 +551,10 @@ footer ul li {
     width: 91%;
   }
   
+  .comms .comm {
+  	position: relative;
+  }
+  
   .comms .comm-ft {
     display: block;
     text-align: right;
