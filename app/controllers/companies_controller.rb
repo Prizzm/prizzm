@@ -12,7 +12,10 @@ class CompaniesController < InheritedResources::Base
       if params[:item_id]
         
       else
-        redirect_to @company, :notice => "Company created successfully."
+        respond_to do |format|
+          format.html { redirect_to @company, :notice => "Company created successfully." }
+          format.js
+        end
       end
     else
       redirect_to :action => new

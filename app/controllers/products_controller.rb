@@ -25,6 +25,6 @@ class ProductsController < ApplicationController
 private
   
   def autocomplete_info_for products
-    results = products.to_json(:methods => [:name, :main_image_thumb, :main_image, :customer_count, :url, :description], :only => [:id, :rating])
+    results = products.to_json(:methods => [:name, :main_image_thumb, :main_image, :customer_count, :url, :description, :company_id], :only => [:id, :rating])
   end
 end

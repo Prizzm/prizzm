@@ -4,7 +4,7 @@
 %header
   %h2
     -# = link_to "Add Company", new_company_path, :class => 'tag company'
-    = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
+    -# = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
     = @item.name
 
 %aside.grid_5
@@ -40,9 +40,9 @@
         = f.text_area :review
         = f.submit 'Save'
     #review_status 
-  %ul#company
-    .title Companies
-    = render "company_list_item", :company => @item.company
+  .title Company
+  #company
+    = render "company", :company => @item.company
   %br
   = comments_section_for @item
 %aside.grid_6
@@ -132,11 +132,6 @@
         editor.destroy();
       });
 
-
-
-
-
-
       $('#add-remote-image').bind('submit', function() {
         $('.loading', 'aside').show();
       });
@@ -145,67 +140,21 @@
         $('#graburl').val('');
         $('body').trigger('insertImage', xhr.responseText);
       });
+      
+      var update_item_company = function(company){
 
-      $("#company_name").autocomplete({
-        source: function(request, response) {
-          $.ajax({
-            url: '#{search_companies_path}',
-            data : {query:request.term},
-            dataType: "json",
-            success: function(r){
-
-              if (r.length <= 0){
-                response([{label : "Not Found - Add '" + request.term + "'", value : request.term,  add_new_company : true }]);
-                return;
-              }
-              else
-              {
-                var resp_data = $.map(r, function(elem, i){
-                  return $.extend({label:elem.name}, elem);
-                });
-
-                response(resp_data);
-              }
-            }
-          });
-        },
-        select : function(event, ui){
-          if ( ui.item.add_new_company ){
-            $("input#company_name").val("");
-            alert("Open add item dialog");
-            $.facebox({ ajax : "/companies/new?company_name=" + encodeURIComponent(ui.item.value) });
-            $('#company_name').autocomplete("close");
-            return false;
+        $.ajax({
+          type : 'PUT',
+          url: '#{update_item_company_path}',
+          data : {company_id : company.id},
+          dataType: "script",
+          success: function(r){
+            // success
           }
-          //event.preventDefault();
-          //return false;
-        },
-        open : function(event, ui){
+        });
 
-          $("#add_new_company").click(function(){
-            //alert($(this).parents("li.li_company_autocomplete").data('item'));
-            //return false;
-          });
-
-          $(".add_company_button").click(function(){
-            //alert($(this).parents("li.li_company_autocomplete").data(''));
-            //return false;
-          });
-
-          $(".company_select_link").click(function(){
-            //alert("Wait");
-            //return false;
-          });
-        }
-      }).data( "autocomplete" )._renderItem = function( ul, item ) {
-        var main_li = $( "<li class='li_company_autocomplete' style=''></li>" ).data( "item", item );
-        if ( item.add_new_company ){
-          return main_li.append( "<a style='width:100%;height:100%;display:block;padding:0;' id='add_new_company' class='company_select_link' >" + "<span style=''>" + item.label + "</span>" + "</a>" ).appendTo( ul );
-        }
-        else{
-          return main_li.append( "<a style='width:100%;height:100%;display:block;padding:0;' class='company_select_link' >" + "<span style=''>" + item.label + "</span>" + "</a>" ).appendTo( ul );
-        }
-        //return $( "<li class='li_company_autocomplete' style='height:22px;'></li>" ).data( "item.autocomplete", item ).append( "<a style='width:100%;height:100%;display:block;padding:0;' class='company_select_link' >" + "<button style='float:right;' class='add_company_button' >Add</button>" + "<span style='float:right;'>" + item.label + "</span>" + "</a>" ).appendTo( ul );
       };
+
+      #{ render "company_autocomplete.js" }
       
     });

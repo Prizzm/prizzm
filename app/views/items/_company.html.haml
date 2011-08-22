@@ -1,0 +1,4 @@
+- if company.blank?
+  = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
+- else
+  = link_to company.name, company
