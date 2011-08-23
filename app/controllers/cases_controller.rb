@@ -6,6 +6,10 @@ class CasesController < InheritedResources::Base
     render :layout => 'profile'
   end
 
+  def show
+    @case = Case.find(params[:id])
+  end 
+
   def new
     @case = Case.new
     render :layout => false
@@ -31,12 +35,6 @@ class CasesController < InheritedResources::Base
     end
   end
 
-  def update_privacy
-    @case = current_user.case.find(params[:id])
-    old_privacy = @case.privacy
-    @case.update_attribute(:privacy, new_item_privacy(@case.privacy))
-    render :json => {:object_privacy  => @case.privacy,  :old_privacy => old_privacy }
-  end 
 
 protected
   def load_user

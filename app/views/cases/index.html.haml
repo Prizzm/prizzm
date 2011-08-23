@@ -17,7 +17,7 @@
       .cell 
     - public_cases.each do |user_case|
       %li.row
-        .cell= user_case.date
+        .cell= user_case.created_at.strftime '%m/%d/%Y'
         .cell= user_case.title
         .cell= user_case.case_reference
         .cell= link_to "View", case_path(user_case), :class => "button"
