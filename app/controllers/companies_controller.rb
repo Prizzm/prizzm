@@ -25,7 +25,7 @@ class CompaniesController < InheritedResources::Base
   def search
     # limit results to 6 or so, we we don't reach browser parallel download
     #products = Product.order('name ASC')
-    companies = Company.where("name ILIKE ?", params[:query]+'%')
+    companies = Company.where("name ILIKE ?", params[:q]+'%')
     render :json  => autocomplete_info_for(companies)   
   end
 
@@ -33,5 +33,7 @@ class CompaniesController < InheritedResources::Base
   
   def autocomplete_info_for companies
     results = companies.to_json(:methods => [:name, :url], :only => [:id])
+    results = companies.to_json(:methods => [:name], :value=> [:name])
+    companies.collect {|c| {:name => c.name, :value => c.name}}
   end
 end

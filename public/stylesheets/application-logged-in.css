@@ -22,8 +22,8 @@ header {
   }
 
 #container > header {
-  margin-bottom: 10px;
-	height: 43px;
+  margin-bottom: 5px;
+	height: 41px;
 }
 
   #container > header h1 a {
