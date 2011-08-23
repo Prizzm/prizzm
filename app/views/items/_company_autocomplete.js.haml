@@ -3,7 +3,7 @@
     source: function(request, response) {
       $.ajax({
         url: '#{search_companies_path}',
-        data : {query:request.term},
+        data : {q:request.term},
         dataType: "json",
         success: function(r){
 
