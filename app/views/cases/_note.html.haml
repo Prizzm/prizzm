@@ -1,5 +1,8 @@
 %li.note{:class => note.solution?, :id => note.id}
-  = link_to '', case_note_path(note.case, note),  :remote => true, :method => :delete, :class => "close" if note_belongs_to_current_user?(note)
   .note_body= note.body
-  .ftnote= note.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
-  = link_to "Edit", "#", :class => "edit-cntrl"
+  .ftnote
+    = note.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
+    \|
+    = link_to "edit", "#"
+    \|
+    = link_to 'delete', case_note_path(note.case, note),  :remote => true, :method => :delete if note_belongs_to_current_user?(note)
