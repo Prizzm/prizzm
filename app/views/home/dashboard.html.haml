@@ -3,7 +3,7 @@
 
 %aside.grid_4.left
   .userbit
-    = image_tag current_user.main_image
+    = image_tag current_user.main_image, :class => "fl"
     .fr= link_to current_user.name, profile_path(current_user), :class => "uname"
     .clear
   %nav
