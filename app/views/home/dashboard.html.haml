@@ -20,6 +20,17 @@
 
 #content.grid_15
   = render :template => 'items/new'
+  
+  %ul.fol-f.table
+    %li.rv.row
+      .user.cell
+        = link_to "" do
+          = image_tag current_user.main_image
+          %span.uname= current_user.name
+      .post.cell
+        %h1 Hermann Mini
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue mi sed ante pellentesque ultricies. Curabitur eget diam nisl, vitae egestas nulla. Nunc at arcu tellus. Proin egestas tincidunt convallis.
+        
 
 %aside.grid_5.right
   %article

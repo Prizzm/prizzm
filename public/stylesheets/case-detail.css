@@ -117,6 +117,11 @@ section#case {
 	visibility: hidden;
 }
 
+.note:hover {
+	border-color: #a3a3a3;
+	cursor: pointer;
+}
+
 .note:hover .edit-cntrl {
 	visibility: visible;
 }
@@ -152,6 +157,7 @@ form.addNote input[type=submit]{
 .ftnote {
 	margin-top: 5px;
 	color: #c8c7c7;
+	font-size: 0.8em;
 }
 
 #new_comment #share-input textarea {

@@ -1,9 +1,9 @@
 = include_stylesheets :item_new
 
-= form_for [current_user, @item], :html => {:class => 'action table addhave'} do |f|
+= form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
   = f.text_field :name, :placeholder => "Add a new item to review..."
   /%button#google_search
-  #url_and_dropdown_container{:style => "position:relative;"}
+  #url_and_dropdown_container{:style => "position:relative;", :class => "hide"}
     = f.text_field :url, :placeholder => "Add a URL"
     .hide#main-dropdown
       %ul#dropdown
@@ -14,7 +14,7 @@
   = f.hidden_field :image_url
 
   %p{:style => "display:none;"}= f.text_area :description, :class => "fr", :placeholder => "What did you think of this product?"
-  #url_preview
+  #url_preview.hide
     #img_selector_parent{:style => "display: block;"}
       %table.fl
         %tbody
@@ -29,13 +29,14 @@
             %td#img_selector
         .clear
 
-  = f.text_area :review, :placeholder => "Review"
+  = f.text_area :review, :placeholder => "Review", :class => "hide"
   .clear
-  = f.text_field :tag_list, :placeholder => "+ Add tags"
+  = f.text_field :tag_list, :placeholder => "+ Add tags", :class => "hide"
   /= text_field_tag :company_name, "", :placeholder => "Company Name"
-  = f.submit "save", :class => "button blue"
-  = f.submit "clear", :class => "button", :id => "clear_item_fields"
-
+  = f.submit "save", :class => "button blue hide"
+  = f.submit "clear", :class => "button hide", :id => "clear_item_fields"
+  = link_to "open case", "#", :class => "fr"
+  .clear
 
 #offscreen_div
   
