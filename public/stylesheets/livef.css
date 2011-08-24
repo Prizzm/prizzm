@@ -108,11 +108,7 @@ form.action {
     height: 100px;
   	float: left;
   }
-  
-  #item_tag_list {
-  	display: none;
-  }
-  
+
   form.action input[type=submit].button {
     margin-right: 0;
     margin-left: 10px;
