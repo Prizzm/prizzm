@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function( config )
 	config.language = 'en';
 	// config.uiColor = '#AADC6E';
     config.toolbar = 'CaseReviewToolbar';
-    config.width = 538;
+    config.width = 100;
     config.height = 250;
  
     config.toolbar_CaseReviewToolbar =

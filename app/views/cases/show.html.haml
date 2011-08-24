@@ -5,7 +5,6 @@
   %section#case
     .title= @case.title
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
-    %h1 Issue
     #rendered-review
       = raw @case.description
     #review-editor
