@@ -1,7 +1,7 @@
 = include_stylesheets :item_new
 
 = form_for [current_user, @item], :html => {:class => 'action table addhave'} do |f|
-  = f.text_field :name, :placeholder => "Item name"
+  = f.text_field :name, :placeholder => "Add a new item"
   /%button#google_search
   #url_and_dropdown_container{:style => "position:relative;"}
     = f.text_field :url, :placeholder => "Add a URL"
@@ -15,7 +15,7 @@
 
   %p{:style => "display:none;"}= f.text_area :description, :class => "fr", :placeholder => "What did you think of this product?"
   #url_preview
-    #img_selector_parent{:style => "display: block; "}
+    #img_selector_parent{:style => "display: block;"}
       %table.fl
         %tbody
           %tr

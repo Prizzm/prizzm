@@ -1,31 +1,18 @@
-%h1 Listing companies
-
-%table
-  %tr
-    %th Email
-    %th Address
-    %th Phone number
-    %th Secondary number
-    %th Url
-    %th Industry
-    %th Contact name
-    %th
-    %th
-    %th
-
-  - @companies.each do |company|
-    %tr
-      %td= company.email
-      %td= company.address
-      %td= company.phone_number
-      %td= company.secondary_number
-      %td= company.url
-      %td= company.industry
-      %td= company.contact_name
-      %td= link_to 'Show', company
-      %td= link_to 'Edit', edit_company_path(company)
-      %td= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Company', new_company_path
+#content.grid_24
+  %header
+    %h1.fl Brands
+    .brands-fil.buttons
+    .clear
+  
+  %ul.table.data-list
+    %li.row.header
+      .cell Name
+      .cell Industry
+      .cell 
+    %li.row
+      .cell Bryna Nicole
+      .cell Bags
+      .cell.buttons
+        = link_to "contact", "", :class => "button call"
+        = link_to "edit", "", :class => "button"
+        .clear
