@@ -3,27 +3,29 @@
 
 #content.grid_17
   %section#case
-    = link_to "Edit Issue", "#", :class => "edit-cntrl"
     .title= @case.title
+    = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     %h1 Issue
-    = @case.description
+    #rendered-review
+      = raw @case.description
+    #review-editor
+      = form_for @case, :remote => true, :method => :put do |f|
+        = f.text_area :description
+        = f.submit 'Save'
+    #review_status 
     %ul.notes
-      %li.note
-        = link_to "Edit", "#", :class => "edit-cntrl"
-        = @case.description
-        .ft-note= @case.date
-      %li.note.solution
-        = link_to "Edit", "#", :class => "edit-cntrl"
-        = @case.description
-        .ft-note= @case.date
-    /= form_for @case.note, :html => {:class => "addNote"} do |f|
-    = form_for  :html => {:class => "addNote"} do |f|
-      = f.text_field :update, :placeholder => "Add note"
+      - @case.notebook.notes.each do |note|
+        = render :partial => 'cases/note', :locals => {:note => note}
+    = form_for @case.notebook.notes.new, :url => case_notes_path(@case), :remote => true, :html => {:class => "addNote"} do |f|
+      = f.text_field :body, :placeholder => "Add note"
       = f.submit "add", :class => "button blue"
       .clear
     .clear
-       
-  = comments_section_for @case
+
+  %ul#comments.table
+    = comment_collection_for @case
+  %section#new-comment
+    = comment_form_for @case
        
 
 - content_for :javascripts do
@@ -32,27 +34,57 @@
   :javascript
 
     $(document).ready(function() {
+
+      if (document.location.hash === '#edit_issue') {
+        editIssue();
+      }
+      
+
+      $('li.note').delegate('a.edit-ctrl', 'click', function(){
+        //var note_body = $(this).find('note-body');        
+      });
+
       var editor;
 
-      function showEditor(){
-        editor = CKEDITOR.replace('case_description',{                   //refactor point
-          customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+      function showEditor(box){
+        editor = CKEDITOR.replace(box,{                   //refactor point
+          startupFocus: true, 
+          customConfig: '/javascripts/ckeditor_custom/case_review_config.js' 
         });
       }
 
-      $('#edit-review-link').click(function(){
-        showEditor();
+      function editIssue() {
+        showEditor('case_description');
         $('#rendered-review').hide();
+        $('form#note_new').hide();
         $('#review-editor').show();
+      }
+
+      $('#edit-review-link').click(function(){
+        editIssue();
       });
 
 
+      //  Submit the case issue via ajax - handle server response
       $('form.edit_case').live('ajax:success', function(event, data, status, xhr){
         var editor_data = CKEDITOR.instances.case_description.getData();  //refactor point
         $('#rendered-review').html(editor_data);
         $('#rendered-review').show();
         $('form.edit_case textarea').val(editor_data);                    //refactor point
         $('#review-editor').hide();
+        $('form#note_new').show();
         editor.destroy();
+      });
+
+      // Submitting a new note via ajax - handle server response
+      $('form#new_note').live('ajax:success', function(event, data, status, xhr){
+        $('ul.notes').append(xhr.responseText);
+        $('ul.notes:last-child').effect('highlight', {}, 2000);
+      });
+
+      $('ul.notes').delegate('a', 'ajax:success', function(event, data, status, xhr){
+        var noteid = data + '';
+        console.log('Noteid: '+noteid);
+        $('#' + noteid).fadeOut();
       });
     });

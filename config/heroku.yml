@@ -75,11 +75,13 @@ collaborators:
   # access to the app will be revoked.
   all:
     - "sid137@gmail.com"
+    - "ohsogeoff@gmail.com"
+  development:
     - "ndgiang84@gmail.com"
     - "tkthompson@gmail.com"
-    - "ohsogeoff@gmail.com"
     - "choppen5@yahoo.com"
     - "amitamb@gmail.com"
+    - "iszak.bryan@gmail.com"
 
 domains:
   production:
