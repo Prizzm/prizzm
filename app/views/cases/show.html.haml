@@ -40,8 +40,10 @@
       }
       
 
-      $('li.note').delegate('a.edit-ctrl', 'click', function(){
+      $('li.note').delegate('a', 'click', function(){
         //var note_body = $(this).find('note-body');        
+        console.log($.dump($(this)));
+        console.log('Yu are editing note ' + this.id);
       });
 
       var editor;
