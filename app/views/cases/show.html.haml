@@ -35,6 +35,30 @@
 
     $(document).ready(function() {
 
+      $('.note_body').editable(function(value, settings){
+        var note_id = $(this).closest('li').attr('id');
+        var update_note_path = "#{case_notes_path(@case)}/" + note_id;
+        $.ajax({
+          type: "PUT",
+          url: update_note_path,
+          data: {note: {body: value}}
+        });
+        return value;
+      }, {
+        indicator : "Saving...",
+        type      : "textarea",
+        submit    : 'save',
+        method    : 'PUT',
+        cancel    : 'cancel',
+        tooltip   : "Click to edit this note...",
+        onblur    : "submit",
+        name      : "review",
+        cssclass  : "review-input"
+      });
+
+      if (document.location.hash === "#write_review"){
+      }
+
       if (document.location.hash === '#edit_issue') {
         editIssue();
       }
@@ -42,8 +66,9 @@
 
       $('li.note').delegate('a', 'click', function(){
         //var note_body = $(this).find('note-body');        
-        console.log($.dump($(this)));
-        console.log('Yu are editing note ' + this.id);
+        var li_element = $(this).closest('li');
+        var note_id = li_element.attr('id');
+    	li_element.find('.note_body').trigger('click.editable');
       });
 
       var editor;
