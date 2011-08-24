@@ -10,7 +10,10 @@
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
         = f.text_area :description
-        = f.submit 'Save'
+        .buttons
+          = f.submit "clear", :class => "button", :id => "clear_item_fields"
+          = f.submit 'Save'
+        .clear
     #review_status 
     %ul.notes
       - @case.notebook.notes.each do |note|
@@ -81,6 +84,7 @@
       $('form#new_note').live('ajax:success', function(event, data, status, xhr){
         $('ul.notes').append(xhr.responseText);
         $('ul.notes:last-child').effect('highlight', {}, 2000);
+        $('#note_body').val('')
       });
 
       $('ul.notes').delegate('a', 'ajax:success', function(event, data, status, xhr){

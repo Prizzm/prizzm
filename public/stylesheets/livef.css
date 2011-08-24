@@ -1,5 +1,6 @@
 #main {
-	margin-top: 10px;
+	width: 900px;
+	margin: 10px auto 0;
 }
 
 .action-menu {
@@ -34,7 +35,7 @@
   }
 
 form.action {
-  padding: 8px;
+	padding-bottom: 8px;
   width: 100%;
   border-bottom: 1px solid #f3f3f3;
   -moz-box-sizing: border-box;
@@ -118,6 +119,7 @@ form.action {
   
   .tags {
     margin-bottom: 10px !important;
+    display: none !important;	
 	}
 	
 	ul.as-list {
@@ -164,7 +166,7 @@ form.action {
 		color: #fff;
 	}
   
-.usergal, .table {
+.usergal, aside .table {
   padding-top: 5px;
   border-top: 1px solid #f3f3f3;
 }
@@ -326,10 +328,28 @@ aside .cell .button {
 	padding: 3px 6px;
 }
 
+aside .cell.img {
+	width: 10%;
+}
+
 aside .cell.uname {
 	padding: 0 9px 3px;
+	width: 84%:
 }
 
 aside .cell {
 	padding-bottom: 3px;
+	position: relative;
+}
+
+aside .cell.del {
+	width: 6%;
+}
+
+aside .cell .close {
+	top: 8px;
+}
+
+aside .small.fr {
+	margin-left: 10px;
 }
