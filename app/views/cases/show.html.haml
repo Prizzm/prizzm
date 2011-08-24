@@ -8,6 +8,10 @@
     %h1 Issue
     #rendered-review
       = raw @case.description
+    .ftnote
+      = @case.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
+      \|
+      = link_to 'delete', case_path(@case), :method => :delete if (@case.user == current_user)
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
         = f.text_area :description

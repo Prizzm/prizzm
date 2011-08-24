@@ -39,6 +39,11 @@ class CasesController < InheritedResources::Base
     render :json => @case.description
   end 
 
+  def destroy
+    @case = current_user.cases.find(params[:id])
+    @case.destroy
+    redirect_to home_path
+  end
 
 protected
   def load_user
