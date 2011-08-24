@@ -2,7 +2,7 @@
   = include_stylesheets :case_detail
 
 #content.grid_17
-  %section#review
+  %section#case
     .title= @case.title
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     %h1 Issue
@@ -39,6 +39,11 @@
         editIssue();
       }
       
+
+      $('li.note').delegate('a.edit-ctrl', 'click', function(){
+        //var note_body = $(this).find('note-body');        
+      });
+
       var editor;
 
       function showEditor(box){
@@ -75,5 +80,11 @@
       $('form#new_note').live('ajax:success', function(event, data, status, xhr){
         $('ul.notes').append(xhr.responseText);
         $('ul.notes:last-child').effect('highlight', {}, 2000);
+      });
+
+      $('ul.notes').delegate('a', 'ajax:success', function(event, data, status, xhr){
+        var noteid = data + '';
+        console.log('Noteid: '+noteid);
+        $('#' + noteid).fadeOut();
       });
     });
