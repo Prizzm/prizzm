@@ -9,6 +9,12 @@ class NotesController < ApplicationController
     end
   end 
 
+  def update
+    puts params.inspect
+    @case.notebook.notes.find(params[:id]).update_attributes(params[:note])
+    head :ok
+  end
+
   def destroy
     @case.notebook.notes.find(params[:id]).destroy
     respond_to do |format|
