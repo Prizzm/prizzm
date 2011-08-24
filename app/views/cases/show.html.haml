@@ -2,28 +2,33 @@
   = include_stylesheets :case_detail
 
 #content.grid_17
-  %section#case
-    = link_to "Edit Issue", "#", :class => "edit-cntrl"
+  %section#review
     .title= @case.title
+    = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     %h1 Issue
-    = @case.description
+    #rendered-review
+      = raw @case.description
+    #review-editor
+      = form_for @case, :remote => true, :method => :put do |f|
+        = f.text_area :description
+        = f.submit 'Save'
+    #review_status 
     %ul.notes
-      %li.note
-        = link_to "Edit", "#", :class => "edit-cntrl"
-        = @case.description
-        .ft-note= @case.date
-      %li.note.solution
-        = link_to "Edit", "#", :class => "edit-cntrl"
-        = @case.description
-        .ft-note= @case.date
-    /= form_for @case.note, :html => {:class => "addNote"} do |f|
-    = form_for  :html => {:class => "addNote"} do |f|
-      = f.text_field :update, :placeholder => "Add note"
+      - @case.notebook.notes.each do |note|
+        %li.note{:class => 'solution'}
+          = link_to "Edit", "#", :class => "edit-cntrl"
+          = note.body
+          .ft-note= note.created_at.strftime '%A, %B %d, %Y'
+    = form_for @case.notebook.notes.new, :as => :post, :url => case_notes_path(@case), :html => {:class => "addNote"} do |f|
+      = f.text_field :body, :placeholder => "Add note"
       = f.submit "add", :class => "button blue"
       .clear
     .clear
-       
-  = comments_section_for @case
+
+  %ul#comments.table
+    = comment_collection_for @case
+  %section#new-comment
+    = comment_form_for @case
        
 
 - content_for :javascripts do
@@ -32,11 +37,19 @@
   :javascript
 
     $(document).ready(function() {
+
+      if (document.location.hash === '#edit_issue') {
+        //open issue editor
+        showEditor();
+      
+      }
+      
       var editor;
 
       function showEditor(){
-        editor = CKEDITOR.replace('case_description',{                   //refactor point
-          customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+        editor = CKEDITOR.replace('post_body',{                   //refactor point
+          startupFocus: true, 
+          customConfig: '/javascripts/ckeditor_custom/case_review_config.js' 
         });
       }
 

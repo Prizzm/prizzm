@@ -23,7 +23,9 @@ Prizzm::Application.routes.draw do
     get 'search', :on => :collection
   end
 
-  resources :cases
+  resources :cases do
+    resources :notes
+  end
 
   resources :companies do
     resources :addresses

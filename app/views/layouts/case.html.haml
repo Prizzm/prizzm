@@ -28,22 +28,24 @@
 
       %aside.grid_7
         %article
+        /
           %h4 Product
-          = form_for @product.find do |f|
-            = f.text_field :find, :placeholder => "Find Product"
-          = image_tag @product.mainimage, :class => "itemthumb fl"
+          = form_for Product.new do |f|
+            = text_field_tag, :placeholder => "Find Product"
+          /= image_tag @product.mainimage, :class => "itemthumb fl"
           %h5 @product.name
           .clear
         %article
           %h4 Company
-          = form_for @company.find do |f|
-            = f.text_field :find, :placeholder => "Find Company"
-          = image_tag @company.mainimage, :class => "compthumb fl"
+          = form_for Company.new do |f|
+            = f.text_field_tag :find, :placeholder => "Find Company"
+          /= image_tag @company.mainimage, :class => "compthumb fl"
           %h5 @Company.name
           .clear
         %article
           %h4 Status
-          = form_for @case.status do |f|
+          /= form_for @case.status do |f|
+          = form_for Case.new do |f|
           
         / Publish
         / Share
