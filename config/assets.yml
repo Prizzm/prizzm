@@ -5,6 +5,7 @@ gzip_assets: on
 
 javascripts:
   app:
+    - public/javascripts/jquery-1.6.2.min.js
     - public/javascripts/jquery_ujs.js
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
@@ -22,6 +23,7 @@ javascripts:
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
     - public/javascripts/application/comments.js
+    - public/javascripts/livefeed.js
 
 stylesheets:
   app:

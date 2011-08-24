@@ -1,23 +1,31 @@
-%footer
-  #copyright.fl
-    \©2011 Prizzm -
-    %a{:href => ""} About
-    \-
-    %a{:href => ""} Terms
-    \-
-    %a{:href => ""} Privacy
-  %ul.fr
-    %li
-      %a{:href => ""} Dashboard
-      \.
-    %li
-      %a{:href => ""} Browse
-      \.
-    %li
-      %a{:href => ""} Profile
-      \.
-    %li
-      %a{:href => ""} Logout
+%footer.container_24
+  .grid_24
+    #copyright.fl
+      \©2011 Prizzm -
+      = link_to "About", "#"
+      \-
+      = link_to "Terms", "#"
+      \-
+      = link_to "Policy", "#"
+    %ul.fr
+      %li
+        = link_to "Home", home_path
+        \.
+      %li
+        = link_to "Products", "#"
+        \.
+      %li
+        = link_to "Brands", "#"
+        \.
+      %li
+        = link_to "People", "#"
+        \.
+      %li
+        = link_to "Cases", "#"
+        \.
+      %li
+        = link_to "Logout", destroy_user_session_url
+      .clear
   .clear
 #hiddenlpsubmitdiv{:style => "display: none; "}
 :javascript

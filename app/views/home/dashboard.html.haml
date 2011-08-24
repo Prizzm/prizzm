@@ -1,16 +1,25 @@
 - content_for :page_style do
   = include_stylesheets :livef
 
-#content.grid_14
-  %nav.action-menu
-    %ul
-      %li
-        = link_to "Have", "", :class => "active"
-        = link_to "Want", ""
-        = link_to "Case", ""
+%aside.grid_4.left
+  .userbit
+    = image_tag current_user.main_image
+    .fr= link_to current_user.name, profile_path(current_user), :class => "uname"
+    .clear
+  %nav
+    %article
+      %ul
+        %li= link_to "Welcome", ""
+        %li= link_to "Live Feed", dashboard_path, :class => tab_for(dashboard_path)
+    %article
+      %h4 Tags
+      %ul
+        %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
+        %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
+        %li= link_to "Case"
 
+#content.grid_15
   = render :template => 'items/new'
-  = render :template => 'cases/new'
 
 %aside.grid_5.right
   %article
