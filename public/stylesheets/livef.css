@@ -36,7 +36,7 @@
 form.action {
   padding: 8px;
   width: 100%;
-  background: #e0e5f0;
+  border-bottom: 1px solid #f3f3f3;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -311,90 +311,6 @@ form.action {
 .footerbit, .footerbit a {
   color: #b6b6b6;
 }
-
-.collapse-comm {
-  padding: 3px 0 5px;
-  border-top: 1px dashed #ccc;
-  text-align: center;
-  background: #f3f3f3;
-  font-variant: small-caps;
-  color: #c5c5c5 !important;
-  display: block;
-  text-decoration: none !important;
-}
-
-.comms {
-  border-top: 1px dashed #ccc;
-}
-  .comms li {
-    display: block;
-    border-bottom: 1px dotted #ccc;
-  }
-
-  .comms .cell {
-    float: left;
-  }
-
-  .comms .cell.img {
-    width: 9%;
-    vertical-align: top;
-  }
-
-  .comms .cell.cont {
-    width: 91%;
-  }
-  
-  .comms .comm-ft {
-    display: block;
-    text-align: right;
-  }
-  
-    .comms .comm-ft a{
-      margin-left: 5px;
-      font-variant: small-caps;
-    }
-
-  .comms .reply {
-    width: 420px;
-    margin-left: 40px !important;
-  }
-    
-.in-comm {
-  margin-top: 5px;
-  padding-top: 5px;
-}
-  
-  .in-comm textarea {
-    padding: 5px;
-    max-width: 464px;
-    min-width: 100%;
-    border: 1px solid #ccc;
-    color: #a7a7a7;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  .in-comm .button {
-    margin: 5px 0 0 5px !important;
-    float: right !important;
-  }
-  
-  .in-comm input.button {
-    width: 80px;
-  }
-  
-  .in-comm .sharebts {
-    margin-top: 5px !important;
-    padding: 5px;
-    border: 1px solid #ccc;
-    color: #a7a7a7;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
 
 .empt-f {
   margin-top: 10px;

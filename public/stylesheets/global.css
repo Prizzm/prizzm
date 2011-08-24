@@ -529,7 +529,6 @@ footer ul li {
   	padding: 2px !important;
   }
   
-  
 .collapse-comm {
   padding: 3px 0 5px;
   border-top: 1px dashed #ccc;
@@ -621,9 +620,9 @@ footer ul li {
 }
 
 .show {
-	visibility: visible;
+	display: inline-block;
 }
 
 .hide {
-	visibility: hidden;	
+	display: none;
 }
