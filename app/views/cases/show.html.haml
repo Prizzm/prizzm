@@ -15,11 +15,8 @@
     #review_status 
     %ul.notes
       - @case.notebook.notes.each do |note|
-        %li.note{:class => 'solution'}
-          = link_to "Edit", "#", :class => "edit-cntrl"
-          = note.body
-          .ft-note= note.created_at.strftime '%A, %B %d, %Y'
-    = form_for @case.notebook.notes.new, :as => :post, :url => case_notes_path(@case), :html => {:class => "addNote"} do |f|
+        = render :partial => 'cases/note', :locals => {:note => note}
+    = form_for @case.notebook.notes.new, :url => case_notes_path(@case), :remote => true, :html => {:class => "addNote"} do |f|
       = f.text_field :body, :placeholder => "Add note"
       = f.submit "add", :class => "button blue"
       .clear
@@ -39,33 +36,44 @@
     $(document).ready(function() {
 
       if (document.location.hash === '#edit_issue') {
-        //open issue editor
-        showEditor();
-      
+        editIssue();
       }
       
       var editor;
 
-      function showEditor(){
-        editor = CKEDITOR.replace('post_body',{                   //refactor point
+      function showEditor(box){
+        editor = CKEDITOR.replace(box,{                   //refactor point
           startupFocus: true, 
           customConfig: '/javascripts/ckeditor_custom/case_review_config.js' 
         });
       }
 
-      $('#edit-review-link').click(function(){
-        showEditor();
+      function editIssue() {
+        showEditor('case_description');
         $('#rendered-review').hide();
+        $('form#note_new').hide();
         $('#review-editor').show();
+      }
+
+      $('#edit-review-link').click(function(){
+        editIssue();
       });
 
 
+      //  Submit the case issue via ajax - handle server response
       $('form.edit_case').live('ajax:success', function(event, data, status, xhr){
         var editor_data = CKEDITOR.instances.case_description.getData();  //refactor point
         $('#rendered-review').html(editor_data);
         $('#rendered-review').show();
         $('form.edit_case textarea').val(editor_data);                    //refactor point
         $('#review-editor').hide();
+        $('form#note_new').show();
         editor.destroy();
+      });
+
+      // Submitting a new note via ajax - handle server response
+      $('form#new_note').live('ajax:success', function(event, data, status, xhr){
+        $('ul.notes').append(xhr.responseText);
+        $('ul.notes:last-child').effect('highlight', {}, 2000);
       });
     });

@@ -3,11 +3,10 @@ class NotesController < ApplicationController
   before_filter :load_case
 
   def create
-    @note = @case.notebook.create(params[:note])
+    @note = @case.notebook.notes.create(:body => params[:note][:body])
 
     respond_to do |format|
-      format.html { render :partial => 'case/note', :locals  => {:note => @note} }
-      format.js { }
+      format.html { render :partial => 'cases/note', :locals  => {:note => @note} }
     end
   end 
 

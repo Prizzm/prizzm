@@ -1,0 +1,5 @@
+%li.note{:class => note.solution?, :id => note.id}
+  = link_to "Edit", "#", :class => "edit-cntrl"
+  = note.body
+  .ft-note= note.created_at.strftime '%A, %B %d, %Y'
+  .cell.delete-item= link_to 'Delete note', note,  :remote => true, :method => :delete, :class => "close"
