@@ -40,10 +40,8 @@ header {
   .usernotif {
     margin: 10px 0 0 10px;
     padding: 2px 5px;
-    background: #3a87bd;
+    background: #61a5d6;
     color: #fff !important;
-    border: 1px solid #29638c;
-    font-weight: bold;
     min-width: 15px;
     text-align: center;
     
