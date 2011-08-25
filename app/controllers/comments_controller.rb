@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
         format.js { }
       end
     end
+    Mailer.notify_comment(@comment)
   end
 
   def destroy
