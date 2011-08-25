@@ -81,7 +81,7 @@ bryna_nicole.products << [bryna1, bryna2]
 
 
 sidney = Factory :user, {:email => 'sid137@gmail.com', :password => 'password', :first_name => 'Sidney', :last_name => 'Burks'}
-test = Factory :user, {:email => 'test@test.com', :password => 'password', :first_name => 'Test', :last_name => 'User'}
+test = Factory :user, {:email => 'test@prizzm.com', :password => 'password', :first_name => 'Test', :last_name => 'User'}
 
 if ENV['PUSH_DEMO'] == true
   numb = 4

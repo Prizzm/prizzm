@@ -1,0 +1,2 @@
+class AutoSuggestController < ApplicationController
+end

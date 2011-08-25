@@ -21,7 +21,7 @@
       - @case.notebook.notes.each do |note|
         = render :partial => 'cases/note', :locals => {:note => note}
     = form_for @case.notebook.notes.new, :url => case_notes_path(@case), :remote => true, :html => {:class => "addNote"} do |f|
-      = f.text_field :body, :placeholder => "Add note"
+      = f.text_field :body, :placeholder => "Add note", :title => "Add note", :class => 'jq_watermark'
       = f.submit "add", :class => "button blue"
       .clear
     .clear
@@ -38,6 +38,7 @@
   :javascript
 
     $(document).ready(function() {
+
 
       $('.note_body').editable(function(value, settings){
         var note_id = $(this).closest('li').attr('id');
