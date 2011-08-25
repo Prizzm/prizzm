@@ -1,23 +1,23 @@
-.grid_5
+.grid_4
   %h1.fl= link_to "prizzm", "/"
   = link_to "5", "", :class => "fl usernotif"
   .clear
-%nav.grid_12
+%nav.grid_11
   %ul
-    %li= link_to "home", dashboard_path
-    %li= link_to "products",  products_path, :class => tab_for(products_path)
-    %li= link_to "brands", companies_path, :class => tab_for(companies_path)
-    %li= link_to "people", members_path, :class => tab_for(members_path)
-    %li= link_to "cases", cases_path, :class => tab_for(cases_path)
+    %li= link_to "Home", dashboard_path
+    %li= link_to "Products",  products_path, :class => tab_for(products_path)
+    %li= link_to "Brands", companies_path, :class => tab_for(companies_path)
+    %li= link_to "People", members_path, :class => tab_for(members_path)
+    %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
     %li.account
       = link_to "#", :class => "account" do
-        account
+        = current_user.first_name
         %small &#x25BC;
       %ul.subnav
         %li.user
           = image_tag current_user.main_image, :class => "fl"
           = link_to current_user.name, profile_path(current_user), :class => "username"
-          = link_to "Edit Profile", "#"
+          = link_to "View Profile", profile_path(current_user)
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", "#"

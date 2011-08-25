@@ -35,9 +35,17 @@
   }
 
 form.action {
-	padding-bottom: 8px;
+	margin-bottom: 10px;
+	padding: 8px;
   width: 100%;
-  border-bottom: 1px solid #f3f3f3;
+  background: #e4f4ff;
+  
+  border: 1px solid #b9d4e7;
+  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -175,8 +183,13 @@ form.action {
     display: inline-block;
   }
 
+.fol-f.table {
+	
+}
+
 .fol-f .row {
   display: block;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -199,12 +212,20 @@ form.action {
   list-style: circle;
 }
 
+	.fol-f .cell.post img {
+		width: 80px;
+	}
+
 .fol-f .rv .cell {
   padding: 10px 0;
 }
 
+.fol-f .rv .post.cell {
+	border: 1px solid #eaeaea;
+}
+
 .fol-f .user.cell {
-  width: 90px;
+  padding: 5px 20px 5px 5px;
   vertical-align: top;
 }
 
@@ -213,6 +234,10 @@ form.action {
     text-align: center;
     text-decoration: none;
   }
+  
+  .fol-f .rv .user.cell {
+  	background: url('../images/sp-ar.png') 90px 15px no-repeat;
+  }
 
   .fol-f .rv .user.cell img {
     width: 80px;
@@ -220,33 +245,26 @@ form.action {
   }
 
 .fol-f .activ {
-  margin-bottom: 5px;
+  border: 1px solid #d4e4f0;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
   
 .fol-f .activ .cell {
   padding: 3px 0;
-  background: #e9f0f6;
+  background: #f1f9ff;
 }
 
   .fol-f .activ .user.cell {
     padding-left: 5px;
     width: 40px;
-    
-    -moz-border-radius: 3px 0 0 3px;
-    -webkit-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
   }
 
   .fol-f .activ .user.cell img {
     width: 30px;
     height: 30px;
     display: block;
-  }
-
-  .fol-f .activ .post.cell {
-    -moz-border-radius: 0 3px 3px 0;
-    -webkit-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
   }
 
 .product {
@@ -307,11 +325,24 @@ form.action {
 }
 
 .footerbit {
-  margin: 5px 0 10px;
+  margin: 5px 0 0 !important;
 }
 
 .footerbit, .footerbit a {
   color: #b6b6b6;
+}
+
+.updt-feed {
+	padding: 10px 0;
+	display: block;
+	text-align: center;
+	border: 1px solid #eaeaea;
+	background: #f7f7f7;
+	text-decoration: none;
+}
+
+.updt-feed:hover {
+	background: #f3f3f3;
 }
 
 .empt-f {
@@ -352,4 +383,19 @@ aside .cell .close {
 
 aside .small.fr {
 	margin-left: 10px;
+}
+
+aside .tags {
+	width: 100%;
+	display: inline-block!important;
+	border-color: #f3f3f3;
+	border-width: 1px 0 0 0;
+}
+
+aside .tags li {
+	margin-bottom: 5px;
+}
+
+aside .tags li a {
+	color: #215f94 !important;
 }
