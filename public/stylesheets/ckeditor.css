@@ -1,3 +1,39 @@
 #review-editor {
   display: none;
 }
+
+.cke_focus {
+	outline: none !important;
+}
+
+span.cke_skin_kama, .cke_wrapper{
+	border: 0 !important;
+	padding: 0 !important;
+}
+
+.cke_skin_kama {
+	min-width: 100% !important;
+	max-width: 100% !important;
+}
+
+.cke_wrapper {
+	background: none !important;
+}
+
+.cke_top {
+	background: #f3f3f3 !important;
+	padding: 5px !important;
+}
+
+.cke_toolbar {
+	height: 23px !important;
+}
+
+.cke_contents {
+	width: 98% !important;
+	min-height: 150px !important;
+	border: 1px solid #f3f3f3 !important;
+	-moz-box-sizing: border-box !important;
+	-webkit-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}

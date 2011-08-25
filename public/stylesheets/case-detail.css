@@ -94,6 +94,15 @@ section#case {
     section #footerbit a {
         color: #cccccc !important;
     }
+    
+  #review-editor .buttons {
+  	margin-top: 10px;
+  }
+  
+  #review-editor .button, #review-editor input[name=commit]  {
+  	margin-right: 0 !important;
+  	margin-left: 10px !important;
+  }
 
 .notes {
 	border-top: 1px dashed #ccc;
