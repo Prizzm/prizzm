@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110826051532) do
+ActiveRecord::Schema.define(:version => 20110826152133) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(:version => 20110826051532) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => ""
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0
@@ -214,10 +214,17 @@ ActiveRecord::Schema.define(:version => 20110826051532) do
     t.string   "photo"
     t.string   "location"
     t.string   "cached_slug"
+    t.string   "invitation_token",     :limit => 60
+    t.datetime "invitation_sent_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
+  add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -135,7 +135,12 @@ class User < ActiveRecord::Base
   end
 
   def to_notification
-    {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email, :image => self.main_image, :slug => slug.name}
+    # Added begin-rescue-end to get rid of error after sending an invitation email -Giang
+    begin
+      {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email, :image => self.main_image, :slug => slug.name}
+    rescue Exception => e
+      logger.info "error => #{e.message}" 
+    end
   end
 
   def events_where event_names
