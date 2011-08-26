@@ -64,11 +64,11 @@ header {
   }
   
   #container > header nav > ul > li > a {
-  	padding: 12px 10px 13px;
+  	padding: 13px 10px;
   }
   
   li.account a {
-    padding: 12px 18px 14px 12px !important;
+    padding: 13px 18px 13px 12px !important;
     display: block;	
   }
   
@@ -456,13 +456,9 @@ ul.data-list .cell .button {
   display: block;
   text-decoration: none !important;
 }
-
-.comms {
-  border-top: 1px dashed #ccc;
-}
   .comms li {
     display: block;
-    border-bottom: 1px dotted #ccc;
+    border-top: 1px dashed #CCC;
   }
 
   .comms .cell {

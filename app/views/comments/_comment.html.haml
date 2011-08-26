@@ -13,6 +13,8 @@
         = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
         %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
           = comment_form_for commentable, comment.id
-
-  = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
   .clear
+  
+  %ul.comms
+    = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
+  
