@@ -14,16 +14,8 @@
         = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
         %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
           = comment_form_for commentable, comment.id
-<<<<<<< HEAD
+
   .clear
   
   %ul.comms
     = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
-  
-=======
-
-  .clear
-
-  %ul.comms
-    = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
->>>>>>> 6792892b4bb69a1785786c4ca5e938253dc9aed8

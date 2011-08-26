@@ -518,10 +518,6 @@ ul.data-list .cell .button {
     float: right !important;
   }
   
-  .in-comm input.button {
-    width: 80px;
-  }
-  
   form .sharebts {
     margin: 5px 0 !important;
     padding: 5px;
