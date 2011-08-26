@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # Manually validate instead of using Devise validatable so that we can validate password only when new record is being created,
   # don't validate password presence when updating user.
   validates_presence_of :email
-  validates_presence_of :password, :password_confirmation, :if => Proc.new { |user| user.new_record? }
+  validates_presence_of :password, :if => Proc.new { |user| user.new_record? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password.present? }
 
   
