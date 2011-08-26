@@ -6,7 +6,7 @@
   
   %ul.fol-f.table
     - latest_reviews.each do |item|
-      -#CO-Removed%li.rv.row
+      %li.rv.row
         .user.cell
           = link_to "" do
             = image_tag item.user.main_image
