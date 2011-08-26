@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821041012) do
+ActiveRecord::Schema.define(:version => 20110826051532) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20110821041012) do
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hidden"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"

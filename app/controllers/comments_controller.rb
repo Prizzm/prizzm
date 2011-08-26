@@ -18,7 +18,8 @@ class CommentsController < ApplicationController
     comment = @commentable.comment_threads.find(params[:id])    
     @comment_id = comment.id
     @child_ids = comment.children.map { |comment| comment.id }
-    comment.destroy
+    #comment.destroy
+    comment.hide
 
     respond_to do |format|
       format.json { render :json => params[:id] }
