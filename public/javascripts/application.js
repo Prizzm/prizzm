@@ -162,4 +162,6 @@ $(document).ready(function(){
       $(this).html('Reply');
     }
   });
+
+  $('.jq_watermark').watermark();
 });
