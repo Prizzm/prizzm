@@ -1,10 +1,18 @@
-.new_comment_box
+.in-comm
   .comment_input_box
     = form_for :comment,  :url => comments_path(object_type(commentable), commentable.id), :format => :js, :html => { :class => "new_comment" }, :remote => true do |f| 
       .share-input{:id => "share-input-#{parent_id}"}
         = f.text_area :body, :'data-text' => "Comment on this review...", :placeholder => "Comment...",  :rows => 3, :id => "comment_body_#{parent_id}", :value => ""
-        .cancel
       .clear
+      %ul.sharebts
+        Share to 
+        %li.sharebt.fb
+          facebook
+          .close
+        %li.sharebt.twitter
+          twitter
+          .close
+      
       = hidden_field_tag :parent_id, parent_id, :id => "parent_id_#{parent_id}"
       = f.submit 'Comment', :class => "button", :id => "comment_submit_#{parent_id}"
       .loading{:style => "display:none;float:left"}

@@ -466,7 +466,7 @@ ul.data-list .cell .button {
   }
 
   .comms .cell {
-  padding: 10px 0;
+  	padding: 10px 0;
     float: left;
   }
 
@@ -474,21 +474,24 @@ ul.data-list .cell .button {
     width: 9%;
     vertical-align: top;
   }
+  
+    .comms .cell.img img {
+    	width: 40px;
+    	height: 40px;
+    }
 
-  .comms .cell.cont {
+  .comms .cell.comm {
     width: 91%;
   }
   
   .comms .comm-ft {
     display: block;
-    text-align: right;
 		margin-top: 5px;
 		color: #c8c7c7;
-		font-size: 0.8em;
+		font-size: 0.9em;
   }
   
     .comms .comm-ft a{
-      margin-left: 5px;
       font-variant: small-caps;
     }
 
@@ -523,8 +526,8 @@ ul.data-list .cell .button {
     width: 80px;
   }
   
-  .in-comm .sharebts {
-    margin-top: 5px !important;
+  form .sharebts {
+    margin: 5px 0 !important;
     padding: 5px;
     border: 1px solid #ccc;
     color: #a7a7a7;

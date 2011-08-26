@@ -11,9 +11,9 @@
       - if user_signed_in? && (current_user.id.eql? Item.find(comment.commentable_id).user_id)
         = link_to "Delete", comment_path(commentable.class.to_s.underscore,  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'delete-comment-link', :remote => true, :'data-method' => :delete, :format => :js
       - if user_signed_in?
-        = link_to "Reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
+        = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
         %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
           = comment_form_for commentable, comment.id
-
+  .clear
 - if comment.has_children?
   = render :partial => "comments/child_comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
