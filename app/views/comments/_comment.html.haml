@@ -4,17 +4,26 @@
   .cell.comm
     = link_to comment.user.name, profile_path(comment.user)
     \- 
-    = comment.body
+    = comment_or_hidden comment
     .comm-ft
       = "#{time_ago_in_words(comment.created_at)} ago"
       \|
-      = link_to "", comment_path(object_type(commentable),  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'close', :remote => true, :'data-method' => :delete, :format => :js if belongs_to_current_user?(comment)
+      - if belongs_to_current_user?(comment) && !comment.hidden?
+        = link_to "Delete", comment_path(object_type(commentable),  commentable.id, comment.id), :'data-commentid' => comment.id, :class => '', :remote => true, :'data-method' => :delete, :format => :js 
       - if user_signed_in?
         = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
         %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
           = comment_form_for commentable, comment.id
+<<<<<<< HEAD
   .clear
   
   %ul.comms
     = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
   
+=======
+
+  .clear
+
+  %ul.comms
+    = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
+>>>>>>> 6792892b4bb69a1785786c4ca5e938253dc9aed8

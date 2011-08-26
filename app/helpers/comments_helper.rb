@@ -15,4 +15,12 @@ module CommentsHelper
   def is_child_comment? comment
     'reply' if comment.child?
   end 
+
+  def comment_or_hidden comment
+    if comment.hidden?
+      raw '<span class="comment-deleted">* Comment Deleted *</span>'
+    else
+      comment.body
+    end
+  end 
 end
