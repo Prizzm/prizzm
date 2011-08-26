@@ -476,7 +476,7 @@ ul.data-list .cell .button {
     	height: 40px;
     }
 
-  .comms .cell.comm {
+  .comms .cell.cont {
     width: 91%;
   }
   
@@ -494,6 +494,10 @@ ul.data-list .cell .button {
   .comms .reply {
     width: 94%;
     margin-left: 40px !important;
+  }
+  
+  .comm.del .cell{
+  	display: none;
   }
     
 .in-comm {

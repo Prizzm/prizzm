@@ -20,16 +20,17 @@
               Added #{time_ago_in_words item.updated_at} ago
               \|
               = link_to "Share", ""
-    %li.activ.row
-      .user.cell
-        = link_to "" do
-          = image_tag current_user.main_image
-      .post.cell
-        = link_to "Charles"
-        is following
-        = link_to "Sidney Burks"
-        
-  = link_to "More", "", :class => "updt-feed"
+    /
+      %li.activ.row
+        .user.cell
+          = link_to "" do
+            = image_tag current_user.main_image
+        .post.cell
+          = link_to "Charles"
+          is following
+          = link_to "Sidney Burks"
+          
+    /= link_to "More", "", :class => "updt-feed"
 %aside.grid_6.left
   %article
     %h4.fl Suggested People

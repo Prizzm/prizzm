@@ -17,7 +17,7 @@
         %li.user
           = image_tag current_user.main_image, :class => "fl"
           = link_to current_user.name, profile_path(current_user), :class => "username"
-          = link_to "View Profile", profile_path(current_user)
+          = link_to "Edit Profile", ""
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
