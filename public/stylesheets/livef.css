@@ -215,6 +215,11 @@ form.action {
   margin-bottom: 3px;
   font-size: 1.2em;
 }
+
+.fol-f .cell.post h1 a {
+	color: #444;
+  text-decoration: none;
+}
   
 .fol-f .cell.post ul{
   margin-left: 20px;
@@ -222,14 +227,19 @@ form.action {
 }
 
 	.fol-f .cell.post img {
-		width: 80px;
+		width: 15%;
+		margin-right: 10px;
 	}
-
+	
+	.fol-f .cell.post .cont {
+		width: 80%;
+	}
+	
 .fol-f .rv .cell {
   padding: 10px 0;
 }
 
-.fol-f .rv .post.cell {
+.fol-f .rv .cell.post {
 	border: 1px solid #eaeaea;
 }
 

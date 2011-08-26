@@ -17,6 +17,8 @@ gem "acts-as-taggable-on"
 # Pined to ref, as there is problem on devise HEAD
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964f53a42a3d434ee6d731d6f999d8dae13dada'
 
+gem "devise_invitable"
+
 #gem "acts_as_follower", :path => '/home/sid137/tracking/acts_as_follower'
 gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
 

@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # Manually validate instead of using Devise validatable so that we can validate password only when new record is being created,
   # don't validate password presence when updating user.
   validates_presence_of :email
-  validates_presence_of :password, :password_confirmation, :if => Proc.new { |user| user.new_record? }
+  validates_presence_of :password, :if => Proc.new { |user| user.new_record? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password.present? }
 
   
@@ -137,7 +137,12 @@ class User < ActiveRecord::Base
   end
 
   def to_notification
-    {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email, :image => self.main_image, :slug => slug.name}
+    # Added begin-rescue-end to get rid of error after sending an invitation email -Giang
+    begin
+      {:class => self.class.to_s, :id => self.id, :name => self.name, :email => self.email, :image => self.main_image, :slug => slug.name}
+    rescue Exception => e
+      logger.info "error => #{e.message}" 
+    end
   end
 
   def events_where event_names
