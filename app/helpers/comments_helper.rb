@@ -20,7 +20,7 @@ module CommentsHelper
     if comment.hidden?
       raw '<span class="comment-deleted">* Comment Deleted *</span>'
     else
-      comment.body
+      raw "<span class='comment-body'>#{comment.body}</span>"
     end
   end 
 end

@@ -3,16 +3,19 @@ class Mailer < ActionMailer::Base
 
   def self.notify_comment comment
     recipient_list = recipients_for comment
-    # TODO: filter out unsubscribed muted recipients
-    #   Users where user.recieve_comment_notifications_by_email? == false
-    #   Users where not subscribed to this thread
     
-    # removes duplicates
-    #recipient_list.uniq.each do |recipient|
-      #Mailer.case_comment(comment, recipient).deliver
-    #end
+    #   Keeps users who allow comment updates via mail in their settings
+    recipient_list = recipient_list.select { |recipient| recipient.settings.receive_comment_updates_via_email }
 
-    Rails.logger.info recipient_list.uniq.collect { |r| r.email }
+    # TODO: filter out unsubscribed muted recipients
+    #   Users where not subscribed to this thread's root comment
+    recipient_list = recipient_list.select { |recipient| true  }
+
+    Rails.logger.info recipient_list.collect { |r| r.email }
+    
+    recipient_list.each do |recipient|
+      Mailer.case_comment(comment, recipient).deliver
+    end
   end
 
   def case_comment(comment, recipient)
@@ -24,7 +27,7 @@ class Mailer < ActionMailer::Base
 
 
   def self.recipients_for comment
-    # Add commentable owner to recipient list, remove commenter
+    # Adds commentable owner to recipient list, remove commenter
     ancestors = comment.ancestors.collect { |c| c.user } 
     ancestry = ancestors + [comment.commentable.user] - [comment.user]
     ancestry.uniq 

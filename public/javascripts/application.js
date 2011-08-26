@@ -151,17 +151,6 @@ $(document).ready(function(){
     interpolate: /\{\{(.+?)\}\}/g
   }
 
-  // For nested comment.
-  $('.reply-comment').live('click', function(e) {
-    e.preventDefault();
-    if ($(this).html() == 'Reply') {
-      $('#comment-' + $(this).attr('comment_id') + '-reply').slideDown();  
-      $(this).html('Cancel Reply');
-    } else {
-      $('#comment-' + $(this).attr('comment_id') + '-reply').slideUp();  
-      $(this).html('Reply');
-    }
-  });
 
   $('.jq_watermark').watermark();
 });

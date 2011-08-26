@@ -368,6 +368,8 @@ GEM
       activesupport (= 3.0.9)
       bundler (~> 1.0)
       railties (= 3.0.9)
+    rails-footnotes (3.7.4)
+      rails (>= 3.0.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -530,6 +532,7 @@ DEPENDENCIES
   rack-test
   rails (= 3.0.9)
   rails-erd!
+  rails-footnotes
   rails-settings!
   rake (= 0.8.7)
   randexp
