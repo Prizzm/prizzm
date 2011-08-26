@@ -20,7 +20,7 @@
           = link_to "View Profile", profile_path(current_user)
           .clear
         %li= link_to "Settings", "#"
-        %li= link_to "Logout", "#"
+        %li= link_to "Logout", destroy_user_session_path
 = form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
   = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
   /%input{:type => "submit", :value => ""}
