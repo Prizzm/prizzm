@@ -124,6 +124,7 @@ form.action {
   form.action input[type=submit].button {
     margin-right: 0;
     margin-left: 10px;
+    margin-bottom: 10px;
     width: 80px;
     float: right;
   }

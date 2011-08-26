@@ -152,7 +152,6 @@ section#case {
 }
 
 form.addNote input[type=text] {
-	width: 89%;
 	float: left;
 	padding: 6px;
 }
@@ -180,28 +179,6 @@ form.addNote input[type=submit]{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-ul#comments {
-    margin: 15px 0 0;
-    width: 100%;
-    list-style: none;
-}
-
-ul#comments li.row{
-    padding: 8px 0;
-    display: block;
-    border-bottom: 1px dotted #cccccc;
-}
-
-ul#comments li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-}
-
-ul#comments .cell {
-    vertical-align: top;
 }
 
 #rating {

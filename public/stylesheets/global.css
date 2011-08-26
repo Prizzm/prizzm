@@ -575,3 +575,7 @@ footer ul li {
 .hide {
 	display: none;
 }
+
+.watermark_container {
+	width: 100%;
+}

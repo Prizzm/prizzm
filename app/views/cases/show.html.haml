@@ -24,12 +24,21 @@
         = render :partial => 'cases/note', :locals => {:note => note}
     = form_for @case.notebook.notes.new, :url => case_notes_path(@case), :remote => true, :html => {:class => "addNote"} do |f|
       = f.text_field :body, :placeholder => "Add note", :title => "Add note", :class => 'jq_watermark'
+      %ul.sharebts
+        Share to 
+        %li.sharebt.fb
+          facebook
+          .close
+        %li.sharebt.twitter
+          twitter
+          .close
       = f.submit "add", :class => "button blue"
       .clear
     .clear
 
-  %ul#comments.table
+  %ul.comms
     = comment_collection_for @case
+    .clear
   %section#new-comment
     = comment_form_for @case
        
@@ -75,7 +84,7 @@
         //var note_body = $(this).find('note-body');        
         var li_element = $(this).closest('li');
         var note_id = li_element.attr('id');
-    	li_element.find('.note_body').trigger('click.editable');
+      li_element.find('.note_body').trigger('click.editable');
       });
 
       var editor;

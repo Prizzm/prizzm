@@ -39,10 +39,10 @@
     /= text_field_tag :company_name, "", :placeholder => "Company Name"
     = f.submit "save", :class => "button blue"
     = f.submit "clear", :class => "button", :id => "clear_item_fields", :class => "hide"
-    = link_to "open case", "#", :class => "fr", :class => "hide"
     .clear
-
-
+  = link_to "Open Case", new_case_path, :class => "fr facebox"
+  .clear
+    
 #offscreen_div
   
 - content_for :javascripts do

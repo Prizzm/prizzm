@@ -10,8 +10,14 @@
       \|
       = link_to "", comment_path(object_type(commentable),  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'close', :remote => true, :'data-method' => :delete, :format => :js if belongs_to_current_user?(comment)
       - if user_signed_in?
-        = link_to "Reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
+        = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
         %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
           = comment_form_for commentable, comment.id
+<<<<<<< HEAD
 
   = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
+=======
+  .clear
+- if comment.has_children?
+  = render :partial => "comments/child_comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
+>>>>>>> 5222a91b42059f2d95846d551e2d30ba83f948c8

@@ -13,6 +13,6 @@ module CommentsHelper
   end
 
   def is_child_comment? comment
-    'reply' if comment.has_children?
+    'reply' if comment.child?
   end 
 end
