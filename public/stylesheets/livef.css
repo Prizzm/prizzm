@@ -104,10 +104,16 @@ form.action {
   
   form.action textarea {
     min-width: 80%;
+    /*
     max-width: 80%;
+    */
     min-height: 100px;
     height: 100px;
   	float: left;
+  }
+  
+  form.action textarea#item_review {
+    max-width: 80%;
   }
 
   form.action input[type=submit].button {
@@ -119,7 +125,7 @@ form.action {
   
   .tags {
     margin-bottom: 10px !important;
-    display: none !important;	
+    /* display: none !important; */
 	}
 	
 	ul.as-list {
