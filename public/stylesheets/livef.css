@@ -112,9 +112,6 @@ form.action {
   
   form.action textarea {
     min-width: 80%;
-    /*
-    max-width: 80%;
-    */
     min-height: 100px;
     height: 100px;
   	float: left;
@@ -133,7 +130,6 @@ form.action {
   
   .tags {
     margin-bottom: 10px !important;
-    /* display: none !important; */
 	}
 	
 	ul.as-list {
@@ -178,6 +174,15 @@ form.action {
 	li.as-result-item.active em { 
 		background: #253f7a;  
 		color: #fff;
+	}
+	
+	li.as-original {
+		background: none;
+		border: 0 !important;
+	}
+	
+	li.as-original:hover {
+		box-shadow: none;
 	}
   
 .usergal, aside .table {
