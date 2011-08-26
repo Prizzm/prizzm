@@ -13,12 +13,13 @@
             %span.uname= item.user.name
         .post.cell
           = image_tag item.main_image, :class => "fl"
-          %h1= item.name
-          = item.review 
-          .footerbit
-            Added #{time_ago_in_words item.updated_at} ago
-            \|
-            = link_to "Share", ""
+          .fl.cont
+            %h1=link_to item.name, (item)
+            = item.review 
+            .footerbit
+              Added #{time_ago_in_words item.updated_at} ago
+              \|
+              = link_to "Share", ""
     %li.activ.row
       .user.cell
         = link_to "" do

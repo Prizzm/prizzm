@@ -16,6 +16,6 @@
           = comment_form_for commentable, comment.id
 
   .clear
-
+  
   %ul.comms
     = render :partial => "comments/comment", :collection => comment.children, :as => :comment, :locals => { :commentable => commentable }
