@@ -1,0 +1,105 @@
+:plain
+
+  var search_google_popup_opened = false;
+  var google_search_icon_clicked = false;
+
+  function attachGoogleSearchAutoComplete(input_element, dest_element){
+   
+    $(input_element).autocomplete("destroy");
+
+    $(input_element).autocomplete({
+      source: function(request, response) {
+      
+        if ($(input_element).val() && google_search_icon_clicked){
+        
+          //googleWebSearch({q:$(input_element).val(), resultsDiv: $("#dropdown")});
+          var config = {
+            type    : 'web',
+            append    : false,
+            perPage   : 3,      // A maximum of 8 is allowed by Google
+            page    : 0       // The start page
+          }
+        
+          // If no parameters are supplied to the function,
+          // it takes its defaults from the config object above:
+          
+          var settings;
+          
+          settings = $.extend({},config,settings);
+          settings.term = $(input_element).val();
+
+          // URL of Google's AJAX search API
+          var apiURL = 'http://ajax.googleapis.com/ajax/services/search/'+settings.type+'?v=1.0&callback=?';
+          
+          $.getJSON(apiURL,{q:settings.term,rsz:settings.perPage,start:settings.page*settings.perPage},function(r){
+
+            var results = r.responseData.results;
+            
+            var resp_data = $.map(results, function(elem, i){
+              return $.extend({label:elem.url}, elem);
+            });
+            
+            response(resp_data);
+
+          });
+
+        }
+        
+      
+      },
+      open : function(event, ui){
+        search_google_popup_opened = true;
+      },
+      close:function(event, ui){
+        google_search_icon_clicked = false;
+        search_google_popup_opened = false;
+        
+        // TODO: Think better way fo doing this
+        // Following part breaks modular design for autocomplete
+        // but necessary sacrifice
+        attachProductAutoComplete(input_element);
+
+      },
+      select : function(event, ui){
+        event.preventDefault();
+        $(dest_element).val(ui.item.unescapedUrl)
+        $(dest_element).change();
+        
+        userSelectedProductOrUrl("url");
+        
+        return false;
+      },
+      minLength : 0
+    }).data( "autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li style='display:block;' ></li>" ).data( "item.autocomplete", item ).append("<a style='text-overflow: ellipsis;width:100%;display:block;padding:0px;margin:-1px;overflow:hidden;white-space:wrap;' class='result_item' href='"+ item.unescapedUrl +"'>" +
+                                    "<span class='r_title' style='width:544px;display:inline-block;text-overflow: ellipsis;'>"+ item.titleNoFormatting +"</span><br />" +
+                                    // TODO: hard-coding width to 544px since parent UL gets its width set by some javascript which disables wrapping of text
+                                    "<span class='r_desc' style='width:544px;display:inline-block;'>" + item.content + "</span><br />" + //item.content
+                                    "<span class='r_vurl' style='width:544px;display:inline-block;text-overflow: ellipsis;'>"+item.unescapedUrl+"</span>" +
+                                    "</a>"
+      ).appendTo( ul ); //.data( "item.autocomplete", item )
+    };
+
+  }
+  
+  $(document).click(function(){
+    if (search_google_popup_opened){
+      $("input#item_name").autocomplete("close");
+    }
+  });
+
+  $("#google_search").click(function(event){
+    event.preventDefault();
+    if ( !google_search_icon_clicked && !search_google_popup_opened ){
+      google_search_icon_clicked = true;
+      if ($("input#item_name").val()){
+        attachGoogleSearchAutoComplete("input#item_name", "input#item_url");
+        $('input#item_name').autocomplete("search", $("input#item_name").val());
+      }
+    }
+    else
+    {
+      $('input#item_url').autocomplete("close");
+    }
+    return false;
+  });
