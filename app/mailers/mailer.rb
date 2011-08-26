@@ -8,9 +8,11 @@ class Mailer < ActionMailer::Base
     #   Users where not subscribed to this thread
     
     # removes duplicates
-    recipient_list.uniq.each do |recipient|
-      Mailer.case_comment(comment, recipient).deliver
-    end
+    #recipient_list.uniq.each do |recipient|
+      #Mailer.case_comment(comment, recipient).deliver
+    #end
+
+    Rails.logger.info recipient_list.uniq.collect { |r| r.email }
   end
 
   def case_comment(comment, recipient)
