@@ -504,6 +504,7 @@ footer ul li {
   .tags li {
   	display: inline-block;
     position: relative;
+    color: #215f94
   }
   
 	.tags li.as-selection-item, .tags li {

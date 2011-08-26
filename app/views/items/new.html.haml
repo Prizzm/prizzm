@@ -17,7 +17,7 @@
     = f.hidden_field :image_url
 
     = f.text_area :description, :style => "display:none;"#, :class => "fr"
-    %p= f.text_area :review, :placeholder => "Review"
+    
     #url_preview
       #img_selector_parent{:style => "display: block;"}
         %table.fl
@@ -33,7 +33,7 @@
               %td#img_selector
           .clear
 
-    
+    = f.text_area :review, :placeholder => "Review"
     .clear
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     /= text_field_tag :company_name, "", :placeholder => "Company Name"
