@@ -88,6 +88,9 @@ module ActivityLogger
     case log[:event] 
     when "user.rate.item"
     when "user.update.profile"
+    when 'user.comment.case'
+    when 'user.comment.item'
+
     end
 
   end

@@ -1,4 +1,7 @@
-= form_for @case=Case.new, :html => {:class => "action table addcase"} do |f|
+%h1 New Case
+Keep a record of your problem with a company or service
+
+= form_for @case=Case.new, :html => {:class => "table addcase"} do |f|
   = f.text_field 'title', :placeholder => "What's your issue?"
   = text_field_tag 'company_name', nil, :placeholder => "With who?"
   = f.hidden_field 'company_id'
