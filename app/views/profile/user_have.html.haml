@@ -1,13 +1,15 @@
+- content_for :page_style do
+  = include_stylesheets :profile
+
 #content.grid_15
   -#commentedbyCOhelptool
     %h3 Your profile
     This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
     .close
-
-  %h2 What I have
-  = link_to "Add", new_item_path + "#create", :id => "action-button", :class => "add button facebox" 
-  .clear
-
+    
+  %header
+    %h1 Tags: Have  
+  
   %ul.table.list-display
     - @user.owned_items.each do |item|
       %li.row{:id => "item_#{item.id}"}

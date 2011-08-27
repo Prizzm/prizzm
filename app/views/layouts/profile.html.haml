@@ -15,9 +15,7 @@
     - else
       #blackbar
     #hbar
-
-    #subbar
-
+    
     #container.container_24
       %header
         - if signed_in?
@@ -25,42 +23,40 @@
         - else
           = render "layouts/header_signed_out"
       #main
-        %header
-          = image_tag @user.photo_url(:big), :class => "grid_2 profilePic", :alt => "" 
-          %h2.grid_16= @user.name
-          .grid_5
-            .buttons
-              - if your_profile?
-                = link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
-              - else
-                = follow_link_for @user
-
-        %ul#socialbit.grid_19
-          %li
-            %h3 Following #{pluralize @user.following_users_count, "Person"}
-          %li
-            %h3 Followed by #{pluralize @user.followers_count, "Person"}
-          %li
-            %h3 Following #{pluralize @user.following_companies_count, "Company"}
-          %li
-            %h3 Following #{pluralize @user.following_products_count, "Product"}
-      
         %aside.grid_4
+          = image_tag @user.photo_url(:big), :class => "profilePic", :alt => "" 
+          
           %nav
-            - if your_profile?
-              = render 'layouts/profile/user_menu'
-            - else
-              = render 'layouts/profile/other_menu'
-
-        = yield
+            %ul
+              %li Following #{pluralize @user.following_users_count, "Person"}
+              %li Followed by #{pluralize @user.followers_count, "Person"}
+              %li Following #{pluralize @user.following_companies_count, "Company"}
+              %li Following #{pluralize @user.following_products_count, "Product"}
+        
+        
+        #content.grid_15
+          %header
+            %h2.fl= @user.name
+            .fr
+              .buttons
+                - if your_profile?
+                  = link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
+                - else
+                  = follow_link_for @user
+            .clear
+          = yield
 
         %aside.grid_5
           %article
             %h4 About #{@user.first_name}
             Short about me?
           %article
-            %h4 Notes
-            Public notes for profile readers.
+            %h4 Tags used
+            %ul.tags
+              %li.as-selection-item.gld= link_to "Have", ""
+              %li.as-selection-item.gld= link_to "Want", ""
+              %li.as-selection-item.gld= link_to "Case", ""
+
 
         .clear
 

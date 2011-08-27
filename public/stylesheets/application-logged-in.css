@@ -22,7 +22,7 @@ header {
   }
 
 #container > header {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 	height: 41px;
 }
 
@@ -198,8 +198,7 @@ header {
 
 #main > header {
 	margin-bottom: 10px;
-	padding-top: 13px;
-	height: 53px;
+	height: 100pxpx;
 }
   
   #main > header h2 {

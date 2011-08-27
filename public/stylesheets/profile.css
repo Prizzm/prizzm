@@ -3,16 +3,11 @@
 
 a.active { color: #d14836 !important; font-weight: bold;}
 
-#subbar {
-	height: 110px;
-	background: #eee;
-	border-bottom: 1px solid #dadada;
-}
-
 .profilePic {
 	padding: 5px;
+	height: 150px;
+	width: 150px;
 	background: #fff;
-    height: 70px;
 }
 
 .grid_19 {
@@ -20,10 +15,6 @@ a.active { color: #d14836 !important; font-weight: bold;}
 }
 
 .edit.button { margin: 0; }
-
-#container {
-	margin-top: -154px;
-}
 
 header .grid_14 {
 	width: 580px !important;
@@ -62,9 +53,6 @@ header .grid_14 {
     margin-top: 3px;
   }
 
-#content, aside {
-	padding-top: 10px;
-}
 
 #content{
 	padding-left: 10px;
@@ -124,9 +112,6 @@ ul.activity-feed li a{
 	color: #ccc;
 }
 
-aside nav ul {
-	border-top: 0;
-}
 
 ul.list-display, ul.case-list {
   padding-top: 10px;
@@ -182,7 +167,6 @@ aside  nav li{
 }
 
 aside h4 {
-	margin-bottom: 10px;
   padding-bottom: 3px;
 	border-bottom: 1px solid #F3F3F3;
 }
@@ -261,3 +245,11 @@ footer {
   color: red;
   margin: 0 0 5px 150px;
 }
+
+aside .tags {
+	border: 0;
+}
+
+  aside .tags li {
+  	margin-bottom: 5px;
+  }
