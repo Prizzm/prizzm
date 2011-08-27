@@ -5,14 +5,8 @@
 %nav.grid_20
   %ul
     %li= link_to "Home", dashboard_path
-<<<<<<< HEAD
     %li= link_to "Profile", profile_path(current_user), :class => tab_for(products_path)
-=======
-    -#%li= link_to "Products",  products_path, :class => tab_for(products_path)
-    -#%li= link_to "Brands", companies_path, :class => tab_for(companies_path)
-    -#%li= link_to "People", members_path, :class => tab_for(members_path)
-    %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
->>>>>>> 9bf7de7e6df13daa8fe3db7dda1e52dbfde18398
+
     %li.account
       = link_to "#", :class => "account" do
         = current_user.first_name
@@ -25,20 +19,13 @@
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
-<<<<<<< HEAD
+
 /
   = form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
     = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
     %input{:type => "submit", :value => ""}
     = link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'           
-          
-=======
--#= form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
-  = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
-  /%input{:type => "submit", :value => ""}
-  /= link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'           
-        
->>>>>>> 9bf7de7e6df13daa8fe3db7dda1e52dbfde18398
+
 
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result
