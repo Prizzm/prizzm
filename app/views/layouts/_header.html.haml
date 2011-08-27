@@ -1,13 +1,13 @@
 .grid_4
   %h1.fl= link_to "prizzm", "/"
-  = link_to "5", "", :class => "fl usernotif"
+  -#= link_to "5", "", :class => "fl usernotif"
   .clear
 %nav.grid_11
   %ul
     %li= link_to "Home", dashboard_path
-    %li= link_to "Products",  products_path, :class => tab_for(products_path)
-    %li= link_to "Brands", companies_path, :class => tab_for(companies_path)
-    %li= link_to "People", members_path, :class => tab_for(members_path)
+    -#%li= link_to "Products",  products_path, :class => tab_for(products_path)
+    -#%li= link_to "Brands", companies_path, :class => tab_for(companies_path)
+    -#%li= link_to "People", members_path, :class => tab_for(members_path)
     %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
     %li.account
       = link_to "#", :class => "account" do
@@ -17,11 +17,11 @@
         %li.user
           = image_tag current_user.main_image, :class => "fl"
           = link_to current_user.name, profile_path(current_user), :class => "username"
-          = link_to "View Profile", profile_path(current_user)
+          = link_to "Edit Profile", ""
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
-= form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
+-#= form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
   = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
   /%input{:type => "submit", :value => ""}
   /= link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'           
