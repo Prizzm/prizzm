@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   belongs_to :commentable, :polymorphic => true
+  has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
   default_scope :order => 'created_at DESC'
 
   # NOTE: install the acts_as_votable plugin if you
