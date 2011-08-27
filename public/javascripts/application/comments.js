@@ -2,6 +2,21 @@ $(document).ready(function(){
   /*  Logic to dynamically add and remove coomments from the page
    */
 
+  // Handles slide expansion and focus for nested comments
+  $('.reply-comment').live('click', function(e) {
+    e.preventDefault();
+    var container = $('#comment-' + $(this).attr('comment_id') + '-reply');
+    if (container.is(":visible")) {
+      container.slideUp();  
+      $(this).html('reply');
+    } else {
+      container.slideDown();  
+      container.find('textarea').focus();  
+      $(this).html('cancel reply');
+    }
+  });
+
+
   $('#comment_comment').focus(function(){
     $(this).addClass('input-active');
     $('#comment_submit').show();
@@ -21,30 +36,20 @@ $(document).ready(function(){
     $('#comment_comment').val('');
   }
 
-  $('.comment-content').live('mouseenter', function(){
-    $(this).addClass('hover');
-  });
-
-  $('.comment-content').live('mouseleave', function(){
-    $(this).removeClass('hover');
-  });
-
 
   /*  We will reuse the previous interaction logic here to handle the ajax
   *  comments
   */
-  $('#new_comment')
+  $('.new_comment')
     .live('ajax:success', function(event, data, status, xhr){
       // Add the newly created comment to the page, and alert the user.
-      $('#comments_feed').prepend(xhr.responseText);
-      $('#comments_feed .comment-content:first-child').effect('highlight', {}, 2000);
-
-      //http://stackoverflow.com/questions/680241/blank-out-a-form-with-jquery
-      $(':input','#new_comment')
-      .not(':button, :submit, :reset, :hidden')
-      .val('');
-
-      $('#new_comment')[0].reset();
+      var new_comment = $("<ul class='comms'>"+ xhr.responseText+'</ul>');
+      console.log(new_comment);
+      var li_element = $(this).closest('li')
+      li_element.append(new_comment);
+      $(this).slideUp();
+      li_element.find('.reply-comment').html('reply');
+      li_element.find('ul:first-child').effect('highlight', {}, 2000);
   });
 
 
@@ -54,8 +59,9 @@ $(document).ready(function(){
    * the controller
    */
 
-  $('#comments_feed').delegate('a', 'ajax:success', function(event, data, status, xhr){
+  $('.comments_root').delegate('a.comment-delete-link', 'ajax:success', function(event, data, status, xhr){
     var commentid = data + '';
-    $('#comment-' + commentid + '-content').fadeOut();
+    $('#comment-' + commentid + '-content').find('.comment-body').replaceWith('<span class="comment-deleted">* Comment Deleted *</span>');
   });
+
 });

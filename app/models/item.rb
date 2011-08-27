@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
 
   before_update :pre_process
 
+  after_create :create_item_data
   after_update :notify_attribute_changes
 
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
@@ -85,5 +86,9 @@ protected
       self.images = []
       add_image_from_url self.image_url
     end
+  end
+
+  def create_item_data
+    ItemData.create(:item_id => id)
   end
 end

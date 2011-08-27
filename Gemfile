@@ -147,6 +147,8 @@ group :development, :test do
   # Print a header in app/model/*.rb files, listing the db columns present for
   # each model
 
+  gem "rails-footnotes"
+
   gem "selenium-webdriver"
   gem "rack-test"
   gem "capybara", :require => 'capybara/rspec'

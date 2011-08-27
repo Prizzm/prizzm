@@ -7,22 +7,21 @@ Keep a record of your problem with a company or service
   = f.hidden_field 'company_id'
   = f.text_field :tag_list, :placeholder => "+ Add tags"
   = f.submit 'save', :class => 'button blue'
-  = f.submit 'clear', :class => 'button', :id => 'clear_item_fields'
+  = link_to 'clear', '#', :class => 'button', :id => 'clear_item_fields'
+  
+= render'layouts/javascripts'
+:javascript
+  $(document).ready(function(){
+    
+    // http://code.drewwilson.com/entry/autosuggest-jquery-plugin
+    var data = [
+      {value: "case", name: "case"}
+    ];
 
-- content_for :javascripts do
-  :javascript
-    $(document).ready(function(){
-      
-      // http://code.drewwilson.com/entry/autosuggest-jquery-plugin
-      var data = [
-        {value: "have", name: "have"},
-        {value: "want", name: "want"}
-      ];
-
-      $('#case_tag_list').autoSuggest(data,
-        {
-          preFill: "case",
-          neverSubmit: true
-        }
-      );
-    });
+    $('#case_tag_list').autoSuggest(data,
+      {
+        preFill: "case",
+        neverSubmit: true
+      }
+    );
+  });

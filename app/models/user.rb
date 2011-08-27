@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include UserImageable
   include Models::User::DeviseExt
 
-  after_create [:create_user_stream, :log_creation] 
+  after_create [:create_user_stream, :create_user_settings, :log_creation] 
   after_destroy :log_destruction
   after_save :log_update
 
@@ -56,7 +56,9 @@ class User < ActiveRecord::Base
     Stream.where(:user_id => id).first
   end
 
-
+  def settings
+    UserSettings.where(:user_id => id).first
+  end
 
 
 
@@ -179,6 +181,10 @@ protected
     Stream.create(:user_id => self.id)
   end
 
+  def create_user_settings
+    UserSettings.create(:user_id => self.id)
+  end
+  
   # Logs the event that the user has created an account on the site
   def log_creation
     ActivityLogger.user_join :from => self

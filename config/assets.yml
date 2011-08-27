@@ -21,10 +21,12 @@ javascripts:
     - public/javascripts/jquery.timeago.js
     - public/javascripts/jquery.watermark.min.js
     - public/javascripts/swfobject.js
+    - public/javascripts/twilio.min.js
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
+    - public/javascripts/cases.js
     - public/javascripts/application/comments.js
     - public/javascripts/livefeed.js
 

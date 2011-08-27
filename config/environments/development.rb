@@ -27,13 +27,13 @@ Prizzm::Application.configure do
   config.action_mailer.smtp_settings = { :host => 'localhost:3000', :port => 1025 }
 
 
-  #A#c#t#i#o#n#M#a#i#l#e#r#:#:#B#a#s#e#.#s#m#t#p#_#s#e#t#t#i#n#g#s #= #{
-    #:#a#d#d#r#e#s#s #=#> #"#s#m#t#p#.#s#e#n#d#g#r#i#d#.#n#e#t#"#,
-    #:#p#o#r#t #=#> #'#2#5#'#,
-    #:#a#u#t#h#e#n#t#i#c#a#t#i#o#n #=#> #:#p#l#a#i#n#,
-    #:#u#s#e#r#_#n#a#m#e #=#> #E#N#V#[#'#S#E#N#D#G#R#I#D#_#U#S#E#R#N#A#M#E#'#]#,
-    #:#p#a#s#s#w#o#r#d #=#> #E#N#V#[#'#S#E#N#D#G#R#I#D#_#P#A#S#S#W#O#R#D#'#]#,
-    #:#d#o#m#a#i#n #=#> #E#N#V#[#'#S#E#N#D#G#R#I#D#_#D#O#M#A#I#N#'#]
-  #}
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.sendgrid.net",
+    :port => '25',
+    :authentication => :plain,
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => ENV['SENDGRID_DOMAIN']
+  }
 end
 
