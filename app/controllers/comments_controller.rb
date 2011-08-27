@@ -8,20 +8,19 @@ class CommentsController < ApplicationController
       if @comment.save
         @comment.move_to_child_of(Comment.find_by_id(params[:parent_id])) unless params[:parent_id].blank?
         format.html { render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment} }
-        format.js { }
       end
     end
+    Mailer.notify_comment(@comment)
   end
 
   def destroy
     comment = @commentable.comment_threads.find(params[:id])    
     @comment_id = comment.id
     @child_ids = comment.children.map { |comment| comment.id }
-    comment.destroy
+    comment.hide
 
     respond_to do |format|
       format.json { render :json => params[:id] }
-      format.js   { }
     end 
   end
 

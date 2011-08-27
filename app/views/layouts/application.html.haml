@@ -22,29 +22,26 @@
         - else
           = render "layouts/header_signed_out"
       #main
-        %aside.grid_5.left
+        %aside.grid_4.left
           .userbit
-            = image_tag current_user.main_image
-            .fr= link_to current_user.name, profile_path(current_user), :class => "uname"
+            = image_tag current_user.main_image, :class => "fl thumb"
+            .fr
+              .uname= current_user.name
+              = link_to "Edit Profile"
             .clear
           %nav
             %article
               %ul
-                %li= link_to "Welcome", ""
+                %li= link_to "Welcome", welcome_path, :class => tab_for(welcome_path)
                 %li= link_to "Live Feed", dashboard_path, :class => tab_for(dashboard_path)
             %article
               %h4 Public
               %ul
-                %li= link_to "Products",  products_path, :class => tab_for(products_path)
-                %li= link_to "Brands", companies_path, :class => tab_for(companies_path)
-                %li= link_to "People", members_path, :class => tab_for(members_path)
                 %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
             %article
               %h4 Personal
               %ul
-                %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
-                %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-                %li= link_to "Case"
+                %li= link_to "Have", ""
         = yield
       .clear
 

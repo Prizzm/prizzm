@@ -11,4 +11,16 @@ module CommentsHelper
   def comment_collection_for commentable
     render :partial => 'comments/comment', :collection => commentable.root_comments, :locals => {:commentable => commentable}
   end
+
+  def is_child_comment? comment
+    'reply' if comment.child?
+  end 
+
+  def comment_or_hidden comment
+    if comment.hidden?
+      raw '<span class="comment-deleted">* Comment Deleted *</span>'
+    else
+      raw "<span class='comment-body'>#{comment.body}</span>"
+    end
+  end 
 end

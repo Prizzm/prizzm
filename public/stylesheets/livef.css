@@ -1,5 +1,5 @@
 #main {
-	margin-top: 10px;
+	width: 960px;
 }
 
 .action-menu {
@@ -34,9 +34,17 @@
   }
 
 form.action {
-  padding: 8px;
+	margin-bottom: 10px;
+	padding: 8px;
   width: 100%;
-  background: #e0e5f0;
+  background: #e4f4ff;
+  
+  border: 1px solid #b9d4e7;
+  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -103,15 +111,19 @@ form.action {
   
   form.action textarea {
     min-width: 80%;
-    max-width: 80%;
     min-height: 100px;
     height: 100px;
   	float: left;
   }
   
+  form.action textarea#item_review {
+    max-width: 80%;
+  }
+
   form.action input[type=submit].button {
     margin-right: 0;
     margin-left: 10px;
+    margin-bottom: 10px;
     width: 80px;
     float: right;
   }
@@ -163,8 +175,17 @@ form.action {
 		background: #253f7a;  
 		color: #fff;
 	}
+	
+	li.as-original {
+		background: none;
+		border: 0 !important;
+	}
+	
+	li.as-original:hover {
+		box-shadow: none;
+	}
   
-.usergal, .table {
+.usergal, aside .table {
   padding-top: 5px;
   border-top: 1px solid #f3f3f3;
 }
@@ -173,8 +194,10 @@ form.action {
     display: inline-block;
   }
 
+
 .fol-f .row {
   display: block;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -191,18 +214,36 @@ form.action {
   margin-bottom: 3px;
   font-size: 1.2em;
 }
+
+.fol-f .cell.post h1 a {
+	color: #444;
+  text-decoration: none;
+}
   
 .fol-f .cell.post ul{
   margin-left: 20px;
   list-style: circle;
 }
 
+	.fol-f .cell.post img {
+		width: 15%;
+		margin-right: 10px;
+	}
+	
+	.fol-f .cell.post .cont {
+		width: 80%;
+	}
+	
 .fol-f .rv .cell {
   padding: 10px 0;
 }
 
+.fol-f .rv .cell.post {
+	border: 1px solid #eaeaea;
+}
+
 .fol-f .user.cell {
-  width: 90px;
+  padding: 5px 20px 5px 5px;
   vertical-align: top;
 }
 
@@ -211,40 +252,37 @@ form.action {
     text-align: center;
     text-decoration: none;
   }
+  
+  .fol-f .rv .user.cell {
+  	background: url('../images/sp-ar.png') 50px 15px no-repeat;
+  }
 
   .fol-f .rv .user.cell img {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
   }
 
 .fol-f .activ {
-  margin-bottom: 5px;
+  border: 1px solid #d4e4f0;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
   
 .fol-f .activ .cell {
   padding: 3px 0;
-  background: #e9f0f6;
+  background: #f1f9ff;
 }
 
   .fol-f .activ .user.cell {
     padding-left: 5px;
     width: 40px;
-    
-    -moz-border-radius: 3px 0 0 3px;
-    -webkit-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
   }
 
   .fol-f .activ .user.cell img {
     width: 30px;
     height: 30px;
     display: block;
-  }
-
-  .fol-f .activ .post.cell {
-    -moz-border-radius: 0 3px 3px 0;
-    -webkit-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
   }
 
 .product {
@@ -305,96 +343,25 @@ form.action {
 }
 
 .footerbit {
-  margin: 5px 0 10px;
+  margin: 5px 0 0 !important;
 }
 
 .footerbit, .footerbit a {
   color: #b6b6b6;
 }
 
-.collapse-comm {
-  padding: 3px 0 5px;
-  border-top: 1px dashed #ccc;
-  text-align: center;
-  background: #f3f3f3;
-  font-variant: small-caps;
-  color: #c5c5c5 !important;
-  display: block;
-  text-decoration: none !important;
+.updt-feed {
+	padding: 10px 0;
+	display: block;
+	text-align: center;
+	border: 1px solid #eaeaea;
+	background: #f7f7f7;
+	text-decoration: none;
 }
 
-.comms {
-  border-top: 1px dashed #ccc;
+.updt-feed:hover {
+	background: #f3f3f3;
 }
-  .comms li {
-    display: block;
-    border-bottom: 1px dotted #ccc;
-  }
-
-  .comms .cell {
-    float: left;
-  }
-
-  .comms .cell.img {
-    width: 9%;
-    vertical-align: top;
-  }
-
-  .comms .cell.cont {
-    width: 91%;
-  }
-  
-  .comms .comm-ft {
-    display: block;
-    text-align: right;
-  }
-  
-    .comms .comm-ft a{
-      margin-left: 5px;
-      font-variant: small-caps;
-    }
-
-  .comms .reply {
-    width: 420px;
-    margin-left: 40px !important;
-  }
-    
-.in-comm {
-  margin-top: 5px;
-  padding-top: 5px;
-}
-  
-  .in-comm textarea {
-    padding: 5px;
-    max-width: 464px;
-    min-width: 100%;
-    border: 1px solid #ccc;
-    color: #a7a7a7;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  .in-comm .button {
-    margin: 5px 0 0 5px !important;
-    float: right !important;
-  }
-  
-  .in-comm input.button {
-    width: 80px;
-  }
-  
-  .in-comm .sharebts {
-    margin-top: 5px !important;
-    padding: 5px;
-    border: 1px solid #ccc;
-    color: #a7a7a7;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
 
 .empt-f {
   margin-top: 10px;
@@ -410,10 +377,43 @@ aside .cell .button {
 	padding: 3px 6px;
 }
 
+aside .cell.img {
+	width: 10%;
+}
+
 aside .cell.uname {
 	padding: 0 9px 3px;
+	width: 84%:
 }
 
 aside .cell {
 	padding-bottom: 3px;
+	position: relative;
+}
+
+aside .cell.del {
+	width: 6%;
+}
+
+aside .cell .close {
+	top: 8px;
+}
+
+aside .small.fr {
+	margin-left: 10px;
+}
+
+aside .tags {
+	width: 100%;
+	display: inline-block!important;
+	border-color: #f3f3f3;
+	border-width: 1px 0 0 0;
+}
+
+aside .tags li {
+	margin-bottom: 5px;
+}
+
+aside .tags li a {
+	color: #215f94 !important;
 }

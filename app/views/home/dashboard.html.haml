@@ -2,30 +2,39 @@
   = include_stylesheets :livef
 
 #content.grid_14
-  %nav.action-menu
-    %ul
-      %li
-        = link_to "Have", "", :class => "active"
-        = link_to "Want", ""
-        = link_to "Case", ""
-
   = render :template => 'items/new'
-  = render :template => 'cases/new'
-
-%aside.grid_5.right
-  %article
-    %h4.fl People following
-    = link_to "View all", '#', :class => 'small fr'
-    .clear
-    %ul.usergal
-      - people_following.each do |user|
-        %li
-          = link_to profile_path(user) do
-            = image_tag user.main_image
-    
-
+  
+  %ul.fol-f.table
+    - latest_reviews.each do |item|
+      %li.rv.row
+        .user.cell
+          = link_to "" do
+            = image_tag item.user.main_image
+            %span.uname= item.user.name
+        .post.cell
+          = image_tag item.main_image, :class => "fl"
+          .fl.cont
+            %h1=link_to item.name, (item)
+            = item.review 
+            .footerbit
+              Added #{time_ago_in_words item.updated_at} ago
+              \|
+              = link_to "Share", ""
+    /
+      %li.activ.row
+        .user.cell
+          = link_to "" do
+            = image_tag current_user.main_image
+        .post.cell
+          = link_to "Charles"
+          is following
+          = link_to "Sidney Burks"
+          
+    /= link_to "More", "", :class => "updt-feed"
+%aside.grid_6.left
   %article
     %h4.fl Suggested People
+    = link_to "Refresh", "", :class => 'small fr'
     = link_to "View all", members_path, :class => 'small fr'
     .clear
     %ul.table
@@ -37,7 +46,25 @@
             .cell.uname= person.name
           .cell.action
             = follow_link_for person
-    
+          .cell.del
+            = link_to "", "", :class => "close"
+  %article
+    %h4 Popular Tags
+    %ul.tags
+      %li.as-selection-item.gld= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
+      %li.as-selection-item.gld= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
+      %li.as-selection-item.gld= link_to "Case"
+      %li= link_to "Electronics"
+      %li= link_to "House"
+      %li= link_to "Kitchen"
+      %li= link_to "Shoes"
+      %li= link_to "Hats"
+      %li= link_to "Laptops"
+      %li= link_to "New"
+      %li= link_to "Shit"
+      %li= link_to "Sucks"
+      %li= link_to "Cool"
+   
 .clear
 
 - content_for :jquery do

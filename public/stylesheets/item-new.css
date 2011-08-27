@@ -7,7 +7,10 @@
   margin-right:auto;
   vertical-align:middle;
   display:none;
+  min-width: 114px;
 }
+
+#google_search { position:absolute; top:0px; right:0px; background-image:url(/images/mag-glass.png); background-color:Transparent; border:0; padding:0; margin:6px 1px; height:22px; width:22px; cursor:default; }
 
 /*
 
@@ -43,8 +46,6 @@
 #url_and_dropdown_container{
   background-color:;
 }
-
-#google_search { position:absolute; top:0px; right:0px; background-image:url(/images/mag-glass.png); background-color:Transparent; border:0; padding:0; margin:8px 1px; height:22px; width:22px; cursor:default; }
 
 #main-dropdown { position:absolute; top:38px; left:0; border:1px solid #ddd; background-color:; width:100%;z-index:10000; }
 #dropdown  { list-style-type:none; font-size:13px; }

@@ -1,19 +1,29 @@
-.grid_5
+.grid_4
   %h1.fl= link_to "prizzm", "/"
   = link_to "5", "", :class => "fl usernotif"
   .clear
-= form_tag "#", { :id => "search_form", :class => "search grid_9"} do 
-  = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
-  /%input{:type => "submit", :value => ""}
-  /= link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'
-%nav.grid_10
+%nav.grid_20
   %ul
-    %li= link_to "home", dashboard_path
-    %li= link_to "profile", profile_path(current_user)
-    %li
-      = link_to destroy_user_session_url, :class => "account" do
-        account
+    %li= link_to "Home", dashboard_path
+    %li= link_to "Profile", profile_path(current_user), :class => tab_for(products_path)
+    %li.account
+      = link_to "#", :class => "account" do
+        = current_user.first_name
         %small &#x25BC;
+      %ul.subnav
+        %li.user
+          = image_tag current_user.main_image, :class => "fl"
+          = link_to current_user.name, profile_path(current_user), :class => "username"
+          = link_to "Edit Profile", ""
+          .clear
+        %li= link_to "Settings", "#"
+        %li= link_to "Logout", destroy_user_session_path
+/
+  = form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
+    = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
+    %input{:type => "submit", :value => ""}
+    = link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'           
+          
 
 %script(type="text/html" id="product-autocomplete-result-template")
   .product-autocomplete-result
@@ -23,12 +33,8 @@
     .cell.desc
       %h2= link_to '{{ name }}', CGI::unescape(product_path('{{ id }}'))
       .clear
-      = link_to '{{ customer_count }} people have this', '#'
-      %div{:id => "stars-wrapper-{{ id }}", :class => "autocomplete-rating rating", :disabled => "disable"}
-        %select= options_for_select([1, 2, 3, 4, 5])
     .cell 
-      = link_to "I have this", new_item_path + "#owned", :class => "button facebox"
-      = link_to "I want this", new_item_path + "#wanted", :class => "button facebox"
+      = link_to "Add product", new_item_path + "#owned", :class => "button add facebox"
 
 - content_for :jquery do
   :javascript

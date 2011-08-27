@@ -1,12 +1,6 @@
 - content_for :page_style do
   = include_stylesheets :item_detail
 
-%header
-  %h2
-    -# = link_to "Add Company", new_company_path, :class => 'tag company'
-    -# = text_field_tag "company_name", "", :class => "jq_watermark", :title => "Add Company"
-    = @item.name
-
 %aside.grid_5
   %article
     = render 'images'
@@ -14,8 +8,6 @@
     = fields_for ItemImage.new do |f|
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
-
-    %br
     = link_to @item.url, @item.url
 
     = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
@@ -26,10 +18,10 @@
     .loading{:style => "display:none"}
 
     
-#content.grid_13
+#content.grid_11
   %section#review
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
-    .title Review
+    .title= @item.name
     #rendered-review
       - if @item.review.blank?
         = render 'default_review'
@@ -40,10 +32,10 @@
         = f.text_area :review
         = f.submit 'Save'
     #review_status 
-  .title Company
-  #company
-    = render "company", :company => @item.company
-  %br
+  /
+    .title Company
+    #company
+      = render "company", :company => @item.company
   = comments_section_for @item
 %aside.grid_6
   %article
@@ -74,7 +66,7 @@
         .cell.left Ask your
         .cell.right
           %ul.sharebts
-            %li.sharebt.fb
+            %li.sharebt.fb.active
               facebook
               .close
             %li.sharebt.twitter
@@ -141,20 +133,21 @@
         $('body').trigger('insertImage', xhr.responseText);
       });
       
-      var update_item_company = function(company){
+      
+      // var update_item_company = function(company){
 
-        $.ajax({
-          type : 'PUT',
-          url: '#{update_item_company_path}',
-          data : {company_id : company.id},
-          dataType: "script",
-          success: function(r){
+      //  $.ajax({
+      //    type : 'PUT',
+      //    url: '#{update_item_company_path}',
+      //    data : {company_id : company.id},
+      //    dataType: "script",
+      //    success: function(r){
             // success
-          }
-        });
+      //    }
+      //  });
 
-      };
+      //};
 
-      #{ render "company_autocomplete.js" }
+      //#{ render "company_autocomplete.js" }
       
     });
