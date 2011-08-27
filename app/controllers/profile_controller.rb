@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
   end 
 
   def have
-    render "#{target_user}_have"
+      render "#{target_user}_have"
   end
 
   def want

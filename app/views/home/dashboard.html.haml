@@ -3,8 +3,9 @@
 
 #content.grid_16
   = render :template => 'items/new'
-  
-  %ul.fol-f.table
+ 
+
+  -#%ul.fol-f.table
     - latest_reviews.each do |item|
       %li.rv.row
         .user.cell
@@ -49,21 +50,11 @@
           .cell.del
             = link_to "", "", :class => "close"
   %article
-    %h4 Popular Tags
+    %h4 My Data
     %ul.tags
       %li.as-selection-item.gld= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
       %li.as-selection-item.gld= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
       %li.as-selection-item.gld= link_to "Case"
-      %li= link_to "Electronics"
-      %li= link_to "House"
-      %li= link_to "Kitchen"
-      %li= link_to "Shoes"
-      %li= link_to "Hats"
-      %li= link_to "Laptops"
-      %li= link_to "New"
-      %li= link_to "Shit"
-      %li= link_to "Sucks"
-      %li= link_to "Cool"
    
 .clear
 
