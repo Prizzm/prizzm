@@ -148,6 +148,7 @@ group :development, :test do
   # each model
 
   gem "rails-footnotes"
+  gem "workflow_on_mongoid"
 
   gem "selenium-webdriver"
   gem "rack-test"
