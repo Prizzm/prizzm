@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        @comment.move_to_child_of(Comment.find_by_id(params[:parent_id])) unless params[:parent_id].blank?
+        @parent = Comment.find_by_id(params[:parent_id])
+        @comment.move_to_child_of(@parent) unless params[:parent_id].blank?
+        # TODO : use system that will allow users to unsubscribe
+        #Rails.logger.info "Comment root #{@comment.root.body}"
+        #Rails.logger.info "Comment root inspect #{@comment.root.inspect}"
+        #Rails.logger.info "Comment inspect #{@comment.inspect}"
+        #current_user.subscribe_to root_for(@comment) #supposed to be @comment.root but acts as nested set is bonked
         format.html { render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment} }
       end
     end
@@ -25,6 +31,9 @@ class CommentsController < ApplicationController
   end
 
 protected
+  def root_for comment
+    comment.ancestors.last || comment
+  end
 
   def load_commentable
     @commentable = params[:commentable_type].camelize.constantize.find(params[:commentable_id])

@@ -7,10 +7,6 @@ class Mailer < ActionMailer::Base
     #   Keeps users who allow comment updates via mail in their settings
     recipient_list = recipient_list.select { |recipient| recipient.settings.receive_comment_updates_via_email }
 
-    # TODO: filter out unsubscribed muted recipients
-    #   Users where not subscribed to this thread's root comment
-    recipient_list = recipient_list.select { |recipient| true  }
-
     Rails.logger.info recipient_list.collect { |r| r.email }
     
     recipient_list.each do |recipient|
@@ -27,10 +23,22 @@ class Mailer < ActionMailer::Base
 
 
   def self.recipients_for comment
-    # Adds commentable owner to recipient list, remove commenter
+    # Falling back to older method
     ancestors = comment.ancestors.collect { |c| c.user } 
     ancestry = ancestors + [comment.commentable.user] - [comment.user]
-    ancestry.uniq 
+    subscribers = ancestry
+    
+    # Adds commentable owner to recipient list, remove commenter
+    # should work.. problem with getting comment tree root
+    #subscribers = comment.root.subscriber_records.collect { |subscription| subscription.user }
+    Rails.logger.info "Subscribers: #{subscribers.collect {|u| u.email}}"
+
+    #   filters out unsubscribed muted recipients
+    #   Users where not subscribed to this thread's root comment
+    #subscribers = subscribers + [comment.commentable.user] - [comment.user]
+    Rails.logger.info "Commentable user: #{comment.commentable.user.email}"
+    Rails.logger.info "Commenter user: #{comment.user.email}"
+    subscribers.uniq 
   end
 
 end

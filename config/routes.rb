@@ -19,6 +19,8 @@ Prizzm::Application.routes.draw do
   #route for getting images for a given page URL i.e. scrape
   match "/home/scrape" => "home#scrape", :as  => "scrape"
 
+  resources :user_settings, :as => 'settings'
+
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
