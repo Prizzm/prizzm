@@ -15,6 +15,10 @@ class HomeController < ApplicationController
     @item = Item.new
     @item.images.build
   end
+  
+  def welcome
+  
+  end
 
   def scrape
 

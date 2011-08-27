@@ -2,7 +2,7 @@ Prizzm::Application.routes.draw do
 
   resources :members
 
-  root :to => 'home#dashboard'
+  root :to => 'home#welcome'
 
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
@@ -10,6 +10,7 @@ Prizzm::Application.routes.draw do
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
   get '/dashboard' => "home#dashboard", :as => "dashboard"
+  match '/welcome' => "home#welcome", :as => "welcome"
 
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
