@@ -1,1 +1,9 @@
-alert('Invitations sent.');
+<%- if @emails.empty? -%>
+  alert('No emails.');
+<%- else -%>
+  $.each($('#invitations input[type=text]'), function(i, e) {
+    $(e).val('');
+  });
+<%- end -%>
+
+
