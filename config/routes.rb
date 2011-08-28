@@ -1,16 +1,14 @@
 Prizzm::Application.routes.draw do
 
+
   resources :members
-
-  root :to => 'home#welcome'
-
+  root :to => 'home#dashboard'
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
   # Routes for main page
   match "/home" => "home#index", :as  => "home"
   get '/dashboard' => "home#dashboard", :as => "dashboard"
-  match '/welcome' => "home#welcome", :as => "welcome"
 
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
@@ -19,11 +17,10 @@ Prizzm::Application.routes.draw do
   #route for getting images for a given page URL i.e. scrape
   match "/home/scrape" => "home#scrape", :as  => "scrape"
 
-  resources :user_settings, :as => 'settings'
-
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
+    resources :product_invitations
   end
 
   resources :cases do
@@ -33,6 +30,7 @@ Prizzm::Application.routes.draw do
   resources :companies do
     resources :addresses
     get 'search', :on => :collection
+    
   end 
 
   # Comments - this route makes the comments controller response to a
@@ -103,13 +101,13 @@ Prizzm::Application.routes.draw do
   ######################################        DEVISE       #############################
   # User Login and account registration
   devise_for :users, :path => "accounts", 
-            :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions", :invitations => "invitations" },
+            :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions" },
             :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-  ########################################################################################
+  ##############################################################################
+  
 
- 
 
   ##############################    TO REFaCTOR    #############################
   resources :users do
@@ -124,10 +122,11 @@ Prizzm::Application.routes.draw do
 
   resources :items 
   resources :items do
-    resources :images, :only => [:create, :destroy]
+  resources :images, :only => [:create, :destroy]
   end
 
   resources :companies do
+    resources :products
     resources :company_images, :only => [:create, :destroy]
   end
 
@@ -143,7 +142,6 @@ Prizzm::Application.routes.draw do
 
 
   # Routes for item invitation use cases
-  resources :product_invitations
   get  '/invitation/:id'    => 'product_invitations#view_invitation', :as  => 'view_item_invitation'
   post '/invitation'        => 'product_invitations#accept_invitation', :as => 'accept_item_invitation'
   # FIXME:  Should be using a 'GET' for routes that have side effects, but we
@@ -164,8 +162,22 @@ Prizzm::Application.routes.draw do
   # Blitz.io verification route
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
 
+  
+#changes by jony
+############################## invite ############################
+#  resources :invite do
+#    get 'search', :on => :collection
+#  end
+  
+  namespace 'admin' do
+    resources :products
+    get :add_invitation
+    get :send_invitation
+  end
 
-
+#  match '/admin/addinvitaion' do
+#    resources :product_invitation
+#  end
   ##############################    NONPUBLIC ADMIN    #############################
   # These routees are not public, and should be wrapped in some type of admin
   # block

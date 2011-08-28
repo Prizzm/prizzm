@@ -50,10 +50,19 @@
           .cell.del
             = link_to "", "", :class => "close"
   %article
+<<<<<<< HEAD
     %h4 Invite your friends
     .table
       = text_field "email", "email", :placeholder => "Friend@friendmail\.com"
       = link_to "invite", "", :class => "button green"
+=======
+    #invite-button.fr
+      %h3= link_to "Invite", "#"
+    .clear
+    #invitations{:style => "display:none"}
+      = render :partial => "invitations/new"
+    .clear
+>>>>>>> d3e683385e2a5913ab07bed35627c7925bef3b7e
   %article
     %h4 Popular Tags
     %ul.tags
@@ -68,5 +77,34 @@
     $(document).ready(function() {
       $('.close', '#helptool').bind('click', function() {
         $('#helptool').slideUp(1000);
+      });
+
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a>");
+        $('#emails-list').append(new_email);
+      });
+
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
       });
     });

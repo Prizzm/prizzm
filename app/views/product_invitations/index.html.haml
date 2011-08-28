@@ -1,0 +1,29 @@
+%h1 Listing product invitations
+
+%table
+  %tr
+    %th Product id
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Purchase Date
+    %th Amount
+    %th send status
+    %th accept status
+    %th 
+
+  - @invitations.each do |invitation|
+    %tr
+      %td= invitation.product_id
+      %td= invitation.first_name
+      %td= invitation.last_name
+      %td= invitation.email
+      %td= invitation.purchase_date
+      %td= invitation.amount
+      %td= invitation.sent
+      %td= invitation.accepted
+      %td= link_to 'Show', product_product_invitations_path(@product)
+%br
+=link_to 'add invitation', new_product_product_invitation_path
+%br
+

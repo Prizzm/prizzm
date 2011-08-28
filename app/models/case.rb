@@ -1,5 +1,6 @@
 class Case < ActiveRecord::Base
   include Privatizable
+  include Workflow
 
   belongs_to :user
   belongs_to :company
@@ -22,6 +23,16 @@ class Case < ActiveRecord::Base
 
 
   default_value_for :privacy, 'private'
+
+  
+
+  workflow do
+    state :unresolved do
+      event :resolve, :transitions_to => :resolved
+    end
+
+    state :resolved 
+  end
 
   def notebook
     CaseNotebook.where(:case_id => id).first

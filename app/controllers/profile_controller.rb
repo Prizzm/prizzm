@@ -13,6 +13,12 @@ class ProfileController < ApplicationController
     render "#{target_user}_want", :layout => "application"
   end
 
+  # just show my cases, not others
+  def cases
+    @cases = current_user.cases.all
+    render 'cases/index', :layout => "application"
+  end 
+
 protected
   def load_user
     @user = User.find(params[:id])

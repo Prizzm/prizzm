@@ -31,6 +31,11 @@ class Mailer < ActionMailer::Base
     # Adds commentable owner to recipient list, remove commenter
     # should work.. problem with getting comment tree root
     #subscribers = comment.root.subscriber_records.collect { |subscription| subscription.user }
+    #
+    #
+    #
+    #Third method, add property recieve_mails_for_child_comments.   If
+    #false, just dont send to comment owner
     Rails.logger.info "Subscribers: #{subscribers.collect {|u| u.email}}"
 
     #   filters out unsubscribed muted recipients
