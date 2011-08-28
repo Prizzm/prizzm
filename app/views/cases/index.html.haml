@@ -15,7 +15,7 @@
       .cell Ticket name
       .cell Case no.
       .cell 
-    - public_cases.each do |user_case|
+    - @cases.each do |user_case|
       %li.row
         .cell= user_case.created_at.strftime '%m/%d/%Y'
         .cell= user_case.title

@@ -1,0 +1,28 @@
+.add-invitation
+    .mydiv{:style=>"width:400px;"}
+        -  form_for @product_invitation do |f|
+            %p
+                = f.label :first_name
+                = f.text_field :first_name
+            %p
+                = f.label :last_name
+                = f.text_field :last_name
+            %p
+                = f.label :email
+                = f.text_field :email
+            %p
+                = f.label :purchase_date
+                = f.text_field :purchase_date
+            %p
+                = f.label :amount
+                = f.text_field :amount
+            %p
+                = f.label :sent
+                = f.text_field :sent
+            %p
+                = f.label :accepted
+                = f.text_field :accepted
+            %br
+            %p
+                = f.submit
+.testdiv= current_user.company.name

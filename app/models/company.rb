@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
 
   has_many :products, :dependent => :nullify  
   has_many :items, :dependent => :nullify
+  has_many :users
   has_many :images, :class_name => 'CompanyImage', :dependent => :destroy
   has_many :addresses, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"

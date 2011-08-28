@@ -1,14 +1,24 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = current_user.company.products
     #respond_to do |format|
       #format.html {render :json  => @products.to_json(:methods => :label, :only => [:label, :id])  } 
     #end 
   end 
 
+  def new
+    @product = Product.new
+  end
+
   def show
     @product = Product.find(params[:id])
-  end 
+  end
+
+  def create
+    @product = Product.create(params[:product])
+    current_user.company.products << @product
+    redirect_to products_path
+  end
 
   def search
     # limit results to 6 or so, we we don't reach browser parallel download

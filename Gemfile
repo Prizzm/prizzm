@@ -1,5 +1,5 @@
 # Edit this Gemfile to bundle your application's dependencies.
-source 'http://rubygems.org'
+source 'http://gems.rubyforge.org'
 gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
 gem 'rake', '0.8.7'
 gem "haml-rails"
@@ -30,6 +30,7 @@ gem "mongoid"
 gem "bson_ext"
 
 gem "curb"
+gem "workflow_on_mongoid"
 
 #gem "squeel"
 
