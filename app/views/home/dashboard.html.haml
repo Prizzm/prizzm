@@ -5,7 +5,7 @@
   = render :template => 'items/new'
  
 
-  -#%ul.fol-f.table
+  %ul.fol-f.table
     - latest_reviews.each do |item|
       %li.rv.row
         .user.cell
@@ -32,7 +32,7 @@
           = link_to "Sidney Burks"
           
     /= link_to "More", "", :class => "updt-feed"
-%aside.grid_6.left
+%aside.grid_6.right
   %article
     %h4.fl Suggested People
     = link_to "Refresh", "", :class => 'small fr'
@@ -49,6 +49,11 @@
             = follow_link_for person
           .cell.del
             = link_to "", "", :class => "close"
+  %article
+    %h4 Invite your friends
+    .table
+      = text_field "email", "email", :placeholder => "Friend@friendmail\.com"
+      = link_to "invite", "", :class => "button green"
   %article
     %h4 Popular Tags
     %ul.tags

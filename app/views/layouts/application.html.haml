@@ -10,17 +10,18 @@
   %body
     #cbbg
     - if signed_in?
-      #prizzmbar
+      %header#prizzmbar
+        .container_24
+          - if signed_in?
+            = render "layouts/header"
+          - else
+            = render "layouts/header_signed_out"
+          .clear
     - else
       #blackbar
     
       
     #container.container_24
-      %header
-        - if signed_in?
-          = render "layouts/header"
-        - else
-          = render "layouts/header_signed_out"
       #main
         %aside.grid_4.left
           .userbit
@@ -33,7 +34,7 @@
             %article
               %ul
                 %li= link_to "Welcome", welcome_path, :class => tab_for(welcome_path)
-                %li= link_to "Live Feed", dashboard_path, :class => tab_for(dashboard_path)
+                %li= link_to "Live feed", dashboard_path, :class => tab_for(dashboard_path)
             %article
               %h4 Public
               %ul

@@ -145,6 +145,12 @@ a:hover, a:active { outline: none; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
+input[type=text] {
+	border: 1px solid #ccc;
+	background: #fff;
+	padding: 8px;
+}
+
 article, section {
   position: relative;
 }
@@ -352,8 +358,12 @@ a.button.green, input[name=commit] {
   background-image: -o-linear-gradient(top,#3d9400,#398a00);
   background-image: linear-gradient(top,#3d9400,#398a00);
   border: 1px solid #29691D;
-  color: white;
+  color: white !important;
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+input[value=clear] {
+	color: #6e6e6e !important;
 }
 
 .close {

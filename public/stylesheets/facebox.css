@@ -30,17 +30,17 @@
   margin-bottom:0;
 }
 
-#facebox .close{
+#facebox .closebox{
   position:absolute;
   top:5px;
   right:5px;
   padding:2px;
-  background:#fff;
+  background:#fff !important;
 }
-#facebox .close img{
+#facebox .closebox img{
   opacity:0.3;
 }
-#facebox .close:hover img{
+#facebox .closebox:hover img{
   opacity:1.0;
 }
 
@@ -62,7 +62,6 @@
 	padding: 10px;
 	border: 1px solid #e7e7e7;
 	font-size: 1.1em;
-	width: 550px;
 	
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -113,7 +112,7 @@
     padding-bottom: 2px;
 }
 
-#facebox input[name=commit]{
+#facebox .button{
 	margin-top: 10px;
 }
 
@@ -133,4 +132,8 @@
 .facebox_overlayBG {
   background-color: #fff;
   z-index: 99;
+}
+
+#facebox .tags {
+	border-color: #e7e7e7;
 }
