@@ -1,0 +1,14 @@
+<%= form_for User.new, :url => user_invitation_path, :html => { :id => "email-invite" }, :remote => true do |f| %>
+  <strong>Emails</strong>
+
+  <div id="emails-list">
+    <%= f.text_field :email, :name => "user[email][]" %>
+    <%= f.text_field :email, :name => "user[email][]" %>
+    <%= f.text_field :email, :name => "user[email][]" %>
+  </div>
+
+  <%= link_to "Add email", "#", :id => "add-email", :class => "fl" -%>
+  <div class="loading" style="visibility:hidden;float:right"></div>
+  <%= f.submit "Send invitations", :class => "blue button" %>
+<% end %>
+

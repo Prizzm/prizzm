@@ -50,11 +50,18 @@
           .cell.del
             = link_to "", "", :class => "close"
   %article
-    %h4 My Data
+    #invite-button.fr
+      %h3= link_to "Invite", "#"
+    .clear
+    #invitations{:style => "display:none"}
+      = render :partial => "invitations/new"
+    .clear
+  %article
+    %h4 Popular Tags
     %ul.tags
-      %li.as-selection-item.gld= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
-      %li.as-selection-item.gld= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-      %li.as-selection-item.gld= link_to "Case"
+      %li.as-selection-item.gld= link_to "Have", ""
+      %li.as-selection-item.gld= link_to "Want", ""
+      %li.as-selection-item.gld= link_to "Case", ""
    
 .clear
 
@@ -63,5 +70,34 @@
     $(document).ready(function() {
       $('.close', '#helptool').bind('click', function() {
         $('#helptool').slideUp(1000);
+      });
+
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a>");
+        $('#emails-list').append(new_email);
+      });
+
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
       });
     });

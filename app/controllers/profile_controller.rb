@@ -6,11 +6,11 @@ class ProfileController < ApplicationController
   end 
 
   def have
-      render "#{target_user}_have"
+      render "#{target_user}_have", :layout => "application"
   end
 
   def want
-    render "#{target_user}_want"
+    render "#{target_user}_want", :layout => "application"
   end
 
 protected
