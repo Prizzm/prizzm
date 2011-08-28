@@ -599,7 +599,7 @@ footer ul li {
 }
 
 #invitations .remove {
-  background: url("../images/close.gif") no-repeat scroll 0 0 transparent;
+  background: url('../images/close.gif') no-repeat scroll 0 0 transparent;
   width: 13px;
   height: 14px;
   display: inline-block;
