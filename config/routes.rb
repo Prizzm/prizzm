@@ -125,6 +125,7 @@ Prizzm::Application.routes.draw do
   resources :items 
   resources :items do
     resources :images, :only => [:create, :destroy]
+    match 'post_to_facebook' => 'items#post_to_facebook'
   end
 
   resources :companies do

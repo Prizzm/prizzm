@@ -58,10 +58,10 @@
             %input{:type => "text", :value => item_url(@item)}/
   %article
     %h4 Ask your friends for advice
-    %form.table
+    = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
       .row
         .cell
-          %input{:type => "text"}/
+          = text_field_tag :message
       .row
         .cell.left Ask your
         .cell.right
@@ -72,7 +72,8 @@
             %li.sharebt.twitter
               twitter
               .close
-      %a.button.fr{:href => ""} Ask
+      = link_to "Ask", "#", :id => 'button-ask-friend', :class => "button fr"
+      .loading{:style => "display:none;float:left"}
   %article
     %h4 Feeds
     Reserved for a feed of other people's reviews.

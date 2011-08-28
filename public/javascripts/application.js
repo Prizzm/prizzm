@@ -153,4 +153,15 @@ $(document).ready(function(){
 
 
   $('.jq_watermark').watermark();
+
+  $('#button-ask-friend').live('click', function(e) {
+    e.preventDefault();
+
+    if ($('#is_signed_in_fb').val() == 'false') {
+      alert('Exception: Need to login with Facebook account.');
+    } else {
+      $('#form-ask-friend').submit();
+      $('#form-ask-friend .loading').show();
+    }
+  });
 });

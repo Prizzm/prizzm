@@ -24,7 +24,7 @@
         = raw @item.review
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
-      %a{:href => ""} #{pluralize @item.comments.count, "Comment"}
+      %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
   - if user_signed_in?
     %section#new-comment
       = comment_form_for @item

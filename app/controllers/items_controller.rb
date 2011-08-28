@@ -4,7 +4,6 @@ class ItemsController < InheritedResources::Base
   #layout :determine_layout
   #layout :determine_layout
 
-
   def new
     @item = Item.new
     @item.images.build
@@ -104,6 +103,23 @@ class ItemsController < InheritedResources::Base
       format.js { render 'share' }
     end
     ActivityLogger.user_share_item :from => current_user, :for => [@item], :data => [:message => fb_message]
+  end
+
+  def post_to_facebook
+    item = Item.find(params[:item_id])
+    fb_user = FbGraph::User.me(current_user.access_token)
+
+    begin
+      fb_user.feed!(
+        :message => params[:message],
+        :picture => item.images.first.image_url,
+        :name => item.name,
+        :link => request.url,
+        :description => item.review[0.. 100]
+      )
+    rescue Exception => e
+      logger.info "error => #{e.message}"
+    end
   end
 
   private 
