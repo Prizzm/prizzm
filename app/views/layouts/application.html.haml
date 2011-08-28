@@ -43,7 +43,7 @@
               %ul
                 %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
                 %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-                /%li= link_to "Case", case_path(current_user), :class => tab_for(case_path(current_user))
+                %li= link_to "My Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
         = yield
         .clear
       .clear

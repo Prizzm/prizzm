@@ -2,7 +2,8 @@ class CasesController < InheritedResources::Base
   before_filter :load_user
 
   def index
-    @cases = Case.publicly.all
+    #@cases = Case.publicly.all
+    @cases = Case.all
   end
 
   def show

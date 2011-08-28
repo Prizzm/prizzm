@@ -15,6 +15,7 @@ Prizzm::Application.routes.draw do
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
   get '/:id/wants' => 'profile#want', :as => 'want'
+  get '/:id/cases' => 'profile#cases', :as => 'user_cases'
 
   #route for getting images for a given page URL i.e. scrape
   match "/home/scrape" => "home#scrape", :as  => "scrape"
