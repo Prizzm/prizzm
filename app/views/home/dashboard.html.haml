@@ -50,19 +50,11 @@
           .cell.del
             = link_to "", "", :class => "close"
   %article
-<<<<<<< HEAD
     %h4 Invite your friends
     .table
       = text_field "email", "email", :placeholder => "Friend@friendmail\.com"
       = link_to "invite", "", :class => "button green"
-=======
-    #invite-button.fr
-      %h3= link_to "Invite", "#"
-    .clear
-    #invitations{:style => "display:none"}
-      = render :partial => "invitations/new"
-    .clear
->>>>>>> d3e683385e2a5913ab07bed35627c7925bef3b7e
+  
   %article
     %h4 Popular Tags
     %ul.tags
