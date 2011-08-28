@@ -30,6 +30,7 @@ gem "mongoid"
 gem "bson_ext"
 
 gem "curb"
+gem "workflow_on_mongoid"
 
 #gem "squeel"
 
@@ -148,8 +149,6 @@ group :development, :test do
   # each model
 
   gem "rails-footnotes"
-  #gem "workflow_on_mongoid"
-  gem "workflow"
 
   gem "selenium-webdriver"
   gem "rack-test"
