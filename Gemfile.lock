@@ -472,10 +472,6 @@ GEM
     webrobots (0.0.10)
       nokogiri (>= 1.4.4)
     workflow (0.8.1)
-    workflow_on_mongoid (0.8.0.4)
-      bson_ext
-      mongoid (>= 2.0.0.rc.1)
-      workflow (~> 0.8)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     yaml_db (0.2.1)
@@ -561,5 +557,5 @@ DEPENDENCIES
   tunnlr_connector!
   twilio-ruby
   twitter
-  workflow_on_mongoid
+  workflow
   yaml_db
