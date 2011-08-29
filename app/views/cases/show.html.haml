@@ -7,6 +7,7 @@
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     #rendered-review
       = raw @case.description
+      = privacy_control_for @case
     .ftnote
       = @case.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
       \|
