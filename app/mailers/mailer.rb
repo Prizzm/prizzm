@@ -10,7 +10,11 @@ class Mailer < ActionMailer::Base
     Rails.logger.info recipient_list.collect { |r| r.email }
     
     recipient_list.each do |recipient|
-      Mailer.case_comment(comment, recipient).deliver
+      if comment.commentable.is_a? Case
+        Mailer.case_comment(comment, recipient).deliver
+      elsif comment.commentable.is_a? Item
+        Mailer.item_comment(comment, recipient).deliver
+      end
     end
   end
 
@@ -21,6 +25,12 @@ class Mailer < ActionMailer::Base
    mail(:to => "#{recipient.name} <#{recipient.email}>", :subject => "A User has just left a comment on your #{comment.commentable.class.to_s}")
   end 
 
+  def item_comment(comment, recipient)
+   @comment = comment
+   @recipient = recipient
+   @commentable = comment.commentable
+   mail(:to => "#{recipient.name} <#{recipient.email}>", :subject => "A User has just left a comment on your #{comment.commentable.class.to_s}")
+  end 
 
   def self.recipients_for comment
     # Falling back to older method
