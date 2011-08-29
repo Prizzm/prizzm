@@ -109,6 +109,7 @@ class ItemsController < InheritedResources::Base
     item = Item.find(params[:item_id])
     fb_user = FbGraph::User.me(current_user.access_token)
     link = params[:link]
+    @errors = []
 
     begin
       fb_user.feed!(
@@ -122,6 +123,7 @@ class ItemsController < InheritedResources::Base
       )
     rescue Exception => e
       logger.info "error => #{e.message}"
+      @errors << e.message
     end
   end
 

@@ -1,1 +1,9 @@
 $('#form-ask-friend .loading').hide();
+
+<%- if @errors.empty? -%>
+  $('#form-ask-friend').append("<span id='notice'>Posted</span>");
+<%- else -%>
+  $('#form-ask-friend').append("<span id='notice'>Error posting!</span>");
+<%- end -%>
+
+$('#form-ask-friend #notice').effect("highlight", {color: 'yellow'}, 2000);

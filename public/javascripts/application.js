@@ -163,6 +163,7 @@ $(document).ready(function(){
       alert('Please enter your question.');
     } else {
       $('#form-ask-friend').submit();
+      $('#form-ask-friend #notice').remove();
       $('#form-ask-friend .loading').show();
     }
   });
