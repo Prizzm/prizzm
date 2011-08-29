@@ -3,11 +3,9 @@
 
   <div id="emails-list">
     <%= f.text_field :email, :name => "user[email][]" %>
-    <%= f.text_field :email, :name => "user[email][]" %>
-    <%= f.text_field :email, :name => "user[email][]" %>
   </div>
 
   <%= link_to "Add email", "#", :id => "add-email", :class => "fl" -%>
   <div class="loading" style="visibility:hidden;float:right"></div>
-  <%= f.submit "Send invitations", :class => "blue button" %>
+  <%= f.submit "Invite", :class => "blue button" %>
 <% end %>
