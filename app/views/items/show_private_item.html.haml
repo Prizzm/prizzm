@@ -16,7 +16,7 @@
           = builder.submit
     .loading{:style => "display:none"}
 
-#content.grid_9
+#content.grid_13
   %section#review
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     .title= @item.name
@@ -29,17 +29,17 @@
       = form_for @item, :remote => true, :method => :put do |f|
         = f.text_area :review
         = f.submit 'Save'
-    #review_status 
+    #review_status
+    = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
+      = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
   /
     .title Company
     #company
       = render "company", :company => @item.company
-  = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
-    = f.text_field :tag_list
-
+     
   = comments_section_for @item
 
-%aside.grid_5
+%aside.grid_6
   %article
     %h4 What do you think about the product?
     %select

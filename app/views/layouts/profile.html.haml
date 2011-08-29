@@ -5,23 +5,22 @@
     %title  Prizzm
     = csrf_meta_tag
     = render 'layouts/stylesheets'
-    = include_stylesheets :profile 
-    = include_stylesheets :profile_fix unless signed_in?
     = favicon_link_tag
     
   %body
+    #cbbg
     - if signed_in?
-      #prizzmbar
+      %header#prizzmbar
+        .container_24
+          - if signed_in?
+            = render "layouts/header"
+          - else
+            = render "layouts/header_signed_out"
+          .clear
     - else
       #blackbar
-    #hbar
-    
+     
     #container.container_24
-      %header
-        - if signed_in?
-          = render "layouts/header"
-        - else
-          = render "layouts/header_signed_out"
       #main
         %aside.grid_4
           = image_tag @user.photo_url(:big), :class => "profilePic", :alt => "" 

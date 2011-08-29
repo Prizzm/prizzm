@@ -2,6 +2,10 @@
 	width: 33.33%;
 }
 
+#container.container_24 {
+  width: 79%;
+}
+
 aside h4, .title {
 	margin-bottom: 10px;
 	border-bottom: 1px solid #f3f3f3;
@@ -9,6 +13,10 @@ aside h4, .title {
 
 aside h5 {
 	margin-bottom: 5px;
+}
+
+aside ul {
+  border: none !important;
 }
 
 img.bigthumb {
