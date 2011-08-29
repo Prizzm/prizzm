@@ -1,0 +1,5 @@
+Hello <%= @recipient.first_name %>,
+
+<%= @comment.user.name %>  just left a comment about your case <%= link_to @commentable.name, show_item_url(@commentable.user, @commentable)  %>
+
+Prizzm
