@@ -1,5 +1,8 @@
 class ProductInvitationsController < ApplicationController
 
+ def index2
+  
+  end
   def create
     Product.find(params[:product_id]).product_invitations.create(params[:product_invitation])
     redirect_to product_product_invitations_path(Product.find(params[:product_id]))
