@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :find_taggable
+  before_filter :find_taggable, :except => :list
 
   def add
     @taggable.tag_list.add params[:tag]
@@ -13,6 +13,9 @@ class TagsController < ApplicationController
     head :ok
   end 
 
+  def list
+    @items = current_user.items.tagged_with params[:tag] 
+  end 
 
 protected
   def find_taggable
