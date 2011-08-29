@@ -1,5 +1,5 @@
 class String
-  def limit(max_characters = 30, trailing_string = '..')
+  def limit(max_characters = 30, trailing_string = '...')
     str_length = self.length
 
     if str_length > max_characters

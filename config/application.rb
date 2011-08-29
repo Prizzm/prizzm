@@ -49,5 +49,10 @@ module Prizzm
 
 
     config.active_record.include_root_in_json = false
+
+    config.after_initialize do
+      require 'string'
+    end
   end
 end
+
