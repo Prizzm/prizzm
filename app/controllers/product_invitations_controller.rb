@@ -1,13 +1,10 @@
 class ProductInvitationsController < ApplicationController
 
-<<<<<<< HEAD
-
-=======
   def create
     Product.find(params[:product_id]).product_invitations.create(params[:product_invitation])
     redirect_to product_product_invitations_path(Product.find(params[:product_id]))
   end
->>>>>>> parent of 689b27f...  adding invitations controller
+
   def view_invitation
     @product = Product.find(params[:id])
     @item = Item.new(:product_id => @product.id)
