@@ -114,12 +114,11 @@ class ItemsController < InheritedResources::Base
       fb_user.feed!(
         :message => params[:message],
         :picture => item.images.first.image_url,
-        # For local test
+        # For local test, remember to comment below line out before pushing.
         #:picture => "http://www.vatgia.com/ir/pictures_fullsize/0/ZmZpMTI3Njg1NDE0OC5qcGc-/apple-iphone-4-16gb-black-lock-version.jpg",
         :name => item.name,
         :link => link,
-        #:description => item.review.limit(300)
-        :description => item.review[0..300]
+        :description => item.review.limit(300)
       )
     rescue Exception => e
       logger.info "error => #{e.message}"
