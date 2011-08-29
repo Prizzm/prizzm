@@ -2,7 +2,7 @@
 
 = form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
   %p{:style => "position:relative;"}
-    = f.text_field :name, :placeholder => "Add a new item to review..."
+    = f.text_field :name, :placeholder => "Add something you have or want"
     %button#google_search{ :style => "position:absolute; top:0px; right:0px; background-image:url(/images/mag-glass.png); background-color:Transparent; border:0; padding:0; margin:6px 1px; height:22px; width:22px; cursor:default;" }
   
   #other_attribs{:class => "hide"}
@@ -25,7 +25,7 @@
             %tr
               %td#img_controls
                 #prev_image{:disabled => "disabled"}
-                  = image_tag "prev_img	.png"
+                  = image_tag "prev_img.png"
                 #next_image{:disabled => "disabled"}
                   = image_tag "next_img.png"
                 .clear
@@ -38,11 +38,12 @@
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     /= text_field_tag :company_name, "", :placeholder => "Company Name"
     = f.submit "save", :class => "button blue"
-    = f.submit "clear", :class => "button", :id => "clear_item_fields", :class => "hide"
+    = f.submit "clear", :class => "button", :id => "clear_item_fields"
     .clear
-  = link_to "Open Case", new_case_path, :class => "facebox fr"
   .clear
-    
+
+= link_to "I have an issue with...", new_case_path, :class => "facebox ocase"
+
 #offscreen_div
   
 - content_for :javascripts do

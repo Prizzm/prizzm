@@ -4,7 +4,6 @@
 %aside.grid_5
   %article
     = render 'images'
-
     = fields_for ItemImage.new do |f|
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
@@ -17,8 +16,7 @@
           = builder.submit
     .loading{:style => "display:none"}
 
-    
-#content.grid_11
+#content.grid_13
   %section#review
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     .title= @item.name
@@ -31,12 +29,16 @@
       = form_for @item, :remote => true, :method => :put do |f|
         = f.text_area :review
         = f.submit 'Save'
-    #review_status 
+    #review_status
+    = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
+      = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
   /
     .title Company
     #company
       = render "company", :company => @item.company
+     
   = comments_section_for @item
+
 %aside.grid_6
   %article
     %h4 What do you think about the product?
@@ -85,6 +87,43 @@
   :javascript
 
     $(document).ready(function() {
+
+
+      var data = [
+        {value: "case", name: "case"}
+      ];
+
+      $('#item_tag_list').autoSuggest(data,
+        {
+          startText: "+ Add tags",
+          preFill: "#{@item.tag_list}",
+          neverSubmit: true,
+          selectionAdded: function(element){
+            //element.fadeTo("slow", 0.33);
+            var tag = $(element);
+            tag = $.trim(tag);
+
+            console.log(tag);
+            if (tag.length > 0 ) {
+              console.log($.dump(element));
+              console.log('Tag: ' + $.dump(tag));
+              console.log(element);
+              //console.log($.dump($(this)));
+              //console.log($(this));
+            }
+          
+          },
+          selectionRemoved: function(element){
+            element.fadeTo("fast", 0, function(){
+              element.remove();
+            });
+            //console.log($.dump(element));
+            //console.log($.dump($(this)));
+            //console.log($(this));
+          }
+      });
+
+
       var editor;
 
       // For commment loading animation.
@@ -134,21 +173,21 @@
         $('body').trigger('insertImage', xhr.responseText);
       });
       
-      
-      // var update_item_company = function(company){
+      /*
+      var update_item_company = function(company){
 
-      //  $.ajax({
-      //    type : 'PUT',
-      //    url: '#{update_item_company_path}',
-      //    data : {company_id : company.id},
-      //    dataType: "script",
-      //    success: function(r){
+        $.ajax({
+          type : 'PUT',
+          url: '#{update_item_company_path}',
+          data : {company_id : company.id},
+          dataType: "script",
+          success: function(r){
             // success
-      //    }
-      //  });
+          }
+        });
 
-      //};
+      };
 
-      //#{ render "company_autocomplete.js" }
+
       
     });

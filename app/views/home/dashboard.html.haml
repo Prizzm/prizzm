@@ -5,7 +5,7 @@
   = render :template => 'items/new'
  
 
-  -#%ul.fol-f.table
+  %ul.fol-f.table
     - latest_reviews.each do |item|
       %li.rv.row
         .user.cell
@@ -32,7 +32,7 @@
           = link_to "Sidney Burks"
           
     /= link_to "More", "", :class => "updt-feed"
-%aside.grid_6.left
+%aside.grid_6.right
   %article
     %h4.fl Suggested People
     = link_to "Refresh", "", :class => 'small fr'
@@ -50,12 +50,14 @@
           .cell.del
             = link_to "", "", :class => "close"
   %article
-    #invite-button.fr
-      %h3= link_to "Invite", "#"
-    .clear
-    #invitations{:style => "display:none"}
-      = render :partial => "invitations/new"
-    .clear
+    %h4 Invite your friends
+    .table
+      = form_for User.new, :url => user_invitation_path, :html => { :id => "email-invite" }, :remote => true do |f|
+        #emails-list
+          = f.text_field :email, :name => "user[email][]"
+          = link_to "Add more", "#", :id => "add-email", :class => "fl"
+          = f.submit "Invite", :class => "blue button"
+  
   %article
     %h4 Popular Tags
     %ul.tags

@@ -1,15 +1,15 @@
-.grid_4
+.fl
   %h1.fl= link_to "prizzm", "/"
   -#= link_to "5", "", :class => "fl usernotif"
   .clear
-%nav.grid_20
+%nav.fr
   %ul
     %li= link_to "Home", dashboard_path
     %li= link_to "Profile", profile_path(current_user), :class => tab_for(products_path)
 
     %li.account
       = link_to "#", :class => "account" do
-        = current_user.first_name
+        Account
         %small &#x25BC;
       %ul.subnav
         %li.user

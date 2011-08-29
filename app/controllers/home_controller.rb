@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   end
   
   def welcome
-  
+    
   end
 
   def scrape

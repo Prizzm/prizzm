@@ -17,7 +17,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-##Edit new user
   def edit
     @user = current_user
     render :layout => false

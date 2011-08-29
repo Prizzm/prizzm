@@ -92,7 +92,7 @@
       <div class="popup"> \
         <div class="content"> \
         </div> \
-        <a href="#" class="close"><img src="../images/cancel.png" title="close" class="close_image" /></a> \
+        <a href="#" class="closebox"><img src="../images/cancel.png" title="close" class="close_image" /></a> \
         <div class="clear"></div> \
       </div> \
     </div>'
@@ -108,8 +108,8 @@
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
       $('#facebox').css({
-        top:	getPageScroll()[1] + (getPageHeight() / 10),
-        left:	$(window).width() / 2 - 205
+        top:	getPageScroll()[1] + (getPageHeight() / 10) + 20,
+        left:	$(window).width() / 2
       }).show()
 
       $(document).bind('keydown.facebox', function(e) {
