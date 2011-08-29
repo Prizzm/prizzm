@@ -36,6 +36,9 @@
     .title Company
     #company
       = render "company", :company => @item.company
+  = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
+    = f.text_field :tag_list
+
   = comments_section_for @item
 %aside.grid_6
   %article
@@ -84,6 +87,43 @@
   :javascript
 
     $(document).ready(function() {
+
+
+      var data = [
+        {value: "case", name: "case"}
+      ];
+
+      $('#item_tag_list').autoSuggest(data,
+        {
+          startText: "+ Add tags",
+          preFill: "#{@item.tag_list}",
+          neverSubmit: true,
+          selectionAdded: function(element){
+            //element.fadeTo("slow", 0.33);
+            var tag = $(element);
+            tag = $.trim(tag);
+
+            console.log(tag);
+            if (tag.length > 0 ) {
+              console.log($.dump(element));
+              console.log('Tag: ' + $.dump(tag));
+              console.log(element);
+              //console.log($.dump($(this)));
+              //console.log($(this));
+            }
+          
+          },
+          selectionRemoved: function(element){
+            element.fadeTo("fast", 0, function(){
+              element.remove();
+            });
+            //console.log($.dump(element));
+            //console.log($.dump($(this)));
+            //console.log($(this));
+          }
+      });
+
+
       var editor;
 
       // For commment loading animation.
@@ -148,6 +188,6 @@
 
       //};
 
-      //#{ render "company_autocomplete.js" }
+      //#{ "company_autocomplete.js" }
       
     });
