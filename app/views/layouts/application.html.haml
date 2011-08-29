@@ -19,11 +19,9 @@
           .clear
     - else
       #blackbar
-    
-      
+     
     #container.container_24
       #main
-<<<<<<< HEAD
         %aside.grid_4.left
           .userbit
             = image_tag current_user.main_image, :class => "fl thumb"
@@ -45,32 +43,7 @@
               %ul
                 %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
                 %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-                /%li= link_to "Case", case_path(current_user), :class => tab_for(case_path(current_user))
-=======
-        - if user_signed_in?
-          %aside.grid_4.left
-            .userbit
-              = image_tag current_user.main_image, :class => "fl thumb"
-              .fr
-                .uname= current_user.name
-                = link_to "Edit Profile"
-              .clear
-            %nav
-              %article
-                %ul
-                  %li= link_to "Welcome", welcome_path, :class => tab_for(welcome_path)
-                  %li= link_to "Live Feed", dashboard_path, :class => tab_for(dashboard_path)
-              %article
-                %h4 Public
-                %ul
-                  %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
-              %article
-                %h4 Personal
-                %ul
-                  %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
-                  %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-                  %li= link_to "My Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
->>>>>>> d3e683385e2a5913ab07bed35627c7925bef3b7e
+                %li= link_to "Cases", case_path(current_user), :class => tab_for(case_path(current_user))
         = yield
         .clear
       .clear

@@ -52,8 +52,11 @@
   %article
     %h4 Invite your friends
     .table
-      = text_field "email", "email", :placeholder => "Friend@friendmail\.com"
-      = link_to "invite", "", :class => "button green"
+      form_for user.new, user_invitation_path, :html){ :id => "email-invite" }, :remote => true do |f|
+			  #emails-list
+			    = f.text_field :email, :name => "user[email][]"
+			  = link_to "Add more", "", :id => "add-email", :class => "fl"
+			  = f.submit "Invite", :class => "blue button"
   
   %article
     %h4 Popular Tags

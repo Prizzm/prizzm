@@ -4,7 +4,6 @@
 %aside.grid_5
   %article
     = render 'images'
-
     = fields_for ItemImage.new do |f|
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
@@ -17,8 +16,7 @@
           = builder.submit
     .loading{:style => "display:none"}
 
-    
-#content.grid_11
+#content.grid_9
   %section#review
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     .title= @item.name
@@ -37,7 +35,8 @@
     #company
       = render "company", :company => @item.company
   = comments_section_for @item
-%aside.grid_6
+
+%aside.grid_5
   %article
     %h4 What do you think about the product?
     %select
