@@ -64,6 +64,7 @@
       .row
         .cell
           = text_field_tag :message
+          = hidden_field_tag :link, item_url(@item)
       .row
         .cell.left Ask your
         .cell.right

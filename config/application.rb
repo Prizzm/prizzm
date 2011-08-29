@@ -17,6 +17,7 @@ module Prizzm
     config.autoload_paths += %W(#{config.root}/lib/definitions)
     config.autoload_paths += %W(#{config.root}/lib/gems/**/)
     config.autoload_paths += %W(#{config.root}/lib/models/user)
+    config.autoload_paths += %W(#{config.root}/lib/ruby_extensions)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.autoload_paths += Dir["#{config.root}/lib/models/**/"]
 

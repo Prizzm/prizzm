@@ -108,16 +108,18 @@ class ItemsController < InheritedResources::Base
   def post_to_facebook
     item = Item.find(params[:item_id])
     fb_user = FbGraph::User.me(current_user.access_token)
+    link = params[:link]
 
     begin
       fb_user.feed!(
         :message => params[:message],
-        :picture => item.images.first.image_url,
+        #:picture => item.images.first.image_url,
         # For local test
-        #:picture => "http://www.vatgia.com/ir/pictures_fullsize/0/ZmZpMTI3Njg1NDE0OC5qcGc-/apple-iphone-4-16gb-black-lock-version.jpg",
+        :picture => "http://www.vatgia.com/ir/pictures_fullsize/0/ZmZpMTI3Njg1NDE0OC5qcGc-/apple-iphone-4-16gb-black-lock-version.jpg",
         :name => item.name,
-        :link => request.url,
-        :description => item.review[0.. 100]
+        :link => link.html_safe,
+        #:description => item.review.limit(300)
+        :description => item.review[0..300]
       )
     rescue Exception => e
       logger.info "error => #{e.message}"
