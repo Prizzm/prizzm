@@ -8,17 +8,19 @@
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
     = link_to @item.url, @item.url
-
+    
     = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
       = fields_for :image do |builder|
-        = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
+        /= builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
         %div{:style => "display:none"}
           = builder.submit
     .loading{:style => "display:none"}
 
 #content.grid_13
   %section#review
+    = privacy_control_for @item
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
+    
     .title= @item.name
     #rendered-review
       - if @item.review.blank?
@@ -32,6 +34,9 @@
     #review_status
     = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
       = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
+    #footerbit
+      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
+      %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
   /
     .title Company
     #company
@@ -41,32 +46,20 @@
 
 %aside.grid_6
   %article
-    %h4 What do you think about the product?
+    %h4 Your opinion
     %select
       %option No opinion
       %option I recommend this!
       %option Horrible!
   %article
-    %h4 Publish
-    .table
-      .row
-        .cell.left Visibility:
-        .cell.right
-          = privacy_control_for @item
-      - if @item.is_public?
-        .row
-          .cell.left Share link:
-          .cell.right
-            %input{:type => "text", :value => item_url(@item)}/
-  %article
-    %h4 Ask your friends for advice
+    %h4 Share
     = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
       .row
         .cell
-          = text_field_tag :message
+          = text_field_tag :message, "", :placeholder => "Message"
           = hidden_field_tag :link, item_url(@item)
       .row
-        .cell.left Ask your
+        .cell.left Share to
         .cell.right
           %ul.sharebts
             %li.sharebt.fb.active
@@ -75,7 +68,7 @@
             %li.sharebt.twitter
               twitter
               .close
-      = link_to "Ask", "#", :id => 'button-ask-friend', :class => "button fr"
+      = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green fr"
       .loading{:style => "display:none;float:left"}
   %article
     %h4 Feeds
