@@ -6,7 +6,7 @@ class Mailer < ActionMailer::Base
     recipient_list = recipients_for comment
     
     #   Keeps users who allow comment updates via mail in their settings
-    recipient_list = recipient_list.select { |recipient| recipient.settings.receive_comment_updates_via_email }
+    #recipient_list = recipient_list.select { |recipient| recipient.settings.receive_comment_updates_via_email }
 
     Rails.logger.info recipient_list.collect { |r| r.email }
     
