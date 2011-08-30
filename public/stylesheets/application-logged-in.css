@@ -473,6 +473,7 @@ ul.data-list .cell .button {
 
   .comms .cell.img {
     width: 9%;
+    margin-right: 10px;
     vertical-align: top;
   }
   
@@ -481,8 +482,8 @@ ul.data-list .cell .button {
     	height: 40px;
     }
 
-  .comms .cell.cont {
-    width: 91%;
+  .comms .cell.comm {
+    width: 88%;
   }
   
   .comms .comm-ft {
