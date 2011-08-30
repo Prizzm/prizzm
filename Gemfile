@@ -32,6 +32,8 @@ gem "bson_ext"
 gem "curb"
 gem "workflow_on_mongoid"
 
+gem "thin"
+
 #gem "squeel"
 
 #gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
