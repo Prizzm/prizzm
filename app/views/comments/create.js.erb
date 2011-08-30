@@ -1,2 +1,2 @@
-$('#comments', '#content').html("<%= escape_javascript(comment_collection_for @commentable) -%>");
+$('#content #comments').html("<%= escape_javascript(comment_collection_for @commentable) -%>");
 $('#comment-<%= @comment.id -%>-content').effect("highlight", {}, 2000);

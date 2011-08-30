@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
         #Rails.logger.info "Comment inspect #{@comment.inspect}"
         #current_user.subscribe_to root_for(@comment) #supposed to be @comment.root but acts as nested set is bonked
         format.html { render :partial => 'comments/comment', :locals  => {:commentable  => @commentable, :comment => @comment} }
+        format.js { }
       end
     end
     Mailer.notify_comment(@comment)
@@ -21,22 +22,43 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = @commentable.comment_threads.find(params[:id])    
-    @comment_id = comment.id
-    @child_ids = comment.children.map { |comment| comment.id }
+    nested_comments = nested_comments_of(comment)
+
     comment.hide
+    nested_comments.each { |nc| nc.hide }
+
+    @comment_id = comment.id
+    @child_ids = nested_comments.map { |nc| nc.id }
 
     respond_to do |format|
-      format.json { render :json => params[:id] }
+      format.js { }
     end 
   end
 
 protected
+
   def root_for comment
     comment.ancestors.last || comment
   end
 
   def load_commentable
     @commentable = params[:commentable_type].camelize.constantize.find(params[:commentable_id])
+  end
+
+  def nested_comments_of(comment)
+    @nested_comments = []
+    collect_children_for(comment)
+    @nested_comments
+  end
+
+  # Recursive method for Recursive LLC. :)
+  def collect_children_for(comment)
+    children = comment.children
+
+    children.each do |child|
+      @nested_comments << child
+      collect_children_for(child) if child.has_children?
+    end
   end
 end
 
