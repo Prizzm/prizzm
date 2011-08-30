@@ -8,9 +8,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to process_accepted_product_invitation_path
       else
         flash[:notice] = "Signed in successfully."
-        #sign_in_and_redirect @user, :event => :authentication
         sign_in @user, :event => :authentication
-        redirect_to :back
+        request.env["HTTP_REFERER"].present?? redirect_to(:back) : sign_in_and_redirect(@user, :event => :authentication)
       end
       #     https://github.com/intridea/omniauth/wiki/Saving-User-Location
       #     redirect_to request.env['omniauth.origin'] || '/default'

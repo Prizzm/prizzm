@@ -1,0 +1,8 @@
+$('#content #comments').html("<%= escape_javascript(comment_collection_for @commentable) -%>");
+$('#comment-<%= @comment_id -%>-content').effect("highlight", {}, 2000);
+
+<%- if @child_ids.present? -%>
+  <%- @child_ids.each do |cid| -%>
+    $('#comment-<%= cid -%>-content').effect("highlight", {}, 2000);
+  <%- end -%>
+<%- end -%>
