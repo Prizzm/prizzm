@@ -6,6 +6,8 @@
     <div class="error"></div>
 
     <%- f.inputs do -%>
+      <%= f.input :first_name -%>
+      <%= f.input :last_name -%>
       <li>
         <%= label_tag 'current_photo', "Current photo:" -%>
         <%= image_tag @user.photo_url(:big) -%>
