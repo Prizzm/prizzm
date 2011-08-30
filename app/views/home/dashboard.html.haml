@@ -8,6 +8,7 @@
   %ul.fol-f.table
     - latest_reviews.each do |item|
       %li.rv.row
+        .sp
         .user.cell
           = link_to "" do
             = image_tag item.user.main_image

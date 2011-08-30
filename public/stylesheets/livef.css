@@ -3,10 +3,13 @@
 }
 
 .action-menu {
-  margin-bottom: 5px;
   font-size: 1.1em;
   font-variant: small-caps;
   font-weight: bold;
+  height: 26px;
+  position: relative;
+  z-index: 99;
+  margin-bottom: 3px !important;
 }
 
 .action-menu li {
@@ -14,40 +17,29 @@
 }
 
   .action-menu li a {
-    margin-right: 1px;
-    padding: 3px 8px 7px;
+    padding: 3px 8px 15px;
     text-decoration: none;
     font-variant: normal;
     font-weight: normal;
-    
-    -moz-border-radius: 3px 3px 0 0;
-    -webkit-border-radius: 3px 3px 0 0;
-    border-radius: 3px 3px 0 0;
+    color: #444;
   }
   
   .action-menu li a:hover {
-    background: #f3f3f3;
+    background: no-repeat url('../images/nav-ar.png') center bottom;
   }
   
   .action-menu li a.active {
-    background: #e0e5f0;
+    background: no-repeat url('../images/nav-ar.png') center bottom;
   }
 
 form.action {
-	margin-top: -9px;
-	padding: 8px;
+	padding: 8px 8px 4px 8px;
   width: 100%;
   background: #e4f4ff;
   position: relative;
   z-index: 10;
   
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  border-color: #b9d4e7;
-  
-  -moz-border-radius: 0 0 3px 3px;
-  -webkit-border-radius: 0 0 3px 3px;
-  border-radius: 0 0 3px 3px;
+  border: 1px solid #b9d4e7;
   
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -74,6 +66,7 @@ form.action {
     box-sizing: border-box;
     
     border: 1px solid #c4cbdc;
+    position: relative;
   }
   
   form.action table {
@@ -229,6 +222,7 @@ form.action {
   display: block;
   margin-bottom: 10px;
   width: 100%;
+  position: relative;
 }
 
 .cell.img a {
@@ -283,8 +277,14 @@ form.action {
     text-decoration: none;
   }
   
-  .fol-f .rv .user.cell {
-  	background: url('../images/sp-ar.png') 50px 15px no-repeat;
+  .fol-f .rv .sp{
+  	background: url('../images/sp-ar.png') no-repeat;
+  	display: inline-block;
+    width: 15px;
+    height: 27px;
+    position: absolute;
+    left: 53px;
+    top: 10px;
   }
 
   .fol-f .rv .user.cell img {
