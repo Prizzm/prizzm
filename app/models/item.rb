@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
 
   # TODO: Add an Item_URL model along with a has_many association Item_URL
   # should have an thumbnail image
-  accepts_nested_attributes_for :images, :interactions
+  accepts_nested_attributes_for :images
 
   scope :recently_updated, order('updated_at DESC')
   scope :recently_created, order('created_at DESC')
