@@ -25,8 +25,6 @@ class Item < ActiveRecord::Base
 
   scope :recently_updated, order('updated_at DESC')
   scope :recently_created, order('created_at DESC')
-  scope :owned, where(:possession_status => 'have')
-  scope :wanted, where(:possession_status => 'want')
   scope :publicly, where(:privacy => 'public')
   scope :privately, where(:privacy => 'private')
   scope :with_review, where("review NOT LIKE ''")
@@ -37,7 +35,6 @@ class Item < ActiveRecord::Base
   acts_as_taggable
 
   default_value_for :privacy, 'private'
-  default_value_for :possession_status, 'want'
   
   attr_accessor :image_url
 
@@ -52,6 +49,14 @@ class Item < ActiveRecord::Base
     item.product = product
     item
   end 
+
+  def owned
+    tagged_with('have')
+  end
+
+  def wanted
+    tagged_with('want')
+  end
 
   # convience methods
   def has_product?

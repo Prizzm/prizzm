@@ -42,11 +42,11 @@ class User < ActiveRecord::Base
   end
 
   def wanted_items
-    items.wanted
+    items.tagged_with('want')
   end
 
   def owned_items
-    items.owned
+    items.tagged_with('have')
   end
 
 

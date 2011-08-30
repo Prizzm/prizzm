@@ -80,9 +80,7 @@
   = javascript_include_tag 'ckeditor/ckeditor.js'
 
   :javascript
-
     $(document).ready(function() {
-
 
       var data = [
         {value: "case", name: "case"}
@@ -94,27 +92,35 @@
           preFill: "#{@item.tag_list}",
           neverSubmit: true,
           selectionAdded: function(element){
-            //element.fadeTo("slow", 0.33);
-            var tag = $(element);
+            var tag = $(element).text();
             tag = $.trim(tag);
-
-            console.log(tag);
             if (tag.length > 0 ) {
-              console.log($.dump(element));
-              console.log('Tag: ' + $.dump(tag));
-              console.log(element);
-              //console.log($.dump($(this)));
-              //console.log($(this));
+              $.ajax({
+                type : 'POST',
+                url: '#{tags_path(object_type(@item), @item.id)}',
+                data : {tag: tag},
+                dataType: "script",
+                success: function(r){
+                  console.log(tag + ' is now added');
+                }
+              });
             }
-          
           },
           selectionRemoved: function(element){
             element.fadeTo("fast", 0, function(){
               element.remove();
+              var tag = $(element).text();
+              tag = $.trim(tag);
+              $.ajax({
+                type: 'DELETE',
+                url: '#{tags_path(object_type(@item), @item.id)}',
+                data: {tag: tag},
+                dataType: "script",
+                success: function(r){
+                  console.log(tag + ' is deleted');
+                }
+              });
             });
-            //console.log($.dump(element));
-            //console.log($.dump($(this)));
-            //console.log($(this));
           }
       });
 
@@ -167,22 +173,4 @@
         $('#graburl').val('');
         $('body').trigger('insertImage', xhr.responseText);
       });
-      
-      /*
-      var update_item_company = function(company){
-
-        $.ajax({
-          type : 'PUT',
-          url: '#{update_item_company_path}',
-          data : {company_id : company.id},
-          dataType: "script",
-          success: function(r){
-            // success
-          }
-        });
-
-      };
-      */
-
-      
     });
