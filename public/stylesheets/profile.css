@@ -25,24 +25,14 @@ header .grid_14 {
 }
 
 #socialbit {
-	margin: 0;
-	padding-top: 3px;
-	height: 55px;
-	list-style: none;
+	margin: 10px 0 0 !important;
 	
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-  #socialbit li:first-child {
-	margin-left: 5px;
-  }
-
   #socialbit li {
-	margin-left: 5px;
-	width: 177px;
-	display: inline-block;
-  vertical-align: top;
+    margin-bottom: 10px;
   }
   
   #socialbit a, ul.activity-feed li a{
