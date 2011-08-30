@@ -522,7 +522,7 @@ footer ul li {
     color: #215f94
   }
   
-  .tags li.as-selection-item, .tags li {
+  .tags li.as-selection-item {
     margin-right: 5px;
     padding: 3px 18px 3px 3px;
     background: #90cbf9;
@@ -572,7 +572,7 @@ footer ul li {
     padding: 2px !important;
   }
   
-  .tags li:hover {
+  .tags li.as-selection:hover {
     -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   }
