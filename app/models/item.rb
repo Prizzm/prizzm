@@ -14,7 +14,6 @@ class Item < ActiveRecord::Base
   after_update :notify_attribute_changes
 
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
-  has_many :interactions, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true
