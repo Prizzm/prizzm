@@ -1,7 +1,109 @@
+- content_for :page_style do
+  = include_stylesheets :welcome
+
 #content.grid_20
 
-  %header
+  %header.grid_19
     %h1 Welcome!
     Prizzm is all about storing &amp; sharing your data as well as tracking your issues with companies and products
   
-  
+  #guide
+    .g-big.grid_9.additem
+      .fl= image_tag "file_add.png"
+      .fl.cont
+        %h2 Add items
+        Start
+        = link_to "adding items", dashboard_path
+        to find people who have or want similar things!
+      .clear
+      
+    .g-big.grid_9.cases
+      .fl= image_tag "folder_edit.png"
+      .fl.cont
+        %h2 Cases
+        Use 
+        = link_to "cases", dashboard_path
+        to keep track of issues you have with companies and the products you buy.
+      .clear
+      
+    .clear
+    
+    .grid_6
+      .fl= image_tag "lock_locked.png"
+      %h3.fl Privacy
+      .clear
+      
+      We make sure all your data is secure. You can make anything either private or public.
+    
+    .grid_6
+      .fl= image_tag "share_logo.png"
+      %h3.fl Sharing
+      .clear
+      
+      Easily share the things you have and want with your friends on your social networks!
+    
+    .grid_6
+      .fl= image_tag "folder_accept.png"
+      %h3.fl Resolve Issues
+      .clear
+      
+      Manage, track and resolve your issues with companies! We provide all the tools to reach the right people.
+      
+    .clear
+    
+    .grid_9.comp-pro
+      = image_tag current_user.main_image, :class => "fl"
+      %h4 Complete your profile
+      Find more friends and help your friends find you.
+      
+      %ul
+        %li.complete Name
+        %li.incomplete About me
+        %li.incomplete Connect Facebook
+        %li.incomplete Connect Twitter
+      
+      = link_to "Complete your profile", profile_path(current_user), :class => "button blue"
+        
+      .clear
+    
+    .grid_9
+      %h4 Invite your friends
+      Get your friends started on Prizzm, just pop their email below.
+      = render :partial => "invitations/new"
+
+- content_for :jquery do
+  :javascript
+    $(document).ready(function() {
+      $('.close', '#helptool').bind('click', function() {
+        $('#helptool').slideUp(1000);
+      });
+
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='close remove' href='#'></a></li>");
+        $('#emails-list').append(new_email);
+      });
+
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
+      });
+    });

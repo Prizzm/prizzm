@@ -71,3 +71,5 @@ stylesheets:
     - public/stylesheets/case-detail.css
   company:
     - public/stylesheets/company.css
+  welcome:
+    - public/stylesheets/welcome.css

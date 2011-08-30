@@ -7,7 +7,6 @@
     = fields_for ItemImage.new do |f|
       = f.file_field :image, :rel => item_images_path(@item)                        
     = photo_uploadify
-    = link_to @item.url, @item.url
     
     = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
       = fields_for :image do |builder|
@@ -22,6 +21,8 @@
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     
     .title= @item.name
+    #options
+      = link_to @item.url, @item.url
     #rendered-review
       - if @item.review.blank?
         = render 'default_review'

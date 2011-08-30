@@ -10,7 +10,16 @@
   min-width: 100px;
 }
 
-#google_search { position:absolute; top:0px; right:0px; background-image:url(/images/mag-glass.png); background-color:Transparent; border:0; padding:0; margin:6px 1px; height:22px; width:22px; cursor:default; }
+#google_search {
+  position:absolute;
+  top: 17px;
+  right: 15px;
+  cursor:default;
+}
+
+#google_search a {
+  text-decoration: none;
+}
 
 /*
 

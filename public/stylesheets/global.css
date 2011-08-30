@@ -412,9 +412,9 @@ a.alt {
 }
 
 .loading {
-  background-image: url('/images/loading.gif');
-  width: 32px;
-  height: 32px;
+  background: no-repeat url('/images/loading.gif');
+  width: 16px;
+  height: 16px;
 }
 
 .yui3-aclist {
@@ -512,7 +512,8 @@ footer ul li {
   }
   
      aside .tags {
-     	padding: 8px 0;
+     	padding: 0;
+     	border: 0;
      }
   
   .tags li {
@@ -521,7 +522,7 @@ footer ul li {
     color: #215f94
   }
   
-  .tags li.as-selection-item, .tags li {
+  .tags li.as-selection-item {
     margin-right: 5px;
     padding: 3px 18px 3px 3px;
     background: #90cbf9;
@@ -571,7 +572,7 @@ footer ul li {
     padding: 2px !important;
   }
   
-  .tags li:hover {
+  .tags li.as-selection:hover {
     -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   }
@@ -594,23 +595,35 @@ footer ul li {
   width: 100%;
 }
 
-#invitations input[type=text] {
+aside #invitations input[type=text] {
   margin-bottom: 5px;
   width: 90%;
 }
 
-#invitations input[type=submit] {
+aside #invitations input[type=submit] {
   margin-bottom: 5px;
-  float: right;
 }
 
-#invitations #add-email {
+aside #invitations #add-email {
   margin-top: 8px;
 }
 
-#invitations .remove {
+aside #invitations .remove {
   background: url("../images/close.gif") no-repeat scroll 0 0 transparent;
   width: 13px;
   height: 14px;
   display: inline-block;
+}
+
+#emails-list li {
+  position: relative;
+}
+
+#emails-list li .close {
+  top: 7px;
+  right: 10px;
+}
+
+#invitations .loading {
+  margin-top: 15px;
 }

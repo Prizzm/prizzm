@@ -8,17 +8,21 @@
   %ul.fol-f.table
     - latest_reviews.each do |item|
       %li.rv.row
+        .sp
         .user.cell
           = link_to "" do
             = image_tag item.user.main_image
-            %span.uname= item.user.name
         .post.cell
           = image_tag item.main_image, :class => "fl"
           .fl.cont
-            %h1=link_to item.name, (item)
+            %h1
+              = link_to item.user.name, profile_path(item.user.name)
+              has a
+              = link_to item.name, (item)
+              
             = item.review 
             .footerbit
-              Added #{time_ago_in_words item.updated_at} ago
+              Written #{time_ago_in_words item.updated_at} ago
               \|
               = link_to "Share", ""
     /
@@ -34,10 +38,11 @@
     /= link_to "More", "", :class => "updt-feed"
 %aside.grid_6.right
   %article
-    %h4.fl Suggested People
-    = link_to "Refresh", "", :class => 'small fr'
-    = link_to "View all", members_path, :class => 'small fr'
-    .clear
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
     %ul.table
       - suggested_people.each do |person| 
         %li.row
@@ -51,8 +56,7 @@
             = link_to "", "", :class => "close"
   %article
     %h4 Invite your friends
-    #invitations.table
-      = render :partial => "invitations/new"
+    = render :partial => "invitations/new"
   
   %article
     %h4 Popular Tags
