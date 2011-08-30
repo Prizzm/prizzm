@@ -217,11 +217,6 @@ form.action {
 		box-shadow: none;
 	}
   
-.usergal, aside .table {
-  padding-top: 5px;
-  border-top: 1px solid #f3f3f3;
-}
-
   .usergal li {
     display: inline-block;
   }

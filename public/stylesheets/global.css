@@ -512,7 +512,8 @@ footer ul li {
   }
   
      aside .tags {
-     	padding: 8px 0;
+     	padding: 0;
+     	border: 0;
      }
   
   .tags li {

@@ -369,11 +369,10 @@ aside > nav > a {
   display: block;
 }
 
-aside nav ul{
-  padding-top: 10px;
-  border-top: 1px solid #f3f3f3;
+aside article h4 {
+  border-bottom: 1px solid #f3f3f3;
+  margin-bottom: 5px;
 }
-
   aside  nav li{
     margin-bottom: 10px;
   }

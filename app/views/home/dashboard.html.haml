@@ -34,10 +34,11 @@
     /= link_to "More", "", :class => "updt-feed"
 %aside.grid_6.right
   %article
-    %h4.fl Suggested People
-    = link_to "Refresh", "", :class => 'small fr'
-    = link_to "View all", members_path, :class => 'small fr'
-    .clear
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
     %ul.table
       - suggested_people.each do |person| 
         %li.row
