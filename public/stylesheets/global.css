@@ -412,9 +412,9 @@ a.alt {
 }
 
 .loading {
-  background-image: url('/images/loading.gif');
-  width: 32px;
-  height: 32px;
+  background: no-repeat url('/images/loading.gif');
+  width: 16px;
+  height: 16px;
 }
 
 .yui3-aclist {
@@ -594,23 +594,36 @@ footer ul li {
   width: 100%;
 }
 
-#invitations input[type=text] {
+aside #invitations input[type=text] {
   margin-bottom: 5px;
   width: 90%;
 }
 
-#invitations input[type=submit] {
+aside #invitations input[type=submit] {
   margin-bottom: 5px;
   float: right;
 }
 
-#invitations #add-email {
+aside #invitations #add-email {
   margin-top: 8px;
 }
 
-#invitations .remove {
+aside #invitations .remove {
   background: url("../images/close.gif") no-repeat scroll 0 0 transparent;
   width: 13px;
   height: 14px;
   display: inline-block;
+}
+
+#emails-list li {
+  position: relative;
+}
+
+#emails-list li .close {
+  top: 7px;
+  right: 10px;
+}
+
+#invitations .loading {
+  margin-top: 15px;
 }

@@ -8,7 +8,7 @@
     Prizzm is all about storing &amp; sharing your data as well as tracking your issues with companies and products
   
   #guide
-    .g-big.grid_9
+    .g-big.grid_9.additem
       .fl= image_tag "file_add.png"
       .fl.cont
         %h2 Add items
@@ -17,7 +17,7 @@
         to find people who have or want similar things!
       .clear
       
-    .g-big.grid_9
+    .g-big.grid_9.cases
       .fl= image_tag "folder_edit.png"
       .fl.cont
         %h2 Cases
@@ -51,12 +51,59 @@
       
     .clear
     
-    .grid_18
+    .grid_9.comp-pro
       = image_tag current_user.main_image, :class => "fl"
-      .fl
-        %h4 Complete your profile
-        Find more friends and help your friends find you.
+      %h4 Complete your profile
+      Find more friends and help your friends find you.
+      
+      %ul
+        %li.complete Name
+        %li.incomplete About me
+        %li.incomplete Connect Facebook
+        %li.incomplete Connect Twitter
+      
+      = link_to "Complete your profile", profile_path(current_user), :class => "button blue"
+        
       .clear
     
-    .grid_18
-      More
+    .grid_9
+      %h4 Invite your friends
+      Get your friends started on Prizzm, just pop their email below.
+      = render :partial => "invitations/new"
+
+- content_for :jquery do
+  :javascript
+    $(document).ready(function() {
+      $('.close', '#helptool').bind('click', function() {
+        $('#helptool').slideUp(1000);
+      });
+
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='close remove' href='#'></a></li>");
+        $('#emails-list').append(new_email);
+      });
+
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
+      });
+    });
