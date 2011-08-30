@@ -15,12 +15,14 @@
         .post.cell
           = image_tag item.main_image, :class => "fl"
           .fl.cont
-            %h1=link_to item.name, (item)
+            %h1
+              = link_to item.user.name, profile_path(item.user.name)
+              has a
+              = link_to item.name, (item)
+              
             = item.review 
             .footerbit
-              Written by
-              = link_to item.user.name, profile_path(item.user.name)
-              #{time_ago_in_words item.updated_at} ago
+              Written #{time_ago_in_words item.updated_at} ago
               \|
               = link_to "Share", ""
     /

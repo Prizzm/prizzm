@@ -236,7 +236,8 @@ form.action {
 
 .fol-f .cell.post h1 {
   margin-bottom: 3px;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  color: #80aac6;
 }
 
 .fol-f .cell.post h1 a {
@@ -264,6 +265,7 @@ form.action {
 
 .fol-f .rv .cell.post {
 	border: 1px solid #eaeaea;
+	word-break: break-all;
 }
 
 .fol-f .user.cell {
