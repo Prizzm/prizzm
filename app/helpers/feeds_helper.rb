@@ -16,7 +16,7 @@ module FeedsHelper
   def latest_reviews
     # FIXME: Put as a scope on notifications... not here
     #Notification.where(event: "user.update.item.review").limit(3).order_by(:time, :desc).to_a
-    Item.with_review.recently_updated.publicly.limit(3)
+    Item.with_review.recently_updated.publicly.limit(10)
   end
 
   def recent_cases
