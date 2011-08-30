@@ -601,7 +601,6 @@ aside #invitations input[type=text] {
 
 aside #invitations input[type=submit] {
   margin-bottom: 5px;
-  float: right;
 }
 
 aside #invitations #add-email {
