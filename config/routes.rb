@@ -17,6 +17,13 @@ Prizzm::Application.routes.draw do
   get '/:id/wants' => 'profile#want', :as => 'want'
   get '/:id/cases' => 'profile#cases', :as => 'user_cases'
 
+
+  scope '/:taggable_type/:id' do
+    resources :tags, :except => :destroy
+  end
+
+  delete '/:taggable_type/:id/tags' => 'tags#destroy', :as => 'destroy_tag'
+
   #route for getting images for a given page URL i.e. scrape
   match "/home/scrape" => "home#scrape", :as  => "scrape"
 
