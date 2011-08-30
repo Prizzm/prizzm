@@ -5,6 +5,7 @@
     %title  Prizzm
     = csrf_meta_tag
     = render 'layouts/stylesheets'
+    = include_stylesheets :profile
     = favicon_link_tag
     
   %body
@@ -25,12 +26,27 @@
         %aside.grid_4
           = image_tag @user.photo_url(:big), :class => "profilePic", :alt => "" 
           
-          %nav
-            %ul
-              %li Following #{pluralize @user.following_users_count, "Person"}
-              %li Followed by #{pluralize @user.followers_count, "Person"}
-              %li Following #{pluralize @user.following_companies_count, "Company"}
-              %li Following #{pluralize @user.following_products_count, "Product"}
+          %ul#socialbit
+            %li
+              %h3 Following #{followed_users = @user.following_users_count}
+              .ufgallery
+                - if followed_users > 0
+                  - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
+                    = link_to profile_path(user) do
+                      = image_tag user.main_image, :class => "smallthumb"
+              .clear   
+            %li
+              %h3 Followed by #{pluralize @user.followers_count, "Person"}
+              .ufgallery
+                - @user.followers.take(8).each do |follower|
+                  = link_to profile_path(follower) do
+                    = image_tag follower.main_image, :class => "smallthumb"
+              .clear
+            /
+              %li
+                Following #{pluralize @user.following_companies_count, "Company"}
+              %li
+                Following #{pluralize @user.following_products_count, "Product"}
         
         
         #content.grid_15
