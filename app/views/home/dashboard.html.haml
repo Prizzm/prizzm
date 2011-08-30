@@ -16,7 +16,7 @@
           = image_tag item.main_image, :class => "fl"
           .fl.cont
             %h1
-              = link_to item.user.name, profile_path(item.user.name)
+              = link_to item.user.name, profile_path(item.user)
               has a
               = link_to item.name, (item)
               

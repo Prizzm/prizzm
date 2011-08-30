@@ -30,7 +30,7 @@ img.userthumb {
 	border: 1px solid #d5d5d5;
 }
 
-section#review {
+section#review, section#pub-review{
 	padding: 35px 10px 10px;
 	font-size: 14px;
 	border: 1px solid rgba(0,0,0,0.2);
@@ -41,6 +41,9 @@ section#review {
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
+  section#pub-review {
+    padding: 10px !important;
+  }
 
   section#review .status {
     width: 100% !important;
@@ -60,8 +63,13 @@ section#review {
   }
   
   .title {
-	font-size: 1.6em;
+	font-size: 1.5em;
+	padding-bottom: 10px;
   }
+  
+    .title a {
+      text-decoration: none;
+    }
   
   section#review h1 {
 	font-size: 1.7em;
@@ -186,9 +194,11 @@ ul#comments .cell {
 }
 
 #rating {
-    margin-bottom: 5px;
-	padding: 10px;
-    
+  margin-bottom: 5px;
+	padding: 5px 8px;
+  display: inline-block;
+  font-size: 0.8em;
+  
 	-webkite-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
