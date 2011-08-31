@@ -1,10 +1,5 @@
 = include_stylesheets :item_new
 
-%ul.action-menu
-  %li= link_to "Rate what you have", "", :class => "active"
-  %li= link_to "Get advice", ""
-  %li= link_to "Track an issue", ""
-
 = form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
   = f.text_field :name, :placeholder => "Add something you have"
   #google_search= link_to "Add link", ""

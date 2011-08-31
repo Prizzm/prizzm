@@ -2,6 +2,11 @@
   = include_stylesheets :livef
 
 #content.grid_14
+  %ul.action-menu
+    %li= link_to "Rate what you have", "", :class => "active"
+    %li= link_to "Get advice", ""
+    %li= link_to "Track an issue", ""
+  
   = render :template => 'items/new'
  
 
