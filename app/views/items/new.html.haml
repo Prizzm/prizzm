@@ -52,7 +52,33 @@
   :javascript
     $(document).ready(function(){
 
+      var data = [
+        {value: "case", name: "case"}
+      ];
+
+      $('#item_tag_list').autoSuggest(data,
+        {
+          asHtmlID: 'tag_list', 
+          startText: "+ Add tags",
+          neverSubmit: true,
+          selectionAdded: function(element){
+            var tag_list = $('#as-values-tag_list').val();
+            $('#tag_list').val(tag_list);
+          },
+          selectionRemoved: function(element){
+            element.fadeTo("fast", 0, function(){
+              element.remove();
+              var tag_list = $('#as-values-tag_list').val();
+              $('#tag_list').val(tag_list);
+            });
+          }
+      });
+
+
+
+
       // what?
+
       $("#search-by-title").click(function(){
         if ($('input#item_name').val()){
           window.product_search_term = $('input#item_name').val();
