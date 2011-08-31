@@ -5,11 +5,11 @@ Prizzm::Application.routes.draw do
   get "product_reviews/save"
   get "product_reviews/share"
   match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews#say'
-
+  match "admin(/:action)" => "admin"
   resources :members
 
   root :to => 'home#welcome'
-
+  
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
