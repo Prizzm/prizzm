@@ -1,19 +1,39 @@
 class ProductInvitationsController < ApplicationController
-
- def index2
-  
+  def index
+   @product = Product.find(params[:product_id])
+   @invitations = @product.product_invitations
   end
+
   def create
-    Product.find(params[:product_id]).product_invitations.create(params[:product_invitation])
+    require 'digest/md5'
+    @pinvite = Product.find(params[:product_id]).product_invitations.create(params[:product_invitation])
+    secret = Digest::SHA1.hexdigest("prizzm")
+    encryptor = ActiveSupport::MessageEncryptor.new(secret)
+    @pinvite.encrypted_id = Digest::MD5.hexdigest(@pinvite.id.to_s)
+    @pinvite.save!
     redirect_to product_product_invitations_path(Product.find(params[:product_id]))
   end
-
   def view_invitation
     @product = Product.find(params[:id])
     @item = Item.new(:product_id => @product.id)
     session[:new_item] = params[:id]
   end 
-
+  def new
+    @product = Product.find(params[:product_id])
+    @product_invitation = ProductInvitation.new
+  end
+  def show
+    @product_invitation = ProductInvitation.find(params[:id])
+    @product = Product.find(params[:product_id])
+    @url = request.host_with_port
+    if Mailer.product_invite(@product,@product_invitation,@url).deliver
+      @product_invitation.sent = "sent"
+      @product_invitation.sent_on = Time.now
+      @product_invitation.save!
+    end
+    redirect_to product_product_invitations_path(@product)
+  end
+  
   def accept_invitation
     # Create an orphan item in the database
     @item = Item.create(params[:item].merge(:product_id => session[:new_item], :privacy => 'public', :invitation_status => "incomplete"))
@@ -39,5 +59,6 @@ class ProductInvitationsController < ApplicationController
       flash[:error] = "Can't determine which product you were invited to view"
       redirect_to home_url
     end
-  end 
+  end
+
 end

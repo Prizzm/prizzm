@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include UserImageable
   include Models::User::DeviseExt
 
-  after_create [:create_user_stream, :create_user_settings, :log_creation] 
+  after_create [:create_user_stream, :create_user_settings, :log_creation]
+ 
   after_destroy :log_destruction
   after_save :log_update
 
@@ -16,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :subscriptions, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
   has_many :cases, :dependent => :destroy
+  
+  ##Added on 31-aug-2011
+  belongs_to :company
   
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true
@@ -60,7 +64,13 @@ class User < ActiveRecord::Base
     UserSettings.where(:user_id => id).first
   end
 
-
+  def company
+    if self.company_id
+      Company.find(self.company_id)
+    else
+      Company.new
+    end
+  end
 
   # Returns 'true' if user has the product in their wanted items collection,
   # otherwise returns false

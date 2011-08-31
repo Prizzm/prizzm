@@ -26,6 +26,16 @@ class Mailer < ActionMailer::Base
    mail(:to => "#{recipient.name} <#{recipient.email}>", :subject => "A User has just left a comment on your #{comment.commentable.class.to_s}")
   end 
 
+  ##changed on 31-aug-2011 
+  ##mailer invitation 
+  def product_invite(product, pinvite,hosturl)
+    @product = product
+    @pinvite = pinvite
+    @hosturl = hosturl    
+    mail(:to=>"#{pinvite.first_name}  <#{pinvite.email}>",:subject=>"Prizzm invitation for product #{product.name}")
+  end
+  ##end changed code on 31-aug-2011 , for mailer invitation
+
   def item_comment(comment, recipient)
    @comment = comment
    @recipient = recipient

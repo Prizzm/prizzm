@@ -1,0 +1,69 @@
+
+
+
+
+%html{ :lang => "en"}
+
+    %head
+        %meta{:charset=>"utf-8"}
+        %title Bryna Nicole Invite - Powered by Prizzm
+        %meta{:http=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
+        %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+        <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
+        %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
+        %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
+        %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
+
+
+
+
+    %body#main
+
+
+        %header
+            %a{:href=>""}
+                %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
+                %h1.fl Bryna Nicole
+                .clear
+
+            %img{:src=>"/images/bryna-banner.png",:alt=>""}
+
+
+        %section
+            .title
+                Save it to Prizzm
+                %p
+                    %em What is Prizzm?
+                    Prizzm is your data etc...
+
+            %article.left
+                %ul.social-login
+                    %li.fb-login
+                        =link_to "Login with facebook", user_omniauth_authorize_path(:facebook)
+                    %li.tt-login
+                        =link_to "Login with twitter", user_omniauth_authorize_path(:twitter)
+                    %li
+                        %a{:href=>""}I have a Prizzm account
+
+            %article.right
+                = form_for :user, :url => user_session_path do |f|
+                    %h2 Sign up!
+                    = f.label :username, "Username: "
+                    = f.text_field :username, :class => "round"
+                    = f.label :password, "Password: "
+                    = f.password_field :password, :class => "round"
+                    = f.label :confirmpassword, "Confirm Password: "
+                    = f.password_field :confirmpassword, :class => "round"
+                    = f.label :email, "Email: "
+                    = f.text_field :email, :class => "round"
+                    
+                    = f.submit :id => "submit", :value => "Register", :class=>"button blue"
+                <!-- One signed up, log them in and redirect to http://development.prizzm.com -->
+                .clear
+
+        .clear
+
+		
+        
+
+

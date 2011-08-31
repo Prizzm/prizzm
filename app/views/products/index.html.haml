@@ -1,22 +1,33 @@
-%h1 Listing products
+=stylesheet_link_tag("product_invite")
+%h1 Product listing
+%br
+.product-show
+    %table{:cellspacing=>"10",:cellpadding=>"20"}
+        %tr{:style=>"background:#ccc;padding:5px;"}
+            %th Name
+            %th Upc
+            %th Action
+        - if !@product.nil?
+            %tr
+                %td{:colspan=>"3"} No Record Found
+        - else
+            - @products.each do |product|
+                %tr
+                    %td
+                        = product.name
+                        &nbsp;
+                    %td
+                        = product.upc
+                        &nbsp;
+                    %td.actions
 
-%table
-  %tr
-    %th Name
-    %th Upc
-    %th
-    %th
-    %th
-    %th
+                        = link_to 'Details ', product
+                        &nbsp
 
-  - @products.each do |product|
-    %tr
-      %td= product.name
-      %td= product.upc
-      %td= link_to 'Show', product
-      %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
-      %td= link_to 'invitations', product_product_invitations_path(product)
+                        = link_to 'add invitation', product_product_invitations_path(product)
+                        &nbsp
+
+                        = link_to image_tag("delete_product.gif"), product, :confirm => 'Are you sure?', :method => :delete
 
 %br
 

@@ -34,73 +34,19 @@ header > img {
 	margin-bottom: 10px;
 	border: 1px solid #fff;
 }
-  
-aside, section {
-	float: left;
-}
-  
-aside {
-	width: 100px;
-}
 
-	aside li{
-		opacity: 0.4;
-        position: relative;
-		border-bottom: 1px dashed #fff;
-		background: #000 no-repeat url('../images/invite-sprite.png');
-	}
-	
-	.stepsave{ background-position: center 10px;} 
-	.stepsay{ background-position: center -109px;} 
-	.stepshare{ background-position: 24px -219px; } 
-
-	
-	aside li.active {
-		background-color: #fff;
-		opacity: 1;
-	}
-	
-	aside li.active  a{
-		color: #484848 !important;
-	}
-	
-	aside li:hover {
-		opacity: 1;
-	}
-	
-	aside li a {
-		padding: 75px 0 10px;
-		display: block;
-		color: #fff !important;
-		text-decoration: none;
-		text-align: center;
-		font-family: Museo500, serif;
-		font-weight: bold;
-	}
-    
-    aside li span {
-        margin-left: -21px;
-        padding: 15px 7px;
-        position: absolute;
-        background: #000;
-        color: #fff;
-    }
-	
-    
-    aside li.active span {
-        background: #fff;
-        color: #000;
-        font-weight: bold;
-    }
-	
 section {
-	width: 576px;
+	width: 100%;
     min-height: 266px;
 	padding: 20px;
 	font-size: 14px;
 	font: arial,sans-serif;
 	background: #fff;
 	
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -158,10 +104,10 @@ section {
   }
 
 article {
+    margin: 0 auto;
 	padding: 0 10px 10px;
-	width: 288px;
-	float: left;
-	
+	width: 50%;
+    
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -177,9 +123,7 @@ form h2 {
 	margin-top: 0;
 }
 
-article.left{
-	border-right: 1px solid #ccc;
-}
+
 
 form.login > a {
 	margin-top: 15px;

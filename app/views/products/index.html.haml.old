@@ -1,0 +1,25 @@
+%h1 Listing products
+
+%table
+  %tr
+    %th Name
+    %th Upc
+    %th
+    %th
+    %th
+    %th
+
+  - @products.each do |product|
+    %tr
+      %td= product.name
+      %td= product.upc
+      %td= link_to 'Show', product
+      %td= link_to 'Edit', edit_product_path(product)
+      %td= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'invitations', product_product_invitations_path(product)
+
+%br
+
+= link_to 'New Product', new_product_path
+
+

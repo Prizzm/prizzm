@@ -6,7 +6,10 @@ class AddColumnsToProductInvitations < ActiveRecord::Migration
     add_column :product_invitations, :email,:string
     add_column :product_invitations, :purchase_date,:date
     add_column :product_invitations, :amount,:string
+    add_column :product_invitations, :content,:string
+    add_column :product_invitations, :encrypted_id,:string
     add_column :product_invitations, :sent,:string
+    add_column :product_invitations, :sent_on,:datetime
     add_column :product_invitations, :accepted,:string
   end
 
@@ -17,7 +20,10 @@ class AddColumnsToProductInvitations < ActiveRecord::Migration
     remove_column :product_invitations, :email
     remove_column :product_invitations, :purchase_date
     remove_column :product_invitations, :amount
+    remove_column :product_invitations, :content
+    remove_column :product_invitations, :encrypted_id
     remove_column :product_invitations, :sent
+    remove_column :product_invitations, :sent_on
     remove_column :product_invitations, :accepted
   end
 end

@@ -1,5 +1,11 @@
 Prizzm::Application.routes.draw do
 
+
+  get "product_reviews/say"
+  get "product_reviews/save"
+  get "product_reviews/share"
+  match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews#say'
+
   resources :members
 
   root :to => 'home#welcome'
@@ -32,6 +38,7 @@ Prizzm::Application.routes.draw do
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
+    resources :product_invitations 
   end
 
   resources :cases do
@@ -137,6 +144,7 @@ Prizzm::Application.routes.draw do
   end
 
   resources :companies do
+    resources :products
     resources :company_images, :only => [:create, :destroy]
   end
 
@@ -152,7 +160,7 @@ Prizzm::Application.routes.draw do
 
 
   # Routes for item invitation use cases
-  resources :product_invitations
+#  resources :product_invitations
   get  '/invitation/:id'    => 'product_invitations#view_invitation', :as  => 'view_item_invitation'
   post '/invitation'        => 'product_invitations#accept_invitation', :as => 'accept_item_invitation'
   # FIXME:  Should be using a 'GET' for routes that have side effects, but we

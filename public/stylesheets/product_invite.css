@@ -1,0 +1,13 @@
+.product-show table,invitations-show table {    
+    margin:0 auto;
+}
+.product-show table tr td,.product-show table tr th,
+.invitations-show table tr td,.invitations-show table tr th
+{
+    font-size: 0.9em;
+    border:2px solid white;
+    padding:2px 5px 2px 5px;
+}
+.invitations-show table tr th,.product-show table tr th{
+    text-transform: capitalize;
+}

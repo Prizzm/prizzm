@@ -1,28 +1,42 @@
 .add-invitation
-    .mydiv{:style=>"width:400px;"}
+    .mydiv{:style=>"width:800px;"}
+        .heading-common
+            %h1
+                Add invitation for
+                =@product.name
         -  form_for ([@product, @product_invitation]) do |f|
             %p
-                = f.label :first_name
+                = f.label "Customer's first name"
                 = f.text_field :first_name
             %p
-                = f.label :last_name
+                = f.label "Customer's last name"
                 = f.text_field :last_name
             %p
-                = f.label :email
+                = f.label "Customer's email"
                 = f.text_field :email
             %p
-                = f.label :purchase_date
+                = f.label "Product purchase date"
                 = f.text_field :purchase_date
+            %p
+                = f.label "Invitation Content"
+                = f.text_area :content,:rows=>"6",:cols=>"45"
             %p
                 = f.label :amount
                 = f.text_field :amount
             %p
-                = f.label :sent
-                = f.text_field :sent
-            %p
-                = f.label :accepted
-                = f.text_field :accepted
-            %br
-            %p
+                %br
                 = f.submit
-.testdiv= current_user.company.name
+- content_for :javascripts do
+    =javascript_include_tag 'ckeditor/ckeditor.js'
+    :javascript
+        $(document).ready(function(){
+            function showEditor(box){
+                editor = CKEDITOR.replace(box,{                   //refactor point
+                startupFocus: true
+            });
+          }
+          showEditor('product_invitation_content');
+          $( "#product_invitation_purchase_date" ).datepicker();
+        });
+    
+   

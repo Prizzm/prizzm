@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   has_many :users, :through => :items
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
   has_many :product_invitations
+  has_many :product_reviews
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
 

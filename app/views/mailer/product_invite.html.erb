@@ -1,0 +1,7 @@
+Mr <span style="text-transform: capitalize;"><%= @pinvite.name %></span><br/>
+<div>
+  You are invited to review <%= @pinvite.product.name %> by <%= @pinvite.product.company.name %>
+</div>
+<%= @pinvite.content.html_safe %>
+Please Visit <%= link_to "Accept","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>
+or <%= link_to "Reject","http://#{@hosturl}/product_reviews/say/rejected/#{@pinvite.encrypted_id}" %>

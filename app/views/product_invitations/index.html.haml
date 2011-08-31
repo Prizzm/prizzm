@@ -1,28 +1,53 @@
-%h1 Listing product invitations
+=stylesheet_link_tag("product_invite")
+%h1 
+    Listing invitations for
+    =@product.name
+%br
+.invitations-show
+    %table
+        %tr{:style=>"background:#ccc;padding:5px;"}
+            %th First Name &nbsp;
+            %th Last Name &nbsp;
+            %th Email &nbsp;
+            %th Purchase Date &nbsp;
+            %th Amount &nbsp;
+            %th Invited On &nbsp;
+            %th Response &nbsp;
+            %th Status &nbsp
+        -if !@invitations.empty?
+            - @invitations.each do |invitation|
+                %tr
+                    %td
+                        = invitation.first_name
+                        &nbsp;
+                    %td
+                        = invitation.last_name
+                        &nbsp;
+                    %td
+                        = invitation.email
+                        &nbsp;
+                    %td
+                        = invitation.purchase_date
+                        &nbsp;
+                    %td
+                        = invitation.amount
+                        &nbsp;
+                    %td
+                        -if !invitation.sent_on.nil?
+                            = invitation.sent_on.to_date
+                        &nbsp;
+                    %td
+                        = invitation.accepted
+                        &nbsp;
+                    %td
+                        -if invitation.sent.to_s == "sent"
+                            Invitation sent
+                        -else
+                            = link_to 'Invite', product_product_invitation_path(@product,invitation)
+        -else
+            %tr
+                %td{:colspan=>"8"} No Record Found
 
-%table
-  %tr
-    %th Product id
-    %th First Name
-    %th Last Name
-    %th Email
-    %th Purchase Date
-    %th Amount
-    %th send status
-    %th accept status
-    %th 
-
-  - @invitations.each do |invitation|
-    %tr
-      %td= invitation.product_id
-      %td= invitation.first_name
-      %td= invitation.last_name
-      %td= invitation.email
-      %td= invitation.purchase_date
-      %td= invitation.amount
-      %td= invitation.sent
-      %td= invitation.accepted
-      %td= link_to 'Show', product_product_invitations_path(@product)
 %br
 =link_to 'add invitation', new_product_product_invitation_path
 %br
