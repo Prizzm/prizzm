@@ -20,14 +20,14 @@
     = privacy_control_for @item
     = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
     
-    .title= @item.name
+    .title= raw format h @item.name
     #options
       = link_to @item.url, @item.url
     #rendered-review
       - if @item.review.blank?
         = render 'default_review'
       - else
-        = raw @item.review
+        = raw format h @item.review
     #review-editor
       = form_for @item, :remote => true, :method => :put do |f|
         = f.text_area :review
