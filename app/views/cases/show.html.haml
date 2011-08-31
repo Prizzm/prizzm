@@ -20,6 +20,8 @@
           = f.submit 'Save'
         .clear
     #review_status 
+    = form_for @case, :remote => true, :method => 'PUT' do |f|
+      = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
     %ul.notes
       - @case.notebook.notes.each do |note|
         = render :partial => 'cases/note', :locals => {:note => note}
@@ -50,6 +52,8 @@
   :javascript
 
     $(document).ready(function() {
+
+      #{render 'tags/taggable.js.erb', :taggable => @case} 
 
 
       $('.note_body').editable(function(value, settings){
