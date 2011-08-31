@@ -1,0 +1,25 @@
+var data = [
+  {value: "case", name: "case"}
+];
+
+$('#<%= object_type(taggable)%>_tag_list').autoSuggest(data,
+  {
+    asHtmlID: 'tag_list', 
+    startText: "+ Add tags",
+    neverSubmit: true,
+    selectionAdded: function(element){
+      var tag_list = $('#as-values-tag_list').val();
+      $('#tag_list').val(tag_list);
+      tag_list = $('#tag_list').val();
+      console.log(tag_list);
+    },
+    selectionRemoved: function(element){
+      element.fadeTo("fast", 0, function(){
+        element.remove();
+        var tag_list = $('#as-values-tag_list').val();
+        $('#tag_list').val(tag_list);
+        tag_list = $('#tag_list').val();
+        console.log(tag_list);
+      });
+    }
+});
