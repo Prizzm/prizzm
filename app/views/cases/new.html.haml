@@ -7,6 +7,7 @@
   = link_to 'clear', '#', :class => 'button', :id => 'clear_item_fields'
   .clear  
 = render'layouts/javascripts'
+<<<<<<< HEAD
 
 /
   :javascript
@@ -24,3 +25,9 @@
         }
       );
     });
+=======
+:javascript
+  $(document).ready(function(){
+    #{render 'tags/new_taggable.js.erb',  :taggable => @case} 
+  });
+>>>>>>> 7e7a058182e4cedc1a3cb42bd70033d1801b6446

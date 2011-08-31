@@ -15,6 +15,7 @@ class CasesController < InheritedResources::Base
   end
 
   def create 
+    params[:case][:tag_list] = params[:as_values_tag_list]
     @case = Case.new(params[:case])
     @case.user = current_user
     if @case.save
