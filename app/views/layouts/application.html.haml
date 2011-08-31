@@ -9,7 +9,6 @@
     
   %body
     #cbbg
-    - if signed_in?
       %header#prizzmbar
         .container_24
           - if signed_in?
@@ -17,8 +16,6 @@
           - else
             = render "layouts/header_signed_out"
           .clear
-    - else
-      #blackbar
      
     #container.container_24
       #main
