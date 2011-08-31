@@ -14,14 +14,13 @@ class Item < ActiveRecord::Base
   after_update :notify_attribute_changes
 
   has_many :images, :class_name => 'ItemImage', :dependent => :destroy
-  has_many :interactions, :dependent => :destroy
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete), :allow_nil => true
 
   # TODO: Add an Item_URL model along with a has_many association Item_URL
   # should have an thumbnail image
-  accepts_nested_attributes_for :images, :interactions
+  accepts_nested_attributes_for :images
 
   scope :recently_updated, order('updated_at DESC')
   scope :recently_created, order('created_at DESC')
