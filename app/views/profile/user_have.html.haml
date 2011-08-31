@@ -8,11 +8,13 @@
     .close
   
   
-  = render :template => 'items/new'
+  
   
   %header
     %h1 What I Have:  
-  
+
+  = render :template => 'items/new'  
+
   %ul.table.list-display
     - @user.owned_items.each do |item|
       %li.row{:id => "item_#{item.id}"}
