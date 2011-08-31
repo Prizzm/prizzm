@@ -5,7 +5,7 @@
   %ul.action-menu
     %li= link_to "Rate what you have", "", :class => "active"
     %li= link_to "Get advice", ""
-    %li= link_to "Track an issue", ""
+    %li= link_to "Track an issue", new_case_path, :class => "facebox"
   
   = render :template => 'items/new'
  
