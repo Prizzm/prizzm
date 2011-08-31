@@ -47,7 +47,7 @@ stylesheets:
   logged_in:
     - public/stylesheets/application-logged-in.css
   public:
-    - public/stylesheets/application-public.css
+    - public/stylesheets/application-logged-in.css
 
   item_public:
     - public/stylesheets/item-public.css

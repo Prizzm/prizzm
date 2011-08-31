@@ -10,7 +10,6 @@
     
   %body
     #cbbg
-    - if signed_in?
       %header#prizzmbar
         .container_24
           - if signed_in?
@@ -18,9 +17,7 @@
           - else
             = render "layouts/header_signed_out"
           .clear
-    - else
-      #blackbar
-     
+
     #container.container_24
       #main
         %aside.grid_4
@@ -29,7 +26,7 @@
           - if your_profile?
             /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
           - else
-            = follow_link_for @user
+            /= follow_link_for @user
           .clear
           %article
             %h4 About #{@user.first_name}
