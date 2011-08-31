@@ -1,27 +1,26 @@
-%h1 New Case
-Keep a record of your problem with a company or service
-
-= form_for @case=Case.new, :html => {:class => "table addcase"} do |f|
+= form_for @case=Case.new, :html => {:class => "action addcase"} do |f|
   = f.text_field 'title', :placeholder => "What's your issue?"
   = text_field_tag 'company_name', nil, :placeholder => "With who?"
   = f.hidden_field 'company_id'
   = f.text_field :tag_list, :placeholder => "+ Add tags"
   = f.submit 'save', :class => 'button blue'
   = link_to 'clear', '#', :class => 'button', :id => 'clear_item_fields'
-  
+  .clear  
 = render'layouts/javascripts'
-:javascript
-  $(document).ready(function(){
-    
-    // http://code.drewwilson.com/entry/autosuggest-jquery-plugin
-    var data = [
-      {value: "case", name: "case"}
-    ];
 
-    $('#case_tag_list').autoSuggest(data,
-      {
-        preFill: "case",
-        neverSubmit: true
-      }
-    );
-  });
+/
+  :javascript
+    $(document).ready(function(){
+      
+      // http://code.drewwilson.com/entry/autosuggest-jquery-plugin
+      var data = [
+        {value: "case", name: "case"}
+      ];
+  
+      $('#case_tag_list').autoSuggest(data,
+        {
+          preFill: "case",
+          neverSubmit: true
+        }
+      );
+    });

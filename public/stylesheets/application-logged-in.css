@@ -745,3 +745,11 @@ form.action {
 	li.as-original:hover {
 		box-shadow: none;
 	}
+	
+.addcase {
+  margin-bottom: 10px;
+}
+
+.addcase .button {
+  float: right;
+}

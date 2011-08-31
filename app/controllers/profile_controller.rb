@@ -25,7 +25,7 @@ class ProfileController < ApplicationController
     @item = Item.new
     @item.images.build
     @cases = current_user.cases.all
-    render 'cases/index', :layout => "application"
+    render 'user_cases', :layout => "application"
   end 
 
 protected
