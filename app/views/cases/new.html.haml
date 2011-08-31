@@ -12,16 +12,5 @@ Keep a record of your problem with a company or service
 = render'layouts/javascripts'
 :javascript
   $(document).ready(function(){
-    
-    // http://code.drewwilson.com/entry/autosuggest-jquery-plugin
-    var data = [
-      {value: "case", name: "case"}
-    ];
-
-    $('#case_tag_list').autoSuggest(data,
-      {
-        preFill: "case",
-        neverSubmit: true
-      }
-    );
+    #{render 'tags/new_taggable.js.erb',  :taggable => @case} 
   });

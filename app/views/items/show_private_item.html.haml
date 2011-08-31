@@ -38,10 +38,6 @@
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
       %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
-  /
-    .title Company
-    #company
-      = render "company", :company => @item.company
      
   = comments_section_for @item
 
@@ -82,48 +78,8 @@
   :javascript
     $(document).ready(function() {
 
-      var data = [
-        {value: "case", name: "case"}
-      ];
 
-      $('#item_tag_list').autoSuggest(data,
-        {
-          startText: "+ Add tags",
-          preFill: "#{@item.tag_list}",
-          neverSubmit: true,
-          selectionAdded: function(element){
-            var tag = $(element).text();
-            tag = $.trim(tag);
-            if (tag.length > 0 ) {
-              $.ajax({
-                type : 'POST',
-                url: '#{tags_path(object_type(@item), @item.id)}',
-                data : {tag: tag},
-                dataType: "script",
-                success: function(r){
-                  console.log(tag + ' is now added');
-                }
-              });
-            }
-          },
-          selectionRemoved: function(element){
-            element.fadeTo("fast", 0, function(){
-              element.remove();
-              var tag = $(element).text();
-              tag = $.trim(tag);
-              $.ajax({
-                type: 'DELETE',
-                url: '#{tags_path(object_type(@item), @item.id)}',
-                data: {tag: tag},
-                dataType: "script",
-                success: function(r){
-                  console.log(tag + ' is deleted');
-                }
-              });
-            });
-          }
-      });
-
+      #{render 'tags/taggable.js.erb', :taggable => @item} 
 
       var editor;
 
