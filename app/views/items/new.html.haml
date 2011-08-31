@@ -46,7 +46,7 @@
 - content_for :javascripts do
   :javascript
     $(document).ready(function(){
-      #{render 'tags/new_taggable.js',  :taggable => @item} 
+      #{render 'tags/new_taggable.js', :format => :html, :taggable => @item} 
 
       // what?
 
