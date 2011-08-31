@@ -12,5 +12,5 @@ Keep a record of your problem with a company or service
 = render'layouts/javascripts'
 :javascript
   $(document).ready(function(){
-    #{render 'tags/new_taggable.js',  :taggable => @case} 
+    #{render 'tags/new_taggable.js.erb', :taggable => @case} 
   });

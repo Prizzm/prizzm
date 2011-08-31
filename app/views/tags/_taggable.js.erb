@@ -1,0 +1,41 @@
+var data = [
+  {value: "case", name: "case"}
+];
+
+$('#<%= object_type(taggable)%>_tag_list').autoSuggest(data,
+  {
+    startText: "+ Add tags",
+    preFill: "<%= taggable.tag_list %>",
+    neverSubmit: true,
+    selectionAdded: function(element){
+      var tag = $(element).text();
+      tag = $.trim(tag);
+      if (tag.length > 0 ) {
+        $.ajax({
+          type : 'POST',
+          url: '<%= tags_path(object_type(taggable), taggable.id) %>',
+          data : {tag: tag},
+          dataType: "script",
+          success: function(r){
+            console.log('The tag ' + tag + ' is now added');
+          }
+        });
+      }
+    },
+    selectionRemoved: function(element){
+      element.fadeTo("fast", 0, function(){
+        element.remove();
+        var tag = $(element).text();
+        tag = $.trim(tag);
+        $.ajax({
+          type: 'DELETE',
+          url: '<%= tags_path(object_type(taggable), taggable.id) %>',
+          data: {tag: tag},
+          dataType: "script",
+          success: function(r){
+            console.log('The tag ' + tag + ' is deleted');
+          }
+        });
+      });
+    }
+});
