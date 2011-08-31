@@ -2,8 +2,11 @@ class TagsController < ApplicationController
   before_filter :find_taggable, :except => :list
 
   def create
-    @taggable.tag_list.add params[:tag]
-    @taggable.save_tags
+    tag = params[:tag].strip
+    unless @taggable.tag_list.collect {|t| t.strip}.include? tag
+      @taggable.tag_list.add tag
+      @taggable.save_tags
+    end
     head :ok
   end 
 
