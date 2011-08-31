@@ -20,89 +20,9 @@
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
 
-/
-  = form_tag "#", { :id => "search_form", :class => "search grid_7"} do 
-    = text_field_tag :search, nil, :id => "product-search-input", :placeholder => "Find products and companies"
-    %input{:type => "submit", :value => ""}
-    = link_to "ADD NEW ITEM", new_item_path + "#create", :id => 'product-search-submit-button', :class => "facebox", :style => 'display: none'           
-
-
-%script(type="text/html" id="product-autocomplete-result-template")
-  .product-autocomplete-result
-    .cell.img
-      = link_to "{{ main_image_thumb }}" do
-        %img(src='{{ main_image_thumb }}')
-    .cell.desc
-      %h2= link_to '{{ name }}', CGI::unescape(product_path('{{ id }}'))
-      .clear
-    .cell 
-      = link_to "Add product", new_item_path + "#owned", :class => "button add facebox"
-
-- content_for :jquery do
+- content_for :javascripts do
   :javascript
     $(document).ready(function(){
-      function autocompleteFormatter(query, results) {
-        var template = document.getElementById('product-autocomplete-result-template').innerHTML;
-        
-        return _.map(results, function(result){
-          var product = result.raw;
-          var parsed_template = _.template(template, product);
-          var target_option = 'value="' + product.rating + '"';    
-          var selected_option = target_option + ' selected="selected"';
-          //rel hack until 3.1 is stable
-          // https://github.com/rails/rails/pull/1796
-          var autocomplete_html = parsed_template.replace(target_option, selected_option);
-          return $(autocomplete_html).stars().html();
-        });
-      }
-    
-      
-
-      YUI().use('autocomplete', 'autocomplete-highlighters', function(Y){
-        Y.one('body').addClass('yui3-skin-sam');
-
-        var inputNode = Y.one('#product-search-input');
-
-        inputNode.plug(Y.Plugin.AutoComplete, {
-          resultHighlighter: 'phraseMatch',
-          source: "#{search_products_path}?query={query}",
-          queryDelay: 50,
-          resultFormatter: autocompleteFormatter,
-          resultTextLocator: 'name'
-        });
-
-        inputNode.ac.on('select', function(event){
-          console.log($.dump(event));
-        });
-
-        inputNode.ac.on('results', function(event){
-            // Initialize facebox model windows if they are used
-
-            if (event.results.length < 1) {
-              $('#mag-glass').hide();
-              $('#product-search-submit-button').show();
-            } else {
-              $('#product-search-submit-button').hide();
-              $('#mag-glass').show();
-            }
-        });
-      });
-      
-      // TODO: Enable search functionality
-      // disabled it as some of the things are not complete
-      // and need to give more thought on how to handle search for product/companies
-      /*
-      $("#search_form").submit(function(){
-        if ($("#product-search-input").val()){
-            window.product_search_term = $("#product-search-input").val();
-            $.facebox({ ajax : "/products/static_search.html"});
-            //this.reset();
-        }
-        return false;
-      });
-      */
-      
-      
     });
 
 
