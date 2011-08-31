@@ -11,6 +11,7 @@
       = link_to @item.user.name, profile_path(@item.user)
       has a
       #{@item.name}
+      .clear
       #rating.recommended recommended
       = link_to "I want this", "", :class => "button add"
       /= follow_link_for @item.user

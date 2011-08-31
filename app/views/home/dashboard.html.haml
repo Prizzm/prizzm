@@ -18,13 +18,13 @@
           = link_to "" do
             = image_tag item.user.main_image
         .post.cell
+          %h1
+            = link_to item.user.name, profile_path(item.user)
+            has a
+            = link_to item.name, (item)
+          .clear
           = image_tag item.main_image, :class => "fl"
           .fl.cont
-            %h1
-              = link_to item.user.name, profile_path(item.user)
-              has a
-              = link_to item.name, (item)
-              
             = item.review 
             .footerbit
               Written #{time_ago_in_words item.updated_at} ago
