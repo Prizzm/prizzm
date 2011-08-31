@@ -1,0 +1,7 @@
+.my{:style=>"margin-top:200px"}
+    -form_for "assign_company",:url=>{:controller=>"admin",:action=>"assign_company"} do |f|
+        =f.collection_select("company",@companies,:id,:name)
+        =f.collection_select("user",@users,:id,:name)
+        %br
+        %br
+        =f.submit "Save"
