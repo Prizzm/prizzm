@@ -29,9 +29,13 @@ class ProductInvitationsController < ApplicationController
     if Mailer.product_invite(@product,@product_invitation,@url).deliver
       @product_invitation.sent = "sent"
       @product_invitation.sent_on = Time.now
-      @product_invitation.save!
+      if @product_invitation.save!
+        render :text=>"Invitation sent"
+      end
+    else
+      render :text=>"please try later"
     end
-    redirect_to product_product_invitations_path(@product)
+#    redirect_to product_product_invitations_path(@product)
   end
   
   def accept_invitation

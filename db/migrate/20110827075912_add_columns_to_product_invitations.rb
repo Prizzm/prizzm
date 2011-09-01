@@ -6,7 +6,7 @@ class AddColumnsToProductInvitations < ActiveRecord::Migration
     add_column :product_invitations, :email,:string
     add_column :product_invitations, :purchase_date,:date
     add_column :product_invitations, :amount,:string
-    add_column :product_invitations, :content,:string
+    add_column :product_invitations, :content,:text
     add_column :product_invitations, :encrypted_id,:string
     add_column :product_invitations, :sent,:string
     add_column :product_invitations, :sent_on,:datetime
