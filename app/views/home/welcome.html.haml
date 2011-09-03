@@ -11,10 +11,13 @@
     .g-big.grid_9.additem
       .fl= image_tag "file_add.png"
       .fl.cont
-        %h2 Add items
-        Start
-        = link_to "adding items", dashboard_path
-        to find people who have or want similar things!
+        %h2 Add item
+        Start adding
+        = link_to "things you have", have_path(current_user)
+        or 
+        = link_to "things you want", want_path(current_user)
+        or check out what
+        = link_to "others have!", dashboard_path
       .clear
       
     .g-big.grid_9.cases
@@ -22,7 +25,7 @@
       .fl.cont
         %h2 Cases
         Use 
-        = link_to "cases", dashboard_path
+        = link_to "cases", user_cases_path(current_user)
         to keep track of issues you have with companies and the products you buy.
       .clear
       
