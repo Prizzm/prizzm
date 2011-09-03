@@ -55,4 +55,3 @@ module Prizzm
     end
   end
 end
-
