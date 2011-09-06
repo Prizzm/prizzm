@@ -19,31 +19,12 @@
      
     #container.container_24
       #main
-        - if signed_in?
-          %aside.grid_4.left
-            .userbit
-              = image_tag current_user.main_image, :class => "fl thumb"
-              .fr
-                = link_to current_user.name, profile_path(current_user), :class => "uname"
-                = link_to "Edit Profile"
-              .clear
-            %nav
-              %article
-                %ul
-                  %li= link_to "Welcome", welcome_path, :class => tab_for(welcome_path)
-              %article
-                %h4 Public
-                %ul
-                  %li= link_to "Peoples stuff", dashboard_path, :class => tab_for(dashboard_path)
-                  %li= link_to "Cases", cases_path, :class => tab_for(cases_path)
-              %article
-                %h4 Personal
-                %ul
-                  %li= link_to "Have", have_path(current_user), :class => tab_for(have_path(current_user))
-                  %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-                  %li= link_to "Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
+        .grid_14
+          %ul.action-menu
+            %li= link_to "Have", home_path, :class => tab_for(home_path)
+            %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
+            %li= link_to "Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
         = yield
-        .clear
       .clear
 
     %footer

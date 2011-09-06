@@ -10,16 +10,13 @@
     = link_to "Home", home_path
     \.
   %li
-    = link_to "Products", "#"
-    \.
-  %li
-    = link_to "Brands", "#"
-    \.
-  %li
     = link_to "People", "#"
     \.
   %li
-    = link_to "Cases", "#"
+    = link_to "Profile", profile_path(current_user)
+    \.
+  %li
+    = link_to "Account", "#"
     \.
   %li
     = link_to "Logout", destroy_user_session_url

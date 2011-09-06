@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://gems.rubyforge.org'
 gem 'rails', '3.0.9' #, :git => 'git://github.com/rails/rails.git'
-gem 'rake', '0.8.7'
+gem 'rake', '0.9.2'
 gem "haml-rails"
 gem "jquery-rails"
 # Sends notifications of errors on Production app
@@ -60,7 +60,8 @@ gem 'remotipart', '0.3.4'
 gem "rmagick"
 
 # allows us to have seo friendly urls for our objects
-gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
+# gem "friendly_id", :git => "https://github.com/norman/friendly_id.git"
+gem "friendly_id", "~> 3.1"
 
 # allows model and sitewide settings
 # https://github.com/100hz/rails-settings
@@ -80,7 +81,7 @@ gem "nokogiri"
 gem "hashie"
 
 # For form.
-gem 'formtastic'
+# gem 'formtastic'
 
 # TO GO  -  I don't need these dependencies.. get rid of them
 # Gem to abstract away the dplication common in standard restful controllers

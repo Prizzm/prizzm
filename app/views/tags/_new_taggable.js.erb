@@ -1,5 +1,5 @@
 var data = [
-  {value: "case", name: "case"}
+  {value: "have", name: "have"}
 ];
 
 $('#<%= object_type(taggable)%>_tag_list').autoSuggest(data,
@@ -22,4 +22,9 @@ $('#<%= object_type(taggable)%>_tag_list').autoSuggest(data,
         console.log(tag_list);
       });
     }
+});
+
+$("#item_tag_list").autoSuggest(data.items, {
+    preFill: "have",
+    neverSubmit: true
 });

@@ -181,7 +181,6 @@ header {
 		width: 100%;
 		font-size: 1em;
 		color: #b8b8b8;
-		border: 1px solid #283a64;
 		
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
@@ -568,127 +567,7 @@ ul.data-list .cell .button {
     background: no-repeat url('../images/nav-ar.png') center bottom;
   }
 
-form.action {
-	padding: 8px 8px 4px 8px;
-  width: 100%;
-  background: #e4f4ff;
-  position: relative;
-  z-index: 10;
-  
-  border: 1px solid #b9d4e7;
-  
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
-  form.action .cell {
-    padding-bottom: 5px;
-    width: 10%
-  }
-  
-  form.action .cell.input {
-    width: 90%;
-  }
-  
-  form.action input[type=text], form.action textarea {
-    margin-bottom: 5px;
-    padding: 8px;
-    width: 100%;
-    color: #a7a7a7;
-    
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    
-    border: 1px solid #c4cbdc;
-    position: relative;
-  }
-  
-  form.action table {
-    width: 20%;
-  }
-  
-  form #url_preview {
-  	width: 20%;
-  	height: 100px;
-  	float: left;
-  	position: relative;
-  }
-  
-  form #img_controls {
-  	padding: 3px;
-  	position: absolute;
-  	width: 89%;
-  	background: rgba(0, 0, 0, .5);
-  }
-  
-  form #prev_image, form #next_image{
-  	width: 10px;
-  	height: 10px;
-  	cursor: pointer;
-  }
-  
-  form #prev_image img, form #next_image img{
-  	width: 10px;
-  	height: 10px;
-  }
-  
-  form #prev_image {
-  	float: left;
-  }
-  
-  form #next_image {
-  	float: right;
-  }
-  
-  form.action textarea {
-    min-width: 80%;
-    min-height: 100px;
-    height: 100px;
-  	float: left;
-  }
-  
-  form.action textarea#item_review {
-    max-width: 80%;
-  }
-
-  form.action input[type=submit].button {
-    margin-right: 0;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    width: 80px;
-    float: right;
-  }
-  
-  .ocase {
-  	margin-top: -5px;
-  	padding: 10px 0 5px;
-  	display: block;
-  	text-align: center;
-  	text-decoration: none;
-  	background: #f3f3f3;
-  	border-width: 0 1px 1px 1px;
-  	border-style: solid;
-  	border-color: #ccc;
-  	color: #888888;
-  	-moz-border-radius: 0 0 3px 3px;
-  -webkit-border-radius: 0 0 3px 3px;
-  border-radius: 0 0 3px 3px;
-  
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  	position: relative;
-  	z-index: 0;
-  	opacity: 0.5;
-  }
-  
-  .ocase:hover {
-  	color: #888888;
-  	opacity: 1;
-  }
-  
   .tags {
     margin-bottom: 10px !important;
 	}
@@ -752,4 +631,58 @@ form.action {
 
 .addcase .button {
   float: right;
+}
+
+aside .row {
+	display: table-row;
+}
+
+aside .cell .button {
+	margin-right: 0;
+	padding: 3px 6px;
+}
+
+aside .cell.img {
+	width: 10%;
+}
+
+aside .cell.uname {
+	padding: 0 9px 3px;
+	width: 84%:
+}
+
+aside .cell {
+	padding-bottom: 3px;
+	position: relative;
+}
+
+aside .cell.del {
+	width: 6%;
+}
+
+aside .cell .close {
+	top: 8px;
+}
+
+aside .small.fr {
+	margin-left: 10px;
+}
+
+aside .tags {
+	width: 100%;
+	display: inline-block!important;
+	border-color: #f3f3f3;
+	border-width: 1px 0 0 0;
+}
+
+aside .tags li {
+	margin-bottom: 5px;
+}
+
+aside .tags li a {
+	color: #215f94 !important;
+}
+
+aside .button {
+	margin: 5px 0 0;
 }

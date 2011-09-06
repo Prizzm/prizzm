@@ -1,10 +1,11 @@
 .fl
-  %h1.fl= link_to "prizzm", "/dashboard"
+  %h1.fl= link_to "prizzm", "/"
   -#= link_to "5", "", :class => "fl usernotif"
   .clear
 %nav.fr
   %ul
-    %li= link_to "Home", dashboard_path
+    %li= link_to "Home", home_path
+    %li= link_to "People", "#"
     %li= link_to "Profile", profile_path(current_user), :class => tab_for(products_path)
 
     %li.account

@@ -2,52 +2,69 @@
 
 = form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
   = f.text_field :name, :placeholder => "Add something you have"
-  #google_search= link_to "Add link", ""
-  
-  #other_attribs{:class => "hide"}
-    #url_and_dropdown_container{:style => "position:relative;"}
-      = f.text_field :url, :placeholder => "Add a URL"
-      .hide#main-dropdown
-        %ul#dropdown
-        
-    = f.hidden_field :company_id
 
+  #hiddenform
+    .urlsect
+      #url_and_dropdown_container{:style => "position:relative;"}
+      = f.text_field :url, :placeholder => "Type, paste or use google to add a link"
+      %ul.urlcont
+        %li#google_search= link_to "use google", ""
+        %li
+          = link_to "Add url", "#", :class => "button"
+          .hide#main-dropdown
+            %ul#dropdown
+    
+    = f.hidden_field :company_id
+  
     = f.hidden_field :product_id
     = f.hidden_field :image_url
-
-    = f.text_area :description, :style => "display:none;"#, :class => "fr"
     
-    #url_preview
-      #img_selector_parent{:style => "display: block;"}
-        %table.fl
-          %tbody
-            %tr
-              %td#img_controls
-                #prev_image{:disabled => "disabled"}
-                  = image_tag "prev_img.png"
-                #next_image{:disabled => "disabled"}
-                  = image_tag "next_img.png"
-                .clear
-            %tr
-              %td#img_selector
-          .clear
-
-    = f.text_area :review, :placeholder => "Review"
-    .clear
+    .wrap
+      .revsect
+        = f.text_area :review
+        .close
+      .urlprevsect
+        %h3
+        .clear
+        #url_preview.fl
+          #img_selector_parent{:style => "display: block;"}
+            %ul#img_controls
+              %li#prev_image.fl{:disabled => "disabled"}= image_tag "prev_img.png"
+              %li#next_image.fr{:disabled => "disabled"}= image_tag "next_img.png"
+            #img_selector
+        .urldesc.fl= f.text_area :description, :style => "display:none;"#
+        .clear
+        .close
     = f.text_field :tag_list, :placeholder => "+ Add tags"
-    /= text_field_tag :company_name, "", :placeholder => "Company Name"
-    = f.submit "save", :class => "button blue"
-    = f.submit "clear", :class => "button", :id => "clear_item_fields"
-    .clear
-  .clear
-
+    
+    %ul.finalstep.buttons.fr
+      %li= f.submit "save", :class => "button blue"
+      
 #offscreen_div
   
 - content_for :javascripts do
   :javascript
     $(document).ready(function(){
+      $('#hiddenform').hide();
+      $('.urlprevsect').show();
+      
+      $('#item_name').click(function(){
+       $('#hiddenform').show();
+      });
+      
+      $('.revsect .close').click(function(){
+       $('#hiddenform').hide();
+       $('#review').val('');
+       $('#item_url').val('');
+       $('#item_name').val('');
+      });
+      
+      $('.urlprevsect .close').click(function(){
+       $(this).parent().remove();
+      });
+    
       #{render 'tags/new_taggable.js.erb', :taggable => @item}
-
+      
       // what?
 
       $("#search-by-title").click(function(){
@@ -62,22 +79,6 @@
       // Image preview/selection
       //*****************************
       #{ render "items/image_preview.js" }
-      
-      // from item name text field
-      // user has selected product or an URL from Google
-      function userSelectedProductOrUrl(type){
-        //alert("Show div");
-        if (type == "product"){
-          $("#google_search").css({ display:"none"});
-          $("#item_description").css({display:''});
-        }
-        else
-        {
-          $("#google_search").css({ display:""});
-          $("#item_description").css({display:'none'});
-        }
-        $("#other_attribs").css({"display":"block"});
-      }
       
       //*****************************
       // Product auto-complete code starts below
@@ -133,15 +134,6 @@
       // Google search / autocomplete / URL selection
       //*****************************
       #{ render "items/google_search.js" }
-
-
-
-      $("#clear_item_fields").click(function(){
-        $.facebox({
-          ajax : "#{ new_item_path }"
-        });
-        return false;
-      });
       
       $("#item_name").change(function(){
         // TODO: Update the review according to possession status

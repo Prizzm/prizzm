@@ -12,7 +12,6 @@ javascripts:
     - public/javascripts/jquery.dump.js
     - public/javascripts/jquery.autogrow.js
     - public/javascripts/jquery.autosuggest.js
-    - public/javascripts/jquery.form.js
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
@@ -28,7 +27,6 @@ javascripts:
     - public/javascripts/application.js
     - public/javascripts/cases.js
     - public/javascripts/application/comments.js
-    - public/javascripts/livefeed.js
 
 stylesheets:
   app:

@@ -1,0 +1,98 @@
+- content_for :page_style do
+  = include_stylesheets :livef
+
+#content.grid_14
+  = render :template => 'profile/user_have'
+  
+  %ul.fol-f.table
+  - latest_reviews.each do |item|
+    %li.rv.row
+      .sp
+      .user.cell
+        = link_to "" do
+          = image_tag item.user.main_image
+      .post.cell
+        %h1
+          = link_to item.user.name, profile_path(item.user)
+          has a
+          = link_to item.name, (item)
+        .clear
+        = image_tag item.main_image, :class => "fl"
+        .fl.cont
+          = item.review 
+          .footerbit
+            Written #{time_ago_in_words item.updated_at} ago
+            \|
+            = link_to "Share", ""
+  /
+    %li.activ.row
+      .user.cell
+        = link_to "" do
+          = image_tag current_user.main_image
+      .post.cell
+        = link_to "Charles"
+        is following
+        = link_to "Sidney Burks"
+      
+/= link_to "More", "", :class => "updt-feed"
+
+%aside.grid_6.right
+  %article
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
+    %ul.table
+      - suggested_people.each do |person| 
+        %li.row
+          = link_to profile_path(person) do
+            .cell.img
+              = image_tag person.main_image, :class => 'smallthumb'
+            .cell.uname= person.name
+          .cell.action
+            = follow_link_for person
+          .cell.del
+            = link_to "", "", :class => "close"
+  %article
+    %h4 Invite your friends
+    = render :partial => "invitations/new"
+  
+  .clear
+
+- content_for :jquery do
+  :javascript
+  $(document).ready(function() {
+    $('.close', '#helptool').bind('click', function() {
+      $('#helptool').slideUp(1000);
+    });
+  
+    $('#invite-button').bind('click', function(e) {
+      e.preventDefault();
+      if ($('#invitations').is(":visible")) {
+        $('#invitations').slideUp('fast');
+      } else {
+        $('#invitations').slideDown('fast');
+      }
+    });
+  
+    $('#add-email').bind('click', function(e) {
+      e.preventDefault();
+      var new_email = $("<input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a>");
+      $('#emails-list').append(new_email);
+    });
+  
+    $('.remove').live('click', function(e) {
+      e.preventDefault();
+      $(this).prev().remove();
+      $(this).remove();
+    });
+  
+    $('#email-invite').bind('ajax:beforeSend', function() {
+      $('#invitations .loading').css('visibility', 'visible');
+    });
+  
+    $('#email-invite').bind('ajax:complete', function() {
+      $('#invitations .loading').css('visibility', 'hidden');
+    });
+  });

@@ -1,29 +1,17 @@
 - content_for :page_style do
   = include_stylesheets :profile
 
-#content.grid_15
-  -#commentedbyCOhelptool
-    %h3 Your profile
-    This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
-    .close
-  
-  
-  
-  
-  %header
-    %h1 What I Have:  
+= render :template => 'items/new'
 
-  = render :template => 'items/new'  
-
-  %ul.table.list-display
-    - @user.owned_items.each do |item|
-      %li.row{:id => "item_#{item.id}"}
-        .cell.img= image_tag item.main_image
-        .cell
-          %h3
-            = link_to(item) do
-              = item.name
-              = privacy_control_for item
-        .delete-item
-          = link_to [current_user, item],  :remote => true, :method => :delete do
-            .cell.close
+%ul.table.list-display
+  - @user.owned_items.each do |item|
+    %li.row{:id => "item_#{item.id}"}
+      .cell.img= image_tag item.main_image
+      .cell
+        %h3
+          = link_to(item) do
+            = item.name
+            = privacy_control_for item
+      .delete-item
+        = link_to [current_user, item],  :remote => true, :method => :delete do
+          .cell.close

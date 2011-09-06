@@ -1,17 +1,7 @@
 - content_for :page_style do
   = include_stylesheets :profile
 
-#content.grid_15
-  -#commentedbyCO#helptool
-    %h3 Your profile
-    This profile contains all of <em>your data</em>. Everything from the things you have and want to your cases, is placed here for your convenience!
-    .close
-  
-
-  
-  %header
-    %h1 What I Want: 
-
+#content.grid_14
   = render :template => 'items/new'
 
   %ul.table.list-display
@@ -26,3 +16,27 @@
         .delete-item
           = link_to [current_user, item],  :remote => true, :method => :delete do
             .cell.close
+
+%aside.grid_6.right
+  %article
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
+    %ul.table
+      - suggested_people.each do |person| 
+        %li.row
+          = link_to profile_path(person) do
+            .cell.img
+              = image_tag person.main_image, :class => 'smallthumb'
+            .cell.uname= person.name
+          .cell.action
+            = follow_link_for person
+          .cell.del
+            = link_to "", "", :class => "close"
+  %article
+    %h4 Invite your friends
+    = render :partial => "invitations/new"
+  
+  .clear

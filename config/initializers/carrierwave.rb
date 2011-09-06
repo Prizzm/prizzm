@@ -14,7 +14,7 @@ CarrierWave.configure do |config|
   
   # Crap...why was this here again? something about carrieerwave not working on
   # url images with no extension, i think..
-  config.delete_cache_id_after_storage = false
+  # config.delete_cache_id_after_storage = false
 
 
 

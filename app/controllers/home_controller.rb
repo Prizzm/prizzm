@@ -3,17 +3,13 @@ class HomeController < ApplicationController
 
   def index
     @user = current_user
-
+    @item = Item.new
+    @item.images.build
+    
     respond_to do |format|
       format.html 
       format.json  { render :json => @user }
     end
-  end
-
-  def dashboard
-    @user = current_user
-    @item = Item.new
-    @item.images.build
   end
   
   def welcome
