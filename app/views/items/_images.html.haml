@@ -2,6 +2,11 @@
   .slideshow-container
     #loading.loader
     #slideshow.slideshow
+#thumbs.navigation.hidden{:data => {:itemid => @item.id}}
+  %ul.thumbs.noscript
+    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
+
+.clear
 
 - content_for :jquery do
   :javascript
