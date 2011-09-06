@@ -55,7 +55,7 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 }
 div.slideshow img {
 	vertical-align: middle;
-  width: 95%;
+  width: 100px;
 }
 
 div.image-title {

@@ -171,7 +171,11 @@ ul#comments .cell {
     background: #d88888;
 }
 
-#galsect {
+#gallery {
+  width: 100px;
+}
+
+.galsect {
   width: 100px;
 }
 
