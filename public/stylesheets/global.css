@@ -629,8 +629,8 @@ aside #invitations .remove {
 }
 
 .prod-g > li {
-  margin: 0 13px 20px 0 !important;
-  width: 150px;
+  margin: 0 15px 20px 0 !important;
+  width: 139px;
   display: inline-block;
   border: 1px solid #ccc;
   float: left;
@@ -644,7 +644,7 @@ li.last {
 }
 
 .prod-g img {
-  width: 130px;
+  width: 123px;
 }
 
 .prod-g .cont {
