@@ -4,38 +4,7 @@
 #content.grid_14
   = render :template => 'profile/user_have'
   
-  %ul.fol-f.table
-  - latest_reviews.each do |item|
-    %li.rv.row
-      .sp
-      .user.cell
-        = link_to "" do
-          = image_tag item.user.main_image
-      .post.cell
-        %h1
-          = link_to item.user.name, profile_path(item.user)
-          has a
-          = link_to item.name, (item)
-        .clear
-        = image_tag item.main_image, :class => "fl"
-        .fl.cont
-          = item.review 
-          .footerbit
-            Written #{time_ago_in_words item.updated_at} ago
-            \|
-            = link_to "Share", ""
-  /
-    %li.activ.row
-      .user.cell
-        = link_to "" do
-          = image_tag current_user.main_image
-      .post.cell
-        = link_to "Charles"
-        is following
-        = link_to "Sidney Burks"
-      
-/= link_to "More", "", :class => "updt-feed"
-
+ 
 %aside.grid_6.right
   %article
     %h4
