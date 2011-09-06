@@ -6,14 +6,18 @@
     \- 
     = comment_or_hidden comment
     .comm-ft
-      = "#{time_ago_in_words(comment.created_at)} ago"
-      \|
-      - if belongs_to_current_user?(comment) && !comment.hidden?
-        = link_to "delete", comment_path(object_type(commentable),  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'comment-delete-link', :remote => true, :'data-method' => :delete, :format => :js 
-      - if user_signed_in? && !comment.hidden?
-        = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
-        %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
-          = comment_form_for commentable, comment.id
+      .fl
+        = "#{time_ago_in_words(comment.created_at)} ago"
+        \|
+        - if belongs_to_current_user?(comment) && !comment.hidden?
+          = link_to "delete", comment_path(object_type(commentable),  commentable.id, comment.id), :'data-commentid' => comment.id, :class => 'comment-delete-link', :remote => true, :'data-method' => :delete, :format => :js 
+        - if user_signed_in? && !comment.hidden?
+          = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
+          %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
+            = comment_form_for commentable, comment.id
+      
+          = link_to "share", comment_post_to_facebook_path(comment.id, :link => item_url(commentable.id).concat("#comment-#{comment.id}-content")), :remote => true
+        .loading.fr{:style => "display:none"}
 
   .clear
 

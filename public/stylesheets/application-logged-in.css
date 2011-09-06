@@ -509,6 +509,14 @@ ul.data-list .cell .button {
   margin-top: 5px;
   padding-top: 5px;
 }
+  .comment_input_box {
+    position: relative;
+  }
+  
+  .in-comm .close {
+    top: 8px;
+    right: 8px;
+  }
   
   .in-comm textarea {
     padding: 5px;
@@ -557,16 +565,40 @@ ul.data-list .cell .button {
     font-variant: normal;
     font-weight: normal;
     color: #444;
+    cursor: pointer;
   }
   
   .action-menu li a:hover {
-    background: no-repeat url('../images/nav-ar.png') center bottom;
+    color: #D14836!important;
   }
   
   .action-menu li a.active {
+    color: #D14836!important;
     background: no-repeat url('../images/nav-ar.png') center bottom;
   }
-
+  
+  .addcase {
+    position: relative;
+  }
+  
+  .addcase .close {
+    top: 8px;
+    right: 8px;
+    background-image: url('../images/cancel.png');
+  }
+  
+  .addcase #company_name, .addcase #case_title {
+    padding: 8px !important; 
+  }
+  
+  .addcase .button {
+    margin-right: 0 !important;
+    margin-bottom: 5px;
+  }
+  
+  #company_name, .addcase .tags {
+    border-width: 0 1px 1px 1px;
+  }
 
   .tags {
     margin-bottom: 10px !important;
@@ -657,7 +689,7 @@ aside .cell {
 }
 
 aside .cell.del {
-	width: 6%;
+	width: 12%;
 }
 
 aside .cell .close {

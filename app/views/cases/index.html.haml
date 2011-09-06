@@ -1,23 +1,12 @@
-#content.grid_15
-  %header
-    %h1.left Cases
-    .case-fil.buttons	
-      = link_to "Popular", '#', :class => "button left"
-      = link_to "Open", '#', :class => "button middle"
-      = link_to "Closed", '#', :class => "button middle"
-      = link_to "Resolved", '#', :class => "button right"
-    .clear
-  .clear
-	  
-  %ul.table.data-list
-    %li.row.header
-      .cell Date
-      .cell Ticket name
-      .cell Case no.
-      .cell 
-    - @cases.each do |user_case|
-      %li.row
-        .cell= user_case.created_at.strftime '%m/%d/%Y'
-        .cell= user_case.title
-        .cell= user_case.case_reference
-        .cell= link_to "View", case_path(user_case), :class => "button"
+%ul.table.data-list
+  %li.row.header
+    .cell Date
+    .cell Ticket name
+    .cell Case no.
+    .cell 
+  - @cases.each do |user_case|
+    %li.row
+      .cell= user_case.created_at.strftime '%m/%d/%Y'
+      .cell= user_case.title
+      .cell= user_case.case_reference
+      .cell= link_to "View", case_path(user_case), :class => "button"

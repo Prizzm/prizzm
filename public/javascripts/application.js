@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  This script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
@@ -161,7 +161,7 @@ $(document).ready(function(){
     if ($('#is_signed_in_fb').val() == 'false') {
       alert('Exception: Need to login with Facebook account.');
     } else if ($('#form-ask-friend #message').val().trim() == '' ) {
-      alert('Please enter your question.');
+      alert('Please enter your message.');
     } else {
       $('#form-ask-friend').submit();
       $('#form-ask-friend #notice').remove();

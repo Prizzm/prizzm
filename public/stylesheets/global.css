@@ -243,7 +243,7 @@ a.supersize {
     font-size: 20px;
     padding: 15px 20px;
 }
-a.save {
+a.save, input[type=submit].save {
     background: url(../images/sprite.png) 10px 7px no-repeat #f3f3f3;
     padding-left: 30px;
 }
@@ -370,7 +370,7 @@ input[value=clear] {
   width: 13px;
   height: 14px;
   display: block;
-  background: no-repeat url('../images/close.gif');
+  background: no-repeat url('../images/cancel.png');
   position: absolute;
   top: 0;
   right: 0;
@@ -609,7 +609,7 @@ aside #invitations #add-email {
 }
 
 aside #invitations .remove {
-  background: url("../images/close.gif") no-repeat scroll 0 0 transparent;
+  background: url("../images/cancel.png") no-repeat scroll 0 0 transparent;
   width: 13px;
   height: 14px;
   display: inline-block;
@@ -629,8 +629,8 @@ aside #invitations .remove {
 }
 
 .prod-g > li {
-  margin: 0 19px 20px 0;
-  width: 172px;
+  margin: 0 15px 20px 0 !important;
+  width: 139px;
   display: inline-block;
   border: 1px solid #ccc;
   float: left;
@@ -644,7 +644,7 @@ li.last {
 }
 
 .prod-g img {
-  width: 130px;
+  width: 123px;
 }
 
 .prod-g .cont {

@@ -42,6 +42,7 @@ Prizzm::Application.routes.draw do
 
   resources :cases do
     resources :notes
+    match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
   resources :companies do
@@ -49,10 +50,12 @@ Prizzm::Application.routes.draw do
     get 'search', :on => :collection
   end 
 
+  match 'post_to_facebook/:comment_id' => 'comments#post_to_facebook', :as => "comment_post_to_facebook"
+
   # Comments - this route makes the comments controller response to a
   # polymorphic types
   scope '/:commentable_type/:commentable_id' do
-    resources :comments 
+    resources :comments
   end
 
   ##############################    NOT YET IMPLEMENTED   #############################

@@ -1,17 +1,11 @@
 #main a, #main a:active, #main a:visited { color: #5d5d5d; text-decoration: none; }
 #main a:hover { color: #5d5d5d; }
 
-a.active { color: #d14836 !important; font-weight: bold;}
-
 .profilePic {
 	padding: 5px;
 	height: 150px;
 	width: 150px;
 	background: #fff;
-}
-
-.grid_19 {
-	width: 740px !important;
 }
 
 .edit.button { margin: 0; }

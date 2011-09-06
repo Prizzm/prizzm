@@ -1,14 +1,28 @@
 = form_for @case=Case.new, :html => {:class => "action addcase"} do |f|
   = f.text_field 'title', :placeholder => "What's your issue?"
-  = text_field_tag 'company_name', nil, :placeholder => "With who?"
-  = f.hidden_field 'company_id'
-  = f.text_field :tag_list, :placeholder => "+ Add tags"
-  = f.submit 'save', :class => 'button blue'
-  = link_to 'clear', '#', :class => 'button', :id => 'clear_item_fields'
-  .clear  
+  #hiddenform
+    = text_field_tag 'company_name', nil, :placeholder => "With who?"
+    = f.hidden_field 'company_id'
+    = f.text_field :tag_list, :placeholder => "+ Add tags"
+    
+    %ul.finalstep.buttons.fr
+      %li= f.submit "save", :class => "button save"
+    .clear
+    .close 
 = render'layouts/javascripts'
 
 :javascript
   $(document).ready(function(){
+    $('#hiddenform').hide();
+    $('#case_title').click(function(){
+     $('#hiddenform').show();
+    });
+    
+    $('.addcase .close').click(function(){
+     $('#hiddenform').hide();
+     $('#company_name').val('');
+     $('#case_title').val('');
+    });
+      
     #{render 'tags/new_taggable.js.erb', :taggable => @case} 
   });

@@ -35,4 +35,14 @@ $(document).ready(function(){
     $('#comment_submit').hide();
     $('#comment_comment').val('');
   }
+
+  $('.share-comment').live('ajax:beforeSend', function() {
+    var loading = $(this).next();
+    $(loading).show();
+  });
+
+  $('.share-comment').live('ajax:success', function() {
+    var loading = $(this).next();
+    $(loading).hide();
+  });
 });
