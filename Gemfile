@@ -81,7 +81,7 @@ gem "nokogiri"
 gem "hashie"
 
 # For form.
-# gem 'formtastic'
+gem 'formtastic'
 
 # TO GO  -  I don't need these dependencies.. get rid of them
 # Gem to abstract away the dplication common in standard restful controllers
