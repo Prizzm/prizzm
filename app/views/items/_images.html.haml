@@ -2,19 +2,6 @@
   .slideshow-container
     #loading.loader
     #slideshow.slideshow
-#thumbs.navigation{:data => {:itemid => @item.id}}
-  %ul.thumbs.noscript
-    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
-
-%div(style="clear: both;")
-
-/ 
-  As the delete image URL changes through javascript depending on which image we're looking at, 
-  we can't have the url rendered on the page, but must suply it based on the current image.
-  So we will do that by using javascript
-- if (@item.images.count > 0) && (@item.user == current_user)
-  %br/
-  = link_to "Delete", '#', :id => 'delete-image-link', :remote => true, :method => :delete, :'data-type' => :json, :class => "button"
 
 - content_for :jquery do
   :javascript

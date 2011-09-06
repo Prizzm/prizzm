@@ -27,7 +27,7 @@ div.nav-controls {
 div.slideshow-container {
 	position: relative;
 	clear: both;
-	height: 200px; /* This should be set to be at least the height of the largest image in the slideshow */
+	/*height: 200px;  This should be set to be at least the height of the largest image in the slideshow */
 }
 div.loader {
 	position: absolute;
