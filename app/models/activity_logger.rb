@@ -81,7 +81,7 @@ module ActivityLogger
     #  deliver message to subscribers feeds
     subscriber_ids.each do |sid|
       user_stream = Stream.where(:user_id => sid).first
-      user_stream.add_to_set(:feed, log)
+      user_stream.add_to_set(:feed, log) unless user_stream.nil? #FIXME
     end
     
     # TODO:  Do other event ddependant things - sending email, etc..?
