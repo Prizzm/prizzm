@@ -27,7 +27,7 @@ div.nav-controls {
 div.slideshow-container {
 	position: relative;
 	clear: both;
-	height: 200px; /* This should be set to be at least the height of the largest image in the slideshow */
+	/*height: 200px;  This should be set to be at least the height of the largest image in the slideshow */
 }
 div.loader {
 	position: absolute;
@@ -55,7 +55,7 @@ div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.sli
 }
 div.slideshow img {
 	vertical-align: middle;
-  width: 95%;
+  width: 100px;
 }
 
 div.image-title {
@@ -68,11 +68,12 @@ div.image-desc {
 }
 div.navigation {
 	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
-  width: 182px !important;
+  width: 100px !important;
   -moz-border-radius: 3px 3px 3px 3px;
   background: none repeat scroll 0 0 #ECF4F5;
   border: 1px dashed #9FC3C9;
   padding-left: 8px;
+  height: 0;
 }
 ul.thumbs {
 	clear: both;

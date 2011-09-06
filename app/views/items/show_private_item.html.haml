@@ -1,43 +1,37 @@
 - content_for :page_style do
   = include_stylesheets :item_detail
 
-%aside.grid_5
-  %article
-    = render 'images'
-    = fields_for ItemImage.new do |f|
-      = f.file_field :image, :rel => item_images_path(@item)                        
-    = photo_uploadify
-    
-    = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
-      = fields_for :image do |builder|
-        /= builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
-        %div{:style => "display:none"}
-          = builder.submit
-    .loading{:style => "display:none"}
+.clear
 
-#content.grid_13
+#content.grid_14
   %section#review
-    = privacy_control_for @item
-    = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
+    .fl.galsect
+      = render 'images'    
+    .fl.revpost
+      = privacy_control_for @item
+      = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
+      
+      .title= raw format h @item.name
+      #options
+        = link_to @item.url, @item.url
+      #rendered-review
+        - if @item.review.blank?
+          = render 'default_review'
+        - else
+          = raw format h @item.review
+      #review-editor
+        = form_for @item, :remote => true, :method => :put do |f|
+          = f.text_area :review
+          = f.submit 'Save'
+    .clear
     
-    .title= raw format h @item.name
-    #options
-      = link_to @item.url, @item.url
-    #rendered-review
-      - if @item.review.blank?
-        = render 'default_review'
-      - else
-        = raw format h @item.review
-    #review-editor
-      = form_for @item, :remote => true, :method => :put do |f|
-        = f.text_area :review
-        = f.submit 'Save'
     #review_status
     = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
       = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
       %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
+    .clear
      
   = comments_section_for @item
 
@@ -56,15 +50,14 @@
           = text_field_tag :message, "", :placeholder => "Message"
           = hidden_field_tag :link, item_url(@item)
       .row
-        .cell.left Share to
-        .cell.right
-          %ul.sharebts
-            %li.sharebt.fb.active
-              facebook
-              .close
-            %li.sharebt.twitter
-              twitter
-              .close
+        %ul.sharebts
+          %li Share to
+          %li.sharebt.fb.active
+            facebook
+            .close
+          %li.sharebt.twitter
+            twitter
+            .close
       = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green fr"
       .loading{:style => "display:none;float:left"}
   %article
