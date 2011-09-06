@@ -370,7 +370,7 @@ input[value=clear] {
   width: 13px;
   height: 14px;
   display: block;
-  background: no-repeat url('../images/cancel.gif');
+  background: no-repeat url('../images/cancel.png');
   position: absolute;
   top: 0;
   right: 0;

@@ -509,6 +509,14 @@ ul.data-list .cell .button {
   margin-top: 5px;
   padding-top: 5px;
 }
+  .comment_input_box {
+    position: relative;
+  }
+  
+  .in-comm .close {
+    top: 8px;
+    right: 8px;
+  }
   
   .in-comm textarea {
     padding: 5px;
