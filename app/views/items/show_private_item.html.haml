@@ -6,18 +6,7 @@
 #content.grid_14
   %section#review
     .fl.galsect
-      = render 'images'
-      /
-        = fields_for ItemImage.new do |f|
-          = f.file_field :image, :rel => item_images_path(@item)                        
-        = photo_uploadify
-        
-        = form_tag item_images_path(@item), :remote => true, :multipart => true, :id => "add-remote-image" do
-          = fields_for :image do |builder|
-            = builder.text_field :remote_image_url, :id => "graburl", :placeholder => "Add a URL"
-            %div{:style => "display:none"}
-              = builder.submit
-        .loading{:style => "display:none"}    
+      = render 'images'    
     .fl.revpost
       = privacy_control_for @item
       = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
