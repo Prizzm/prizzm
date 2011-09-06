@@ -44,6 +44,27 @@
     .clear
   %section#new-comment
     = comment_form_for @case
+
+%aside.grid_6
+  %article
+    %h4 Share
+    = form_tag case_post_to_facebook_path(@case), :remote => true, :class => "table", :id => "form-ask-friend" do
+      .row
+        .cell
+          = text_field_tag :message, "", :placeholder => "Message"
+          = hidden_field_tag :link, case_url(@case)
+      .row
+        .cell.left Share to
+        .cell.right
+          %ul.sharebts
+            %li.sharebt.fb.active
+              facebook
+              .close
+            %li.sharebt.twitter
+              twitter
+              .close
+      = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green fr"
+      .loading{:style => "display:none;float:left"}
        
 
 - content_for :javascripts do

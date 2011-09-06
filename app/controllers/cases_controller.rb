@@ -47,6 +47,25 @@ class CasesController < InheritedResources::Base
     redirect_to home_path
   end
 
+  def post_to_facebook
+    the_case = Case.find(params[:case_id])
+    fb_user = FbGraph::User.me(current_user.access_token)
+    link = params[:link]
+    @errors = []
+
+    begin
+      fb_user.feed!(
+        :message => params[:message],
+        :name => the_case.title,
+        :link => link,
+        :description => the_case.description.to_s.limit(300)
+      )
+    rescue Exception => e
+      logger.info "error => #{e.message}"
+      @errors << e.message
+    end
+  end
+
 protected
   def load_user
     @user = current_user

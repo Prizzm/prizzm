@@ -42,6 +42,7 @@ Prizzm::Application.routes.draw do
 
   resources :cases do
     resources :notes
+    match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
   resources :companies do
