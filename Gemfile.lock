@@ -6,6 +6,29 @@ GIT
       rails (>= 3.0.0)
 
 GIT
+  remote: git://github.com/Prizzm/acts_as_follower.git
+  revision: 43ae06e94ed9b797d611c5294967b5b98a79b48d
+  specs:
+    acts_as_follower (0.0.0)
+
+GIT
+  remote: git://github.com/Prizzm/facebook_test_users.git
+  revision: 271326ff46bc43303fbe4f18701b95832953d946
+  specs:
+    facebook_test_users (0.0.2)
+      json_pure (~> 1.5.0)
+      rest-client (~> 1.6.1)
+      thor (~> 0.14.6)
+
+GIT
+  remote: git://github.com/Prizzm/tunnlr_connector.git
+  revision: 02ccdae70a149e4e1e1b6aac9051a3c7333d1228
+  specs:
+    tunnlr_connector (1.0.2)
+      highline (>= 1.5.0)
+      net-ssh (>= 2.0.15)
+
+GIT
   remote: git://github.com/bmabey/database_cleaner.git
   revision: 7f477031e9c2f075efe2f2513ffc90522c334af1
   specs:
@@ -44,34 +67,11 @@ GIT
       warden (~> 1.0.3)
 
 GIT
-  remote: git://github.com/sid137/acts_as_follower.git
-  revision: 43ae06e94ed9b797d611c5294967b5b98a79b48d
-  specs:
-    acts_as_follower (0.0.0)
-
-GIT
-  remote: git://github.com/sid137/facebook_test_users.git
-  revision: 271326ff46bc43303fbe4f18701b95832953d946
-  specs:
-    facebook_test_users (0.0.2)
-      json_pure (~> 1.5.0)
-      rest-client (~> 1.6.1)
-      thor (~> 0.14.6)
-
-GIT
   remote: git://github.com/sid137/heroku-rails.git
   revision: c75aa7c59faf09bc03bdecb7ba0fce36c85bae6b
   specs:
     heroku-rails (0.3.2)
       heroku (>= 1.11.0)
-
-GIT
-  remote: git://github.com/sid137/tunnlr_connector.git
-  revision: 02ccdae70a149e4e1e1b6aac9051a3c7333d1228
-  specs:
-    tunnlr_connector (1.0.2)
-      highline (>= 1.5.0)
-      net-ssh (>= 2.0.15)
 
 GIT
   remote: git://github.com/voormedia/rails-erd.git
