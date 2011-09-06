@@ -1,0 +1,18 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = favicon_link_tag
+    
+  %body
+    #cbbg
+      %header#prizzmbar
+        .container_24
+          - if signed_in?
+            = render "layouts/header"
+          - else
+            = render "layouts/header_signed_out"
+          .clear

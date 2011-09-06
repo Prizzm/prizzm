@@ -59,7 +59,7 @@ form.action {
       margin: 0;
       border-width: 0 0 0 1px;
       border-radius: 0;
-      padding-top: 8px;
+      padding-top: 9px;
       padding-bottom: 9px;
     }
     
@@ -104,6 +104,7 @@ form.action {
     max-width: 100%;
     min-width: 100%;
     min-height: 101px;
+    height: 101px;
     border: 0;
   }
   
@@ -153,6 +154,10 @@ form.action {
   vertical-align:middle;
   display:none;
   min-width: 100px;
+}
+
+.tags {
+  border-width: 0 1px 1px 1px;
 }
 
 /*

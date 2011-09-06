@@ -1,38 +1,21 @@
-!!! 
-%html(lang='en')
-  %head
-    %meta(charset='utf-8')
-    %title  Prizzm
-    = csrf_meta_tag
-    = render 'layouts/stylesheets'
-    = favicon_link_tag
-    
-  %body
-    #cbbg
-      %header#prizzmbar
-        .container_24
-          - if signed_in?
-            = render "layouts/header"
-          - else
-            = render "layouts/header_signed_out"
-          .clear
+= render "layouts/app_header"
      
-    #container.container_24
-      #main
-        .grid_14
-          %ul.action-menu
-            %li= link_to "Have", home_path, :class => tab_for(home_path)
-            %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
-            %li= link_to "Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
-        = yield
-      .clear
+#container.container_24
+  #main
+    .grid_14
+      %ul.action-menu
+        %li= link_to "Have", home_path, :class => tab_for(home_path)
+        %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
+        %li= link_to "Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
+    = yield
+  .clear
 
-    %footer
-      = render "layouts/footer"
-      - flash.each do |type, value|
-        .flash{ :class => type.to_s }
-          = value
+%footer
+  = render "layouts/footer"
+  - flash.each do |type, value|
+    .flash{ :class => type.to_s }
+      = value
 
-    = render 'layouts/social_utils'
-    = render 'layouts/javascripts'
+= render 'layouts/social_utils'
+= render 'layouts/javascripts'
 

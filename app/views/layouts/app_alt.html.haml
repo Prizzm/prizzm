@@ -1,0 +1,16 @@
+= render 'layouts/app_header'
+
+#container.container_24
+  #content.grid_14
+    = yield
+  .clear
+  
+%footer
+  = render "layouts/footer"
+  - flash.each do |type, value|
+    .flash{ :class => type.to_s }
+      = value
+
+= render 'layouts/social_utils'
+= render 'layouts/javascripts'
+

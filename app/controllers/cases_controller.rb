@@ -7,6 +7,7 @@ class CasesController < InheritedResources::Base
 
   def show
     @case = Case.find(params[:id])
+    render :layout => 'layouts/app_alt'
   end 
 
   def new

@@ -34,8 +34,10 @@ class ItemsController < InheritedResources::Base
       render "show_public_item"
     else
       # User is somehow trying to see someone else's private item
-      redirect_to dashboard_url
+      redirect_to home_path
     end
+    
+    render :layout => 'layouts/app_alt'
   end
 
   def update 
