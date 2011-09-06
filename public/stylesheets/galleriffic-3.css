@@ -68,11 +68,12 @@ div.image-desc {
 }
 div.navigation {
 	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
-  width: 182px !important;
+  width: 100px !important;
   -moz-border-radius: 3px 3px 3px 3px;
   background: none repeat scroll 0 0 #ECF4F5;
   border: 1px dashed #9FC3C9;
   padding-left: 8px;
+  height: 0;
 }
 ul.thumbs {
 	clear: both;
