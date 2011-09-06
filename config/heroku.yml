@@ -99,19 +99,19 @@ domains:
 addons:
   all:
     - amazon_rds
-    - blitz
-    - cloudmailin
+    #- blitz
+    #- cloudmailin
     - custom_domains:basic
     # add any other addons here
     - cron:daily
-    - logging:expanded
+    #- logging:expanded
     - mongolab:starter
     - newrelic:standard
     - redistogo:nano
-    - releases:advanced
+    #- releases:advanced
     - sendgrid:free
     - shared-database:5mb
-    - simple_worker
+    #- simple_worker
     - stillalive:basic
     - ssl:piggyback
     - pgbackups
