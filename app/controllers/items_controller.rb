@@ -36,8 +36,6 @@ class ItemsController < InheritedResources::Base
       # User is somehow trying to see someone else's private item
       redirect_to home_path
     end
-    
-    render :layout => 'layouts/app_alt'
   end
 
   def update 
