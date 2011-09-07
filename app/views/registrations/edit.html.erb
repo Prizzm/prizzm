@@ -24,6 +24,8 @@
       <div id="current-password-error" class="error-message"></div>
       <%= f.buttons %>
     <%- end -%>
+
+    <%= hidden_field_tag :back, @back -%>
   <% end %>
 
   <h2>Unhappy?</h2>
