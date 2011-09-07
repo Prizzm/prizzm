@@ -74,6 +74,7 @@ div.navigation {
   border: 1px dashed #9FC3C9;
   padding-left: 8px;
   height: 0;
+  display: none !important;
 }
 ul.thumbs {
 	clear: both;

@@ -146,7 +146,10 @@ ActiveRecord::Schema.define(:version => 20110907083114) do
     t.string   "email"
     t.date     "purchase_date"
     t.string   "amount"
+    t.text     "content"
+    t.string   "encrypted_id"
     t.string   "sent"
+    t.datetime "sent_on"
     t.string   "accepted"
   end
 

@@ -3,38 +3,39 @@
   
 #content.grid_14
   %section#pub-review
-    .fl
-      = render 'images'
-    .fl
-      .title
-        = image_tag @item.user.main_image, :class => "userthumb fl"
+    .title
+      = image_tag @item.user.main_image, :class => "userthumb fl"
+      .fl
         = link_to @item.user.name, profile_path(@item.user)
         has a
         #{@item.name}
         .clear
-        #rating.recommended recommended
         = link_to "I want this", "", :class => "button add"
-        /= follow_link_for @item.user
-        .clear
-        
-      #options
-        = link_to @item.url, @item.url
-      
-      #rendered-review
-        - if @item.review.blank?
-          = render 'default_review'
-        - else
-          = raw @item.review
-      #footerbit
-        Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
-        %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
-    - if user_signed_in?
-      %section#new-comment
-        = comment_form_for @item
-    - else
-      = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
-    %ul#comments.table
-      = comment_collection_for @item
+        = follow_link_for @item.user
+      .clear
+    
+    #rendered-review
+      - if @item.review.blank?
+        = render 'default_review'
+      - else
+        .fl
+          = render 'images'
+        #options
+          = link_to @item.url, @item.url
+        = raw @item.review
+    .clear
+    #footerbit
+      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
+      %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
+    .clear
+  .clear
+  - if user_signed_in?
+    %section#new-comment
+      = comment_form_for @item
+  - else
+    = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
+  %ul#comments.table
+    = comment_collection_for @item
 
 %aside.grid_6
   
