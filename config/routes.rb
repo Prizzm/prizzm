@@ -8,13 +8,13 @@ Prizzm::Application.routes.draw do
   match "admin(/:action)" => "admin"
   resources :members
 
-  root :as  => "home", :to => 'home#index'
+  root :to => redirect("/home")
   
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
   # Routes for main page
-  match "/home" => "home#index", :to => redirect("/")
+  match "/home" => "home#index", :as  => "home", :to => 'home#index'
   get '/dashboard' => "home#dashboard", :as => "dashboard"
 
   match "/profile/:id" => "profile#show", :as => "profile"
