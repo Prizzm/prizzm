@@ -129,7 +129,7 @@ group :development, :test do
  
   gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
-  gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
+  gem "heroku-rails", :git => "git://github.com/Prizzm/heroku-rails.git"
 
   # nice table displays in Rails console
   gem "hirb"

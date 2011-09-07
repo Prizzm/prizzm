@@ -21,6 +21,13 @@ GIT
       thor (~> 0.14.6)
 
 GIT
+  remote: git://github.com/Prizzm/heroku-rails.git
+  revision: c75aa7c59faf09bc03bdecb7ba0fce36c85bae6b
+  specs:
+    heroku-rails (0.3.2)
+      heroku (>= 1.11.0)
+
+GIT
   remote: git://github.com/Prizzm/tunnlr_connector.git
   revision: 02ccdae70a149e4e1e1b6aac9051a3c7333d1228
   specs:
@@ -65,13 +72,6 @@ GIT
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
-
-GIT
-  remote: git://github.com/sid137/heroku-rails.git
-  revision: c75aa7c59faf09bc03bdecb7ba0fce36c85bae6b
-  specs:
-    heroku-rails (0.3.2)
-      heroku (>= 1.11.0)
 
 GIT
   remote: git://github.com/voormedia/rails-erd.git
