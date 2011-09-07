@@ -38,10 +38,9 @@
 %aside.grid_6
   %article
     %h4 Your opinion
-    %select
-      %option No opinion
-      %option I recommend this!
-      %option Horrible!
+    = form_tag item_save_opinion_path, :remote => true do
+      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion))
+      = hidden_field_tag :id, @item.id
   %article
     %h4 Share
     = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
@@ -67,6 +66,7 @@
 
 - content_for :javascripts do
   = javascript_include_tag 'ckeditor/ckeditor.js'
+  = javascript_include_tag 'application/item_detail.js'
 
   :javascript
     $(document).ready(function() {
