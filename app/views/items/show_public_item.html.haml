@@ -22,7 +22,7 @@
           = render 'images'
         #options
           = link_to @item.url, @item.url
-        = raw @item.review
+        = raw sanitize @item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
     .clear
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
