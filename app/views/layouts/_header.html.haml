@@ -16,7 +16,7 @@
         %li.user
           = image_tag current_user.main_image, :class => "fl"
           = link_to current_user.name, profile_path(current_user), :class => "username"
-          = link_to "Edit Profile", ""
+          = link_to "Edit Profile", edit_user_registration_path(:back => request.url), :class => "facebox"
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
@@ -26,4 +26,6 @@
     $(document).ready(function(){
     });
 
-
+- content_for :jquery do
+  = javascript_include_tag 'jquery.form.js', 'jquery.remotipart.js'
+ 

@@ -1,24 +1,21 @@
 class RegistrationsController < Devise::RegistrationsController
   def update    
-    if resource.update_attributes(params[resource_name])
-      set_flash_message :notice, :updated
-      sign_in resource_name, resource, :bypass => true
-      #redirect_to after_update_path_for(resource)
+    @user = resource
+
+    if @user.update_attributes(params[:user])
+      @back = params[:back]
     else
-      @user = resource
       @errors = resource.errors
-      respond_to do |format|
-        format.js { }
-        #format.html {
-        #  clean_up_passwords(resource)
-        #  render_with_scope :edit
-        #}
-      end
+    end
+
+    respond_to do |format|
+      format.js { }
     end
   end
 
   def edit
     @user = current_user
+    @back = params[:back]
     render :layout => false
   end
 end

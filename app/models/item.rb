@@ -34,6 +34,8 @@ class Item < ActiveRecord::Base
   acts_as_taggable
 
   default_value_for :privacy, 'private'
+
+  OPINION = %w(no_opinion i_recommend_this! horrible!)
   
   attr_accessor :image_url
 

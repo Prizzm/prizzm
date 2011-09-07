@@ -128,6 +128,14 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+  def save_opinion
+    item = Item.find(params[:id])
+    opinion = Item::OPINION[params[:opinion].to_i]
+    item.update_attributes(:opinion => opinion)
+
+    render :nothing => true
+  end
+
   private 
   # Apply a layout or not, based on the controller action:
   # If we are looking at a single item, use the normal application layout.
