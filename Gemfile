@@ -19,8 +19,7 @@ gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4964
 
 gem "devise_invitable"
 
-#gem "acts_as_follower", :path => '/home/sid137/tracking/acts_as_follower'
-gem "acts_as_follower", :git => "git://github.com/sid137/acts_as_follower.git"
+gem "acts_as_follower", :git => "git://github.com/Prizzm/acts_as_follower.git"
 
 # Allows us to keep an order of a user's items in their collection
 gem "acts_as_list"
@@ -37,7 +36,6 @@ gem "thin"
 #gem "squeel"
 
 #gem "simple_worker" #, :git => "git://github.com/sid137/simple_worker.git"
-#gem "simple_worker", :path => "/home/sid137/tracking/simple_worker"
 #gem "delayed_job"
 #gem "hirefireapp"
 gem "resque", :require => 'resque/server'
@@ -112,7 +110,7 @@ group :development, :test do
   gem "growl"
  
   # Used to create an extermal ssh tunnel
-  gem "tunnlr_connector", :require => "tunnlr", :git => "git://github.com/sid137/tunnlr_connector.git"
+  gem "tunnlr_connector", :require => "tunnlr", :git => "git://github.com/Prizzm/tunnlr_connector.git"
   #gem "tunnlr_connector", :require => "tunnlr", :path => "/Users/noli/tracking/tunnlr_connector"
 
   # Easily create database models for site simulation
@@ -131,12 +129,12 @@ group :development, :test do
  
   gem "taps"
   #gem "heroku-rails", :git => "git://github.com/railsjedi/heroku-rails.git"
-  gem "heroku-rails", :git => "git://github.com/sid137/heroku-rails.git"
+  gem "heroku-rails", :git => "git://github.com/Prizzm/heroku-rails.git"
 
   # nice table displays in Rails console
   gem "hirb"
 
-  gem "facebook_test_users", :git => "git://github.com/sid137/facebook_test_users.git"
+  gem "facebook_test_users", :git => "git://github.com/Prizzm/facebook_test_users.git"
 
   # Allows us to push the local development database up to Heroku, and pull the
   # heroku db down locally
