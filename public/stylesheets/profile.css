@@ -83,6 +83,10 @@ ul.activity-feed li, ul.case-list li {
 	border-bottom: 1px solid #ccc;
 }
 
+ul.case-list .close {
+  right: 8px;
+}
+
 ul.activity-feed li a.user {
 	font-weight: bold;
 	color: #5D5D5D !important;
@@ -97,19 +101,11 @@ ul.activity-feed li a{
 	color: #ccc;
 }
 
-
-ul.case-list {
-  padding-top: 10px;
-  width: 100%;
-  border-top: 1px solid #F3F3F3;
-}
-
-ul.case-list {
-  padding-top: 3px !important;
-}
-
-ul.case-list .row.header .cell {
-  border-bottom: 1px solid #F3F3F3;
+.addcase .tags {
+  border-width: 0 1px 1px 1px;
+  border-color: #ccc;
+  border-style: solid;
+  padding: 8px;
 }
 
 ul.list-display .cell, ul.case-list .cell{
@@ -130,9 +126,7 @@ ul.list-display .cell {
     border-bottom: none;
   }
 
-ul.case-list .cell {
-  border-bottom: 1px dotted #ccc;
-}
+
 
 
 ul.list-display li .img, ul.list-display .img img {

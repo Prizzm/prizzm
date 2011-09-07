@@ -8,7 +8,7 @@
         %li= link_to "Want", want_path(current_user), :class => tab_for(want_path(current_user))
         %li= link_to "Cases", user_cases_path(current_user), :class => tab_for(user_cases_path(current_user))
     = yield
-  .clear
+    .clear
 
 %footer
   = render "layouts/footer"

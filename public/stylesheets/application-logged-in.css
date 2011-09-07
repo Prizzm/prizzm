@@ -1,5 +1,5 @@
 body {
-	background: #fff;
+	background: #f9f9f9;
 }
 
 #prizzmbar {
@@ -11,7 +11,7 @@ body {
 }
 
 #container {
-	padding-top: 52px;
+	padding-top: 62px;
 	margin-bottom: 30px;
 }
 
@@ -26,7 +26,7 @@ header {
   }
 
 #prizzmbar {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 	height: 41px;
 	position: fixed;
 	z-index: 9999;
@@ -202,9 +202,21 @@ header {
 		top: 4px;
 	}
 
+#main {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #cdcdcd;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
 #main > header {
 	margin-bottom: 10px;
-	height: 100pxpx;
+	height: 100px;
 }
   
   #main > header h2 {
@@ -579,6 +591,7 @@ ul.data-list .cell .button {
   
   .addcase {
     position: relative;
+    border-bottom: 1px solid #F3F3F3;
   }
   
   .addcase .close {
@@ -594,6 +607,7 @@ ul.data-list .cell .button {
   .addcase .button {
     margin-right: 0 !important;
     margin-bottom: 5px;
+    float: right;
   }
   
   #company_name, .addcase .tags {
@@ -652,14 +666,6 @@ ul.data-list .cell .button {
 	li.as-original:hover {
 		box-shadow: none;
 	}
-	
-.addcase {
-  margin-bottom: 10px;
-}
-
-.addcase .button {
-  float: right;
-}
 
 aside .row {
 	display: table-row;

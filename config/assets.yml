@@ -27,6 +27,7 @@ javascripts:
     - public/javascripts/application.js
     - public/javascripts/cases.js
     - public/javascripts/application/comments.js
+    - public/javascripts/jquery.pjax.js
 
 stylesheets:
   app:
@@ -46,7 +47,6 @@ stylesheets:
     - public/stylesheets/application-logged-in.css
   public:
     - public/stylesheets/application-logged-in.css
-
   item_public:
     - public/stylesheets/item-public.css
   item_detail:
@@ -63,8 +63,6 @@ stylesheets:
     - public/stylesheets/profile.css
   profile_fix:
     - public/stylesheets/profile-public-fix.css
-  livef:
-    - public/stylesheets/livef.css
   case_detail:
     - public/stylesheets/case-detail.css
   company:

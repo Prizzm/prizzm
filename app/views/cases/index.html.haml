@@ -1,12 +1,41 @@
-%ul.table.data-list
-  %li.row.header
-    .cell Date
-    .cell Ticket name
-    .cell Case no.
-    .cell 
-  - @cases.each do |user_case|
-    %li.row
-      .cell= user_case.created_at.strftime '%m/%d/%Y'
-      .cell= user_case.title
-      .cell= user_case.case_reference
-      .cell= link_to "View", case_path(user_case), :class => "button"
+- content_for :page_style do
+  = include_stylesheets :profile
+
+#content.grid_14
+  = render :template => 'cases/new'
+  %ul.table.list-display.case-list
+  
+    - @cases.each do |user_case|
+      %li.row
+        .cell
+          %h3
+            = link_to case_path(user_case) do
+              = user_case.case_reference
+              = user_case.title
+        .cell
+          = user_case.created_at.strftime '%m/%d/%Y'
+          = link_to "", "", :class => "close"
+
+%aside.grid_6.right
+  %article
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
+    %ul.table
+      - suggested_people.each do |person| 
+        %li.row
+          = link_to profile_path(person) do
+            .cell.img
+              = image_tag person.main_image, :class => 'smallthumb'
+            .cell.uname= person.name
+          .cell.action
+            = follow_link_for person
+          .cell.del
+            = link_to "", "", :class => "close"
+  %article
+    %h4 Invite your friends
+    = render :partial => "invitations/new"
+  
+  .clear
