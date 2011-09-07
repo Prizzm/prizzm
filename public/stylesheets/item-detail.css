@@ -23,7 +23,7 @@ img.userthumb {
 }
 
 section#review, section#pub-review{
-	padding: 35px 8px 8px;
+	padding: 8px 8px 8px;
 	font-size: 14px;
 	border: 1px solid rgba(0,0,0,0.2);
 	font: arial,sans-serif;
@@ -35,17 +35,6 @@ section#review, section#pub-review{
 }
   section#pub-review {
     padding: 10px !important;
-  }
-
-  section#review .status {
-    width: 100% !important;
-    display: block;
-    border-radius: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    padding: 5px;
   }
   
   section#review h1, section#review h2, section#review h3 {
@@ -84,7 +73,7 @@ section#review, section#pub-review{
   }
   
   section#review .edit-cntrl {
-  top: 35px;
+  top: 10px;
   right: 10px;
   }
   
@@ -94,17 +83,17 @@ section#review, section#pub-review{
     border-top: 1px solid #f3f3f3;
     color: #cccccc;
   }
-  
-    section #footerbit a {
-        color: #cccccc !important;
-    }
-  
+
   #rendered-review {
     margin-bottom: 10px;
   }
   
   #options {
     margin-bottom: 10px;
+  }
+  
+  .status {
+    float: right;
   }
 
 .new_comment .share-input textarea {
@@ -176,9 +165,6 @@ ul#comments .cell {
 }
 
 .galsect {
+  margin-right: 10px;
   width: 100px;
-}
-
-.revpost {
-  width: 320px;
 }

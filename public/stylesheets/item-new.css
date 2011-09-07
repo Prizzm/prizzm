@@ -72,7 +72,7 @@ form.action {
     
     form.action #img_controls {
       margin: 0;
-      padding: 3px;
+      padding: 1px;
       width: 100px;
       list-style: none;
       color: #ccc;
@@ -157,7 +157,10 @@ form.action {
 }
 
 .tags {
+  padding: 8px;
   border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #ccc;
 }
 
 /*

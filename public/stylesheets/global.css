@@ -175,12 +175,13 @@ em {
   margin: 0 0 0 5px;
 }
 a.button, input[type=submit].button, input[name=commit] {
+    margin-top: 5px;
     color: #6e6e6e;
     font: bold 12px Helvetica, Arial, sans-serif;
     text-decoration: none;
     padding: 7px 12px;
     position: relative;
-    float: left;
+    float: right;
     text-shadow: 0 1px 0 #fff;
     -webkit-transition: border-color .218s;
     -moz-transition: border .218s;
@@ -193,7 +194,6 @@ a.button, input[type=submit].button, input[name=commit] {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    margin-right: 10px;
 }
 a.button:hover, input[type=submit].button:hover {
     color: #333;
@@ -366,7 +366,7 @@ input[value=clear] {
 	color: #6e6e6e !important;
 }
 
-.close {
+.close, .remove {
   width: 13px;
   height: 14px;
   display: block;
@@ -397,6 +397,7 @@ vertical-align: middle;
 .row, .yui3-aclist-item {
 display: table-row;
 width: 100%;
+position: relative;
 }
 
 .row.header {
@@ -422,20 +423,15 @@ a.alt {
 }
 
 .status {
-  padding: 0 2px 2px;
-  font-variant: small-caps;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
   display: inline;
   text-decoration: none;
-  background: #9ed991;
-  color: #235825 !important;
+  color: #6caf5d !important;
+  font-variant: small-caps;
+  font-weight: normal;
 }
 
 .status.private {
-  background: #d99191;
-  color: #582323 !important;
+  color: #d99191 !important;
 }
 
 a.tag {
@@ -504,10 +500,8 @@ footer ul li {
 }
 
   .tags {
-    padding: 8px;
     list-style: none;
     background: #fff;
-    border: 1px solid #c4cbdc;
     color: #a7a7a7;
   }
   
@@ -524,9 +518,10 @@ footer ul li {
   
   .tags li.as-selection-item {
     margin-right: 5px;
-    padding: 3px 18px 3px 3px;
+    padding: 2px 18px 2px 2px;
     background: #90cbf9;
     border: 1px solid #72a7d8;
+    font-size: 0.8em;
     
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -560,8 +555,8 @@ footer ul li {
   }
   
   .tags li .close {
-    top: 4px;
-    right: 3px;
+    top: 2px;
+    right: 2px;
     opacity: 0.6;
     background-image: url('../images/cancel-light.png');
   }
@@ -597,7 +592,7 @@ footer ul li {
 
 aside #invitations input[type=text] {
   margin-bottom: 5px;
-  width: 90%;
+  width: 100%;
 }
 
 aside #invitations input[type=submit] {
@@ -608,18 +603,15 @@ aside #invitations #add-email {
   margin-top: 8px;
 }
 
-aside #invitations .remove {
-  background: url("../images/cancel.png") no-repeat scroll 0 0 transparent;
-  width: 13px;
-  height: 14px;
-  display: inline-block;
+aside #invitations .close {
+  
 }
 
 #emails-list li {
   position: relative;
 }
 
-#emails-list li .close {
+#emails-list li .remove {
   top: 7px;
   right: 10px;
 }

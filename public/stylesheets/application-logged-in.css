@@ -599,11 +599,7 @@ ul.data-list .cell .button {
   #company_name, .addcase .tags {
     border-width: 0 1px 1px 1px;
   }
-
-  .tags {
-    margin-bottom: 10px !important;
-	}
-	
+  
 	ul.as-list {
 		position: absolute;
 		list-style-type: none;

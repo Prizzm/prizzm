@@ -47,7 +47,7 @@
   
     $('#add-email').bind('click', function(e) {
       e.preventDefault();
-      var new_email = $("<input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a>");
+      var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a></li>");
       $('#emails-list').append(new_email);
     });
   
