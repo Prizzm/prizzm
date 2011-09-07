@@ -2,7 +2,6 @@
   <h2>Edit <%= @user.class.to_s.humanize -%></h2>
 
   <%= semantic_form_for(@user, :url => user_registration_path, :html => { :multipart => true }, :remote => true) do |f| %>
-    <%#= devise_error_messages! %>
     <div class="error"></div>
 
     <%- f.inputs do -%>

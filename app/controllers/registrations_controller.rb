@@ -10,10 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
 
     respond_to do |format|
       format.js { }
-      #format.html {
-      #  clean_up_passwords(resource)
-      #  render_with_scope :edit
-      #}
     end
   end
 
