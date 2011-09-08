@@ -1,5 +1,5 @@
 body {
-	background: #f9f9f9;
+	background: url('../images/whitey.png') repeat;
 }
 
 #prizzmbar {
@@ -719,4 +719,8 @@ aside .tags li a {
 
 aside .button {
 	margin: 5px 0 0;
+}
+
+.profile.container_24 {
+  width: 1000px;
 }

@@ -4,9 +4,9 @@
   .clear
 %nav.fr
   %ul
-    %li= link_to "Home", home_path
+    %li= link_to "Home", home_path, :class => "js-pjax"
     %li= link_to "People", "#"
-    %li= link_to "Profile", profile_path(current_user), :class => tab_for(products_path)
+    %li= link_to "Profile", profile_path(current_user), :class => "js-pjax"
 
     %li.account
       = link_to "#", :class => "account" do
@@ -20,11 +20,6 @@
           .clear
         %li= link_to "Settings", "#"
         %li= link_to "Logout", destroy_user_session_path
-
-- content_for :javascripts do
-  :javascript
-    $(document).ready(function(){
-    });
 
 - content_for :jquery do
   = javascript_include_tag 'jquery.form.js', 'jquery.remotipart.js'

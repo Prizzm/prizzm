@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  This script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.

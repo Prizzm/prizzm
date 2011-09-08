@@ -1,8 +1,8 @@
 = render "layouts/app_header"
 
-#container.container_24
+#container.container_24.profile
   #main
-    %aside.grid_4
+    %aside.grid_5
       = image_tag @user.photo_url(:big), :class => "fl profilePic", :alt => "" 
       %h2.fl= @user.name
       - if your_profile?
@@ -38,9 +38,9 @@
             Following #{pluralize @user.following_products_count, "Product"}
     
     
-    #content.grid_12
+    #content.grid_14
       = yield
-    %aside.grid_4
+    %aside.grid_5
       %article
         %h4 Tags used
         %ul.tags

@@ -17,138 +17,43 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <%= stylesheet_link_tag 'global', 'landing', 'font', 'default-nivo', 'nivo-slider' -%>
+    <%= stylesheet_link_tag 'global', 'landing', 'font' -%>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" -%>
-    <%= javascript_include_tag 'jquery.nivo.slider.pack' -%>
     <%= csrf_meta_tag %>
+    
   </head>
 
   <body>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#banner-slider').nivoSlider({
-          effect: 'slideInLeft',
-          animSpeed: 500,
-          pauseTime: 6000,
-          pauseOnHover: true,
-          directionNav: false,
-          startSlide: 0,
-          captionOpacity: 1,
-          directionNav: true
-        });
-        
-        $('#login').click(function(){
-          $('#login-drop').slideDown();
-        });
-      });
-    </script>
-    
-    <div id="blackbar"></div>
-    <div id="bannerbar"><span></span></div>
-    <div id="searchbar"></div>
-    
     <div id="container" class="container_24">
-      <header>
-        <h1 class="grid_5"><a href="/" rel="index">PRIZZM</a></h1>
-        <nav class="grid_15">
-          <ul>
-            <!--
-			<li><a href="">Why Prizzm?</a></li>
-            <li><a href="">Tour</a></li>
-            <li><a href="" class="alt">Start adding things!</a></li>
-           -->
-		  </ul>
-        </nav>
-
-        <ul class="grid_4">
-          <li id="login">
-            <a href="" class="alt">Login</a>
-            <div id="login-drop">
-              <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-                <%#= link_to new_registration_path(resource_name), :id => "signup", :class => "round" do %>
-                <%# end %>
-                <%= f.text_field :email, :class => "round", :placeholder => "email" %>
-                <%= f.password_field :password, :class => "round", :placeholder => "password" %>
-                <%= f.submit :id => "submit", :value => "login" %>
-                <span><input type="checkbox" checked="true" /> Remember me </span>
-                <a href="<%= new_password_path(resource_name) %>" id="forgot" class="clearfix">Forgot something?</a>
-              <% end %>
-              <ul>
-                <li>
-                  <%= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook) -%>
-                </li>
-                <li>
-                  <%= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter) -%>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </header>
-    
-      <div id="banner" class="grid_24">
-        <ul>
-          <li class="share">
-            <div class="slider-wrapper theme-default">
-              <div id="banner-slider">
-                <img src="/images/landing/share-banner-wide.png" title="#caption1" />
-                <img src="/images/landing/share-banner-wide.png" title="#caption2" />
-                <img src="/images/landing/share-banner-wide.png" title="#caption3" />
-              </div>
-            </div>
-
-              <div id="caption1" class="nivo-html-caption">
-                <h2>Own your data. </h2> 
-                <p> Track companies, products and services - things you have or want. It's your data- private - unless you share it. </p>
-                <a href="" class="bigbutton">Start sharing now!</a>
-              </div>
-              <div id="caption2" class="nivo-html-caption">
-                <h2>Want a recommendation on a product or service? </h2> 
-				<p>Or share a recommendation? Use Prizzm. </p>
-                <a href="" class="bigbutton">Start sharing now!</a>
-              </div>
-              <div id="caption3" class="nivo-html-caption">
-                <h2>Share your opinion, <br />with companies and friends.</h2>
-                <p>Having a problem with a product or company? Share your experience on Prizzm, tell your friends about it and get help from our community!</p>
-                <a href="" class="bigbutton">Start sharing now!</a>
-              </div>
-          </li>
-        </ul>
-      </div>
-    
-
-    
-      <div class="clear"></div>
+       <h1>prizzm</h1>
+       <sub>Putting the power back in your hands</sub>
       
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%#= link_to "Sign up", new_registration_path(resource_name), :id => "signup", :class => "round"%>
+        <%= f.text_field :email, :class => "round", :placeholder => "email" %>
+        <%= f.password_field :password, :class => "round", :placeholder => "password" %>
+        <%= f.submit :id => "submit", :value => "login", :class => "button"%>
+        <a href="<%= new_password_path(resource_name) %>" id="forgot" class="clearfix">Forgot your password?</a>
+      <% end %>
+      <ul class="logsoc">
+        <li>
+          <%= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook) -%>
+        </li>
+        <li>
+          <%= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter) -%>
+        </li>
+      </ul>
+      
+      <footer>  
+        ©2011 Prizzm -
+        <a href=''>About</a> 
+        -
+        <a href=''>Terms</a> 
+        -
+        <a href=''>Privacy</a>     
+     </footer>
       
     </div> <!-- end of #container -->
-	<footer> 
-	        <div class='fl' id='copyright'> 
-	          ©2011 Prizzm -
-	          <a href=''>About</a> 
-	          -
-	          <a href=''>Terms</a> 
-	          -
-	          <a href=''>Privacy</a> 
-	        </div> 
-	        <ul class='fr'> 
-	          <li> 
-	            <a href=''>Dashboard</a> 
-	            .
-	          </li> 
-	          <li> 
-	            <a href=''>Browse</a> 
-	            .
-	          </li> 
-	          <li> 
-	            <a href=''>Profile</a> 
-	            .
-	          </li> 
-	          <li> 
-	            <a href=''>Logout</a> 
-	          </li> 
-	        </ul> 
-	        <div class='clear'></div> 
-	</footer>
+	
   </body>
 </html>
