@@ -21,6 +21,12 @@ class ProductInvitationsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @product_invitation = ProductInvitation.new
+    @mail_templates = @product.mail_templates
+  end
+  def refresh_mail_templates
+    @product = Product.find(params[:product_id])
+    @mail_templates = @product.mail_templates
+    render :inline=> "<%= collection_select('product_invitation','mail_template_id',@mail_templates,:id,:name) %>"
   end
   def show
     @product_invitation = ProductInvitation.find(params[:id])

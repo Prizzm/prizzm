@@ -1,0 +1,12 @@
+.mailer-teplate
+    Mr.
+    %span{:style=>"text-transform: capitalize;"} Customer Name
+    %br
+    %div
+        You are invited to review PRODUCT NAME by COMPANY NAME
+    .mail-content= @mail_template.mail_content.to_s.html_safe
+    .mail-links
+        Please visit to
+        = link_to "Accept","",:onclick=>"return false;"
+        or
+        =link_to "Reject","",:onclick=>"return false;"

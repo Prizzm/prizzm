@@ -13,6 +13,7 @@
         %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
         %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
         %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
+        =javascript_include_tag("jquery-1.6.2.min")
 
 
 
@@ -43,25 +44,48 @@
                     %li.tt-login
                         =link_to "Login with twitter", user_omniauth_authorize_path(:twitter)
                     %li
-                        %a{:href=>""}I have a Prizzm account
+                        %a#make_signin{:href=>"",:onclick=>"return false;"}I have a Prizzm account
 
             %article.right
-                = form_for :user, :url => user_session_path do |f|
-                    %h2 Sign up!
-                    = f.label :username, "Username: "
-                    = f.text_field :username, :class => "round"
-                    = f.label :password, "Password: "
-                    = f.password_field :password, :class => "round"
-                    = f.label :confirmpassword, "Confirm Password: "
-                    = f.password_field :confirmpassword, :class => "round"
-                    = f.label :email, "Email: "
-                    = f.text_field :email, :class => "round"
-                    
-                    = f.submit :id => "submit", :value => "Register", :class=>"button blue"
+                .signup_form
+                    = form_for :user, :url => user_session_path do |f|
+                        %h2 Sign up!
+                        = f.label :name, "Name: "
+                        = f.text_field :name, :class => "round"
+                        = f.label :password, "Password: "
+                        = f.password_field :password, :class => "round"
+                        = f.label :confirmpassword, "Confirm Password: "
+                        = f.password_field :confirmpassword, :class => "round"
+                        = f.label :email, "Email: "
+                        = f.text_field :email, :class => "round"
+                        = f.submit :id => "submit", :value => "Register", :class=>"button blue"
+                .clear
+                .signin_form
+                    = form_tag user_session_path do
+                        %h2 Sign in!
+                        = label_tag "Email"
+                        = text_field_tag 'user[email]'
+                        = label_tag "Password"
+                        = password_field_tag 'user[password]'
+                        = check_box_tag 'user[remember_me]'
+                        = label_tag 'user[remember_me]', 'Remember me'
+                        = submit_tag "submit", :value => "Sign in", :class=>"button blue"
+                        
+                        =# link_to "Forgot your password?", new_password_path('user')
                 <!-- One signed up, log them in and redirect to http://development.prizzm.com -->
                 .clear
-
         .clear
+%script{:type => "text/javascript"}
+    :plain
+        $(document).ready(function(){
+            $(".signin_form").hide();
+            $("#make_signin").click(function(){
+                $(".signup_form").hide(0,function(){
+                    $(".signin_form").show();
+                });
+            });
+        });
+        
 
 		
         
