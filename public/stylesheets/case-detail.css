@@ -90,11 +90,7 @@ section#case {
     border-top: 1px solid #f3f3f3;
     color: #cccccc;
   }
-  
-    section #footerbit a {
-        color: #cccccc !important;
-    }
-    
+
   #review-editor .buttons {
   	margin-top: 10px;
   }
@@ -189,4 +185,3 @@ form.addNote input[type=submit]{
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-

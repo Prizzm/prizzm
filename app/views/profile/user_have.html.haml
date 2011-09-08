@@ -1,6 +1,7 @@
 - content_for :page_style do
   = include_stylesheets :profile
 
+= render :partial => "action_menu"
 = render :template => 'items/new'
 
 %ul.table.list-display

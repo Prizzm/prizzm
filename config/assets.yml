@@ -24,6 +24,7 @@ javascripts:
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
+    - public/javascripts/jquery.timers-1.2.js
     - public/javascripts/application.js
     - public/javascripts/cases.js
     - public/javascripts/application/comments.js

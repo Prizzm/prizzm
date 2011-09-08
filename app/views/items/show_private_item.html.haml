@@ -39,8 +39,10 @@
   %article
     %h4 Your opinion
     = form_tag item_save_opinion_path, :remote => true do
-      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion))
+      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
       = hidden_field_tag :id, @item.id
+      = link_to "Save", "#", :id => "show_loader", :class => "button green fn"
+    .clear
   %article
     %h4 Share
     = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do

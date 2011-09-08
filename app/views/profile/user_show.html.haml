@@ -9,9 +9,17 @@
             = item.opinion
             .clear
             %p= item.review.truncate (120)
+        .opinion= item.opinion
         %ul.stats
           %li= link_to "read more", (item)
         .clear
   - else
-    .error Oops! You need to start adding items!
+    .error
+      - if your_profile?
+        Oops! You need to start adding items!
+      - else
+        Oops! They haven't added any items yet!
+        =link_to "Recommend an item to them", ""
+        \.
+        
   .clear
