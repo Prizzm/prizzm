@@ -9,7 +9,7 @@ class ItemsController < InheritedResources::Base
   end
 
   def create
-    params[:item][:tag_list] = params[:as_values_tag_list]
+    params[:item][:tag_list] = params[:as_values_tag_list] + params[:item_possession]
     if params[:search]
       @item = Item.create(:name => params[:search])
     else
