@@ -1,4 +1,10 @@
 =stylesheet_link_tag("product_invite")
+
+%script{:type=>"text/javascript"}
+    :plain
+        function sendEmail(product,invitation,obj){
+            $(obj).parent().html("<span id ='inv_'"+invitation+"><img src='/images/loader2.gif'/></span>").load("http://#{request.host_with_port}/products/"+product+"/product_invitations/"+invitation);            
+        }
 %h1 
     Listing invitations for
     =@product.name
@@ -6,44 +12,37 @@
 .invitations-show
     %table
         %tr{:style=>"background:#ccc;padding:5px;"}
-            %th First Name &nbsp;
-            %th Last Name &nbsp;
+            %th First Name
+            %th Last Name
             %th Email &nbsp;
-            %th Purchase Date &nbsp;
-            %th Amount &nbsp;
-            %th Invited On &nbsp;
-            %th Response &nbsp;
-            %th Status &nbsp
+            %th Purchase Date
+            %th Amount 
+            %th Invited On 
+            %th Response 
+            %th Status 
         -if !@invitations.empty?
             - @invitations.each do |invitation|
                 %tr
                     %td
                         = invitation.first_name
-                        &nbsp;
                     %td
                         = invitation.last_name
-                        &nbsp;
                     %td
                         = invitation.email
-                        &nbsp;
                     %td
                         = invitation.purchase_date
-                        &nbsp;
                     %td
                         = invitation.amount
-                        &nbsp;
                     %td
                         -if !invitation.sent_on.nil?
                             = invitation.sent_on.to_date
-                        &nbsp;
                     %td
                         = invitation.accepted
-                        &nbsp;
                     %td
                         -if invitation.sent.to_s == "sent"
                             Invitation sent
                         -else
-                            = link_to 'Invite', product_product_invitation_path(@product,invitation)
+                            = link_to 'Invite', "",:id=>"inv_#{invitation.id}",:onclick=>"sendEmail(#{@product.id},#{invitation.id},this);return false;"
         -else
             %tr
                 %td{:colspan=>"8"} No Record Found

@@ -1,5 +1,6 @@
 =stylesheet_link_tag("jquery-ui-1.8.15.custom")
 =stylesheet_link_tag("product_invite")
+=stylesheet_link_tag("prettyPhoto")
 .add-invitation
     .from-container-j
         .heading-common
@@ -20,25 +21,61 @@
                 = f.label "Product purchase date"
                 = f.text_field :purchase_date
             %p
-                = f.label "Invitation Content"
-                = f.text_area :content,:rows=>"6",:cols=>"45"
+                =# f.label "Product Review Content"
+                =# f.text_area :content,:rows=>"6",:cols=>"45"
             %p
                 = f.label :amount
                 = f.text_field :amount
+            %br
+            %p
+                =f.label "Select mail template"
+                %br
+                %span#mail_temp
+                    =f.collection_select("mail_template_id",@mail_templates,:id,:name)
+                %span#show_mail_temp
+                %span#add_mail_temp
+                    =link_to "add new",new_product_mail_template_path(@product)+"?iframe=true&amp;width=100%&amp;height=100%",:rel=>"prettyPhoto[iframe]"
             %p
                 %br
                 = f.submit
 - content_for :javascripts do
     =javascript_include_tag 'ckeditor/ckeditor.js'
+    =javascript_include_tag 'jquery.prettyPhoto.js'
     :javascript
         $(document).ready(function(){
+            mail_link();
             function showEditor(box){
                 editor = CKEDITOR.replace(box,{                   //refactor point
                 startupFocus: true
             });
           }
-          showEditor('product_invitation_content');
-          $( "#product_invitation_purchase_date" ).datepicker();
+          
+          $( "#product_invitation_purchase_date" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+          });
+          $("#product_invitation_mail_template_id").change(mail_link);
         });
+        
+        function mail_link(){
+            template = $("#product_invitation_mail_template_id").val();
+            $("#show_mail_temp").html("<a href='/products/#{params[:product_id]}/mail_templates/"+template+"?iframe=true&amp;width=600&amp;height=400' rel='prettyPhoto[iframe]'>preview</a>");
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                social_tools:false,
+                default_width: 600,
+                default_height: 460,
+                callback: function(){refresh_templates();}
+            });
+        }
+        function refresh_templates(){
+            product = "#{params[:product_id]}";
+            temp_selected = $("#product_invitation_mail_template_id").val();
+            $("#mail_temp").load("/products/"+product+"/product_invitations/refresh_mail_templates",function(){                
+                if (!temp_selected){mail_link();}
+                else{$("#product_invitation_mail_template_id").val(temp_selected);}
+                $("#product_invitation_mail_template_id").change(mail_link);
+            });
+
+        }
     
    

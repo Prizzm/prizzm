@@ -1,0 +1,32 @@
+=stylesheet_link_tag("jquery-ui-1.8.15.custom")
+=javascript_include_tag("jquery-1.6.2.min")
+=javascript_include_tag 'ckeditor/ckeditor.js'
+.add-invitation
+    .from-container-j
+        .heading-common
+            %h1
+                Add Template for
+                =@product.name
+        -  form_for ([@product, @mail_template]) do |f|
+            %p
+                = f.label "Template name"
+                = f.text_field :name
+            %p
+                = f.label "Template Content"
+                %br
+                = f.text_area :mail_content,:rows=>"6",:cols=>"45"
+            %p
+                %br
+                = f.submit
+%script{:type => "text/javascript"}
+    :plain
+        $(document).ready(function(){
+            function showEditor(box){
+                editor = CKEDITOR.replace(box,{                   //refactor point
+                startupFocus: true
+            });
+          }
+          showEditor('mail_template_mail_content');
+        });
+    
+   
