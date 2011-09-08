@@ -5,11 +5,13 @@ class HomeController < ApplicationController
     @user = current_user
     @item = Item.new
     @item.images.build
+=begin
     if session[:review]
-      if ProductReview.create(session[:review])
+     if ProductReview.create(session[:review])
       end
       session[:review] = nil
     end
+=end
     respond_to do |format|
       format.html 
       format.json  { render :json => @user }
