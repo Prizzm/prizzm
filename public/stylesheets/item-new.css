@@ -4,7 +4,8 @@ form.action {
   border-bottom: 1px solid #f3f3f3;
 }
   form.action input, form.action textarea {
-    padding: 8px;
+    padding: 10px;
+    font-size: 1.3em;
     
     -webkit-box-sizing: border-box;
   	-moz-box-sizing: border-box;
@@ -12,15 +13,18 @@ form.action {
   }
 
   form.action input#item_name{
-    padding: 8px;
+    padding: 10px;
     width: 100%;
-    border: 1px solid #ccc;
+    border-width: 0 0 1px 0 !important;
+    border-style: solid;
+    border-color: #ccc;
+    font-size: 1.3em;
   }
   
   form.action #item_url {
     padding: 8px 142px 8px 8px;
     width: 100%;
-    border-width: 0 1px 1px 1px;
+    border-width: 0 0 1px 0 !important;
     border-style: solid;
     border-color: #ccc;
   }
@@ -59,8 +63,8 @@ form.action {
       margin: 0;
       border-width: 0 0 0 1px;
       border-radius: 0;
-      padding-top: 9px;
-      padding-bottom: 9px;
+      padding-top: 11px;
+      padding-bottom: 11px;
     }
     
     form.action #url_preview {
@@ -95,7 +99,7 @@ form.action {
       }
   
   form.action .wrap {
-    border-width: 0 1px 1px 1px;
+    border-width: 0 0 1px 0;
     border-style: solid;
     border-color: #ccc;
   }
@@ -120,7 +124,7 @@ form.action {
   }
   
   form.action .finalstep {
-    margin: 0;
+    margin: 0 5px 0 !important;
     padding: 8px 0;
     list-style: none;
   }
@@ -158,7 +162,7 @@ form.action {
 
 .tags {
   padding: 8px;
-  border-width: 0 1px 1px 1px;
+  border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #ccc;
 }

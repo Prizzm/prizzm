@@ -575,12 +575,15 @@ ul.data-list .cell .button {
 }
 
   .action-menu li a {
-    padding: 3px 8px 15px;
+    padding: 3px 8px 13px;
     text-decoration: none;
     font-variant: normal;
     font-weight: normal;
     color: #444;
     cursor: pointer;
+    text-shadow: 1px 1px 1px #fff;
+    font-weight: bold;
+    font-size: 1.1em;
   }
   
   .action-menu li a:hover {
@@ -597,6 +600,14 @@ ul.data-list .cell .button {
     border-bottom: 1px solid #F3F3F3;
   }
   
+  .addcase input {
+    font-size: 1.3em !important;
+  }
+  
+  .addcase input[type=text], .addcase .tags {
+    border-width: 0 0 1px 0 !important;
+  }
+  
   .addcase .close {
     top: 8px;
     right: 8px;
@@ -608,7 +619,7 @@ ul.data-list .cell .button {
   }
   
   .addcase .button {
-    margin-right: 0 !important;
+    margin-right: 5px !important;
     margin-bottom: 5px;
     float: right;
   }
