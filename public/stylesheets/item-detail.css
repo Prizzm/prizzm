@@ -1,3 +1,16 @@
+#content {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CDCDCD;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
 aside h4, .title {
   margin-bottom: 10px;
   border-bottom: 1px solid #f3f3f3;

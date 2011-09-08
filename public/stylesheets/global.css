@@ -485,8 +485,7 @@ img.thumb {
 }
 
 footer {
-  margin: 0 auto 30px;
-  width: 800px;
+  margin: 13px 0;
   font-size: 0.9em;
 }
 
@@ -671,4 +670,11 @@ ul.stats li a span {
   display: block;
   font-size: 0.85em;
   font-variant: small-caps;
+}
+
+article.userbit {
+  margin-bottom: 0 !important;
+  padding: 8px;
+  border: 1px solid #a7cae2;
+  background: #d8efff;
 }

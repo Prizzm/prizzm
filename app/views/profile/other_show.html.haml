@@ -9,11 +9,5 @@
             %p= item.review.truncate (120)
         %ul.stats
           %li= link_to "read more", (item)
-
-- content_for :jquery do
-  :javascript
-    $(document).ready(function() {
-      $('.close', '#helptool').bind('click', function() {
-        $('#helptool').slideUp(1000);
-      });
-    });
+  - else
+    .error Oops! You need to start adding items!
