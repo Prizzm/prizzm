@@ -15,7 +15,7 @@
             - elsif item.opinion == "i_recommend_this!"
               %span{ :class => "recommended" }= item.opinion.humanize
             - else
-              %span{ :class => "recommended" }= item.opinion.humanize
+              %span{ :class => "hate" }= item.opinion.humanize
 
         %ul.stats
           %li= link_to "read more", (item)
