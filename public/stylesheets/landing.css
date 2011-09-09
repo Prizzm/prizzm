@@ -93,6 +93,10 @@ ul.logsoc li {
   text-align: center;
 }
 
+ ul.logsoc li a {
+  display: block;
+ }
+
 footer {
   text-align: center;
   width: 100%;

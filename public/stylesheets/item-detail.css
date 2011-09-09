@@ -1,3 +1,16 @@
+section#review{
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CDCDCD;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
 aside h4, .title {
   margin-bottom: 10px;
   border-bottom: 1px solid #f3f3f3;
@@ -71,13 +84,6 @@ section#review, section#pub-review{
   top: 10px;
   right: 10px;
   }
-  
-  section #footerbit {
-    margin-top: 10px;
-    padding-top: 5px;
-    border-top: 1px solid #f3f3f3;
-    color: #cccccc;
-  }
 
   #rendered-review {
     margin-bottom: 10px;
@@ -85,10 +91,6 @@ section#review, section#pub-review{
   
   #options {
     margin-bottom: 10px;
-  }
-  
-  .status {
-    float: right;
   }
 
 .new_comment .share-input textarea {
@@ -141,7 +143,7 @@ ul#comments .cell {
 }
 
 .recommended {
-    color: #619866;
+  color: #619866;
   background: #a7e8ad;
 }
 
@@ -162,4 +164,10 @@ ul#comments .cell {
 .galsect {
   margin-right: 10px;
   width: 100px;
+}
+
+.sel_opinion {
+  display: block;
+  width: 100%;
+  font-size: 1.3em;
 }

@@ -1,0 +1,8 @@
+.product_template
+    .product_template_header
+        =image_tag @product_template.theader_url.to_s
+        %br
+    .product_template_content
+        =@product_template.content.to_s.html_safe
+    .product_template_links
+        = link_to 'edit', edit_product_product_template_path(@product)

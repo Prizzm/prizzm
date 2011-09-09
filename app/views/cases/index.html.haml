@@ -14,6 +14,8 @@
               = user_case.title
         .cell
           = user_case.created_at.strftime '%m/%d/%Y'
+        .cell
+          = privacy_control_for user_case
           = link_to "", "", :class => "close"
 
 %aside.grid_6.right

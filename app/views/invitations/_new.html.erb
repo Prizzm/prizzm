@@ -2,7 +2,7 @@
 <%= form_for User.new, :url => user_invitation_path, :html => { :id => "email-invite" }, :remote => true do |f| %>
 
   <ul id="emails-list">
-    <li><%= f.text_field :email, :name => "user[email][]" %></li>
+    <li><%= f.text_field :email, :name => "user[email][]", :placeholder => "email" %></li>
   </ul>
   <div class="clear"></div>
   

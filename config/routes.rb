@@ -1,10 +1,7 @@
 Prizzm::Application.routes.draw do
 
 
-  get "product_reviews/say"
-  get "product_reviews/save"
-  get "product_reviews/share"
-  match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews#say'
+  match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members
 
@@ -37,7 +34,12 @@ Prizzm::Application.routes.draw do
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
-    resources :product_invitations 
+    resources :product_invitations do
+      collection do
+        get 'refresh_mail_templates'
+      end
+    end
+    resources :mail_templates
   end
 
   resources :cases do

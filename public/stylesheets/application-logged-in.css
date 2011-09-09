@@ -203,15 +203,7 @@ header {
 	}
 
 #main {
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #cdcdcd;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
-  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+  
 }
 
 #main > header {
@@ -249,6 +241,17 @@ section h3 span {
 
   #content header .buttons {
     margin-bottom: 10px;
+  }
+  
+  section #footerbit {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #f3f3f3;
+    color: #cccccc;
+  }
+  
+  #footerbit .status {
+    float: right;
   }
 
 aside a.fr {
@@ -572,12 +575,15 @@ ul.data-list .cell .button {
 }
 
   .action-menu li a {
-    padding: 3px 8px 15px;
+    padding: 3px 8px 13px;
     text-decoration: none;
     font-variant: normal;
     font-weight: normal;
     color: #444;
     cursor: pointer;
+    text-shadow: 1px 1px 1px #fff;
+    font-weight: bold;
+    font-size: 1.1em;
   }
   
   .action-menu li a:hover {
@@ -594,6 +600,14 @@ ul.data-list .cell .button {
     border-bottom: 1px solid #F3F3F3;
   }
   
+  .addcase input {
+    font-size: 1.3em !important;
+  }
+  
+  .addcase input[type=text], .addcase .tags {
+    border-width: 0 0 1px 0 !important;
+  }
+  
   .addcase .close {
     top: 8px;
     right: 8px;
@@ -605,7 +619,7 @@ ul.data-list .cell .button {
   }
   
   .addcase .button {
-    margin-right: 0 !important;
+    margin-right: 5px !important;
     margin-bottom: 5px;
     float: right;
   }
@@ -723,4 +737,17 @@ aside .button {
 
 .profile.container_24 {
   width: 1000px;
+}
+
+.profile #main {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CDCDCD;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }

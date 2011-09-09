@@ -28,9 +28,9 @@ class ItemsController < InheritedResources::Base
     @item = Item.find(params[:id])
 
     if @item.user == current_user
-      render "show_private_item"
+      render "show_private_item", :layout => "app_alt"
     elsif @item.is_public?
-      render "show_public_item"
+      render "show_public_item", :layout => "app_alt"
     else
       # User is somehow trying to see someone else's private item
       redirect_to home_path
