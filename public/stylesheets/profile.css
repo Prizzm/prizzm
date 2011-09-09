@@ -148,9 +148,9 @@ ul.list-display li .close {
   position: relative;
 }
 
-  ul.list-display li:hover .close {
-    /*display: inline;*/
-  }
+ul.list-display li:hover .close {
+  /*display: inline;*/
+}
 
 ul.activity-feed img.smallthumb {
 	margin-right: 5px;
