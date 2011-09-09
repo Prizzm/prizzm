@@ -4,7 +4,7 @@
   #main
     %aside.grid_5
       %article.userbit
-        = image_tag @user.photo_url(:big), :class => "fl profilePic", :alt => "" 
+        = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
         %h2.fl= @user.name
         - if your_profile?
           /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
