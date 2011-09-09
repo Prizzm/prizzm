@@ -22,6 +22,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
+    @user = build_resource({})
+    respond_with_navigational(resource){ render_with_scope :new }
   end
 
   def create

@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates_presence_of :email
-  validates_format_of :email, :with => email_regex
+  validates_format_of :email, :with => email_regex, :if => Proc.new { |user| user.email.present? }
   validates_presence_of :password, :if => Proc.new { |user| user.new_record? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password.present? }
 
