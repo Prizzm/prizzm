@@ -122,8 +122,16 @@ Prizzm::Application.routes.draw do
   ######################################        DEVISE       #############################
   # User Login and account registration
   devise_for :users, :path => "accounts", 
-            :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions", :invitations => "invitations" },
-            :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+             :controllers => {:registrations => "registrations", 
+                              :omniauth_callbacks => "omniauth_callbacks", 
+                              :sessions => "sessions", 
+                              :invitations => "invitations",
+                              :passwords => "passwords"
+                             },
+             :path_names  => {:sign_in => "login", 
+                              :sign_out => "logout", 
+                              :sign_up => "register" 
+                             }
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################
