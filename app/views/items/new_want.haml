@@ -7,7 +7,7 @@
     .close
     .urlsect
       #url_and_dropdown_container{:style => "position:relative;"}
-      = f.text_field :url, :placeholder => "Type, paste or use google to add a link"
+      = f.text_field :url, :placeholder => "Add a link"
       %ul.urlcont
         %li#google_search= link_to "use google", ""
         %li
@@ -51,6 +51,8 @@
       
       $('#item_name').click(function(){
        $('#hiddenform').show();
+      }).keyup(function(){
+        $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
       });
       
       $('#hiddenform > .close').click(function(){
@@ -95,15 +97,15 @@
         $("#item_description").attr('readonly', 'readonly');
         
 
-        $("#item_name").val(ui.item.name);
-        $("#item_name").change();
+        $("#item_name").val(ui.item.name)
+                       .change();
       
-        $("#item_url").val(ui.item.url);
-        $("#item_url").change();
+        $("#item_url").val(ui.item.url)
+                      .change();
         
-        $("#item_description").parent().parent().css({ display : '' });
-        $("#item_description").val(ui.item.description);
-        $("#item_description").change();
+        $("#item_description").show()
+                              .val(ui.item.description)
+                              .change();
         
         $("#img_selector img").css({ "display" : "none"});
         var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
@@ -117,11 +119,14 @@
         $("#item_company_id").val(ui.item.company_id);
         
         // TODO: Also set Company name
-        $("#company_name").val(ui.item.company_name); // But it is not provided in returned JSON
-        $("#company_name").attr("readonly", "readonly");
+        $("#company_name").val(ui.item.company_name)
+                          .attr("readonly", "readonly");
+
+        $("#item_name").autocomplete('close')
+        $("#item_review").focus();
         
         userSelectedProductOrUrl("product");
-        
+
         return true;
 
       };

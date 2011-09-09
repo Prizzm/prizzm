@@ -51,7 +51,9 @@
       $('.urlprevsect').show();
       
       $('#item_name').click(function(){
-       $('#hiddenform').show();
+         $('#hiddenform').show();
+      }).keyup(function(){
+        $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
       });
       
       $('#hiddenform > .close').click(function(){
