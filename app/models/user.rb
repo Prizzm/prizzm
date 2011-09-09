@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
 
   # Manually validate instead of using Devise validatable so that we can validate password only when new record is being created,
   # don't validate password presence when updating user.
+
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validates_presence_of :email
+  validates_format_of :email, :with => email_regex
   validates_presence_of :password, :if => Proc.new { |user| user.new_record? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password.present? }
 
