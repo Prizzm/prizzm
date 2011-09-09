@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907083114) do
+ActiveRecord::Schema.define(:version => 20110908034732) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -130,6 +130,14 @@ ActiveRecord::Schema.define(:version => 20110907083114) do
 
   add_index "items", ["cached_slug"], :name => "index_items_on_cached_slug", :unique => true
 
+  create_table "mail_templates", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.text     "mail_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "product_images", :force => true do |t|
     t.integer  "product_id"
     t.string   "image"
@@ -151,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20110907083114) do
     t.string   "sent"
     t.datetime "sent_on"
     t.string   "accepted"
+    t.integer  "mail_template_id"
   end
 
   create_table "product_reviews", :force => true do |t|

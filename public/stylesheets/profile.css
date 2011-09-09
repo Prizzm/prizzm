@@ -123,14 +123,12 @@ ul.list-display .cell, ul.case-list .cell{
 
 ul.list-display .cell {
   border-bottom: 1px dashed #ccc;
+  position: relative;
 }
 
   ul.list-display li:last-child .cell {
     border-bottom: none;
   }
-
-
-
 
 ul.list-display li .img, ul.list-display .img img {
 	width: 50px;
@@ -142,14 +140,13 @@ ul.list-display li h3 {
 }
 
 ul.list-display li .close {
-  top: -29px;
-  left: 467px;
-  display: inline-block;
-  position: relative;
+  top: 8px;
+  right: 8px;
+  display: none;
 }
 
 ul.list-display li:hover .close {
-  /*display: inline;*/
+  display: block;
 }
 
 ul.activity-feed img.smallthumb {
