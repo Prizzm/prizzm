@@ -53,6 +53,7 @@
        $('#hiddenform').show();
       }).keyup(function(){
         $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
+        $('#item_review').attr('placeholder', 'So what do you think about ' + this.value);
       });
       
       $('#hiddenform > .close').click(function(){
@@ -123,8 +124,10 @@
                           .attr("readonly", "readonly");
 
         $("#item_name").autocomplete('close')
-        $("#item_review").focus();
-        
+
+        $("#item_review").attr('placeholder', 'So what do you think about ' + ui.item.name)
+                         .focus();
+
         userSelectedProductOrUrl("product");
 
         return true;
