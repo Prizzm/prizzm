@@ -40,6 +40,8 @@
     %h4 Your opinion
     = form_tag item_save_opinion_path, :remote => true do
       = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
+      .loading{:style => "display:none;float:left"}
+      .clear
       = hidden_field_tag :id, @item.id
       = link_to "Save", "#", :id => "show_loader", :class => "button green fn"
     .clear
