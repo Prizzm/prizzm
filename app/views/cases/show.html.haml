@@ -17,12 +17,12 @@
         .clear
     #review_status 
     = form_for @case, :remote => true, :method => 'PUT' do |f|
-      = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
+      = f.text_field :tag_list, :placeholder => "+ Add Tags",
     %ul.notes
       - @case.notebook.notes.each do |note|
         = render :partial => 'cases/note', :locals => {:note => note}
     = form_for @case.notebook.notes.new, :url => case_notes_path(@case), :remote => true, :html => {:class => "addNote"} do |f|
-      = f.text_field :body, :placeholder => "Add note", :title => "Add note", :class => 'jq_watermark'
+      = f.text_field :body, :placeholder => "Add note"
       = f.submit "add", :class => "button blue"
       .clear
     .clear
