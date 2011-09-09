@@ -139,12 +139,14 @@ ul.list-display li h3 {
 }
 
 ul.list-display li .close {
-  top: 10px;
-  display: none;
+  top: -29px;
+  left: 467px;
+  display: inline-block;
+  position: relative;
 }
 
   ul.list-display li:hover .close {
-    display: inline;
+    /*display: inline;*/
   }
 
 ul.activity-feed img.smallthumb {

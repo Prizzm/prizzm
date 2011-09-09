@@ -11,9 +11,9 @@ class ItemsController < InheritedResources::Base
   def create
     params[:item][:tag_list] = params[:as_values_tag_list] + params[:item_possession]
     if params[:search]
-      @item = Item.create(:name => params[:search])
+      @item = Item.create({ :name => params[:search]}.merge(:possession_status => params[:item_possession].downcase))
     else
-      @item = Item.create(params[:item])
+      @item = Item.create(params[:item].merge(:possession_status => params[:item_possession].downcase))
     end
     current_user.items << @item
     redirect_to @item
@@ -49,10 +49,21 @@ class ItemsController < InheritedResources::Base
   end
   
   def destroy
-    @item = current_user.items.find(params[:id])    
-    @item.destroy
+    item = current_user.items.find(params[:id])
+
+    possession = case item.possession_status
+      when 'want'
+        'wanted'
+      when 'have'
+        'owned'
+    end
+
+    item.destroy
+
     respond_to do |format|
-      format.json {render :json => @item.id}
+      format.js {
+        @html_items = render_to_string :partial => "profile/item", :collection => current_user.send("#{possession}_items")
+      }
     end 
   end
 
