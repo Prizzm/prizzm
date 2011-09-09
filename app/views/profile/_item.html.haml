@@ -4,5 +4,5 @@
     %h3
       = link_to(item) do
         = item.name
-        = privacy_control_for item
+        %div{ :class => "status #{item.privacy if item.is_private?}" }= item.privacy
     = link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"

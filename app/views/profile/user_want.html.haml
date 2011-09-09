@@ -4,9 +4,12 @@
 #content.grid_14
   = render :template => 'items/new_want'
 
-  %ul.table.list-display
-    = render :partial => "profile/item", :collection => current_user.wanted_items
-          
+  - if current_user.wanted_items.count > 0
+    %ul.table.list-display
+      = render :partial => "profile/item", :collection => current_user.wanted_items
+  - else
+    = render "welcome/want"
+  
 %aside.grid_6.right
   %article
     %h4
