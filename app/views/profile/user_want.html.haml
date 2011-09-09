@@ -5,15 +5,7 @@
   = render :template => 'items/new_want'
 
   %ul.table.list-display
-    - @user.wanted_items.each do |item|
-      %li.row{:id => "item_#{item.id}"}
-        .cell.img= image_tag item.main_image
-        .cell
-          %h3
-            = link_to(item) do
-              = item.name
-              = privacy_control_for item
-          = link_to "", [current_user, item],  :remote => true, :method => :delete, :class => "close"
+    = render :partial => "profile/item", :collection => current_user.wanted_items
           
 %aside.grid_6.right
   %article
