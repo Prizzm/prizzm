@@ -10,13 +10,12 @@
             .clear
             %p= raw sanitize item.review.truncate (120), :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
 
-        
-        - if item.opinion.nil?
-          %div{ :class => "opinion neutral" } No opinion
+        - if item.opinion == "horrible!"
+          %div{ :class => "opinion hate" }= item.opinion.humanize
         - elsif item.opinion == "i_recommend_this!"
           %div{ :class => "opinion recommended" }= item.opinion.humanize
         - else
-          %div{ :class => "opinion hate" }= item.opinion.humanize
+          %div{ :class => "opinion neutral" } No opinion
 
         %ul.stats
           %li= link_to "read more", (item)
