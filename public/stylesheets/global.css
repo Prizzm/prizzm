@@ -623,6 +623,10 @@ aside #invitations .close {
   margin-top: 15px;
 }
 
+.prod-g {
+  position: relative;
+}
+
 .prod-g > li {
   margin: 0 13px 20px 0 !important;
   width: 168px;

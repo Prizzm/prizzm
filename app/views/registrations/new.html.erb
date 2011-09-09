@@ -1,15 +1,7 @@
 <h2>Sign up</h2>
 
 <%= form_for(@user, :as => "user", :url => user_registration_path) do |f| %>
-Hi There
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
-  <p><%= f.label :location %><br />
-  <%= f.text_field :location %></p>
-  <p><%= f.label :phone_number %><br />
-  <%= f.text_field :phone_number %></p>
+  <%= devise_error_messages! -%> 
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
 
@@ -22,4 +14,4 @@ Hi There
   <p><%= f.submit "Sign up" %></p>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<%#= render :partial => "devise/shared/links" %>

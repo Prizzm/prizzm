@@ -2,7 +2,7 @@
 
 #item-details
   %h2#title.headline #{@item.name} has been shared with you by #{@item.user.first_name}
-  = image_tag @item.user.photo.url
+  = image_tag @item.user.photo_url(:profile)
   #text-fields
     .column
       %p.fields

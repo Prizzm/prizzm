@@ -18,6 +18,7 @@ javascripts:
     - public/javascripts/jquery.nivo.slider.js
     - public/javascripts/jquery.remotipart.js
     - public/javascripts/jquery.timeago.js
+    - public/javascripts/jquery.masonry.js
     - public/javascripts/jquery.watermark.min.js
     - public/javascripts/swfobject.js
     - public/javascripts/twilio.min.js
