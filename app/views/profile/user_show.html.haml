@@ -37,7 +37,7 @@
     $(window).load(function(){
       var $products = $('.prod-g');
 
-      if ($products.has('li') === false) {
+      if ($products.has('li').length > 0) {
         $products.masonry({
           itemSelector : '.prod-g > li'
         });
