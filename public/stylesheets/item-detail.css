@@ -15,6 +15,14 @@ aside h4, .title {
   margin-bottom: 10px;
   border-bottom: 1px solid #f3f3f3;
 }
+  
+  .title .fl {
+    width: 95%;
+  }
+  
+  .title .fr {
+    width: 5%;
+  }
 
 aside ul{
   padding-top: 0 !important;
@@ -32,7 +40,6 @@ img.userthumb {
   padding: 2px;
   margin-right: 5px;
   width: 50px;
-  border: 1px solid #d5d5d5;
 }
 
 section#review, section#pub-review{
@@ -172,4 +179,19 @@ ul#comments .cell {
   font-size: 1.3em;
   float: left;
   margin-right: 10px;
+}
+
+.opinion {
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+aside article .uname {
+  font-size: 1.2em;
+}
+
+aside article .buttons {
+  margin-top: 3px;
 }

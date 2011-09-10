@@ -1,5 +1,3 @@
-
-
 %ul.prod-g
   - if @user.items.count > 0
     - @user.items.sort{|a,b| a.name <=> b.name }.each do |item|
@@ -8,7 +6,6 @@
           = image_tag item.main_image
           = link_to(item) do
             %h4= item.name
-
             .clear
             %p= raw sanitize item.review.truncate (120), :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
 
