@@ -35,7 +35,11 @@
 - content_for :javascripts do
   :javascript
     $(window).load(function(){
-      $('.prod-g').masonry({
-        itemSelector : '.prod-g > li'
-      });
+      var $products = $('.prod-g');
+
+      if ($products.has('li') === false) {
+        $products.masonry({
+          itemSelector : '.prod-g > li'
+        });
+      }
     });
