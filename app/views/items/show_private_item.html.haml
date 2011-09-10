@@ -7,10 +7,10 @@
       = link_to "Edit review", '#', :class => "edit-cntrl", :id => "edit-review-link"
       
       .title= raw format h @item.name
-      #rendered-review
-        .fl.galsect
-          = render 'images'
-        
+      .clear
+      .fl.galsect
+        = render 'images'
+      #rendered-review.fl
         #options
           = link_to @item.url, @item.url
         - if @item.review.blank?

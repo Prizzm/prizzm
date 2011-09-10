@@ -1,7 +1,7 @@
 = include_stylesheets :item_new
 
 = form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
-  = f.text_field :name, :placeholder => "Item name"
+  = f.text_field :name, :placeholder => "Click to add something you have"
 
   #hiddenform
     .close

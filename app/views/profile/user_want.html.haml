@@ -8,7 +8,7 @@
     %ul.table.list-display
       = render :partial => "profile/item", :collection => current_user.wanted_items
   - else
-    = render "welcome/want"
+    = render "welcome/want", :layout => "welcome"
   
 %aside.grid_6.right
   %article

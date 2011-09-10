@@ -18,7 +18,7 @@
             %div{ :class => "status #{user_case.privacy if user_case.is_private?}" }= user_case.privacy
             = link_to "", "", :class => "close"
   - else
-    = render "welcome/cases"
+    = render "welcome/cases", :layout => "welcome"
   
 %aside.grid_6.right
   %article

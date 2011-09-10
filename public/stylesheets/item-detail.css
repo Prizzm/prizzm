@@ -94,6 +94,12 @@ section#review, section#pub-review{
 
   #rendered-review {
     margin-bottom: 10px;
+    width: 422px;
+  }
+  
+  #review-editor {
+    width: 422px;
+    float: left;
   }
   
   #options {

@@ -8,4 +8,4 @@
     = render :partial => "profile/item", :collection => current_user.owned_items
 - else
   .grid_14
-    = render "welcome/have"
+    = render "welcome/have", :layout => "welcome"
