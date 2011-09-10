@@ -1,6 +1,6 @@
 %ul.prod-g
   - if @user.items.count > 0
-    - @user.items.sort{|a,b| a.name <=> b.name }.each do |item|
+    - @user.items.where(:privacy => 'public').sort{|a,b| a.name <=> b.name }.each do |item|
       %li
         .cont
           = image_tag item.main_image
@@ -35,7 +35,11 @@
 - content_for :javascripts do
   :javascript
     $(window).load(function(){
-      $('.prod-g').masonry({
-        itemSelector : '.prod-g > li'
-      });
+      var $products = $('.prod-g');
+
+      if ($products.has('li').length > 0) {
+        $products.masonry({
+          itemSelector : '.prod-g > li'
+        });
+      }
     });

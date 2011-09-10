@@ -17,7 +17,7 @@
         .clear
     #review_status 
     = form_for @case, :remote => true, :method => 'PUT' do |f|
-      = f.text_field :tag_list, :placeholder => "+ Add Tags",
+      = f.text_field :tag_list, :placeholder => "+ Add Tags"
     %ul.notes
       - @case.notebook.notes.each do |note|
         = render :partial => 'cases/note', :locals => {:note => note}
