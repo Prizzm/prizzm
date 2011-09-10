@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  layout nil, :only => [:new]
+  layout "layouts/landing", :only => [:new]
 
   def update    
     @user = resource

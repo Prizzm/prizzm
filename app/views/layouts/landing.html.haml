@@ -1,0 +1,40 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = include_stylesheets :landing
+    = favicon_link_tag
+    
+  %body
+    #container.container_24
+      %h1 prizzm
+      %sub Putting the power back in your hands
+       
+      #main= yield
+      
+      %ul.logsoc
+        %li= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook)
+        %li= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter)
+      
+      %footer 
+        ©2011 Prizzm 
+        \-
+        = link_to "About", "#"
+        \-
+        = link_to "Terms", "#"
+        \-
+        = link_to "Privacy", "#"
+    
+    = render 'layouts/javascripts'
+    - content_for :jquery do
+      :javascript
+        $(function(){
+          $('.js-pjax').pjax('#main', { timeout: null, error: function(xhr, err){
+            $('.error').text('Something went wrong: ' + err)
+          }})
+        });
+    
+  </body>
+</html>

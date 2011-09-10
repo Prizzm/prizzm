@@ -711,4 +711,5 @@ article.userbit {
   
   article .button {
     float: left !important;
+    font-size: 0.8em;
   }

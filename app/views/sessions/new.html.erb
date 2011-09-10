@@ -1,59 +1,7 @@
-<!doctype html>  
-  <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-  <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-  <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-  <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <title>Prizzm - Your voice about your products</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <%= stylesheet_link_tag 'global', 'landing', 'font' -%>
-    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" -%>
-    <%= csrf_meta_tag %>
-    
-  </head>
-
-  <body>
-    <div id="container" class="container_24">
-       <h1>prizzm</h1>
-       <sub>Putting the power back in your hands</sub>
-      
-      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <%= link_to "Sign up", new_registration_path(resource_name), :id => "signup", :class => "round"%>
-        <%= f.text_field :email, :class => "round", :placeholder => "email" %>
-        <%= f.password_field :password, :class => "round", :placeholder => "password" %>
-        <%= f.submit :id => "submit", :value => "login", :class => "button"%>
-        <a href="<%= new_password_path(resource_name) %>" id="forgot" class="clearfix">Forgot your password?</a>
-      <% end %>
-      <ul class="logsoc">
-        <li>
-          <%= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook) -%>
-        </li>
-        <li>
-          <%= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter) -%>
-        </li>
-      </ul>
-      
-      <footer>  
-        ©2011 Prizzm -
-        <a href=''>About</a> 
-        -
-        <a href=''>Terms</a> 
-        -
-        <a href=''>Privacy</a>     
-     </footer>
-      
-    </div> <!-- end of #container -->
-	
-  </body>
-</html>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "regform"}) do |f| %>
+<%= link_to "Sign up", new_registration_path(resource_name), :id => "signup", :class => "button blue" %>
+<%= f.text_field :email, :placeholder => "email" %>
+<%= f.password_field :password, :placeholder => "password" %>
+<%= f.submit :id => "submit", :value => "login", :class => "button"%>
+<a href="<%= new_password_path(resource_name) %>" id="forgot" class="facebox">Forgot your password?</a>
+<% end %>

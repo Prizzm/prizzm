@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  layout nil
+  layout "landing"
 
   def create
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
