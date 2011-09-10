@@ -1,0 +1,8 @@
+%li.row{:id => "item_#{item.id}"}
+  .cell.img= image_tag item.main_image
+  .cell
+    %h3
+      = link_to(item) do
+        = item.name
+        %div{ :class => "status #{item.privacy if item.is_private?}" }= item.privacy
+    = link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"

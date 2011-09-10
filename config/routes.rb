@@ -1,10 +1,7 @@
 Prizzm::Application.routes.draw do
 
 
-  get "product_reviews/say"
-  get "product_reviews/save"
-  get "product_reviews/share"
-  match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews#say'
+  match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members
 
@@ -15,7 +12,6 @@ Prizzm::Application.routes.draw do
 
   # Routes for main page
   match "/home" => "home#index", :as  => "home", :to => 'home#index'
-  get '/dashboard' => "home#dashboard", :as => "dashboard"
 
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
@@ -37,7 +33,12 @@ Prizzm::Application.routes.draw do
   # Routes to enable product autocomplete
   resources :products do
     get 'search', :on => :collection
-    resources :product_invitations 
+    resources :product_invitations do
+      collection do
+        get 'refresh_mail_templates'
+      end
+    end
+    resources :mail_templates
   end
 
   resources :cases do
@@ -120,8 +121,16 @@ Prizzm::Application.routes.draw do
   ######################################        DEVISE       #############################
   # User Login and account registration
   devise_for :users, :path => "accounts", 
-            :controllers => {:registrations => "registrations", :omniauth_callbacks => "omniauth_callbacks", :sessions => "sessions", :invitations => "invitations" },
-            :path_names  => {:sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+             :controllers => {:registrations => "registrations", 
+                              :omniauth_callbacks => "omniauth_callbacks", 
+                              :sessions => "sessions", 
+                              :invitations => "invitations",
+                              :passwords => "passwords"
+                             },
+             :path_names  => {:sign_in => "login", 
+                              :sign_out => "logout", 
+                              :sign_up => "register" 
+                             }
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################

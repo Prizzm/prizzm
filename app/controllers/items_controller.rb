@@ -11,9 +11,9 @@ class ItemsController < InheritedResources::Base
   def create
     params[:item][:tag_list] = params[:as_values_tag_list] + params[:item_possession]
     if params[:search]
-      @item = Item.create(:name => params[:search])
+      @item = Item.create({ :name => params[:search]}.merge(:possession_status => params[:item_possession].downcase))
     else
-      @item = Item.create(params[:item])
+      @item = Item.create(params[:item].merge(:possession_status => params[:item_possession].downcase))
     end
     current_user.items << @item
     redirect_to @item
@@ -28,9 +28,9 @@ class ItemsController < InheritedResources::Base
     @item = Item.find(params[:id])
 
     if @item.user == current_user
-      render "show_private_item"
+      render "show_private_item", :layout => "app_alt"
     elsif @item.is_public?
-      render "show_public_item"
+      render "show_public_item", :layout => "app_alt"
     else
       # User is somehow trying to see someone else's private item
       redirect_to home_path
@@ -49,10 +49,21 @@ class ItemsController < InheritedResources::Base
   end
   
   def destroy
-    @item = current_user.items.find(params[:id])    
-    @item.destroy
+    item = current_user.items.find(params[:id])
+
+    possession = case item.possession_status
+      when 'want'
+        'wanted'
+      when 'have'
+        'owned'
+    end
+
+    item.destroy
+
     respond_to do |format|
-      format.json {render :json => @item.id}
+      format.js {
+        @html_items = render_to_string :partial => "profile/item", :collection => current_user.send("#{possession}_items")
+      }
     end 
   end
 

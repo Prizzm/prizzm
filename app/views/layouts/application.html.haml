@@ -2,19 +2,16 @@
      
 #container.container_24
   #main
-    .grid_14
-      %ul.action-menu
-        %li= link_to "Have", home_path, :class => ('js-pjax ' << active_if_current(home_path))
-        %li= link_to "Want", want_path(current_user), :class => ('js-pjax ' << active_if_current(want_path(current_user)))
-        %li= link_to "Cases", user_cases_path(current_user), :class => ('js-pjax ' << active_if_current(user_cases_path(current_user)))
+    = render :partial => "home/action_menu"
     = yield
     .clear
 
-%footer
-  = render "layouts/footer"
-  - flash.each do |type, value|
-    .flash{ :class => type.to_s }
-      = value
+  %footer
+    = render "layouts/footer"
+    - flash.each do |type, value|
+      .flash{ :class => type.to_s }
+        = value
+    .clear
 
 = render 'layouts/social_utils'
 = render 'layouts/javascripts'

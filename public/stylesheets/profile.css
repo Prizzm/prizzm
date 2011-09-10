@@ -39,9 +39,12 @@ header .grid_14 {
 
 
 #content{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #cdcdcd;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
 }
 
 h2 {
@@ -120,14 +123,12 @@ ul.list-display .cell, ul.case-list .cell{
 
 ul.list-display .cell {
   border-bottom: 1px dashed #ccc;
+  position: relative;
 }
 
   ul.list-display li:last-child .cell {
     border-bottom: none;
   }
-
-
-
 
 ul.list-display li .img, ul.list-display .img img {
 	width: 50px;
@@ -139,13 +140,14 @@ ul.list-display li h3 {
 }
 
 ul.list-display li .close {
-  top: 10px;
+  top: 8px;
+  right: 8px;
   display: none;
 }
 
-  ul.list-display li:hover .close {
-    display: inline;
-  }
+ul.list-display li:hover .close {
+  display: block;
+}
 
 ul.activity-feed img.smallthumb {
 	margin-right: 5px;
@@ -242,3 +244,8 @@ aside .tags {
   aside .tags li {
   	margin-bottom: 5px;	
   }
+
+aside .close {
+  right: 8px;
+}
+

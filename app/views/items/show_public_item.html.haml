@@ -2,18 +2,17 @@
   = include_stylesheets :item_detail
   
 #content.grid_14
-  %section#pub-review
+  %section#review
     .title
-      = image_tag @item.user.main_image, :class => "userthumb fl"
-      .fl
-        = link_to @item.user.name, profile_path(@item.user)
-        has a
-        #{@item.name}
-        .clear
-        = link_to "I want this", "", :class => "button add"
-        = follow_link_for @item.user
+      .fl #{@item.name}
+      .fr 
+        - if @item.opinion == "horrible!"
+          %div{ :class => "opinion hate" }= image_tag "thumb_down.png"
+        - elsif @item.opinion == "i_recommend_this!"
+          %div{ :class => "opinion recommended" }= image_tag "thumb_up.png"
+        - else
+          %div{ :class => "opinion neutral" } ...
       .clear
-    
     #rendered-review
       - if @item.review.blank?
         = render 'default_review'
@@ -29,13 +28,26 @@
       %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
     .clear
   .clear
-  - if user_signed_in?
-    %section#new-comment
+  %section#new-comment
+    - if user_signed_in?
       = comment_form_for @item
-  - else
-    = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
+    - else
+      = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
   %ul#comments.table
     = comment_collection_for @item
 
 %aside.grid_6
+  %article
+    = image_tag @item.user.main_image, :class => "userthumb fl"
+    .fl
+      %h3= link_to @item.user.name, profile_path(@item.user), :class => "uname"
+      .buttons
+        = follow_link_for @item.user
+        = link_to "view profile", profile_path(@item.user), :class => "button"
+    .clear
+  %article
+    .buttons
+      = link_to "I want this",  login_popup_path, :class => "facebox button add"
+      = link_to "Follow this item", "#", :class => "button"
+    
   

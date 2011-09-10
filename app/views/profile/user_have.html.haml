@@ -3,13 +3,9 @@
 
 = render :template => 'items/new'
 
-%ul.table.list-display
-  - @user.owned_items.each do |item|
-    %li.row{:id => "item_#{item.id}"}
-      .cell.img= image_tag item.main_image
-      .cell
-        %h3
-          = link_to(item) do
-            = item.name
-            = privacy_control_for item
-        = link_to "",[current_user, item], :remote => true, :method => :delete, :class => "close"
+- if current_user.owned_items.count > 0
+  %ul.table.list-display
+    = render :partial => "profile/item", :collection => current_user.owned_items
+- else
+  .grid_14
+    = render "welcome/have"

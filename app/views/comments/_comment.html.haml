@@ -1,6 +1,6 @@
 %li.row{:id => "comment-#{comment.id}-content", :class => "comment-content #{is_child_comment?(comment)}"}
   .cell.img
-    = image_tag comment.user.photo.url
+    = image_tag comment.user.photo_url(:comment)
   .cell.comm
     = link_to comment.user.name, profile_path(comment.user)
     \- 

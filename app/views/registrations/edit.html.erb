@@ -9,7 +9,7 @@
       <%= f.input :last_name -%>
       <li>
         <%= label_tag 'current_photo', "Current photo:" -%>
-        <%= image_tag @user.photo_url(:big) -%>
+        <%= image_tag @user.photo_url(:profile) -%>
       </li>
       <%= f.input :photo, :as => :file -%>
       <div id="photo-error" class="error-message"></div>

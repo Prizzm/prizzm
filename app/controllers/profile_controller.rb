@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   before_filter :load_user
 
   def show
-    render "#{target_user}_show"
+    render "user_show"
   end 
 
   def have

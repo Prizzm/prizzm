@@ -5,7 +5,10 @@ class HomeController < ApplicationController
     @user = current_user
     @item = Item.new
     @item.images.build
-    
+    if session[:review]
+      @review =  ProductReview.create(session[:review]) 
+      session[:review] = nil 
+    end
     respond_to do |format|
       format.html 
       format.json  { render :json => @user }
@@ -13,7 +16,6 @@ class HomeController < ApplicationController
   end
   
   def welcome
-    
   end
 
   def scrape

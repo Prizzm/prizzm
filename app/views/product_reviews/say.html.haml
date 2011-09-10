@@ -4,7 +4,7 @@
 
     %head
         %meta{:charset=>"utf-8"}
-        %title Bryna Nicole Invite - Powered by Prizzm
+        %title #{@product_invitation.product.company.name} Invite - Powered by Prizzm
         %meta{:http=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
         %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
         <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
@@ -18,7 +18,7 @@
         %header
             %a{:href=>""}
                 %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
-                %h1.fl Bryna Nicole
+                %h1.fl #{@product_invitation.product.company.name}
                 .clear
             %img{:src=>"/images/bryna-banner.png",:alt=>""}		
         %section{:style=>"width:100%"}
@@ -27,7 +27,7 @@
                 %span{:style=>"text-transform:capitalize"}=@product_invitation.name
                 %p
                     It would really help us out at
-                    %em Bryna Nicole
+                    %em #{@product_invitation.product.company.name}
                     if you let us know what
                     %em you thought
                     of our 
@@ -37,9 +37,9 @@
                     with your friends too!
 		
             %h1 This is your review            
-            =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save"},:html=>{:name=>"review_form"} do |f|
+            =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save",:acceptstatus=>params[:acceptstatus],:encrypted_id=>params[:encrypted_id]},:html=>{:name=>"review_form"} do |f|
                 -if @review.content.nil?
-                    =f.text_area :content
+                    =f.text_area :content,:rows=>"10",:cols=>"60"
                 -else
                     .given-review
                         =@review.content.html_safe
@@ -50,7 +50,7 @@
             %ul
                 %li Did you like this product?
                 %li hat did you like or dislike about it?
-                %li Would you buy more products like this from Bryna?
+                %li Would you buy more products like this from #{@product_invitation.product.company.name}?
                 %li What do you recommend for people who want this product?
 
             %h3 Sharing it!
@@ -60,13 +60,4 @@
             %a{:href=>"",:class=>"fr button save",:onclick=>"document.forms['review_form'].submit();return false;"} Send now!
             .clear
         .clear
-%script{:type => "text/javascript"}
-    :plain
-        $(document).ready(function(){
-            function showEditor(box){
-                editor = CKEDITOR.replace(box,{                   //refactor point
-                startupFocus: true
-                });
-            }
-            showEditor('product_review_content');
-        });
+

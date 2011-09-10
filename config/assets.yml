@@ -15,9 +15,9 @@ javascripts:
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
     - public/javascripts/jquery.uploadify.v2.1.4.min.js
-    - public/javascripts/jquery.nivo.slider.js
     - public/javascripts/jquery.remotipart.js
     - public/javascripts/jquery.timeago.js
+    - public/javascripts/jquery.masonry.js
     - public/javascripts/jquery.watermark.min.js
     - public/javascripts/swfobject.js
     - public/javascripts/twilio.min.js
@@ -26,6 +26,7 @@ javascripts:
     - public/javascripts/galleriffic/*.js
     - public/javascripts/application.js
     - public/javascripts/cases.js
+    - public/javascripts/jquery.pjax.js
     - public/javascripts/application/comments.js
 
 stylesheets:
@@ -68,3 +69,8 @@ stylesheets:
     - public/stylesheets/company.css
   welcome:
     - public/stylesheets/welcome.css
+  landing:
+    - public/stylesheets/global.css
+    - public/stylesheets/fonts.css
+    - public/stylesheets/landing.css
+    - public/stylesheets/facebox.css

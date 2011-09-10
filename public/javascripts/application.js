@@ -1,8 +1,22 @@
 $(document).ready(function(){
   
+  //Show loader
+  $('#show_loader').click(function(){
+    $(this).oneTime(1000, function(){
+      $(this).parent().append('<div class="loading" style="float:left"></div><div class="clear"></div>');
+    });
+  });
+  
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  This script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
+  $('select.privacy_control').change(function(){console.log('yay');
+    jQuery.ajax({
+      type: 'put',
+      url: $(this).data('url')
+    });
+  });
+
   $('.privacy_control').live('ajax:success', function(event, data, status, xhr){
     $(this).html(data.object_privacy);
     $(this).toggleClass('private', (data.object_privacy == 'private'));

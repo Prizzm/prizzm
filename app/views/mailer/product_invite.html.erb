@@ -2,6 +2,6 @@ Mr <span style="text-transform: capitalize;"><%= @pinvite.name %></span><br/>
 <div>
   You are invited to review <%= @pinvite.product.name %> by <%= @pinvite.product.company.name %>
 </div>
-<%= @pinvite.content.html_safe %>
-Please Visit <%= link_to "Accept","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>
+<%= @pinvite.mail_template.mail_content.to_s.html_safe %>
+Please visit to <%= link_to "Accept","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>
 or <%= link_to "Reject","http://#{@hosturl}/product_reviews/say/rejected/#{@pinvite.encrypted_id}" %>

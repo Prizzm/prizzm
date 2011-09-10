@@ -1,0 +1,38 @@
+=stylesheet_link_tag("product_invite")
+=stylesheet_link_tag("prettyPhoto")
+
+%h1 
+    Listing Templates for
+    =@product.name
+%br
+.templates-show
+    %table
+        %tr{:style=>"background:#ccc;padding:5px;"}
+            %th Template Name
+            %th Actions
+        -if !@templates.empty?
+            - @templates.each do |template|
+                %tr
+                    %td
+                        = template.name
+                    %td
+                        = link_to 'show', product_mail_template_path(@product,template.id)+"/?iframe=true&amp;width=100%&amp;height=100%",:rel=>"prettyPhoto[iframe]"
+                        &nbsp;
+                        = link_to 'edit', edit_product_mail_template_path(@product,template.id)
+                        &nbsp;
+                        = link_to image_tag("delete_product.gif"), product_mail_template_path(@product,template.id), :confirm => 'Are you sure?', :method => :delete
+        -else
+            %tr
+                %td{:colspan=>"4"} No Record Found
+
+
+%br
+- content_for :javascripts do
+    =javascript_include_tag 'jquery.prettyPhoto.js'
+    :javascript
+        $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                social_tools:false
+            });
+        });
+

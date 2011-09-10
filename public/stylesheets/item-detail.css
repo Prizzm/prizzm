@@ -1,7 +1,28 @@
+section#review{
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CDCDCD;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
 aside h4, .title {
   margin-bottom: 10px;
   border-bottom: 1px solid #f3f3f3;
 }
+  
+  .title .fl {
+    width: 95%;
+  }
+  
+  .title .fr {
+    width: 5%;
+  }
 
 aside ul{
   padding-top: 0 !important;
@@ -19,7 +40,6 @@ img.userthumb {
   padding: 2px;
   margin-right: 5px;
   width: 50px;
-  border: 1px solid #d5d5d5;
 }
 
 section#review, section#pub-review{
@@ -71,13 +91,6 @@ section#review, section#pub-review{
   top: 10px;
   right: 10px;
   }
-  
-  section #footerbit {
-    margin-top: 10px;
-    padding-top: 5px;
-    border-top: 1px solid #f3f3f3;
-    color: #cccccc;
-  }
 
   #rendered-review {
     margin-bottom: 10px;
@@ -85,10 +98,6 @@ section#review, section#pub-review{
   
   #options {
     margin-bottom: 10px;
-  }
-  
-  .status {
-    float: right;
   }
 
 .new_comment .share-input textarea {
@@ -141,7 +150,7 @@ ul#comments .cell {
 }
 
 .recommended {
-    color: #619866;
+  color: #619866;
   background: #a7e8ad;
 }
 
@@ -162,4 +171,27 @@ ul#comments .cell {
 .galsect {
   margin-right: 10px;
   width: 100px;
+}
+
+.sel_opinion {
+  display: block;
+  width: 85%;
+  font-size: 1.3em;
+  float: left;
+  margin-right: 10px;
+}
+
+.opinion {
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+aside article .uname {
+  font-size: 1.2em;
+}
+
+aside article .buttons {
+  margin-top: 3px;
 }

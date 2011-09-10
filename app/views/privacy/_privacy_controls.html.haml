@@ -1,1 +1,7 @@
-= link_to "#{object.privacy}", toggle_privacy_path(:object_type => object.class.to_s.underscore, :id => object.id), :remote => true, :method => :put, :class => "#{object.privacy if object.is_private?} status privacy_control"
+%select.privacy_control{ :data => {:url => url_for("/privacy/toggle/item/" + object.id.to_s)}}
+  - if object.is_private?
+    %option{ :selected => "selected" } Private
+    %option Public
+  - else 
+    %option Private
+    %option{ :selected => "selected" } Public

@@ -1,15 +1,45 @@
 %ul.prod-g
   - if @user.items.count > 0
-    - @user.items.sort{|a,b| a.name <=> b.name }.each do |item|
+    - @user.items.where(:privacy => 'public').sort{|a,b| a.name <=> b.name }.each do |item|
       %li
         .cont
           = image_tag item.main_image
           = link_to(item) do
             %h4= item.name
-            = item.opinion
             .clear
-            %p= item.review.truncate (120)
+            %p= raw sanitize item.review.truncate (120), :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
+
+        - if item.opinion == "horrible!"
+          %div{ :class => "opinion hate" }= item.opinion.humanize
+        - elsif item.opinion == "i_recommend_this!"
+          %div{ :class => "opinion recommended" }= item.opinion.humanize
+        - else
+          %div{ :class => "opinion neutral" } No opinion
+
         %ul.stats
           %li= link_to "read more", (item)
+          %li{ :class => "fr status #{item.privacy if item.is_private?}" }= item.privacy
         .clear
+  - else
+    .error
+      - if your_profile?
+        Oops! You need to start adding items!
+      - else
+        Oops! They haven't added any items yet!
+        =link_to "Recommend an item to them", ""
+        \.
+        
   .clear
+
+
+- content_for :javascripts do
+  :javascript
+    $(window).load(function(){
+      var $products = $('.prod-g');
+
+      if ($products.has('li').length > 0) {
+        $products.masonry({
+          itemSelector : '.prod-g > li'
+        });
+      }
+    });

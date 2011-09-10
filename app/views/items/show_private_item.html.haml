@@ -25,7 +25,7 @@
     
     #review_status
     = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
-      = f.text_field :tag_list, :placeholder => "+ Add Tags", :title => "+Add Tags", :class => "jq_watermark"
+      = f.text_field :tag_list, :placeholder => "+ Add Tags"
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
       %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
@@ -39,12 +39,15 @@
   %article
     %h4 Your opinion
     = form_tag item_save_opinion_path, :remote => true do
-      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion))
+      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
+      .loading{:style => "display:none;float:left"}
+      .clear
       = hidden_field_tag :id, @item.id
+    .clear
   %article
-    %h4 Share
+    %h4 Share it
     = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
-      = text_field_tag :message, "", :placeholder => "Share a message"
+      = text_field_tag :message, "", :placeholder => "Message"
       = hidden_field_tag :link, item_url(@item)
       = link_to "Share to facebook", "#", :id => 'button-ask-friend', :class => "button green fr"
       .loading{:style => "display:none;float:left"}

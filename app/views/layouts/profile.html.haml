@@ -3,34 +3,40 @@
 #container.container_24.profile
   #main
     %aside.grid_5
-      = image_tag @user.photo_url(:big), :class => "fl profilePic", :alt => "" 
-      %h2.fl= @user.name
-      - if your_profile?
-        /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
-      - else
-        /= follow_link_for @user
-      .clear
+      %article.userbit
+        = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
+        %h2.fl= @user.name
+        .clear
+      %article
+        - if your_profile?
+          = link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
+        - else
+          = follow_link_for @user
+        .clear
       %article
         %h4 About #{@user.first_name}
         Short about me?
       .clear
-
-      %ul#socialbit
-        %li
-          %h3 Following #{followed_users = @user.following_users_count}
+      %article
+        %h3 Following #{followed_users = @user.following_users_count}
+        - if followed_users > 0
           .ufgallery
-            - if followed_users > 0
-              - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
-                = link_to profile_path(user) do
-                  = image_tag user.main_image, :class => "smallthumb"
+            - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
+              = link_to profile_path(user) do
+                = image_tag user.main_image, :class => "smallthumb"
+        - else
+          = link_to "Find people to follow", "#"
           .clear   
-        %li
-          %h3 Followed by #{pluralize @user.followers_count, "Person"}
+      %article
+        %h3 Followed by #{pluralize @user.followers_count, "Person"}
+        - if @user.followers_count > 0
           .ufgallery
-            - @user.followers.take(8).each do |follower|
-              = link_to profile_path(follower) do
-                = image_tag follower.main_image, :class => "smallthumb"
-          .clear
+          - @user.followers.take(8).each do |follower|
+            = link_to profile_path(follower) do
+              = image_tag follower.main_image, :class => "smallthumb"
+        - else
+          Invite your friends!
+        .clear
         /
           %li
             Following #{pluralize @user.following_companies_count, "Company"}
@@ -40,6 +46,7 @@
     
     #content.grid_14
       = yield
+      .clear
     %aside.grid_5
       %article
         %h4 Tags used
@@ -50,11 +57,13 @@
 
 
     .clear
+    
+  %footer
+    = render "layouts/footer"
+    - flash.each do |type, value|
+      .flash{ :class => type.to_s }
+        = value
 
-%footer
-  = render "layouts/footer"
-  - flash.each do |type, value|
-    .flash{ :class => type.to_s }
-      = value 
+ 
 = render 'layouts/social_utils'
 = render 'layouts/javascripts'

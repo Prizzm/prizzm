@@ -1,26 +1,9 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-Hi There
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
-  <p><%= f.label :location %><br />
-  <%= f.text_field :location %></p>
-  <p><%= f.label :phone_number %><br />
-  <%= f.text_field :phone_number %></p>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Sign up" %></p>
+<%= form_for(@user, :as => "user", :url => user_registration_path, :html => {:class => "signupform"}) do |f| %>
+  <%= link_to "Login", new_user_session_path, :id => "login", :class => "button green"%>
+  <%= devise_error_messages! -%> 
+  
+  <%= f.email_field :email, :placeholder => "email" %>
+  <%= f.password_field :password, :placeholder => "password" %>
+  <%= f.password_field :password_confirmation, :placeholder => "confirm password" %>
+  <%= f.submit "Sign up" %>
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>
