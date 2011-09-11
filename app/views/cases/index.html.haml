@@ -16,7 +16,7 @@
             = user_case.created_at.strftime '%m/%d/%Y'
           .cell
             %div{ :class => "status #{user_case.privacy if user_case.is_private?}" }= user_case.privacy
-            = link_to "", "", :class => "close"
+            = link_to "", user_case, :remote => true, :method => :delete, :class => 'close', :confirm => "Are you sure you want to delete this case?"
   - else
     = render "welcome/cases"
   

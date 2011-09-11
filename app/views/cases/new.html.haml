@@ -9,20 +9,21 @@
       %li= f.submit "save", :class => "button green"
     .clear
     .close 
-= render'layouts/javascripts'
 
-:javascript
-  $(document).ready(function(){
-    $('#hiddenform').hide();
-    $('#case_title').click(function(){
-     $('#hiddenform').show();
-    });
-    
-    $('.addcase .close').click(function(){
-     $('#hiddenform').hide();
-     $('#company_name').val('');
-     $('#case_title').val('');
-    });
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      $('#hiddenform').hide();
+      $('#case_title').click(function(){
+       $('#hiddenform').show();
+      });
       
-    #{render 'tags/new_taggable.js.erb', :taggable => @case} 
-  });
+      $('.addcase .close').click(function(){
+       $('#hiddenform').hide();
+       $('#company_name').val('');
+       $('#case_title').val('');
+      });
+        
+      #{render 'tags/new_taggable.js.erb', :taggable => @case} 
+    });
