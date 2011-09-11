@@ -27,6 +27,8 @@ function db() {
         ;;
     development )
         ;;
+    beta )
+        ;;
     demo )
         ;;
     * )
@@ -97,6 +99,19 @@ alias stage='staging'
 alias dev='development'
 alias prod='production'
 
+
+# Rebuild database, and load with default seed data
+funtion rds() {
+  server=${1:-development}
+  kar
+  bundle exec rake db:drop
+  bundle exec rake db:create
+  bundle exec rake db:migrate
+  bundle exec rake db:test:prepare
+  export S3_ASSET_HOST="assets-$server.prizzm.com"
+  bundle exec rake db:seed --trace
+  unset S3_ASSET_HOST
+}
 
 function find_and_replace  {
 # Usage: find_and_replace $target $replacement

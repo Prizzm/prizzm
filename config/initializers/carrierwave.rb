@@ -7,7 +7,8 @@ CarrierWave.configure do |config|
   }
 
   # TODO: set to env var, to deteect s3 host
-  config.fog_directory  = 'beta.prizzm.com'                     # required
+  config.fog_directory  = ENV['S3_ASSET_HOST']                     # required
+  #config.fog_directory  = 'beta.prizzm.com'                     
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   config.fog_host = "http://#{config.fog_directory}.s3.amazonaws.com"
   config.fog_public = true

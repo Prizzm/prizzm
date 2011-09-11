@@ -60,6 +60,8 @@ end
 Factory.define :item do |item|
   item.rating { [1,2,3,4,5].rand }
   item.tag_list {["have", "want"].rand}
+  item.possession_status {["owned", "wanted"].rand}
+
   item.after_build do |i|
     test_product = TEST_PRODUCTS.rand
     i.name = test_product.title 

@@ -1,0 +1,14 @@
+
+{
+  "Statement": [
+    {
+      "Sid": "Stmt1305035473787",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::beta.prizzm.com",
+        "arn:aws:s3:::beta.prizzm.com/*"
+      ]
+    }
+  ]
+}

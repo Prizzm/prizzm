@@ -42,9 +42,15 @@ class CasesController < InheritedResources::Base
   end 
 
   def destroy
-    @case = current_user.cases.find(params[:id])
-    @case.destroy
-    redirect_to home_path
+    @user_case = current_user.cases.find(params[:id])
+    @user_case.destroy
+
+    respond_to do |format|
+      format.js {
+        @html_items = render_to_string :partial   => "profile/user_case",
+                                       :collection => current_user.cases
+      }
+    end
   end
 
   def post_to_facebook
