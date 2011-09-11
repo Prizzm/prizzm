@@ -713,3 +713,17 @@ article.userbit {
     float: left !important;
     font-size: 0.8em;
   }
+
+form li.fb, form li.tt {
+  margin-top: 8px;
+  padding: 3px 3px 3px 25px;
+  border: 1px solid #ccc;
+}
+
+  form li.fb {
+    background-position: 3px -313px;
+  }
+
+  form li.tt {
+    background-position: 3px -349px;
+  }

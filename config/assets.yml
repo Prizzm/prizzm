@@ -24,10 +24,9 @@ javascripts:
     - public/javascripts/facebox.js
     - public/javascripts/ratings/*.js
     - public/javascripts/galleriffic/*.js
-    - public/javascripts/application.js
     - public/javascripts/cases.js
-    - public/javascripts/jquery.pjax.js
     - public/javascripts/application/comments.js
+    - public/javascripts/application.js
 
 stylesheets:
   app:
@@ -36,12 +35,12 @@ stylesheets:
     - public/stylesheets/jquery.ui.stars.css
     - public/stylesheets/jquery.ui.autocomplete.css
     - public/stylesheets/jquery.ui.theme.css
-    - public/stylesheets/nivo-slider.css
     - public/stylesheets/facebox.css
     - public/stylesheets/galleriffic-3.css
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/ckeditor.css
+    - public/stylesheets/tipsy.css
 
   logged_in:
     - public/stylesheets/application-logged-in.css
