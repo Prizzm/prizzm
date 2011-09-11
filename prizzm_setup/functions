@@ -102,9 +102,9 @@ alias prod='production'
 
 
 # Rebuild database, and load with default seed data
-funtion rds() {
+function rds() {
   server=${1:-development}
-  kar
+  kill_all_ruby_processes
   bundle exec rake db:drop
   bundle exec rake db:create
   bundle exec rake db:migrate
