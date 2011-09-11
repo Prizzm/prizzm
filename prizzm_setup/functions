@@ -40,7 +40,7 @@ function db() {
     case "$action" in
     push )
         echo "${alert} Pushing database to prizzm-$server ${txtrst}..."
-        heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_$server --confirm prizzm-$server
+        heroku db:$action --app prizzm-$server postgres://prizzm:prizzm@127.0.0.1/prizzm_development --confirm prizzm-$server
         ;;
     pull )
         echo "${alert} Pulling database from prizzm-$server ${txtrst}..."
@@ -94,6 +94,7 @@ alias rel='release'
 function staging() { heroku $@ --app $(basename `pwd`)-staging ;}
 function production() { heroku $@ --app $(basename `pwd`)-production ;}
 function demo() { heroku $@ --app $(basename `pwd`)-demo ;}
+function beta() { heroku $@ --app $(basename `pwd`)-beta ;}
 function development() { heroku $@ --app $(basename `pwd`)-development ;}
 alias stage='staging'
 alias dev='development'
