@@ -52,6 +52,7 @@ Prizzm::Application.routes.draw do
   end 
 
   match 'post_to_facebook/:comment_id' => 'comments#post_to_facebook', :as => "comment_post_to_facebook"
+  match 'post_to_twitter/:comment_id' => 'comments#post_to_twitter', :as => "comment_post_to_twitter"
 
   # Comments - this route makes the comments controller response to a
   # polymorphic types
