@@ -3,7 +3,7 @@ form.action {
   position: relative;
   border-bottom: 1px solid #f3f3f3;
 }
-  form.action input, form.action textarea {
+  form.action input[type=text], form.action textarea {
     padding: 10px;
     font-size: 1.3em;
     
@@ -124,22 +124,11 @@ form.action {
   }
   
   form.action .finalstep {
-    margin: 0 5px 0 !important;
     padding: 8px 0;
-    list-style: none;
   }
   
-  form.action .finalstep li {
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  form.action .finalstep .button {
-    margin-right: 0;
-  }
-  
-  form.action .finalstep select{
-    margin-top: 6px;
+  form li.fb, form li.tt {
+    margin-top: 8px;
   }
 
 .close {

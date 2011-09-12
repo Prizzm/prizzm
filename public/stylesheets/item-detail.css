@@ -108,9 +108,8 @@ section#review, section#pub-review{
 
 .new_comment .share-input textarea {
   padding: 5px;
-  height: 4 0px;
+  height: 40px;
   width: 100%;
-  margin-bottom: 10px;
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-sizing: border-box;
@@ -199,5 +198,9 @@ aside article .uname {
 }
 
 aside article .buttons {
-  margin-top: 3px;
+  margin-top: 10px !important;
+}
+
+aside .finalstep {
+  padding: 8px 0;
 }

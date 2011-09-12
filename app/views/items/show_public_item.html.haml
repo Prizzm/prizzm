@@ -49,5 +49,21 @@
     .buttons
       = link_to "I want this",  login_popup_path, :class => "facebox button add"
       = link_to "Follow this item", "#", :class => "button"
+  %article
+    %h4 Share it
+    = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
+      = text_field_tag :message, "", :placeholder => "Message"
+      %ul.finalstep.buttons.fr
+        %li.fb{:title => "post to facebook"}
+          / facebook checkbox goes here
+        %li.tt
+          / twitter checkbox goes here
+        %li.privacy
+          / privacy drop down goes here
+        %li
+          = hidden_field_tag :link, item_url(@item)
+          = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green"
+          .loading{:style => "display:none;float:left"}
+      .clear
     
   

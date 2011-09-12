@@ -1,3 +1,5 @@
+= include_stylesheets :item_new
+
 = form_for @case=Case.new, :html => {:class => "action addcase"} do |f|
   = f.text_field 'title', :placeholder => "What's your issue?"
   #hiddenform
@@ -6,7 +8,13 @@
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr
-      %li= f.submit "save", :class => "button green"
+      %li.fb{:title => "post to facebook"}
+        / facebook checkbox goes here
+      %li.tt
+        / twitter checkbox goes here
+      %li.privacy
+        / privacy drop down goes here
+      %li= f.submit "open", :class => "green button"
     .clear
     .close 
 

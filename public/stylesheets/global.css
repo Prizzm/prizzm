@@ -713,6 +713,18 @@ article.userbit {
     float: left !important;
     font-size: 0.8em;
   }
+  
+  aside article .buttons {
+    margin-top: 10px !important;
+  }
+  
+  aside .finalstep {
+    padding: 8px 0;
+  }
+
+  aside form li.fb, aside form li.tt {
+    margin-top: 3px !important;
+  }
 
 form li.fb, form li.tt {
   margin-top: 8px;
@@ -726,4 +738,22 @@ form li.fb, form li.tt {
 
   form li.tt {
     background-position: 3px -349px;
+  }
+
+form .finalstep {
+    margin: 0 5px 0 !important;
+    list-style: none;
+  }
+  
+  form .finalstep li {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  form .finalstep .button {
+    margin-right: 0 !important;
+  }
+  
+  form .finalstep select{
+    margin-top: 6px;
   }

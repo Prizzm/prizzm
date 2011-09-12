@@ -4,10 +4,16 @@
       .share-input{:id => "share-input-#{parent_id}"}
         = f.text_area :body, :'data-text' => "Comment on this review...", :placeholder => "Comment...",  :rows => 3, :id => "comment_body_#{parent_id}", :value => ""
       .clear
-      #hiddenform
-        /.close
-        = hidden_field_tag :parent_id, parent_id, :id => "parent_id_#{parent_id}"
-        = f.submit 'Comment', :class => "button", :id => "comment_submit_#{parent_id}"
-        .loading{:style => "display:none;float:left"}
-        .clear
-
+      /.close
+      %ul.finalstep.buttons.fr
+        %li.fb{:title => "post to facebook"}
+          / facebook checkbox goes here
+        %li.tt
+          / twitter checkbox goes here
+        %li.privacy
+          / privacy drop down goes here
+        %li
+          = hidden_field_tag :parent_id, parent_id, :id => "parent_id_#{parent_id}"
+          = f.submit 'Comment', :class => "green button", :id => "comment_submit_#{parent_id}"
+          .loading{:style => "display:none;float:left"}
+      .clear

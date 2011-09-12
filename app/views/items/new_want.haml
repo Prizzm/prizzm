@@ -38,7 +38,13 @@
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr
-      %li= f.submit "save", :class => "button green"
+      %li.fb{:title => "post to facebook"}
+        / facebook checkbox goes here
+      %li.tt
+        / twitter checkbox goes here
+      %li.privacy
+        / privacy drop down goes here
+      %li= f.submit "save", :class => "green button"
     .clear
     
 #offscreen_div
