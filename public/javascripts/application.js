@@ -13,7 +13,8 @@ $(document).ready(function(){
     $(this).html(data.object_privacy);
     $(this).toggleClass('private', (data.object_privacy == 'private'));
   });
-  
+
+  $('textarea').elastic();  
 
   // jax control for following links
   // Unfortunately has a strong binding to follow_controller json reesponse as

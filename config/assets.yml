@@ -10,7 +10,7 @@ javascripts:
     - public/javascripts/jquery_ujs.js
     - public/javascripts/underscore-min.js
     - public/javascripts/jquery.dump.js
-    - public/javascripts/jquery.autogrow.js
+    - public/javascripts/jquery.elastic.js
     - public/javascripts/jquery.autosuggest.js
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/jquery.jeditable.autogrow.js
