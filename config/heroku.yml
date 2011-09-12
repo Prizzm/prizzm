@@ -20,14 +20,9 @@ config:
   all:
     BUNDLE_WITHOUT: "development:test"
     RACK_ENV: 'production'
-    HOPTOAD_API_KEY: <%= ENV['HOPTOAD_API_KEY'] %>
-    WEBTHUMB_API_KEY: <%= ENV['WEBTHUMB_API_KEY'] %>
-    WEBTHUMB_USER_ID: <%= ENV['WEBTHUMB_USER_ID'] %>
-    SIMPLEWORKER_ACCESS_KEY: <%= ENV['SIMPLEWORKER_ACCESS_KEY'] %>
-    SIMPLEWORKER_SECRET_KEY: <%= ENV['SIMPLEWORKER_SECRET_KEY'] %>
-    HEROKU_USER: <%= ENV['HEROKU_USER'] %>
-    HEROKU_API_KEY: <%= ENV['HEROKU_API_KEY'] %>
-    AWS_SNS_HEROKU_WORKERS: <%= ENV['AWS_SNS_HEROKU_WORKERS'] %>
+#    HEROKU_USER: <%= ENV['HEROKU_USER'] %>
+#    HEROKU_API_KEY: <%= ENV['HEROKU_API_KEY'] %>
+#    AWS_SNS_HEROKU_WORKERS: <%= ENV['AWS_SNS_HEROKU_WORKERS'] %>
 
   # you can also override configuration settings for each environment
   production:
@@ -38,8 +33,8 @@ config:
     TWITTER_CONSUMER_SECRET:  <%= ENV['PRODUCTION_TWITTER_CONSUMER_SECRET'] %>
     TWITTER_CONSUMER_KEY: <%= ENV['PRODUCTION_TWITTER_CONSUMER_KEY'] %>
     S3_ASSET_HOST: 'assets-production.prizzm.com'
-    FACEBOOK_PERMISSIONS:
     HEROKU_APP: 'prizzm-production'
+    FACEBOOK_PERMISSIONS:
   staging:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['STAGING_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["STAGING_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -48,8 +43,8 @@ config:
     TWITTER_CONSUMER_SECRET:  <%= ENV['STAGING_TWITTER_CONSUMER_SECRET'] %>
     TWITTER_CONSUMER_KEY: <%= ENV['STAGING_TWITTER_CONSUMER_KEY'] %>
     S3_ASSET_HOST: 'assets-staging.prizzm.com'
-    FACEBOOK_PERMISSIONS:
     HEROKU_APP: 'prizzm-staging'
+    FACEBOOK_PERMISSIONS:
   development:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['DEVELOPMENT_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["DEVELOPMENT_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -58,8 +53,8 @@ config:
     TWITTER_CONSUMER_SECRET: <%= ENV['DEVELOPMENT_TWITTER_CONSUMER_SECRET'] %>
     TWITTER_CONSUMER_KEY: <%= ENV['DEVELOPMENT_TWITTER_CONSUMER_KEY'] %>
     S3_ASSET_HOST: 'assets-development.prizzm.com'
-    FACEBOOK_PERMISSIONS:
     HEROKU_APP: 'prizzm-development'
+    FACEBOOK_PERMISSIONS:
   beta:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['DEVELOPMENT_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["DEVELOPMENT_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -68,8 +63,8 @@ config:
     TWITTER_CONSUMER_SECRET: <%= ENV['DEVELOPMENT_TWITTER_CONSUMER_SECRET'] %>
     TWITTER_CONSUMER_KEY: <%= ENV['DEVELOPMENT_TWITTER_CONSUMER_KEY'] %>
     S3_ASSET_HOST: 'assets-beta.prizzm.com'
-    FACEBOOK_PERMISSIONS:
     HEROKU_APP: 'prizzm-beta'
+    FACEBOOK_PERMISSIONS:
   demo:
     PRIZZM_S3_ACCESS_KEY_ID: <%= ENV['DEMO_PRIZZM_S3_ACCESS_KEY_ID'] %>
     PRIZZM_S3_SECRET_ACCESS_KEY: <%= ENV["DEMO_PRIZZM_S3_SECRET_ACCESS_KEY"] %>
@@ -78,8 +73,8 @@ config:
     TWITTER_CONSUMER_SECRET:  <%= ENV['DEMO_TWITTER_CONSUMER_SECRET'] %>
     TWITTER_CONSUMER_KEY: <%= ENV['DEMO_TWITTER_CONSUMER_KEY'] %>
     S3_ASSET_HOST: 'assets-demo.prizzm.com'
-    FACEBOOK_PERMISSIONS:
     HEROKU_APP: 'prizzm-demo'
+    FACEBOOK_PERMISSIONS:
 
 collaborators:
   # Be sure to add yourself as a collaborator, otherwise your
@@ -109,20 +104,20 @@ domains:
 
 addons:
   all:
-    - amazon_rds
-    #- blitz
-    #- cloudmailin
     - custom_domains:basic
-    # add any other addons here
     - cron:daily
-    #- logging:expanded
+    - logging:expanded
     - mongolab:starter
     - newrelic:standard
     - redistogo:nano
-    #- releases:advanced
     - sendgrid:free
     - shared-database:5mb
-    #- simple_worker
     - stillalive:basic
     - ssl:piggyback
     - pgbackups
+    #- releases:advanced
+  development:
+    - hoptoad:basic
+  beta:
+    - hoptoad:basic
+

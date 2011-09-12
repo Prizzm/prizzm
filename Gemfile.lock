@@ -131,6 +131,9 @@ GEM
       moretea-awesome_nested_set
     acts_as_list (0.1.4)
     addressable (2.2.4)
+    airbrake (3.0.3)
+      activesupport
+      builder
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
     attr_required (0.0.3)
@@ -249,9 +252,6 @@ GEM
       term-ansicolor (~> 1.0.5)
     highline (1.6.2)
     hirb (0.5.0)
-    hoptoad_notifier (2.4.11)
-      activesupport
-      builder
     hpricot (0.8.4)
     httparty (0.7.8)
       crack (= 0.1.8)
@@ -488,6 +488,7 @@ DEPENDENCIES
   acts_as_commentable_with_threading
   acts_as_follower!
   acts_as_list
+  airbrake
   autotest-rails
   aws-sdk
   bson_ext
@@ -523,7 +524,6 @@ DEPENDENCIES
   heroku
   heroku-rails!
   hirb
-  hoptoad_notifier
   hpricot
   inherited_resources!
   jammit

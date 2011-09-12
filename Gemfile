@@ -5,7 +5,8 @@ gem 'rake', '0.9.2'
 gem "haml-rails"
 gem "jquery-rails"
 # Sends notifications of errors on Production app
-gem "hoptoad_notifier"
+#gem "hoptoad_notifier"
+gem "airbrake"
 #  asset packaging
 gem "jammit"
 
