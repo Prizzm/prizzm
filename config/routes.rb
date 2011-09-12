@@ -46,10 +46,6 @@ Prizzm::Application.routes.draw do
     match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
-  resources :companies do
-    resources :addresses
-    get 'search', :on => :collection
-  end 
 
   match 'post_to_facebook/:comment_id' => 'comments#post_to_facebook', :as => "comment_post_to_facebook"
 
@@ -132,9 +128,23 @@ Prizzm::Application.routes.draw do
                               :sign_up => "register" 
                              }
 
+  devise_for :companies, :path => "company_accounts",
+             :controllers => {:registrations => "company_registrations", 
+                              :sessions => "company_sessions", 
+                              :passwords => "company_passwords"
+                             },
+             :path_names  => {:sign_in => "login", 
+                              :sign_out => "logout", 
+                              :sign_up => "register" 
+                             }
+
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################
 
+  resources :companies do
+    resources :addresses
+    get 'search', :on => :collection
+  end 
  
 
   ##############################    TO REFaCTOR    #############################
