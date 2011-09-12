@@ -1,4 +1,5 @@
 - content_for :page_style do
+  = stylesheet_link_tag 'jquery.wysiwyg.css'
   = include_stylesheets :case_detail
 
 #content.grid_14
@@ -6,11 +7,11 @@
     .title= @case.title
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     #rendered-review
-      = raw @case.description
-      
+      = raw sanitize @case.description, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)
+
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
-        = f.text_area :description
+        = f.text_area :description, :cols => 59
         .buttons
           = f.submit "clear", :class => "button", :id => "clear_item_fields"
           = f.submit 'Save'
@@ -52,12 +53,12 @@
        
 
 - content_for :javascripts do
-  = javascript_include_tag 'ckeditor/ckeditor.js'
+  = javascript_include_tag 'jwysiwyg/jquery.wysiwyg.js'
+  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.link.js'
+  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.image.js'
 
   :javascript
-
     $(document).ready(function() {
-
       #{render 'tags/taggable.js.erb', :taggable => @case} 
 
 
@@ -97,17 +98,33 @@
       li_element.find('.note_body').trigger('click.editable');
       });
 
-      var editor;
-
-      function showEditor(box){
-        editor = CKEDITOR.replace(box,{                   //refactor point
-          startupFocus: true, 
-          customConfig: '/javascripts/ckeditor_custom/case_review_config.js' 
-        });
-      }
-
       function editIssue() {
-        showEditor('case_description');
+        $('#case_description').wysiwyg({
+          controls: {
+              bold: { visible: true },
+              italic: { visible: true },
+              underline: { visible: true },
+              strikeThrough: { visible: true },
+
+              justifyLeft: { visible: true },
+              justifyCenter: { visible: true },
+              justifyRight: { visible: true },
+              justifyFull: { visible: true },
+
+              undo: { visible: true },
+              redo: { visible: true },
+
+              insertOrderedList: { visible: true },
+              insertUnorderedList: { visible: true },
+
+              createLink: { visible: true },
+              insertImage: { visible: true },
+
+              paragraph: { visible: true },
+          },
+          rmUnusedControls: true
+        });
+
         $('#rendered-review').hide();
         $('form#note_new').hide();
         $('#review-editor').show();
@@ -120,13 +137,12 @@
 
       //  Submit the case issue via ajax - handle server response
       $('form.edit_case').live('ajax:success', function(event, data, status, xhr){
-        var editor_data = CKEDITOR.instances.case_description.getData();  //refactor point
-        $('#rendered-review').html(editor_data);
+        $('#rendered-review').html($('#case_description').val());
         $('#rendered-review').show();
-        $('form.edit_case textarea').val(editor_data);                    //refactor point
         $('#review-editor').hide();
         $('form#note_new').show();
-        editor.destroy();
+
+        $('#case_description').wysiwyg('destroy');
       });
 
       // Submitting a new note via ajax - handle server response

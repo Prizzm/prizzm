@@ -16,10 +16,10 @@
         - if @item.review.blank?
           = render 'default_review'
         - else
-          = raw sanitize @item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
+          = raw sanitize @item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style)
       #review-editor
         = form_for @item, :remote => true, :method => :put do |f|
-          = f.text_area :review, :value => h(sanitize(@item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}))
+          = f.text_area :review, :value => h(sanitize(@item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style)))
           = f.submit 'Save'
     .clear
     

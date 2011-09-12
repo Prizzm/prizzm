@@ -1,5 +1,7 @@
+require 'twitter'
+
 class CommentsController < ApplicationController
-  before_filter :load_commentable, :except => [:create_login, :post_to_facebook]
+  before_filter :load_commentable, :except => [:create_login, :post_to_facebook, :post_to_twitter]
 
   def create
     @comment = Comment.build_from(@commentable, current_user.id, params[:comment][:body])
@@ -48,6 +50,26 @@ class CommentsController < ApplicationController
         :link => link,
         :description => comment.body.limit(300)
       )
+    rescue Exception => e
+      logger.info "error => #{e.message}"
+      @errors << e.message
+    end
+
+    render :nothing => true
+  end
+
+  def post_to_twitter
+    comment = Comment.find(params[:comment_id])
+    #fb_user = FbGraph::User.me(current_user.access_token)
+    link = params[:link]
+    @errors = []
+    message = "#{comment.user.name} comments on Prizzm item #{comment.commentable_type.constantize.find(comment.commentable_id).name}. #{link}"
+
+    begin
+      oauth = Twitter::OAuth.new(TwitterConfig.config[:con_id], TwitterConfig.config[:con_secret])
+      oauth.authorize_from_access(current_user.tt_token, current_user.tt_secret)
+      client = Twitter::Base.new(oauth)
+      client.update(message)
     rescue Exception => e
       logger.info "error => #{e.message}"
       @errors << e.message
