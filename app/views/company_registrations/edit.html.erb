@@ -1,0 +1,33 @@
+<div id="edit-user">
+  <h2>Edit <%= @user.class.to_s.humanize -%></h2>
+
+  <%= semantic_form_for(@user, :url => user_registration_path, :html => { :multipart => true }, :remote => true) do |f| %>
+    <div class="error"></div>
+
+    <%- f.inputs do -%>
+      <%= f.input :first_name -%>
+      <%= f.input :last_name -%>
+      <li>
+        <%= label_tag 'current_photo', "Current photo:" -%>
+        <%= image_tag @user.photo_url(:profile) -%>
+      </li>
+      <%= f.input :photo, :as => :file -%>
+      <div id="photo-error" class="error-message"></div>
+      <%= f.input :photo_cache, :as => :hidden -%>
+      <%= f.input :email %>
+      <div id="email-error" class="error-message"></div>
+      <%= f.input :password, :as => :password, :hint => "leave blank if you don't want to change it" -%>
+      <div id="password-error" class="error-message"></div>
+      <%= f.input :password_confirmation, :as => :password %>
+      <%= f.input :current_password, :as => :password, :hint => "we need your current password to confirm your changes" -%>
+      <div id="current-password-error" class="error-message"></div>
+      <%= f.buttons %>
+    <%- end -%>
+
+    <%= hidden_field_tag :back, @back -%>
+  <% end %>
+
+  <h2>Unhappy?</h2>
+
+  <p><%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "button red" %></p>
+</div>
