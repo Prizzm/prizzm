@@ -650,6 +650,17 @@ li.last {
 .prod-g .cont {
   padding: 8px;
 }
+  
+  .prod-g .cont .tags {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 1.1em;
+  }
+  
+  .prod-g .tags li.as-selection-item {
+    padding-right: 2px;
+  }
 
 .prod-g .conte h4 {
   margin: 3px 0;
