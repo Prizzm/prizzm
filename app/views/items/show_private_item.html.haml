@@ -30,7 +30,8 @@
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
       %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
       \-
-      %div{ :class => "fn status #{@item.privacy if @item.is_private?}" }= @item.privacy
+      = privacy_control_for @item
+      /%div{ :class => "fn status #{@item.privacy if @item.is_private?}" }= @item.privacy
     .clear
      
   = comments_section_for @item
