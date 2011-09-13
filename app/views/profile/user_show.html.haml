@@ -19,7 +19,6 @@
 
         %ul.stats
           %li= link_to "read more", (item)
-          %li{ :class => "fr status #{item.privacy if item.is_private?}" }= item.privacy
         .clear
   - else
     .error
