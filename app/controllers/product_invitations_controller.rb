@@ -77,11 +77,23 @@ class ProductInvitationsController < ApplicationController
 
 
   def share_review
-        #image_url = request.protocol + request.host_with_port + @item.product.main_image
-        #message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => image_url}
-        #Facebook.post_message(message, @user.access_token) 
     @item = Item.find(session[:accepted_item])
     session[:accepted_item] = nil
     render :layout => nil
+  end
+
+  def post_review_to_fb
+    #@item = Item.find(session[:accepted_item])
+    @item = Item.find(params[:id])
+
+    if Rails.env.development?
+      image_url = request.protocol + request.host_with_port + @item.product.main_image
+    else
+      image_url = @item.product.main_image
+    end
+
+    message = {:message => "{@user.first_name} has just talked about the {@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => image_url}
+    Facebook.post_message(message, @user.access_token) 
+    head :ok
   end
 end

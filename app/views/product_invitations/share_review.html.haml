@@ -1,8 +1,17 @@
-
 %p= @item.name
 %p= image_tag @item.main_image
 %p= @item.review
 
-%p= link_to "Not now..."
-%br
+%p= link_to "Not now...", '#', :class => 'close', :id => 'close_share_review'
+%p= link_to "Share on FB", post_review_to_fb_path(@item.id), :class => 'close', :id => 'share_review_on_facebook', :remote => true
 Share some stuff buttons
+
+= render 'layouts/javascripts'
+:javascript
+  $('#close_share_review').click(function(event){
+    jQuery(document).trigger('close.facebox');
+  });
+
+  $('#share_review_on_facebook').live('ajax:success', function(event, data, status, xhr){
+    jQuery(document).trigger('close.facebox');
+  });
