@@ -112,10 +112,6 @@
     padding-bottom: 2px;
 }
 
-#facebox .button{
-	margin-top: 10px;
-}
-
 
 #facebox_overlay {
   position: fixed;
@@ -136,4 +132,23 @@
 
 #facebox .tags {
 	border-color: #e7e7e7;
+}
+
+#facebox .product {
+  margin: 10px 0;
+  padding: 8px;
+  background: #F9F390;
+  border: 1px solid #D8D272;
+  vertical-align: middle;
+  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#facebox .prod-desc{
+  width: 345px;
 }

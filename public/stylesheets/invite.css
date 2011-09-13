@@ -139,7 +139,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=submit]#facebook_login {
   background: no-repeat url('../images/landing/fb-login-button.png');
   padding: 0;
   width: 155px;

@@ -457,6 +457,11 @@ img.bigthumb {
   width: 190px;
 }
 
+img.medthumb {
+  width: 100px;
+  height: 100px;
+}
+
 .recommended {
     color: #619866;
   background: #a7e8ad;
@@ -751,20 +756,23 @@ form li.fb, form li.tt {
     background-position: 3px -349px;
   }
 
-  form .finalstep {
-    margin: 0 5px 0 !important;
+  .finalstep {
     list-style: none;
   }
   
-  form .finalstep li {
+  .finalstep li {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
   }
   
-  form .finalstep .button {
+  .finalstep .button {
     margin-right: 0 !important;
   }
   
-  form .finalstep select{
+  .finalstep select{
     margin-top: 6px;
+  }
+  
+  .finalstep .other-opt {
+    margin-top: 8px;
   }

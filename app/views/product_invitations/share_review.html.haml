@@ -1,8 +1,18 @@
+%h1
+  Congratulations
+  = current_user.name
+You just added a
+%em= @item.name
+to your
+%em have list
 
-%p= @item.name
-%p= image_tag @item.main_image
-%p= @item.review
-
-%p= link_to "Not now..."
-%br
-Share some stuff buttons
+.product
+  = image_tag @item.main_image, :class => "fl medthumb"
+  .fr
+    %h2= @item.name
+    = @item.review
+  .clear
+  
+%ul.finalstep.fr
+  %li= link_to "Maybe later", :class => "other-opt"
+  %li= link_to "Share to facebook", :class => "green button"
