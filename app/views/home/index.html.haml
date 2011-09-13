@@ -26,35 +26,42 @@
   
   .clear
 
-- content_for :jquery do
+- content_for :javascripts do
   :javascript
-  $(document).ready(function() {
-    $('#invite-button').bind('click', function(e) {
-      e.preventDefault();
-      if ($('#invitations').is(":visible")) {
-        $('#invitations').slideUp('fast');
-      } else {
-        $('#invitations').slideDown('fast');
+    $(document).ready(function() {
+      if (document.location.hash === "#share_review"){
+        $.facebox({ajax: "#{share_review_path}"});
+        console.log('detected');
       }
     });
-  
-    $('#add-email').bind('click', function(e) {
-      e.preventDefault();
-      var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a></li>");
-      $('#emails-list').append(new_email);
+
+    $(document).ready(function() {
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+    
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a></li>");
+        $('#emails-list').append(new_email);
+      });
+    
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+    
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+    
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
+      });
     });
-  
-    $('.remove').live('click', function(e) {
-      e.preventDefault();
-      $(this).prev().remove();
-      $(this).remove();
-    });
-  
-    $('#email-invite').bind('ajax:beforeSend', function() {
-      $('#invitations .loading').css('visibility', 'visible');
-    });
-  
-    $('#email-invite').bind('ajax:complete', function() {
-      $('#invitations .loading').css('visibility', 'hidden');
-    });
-  });

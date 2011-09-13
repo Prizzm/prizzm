@@ -46,10 +46,6 @@ Prizzm::Application.routes.draw do
     match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
-  resources :companies do
-    resources :addresses
-    get 'search', :on => :collection
-  end 
 
   match 'post_to_facebook/:comment_id' => 'comments#post_to_facebook', :as => "comment_post_to_facebook"
   match 'post_to_twitter/:comment_id' => 'comments#post_to_twitter', :as => "comment_post_to_twitter"
@@ -133,9 +129,23 @@ Prizzm::Application.routes.draw do
                               :sign_up => "register" 
                              }
 
+  devise_for :companies, :path => "company_accounts",
+             :controllers => {:registrations => "company_registrations", 
+                              :sessions => "company_sessions", 
+                              :passwords => "company_passwords"
+                             },
+             :path_names  => {:sign_in => "login", 
+                              :sign_out => "logout", 
+                              :sign_up => "register" 
+                             }
+
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################
 
+  resources :companies do
+    resources :addresses
+    get 'search', :on => :collection
+  end 
  
 
   ##############################    TO REFaCTOR    #############################
@@ -151,7 +161,7 @@ Prizzm::Application.routes.draw do
 
   post '/save_opinion' => 'items#save_opinion', :as => 'item_save_opinion'
 
-  resources :items 
+  resources :items
   resources :items do
     resources :images, :only => [:create, :destroy]
     match 'post_to_facebook' => 'items#post_to_facebook'
@@ -181,12 +191,15 @@ Prizzm::Application.routes.draw do
   # can't redirect using a 'POST' method.  Used in omniauth_callback/product_invitations
   get '/process_invitation' => 'product_invitations#process_accepted_product_invitation', :as => 'process_accepted_product_invitation'
 
+  get '/share_review' => 'product_invitations#share_review', :as => 'share_review'
   # Rouutess for item sharing use cases
   get 'shared/item/:id' => 'shared_items#show', :as => "shared_item"
 
 
 
 
+  get 'people/all'       => 'people#index'
+  get 'people/following' => 'people#following'
 
 
   # Cloudmailin incomming email controller
@@ -194,7 +207,6 @@ Prizzm::Application.routes.draw do
 
   # Blitz.io verification route
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
-
 
 
   ##############################    NONPUBLIC ADMIN    #############################

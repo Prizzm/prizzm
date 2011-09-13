@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   include Imageable
+  devise :database_authenticatable, :trackable, :registerable, :rememberable, :recoverable, :stretches => 20
 
   has_many :products, :dependent => :nullify  
   has_many :items, :dependent => :nullify

@@ -24,9 +24,9 @@
   - else
     .error
       - if your_profile?
-        Oops! You need to start adding items!
+        You currently have no public items
       - else
-        Oops! They haven't added any items yet!
+        = "#{@user.first_name} #{@user.last_name} has no public items!"
         =link_to "Recommend an item to them", ""
         \.
         

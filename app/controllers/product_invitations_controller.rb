@@ -13,11 +13,6 @@ class ProductInvitationsController < ApplicationController
     @pinvite.save!
     redirect_to product_product_invitations_path(Product.find(params[:product_id]))
   end
-  def view_invitation
-    @product = Product.find(params[:id])
-    @item = Item.new(:product_id => @product.id)
-    session[:new_item] = params[:id]
-  end 
   def new
     @product = Product.find(params[:product_id])
     @product_invitation = ProductInvitation.new
@@ -44,6 +39,12 @@ class ProductInvitationsController < ApplicationController
 #    redirect_to product_product_invitations_path(@product)
   end
   
+  def view_invitation
+    @product = Product.find(params[:id])
+    @item = Item.new(:product_id => @product.id)
+    session[:new_item] = params[:id]
+  end 
+
   def accept_invitation
     # Create an orphan item in the database
     @item = Item.create(params[:item].merge(:product_id => session[:new_item], :privacy => 'public', :invitation_status => "incomplete"))
@@ -56,19 +57,31 @@ class ProductInvitationsController < ApplicationController
   def process_accepted_product_invitation
     if session[:accepted_item]
       @item = Item.find(session[:accepted_item])
-      session[:accepted_item] = nil
-      @item.add_image_from_url @item.product.images.first.image.url
+      #@item.add_image_from_url @item.product.main_image
       @user = current_user 
       flash[:notice] = "Thanks for talking about your #{@item.product.name}"
       @user.items << @item
       @item.update_attribute(:invitation_status, 'complete')
-      message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => @item.product.images.first.image.url}
-      Facebook.post_message(message, @user.access_token) 
-      sign_in_and_redirect @user, :event => :authentication
+
+      if session[:signin_type] == 'facebook'
+        redirect_to home_url+'#share_review'
+      elsif session[:signin_type] == 'standard'
+        redirect_to home_url
+      end
+      session[:signin_type] = nil
     else
       flash[:error] = "Can't determine which product you were invited to view"
       redirect_to home_url
     end
   end
 
+
+  def share_review
+        #image_url = request.protocol + request.host_with_port + @item.product.main_image
+        #message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => image_url}
+        #Facebook.post_message(message, @user.access_token) 
+    @item = Item.find(session[:accepted_item])
+    session[:accepted_item] = nil
+    render :layout => nil
+  end
 end

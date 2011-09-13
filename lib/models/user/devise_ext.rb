@@ -42,6 +42,7 @@ module Models
           #pp access_token
           credentials = access_token['credentials']
           info = access_token['user_info']
+          screen_name = access_token['extra']['user_hash']['screen_name']
 
           # Not signed in.
           if user.nil?
@@ -50,7 +51,7 @@ module Models
               user
             else
               # Create new Prizzm account with Twitter account information.
-              user = create!(:email => "twitter_account@prizzm.com", :password => Devise.friendly_token[0, 20], 
+              user = create!(:email => "twitter_account_#{screen_name}_#{Time.now.hash}@prizzm.com", :password => Devise.friendly_token[0, 20],
                              :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
               user.tt_token = credentials['token']
               user.tt_secret = credentials['secret']
