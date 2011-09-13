@@ -1,8 +1,8 @@
 body {
 	margin: 15px auto;
-	width: 716px;
+	width: 542px;
 	min-width: 0;
-	background: #344c85 url('../images/bg_pat.png');
+	background: #585858 url('http://shopbryna.com/images/background.gif') top center repeat-y;
 }
 
 header a {
@@ -79,28 +79,15 @@ section {
     color: #567cd4;
   }
   
-  section h1 {
-	font-size: 1.7em;
-  }
-  
-  section h2 {
-	font-size: 1.6em;
-  }
-  
-  section h3 {
-	font-size: 1.3em;
-  }
-  
-  section p {
-	margin-bottom: 5px;
-  }
-  
-  section li {
-	margin-bottom: 5px;
-  }
-  
-  section .button {
-    margin-top: 10px;
+  section textarea {
+    height: 80px;
+    font-size: 1.1em;
+    padding: 8px;
+    width: 85%;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
 article {
@@ -152,6 +139,27 @@ input[type=text], input[type=password] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+input[type=submit] {
+  background: no-repeat url('../images/landing/fb-login-button.png');
+  padding: 0;
+  width: 155px;
+  height: 22px;
+  border: none;
+}
+
+ul.finalstep {
+  margin-right: 0 !important;
+}
+
+ul.finalstep a{
+  margin-top: 8px;
+  font-size: 0.8em
+}
+
+  ul.finalstep li {
+    vertical-align: middle;
+  }
 
 ul.social-login {
 	margin: 0 0 5px;

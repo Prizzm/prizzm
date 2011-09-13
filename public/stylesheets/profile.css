@@ -249,3 +249,10 @@ aside .close {
   right: 8px;
 }
 
+ul.det li {
+  display: inline-block;
+}
+
+  ul.det li.have {
+    
+  }

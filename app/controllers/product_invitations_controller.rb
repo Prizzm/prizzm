@@ -58,14 +58,15 @@ class ProductInvitationsController < ApplicationController
     if session[:accepted_item]
       @item = Item.find(session[:accepted_item])
       session[:accepted_item] = nil
-      @item.add_image_from_url @item.product.images.first.image.url
+      @item.add_image_from_url @item.product.main_image.url
       @user = current_user 
       flash[:notice] = "Thanks for talking about your #{@item.product.name}"
       @user.items << @item
       @item.update_attribute(:invitation_status, 'complete')
-      message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => @item.product.images.first.image.url}
-      Facebook.post_message(message, @user.access_token) 
-      sign_in_and_redirect @user, :event => :authentication
+
+      #message = {:message => "#{@user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => @item.product.images.first.image.url}
+      #Facebook.post_message(message, @user.access_token) 
+      #sign_in_and_redirect @user, :event => :authentication
     else
       flash[:error] = "Can't determine which product you were invited to view"
       redirect_to home_url

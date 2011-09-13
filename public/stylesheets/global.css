@@ -726,7 +726,7 @@ article.userbit {
   }
   
   aside article .buttons {
-    margin-top: 10px !important;
+    margin-top: 0 !important;
   }
   
   aside .finalstep {
@@ -738,7 +738,7 @@ article.userbit {
   }
 
 form li.fb, form li.tt {
-  margin-top: 8px;
+  margin-top: 9px;
   padding: 3px 3px 3px 25px;
   border: 1px solid #ccc;
 }
@@ -751,7 +751,7 @@ form li.fb, form li.tt {
     background-position: 3px -349px;
   }
 
-form .finalstep {
+  form .finalstep {
     margin: 0 5px 0 !important;
     list-style: none;
   }
