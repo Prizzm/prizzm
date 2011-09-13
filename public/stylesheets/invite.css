@@ -149,6 +149,7 @@ input[type=submit]#standard_login {
   background: none;
   font-weight: normal;
   padding: 0;
+  border: 0;
 }
 
 ul.finalstep {
