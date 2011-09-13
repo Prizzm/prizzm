@@ -2,7 +2,7 @@
   .comment_input_box
     = form_for :comment,  :url => comments_path(object_type(commentable), commentable.id), :format => :js, :html => { :class => "new_comment" }, :remote => true do |f| 
       .share-input{:id => "share-input-#{parent_id}"}
-        = f.text_area :body, :'data-text' => "Comment on this review...", :placeholder => "Comment...",  :rows => 3, :id => "comment_body_#{parent_id}", :value => ""
+        = f.text_area :body, :'data-text' => "Write a comment...", :placeholder => "Write a comment...",  :rows => 3, :id => "comment_body_#{parent_id}", :value => ""
       .clear
       /.close
       %ul.finalstep.buttons.fr
