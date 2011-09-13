@@ -22,17 +22,17 @@
       .title
         Thank you 
         %span{:style=>"text-transform:capitalize"}=@product_invitation.name
-        %p
-          It would really help us out at
-          %em #{@product_invitation.product.company.name}
-          if you let us know what
-          %em you thought
-          of our 
-          =@product_invitation.product.name
-          and
-          %em share it
-          with your friends too!
-      
+      %p
+        It would really help us out at
+        %em #{@product_invitation.product.company.name}
+        if you let us know what
+        %em you thought
+        of our 
+        =@product_invitation.product.name
+        and
+        %em share it
+        with your friends too!
+    
       =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save",:acceptstatus=>params[:acceptstatus],:encrypted_id=>params[:encrypted_id]},:html=>{:name=>"review_form"} do |f|
         #itemdetail.fl
           = image_tag "/images/bryna-brand.png"
