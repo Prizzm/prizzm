@@ -82,7 +82,7 @@ section {
     height: 80px;
     font-size: 1.1em;
     padding: 8px;
-    width: 85%;
+    width: 80%;
     
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -108,8 +108,6 @@ form {
 form h2 {
 	margin-top: 0;
 }
-
-
 
 form.login > a {
 	margin-top: 15px;
@@ -145,6 +143,12 @@ input[type=submit]#facebook_login {
   width: 155px;
   height: 22px;
   border: none;
+}
+
+input[type=submit]#standard_login {
+  background: none;
+  font-weight: normal;
+  padding: 0;
 }
 
 ul.finalstep {
