@@ -102,6 +102,16 @@ section {
   section .button {
     margin-top: 10px;
   }
+  
+  section textarea {
+    height: 50px;
+    font-size: 1.1em;
+    padding: 8px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 
 article {
     margin: 0 auto;
@@ -152,6 +162,27 @@ input[type=text], input[type=password] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+input[type=submit] {
+  background: no-repeat url('../images/landing/fb-login-button.png');
+  padding: 0;
+  width: 155px;
+  height: 22px;
+  border: none;
+}
+
+ul.finalstep {
+  margin-right: 0 !important;
+}
+
+ul.finalstep a{
+  margin-top: 8px;
+  font-size: 0.8em
+}
+
+  ul.finalstep li {
+    vertical-align: middle;
+  }
 
 ul.social-login {
 	margin: 0 0 5px;
