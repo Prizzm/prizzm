@@ -2,7 +2,7 @@ body {
 	margin: 15px auto;
 	width: 542px;
 	min-width: 0;
-	background: #344c85 url('../images/bg_pat.png');
+	background: #585858 url('http://shopbryna.com/images/background.gif') top center repeat-y;
 }
 
 header a {
@@ -79,34 +79,11 @@ section {
     color: #567cd4;
   }
   
-  section h1 {
-	font-size: 1.7em;
-  }
-  
-  section h2 {
-	font-size: 1.6em;
-  }
-  
-  section h3 {
-	font-size: 1.3em;
-  }
-  
-  section p {
-	margin-bottom: 5px;
-  }
-  
-  section li {
-	margin-bottom: 5px;
-  }
-  
-  section .button {
-    margin-top: 10px;
-  }
-  
   section textarea {
-    height: 50px;
+    height: 80px;
     font-size: 1.1em;
     padding: 8px;
+    width: 85%;
     
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
