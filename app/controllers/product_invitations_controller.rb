@@ -78,22 +78,25 @@ class ProductInvitationsController < ApplicationController
 
   def share_review
     @item = Item.find(session[:accepted_item])
-    session[:accepted_item] = nil
     render :layout => nil
   end
 
   def post_review_to_fb
-    #@item = Item.find(session[:accepted_item])
-    @item = Item.find(params[:id])
+    #@item = current_user.items.find(params[:item_id])
+    # Using and clearing session to fix double posts..  HACK
+    @item = current_user.items.find(session[:accepted_item])
+    if @item
+      @item.update_attribute(:privacy, 'public')
+      session[:accepted_item] = nil
 
-    if Rails.env.development?
-      image_url = request.protocol + request.host_with_port + @item.product.main_image
-    else
-      image_url = @item.product.main_image
+      if Rails.env.development?
+        image_url = request.protocol + request.host_with_port + @item.product.main_image
+      else
+        image_url = @item.product.main_image
+      end
+      message = {:message => "#{current_user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => show_item_url(current_user, @item), :picture => image_url}
+      Facebook.post_message(message, current_user.access_token) 
     end
-
-    message = {:message => "{@user.first_name} has just talked about the {@item.product.name} on Prizzm.", :link => shared_item_url(@item), :picture => image_url}
-    Facebook.post_message(message, @user.access_token) 
     head :ok
   end
 end

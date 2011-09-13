@@ -1,10 +1,21 @@
-%p= @item.name
-%p= image_tag @item.main_image
-%p= @item.review
+%h1
+  Congratulations
+  = current_user.name
+You just added a
+%em= @item.name
+to your
+%em have list
 
-%p= link_to "Not now...", '#', :class => 'close', :id => 'close_share_review'
-%p= link_to "Share on FB", post_review_to_fb_path(@item.id), :class => 'close', :id => 'share_review_on_facebook', :remote => true
-Share some stuff buttons
+.product
+  = image_tag @item.main_image, :class => "fl medthumb"
+  .fr
+    %h2= @item.name
+    = @item.review
+  .clear
+  
+%ul.finalstep.fr
+  %li= link_to "Maybe later", '#', :class => "other-opt", :id => 'close_share_review'
+  %li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
 
 = render 'layouts/javascripts'
 :javascript
@@ -12,6 +23,6 @@ Share some stuff buttons
     jQuery(document).trigger('close.facebox');
   });
 
-  $('#share_review_on_facebook').live('ajax:success', function(event, data, status, xhr){
+  $('#share_review_on_facebook').click(function(event){
     jQuery(document).trigger('close.facebox');
   });
