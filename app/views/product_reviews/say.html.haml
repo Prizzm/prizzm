@@ -1,63 +1,60 @@
-
-
 %html{ :lang => "en"}
 
-    %head
-        %meta{:charset=>"utf-8"}
-        %title #{@product_invitation.product.company.name} Invite - Powered by Prizzm
-        %meta{:http=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
-        %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
-        <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
-        %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
-        %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
-        %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
-        =javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
-        =javascript_include_tag 'ckeditor/ckeditor.js'
+  %head
+    %meta{:charset=>"utf-8"}
+    %title #{@product_invitation.product.company.name} Invite - Powered by Prizzm
+    %meta{:http=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
+    %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
+    =javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+    =javascript_include_tag 'ckeditor/ckeditor.js'
 
-    %body#main
-        %header
-            %a{:href=>""}
-                %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
-                %h1.fl #{@product_invitation.product.company.name}
-                .clear
-            %img{:src=>"/images/bryna-banner.png",:alt=>""}		
-        %section{:style=>"width:100%"}
-            .title
-                Thank you 
-                %span{:style=>"text-transform:capitalize"}=@product_invitation.name
-                %p
-                    It would really help us out at
-                    %em #{@product_invitation.product.company.name}
-                    if you let us know what
-                    %em you thought
-                    of our 
-                    =@product_invitation.product.name
-                    and
-                    %em share it
-                    with your friends too!
-		
-            %h1 This is your review            
-            =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save",:acceptstatus=>params[:acceptstatus],:encrypted_id=>params[:encrypted_id]},:html=>{:name=>"review_form"} do |f|
-                -if @review.content.nil?
-                    =f.text_area :content,:rows=>"10",:cols=>"60"
-                -else
-                    .given-review
-                        =@review.content.html_safe
-                    =f.hidden_field :id
-                =f.hidden_field :product_invitation_id,:value=>@product_invitation.id
-                =f.hidden_field :product_id,:value=>@product_invitation.product.id
-            %h2 Stuck for ideas?
-            %ul
-                %li Did you like this product?
-                %li hat did you like or dislike about it?
-                %li Would you buy more products like this from #{@product_invitation.product.company.name}?
-                %li What do you recommend for people who want this product?
-
-            %h3 Sharing it!
-            %p You also have the option of sharing your review with your social networks, once you've saved it!
-            %p
-                %em (after they save, it should send them to the next tab page)
-            %a{:href=>"",:class=>"fr button save",:onclick=>"document.forms['review_form'].submit();return false;"} Send now!
-            .clear
+  %body#main
+    %header
+      %a{:href=>""}
+        %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
+        %h1.fl #{@product_invitation.product.company.name}
         .clear
+    %section{:style=>"width:100%"}
+      .title
+        Thank you 
+        %span{:style=>"text-transform:capitalize"}=@product_invitation.name
+        %p
+          It would really help us out at
+          %em #{@product_invitation.product.company.name}
+          if you let us know what
+          %em you thought
+          of our 
+          =@product_invitation.product.name
+          and
+          %em share it
+          with your friends too!
+		      
+      =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save",:acceptstatus=>params[:acceptstatus],:encrypted_id=>params[:encrypted_id]},:html=>{:name=>"review_form"} do |f|
+        -if @review.content.nil?
+          =f.text_area :content,:rows=>"10",:cols=>"60"
+        -else
+          .given-review
+            =@review.content.html_safe
+          =f.hidden_field :id
+        =f.hidden_field :product_invitation_id,:value=>@product_invitation.id
+        =f.hidden_field :product_id,:value=>@product_invitation.product.id
+      %h2 Stuck for ideas?
+      %ul
+        %li Did you like this product?
+        %li hat did you like or dislike about it?
+        %li Would you buy more products like this from #{@product_invitation.product.company.name}?
+        %li What do you recommend for people who want this product?
+
+      %h3 Sharing it!
+      %p You also have the option of sharing your review with your social networks, once you've saved it!
+
+      %ul.finalstep
+        %li= link_to "Register", ""
+        %li= link_to image_tag('/images/landing/fb-login-button.png'), ""  
+      .clear
+    .clear
 

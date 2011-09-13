@@ -12,9 +12,9 @@
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
         = f.text_area :description, :cols => 59
-        .buttons
-          = f.submit "clear", :class => "button", :id => "clear_item_fields"
-          = f.submit 'Save'
+        .buttons.fr
+          = f.submit 'Save', :class => "green button"
+          = f.submit "cancel", :class => "button", :id => "clear_item_fields"
         .clear
     #review_status 
     = form_for @case, :remote => true, :method => 'PUT' do |f|
