@@ -14,5 +14,15 @@ to your
   .clear
   
 %ul.finalstep.fr
-  %li= link_to "Maybe later", :class => "other-opt"
-  %li= link_to "Share to facebook", :class => "green button"
+  %li= link_to "Maybe later", '#', :class => "other-opt", :id => 'close_share_review'
+  %li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
+
+= render 'layouts/javascripts'
+:javascript
+  $('#close_share_review').click(function(event){
+    jQuery(document).trigger('close.facebox');
+  });
+
+  $('#share_review_on_facebook').click(function(event){
+    jQuery(document).trigger('close.facebox');
+  });
