@@ -13,11 +13,6 @@ class ProductInvitationsController < ApplicationController
     @pinvite.save!
     redirect_to product_product_invitations_path(Product.find(params[:product_id]))
   end
-  def view_invitation
-    @product = Product.find(params[:id])
-    @item = Item.new(:product_id => @product.id)
-    session[:new_item] = params[:id]
-  end 
   def new
     @product = Product.find(params[:product_id])
     @product_invitation = ProductInvitation.new
@@ -44,6 +39,12 @@ class ProductInvitationsController < ApplicationController
 #    redirect_to product_product_invitations_path(@product)
   end
   
+  def view_invitation
+    @product = Product.find(params[:id])
+    @item = Item.new(:product_id => @product.id)
+    session[:new_item] = params[:id]
+  end 
+
   def accept_invitation
     # Create an orphan item in the database
     @item = Item.create(params[:item].merge(:product_id => session[:new_item], :privacy => 'public', :invitation_status => "incomplete"))

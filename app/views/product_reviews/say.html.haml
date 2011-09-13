@@ -57,7 +57,9 @@
             %p You also have the option of sharing your review with your social networks, once you've saved it!
             %p
                 %em (after they save, it should send them to the next tab page)
-            %a{:href=>"",:class=>"fr button save",:onclick=>"document.forms['review_form'].submit();return false;"} Send now!
+            %a{:href=>"",:class=>"fr button save",:onclick=>"document.forms['review_form'].submit();return false;"} No thanks!
+            = link_to image_tag('share_facebook.png'), user_omniauth_authorize_path(:facebook) 
+
             .clear
         .clear
 
