@@ -191,6 +191,7 @@ Prizzm::Application.routes.draw do
   # can't redirect using a 'POST' method.  Used in omniauth_callback/product_invitations
   get '/process_invitation' => 'product_invitations#process_accepted_product_invitation', :as => 'process_accepted_product_invitation'
 
+  get '/share_review' => 'product_invitations#share_review', :as => 'share_review'
   # Rouutess for item sharing use cases
   get 'shared/item/:id' => 'shared_items#show', :as => "shared_item"
 
