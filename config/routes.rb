@@ -151,7 +151,7 @@ Prizzm::Application.routes.draw do
 
   post '/save_opinion' => 'items#save_opinion', :as => 'item_save_opinion'
 
-  resources :items 
+  resources :items
   resources :items do
     resources :images, :only => [:create, :destroy]
     match 'post_to_facebook' => 'items#post_to_facebook'
@@ -187,6 +187,8 @@ Prizzm::Application.routes.draw do
 
 
 
+  get 'people/all'       => 'people#index'
+  get 'people/following' => 'people#following'
 
 
   # Cloudmailin incomming email controller
@@ -194,7 +196,6 @@ Prizzm::Application.routes.draw do
 
   # Blitz.io verification route
   get '/mu-1234-cafe-5678-babe' => proc { |env| [200, {}, '42'] }
-
 
 
   ##############################    NONPUBLIC ADMIN    #############################
