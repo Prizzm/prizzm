@@ -85,6 +85,7 @@ form a {
   text-shadow: 1px 1px 1px #fff;
   text-decoration: none;
   font-weight: bold;
+  float: left;
 }
 
 form a:hover {
