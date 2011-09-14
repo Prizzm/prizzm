@@ -1,1 +1,267 @@
-#main a,#main a:active,#main a:visited{color:#5d5d5d;text-decoration:none}#main a:hover{color:#5d5d5d}.profilePic{padding:5px;height:150px;width:150px;background:#fff}.edit.button{margin:0}header .grid_14{width:580px!important}#main>header{margin-bottom:0}#socialbit{margin:10px 0 0!important;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#socialbit li{margin-bottom:10px}#socialbit a,ul.activity-feed li a{color:#476ab3!important}.ufgallery{margin-top:3px}#content{margin-bottom:10px;background:#fff;border:1px solid #cdcdcd;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.1);-moz-box-shadow:0 0 5px rgba(0,0,0,0.1);box-shadow:0 0 5px rgba(0,0,0,0.1)}h2{font-size:1.5em;margin-bottom:10px;font-weight:normal}#content .button{margin-right:0;float:right}#content h2{padding-top:5px;float:left}#helptool ul li{width:50%}#helptool li:last-child{border-left-width:1px}ul.activity-feed,ul.list-display,ul.case-list{margin:0;list-style:none;width:100%;border-style:solid;border-color:#f7f7f7;border-width:0 1px 1px 1px}ul.activity-feed li,ul.case-list li{margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #ccc}ul.case-list .close{right:8px}ul.activity-feed li a.user{font-weight:bold;color:#5d5d5d!important;text-decoration:none!important}ul.activity-feed li a{text-decoration:underline!important}.timebit{color:#ccc}.addcase .tags{border-width:0 1px 1px 1px;border-color:#ccc;border-style:solid;padding:8px}ul.list-display .cell,ul.case-list .cell{margin:0 5px 10px 0;padding:5px;position:relative;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}ul.list-display .cell{border-bottom:1px dashed #ccc;position:relative}ul.list-display li:last-child .cell{border-bottom:none}ul.list-display li .img,ul.list-display .img img{width:50px}ul.list-display li h3{margin-bottom:5px;font-size:1.1em}ul.list-display li .close{top:8px;right:8px;display:none}ul.list-display li:hover .close{display:block}ul.activity-feed img.smallthumb{margin-right:5px}aside nav li{margin-bottom:10px}aside h4{padding-bottom:3px;border-bottom:1px solid #f3f3f3}footer{margin-top:0}#edit-user form{border-bottom:1px dashed #393939;margin-bottom:8px;padding-bottom:8px}#edit-user input[type="text"],#edit-user input[type="password"],#edit-user input[type="email"],#new-case input[type="text"],#new-case textarea{-moz-border-radius:3px 3px 3px 3px;-moz-box-sizing:border-box;border:1px solid #ccc;color:#666;padding:5px;width:60%}#edit-user input[type="submit"],#new-case input[type="submit"]{width:100%}#edit-user li.error>input{border:1px solid red}#edit-user li.error>label{color:red}#edit-user label{width:140px;display:inline-block;text-align:right;color:#666;margin-right:10px;padding-top:5px}#new-case label{text-align:right;margin-right:10px}#edit-user #submit{float:right}#edit-user span{color:#ccc;float:left}#edit-user ul{list-style:none outside none;margin:0!important;text-align:left}#edit-user ul li{display:inline-block}#edit-user a,#edit-user a:active,#edit-user a:visited{text-decoration:none}#edit-user .error-message{color:red;margin:0 0 5px 150px}aside .tags{border:0}aside .tags li{margin-bottom:5px}aside .close{right:8px}ul.det li{display:inline-block}#welcome{text-align:center;padding:10px}#welcome p{margin-top:10px}#welcome span{font-weight:bold;color:#ccc}
+#main a, #main a:active, #main a:visited { color: #5d5d5d; text-decoration: none; }
+#main a:hover { color: #5d5d5d; }
+
+.profilePic {
+	padding: 5px;
+	height: 150px;
+	width: 150px;
+	background: #fff;
+}
+
+.edit.button { margin: 0; }
+
+header .grid_14 {
+	width: 580px !important;
+}
+
+#main > header {
+	margin-bottom: 0;
+}
+
+#socialbit {
+	margin: 10px 0 0 !important;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+  #socialbit li {
+    margin-bottom: 10px;
+  }
+  
+  #socialbit a, ul.activity-feed li a{
+	color: #476ab3 !important;
+  }
+  
+  .ufgallery {
+    margin-top: 3px;
+  }
+
+
+#content{
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #cdcdcd;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+	font-size: 1.5em;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+#content .button {
+  margin-right: 0;
+  float: right;
+}
+
+#content h2{
+  padding-top: 5px;
+  float: left;
+}
+
+#helptool ul li {
+  width: 50%;
+}
+
+#helptool li:last-child {
+  border-left-width: 1px;
+}
+
+ul.activity-feed , ul.list-display, ul.case-list {
+	margin: 0;
+	list-style: none;
+  width: 100%;
+  border-style: solid;
+  border-color: #f7f7f7;
+  border-width: 0 1px 1px 1px;
+}
+
+ul.activity-feed li, ul.case-list li {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+ul.case-list .close {
+  right: 8px;
+}
+
+ul.activity-feed li a.user {
+	font-weight: bold;
+	color: #5D5D5D !important;
+	text-decoration: none !important;
+}
+
+ul.activity-feed li a{
+	text-decoration: underline !important;
+}
+
+.timebit {
+	color: #ccc;
+}
+
+.addcase .tags {
+  border-width: 0 1px 1px 1px;
+  border-color: #ccc;
+  border-style: solid;
+  padding: 8px;
+}
+
+ul.list-display .cell, ul.case-list .cell{
+	margin: 0 5px 10px 0;
+  padding: 5px;
+	position: relative;
+   
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+ul.list-display .cell {
+  border-bottom: 1px dashed #ccc;
+  position: relative;
+}
+
+  ul.list-display li:last-child .cell {
+    border-bottom: none;
+  }
+
+ul.list-display li .img, ul.list-display .img img {
+	width: 50px;
+}
+
+ul.list-display li h3 {
+	margin-bottom: 5px;
+	font-size: 1.1em;
+}
+
+ul.list-display li .close {
+  top: 8px;
+  right: 8px;
+  display: none;
+}
+
+ul.list-display li:hover .close {
+  display: block;
+}
+
+ul.activity-feed img.smallthumb {
+	margin-right: 5px;
+}
+
+aside  nav li{
+	margin-bottom: 10px;
+}
+
+aside h4 {
+  padding-bottom: 3px;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+footer {
+	margin-top: 0;
+}
+
+#edit-user form {
+  border-bottom: 1px dashed #393939;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+#edit-user input[type="text"], #edit-user input[type="password"], #edit-user input[type="email"],
+#new-case input[type="text"], #new-case textarea {
+  -moz-border-radius: 3px 3px 3px 3px;
+  -moz-box-sizing: border-box;
+  border: 1px solid #ccc;
+  color: #666;
+  padding: 5px;
+  width: 60%;
+}
+
+#edit-user input[type="submit"],
+#new-case input[type="submit"] {
+  width: 100%;
+}
+
+#edit-user li.error > input {
+  border: 1px solid red;
+}
+
+#edit-user li.error > label {
+  color: red;
+}
+
+#edit-user label {
+  width: 140px;
+  display: inline-block;
+  text-align: right;
+  color: #666;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+#new-case label {
+  text-align: right;
+  margin-right: 10px;
+}
+
+#edit-user #submit {
+  float: right;
+}
+
+#edit-user span {
+  color: #ccc;
+  float: left;
+}
+
+#edit-user ul {
+ list-style: none outside none;
+ margin: 0 !important;
+ text-align: left;
+}
+
+#edit-user ul li {
+  display: inline-block;
+}
+
+#edit-user a, #edit-user a:active, #edit-user a:visited {
+  text-decoration: none;
+}
+
+#edit-user .error-message {
+  color: red;
+  margin: 0 0 5px 150px;
+}
+
+aside .tags {
+	border: 0;
+}
+
+  aside .tags li {
+  	margin-bottom: 5px;	
+  }
+
+aside .close {
+  right: 8px;
+}
+
+ul.det li {
+  display: inline-block;
+}
+
+#welcome {
+  text-align: center;
+  padding: 10px;
+}
+  #welcome p {
+    margin-top: 10px;
+  }
+
+  #welcome span {
+    font-weight: bold;
+    color: #ccc;
+  }
