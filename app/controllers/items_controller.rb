@@ -51,18 +51,13 @@ class ItemsController < InheritedResources::Base
   def destroy
     item = current_user.items.find(params[:id])
 
-    possession = case item.possession_status
-      when 'want'
-        'wanted'
-      when 'have'
-        'owned'
-    end
-
+    possession = item.tag_list.include?('have') ? 'have' : 'want'
+    item_collection = possession == 'have' ? current_user.owned_items : current_user.wanted_items
     item.destroy
 
     respond_to do |format|
       format.js {
-        @html_items = render_to_string :partial => "profile/item", :collection => current_user.send("#{possession}_items")
+        @html_items = render_to_string :partial => "profile/item", :collection => item_collection
       }
     end 
   end
