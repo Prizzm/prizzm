@@ -20,7 +20,13 @@ class HomeController < ApplicationController
   end
 
   def people
-    @items = Item.where(:privacy => "public")
+    @items = Item.find(:all, 
+      :conditions => {
+        :privacy => "public"
+      },
+      :limit => 10,
+      :order => 'created_at DESC'
+    )
   end
 
 
