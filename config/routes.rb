@@ -11,7 +11,8 @@ Prizzm::Application.routes.draw do
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
   # Routes for main page
-  match "/home" => "home#index", :as  => "home", :to => 'home#index'
+  match "/home" => "home#index", :as => "home"
+  match "/people" => "home#people", :as => "people"
 
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'

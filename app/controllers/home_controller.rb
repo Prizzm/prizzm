@@ -14,12 +14,17 @@ class HomeController < ApplicationController
       format.json  { render :json => @user }
     end
   end
+
   
   def welcome
   end
 
-  def scrape
+  def people
+    @items = Item.where(:privacy => "public")
+  end
 
+
+  def scrape
     @req_url = params[:url].strip
 
     if !( @req_url.start_with?("http") || @req_url.start_with?("https") )
@@ -58,6 +63,7 @@ class HomeController < ApplicationController
     # including extra information like title and description if needed later
     render :json => { :images => @images, :title => @title , :description => @desc }
   end
+
 
   def login_popup
     @object_id, @object_type = params[:object_id], params[:object_type]

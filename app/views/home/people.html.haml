@@ -1,0 +1,9 @@
+%ul
+  - if @items.count > 0
+    - @items.each do |item|
+      %li
+        %span.name= item.name
+        %span.image= item.main_image
+        %span.review= truncate item.review, :length => 100
+  - else
+    %li No public items
