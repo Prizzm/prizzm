@@ -14,8 +14,9 @@ to your
   .clear
   
 %ul.finalstep.fr
-  %li= link_to "Maybe later", '#', :class => "other-opt", :id => 'close_share_review'
-  %li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
+  %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
+  /%li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
+  %li= link_to "Share to facebook", '', :class => "green button", :id => 'share_review_on_facebook'
 
 = render 'layouts/javascripts'
 :javascript
@@ -24,5 +25,9 @@ to your
   });
 
   $('#share_review_on_facebook').click(function(event){
+    $.ajax({
+      type: 'POST',
+      url: "#{post_review_to_fb_path(@item.id)}"
+    });
     jQuery(document).trigger('close.facebox');
   });
