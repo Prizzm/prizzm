@@ -5,5 +5,7 @@
         %span.name= item.name
         %span.image= item.main_image
         %span.review= truncate item.review, :length => 100
+        %span.wanted= item.wanted_count
+        %span.have= item.have_count
   - else
     %li No public items

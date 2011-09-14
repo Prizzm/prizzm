@@ -51,6 +51,44 @@ class Item < ActiveRecord::Base
     item
   end 
 
+  def wanted_count
+    # Can't be expected to calculate on no product_id relationships
+    if self.product_id.nil?
+      return 0
+    else
+      items = Item.find(:all, :conditions => {
+        :privacy    => "public",
+        :product_id => self.product_id
+      })
+
+      i = 0
+      items.each do |item|
+        i += 1 if item.tag_list.index('want')
+      end
+      return i
+    end
+  end
+
+  def have_count
+    # To reduce code duplicate
+    if self.product_id.nil?
+      return 0
+    else
+      items = Item.find(:all, :conditions => {
+        :privacy    => "public",
+        :product_id => self.product_id
+      })
+
+      i = 0
+      items.each do |item|
+        i += 1 if item.tag_list.index('have')
+      end
+      return i
+    end
+  end
+
+
+
   def owned
     tagged_with('have')
   end
