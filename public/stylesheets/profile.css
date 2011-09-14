@@ -253,6 +253,15 @@ ul.det li {
   display: inline-block;
 }
 
-  ul.det li.have {
-    
+#welcome {
+  text-align: center;
+  padding: 10px;
+}
+  #welcome p {
+    margin-top: 10px;
+  }
+
+  #welcome span {
+    font-weight: bold;
+    color: #ccc;
   }

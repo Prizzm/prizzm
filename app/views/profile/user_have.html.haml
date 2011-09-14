@@ -7,5 +7,9 @@
   %ul.table.list-display
     = render :partial => "profile/item", :collection => current_user.owned_items
 - else
-  .grid_14
-    = render "welcome/have", :layout => "welcome"
+  #welcome
+    You haven't added anything to your list yet!
+    %p
+      Click in the box and add something you have
+      %br
+      Electronics, Bags, Accessories... Anything!
