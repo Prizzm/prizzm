@@ -129,15 +129,15 @@ Prizzm::Application.routes.draw do
                               :sign_up => "register" 
                              }
 
-  devise_for :companies, :path => "company_accounts",
-             :controllers => {:registrations => "company_registrations", 
-                              :sessions => "company_sessions", 
-                              :passwords => "company_passwords"
-                             },
+  devise_for :companies, :path => "corporate",
              :path_names  => {:sign_in => "login", 
                               :sign_out => "logout", 
                               :sign_up => "register" 
                              }
+             #:#c#o#n#t#r#o#l#l#e#r#s #=#> #{#:#r#e#g#i#s#t#r#a#t#i#o#n#s #=#> #"#c#o#m#p#a#n#y#_#r#e#g#i#s#t#r#a#t#i#o#n#s#"#, 
+                              #:#s#e#s#s#i#o#n#s #=#> #"#c#o#m#p#a#n#y#_#s#e#s#s#i#o#n#s#"#, 
+                              #:#p#a#s#s#w#o#r#d#s #=#> #"#c#o#m#p#a#n#y#_#p#a#s#s#w#o#r#d#s#"
+                             #}#,
 
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################
