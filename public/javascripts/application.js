@@ -2,7 +2,7 @@ $(document).ready(function(){
   // Privacy ccontrols ffor items.  Control is a ajax link wich sends a put
   // request to toggle te privacy.  This script sets a return handler, to show
   // the updateed privacy mode, and toggle the css class.
-  $('select.privacy_control').change(function(){console.log('yay');
+  $('select.privacy_control').change(function(){
     jQuery.ajax({
       type: 'put',
       url: $(this).data('url')
@@ -14,6 +14,10 @@ $(document).ready(function(){
     $(this).toggleClass('private', (data.object_privacy == 'private'));
   });
 
+  $('li').filter('.fb, .tt').tipsy({
+    gravity : 'n',
+    fade    : true
+  });
   $('textarea').elastic();  
 
   // jax control for following links
@@ -52,9 +56,8 @@ $(document).ready(function(){
   $(".facebox").facebox();
    
   $('.delete-item').delegate('a', 'ajax:success', function(event, data, status, xhr){
-    console.log(data);
     var itemid = data + '';
-    $('li#item_'+itemid).fadeOut();
+    $('li#item_' + itemid).fadeOut();
   });
 
 
