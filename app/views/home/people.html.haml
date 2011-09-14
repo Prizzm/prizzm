@@ -1,12 +1,17 @@
-%ul
+%ul.feed
   - if @items.count > 0
     - @items.each do |item|
-      %li
-        %span.user
-          = image_tag item.user.main_image, :class => "smallthumb"
-          = item.user.name
-        %span.name= item.name
-        %span.image= item.main_image
-        %span.review= truncate item.review, :length => 100
+      %li.feed-item
+        .user.fl
+          = link_to profile_path(item.user) do
+            = image_tag item.user.main_image, :class => "smallthumb"
+            %br
+            = item.user.first_name
+        .cont.fl
+          %h2= item.name
+          .fl= image_tag item.main_image, :class => "thumb"
+          .fl= truncate item.review, :length => 100
+          .clear
+      .clear
   - else
     %li No public items

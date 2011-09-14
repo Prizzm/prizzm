@@ -21,6 +21,7 @@ class HomeController < ApplicationController
 
   def people
     @items = Item.where(:privacy => "public")
+    render :layout => "app_alt"
   end
 
 
