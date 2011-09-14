@@ -2,6 +2,9 @@
   - if @items.count > 0
     - @items.each do |item|
       %li
+        %span.user
+          = image_tag item.user.main_image, :class => "smallthumb"
+          = item.user.name
         %span.name= item.name
         %span.image= item.main_image
         %span.review= truncate item.review, :length => 100

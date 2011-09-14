@@ -489,15 +489,18 @@ ul.data-list .cell .button {
     width: 9%;
     margin-right: 10px;
     vertical-align: top;
+    background: url('../images/sp-ar.png') no-repeat 10px right;
   }
-  
-    .comms .cell.img img {
-    	width: 40px;
-    	height: 40px;
-    }
+
 
   .comms .cell.comm {
     width: 88%;
+    padding: 8px;
+    background: #fff;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
   
   .comms .comm-ft {
