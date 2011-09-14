@@ -20,6 +20,7 @@ config:
   all:
     BUNDLE_WITHOUT: "development:test"
     RACK_ENV: 'production'
+    LOG_LEVEL: 'DEBUG'
 #    HEROKU_USER: <%= ENV['HEROKU_USER'] %>
 #    HEROKU_API_KEY: <%= ENV['HEROKU_API_KEY'] %>
 #    AWS_SNS_HEROKU_WORKERS: <%= ENV['AWS_SNS_HEROKU_WORKERS'] %>
