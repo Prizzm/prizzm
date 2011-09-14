@@ -3,7 +3,7 @@
 }
 
 body {
-	background: url('../images/whitey.png') repeat;
+	background: url('../images/bright_squares.png') repeat;
 }
 
 .container_24 {
@@ -25,23 +25,31 @@ sub {
   font-size: 1.3em;
 }
 
-form.signupform, form.regform {
-  margin-top: 25px;
+form.signupform, form.regform, .prizdesc {
+  margin: 25px 15px 0 0;
   padding: 10px;
+  width: 45%;
   border: 1px solid #cdcdcd;
   background: #fff;
+  float: left;
   
   -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1); 
   box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
 }
 
+  .prizdesc {
+    margin-right: 0;
+    min-height: 147px;
+  }
+
 form input[type=text], form input[type=password], form input[type=email]{
+  margin-bottom: 10px;
   padding: 10px !important;
   background: rgba(255,255,255,0.6) !important;
   border: 1px solid #cdcdcd;
   font-size: 1.3em;
-  width: 250px;
+  width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -49,10 +57,6 @@ form input[type=text], form input[type=password], form input[type=email]{
   -moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.1); 
   box-shadow: inset 0px 0px 5px rgba(0,0,0,0.1);
 }
-
-  .signupform input[type=password], form input[type=email] {
-    width: 158px;
-  }
   
   .forgform input[type=email] {
     width: 100%;
@@ -70,13 +74,13 @@ form input[type=submit] {
   padding-left: 15px !important;
   padding-right: 15px !important;
   margin: 0 !important;
-  float: none !important;
+  float: right !important;
 }
 
 form a {
   margin-top: 10px;
   display: block;
-  text-align: center;
+  text-align: left;
   color: #303030;
   text-shadow: 1px 1px 1px #fff;
   text-decoration: none;
@@ -114,7 +118,7 @@ footer {
   text-align: center;
   width: 100%;
 }
-
+/*
 #signup, #login {
   position: absolute;
   top: -32px;
@@ -122,3 +126,4 @@ footer {
   font-size: 1.2em;
   font-weight: normal;
 }
+*/

@@ -12,8 +12,16 @@
       %h1 prizzm
       %sub Putting the power back in your hands
        
-      #main= yield
-      
+      #main
+        = yield
+        .prizdesc
+          %h2 Prizzm?
+          This is what Prizzm is.
+         
+          = link_to "Tell me more", "#"
+          = link_to "Register now", "/accounts/register", :id => "signup", :class => "button blue"
+          
+        .clear
       %ul.logsoc
         %li= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook)
         %li= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter)
