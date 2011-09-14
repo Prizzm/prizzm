@@ -36,12 +36,6 @@
 
 
     $(document).ready(function() {
-      $.facebox(function() {
-        $.get("#{share_review_path}", function(data) { $.facebox(data) });
-      });
-    });
-
-    $(document).ready(function() {
       $('#invite-button').bind('click', function(e) {
         e.preventDefault();
         if ($('#invitations').is(":visible")) {
