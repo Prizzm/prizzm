@@ -1,0 +1,30 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = include_stylesheets :landing
+    = favicon_link_tag
+    
+  %body
+    #container.container_24
+      %h1 prizzm
+      %sub Putting the power back in your hands
+       
+      #main= yield
+      
+      %ul.logsoc
+      
+      %footer 
+        ©2011 Prizzm 
+        \-
+        = link_to "About", "#"
+        \-
+        = link_to "Terms", "#"
+        \-
+        = link_to "Privacy", "#"
+    
+    = render 'layouts/javascripts'   
+  </body>
+</html>
