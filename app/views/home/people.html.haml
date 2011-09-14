@@ -1,39 +1,29 @@
-%ul.feed.grid_10
+%ul.prod-g
   - if @items.count > 0
     - @items.each do |item|
-      %li.feed-item
-        .user.fl
-          = link_to profile_path(item.user) do
-            = image_tag item.user.main_image, :class => "userthumb"
-            %br
-            = item.user.first_name
-        .cont.fl
-          %h2= link_to item.name, item_path(item)
-          .fl.itmimg= image_tag item.main_image, :class => "thumb"
-          .fl.rev
-            = truncate item.review, :length => 100
-            = link_to "read more", item_path(item)
-          .clear
-        .clear
-  - else
-    %li No public items
+      %li
+        .cont
+          %ul.tags
+            %li.gld.as-selection-item= link_to "have", "#"
+          = image_tag item.main_image
+          = link_to(item) do
+            %h4= item.name
+            .clear
+            %p= raw sanitize item.review.truncate (120), :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
+        - if item.opinion == "horrible!"
+          %div{ :class => "opinion hate" }= item.opinion.humanize
+        - elsif item.opinion == "i_recommend_this!"
+          %div{ :class => "opinion recommended" }= item.opinion.humanize
+        - else
+          %div{ :class => "opinion neutral" } No opinion
 
-%ul.feed.grid_10
-  - if @items.count > 0
-    - @items.each do |item|
-      %li.feed-item
-        .user.fl
-          = link_to profile_path(item.user) do
-            = image_tag item.user.main_image, :class => "userthumb"
-            %br
-            = item.user.first_name
-        .cont.fl
-          %h2= link_to item.name, item_path(item)
-          .fl.itmimg= image_tag item.main_image, :class => "thumb"
-          .fl.rev
-            = truncate item.review, :length => 100
-            = link_to "read more", item_path(item)
-          .clear
+        %ul.stats
+          %li= link_to "read more", (item)
         .clear
   - else
     %li No public items
+    
+    = item.wanted_count
+    
+    
+    
