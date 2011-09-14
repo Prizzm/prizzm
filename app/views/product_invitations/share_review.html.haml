@@ -18,7 +18,7 @@ to your
   /%li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
   %li= link_to "Share to facebook", '', :class => "green button", :id => 'share_review_on_facebook'
 
-= render 'layouts/javascripts'
+/= render 'layouts/javascripts'
 :javascript
   $('#close_share_review').click(function(event){
     jQuery(document).trigger('close.facebox');
