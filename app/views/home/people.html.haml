@@ -1,17 +1,39 @@
-%ul.feed
+%ul.feed.grid_10
   - if @items.count > 0
     - @items.each do |item|
       %li.feed-item
         .user.fl
           = link_to profile_path(item.user) do
-            = image_tag item.user.main_image, :class => "smallthumb"
+            = image_tag item.user.main_image, :class => "userthumb"
             %br
             = item.user.first_name
         .cont.fl
-          %h2= item.name
-          .fl= image_tag item.main_image, :class => "thumb"
-          .fl= truncate item.review, :length => 100
+          %h2= link_to item.name, item_path(item)
+          .fl.itmimg= image_tag item.main_image, :class => "thumb"
+          .fl.rev
+            = truncate item.review, :length => 100
+            = link_to "read more", item_path(item)
           .clear
-      .clear
+        .clear
+  - else
+    %li No public items
+
+%ul.feed.grid_10
+  - if @items.count > 0
+    - @items.each do |item|
+      %li.feed-item
+        .user.fl
+          = link_to profile_path(item.user) do
+            = image_tag item.user.main_image, :class => "userthumb"
+            %br
+            = item.user.first_name
+        .cont.fl
+          %h2= link_to item.name, item_path(item)
+          .fl.itmimg= image_tag item.main_image, :class => "thumb"
+          .fl.rev
+            = truncate item.review, :length => 100
+            = link_to "read more", item_path(item)
+          .clear
+        .clear
   - else
     %li No public items

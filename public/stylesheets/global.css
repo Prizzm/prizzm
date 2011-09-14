@@ -776,6 +776,63 @@ form li.fb, form li.tt {
   .finalstep .other-opt {
     margin-top: 8px;
   }
+
+.feed {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.feed .user {
+  text-align: center;
+}
+  
+  .feed li {
+    margin-bottom: 10px;
+  }
+  
+  .feed .user {
+    width: 15%;
+  }
+  
+  .feed .user a {
+    text-decoration: none;
+  }
+  
+  .feed .cont {
+    width: 85%;
+    background: #fff;
+    padding: 8px;
+    vertical-align: top;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+    .feed .cont h2 a {
+      color: #444;
+      text-decoration: none;
+    }
+  
+    .feed .cont .itmimg {
+      width: 17%;
+    }
+    
+    .feed .cont .rev {
+      width: 83%;
+    }
+
+.profile #main, .people .feed {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #CDCDCD;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
   
 .flash.notice {
   position: absolute;
