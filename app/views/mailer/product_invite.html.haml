@@ -1,8 +1,10 @@
 .mailer-teplate{:style => "margin: 0 auto; width: 500px; border: 1px dashed #a0c5db"}
   #main{:style => "background: #e3f5ff; border: 10px solid #fff; padding: 10px;"}
-    #header{:style => "border-bottom: 1px dashed #a0c5db"}
+    #header{:style => "border-bottom: 1px dashed #a0c5db; padding-bottom: 5px"}
       Hi
       %span{:style=>"text-transform: capitalize;"}= @pinvite.name
+      \,
+      %br
       You are invited to review
       = @pinvite.product.name
       by
