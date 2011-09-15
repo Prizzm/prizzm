@@ -1,3 +1,6 @@
+- content_for :page_style do
+  = include_stylesheets :people
+  
 = form_tag people_search_path
 = text_field_tag 'query', '', :placeholder => "Who are you looking for?"
 %ul#results.people

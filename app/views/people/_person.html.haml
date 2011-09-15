@@ -1,6 +1,6 @@
-%li.grid_4
-  %span.name= "#{person.first_name} #{person.last_name}"
-  %span.image= person.main_image
-  %span.wanted_count "Wanted Count: #{person.wanted_count}"
-  %span.have_count "Have Count: #{person.owned_count}"
-  %span.follow= follow_path_for person
+%li.grid_4.person
+  = image_tag person.main_image, :class => "fl thumb"
+  = link_to person.name, profile_path(person), :class => "uname fl"
+  .clear
+  = link_to "Follow", (follow_path_for person), :class => "button blue"
+  = link_to "View profile", profile_path(person), :class => "button"
