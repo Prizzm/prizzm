@@ -29,7 +29,7 @@
         if you let us know what
         %em you thought
         of our 
-        =@product_invitation.product.name
+        = @product_invitation.product.name
         and
         %em share it
         with your friends too!
@@ -38,7 +38,7 @@
         #itemdetail.fl
           /= image_tag "/images/bryna-brand.png"
           = image_tag @product_invitation.product.main_image, :class => "medthumb"
-          %h2 Item name
+          %h2= @product_invitation.product.name
         =f.text_area :content, :class => "fr", :placeholder => "Say something about it"
         =f.hidden_field :id
         =f.hidden_field :product_invitation_id,:value=>@product_invitation.id
