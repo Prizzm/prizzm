@@ -32,7 +32,7 @@ class Mailer < ActionMailer::Base
     @product = product
     @pinvite = pinvite
     @hosturl = hosturl    
-    mail(:to=>"#{pinvite.first_name}  <#{pinvite.email}>", :from => "#{product.company.name}", :subject=>"#{product.company.name} thanks you for buying a #{product.name}")
+    mail(:to=>"#{pinvite.first_name}  <#{pinvite.email}>", :subject=>"#{product.company.name} thanks you for buying a #{product.name}")
   end
   ##end changed code on 31-aug-2011 , for mailer invitation
 
