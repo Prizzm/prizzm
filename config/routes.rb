@@ -13,6 +13,7 @@ Prizzm::Application.routes.draw do
   # Routes for main page
   match "/home" => "home#index", :as => "home"
   match "/people" => "home#people", :as => "people"
+  match "/people/following" => "home#following", :as => "following"
 
   match "/profile/:id" => "profile#show", :as => "profile"
   get '/:id/has' => 'profile#have', :as => 'have'
