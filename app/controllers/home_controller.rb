@@ -32,6 +32,12 @@ class HomeController < ApplicationController
   end
 
 
+
+  def find
+    render :layout => "people"    
+  end
+
+
   def following
     @items = Item.joins('INNER JOIN follows ON follows.follower_id = items.user_id')
                  .where(

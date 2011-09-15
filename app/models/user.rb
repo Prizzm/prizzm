@@ -53,10 +53,18 @@ class User < ActiveRecord::Base
     items.tagged_with('want')
   end
 
+  def wanted_count
+    items.tagged_with('want').count
+  end
+
+
   def owned_items
     items.tagged_with('have')
   end
 
+  def owned_count
+    items.tagged_with('have').count
+  end
 
 
   # Feed stuff

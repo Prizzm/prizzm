@@ -1,0 +1,22 @@
+= form_tag people_search_path
+= label_tag 'query', 'Search for people'
+= text_field_tag 'query'
+%ul#results
+
+= content_for :javascripts do 
+  :javascript
+    $('#query').autocomplete({
+      source: function(request, record){
+        $.ajax({
+          url      : '#{people_search_path}',
+          data     : {
+            query: request.term
+          },
+          cache: false,
+          dataType : 'html',
+          success : function(html) {
+            $('#results').html(html);
+          }
+        })
+      }
+    });

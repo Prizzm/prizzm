@@ -1,0 +1,6 @@
+%li
+  %span.name= "#{person.first_name} #{person.last_name}"
+  %span.image= person.main_image
+  %span.wanted_count "Wanted Count: #{person.wanted_count}"
+  %span.have_count "Have Count: #{person.owned_count}"
+  %span.follow= follow_path_for person
