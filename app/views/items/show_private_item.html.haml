@@ -1,4 +1,5 @@
 - content_for :page_style do
+  = stylesheet_link_tag 'jquery.wysiwyg.css'
   = include_stylesheets :item_detail
 
 #content.grid_14
@@ -16,10 +17,10 @@
         - if @item.review.blank?
           = render 'default_review'
         - else
-          = raw sanitize @item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style)
+          = raw sanitize @item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)
       #review-editor
         = form_for @item, :remote => true, :method => :put do |f|
-          = f.text_area :review, :value => h(sanitize(@item.review, :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style)))
+          = f.text_area :review, :cols => 48,  :value => h(sanitize(@item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)))
           = f.submit 'Save'
     .clear
     
@@ -65,7 +66,9 @@
 .clear
 
 - content_for :javascripts do
-  = javascript_include_tag 'ckeditor/ckeditor.js'
+  = javascript_include_tag 'jwysiwyg/jquery.wysiwyg.js'
+  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.link.js'
+  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.image.js'
   = javascript_include_tag 'application/item_detail.js'
 
   :javascript
@@ -91,8 +94,30 @@
       // End loading animation.
 
       function showEditor(){
-        editor = CKEDITOR.replace('item_review',{
-          customConfig: '/javascripts/ckeditor_custom/item_review_config.js' 
+        $('#item_review').wysiwyg({
+          controls: {
+              bold: { visible: true },
+              italic: { visible: true },
+              underline: { visible: true },
+              strikeThrough: { visible: true },
+
+              justifyLeft: { visible: true },
+              justifyCenter: { visible: true },
+              justifyRight: { visible: true },
+              justifyFull: { visible: true },
+
+              undo: { visible: true },
+              redo: { visible: true },
+
+              insertOrderedList: { visible: true },
+              insertUnorderedList: { visible: true },
+
+              createLink: { visible: true },
+              insertImage: { visible: true },
+
+              paragraph: { visible: true },
+          },
+          rmUnusedControls: true
         });
       }
 
@@ -104,12 +129,11 @@
 
 
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
-        var editor_data = CKEDITOR.instances.item_review.getData();
-        $('#rendered-review').html(editor_data);
+        $('#rendered-review').html($('#item_review').val());
         $('#rendered-review').show();
-        $('form.edit_item textarea').val(editor_data);
         $('#review-editor').hide();
-        editor.destroy();
+ 
+        $('#item_review').wysiwyg('destroy');
       });
 
       $('#add-remote-image').bind('submit', function() {
