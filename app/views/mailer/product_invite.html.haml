@@ -1,8 +1,12 @@
-.mailer-teplate{:style => "margin: 0 auto; width: 300px; border: 1px dashed #a0c5db"}
+.mailer-teplate{:style => "margin: 0 auto; width: 500px; border: 1px dashed #a0c5db"}
   #main{:style => "background: #e3f5ff; border: 10px solid #fff; padding: 10px;"}
     #header{:style => "border-bottom: 1px dashed #a0c5db"}
-      Hi %span{:style=>"text-transform: capitalize;"}= @pinvite.name
-      You are invited to review <%= @pinvite.product.name %> by <%= @pinvite.product.company.name %>
+      Hi
+      %span{:style=>"text-transform: capitalize;"}= @pinvite.name
+      You are invited to review
+      = @pinvite.product.name
+      by
+      = @pinvite.product.company.name
        
     .mail-content= @pinvite.mail_template.mail_content.to_s.html_safe
-    .mail-links= link_to "Give feedback","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}"
+    .mail-links= link_to "Give feedback","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}", :style => "color: #fff; display: block; width: 98%; background: #3892c5; text-decoration: none; padding: 2px; text-align: center; font-variant: small-caps; font-size: 1.1em;"
