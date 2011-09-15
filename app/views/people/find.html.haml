@@ -5,7 +5,7 @@
 = text_field_tag 'query', '', :placeholder => "Who are you looking for?"
 %ul#results.people
 
-= content_for :javascripts do 
+= content_for :javascripts do
   :javascript
     $('#query').autocomplete({
       source: function(request, record){
@@ -20,5 +20,13 @@
             $('#results').html(html);
           }
         })
+      }
+    })
+    
+    .keydown(function(event){
+      if (event.which == 13) {
+        $(this).autocomplete('search');
+
+        return false;
       }
     });

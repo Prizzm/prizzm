@@ -1,6 +1,6 @@
 %li.grid_4.person
   = image_tag person.main_image, :class => "fl thumb"
-  = link_to person.name, profile_path(person), :class => "uname fl"
+  = link_to person.name, profile_path(person), :target => "_blank", :class => "uname fl"
   .clear
   = link_to "Follow", (follow_path_for person), :class => "button blue"
-  = link_to "View profile", profile_path(person), :class => "button"
+  = link_to "View profile", profile_path(person), :target => "_blank", :class => "button"
