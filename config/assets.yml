@@ -69,6 +69,8 @@ stylesheets:
     - public/stylesheets/company.css
   welcome:
     - public/stylesheets/welcome.css
+  people:
+    - public/stylesheets/people.css
   landing:
     - public/stylesheets/global.css
     - public/stylesheets/fonts.css

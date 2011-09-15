@@ -1,7 +1,6 @@
 = form_tag people_search_path
-= label_tag 'query', 'Search for people'
-= text_field_tag 'query'
-%ul#results
+= text_field_tag 'query', '', :placeholder => "Who are you looking for?"
+%ul#results.people
 
 = content_for :javascripts do 
   :javascript

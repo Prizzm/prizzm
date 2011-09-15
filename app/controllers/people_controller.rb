@@ -44,10 +44,16 @@ class PeopleController < ApplicationController
       :limit => 5
     )
 
-    render :js => render_to_string(
-      :partial    => 'people/person',
-      :collection => people
-    )
+    if people.count > 0
+      render :js => render_to_string(
+        :partial    => 'people/person',
+        :collection => people
+      )
+    else
+      render :js => render_to_string(
+        :partial => 'people/invite'
+      )
+    end
   end
 end
 
