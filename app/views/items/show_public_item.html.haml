@@ -20,7 +20,6 @@
         .fl
           = render 'images'
         #options
-          = link_to @item.url, @item.url
         = raw sanitize @item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)
     .clear
     #footerbit

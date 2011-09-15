@@ -13,7 +13,6 @@
         = render 'images'
       #rendered-review.fl
         #options
-          = link_to @item.url, @item.url
         - if @item.review.blank?
           = render 'default_review'
         - else
