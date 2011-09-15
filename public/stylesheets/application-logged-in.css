@@ -477,7 +477,6 @@ ul.data-list .cell .button {
 }
   .comms li {
     display: block;
-    border-top: 1px dashed #CCC;
   }
 
   .comms .cell {

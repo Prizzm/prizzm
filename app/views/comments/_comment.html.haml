@@ -15,8 +15,8 @@
           = link_to "reply", "#", :class => "reply-comment", :comment_id => "#{comment.id}"
           %div{:id => "comment-#{comment.id}-reply", :style => "display:none" }
             = comment_form_for commentable, comment.id
-          = link_to "share", comment_post_to_facebook_path(comment.id, :link => item_url(commentable.id).concat("#comment-#{comment.id}-content")), :remote => true
-          = link_to "tweet", comment_post_to_twitter_path(comment.id, :link => item_url(commentable.id).concat("#comment-#{comment.id}-content")), :remote => true
+          = link_to image_tag "facebook_16.png", comment_post_to_facebook_path(comment.id, :link => item_url(commentable.id).concat("#comment-#{comment.id}-content")), :remote => true
+          = link_to image_tag "twitter_16.png", comment_post_to_twitter_path(comment.id, :link => item_url(commentable.id).concat("#comment-#{comment.id}-content")), :remote => true
         .loading.fr{:style => "display:none"}
 
   .clear

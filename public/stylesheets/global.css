@@ -174,7 +174,7 @@ em {
 .buttons .button {
   margin: 0 0 0 5px;
 }
-a.button, input[type=submit].button, input[name=commit] {
+a.button, input[type=submit].button, input[name=commit], input.update {
     margin-top: 5px;
     color: #6e6e6e;
     font: bold 12px Helvetica, Arial, sans-serif;
@@ -195,6 +195,10 @@ a.button, input[type=submit].button, input[name=commit] {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
 }
+input.update {
+  padding: 7px 12px !important;
+}
+
 a.button:hover, input[type=submit].button:hover {
     color: #333;
     border-color: #999;
@@ -350,7 +354,7 @@ a.button.blue, input[type=submit].button.blue {
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 }
 
-a.button.green, input[type=submit].button.green, #item_submit{
+a.button.green, input[type=submit].button.green, #item_submit, input.update{
   background-color: #3D9400;
   background-image: -webkit-linear-gradient(top,#3d9400,#398a00);
   background-image: -moz-linear-gradient(top,#3d9400,#398a00);
