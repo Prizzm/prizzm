@@ -424,6 +424,7 @@ a.alt {
   background: no-repeat url('/images/loading.gif');
   width: 16px;
   height: 16px;
+  margin: 0 5px;
 }
 
 .yui3-aclist {

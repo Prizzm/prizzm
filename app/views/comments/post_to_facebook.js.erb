@@ -1,0 +1,5 @@
+<%- if @error.present? -%>
+  alert("<%= escape_javascript(@error) -%>");
+<%- else -%>
+  alert("Shared to your Facebook");
+<%- end -%>

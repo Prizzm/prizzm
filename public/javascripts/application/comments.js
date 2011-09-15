@@ -37,12 +37,12 @@ $(document).ready(function(){
   }
 
   $('.share-comment').live('ajax:beforeSend', function() {
-    var loading = $(this).next();
+    var loading = $(this).parent().find('.loading');
     $(loading).show();
   });
 
   $('.share-comment').live('ajax:success', function() {
-    var loading = $(this).next();
+    var loading = $(this).parent().find('.loading');
     $(loading).hide();
   });
 });

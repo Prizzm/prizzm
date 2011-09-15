@@ -41,7 +41,6 @@ class CommentsController < ApplicationController
     comment = Comment.find(params[:comment_id])
     fb_user = FbGraph::User.me(current_user.access_token)
     link = params[:link]
-    @errors = []
 
     begin
       fb_user.feed!(
@@ -52,17 +51,13 @@ class CommentsController < ApplicationController
       )
     rescue Exception => e
       logger.info "error => #{e.message}"
-      @errors << e.message
+      @error = e.message
     end
-
-    render :nothing => true
   end
 
   def post_to_twitter
     comment = Comment.find(params[:comment_id])
-    #fb_user = FbGraph::User.me(current_user.access_token)
     link = params[:link]
-    @errors = []
     message = "#{comment.user.name} comments on Prizzm item #{comment.commentable_type.constantize.find(comment.commentable_id).name}. #{link}"
 
     begin
@@ -72,10 +67,8 @@ class CommentsController < ApplicationController
       client.update(message)
     rescue Exception => e
       logger.info "error => #{e.message}"
-      @errors << e.message
+      @error = "Error: #{e.message}"
     end
-
-    render :nothing => true
   end
 
 protected
