@@ -14,13 +14,6 @@ $(document).ready(function(){
     $(this).toggleClass('private', (data.object_privacy == 'private'));
   });
 
-<<<<<<< HEAD
-  // Commented out by Sidney, is it was break all page javascript
-  //$('li').filter('.fb, .tt').tipsy({
-    //gravity : 'n',
-    //fade    : true
-  //});
-=======
   $('li').filter('.fb, .tt').tipsy({
     gravity : 'n',
     fade    : true
@@ -30,7 +23,6 @@ $(document).ready(function(){
     gravity : 'n',
     fade    : true
   });
->>>>>>> cb5c28e23c02a66c9dc54cc6a581917ce599fefc
   $('textarea').elastic();  
 
   // jax control for following links

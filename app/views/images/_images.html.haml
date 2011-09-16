@@ -16,6 +16,7 @@
   %li{:data => {:imageid => img.id}}
     %a.thumb{:href => img.image.url, :name => "", :title => ""}
       = image_tag img.image.thumb.url
+      = link_to 'Delete image', image_path(object_type(imageable), imageable.id, img.id), :method => :delete
 .clear
 
 - content_for :jquery do
