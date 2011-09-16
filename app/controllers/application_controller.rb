@@ -6,10 +6,14 @@ class ApplicationController < ActionController::Base
 
 protected
 
+  # Gives the Ruby class of an object input as a string
+  # e.g.   object_class "item"  => Item
   def object_class object_type
     object_type.classify.constantize
   end
 
+  # Gives the string representation of a ruby class
+  # e.g. object_type @product => "product"
   def object_type object
     object.class.to_s.underscore
   end

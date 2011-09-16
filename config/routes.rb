@@ -52,6 +52,9 @@ Prizzm::Application.routes.draw do
     match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
+  scope '/:imageable_type/:imageable_id' do
+    resources :images
+  end
 
   match 'post_to_facebook/:comment_id' => 'comments#post_to_facebook', :as => "comment_post_to_facebook"
   match 'post_to_twitter/:comment_id' => 'comments#post_to_twitter', :as => "comment_post_to_twitter"

@@ -1,14 +1,14 @@
 class ImagesController < ApplicationController
 
-  before_filter :find_item
+  before_filter :find_imageable
   before_filter :find_or_build_image, :except => :create
 
   def create
-    @image = @item.images.build params[:image]
+    @image = @imageable.images.build params[:image]
     respond_to do |format|
       if @image.save
         format.js do
-          html = render_to_string(:partial => 'items/image_thumbnail', :locals => {:img => @image})
+          html = render_to_string(:partial => 'image_thumbnail', :locals => {:img => @image})
           render :text => html
         end
       else
@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.destroy
         format.js {render :json => params[:index]}
-        format.html {redirect_to [current_user, @item]}
+        format.html {redirect_to @imageable}
       else
         flash[:error] = 'Photo could not be deleted'
       end
@@ -30,13 +30,11 @@ class ImagesController < ApplicationController
 
  private
 
- def find_item
-   @item = current_user.items.find(params[:item_id])
-   raise ActiveRecord::RecordNotFound unless @item
- end
+  def find_imageable
+    @imageable = params[:imageable_type].camelize.constantize.find(params[:imageable_id])
+  end 
 
- def find_or_build_image
-   @image = params[:id] ? @item.images.find(params[:id]) : @item.images.build(params[:image])
- end
-
+  def find_or_build_image
+    @image = params[:id] ? @imageable.images.find(params[:id]) : @imageable.images.build(params[:image])
+  end
 end

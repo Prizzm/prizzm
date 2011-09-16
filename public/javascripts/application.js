@@ -14,10 +14,11 @@ $(document).ready(function(){
     $(this).toggleClass('private', (data.object_privacy == 'private'));
   });
 
-  $('li').filter('.fb, .tt').tipsy({
-    gravity : 'n',
-    fade    : true
-  });
+  // Commented out by Sidney, is it was break all page javascript
+  //$('li').filter('.fb, .tt').tipsy({
+    //gravity : 'n',
+    //fade    : true
+  //});
   $('textarea').elastic();  
 
   // jax control for following links

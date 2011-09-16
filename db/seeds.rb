@@ -64,6 +64,7 @@ bryna2 = Product.create({
   :description  => "The newest cross-body bag for the summer - the Hermann Mini was born from the Hermann School bag and features the same antique brass hardware. This bag is a great day bag to hold just the bare essentials. The messenger strap with a 22\" drop gives you a hands-free option when you're on the go."
 })
 
+bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/h/e/hermann_mini_blk_lamb.jpg"
 bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/h/e/hermann-mini_cream-ikat.jpg"
 bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/h/e/hermann-mini_multi-ikat_1.jpg"
 bryna2.add_image_from_url "http://shopbryna.com/store/media/catalog/product/f/i/file_7_1.jpg"
