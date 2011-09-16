@@ -18,7 +18,7 @@
       %a{:href=>""}
         %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
         /= image_tag @product_invitation.product.company.main_image, :class => "fl"
-        %h1.fl BRYNA
+        %h1.fl= @product_invitation.product.name
         .clear
     %section{:style=>"width:100%"}
       .title
