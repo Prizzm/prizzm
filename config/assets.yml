@@ -2,6 +2,7 @@ allow_debugging: on
 package_assets: always
 compress_assets: on
 gzip_assets: on
+javascript_comperssor: closure
 
 javascripts:
   app:
