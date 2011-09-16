@@ -60,9 +60,7 @@
        
 
 - content_for :javascripts do
-  = javascript_include_tag 'jwysiwyg/jquery.wysiwyg.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.link.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.image.js'
+  = include_javascripts :wysiwyg
 
   :javascript
     $(document).ready(function() {
