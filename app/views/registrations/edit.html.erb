@@ -1,5 +1,5 @@
 <div id="edit-user">
-  <h2>Edit <%= @user.class.to_s.humanize -%></h2>
+  <h1>Edit Profile</h2>
 
   <%= semantic_form_for(@user, :url => user_registration_path, :html => { :multipart => true }, :remote => true) do |f| %>
     <div class="error"></div>
@@ -28,6 +28,7 @@
   <% end %>
 
   <h2>Unhappy?</h2>
-
-  <p><%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "button red" %></p>
+  <div class="clear"></div>
+  <%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "" %>
+  <div class="clear"></div>
 </div>

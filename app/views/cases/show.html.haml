@@ -7,7 +7,7 @@
     .title= @case.title
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     #rendered-review
-      = raw sanitize @case.description, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)
+      = html_clean @case.description
 
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
@@ -60,9 +60,7 @@
        
 
 - content_for :javascripts do
-  = javascript_include_tag 'jwysiwyg/jquery.wysiwyg.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.link.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.image.js'
+  = include_javascripts :wysiwyg
 
   :javascript
     $(document).ready(function() {

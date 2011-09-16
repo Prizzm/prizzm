@@ -22,8 +22,9 @@ header a img {
 
 header h1{
 	margin-left: 10px;
+	margin-bottom: 15px;
 	padding-top: 10px;
-    font-family: Museo500, serif;
+    font-family: joeHand2Regular, serif;
     font-size: 3em;
     font-weight: normal;
     color: #fff !important;
@@ -37,15 +38,15 @@ header > img {
 
 section {
 	width: 100%;
-    min-height: 266px;
+  min-height: 266px;
 	padding: 20px;
 	font-size: 14px;
 	font: arial,sans-serif;
 	background: #fff;
 	
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
     
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -82,7 +83,7 @@ section {
     height: 80px;
     font-size: 1.1em;
     padding: 8px;
-    width: 80%;
+    width: 100%;
     
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -137,23 +138,30 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input[type=submit]#facebook_login {
-  background: no-repeat url('../images/landing/fb-login-button.png');
+#sendwprizzm {
+  background: no-repeat url('../images/send_w_prizzm.png');
   padding: 0;
   width: 155px;
   height: 22px;
   border: none;
+  display: block;
 }
 
-input[type=submit]#standard_login {
-  background: none;
-  font-weight: normal;
-  padding: 0;
-  border: 0;
+#infolink{
+  margin-top: 8px;
+  color: #999;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
 }
+  
+  #info {
+    
+  }
 
 ul.finalstep {
-  margin-right: 0 !important;
+  width: 100%;
+  margin-left: 0 !important;
 }
 
 ul.finalstep a{
@@ -200,8 +208,6 @@ li.fb-login, li.tt-login {
 	font-weight: bold;
 	text-decoration: none;
 	
-	box-shadow: inset 0 0 1px #fff;
-	
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -218,32 +224,3 @@ li.tt-login {
 	background-position: 0 -77px;
 	border: 1px solid #26b1dc;
 }
-
-a.skip {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
-
-ul.share-bt {
-	margin: 30px auto 0;
-    width: 257px;
-	list-style: none;
-}
-
-ul.share-bt  li {
-	display: inline-block;
-	width: 49%;
-}
-
-ul.share-bt li a {
-	display: block;
-	background: url(../images/share-sprite.png) no-repeat;
-}
-
-.share-delicious{ background-position: 0 0 !important; width: 122px; height: 42px; } 
-.share-digg{ background-position: 0 -92px !important; width: 122px; height: 42px; } 
-.share-facebook{ background-position: 0 -184px !important; width: 122px; height: 42px; } 
-.share-tumblr{ background-position: 0 -276px !important; width: 122px; height: 42px; } 
-.share-twitter{ background-position: 0 -368px !important; width: 122px; height: 42px; } 
-.share-wordpress{ background-position: 0 -460px !important; width: 122px; height: 42px; } 

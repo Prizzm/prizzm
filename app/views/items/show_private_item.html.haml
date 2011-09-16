@@ -1,5 +1,5 @@
 - content_for :page_style do
-  = stylesheet_link_tag 'jquery.wysiwyg.css'
+  = include_stylesheets :wysiwyg
   = include_stylesheets :item_detail
 
 #content.grid_14
@@ -16,22 +16,19 @@
         - if @item.review.blank?
           = render 'default_review'
         - else
-          = raw sanitize @item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)
-      #review-editor
-        = form_for @item, :remote => true, :method => :put do |f|
-          = f.text_area :review, :cols => 48,  :value => h(sanitize(@item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)))
-          = f.submit 'Save'
+          = html_clean @item.review
     .clear
-    
+
     #review_status
     = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
       = f.text_field :tag_list, :placeholder => "+ Add Tags"
     #footerbit
-      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
-      = link_to #{pluralize @item.comment_threads.count, "Comment"}, "#"
-      \-
-      = privacy_control_for @item
-      /%div{ :class => "fn status #{@item.privacy if @item.is_private?}" }= @item.privacy
+      .fl
+        Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago
+        \| Comments 
+        = @item.comment_threads.count
+      %div{ :class => "status #{@item.privacy if @item.is_private?}" }= @item.privacy
+      .clear
     .clear
      
   = comments_section_for @item
@@ -65,10 +62,8 @@
 .clear
 
 - content_for :javascripts do
-  = javascript_include_tag 'jwysiwyg/jquery.wysiwyg.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.link.js'
-  = javascript_include_tag 'jwysiwyg/controls/wysiwyg.image.js'
-  = javascript_include_tag 'application/item_detail.js'
+  = include_javascripts :wysiwyg
+  = include_javascripts :item_detail
 
   :javascript
     $(document).ready(function() {
@@ -92,55 +87,51 @@
       });
       // End loading animation.
 
-      function showEditor(){
-        $('#item_review').wysiwyg({
-          controls: {
-              bold: { visible: true },
-              italic: { visible: true },
-              underline: { visible: true },
-              strikeThrough: { visible: true },
-
-              justifyLeft: { visible: true },
-              justifyCenter: { visible: true },
-              justifyRight: { visible: true },
-              justifyFull: { visible: true },
-
-              undo: { visible: true },
-              redo: { visible: true },
-
-              insertOrderedList: { visible: true },
-              insertUnorderedList: { visible: true },
-
-              createLink: { visible: true },
-              insertImage: { visible: true },
-
-              paragraph: { visible: true },
-          },
-          rmUnusedControls: true
-        });
-      }
-
       $('#edit-review-link').click(function(){
-        showEditor();
-        $('#rendered-review').hide();
-        $('#review-editor').show();
+        $.facebox(function(){
+          $.get('#{edit_item_path}', function(html){
+            $.facebox(html);
+
+            $('#facebox').find('textarea').wysiwyg({
+              controls: {
+                bold: { visible: true },
+                italic: { visible: true },
+                underline: { visible: true },
+                strikeThrough: { visible: true },
+
+                justifyLeft: { visible: true },
+                justifyCenter: { visible: true },
+                justifyRight: { visible: true },
+                justifyFull: { visible: true },
+
+                undo: { visible: true },
+                redo: { visible: true },
+
+                insertOrderedList: { visible: true },
+                insertUnorderedList: { visible: true },
+
+                createLink: { visible: true },
+                insertImage: { visible: true },
+
+                paragraph: { visible: true },
+              },
+              rmUnusedControls: true
+            });
+
+            $('#facebox').find('.cancel-edit').click(function(){
+              $(document).trigger('close.facebox');
+            });
+          }, 'html');
+        });
       });
 
 
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
-        $('#rendered-review').html($('#item_review').val());
-        $('#rendered-review').show();
-        $('#review-editor').hide();
- 
-        $('#item_review').wysiwyg('destroy');
-      });
+        var $facebox = $('#facebox');
 
-      $('#add-remote-image').bind('submit', function() {
-        $('.loading', 'aside').show();
-      });
-      $('#add-remote-image').bind('ajax:complete', function(e, xhr, settings) {
-        $('.loading', 'aside').hide();
-        $('#graburl').val('');
-        $('body').trigger('insertImage', xhr.responseText);
+        $('div.title').text($facebox.find('#item_name').val());
+        $('#rendered-review').html($facebox.find('#item_review').val());
+
+        $(document).trigger('close.facebox');
       });
     });

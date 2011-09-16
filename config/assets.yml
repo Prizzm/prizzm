@@ -2,6 +2,7 @@ allow_debugging: on
 package_assets: always
 compress_assets: on
 gzip_assets: on
+javascript_comperssor: closure
 
 javascripts:
   app:
@@ -28,6 +29,12 @@ javascripts:
     - public/javascripts/cases.js
     - public/javascripts/application/comments.js
     - public/javascripts/application.js
+  wysiwyg:
+    - public/javascripts/jwysiwyg/jquery.wysiwyg.js
+    - public/javascripts/jwysiwyg/controls/wysiwyg.link.js
+    - public/javascripts/jwysiwyg/controls/wysiwyg.image.js
+  item_detail:
+    - public/javascripts/application/item_detail.js
 
 stylesheets:
   app:
@@ -42,6 +49,9 @@ stylesheets:
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/ckeditor.css
     - public/stylesheets/tipsy.css
+
+  wysiwyg:
+    - public/stylesheets/jquery.wysiwyg.css
 
   logged_in:
     - public/stylesheets/application-logged-in.css

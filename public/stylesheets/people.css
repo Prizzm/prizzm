@@ -20,8 +20,10 @@
 }
 
 .person .button{
-  width: 50%;
+  width: 46%;
   display: block;
   text-align: center;
-  float: none;
+  float: left;
+  margin: 5px 2px 0;
+  padding: 6px 0;
 }

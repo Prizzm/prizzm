@@ -19,9 +19,17 @@ class ItemsController < InheritedResources::Base
     redirect_to @item
   end
 
+
   def edit
-    @item = current_user.find(params[:id])
+    @item = current_user.items.find(params[:id])
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'items/form'
+      }
+    end
   end
+
 
   def show
     #@item = current_user.items.find(params[:id])
