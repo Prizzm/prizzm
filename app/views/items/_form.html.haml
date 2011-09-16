@@ -1,0 +1,14 @@
+%h2.title= @item.name
+
+= form_for @item, :remote => true, :method => :put do |f|
+  = f.text_area :review,
+                :cols => nil,
+                :rows => nil,
+                :style => 'min-height: 250px; width: 100%;',
+                :value => h(sanitize(@item.review, :tags => %w(p b i u strike ul ol li blockquote), :attributes => %w(id class style)))
+
+  = f.label :privacy
+  = select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
+
+  = f.submit 'Save'
+  %a{ :class => 'button red cancel', :href => '#' } Cancel
