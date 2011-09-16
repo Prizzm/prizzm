@@ -137,20 +137,25 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input[type=submit]#facebook_login {
-  background: no-repeat url('../images/landing/fb-login-button.png');
+#sendwprizzm {
+  background: no-repeat url('../images/send_w_prizzm.png');
   padding: 0;
   width: 155px;
   height: 22px;
   border: none;
+  display: block;
 }
 
-input[type=submit]#standard_login {
-  background: none;
-  font-weight: normal;
-  padding: 0;
-  border: 0;
+#infolink{
+  margin-top: 13px;
+  color: #999;
+  text-decoration: none;
+  display: block;
 }
+  
+  #info {
+    
+  }
 
 ul.finalstep {
   width: 100%;

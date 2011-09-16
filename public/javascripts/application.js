@@ -18,6 +18,11 @@ $(document).ready(function(){
     gravity : 'n',
     fade    : true
   });
+  
+  $('.tipsy').tipsy({
+    gravity : 'n',
+    fade    : true
+  });
   $('textarea').elastic();  
 
   // jax control for following links
