@@ -1,10 +1,5 @@
-%h2.title= @item.name
-
 = form_for @item, :remote => true, :method => :put do |f|
-  = f.label :name
-  = f.text_field :name
-
-  = f.label :review
+  = f.text_field :name, :class => "title"
   = f.text_area :review,
                 :cols => nil,
                 :rows => nil,
@@ -16,5 +11,7 @@
       %li= f.label :privacy
       %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
     .fr
-      %li= f.submit 'Save'
       %li= link_to "Cancel", "#", :class => "button red cancel-edit"
+      %li= f.submit 'Save'
+    .clear
+.clear
