@@ -9,7 +9,7 @@
           = link_to(item) do
             %h4= item.name
             .clear
-            %p= raw sanitize item.review.truncate (120), :tags => %w(p strong em ul ol li blockquote), :attributes => %w(id class style), :attributes => {}
+            %p= html_clean item.review.truncate(120)
         - if item.opinion == "horrible!"
           %div{ :class => "opinion hate" }= item.opinion.humanize
         - elsif item.opinion == "i_recommend_this!"
