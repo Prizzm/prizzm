@@ -22,8 +22,9 @@ header a img {
 
 header h1{
 	margin-left: 10px;
+	margin-bottom: 15px;
 	padding-top: 10px;
-    font-family: Museo500, serif;
+    font-family: joeHand2Regular, serif;
     font-size: 3em;
     font-weight: normal;
     color: #fff !important;
