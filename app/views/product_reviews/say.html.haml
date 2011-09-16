@@ -9,6 +9,8 @@
     %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
     %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
     %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/tipsy.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/facebox.css"}
     = include_javascripts :app
 
   %body#main
@@ -46,7 +48,7 @@
           =hidden_field_tag :signin_type
           
           %ul.finalstep
-            %li.fl= link_to "What is Prizzm?", "#", :id => "infolink tipsy", :title => "Prizzm is a community of people who share their products and issues with their brands & services."
+            %li.fl= link_to "What is Prizzm?", "#", :id => "infolink", :class => "tipsy", :title => "Prizzm is a community of people who share their products and issues with their brands & services."
             %li.fr= link_to "", home_path, :id => "sendwprizzm", :class => "facebox"
             .clear
         .clear

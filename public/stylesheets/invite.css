@@ -37,15 +37,15 @@ header > img {
 
 section {
 	width: 100%;
-    min-height: 266px;
+  min-height: 266px;
 	padding: 20px;
 	font-size: 14px;
 	font: arial,sans-serif;
 	background: #fff;
 	
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
     
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -147,10 +147,11 @@ input[type=text], input[type=password] {
 }
 
 #infolink{
-  margin-top: 13px;
+  margin-top: 8px;
   color: #999;
   text-decoration: none;
   display: block;
+  font-size: 13px;
 }
   
   #info {
