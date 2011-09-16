@@ -2,10 +2,21 @@
   .slideshow-container
     #loading.loader
     #slideshow.slideshow
-#thumbs.navigation.hidden{:data => {:itemid => @item.id}}
+#thumbs.navigation.hidden{:data => {:imageable => imageable.id}}
   %ul.thumbs.noscript
-    = render :partial => 'items/image_thumbnail', :collection => @item.images, :as => :img
+    Image count: #{imageable.images.count}
+    - imageable.images.each do |img|
+      = img.image.url
+      %li{:data => {:imageid => img.id}}
+        %a.thumb{:href => img.image.url, :name => "", :title => ""}
+          = image_tag img.image.url
+          %img{:alt => "", :src => img.image.thumb.url}
 
+- imageable.images.each do |img|
+  %li{:data => {:imageid => img.id}}
+    %a.thumb{:href => img.image.url, :name => "", :title => ""}
+      = image_tag img.image.thumb.url
+      = link_to 'Delete image', image_path(object_type(imageable), imageable.id, img.id), :method => :delete
 .clear
 
 - content_for :jquery do
@@ -19,9 +30,9 @@
       // Custom helper functions for Gallery
 
       var setDeleteImageLink = function(index){
-        var itemId = $('#thumbs').data('itemid');
+        var imageableId = $('#thumbs').data('imageableid');
         var imageId = $('#thumbs ul li').eq(index).data('imageid');
-        $('#delete-image-link').attr('href', '/items/' + itemId + '/images/'+imageId+'/index/'+index);
+        $('#delete-image-link').attr('href', '/items/' + imageableId + '/images/'+imageId+'/index/'+index);
       }
 
       // End Custom Functions

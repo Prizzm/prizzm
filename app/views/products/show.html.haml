@@ -1,40 +1,34 @@
-= link_to "Back", home_path
-
-#item-details
-  %h2#title.headline Product page for - #{@product.name}
-
-  %p= follow_link_for @product
-
-  #text-fields
-    .column
-      %p.fields
-        %strong Name:
-        %br/
-        = @product.name
-      %p.fields
-        %strong Description:
-        %br/
-        = @product.description
-      %p.fields
-        %strong Rating:
-        %div{:id => "item_#{@product.id}_rating", :class => "rating"}
-          = form_for [@user, @product], :remote => true do |f|
-            %div{:id => "stars-wrapper-#{@product.id}"}
-              = f.collection_select :rating, [1, 2, 3, 4 ,5], :to_s, :to_s, {}
-
-    .column
-      %p.fields
-      %br/
-      %p.fields
-        %strong Added on: 
-        = @product.created_at.strftime('%D')
-
-    .column
-
-  = render 'products/images'
-
-  #image-field
-    /%p= image_tag @product.images.first.image.url, :width => "100%"
+- content_for :page_style do
+  = include_stylesheets :item_detail
+  
+#content.grid_14
+  %section#review
+    .title
+      .fl #{@product.name} - #{@product.price}
+      .clear
+    #rendered-review
+      = @product.description
+      .fl
+    .clear
+    #footerbit
+      Written #{@product.created_at.to_date} - Edited #{time_ago_in_words @product.updated_at} ago |
+    .clear
   .clear
 
+  = link_to "Back", home_path
 
+  = image_uploader_for @product
+  = image_gallery_for @product
+
+%aside.grid_6
+  %article
+    = image_tag @product.company.main_image, :class => "userthumb fl"
+    .fl
+      %h3= link_to @product.company.name, company_path(@product.company), :class => "uname"
+      .buttons
+        = link_to "view company", company_path(@product.company), :class => "button"
+    .clear
+  %article
+    .buttons
+
+    
