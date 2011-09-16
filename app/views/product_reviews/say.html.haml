@@ -39,15 +39,19 @@
           /= image_tag "/images/bryna-brand.png"
           = image_tag @product_invitation.product.main_image, :class => "medthumb"
           %h2= @product_invitation.product.name
-        =f.text_area :content, :class => "fr", :placeholder => "Say something about it"
-        =f.hidden_field :id
-        =f.hidden_field :product_invitation_id,:value=>@product_invitation.id
-        =f.hidden_field :product_id,:value=>@product_invitation.product.id
-        =hidden_field_tag :signin_type
-      
-        %ul.finalstep.fr
-          %li= f.submit "I don't like facebook", :id => "standard_login"
-          %li= f.submit "", :id => "facebook_login"
+        .fr
+          =f.text_area :content, :placeholder => "Say something about it"
+          =f.hidden_field :id
+          =f.hidden_field :product_invitation_id,:value=>@product_invitation.id
+          =f.hidden_field :product_id,:value=>@product_invitation.product.id
+          =hidden_field_tag :signin_type
+          
+          .coupon Share it to facebook and get 15% off your next purchase!
+          
+          %ul.finalstep
+            %li.fl= f.submit "I don't have facebook", :id => "standard_login"
+            %li.fr= f.submit "", :id => "facebook_login"
+            .clear
         .clear
     .clear
 

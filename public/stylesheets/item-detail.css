@@ -13,8 +13,10 @@ section#review{
 
 aside h4, .title {
   margin-bottom: 10px;
-  border-bottom: 1px solid #f3f3f3;
 }
+  .title {
+    border-bottom: 1px solid #f3f3f3;
+  }
   
   .title .fl {
     width: 95%;

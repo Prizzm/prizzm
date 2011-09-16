@@ -749,7 +749,7 @@ article.userbit {
   }
 
   aside form li.fb, aside form li.tt {
-    margin-top: 3px !important;
+    margin-top: 2px !important;
   }
 
 form li.fb, form li.tt {
@@ -857,4 +857,19 @@ form li.fb, form li.tt {
   -webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+}
+
+.coupon {
+  margin: 10px 0;
+  padding: 8px;
+  background: #F9F390;
+  color: #A29B2F;
+  border: 1px dashed #D8D272;
+  text-align: center;
+  
+  box-shadow: #FFFFFF 0 0 0 3px inset;
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }

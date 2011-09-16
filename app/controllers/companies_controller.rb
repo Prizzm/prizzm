@@ -3,7 +3,7 @@ class CompaniesController < InheritedResources::Base
   def new
     @company = Company.new
     @company.name = params[:company_name] if params[:company_name]
-    render :layout => nil
+    render :layout => "app_alt"
   end
 
   def create
