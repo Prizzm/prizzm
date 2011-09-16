@@ -24,7 +24,7 @@
     .clear
     #footerbit
       Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
-      %a{:href => ""} #{pluralize @item.comment_threads.count, "Comment"}
+      = @item.comment_threads.count
     .clear
   .clear
   %section#new-comment
@@ -44,6 +44,8 @@
         = follow_link_for @item.user
         = link_to "view profile", profile_path(@item.user), :class => "button"
     .clear
+    
+    
   %article
     .buttons
       = link_to "I want this",  login_popup_path, :class => "facebox button add"

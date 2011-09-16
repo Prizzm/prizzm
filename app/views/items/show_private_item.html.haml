@@ -23,8 +23,12 @@
     = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
       = f.text_field :tag_list, :placeholder => "+ Add Tags"
     #footerbit
-      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
-      = link_to #{pluralize @item.comment_threads.count, "Comment"}, "#"
+      .fl
+        Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago
+        \| Comments 
+        = @item.comment_threads.count
+      %div{ :class => "status #{@item.privacy if @item.is_private?}" }= @item.privacy
+      .clear
     .clear
      
   = comments_section_for @item
@@ -114,7 +118,7 @@
               rmUnusedControls: true
             });
 
-            $('#facebox').find('.cancel').click(function(){
+            $('#facebox').find('.cancel-edit').click(function(){
               $(document).trigger('close.facebox');
             });
           }, 'html');

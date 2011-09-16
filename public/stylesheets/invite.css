@@ -201,8 +201,6 @@ li.fb-login, li.tt-login {
 	font-weight: bold;
 	text-decoration: none;
 	
-	box-shadow: #FFFFFF 0 0 0 3px inset;
-	
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
