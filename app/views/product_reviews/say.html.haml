@@ -18,12 +18,12 @@
       %a{:href=>""}
         %img{:class=>"fl", :src=>"/images/bryna-brand.png" ,:alt=>""}
         /= image_tag @product_invitation.product.company.main_image, :class => "fl"
-        %h1.fl #{@product_invitation.product.company.name}
+        %h1.fl BRYNA
         .clear
     %section{:style=>"width:100%"}
       .title
         Thank you 
-        %span{:style=>"text-transform:capitalize"}=@product_invitation.name
+        %span{:style=>"text-transform:capitalize"}=@product_invitation.first_name
       %p
         It would really help us out at
         %em #{@product_invitation.product.company.name}

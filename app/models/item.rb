@@ -35,7 +35,7 @@ class Item < ActiveRecord::Base
 
   default_value_for :privacy, 'private'
 
-  OPINION = %w(no_opinion i_recommend_this! horrible!)
+  OPINION = %w(no_opinion i_recommend_this! not_for_me!)
   
   attr_accessor :image_url
 
