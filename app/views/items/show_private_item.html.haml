@@ -123,6 +123,11 @@
 
 
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
+        var $facebox = $('#facebox');
+
+        $('div.title').text($facebox.find('#item_name').val());
+        $('#rendered-review').html($facebox.find('#item_review').val());
+
         $(document).trigger('close.facebox');
       });
     });
