@@ -10,7 +10,7 @@
       .title= raw format h @item.name
       .clear
       .fl.galsect
-        = render 'images'
+        = image_tag @item.main_image, :class => "medthumb"
       #rendered-review.fl
         #options
         - if @item.review.blank?
