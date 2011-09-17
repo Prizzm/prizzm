@@ -11,13 +11,19 @@ header a {
     text-decoration: none;
 }
 
-header a img {
-	width: 63px;
-	height: 63px;
-	
-	-webkit-border-radius: 3px;
+header #brand {
+  padding: 3px;
+  background: #fff;
+  -webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+header #brand img{
+	width: 100px;
 }
 
 header h1{
@@ -79,6 +85,8 @@ section {
     color: #567cd4;
   }
   
+  
+  
   section textarea {
     height: 80px;
     font-size: 1.1em;
@@ -120,6 +128,10 @@ form .button {
 	float: right !important;
 }
 
+form > .fr {
+  width: 78%;
+}
+
 label[for=remember-me] {
 	display: block;
 }
@@ -138,26 +150,46 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-#sendwprizzm {
-  background: no-repeat url('../images/send_w_prizzm.png');
+#sendwprizzm, #facebook_login {
   padding: 0;
   width: 155px;
   height: 22px;
-  border: none;
+  border: 0;
   display: block;
+  
+  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+  #sendwprizzm {
+    background: no-repeat url('../images/send_w_prizzm.png');
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 0 0 29px;
+  }
+  
+  #facebook_login {
+    background: no-repeat url('../images/landing/fb-login-button.png');
+  }
+  
+  #standard_login {
+    background: none;
+    font-weight: normal;
+    text-decoration: underline;
+    border: 0;
+    padding: 0 !important;
+    float: none;
+    font-size: 0.8em;
+  }
 
 #infolink{
   margin-top: 8px;
   color: #999;
-  text-decoration: none;
   display: block;
   font-size: 13px;
+  padding: 0;
 }
-  
-  #info {
-    
-  }
 
 ul.finalstep {
   width: 100%;
@@ -209,8 +241,8 @@ li.fb-login, li.tt-login {
 	text-decoration: none;
 	
 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 li.fb-login {
@@ -223,4 +255,26 @@ li.tt-login {
 	background-color: #8ce2e6;
 	background-position: 0 -77px;
 	border: 1px solid #26b1dc;
+}
+
+#facebox .popup, #facebox .content{
+  width: 195px !important;
+}
+
+footer {
+  color: #fff;
+  text-align: center;
+}
+
+  footer a {
+    color: #fff !important;
+  }
+  
+.tipsy-n {
+  letter-spacing: 1px;
+}
+
+#facebox a.close {
+  width: 6px;
+  height: 6px;
 }
