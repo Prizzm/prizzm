@@ -5,8 +5,14 @@ module FeedsHelper
   end 
 
   def suggested_people
-    # TODO:  Make not so broke ass
-    User.limit(100).reject {|user| current_user.following? user }.take(5)
+    # TODO: Make not so broke ass
+    User.where(['id != ?', current_user.id])
+        .limit(100)
+        .order('RANDOM()')
+        .reject do |user|
+          current_user.following? user
+        end
+        .take 5
   end 
 
   def trending_brands
