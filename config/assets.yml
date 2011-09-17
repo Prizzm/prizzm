@@ -87,5 +87,3 @@ stylesheets:
     - public/stylesheets/fonts.css
     - public/stylesheets/landing.css
     - public/stylesheets/facebox.css
-  twilio:
-    - public/stylesheets/twilio.css

@@ -1,7 +1,7 @@
 - content_for :page_style do
   = stylesheet_link_tag 'jquery.wysiwyg.css'
   = include_stylesheets :case_detail
-  = include_stylesheets :twilio
+  = stylesheet_link_tag 'twilio.css'
   = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
 
   %span#twilio_name(style="display:none")= @cap_name.to_s
