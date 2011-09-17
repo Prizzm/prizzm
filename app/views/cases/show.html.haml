@@ -1,13 +1,20 @@
 - content_for :page_style do
   = stylesheet_link_tag 'jquery.wysiwyg.css'
   = include_stylesheets :case_detail
+  = include_stylesheets :twilio
+  = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
+
+  %span#twilio_name(style="display:none")= @cap_name.to_s
+  %span#case_id(style="display:none")= @case.id.to_s
 
 #content.grid_14
   %section#case
     .title= @case.title
+    = link_to "Call", "#", :class => "twiliocall button", :id => "call"
     = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
     #rendered-review
       = html_clean @case.description
+
 
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
@@ -16,6 +23,7 @@
           = f.submit 'Save', :class => "green button"
           = f.submit "cancel", :class => "button", :id => "clear_item_fields"
         .clear
+        
     #review_status 
     = form_for @case, :remote => true, :method => 'PUT' do |f|
       = f.text_field :tag_list, :placeholder => "+ Add Tags"
@@ -27,6 +35,11 @@
       = f.submit "add", :class => "button blue"
       .clear
     .clear
+    
+    %p
+      Call prizzm for support 
+      %span{:id => "prizm_phone", :class => "phone_number"}= "+14155773411"
+    
     
     #footerbit
       = @case.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
@@ -57,12 +70,73 @@
           = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green"
           .loading{:style => "display:none;float:left"}
       .clear
-       
+
+#call-window{:style => "display:none"}
+  %div#call-window-container
+    #call_container
+      #call_container_buttons{:style => "display:none"}
+        #call_computer{:onmouseout => "this.style.backgroundColor='#A1A1A3';", :onmouseover => "this.style.backgroundColor='#4D90FE';"}
+          %div
+            Call from my computer
+        #call_phone{:onmouseout => "this.style.backgroundColor='#A1A1A3';", :onmouseover => "this.style.backgroundColor='#4D90FE';"}
+          %div
+            Call me on my phone
+            
+      / Collect input: by computer
+      #call_container_numbers_computer{:style => "display:none"}
+        %div
+          %form#callform_computer
+            %label{:for => "number"} Enter a phone number to call
+            %p{:class => 'notice'}
+            %input#number{:name => "number", :type => "text"}/
+            %button.button.blue Call
+            
+      / Collect input: by phone
+      #call_container_numbers_phone{:style => "display:none"}
+        %div
+          %form#callform_phone{:action => "/calls", :method => "post", :style => "font-size:12px;text-align:left"}
+            %p{:class => 'notice'}
+            %label{:for => "from"} From
+            %input#from{:name => "from", :type => "text", :value => @case.user.phone_number }/
+            %label{:for => "to"} To
+            %input#to{:name => "to", :type => "text" }/
+            %button.button.blue Call
+            
+      / Info: on call
+      #oncall{:style => "display:none"}
+        %div
+          %p{:style => "font-size: 14px;font-weight: bold;"} On call with
+          %p{:style => "font-size: 16px;margin:30px 0;"}
+            %span#callnumber
+          %button.button.hangup{:onclick => "hangup();"} Hangup
+          
+      / Info: on call
+      #placingcall{:style => "display:none"}
+        %div
+          %p{:style => "font-size: 14px;font-weight: bold;margin-bottom:40px"} Placing your call...
+          %button.button{:onclick => "hangup();"} Close Window
+          
+      / Info: calling
+      #calling{:style => "display:none"}
+        %div
+          %p{:style => "font-size: 14px;font-weight: bold;"} Calling...
+          %p{:style => "font-size: 16px;margin:30px 0;"}
+            %span#callingnumber
+          %button.button{:onclick => "hangup();"} Cancel
+          
+    / Call container
+    %div.close_call{:onclick => "close_callwindow();", :title => "Close"}
+      %img{:alt => "Close", :src => "/images/close.png", :style => "z-index:2"}/       
+
+      
+
 
 - content_for :javascripts do
   = include_javascripts :wysiwyg
+  
 
-  :javascript
+  :javascript    
+  
     $(document).ready(function() {
       #{render 'tags/taggable.js.erb', :taggable => @case} 
 
@@ -162,4 +236,180 @@
         console.log('Noteid: '+noteid);
         $('#' + noteid).fadeOut();
       });
+      
+      	
+
+      //Twilio!
+      Twilio.Device.setup($("#twilio_name").html());
+
+    	Twilio.Device.ready(function (device) {
+      	$("#log").text("Ready");
+      });
+
+      Twilio.Device.error(function (error) {
+      	$("#log").text("Error: " + error.message);
+      });
+
+      Twilio.Device.connect(function (conn) {
+      	$("#log").text("Successfully established call");
+
+      	$("#call_container_numbers_phone").attr("style", "display:none");
+      	$("#call_container_numbers_computer").attr("style", "display:none");
+      	$("#calling").attr("style", "display:none");
+      	$("#oncall").attr("style", "display:block");
+        $("#placingcall").attr("style", "display:none");
+
+      });
+
+      Twilio.Device.disconnect(function (conn) {
+      	$("#log").text("Call ended");
+      	$("#call-window").attr("style", "display:none");
+      	$("#calling").attr("style", "display:none");
+      	$("#oncall").attr("style", "display:none");
+        $("#placingcall").attr("style", "display:none");
+        alert("DISCONNECT");
+      });
+
+      Twilio.Device.incoming(function (conn) {
+      	$("#log").text("Incoming connection from " + conn.parameters.From);
+      	// accept the incoming connection and start two-way audio
+      	conn.accept();
+      });
+
+      var call = function() {
+  
+       params =  { "PhoneNumber" : $("#number").val(), "CaseId" : $("#case_id").html() };
+     	 Twilio.Device.connect(params);
+     	 
+     	 $("#callnumber").html($("#number").val());
+    
+      }
+
+      var callnumber = function(number) {
+      	params =  { "PhoneNumber" : number, "CaseId" : "<%= @case %>" };
+      	Twilio.Device.connect(params);
+
+      	$("#callingnumber").html(number);
+      	$("#callnumber").html(number);
+
+      	$("#call-window").attr("style", "");
+      	$("#call_container_buttons").attr("style", "display:none");
+      	$("#call_container_numbers_phone").attr("style", "display:none");
+      	$("#call_container_numbers_computer").attr("style", "display:none");
+      	$("#calling").attr("style", "display:block");
+      }
+ 
+  
+    	$("#call").click(function(){
+
+    		$("#call-window").attr("style", "");
+    		$("#call_container_buttons").attr("style", "display:block");
+    		$("#call_container_numbers_phone").attr("style", "display:none");
+    		$("#call_container_numbers_computer").attr("style", "display:none");
+    		$("#oncall").attr("style", "display:none");
+    		$("#calling").attr("style", "display:none");
+    		$("#placingcall").attr("style", "display:none");
+    		
+    		$('#callform_computer .notice').html("");
+    		$('#callform_phone .notice').html("");
+    	});
+
+    	$("#call_computer").click(function(){
+
+    		numberInput('computer');
+    	});
+
+    	$("#call_phone").click(function(){
+    		numberInput('phone');
+    	});
+
+    	$('#callform_computer').submit(function(event) {
+        
+        var nr = $("#number").val();
+        
+         if(nr){
+           call();
+         }else{
+           $('#callform_computer .notice').html("Please enter the number");
+         }
+    	   
+    	   return false;
+    	});
+    	
+      $.fn.serializeObject = function() {
+        var values = {}
+        $("form input").each( function(){
+          values[this.name] = $(this).val();
+        });
+
+        return values;
+      }
+
+    	$('#callform_phone').submit(function(event) {
+    	      	  
+    	  var form = $(this).serializeObject();
+        var from = form["from"];
+      	var to = form["to"];
+        event.preventDefault();
+        
+    	  if(from && to){
+    	    $.post($(this).attr('action'), $(this).serialize(), null, "script");  
+      	   return false;
+    	  }else{
+          $('#callform_phone .notice').html("Please fill in the fields");
+    	    return false;
+    	  }
+
+    	   
+    	});	
+
+    	var numberInput = function(type){
+
+    		$("#call_container_buttons").attr("style", "display:none");
+
+    		if(type == "phone"){
+    			$("#call_container_numbers_phone").attr("style", "display:block");
+    		}else{
+    			$("#call_container_numbers_computer").attr("style", "display:block");
+    		}
+
+    	}
+
+
+    	$(".phone_number").mouseenter(function(){		
+    		$(this).addClass("call_button");
+    		$(this).attr("style", "cursor:pointer");
+
+    		$(this).click(function(){
+
+        	$("#callform_phone #to").attr("value", $(this).html());
+        	$("#call-window").attr("style", "");
+        	$("#call_container_buttons").attr("style", "display:none");
+        	$("#call_container_numbers_phone").attr("style", "display:block");
+        	$("#call_container_numbers_computer").attr("style", "display:none");
+        	$("#oncall").attr("style", "display:none");
+        	$("#calling").attr("style", "display:none");
+        	$("#placingcall").attr("style", "display:none");
+    			
+    		});
+    	});
+
+    	$(".phone_number").mouseout(function(){		
+    		$(this).removeClass("call_button");
+    		$(this).attr("style", "cursor:inherit");
+    	});
+  
     });
+    
+    
+    function hangup() {
+     	Twilio.Device.disconnectAll();
+     	$("#call-window").attr("style", "display:none");
+    }
+
+    function close_callwindow(){
+     	$("#call-window").attr("style", "display:none");
+    } 
+
+      
+    

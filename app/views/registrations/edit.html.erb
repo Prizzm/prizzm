@@ -7,6 +7,7 @@
     <%- f.inputs do -%>
       <%= f.input :first_name -%>
       <%= f.input :last_name -%>
+	  <%= f.input :phone_number %>	
       <li>
         <%= label_tag 'current_photo', "Current photo:" -%>
         <%= image_tag @user.photo_url(:profile) -%>

@@ -35,6 +35,7 @@ javascripts:
     - public/javascripts/jwysiwyg/controls/wysiwyg.image.js
   item_detail:
     - public/javascripts/application/item_detail.js
+ 
 
 stylesheets:
   app:
@@ -86,3 +87,5 @@ stylesheets:
     - public/stylesheets/fonts.css
     - public/stylesheets/landing.css
     - public/stylesheets/facebox.css
+  twilio:
+    - public/stylesheets/twilio.css

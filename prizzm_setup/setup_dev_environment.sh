@@ -6,5 +6,5 @@ createuser --superuser prizzm
 
 createdb prizzm_development
 createdb prizzm_test
-sudo /etc/init.d/postgresql start
+#sudo /etc/init.d/postgresql start
 
