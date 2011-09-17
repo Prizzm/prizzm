@@ -267,7 +267,6 @@
       	$("#calling").attr("style", "display:none");
       	$("#oncall").attr("style", "display:none");
         $("#placingcall").attr("style", "display:none");
-        alert("DISCONNECT");
       });
 
       Twilio.Device.incoming(function (conn) {
@@ -286,7 +285,7 @@
       }
 
       var callnumber = function(number) {
-      	params =  { "PhoneNumber" : number, "CaseId" : "<%= @case %>" };
+      	params =  { "PhoneNumber" : number, "CaseId" : $("#case_id").html() };
       	Twilio.Device.connect(params);
 
       	$("#callingnumber").html(number);
