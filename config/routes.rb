@@ -64,6 +64,13 @@ Prizzm::Application.routes.draw do
   scope '/:commentable_type/:commentable_id' do
     resources :comments
   end
+  
+  ##############################    TWILIO   #############################
+  
+  resources :calls
+
+  ########################################################################################
+  
 
   ##############################    NOT YET IMPLEMENTED   #############################
   # compositions
