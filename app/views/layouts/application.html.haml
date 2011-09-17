@@ -2,7 +2,7 @@
      
 #container.container_24
   #main
-    = render :partial => "home/action_menu"
+    = render :partial => "home/action_menu" if user_signed_in?
     = yield
     .clear
 

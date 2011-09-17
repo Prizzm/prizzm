@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908034732) do
+ActiveRecord::Schema.define(:version => 20110917063137) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -69,9 +69,19 @@ ActiveRecord::Schema.define(:version => 20110908034732) do
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true
+  add_index "companies", ["email"], :name => "index_companies_on_email", :unique => true
+  add_index "companies", ["reset_password_token"], :name => "index_companies_on_reset_password_token", :unique => true
 
   create_table "company_images", :force => true do |t|
     t.integer  "company_id"
@@ -154,7 +164,10 @@ ActiveRecord::Schema.define(:version => 20110908034732) do
     t.string   "email"
     t.date     "purchase_date"
     t.string   "amount"
+    t.text     "content"
+    t.string   "encrypted_id"
     t.string   "sent"
+    t.datetime "sent_on"
     t.string   "accepted"
     t.integer  "mail_template_id"
   end

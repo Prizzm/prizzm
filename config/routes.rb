@@ -1,6 +1,8 @@
 Prizzm::Application.routes.draw do
 
 
+  devise_for :companies, :path => 'corporate'
+
   match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members

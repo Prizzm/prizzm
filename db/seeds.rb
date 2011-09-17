@@ -27,13 +27,15 @@ Subscription.destroy_all
 
 
 
-bryna_nicole = Company.create({
+bryna_nicole = Company.create!({
   :name => "BRYNA", 
   :email => "bryna@prizzm.com",
   :url => "http://shopbryna.com/",
   :phone_number => "877-294-BAGS (6047)",
   :industry => "Fashion",
-  :contact_name => "Bryna Nicole"
+  :contact_name => "Bryna Nicole",
+  :password => 'password',
+  :password_confirmation => 'password'
 })
 
 bryna_nicole.add_image_from_url "http://shopbryna.com/images/logo.gif"
