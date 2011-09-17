@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style type="text/css">
+    .ReadMsgBody {width: 100%;}
+    .ExternalClass {width: 100%; background-color:#EDEDED !important;}
+    </style>
+    
+    <!–[if gte mso 9]>
+    <style> .bgemailfix{background-color:transparent !important;}
+    </style>
+    <![endif]–>
+  </head>
+  
+  <body style="padding:0; margin:0;" background="images/email/bg.gif" bgcolor="#EDEDED">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%">
+      <tr>
+        <td align="center" valign="top" class="bgemailfix" style="background-color:#EDEDED;" background="images/email/bg.gif">
+          
+          <div style="width: 473px; margin: 10px auto 0; text-align: left;">
+          <img src="images/email/bryna.png">
+          </div>
+          
+          <table id="Table_01" width="473" border="0" cellpadding="0" cellspacing="0" style="min-height: 377px; margin-bottom: 10px">
+          	<tr>
+          		<td width="3" height="18">
+          			<img src="images/email/spacer.gif" width="3" height="18" alt=""></td>
+          		<td colspan="5">
+          			<img src="images/email/bryna-invite_02.png" width="464" height="18" alt=""></td>
+          		<td width="5" height="18">
+          			<img src="images/email/spacer.gif" width="5" height="18" alt=""></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="18" alt=""></td>
+          	</tr>
+          	<tr>
+          		<td colspan="2" rowspan="4">
+          			<img src="images/email/bryna-invite_04.png" width="10" height="100%" alt=""></td>
+          		<td width="453" colspan="3" style="background: #fff; min-height: 265; padding: 8px; font-family: Myriad Pro, Ariel; vertical-align: top;">
+              		<div style="border-bottom: 1px solid #f3f3f3">
+              		  Hi <%= @pinvite.first_name %> <br>
+              		  You are invited to review your <%= @pinvite.product.name %> by <%= @pinvite.product.company.name %>
+              		</div>
+          		
+          		    <%= @pinvite.mail_template.mail_content.to_s.html_safe %>
+          		
+          			</td>
+          		<td colspan="2" rowspan="3">
+          			<img src="images/email/bryna-invite_06.png" width="9" height="100%" alt=""></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="265" alt=""></td>
+          	</tr>
+          	<tr>
+          		<td width="20" height="55" rowspan="2" style="background: #fff;"></td>
+          		<td>
+          			<%= link_to image_tag "email/bryna-invite_08.png","http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %></td>
+          		<td width="21" height="55" rowspan="2" style="background: #fff;"></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="42" alt=""></td>
+          	</tr>
+          	<tr>
+          		<td width="412" height="13"  style="background: #fff;"></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="13" alt=""></td>
+          	</tr>
+          	<tr>
+          		<td colspan="4" rowspan="2">
+          			<img src="images/email/bryna-invite_11.png" width="457" height="38" alt=""></td>
+          		<td width="5" height="38" rowspan="2">
+          			<img src="images/email/spacer.gif" width="5" height="38" alt=""></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="6" alt=""></td>
+          	</tr>
+          	<tr>
+          		<td width="10" height="32" colspan="2">
+          			<img src="images/email/spacer.gif" width="10" height="32" alt=""></td>
+          		<td>
+          			<img src="images/email/spacer.gif" width="1" height="32" alt=""></td>
+          	</tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
