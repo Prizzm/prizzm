@@ -2,5 +2,4 @@
   = image_tag person.main_image, :class => "fl thumb"
   = link_to person.name, profile_path(person), :target => "_blank", :class => "uname fl"
   .clear
-  = link_to "Follow", (follow_path_for person), :class => "button blue"
-  = link_to "View profile", profile_path(person), :target => "_blank", :class => "button"
+  = follow_link_for person
