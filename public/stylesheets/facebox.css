@@ -88,7 +88,7 @@
   margin: 0;
 }
 
-#facebox textarea, #facebox input[type=text], #item_possession_status, #facebox input[type=email], #facebox input[type=password]{
+#facebox textarea, #facebox input[type=text], #item_possession_status, #facebox input[type=email], #facebox input[type=password], #facebox input[type=tel]{
 	margin-bottom: 3px;
 	padding: 10px;
 	border: 1px solid #e7e7e7;

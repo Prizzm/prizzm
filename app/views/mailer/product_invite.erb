@@ -2,29 +2,7 @@
   <head>
     <style type="text/css">
     .ReadMsgBody {width: 100%;}
-    .ExternalClass {width: 100%; background-color:#EDEDED !important;}
-    img { border: 0; }
-    
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-    	margin: 0;
-    	padding: 0;
-    	border: 0;
-    	font-size: 100%;
-    	font: inherit;
-    	vertical-align: baseline;
-    }
+    .ExternalClass {width: 100%; background-color:#f3f3f3 !important;}
     </style>
     
     <!–[if gte mso 9]>
@@ -33,71 +11,37 @@
     <![endif]–>
   </head>
   
-  <body style="padding:0; margin:0;" background="http://development.prizzm.com/images/email/bg.gif" bgcolor="#EDEDED">
-    <table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%">
+  <body style="padding:0; margin:0;" background="http://development.prizzm.com/images/bright_squares.png?1315984849" bgcolor="#f3f3f3">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%" style="font-family: Myriad Pro, Arial">
       <tr>
-        <td align="center" valign="top" class="bgemailfix" style="background-color:#EDEDED;" background="http://development.prizzm.com/images/email/bg.gif">
+        <td align="center" valign="top" class="bgemailfix" style="background-color:#f3f3f3;" background="http://development.prizzm.com/images/bright_squares.png?1315984849">
           
-          <div style="width: 473px; margin: 10px auto 0; text-align: left;">
-          <img src="http://development.prizzm.com/images/email/bryna.png">
-          </div>
-          
-          <table id="Table_01" width="473" border="0" cellpadding="0" cellspacing="0" style="min-height: 377px; margin-bottom: 10px;border-collapse:collapse;border-spacing: 0;">
-          	<tr>
-          		<td width="3" height="18">
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="3" height="18" alt=""></td>
-          		<td colspan="5">
-          			<img src="http://development.prizzm.com/images/email/bryna-invite_02.png" width="464" height="18" alt=""></td>
-          		<td width="5" height="18">
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="5" height="18" alt=""></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="18" alt=""></td>
-          	</tr>
-          	<tr>
-          		<td colspan="2" rowspan="4">
-          			<img src="http://development.prizzm.com/images/email/bryna-invite_04.png" width="10" height="100%" alt=""></td>
-          		<td width="453" colspan="3" style="background: #fff; min-height: 265; padding: 8px; font-family: Myriad Pro, Ariel; vertical-align: top;">
-              		<div style="border-bottom: 1px solid #f3f3f3">
+          <table cellpadding="0" cellspacing="0" border="0" width="80%">
+            <tr>
+              <td><img style="margin: 20px 0 10px;" src="http://development.prizzm.com/images/email/bryna.png"></td>
+            </tr>
+            <tr>
+              <td style="background: #fff; border: 20px solid #f3f3f3; padding: 10px;">
+                
+                <div style="border-bottom: 1px solid #f3f3f3; padding-bottom: 5px; margin-bottom: 10px;">
               		  Hi <%= @pinvite.first_name %> <br>
               		  You are invited to review your <%= @pinvite.product.name %> by <%= @pinvite.product.company.name %>
-              		</div>
-          		
-          		    <%= @pinvite.mail_template.mail_content.to_s.html_safe %>
-          		
-          			</td>
-          		<td colspan="2" rowspan="3">
-          			<img src="http://development.prizzm.com/images/email/bryna-invite_06.png" width="9" height="100%" alt=""></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="265" alt=""></td>
-          	</tr>
-          	<tr>
-          		<td width="20" height="55" rowspan="2" style="background: #fff;"></td>
-          		<td>
-          			<a href="<%= "http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>"><img src="http://development.prizzm.com/images/email/bryna-invite_08.png"></a></td>
-          		<td width="21" height="55" rowspan="2" style="background: #fff;"></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="42" alt=""></td>
-          	</tr>
-          	<tr>
-          		<td width="412" height="13"  style="background: #fff;"></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="13" alt=""></td>
-          	</tr>
-          	<tr>
-          		<td colspan="4" rowspan="2">
-          			<img src="http://development.prizzm.com/images/email/bryna-invite_11.png" width="457" height="38" alt=""></td>
-          		<td width="5" height="38" rowspan="2">
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="5" height="38" alt=""></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="6" alt=""></td>
-          	</tr>
-          	<tr>
-          		<td width="10" height="32" colspan="2">
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="10" height="32" alt=""></td>
-          		<td>
-          			<img src="http://development.prizzm.com/images/email/spacer.gif" width="1" height="32" alt=""></td>
-          	</tr>
+                </div>
+                
+                <%= @pinvite.mail_template.mail_content.to_s.html_safe %>
+                
+              </td>
+            </tr>
+            <tr>
+              <td height="75" style="text-align: center;">
+              <a style="margin: 10px auto; background: #444; text-align: center; text-decoration: none; color: #fff; padding: 14px 76px; border: 1px solid #fff; font-size: 1.3em;" href="<%= "http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>">Give Feedback</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center; color: #969696; margin-bottom: 20px;">Feedback powered by <a style="color: #969696; font-weight: bold;" href="http://prizzm.com">prizzm</a></td>
+            </tr>
           </table>
+        
         </td>
       </tr>
     </table>
