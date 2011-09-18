@@ -21,7 +21,13 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.destroy
         format.js {render :json => params[:index]}
-        format.html {redirect_to @imageable}
+        format.html do
+          if @imageable.is_a?(Company)
+            redirect_to company_root_path
+          else
+            redirect_to @imageable
+          end
+        end
       else
         flash[:error] = 'Photo could not be deleted'
       end

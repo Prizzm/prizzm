@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110918010437) do
+ActiveRecord::Schema.define(:version => 20110918071925) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20110918010437) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.text     "description"
   end
 
   add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true

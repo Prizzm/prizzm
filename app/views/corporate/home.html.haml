@@ -1,2 +1,36 @@
-%h1 Corporate#home
-%p Find me in app/views/corporate/home.html.haml
+- content_for :page_style do
+  = include_stylesheets :company, :logged_in
+
+%header
+  %h2.grid_19 #{@company.name}
+  .grid_5
+
+#content.grid_14
+  %section
+    %h1 About
+    %p add an "about" (or description) in the companies companies model
+    
+
+
+  %section#contact
+    %ul.table
+      - @company.addresses.each do |address| 
+        %li.row
+          .cell.icon
+            %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
+          .cell{:title => address.description}= address.description.to_s.truncate(30)
+          .cell{:title => address.address}= address.address
+          .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
+          .cell= link_to "Delete", company_address_path(@company, address), :method => :delete, :confirm => "Are you sure you want to delete this address?"
+
+  
+    = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
+      = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
+      = f.text_field :description, :size => "19", :placeholder => 'Enter a description'
+      = f.text_field :address, :size => "19", :placeholder => 'Enter the address, phone number, URL, or Twitter ID here'
+      = f.submit "Add"
+
+  = image_uploader_for @company
+  = image_gallery_for @company
+.clear
+
