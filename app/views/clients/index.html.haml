@@ -5,8 +5,6 @@
     %th First name
     %th Last name
     %th Email
-    %th User
-    %th Company
     %th
     %th
     %th
@@ -16,12 +14,10 @@
       %td= client.first_name
       %td= client.last_name
       %td= client.email
-      %td= client.user
-      %td= client.company
-      %td= link_to 'Show', client
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', [current_company, client]
+      %td= link_to 'Edit', edit_company_client_path(current_company, client)
+      %td= link_to 'Destroy', [current_company, client], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Client', new_client_path
+= link_to 'New Client', new_company_client_path(current_company)

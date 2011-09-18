@@ -9,13 +9,7 @@
 %p
   %b Email:
   = @client.email
-%p
-  %b User:
-  = @client.user
-%p
-  %b Company:
-  = @client.company
 
-= link_to 'Edit', edit_client_path(@client)
+= link_to 'Edit', edit_company_client_path(current_company, @client)
 \|
-= link_to 'Back', clients_path
+= link_to 'Back', company_clients_path(current_company)
