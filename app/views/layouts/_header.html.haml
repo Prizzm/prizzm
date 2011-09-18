@@ -10,7 +10,7 @@
 
     %li.account
       = link_to "#", :class => "account" do
-        Account
+        = current_user.first_name
         %small &#x25BC;
       %ul.subnav
         %li.user

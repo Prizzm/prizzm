@@ -23,7 +23,7 @@
         = html_clean @item.review
     .clear
     #footerbit
-      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago |
+      Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago | Comments 
       = @item.comment_threads.count
     .clear
   .clear
@@ -47,8 +47,8 @@
     
     
   %article
-    .buttons
-      = link_to "I want this",  login_popup_path, :class => "facebox button add"
+    = link_to "I want this",  login_popup_path, :class => "facebox button fw"
+    = link_to "I have this",  login_popup_path, :class => "facebox button fw"
     .clear
   %article
     %h4 Share it
