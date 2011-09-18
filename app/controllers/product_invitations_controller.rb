@@ -1,5 +1,5 @@
 class ProductInvitationsController < ApplicationController
-  before_filter :authenticate_company!
+  before_filter :authenticate_company!, :only => [:index, :create, :show, :new]
   layout 'corporate'
 
   def index
