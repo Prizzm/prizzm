@@ -1,13 +1,20 @@
 Prizzm::Application.routes.draw do
 
 
-  devise_for :companies, :path => 'corporate'
+  get "corporate/home"
+
+  devise_for :companies, :path => 'corporate',
+             :path_names  => {:sign_in => "login", 
+                              :sign_out => "logout", 
+                              :sign_up => "register" 
+                             }
 
   match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members
 
   root :to => redirect("/home")
+  match 'corporate/home' => 'corporate#home', :as => 'company_root'
   
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
@@ -140,20 +147,11 @@ Prizzm::Application.routes.draw do
                               :sign_up => "register" 
                              }
 
-  devise_for :companies, :path => "company_accounts",
-             :controllers => {:registrations => "company_registrations", 
-                              :sessions => "company_sessions", 
-                              :passwords => "company_passwords"
-                             },
-             :path_names  => {:sign_in => "login", 
-                              :sign_out => "logout", 
-                              :sign_up => "register" 
-                             }
-
   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   ########################################################################################
 
   resources :companies do
+    resources :products 
     resources :addresses
     get 'search', :on => :collection
   end 

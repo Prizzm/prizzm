@@ -1,13 +1,16 @@
 class ProductsController < ApplicationController
+  layout "corporate"
   def index
-    @products = current_user.company.products
+    @company = Company.find(params[:company_id])
+    @products = @company.products
     #respond_to do |format|
       #format.html {render :json  => @products.to_json(:methods => :label, :only => [:label, :id])  } 
     #end 
   end 
 
   def new
-    @product = Product.new
+    @company = current_company
+    @product = @company.products.build
   end
 
   def show
@@ -15,13 +18,21 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(params[:product])
-    current_user.company.products << @product
-    redirect_to products_path
+    @product = current_company.products.create(params[:product])
+    redirect_to @product
   end
 
   def edit
-    @product = params[:id]
+    @product = current_company.products.find(params[:id])
+  end
+
+  def update
+    @product = current_company.products.find(params[:id])
+    if @product.update_attributes(params[:product])
+      redirect_to @product
+    else
+      render 'edit'
+    end
   end
 
   def search
@@ -38,7 +49,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to products_path
+    redirect_to company_products_path(current_company)
   end
 private  
   def autocomplete_info_for products

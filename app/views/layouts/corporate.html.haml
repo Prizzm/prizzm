@@ -1,0 +1,51 @@
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = favicon_link_tag
+    
+  %body
+    #cbbg
+      %header#prizzmbar
+        .container_24
+          .fl
+            %h1.fl= link_to "prizzm", "/"
+            .clear
+          %nav.fr
+            %ul
+              %li= link_to "Home", company_root_path, :class => "js-pjax"
+              %li= link_to "Clients", people_path, :class => "js-pjax"
+              %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
+              %li= link_to "Invitations", people_path, :class => "js-pjax"
+
+              %li.account
+                = link_to "#", :class => "account" do
+                  Account
+                  %small &#x25BC;
+                %ul.subnav
+                  %li.user
+                    = image_tag current_company.main_image, :class => "fl"
+                    = link_to "Edit Profile", edit_company_registration_path(:back => request.url), :class => "facebox"
+                    .clear
+                  %li= link_to "Settings", "#"
+                  %li= link_to "Logout", destroy_company_session_path
+          .clear
+     
+#container.container_24
+  #main
+    = yield
+    .clear
+
+  %footer
+    = render "layouts/footer"
+    - flash.each do |type, value|
+      .flash{ :class => type.to_s }
+        = value
+    .clear
+
+= render 'layouts/javascripts'
+= javascript_include_tag 'jquery.form.js', 'jquery.remotipart.js'
+
