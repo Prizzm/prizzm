@@ -22,10 +22,12 @@ to your list
     jQuery(document).trigger('close.facebox');
   });
 
-  $('#share_review_on_facebook').click(function(event){
+  $('#share_review_on_facebook').live('click', function(event){
     $.ajax({
       type: 'POST',
-      url: "#{post_review_to_fb_path(@item.id)}"
+      url: "#{post_review_to_fb_path(@item.id)}",
+      success: function(data){
+        jQuery(document).trigger('close.facebox');
+      }
     });
-    jQuery(document).trigger('close.facebox');
   });
