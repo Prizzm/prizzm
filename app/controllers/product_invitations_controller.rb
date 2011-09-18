@@ -1,4 +1,6 @@
 class ProductInvitationsController < ApplicationController
+  layout 'corporate'
+
   def index
    @product = Product.find(params[:product_id])
    @invitations = @product.product_invitations
