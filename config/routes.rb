@@ -2,7 +2,6 @@ Prizzm::Application.routes.draw do
 
 
 
-  get "corporate/home"
 
   devise_for :companies, :path => 'corporate',
              :path_names  => {:sign_in => "login", 
