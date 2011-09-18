@@ -2,7 +2,9 @@ Prizzm::Application.routes.draw do
 
 
 
-  get "corporate/home"
+  root :to => redirect("/home")
+  # Routes for main page
+  match "/home" => "home#index", :as => "home"
 
   devise_for :companies, :path => 'corporate',
              :path_names  => {:sign_in => "login", 
@@ -14,14 +16,11 @@ Prizzm::Application.routes.draw do
   match "admin(/:action)" => "admin"
   resources :members
 
-  root :to => redirect("/home")
   match 'corporate/home' => 'corporate#home', :as => 'company_root'
   
   get '/login_popup' => 'home#login_popup', :as => 'login_popup'
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
-  # Routes for main page
-  match "/home" => "home#index", :as => "home"
 
   # Routes for people
   match "/people" => "people#index", :as => "people"
