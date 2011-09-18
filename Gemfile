@@ -164,4 +164,8 @@ group :development, :test do
   #gem 'shoulda-matchers', :git => 'git://github.com/sid137/shoulda-matchers.git'
   gem "ZenTest"
   gem "autotest-rails"
+  
+  ##
+  gem 'mongo', '1.3.1'
+  
 end

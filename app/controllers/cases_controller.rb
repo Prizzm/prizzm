@@ -7,6 +7,15 @@ class CasesController < InheritedResources::Base
 
   def show
     @case = Case.find(params[:id])
+    @account_sid = ACCOUNT_SID
+    @auth_token = AUTH_TOKEN
+
+    @appsid = APP_SID
+
+    @cap = Twilio::Util::Capability.new(@account_sid, @auth_token)
+    @cap.allow_client_outgoing(@appsid)
+    @cap_name = @cap.generate()
+    
     render :layout => 'layouts/app_alt'
   end 
 

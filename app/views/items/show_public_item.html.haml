@@ -18,7 +18,7 @@
         = render 'default_review'
       - else
         .fl
-          = render 'images'
+          = image_tag @item.main_image, :class => "medthumb"
         #options
         = html_clean @item.review
     .clear
