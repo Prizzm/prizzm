@@ -30,11 +30,6 @@ class PeopleController < ApplicationController
   end
 
 
-  def find
-
-  end
-
-
   def search
     like = '%' + params[:query].gsub(/%/, '\%') + '%'
 

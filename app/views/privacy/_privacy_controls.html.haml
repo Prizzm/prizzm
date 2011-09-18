@@ -1,4 +1,4 @@
-%select.privacy_control{ :data => {:url => url_for("/privacy/toggle/item/" + object.id.to_s)}}
+%select.privacy_control{ :data => {:url => toggle_privacy_path(object_type(object), object.id)} }
   - if object.is_private?
     %option{ :selected => "selected" } Private
     %option Public
