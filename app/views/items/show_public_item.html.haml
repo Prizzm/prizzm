@@ -44,8 +44,9 @@
         = follow_link_for @item.user
         = link_to "view profile", profile_path(@item.user), :class => "button"
     .clear
-    
-    
+  - if @item.name == "serrano hobo" || @item.name == "hermann mini"
+    %article
+      .coupon Get 15% off this product! <br /> just use the shop coupon PRIZZM15 @ <a href="http://shopbryna.com">BRYNA</a> 
   %article
     = link_to "I want this",  login_popup_path, :class => "facebox button fw"
     = link_to "I have this",  login_popup_path, :class => "facebox button fw"
