@@ -19,40 +19,6 @@ class HomeController < ApplicationController
   def welcome
   end
 
-  def people
-    @items = Item.find(:all, 
-      :conditions => {
-        :privacy => "public"
-      },
-      :limit => 10,
-      :order => 'created_at DESC'
-    )
-
-    render :layout => "people"
-  end
-
-
-
-  def find
-    render :layout => "people"    
-  end
-
-
-  def following
-    @items = Item.joins('INNER JOIN follows ON follows.follower_id = items.user_id')
-                 .where(
-                   :follows => {
-                     :followable_type => 'User',
-                     :follower_type   => 'User',
-                     :followable_id   => current_user.id
-                   },
-                   :privacy => "public"
-                 )
-                 .limit(10)
-
-    render :layout => "people"
-  end
-
 
   def scrape
     @req_url = params[:url].strip
