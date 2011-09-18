@@ -15,7 +15,8 @@
     .clear
   .clear
 
-  = link_to "Back", home_path
+  = link_to "Back", company_products_path(current_company)
+  = link_to "Edit product info", edit_company_product_path(current_company, @product)
 
   = image_uploader_for @product
   = image_gallery_for @product

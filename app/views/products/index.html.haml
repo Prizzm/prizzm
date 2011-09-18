@@ -30,10 +30,10 @@
                         = link_to 'add invitation', product_product_invitations_path(product)
                         &nbsp
 
-                        = link_to image_tag("delete_product.gif"), product, :confirm => 'Are you sure?', :method => :delete
+                        = link_to image_tag("delete_product.gif"), company_product_path(current_company, product), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Product', new_product_path
+= link_to 'New Product', new_company_product_path(current_company)
 
 
