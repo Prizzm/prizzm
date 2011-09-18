@@ -1,21 +1,21 @@
 %h1
   Congratulations
-  = current_user.name
+  = current_user.first_name
 You just added a
 %em= @item.name
 to your list
 
-.product
-  = image_tag @item.main_image, :class => "fl medthumb"
-  .fr.prod-desc
-    %h2= @item.name
-    = @item.review
-  .clear
-  
+/
+  .product
+    = image_tag @item.main_image, :class => "fl medthumb"
+    .fr.prod-desc
+      %h2= @item.name
+      = @item.review
+    .clear
+.coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
 %ul.finalstep.fr
   %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
-  /%li= link_to "Share to facebook", post_review_to_fb_path(@item.id), :class => "green button", :id => 'share_review_on_facebook', :method => :post, :remote => true
-  %li= link_to "Share to facebook", '', :class => "green button", :id => 'share_review_on_facebook'
+  %li= link_to "Recommend it on facebook", '', :class => "green button", :id => 'share_review_on_facebook'
 
 :javascript
   $('#close_share_review').click(function(event){
