@@ -17,7 +17,7 @@
           %nav.fr
             %ul
               %li= link_to "Home", company_root_path, :class => "js-pjax"
-              %li= link_to "Clients", people_path, :class => "js-pjax"
+              %li= link_to "Clients", company_clients_path(current_company), :class => "js-pjax"
               %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
               %li= link_to "Invitations", people_path, :class => "js-pjax"
 

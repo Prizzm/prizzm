@@ -1,4 +1,5 @@
 class ProductInvitationsController < ApplicationController
+  before_filter :authenticate_company!
   layout 'corporate'
 
   def index

@@ -1,6 +1,7 @@
 Prizzm::Application.routes.draw do
 
 
+
   get "corporate/home"
 
   devise_for :companies, :path => 'corporate',
@@ -158,6 +159,7 @@ Prizzm::Application.routes.draw do
   ########################################################################################
 
   resources :companies do
+    resources :clients
     resources :products 
     resources :addresses
     get 'search', :on => :collection

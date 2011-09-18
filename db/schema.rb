@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917063137) do
+ActiveRecord::Schema.define(:version => 20110918010437) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(:version => 20110917063137) do
   end
 
   add_index "cases", ["cached_slug"], :name => "index_cases_on_cached_slug", :unique => true
+
+  create_table "clients", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id"
