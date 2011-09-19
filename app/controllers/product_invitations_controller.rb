@@ -100,6 +100,6 @@ class ProductInvitationsController < ApplicationController
       message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item), :picture => image_url}
       Facebook.post_message(message, current_user.access_token) 
     end
-    head :ok
+    redirect_to home_path
   end
 end

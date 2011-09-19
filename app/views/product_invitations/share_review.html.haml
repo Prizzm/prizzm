@@ -13,8 +13,10 @@ to your list
       = @item.review
     .clear
 .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
+.loader.hidden{:style => 'display:none'}= image_tag 'facebox/loading.gif'
 %ul.finalstep.fr
   %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
+<<<<<<< HEAD
   %li= link_to "Recommend it on facebook", '', :class => "green button", :id => 'share_review_on_facebook'
     #fb-root
     :javascript
