@@ -15,19 +15,13 @@ to your list
 .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
 %ul.finalstep.fr
   %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
-  %li= link_to "Recommend it on facebook", '', :class => "green button", :id => 'share_review_on_facebook'
+  %li= link_to "Recommend it on facebook", post_review_to_fb_path(@item.id), :method => :post, :class => "green button", :id => 'share_review_on_facebook', :remote => true
 
 :javascript
   $('#close_share_review').click(function(event){
     jQuery(document).trigger('close.facebox');
   });
 
-  $('#share_review_on_facebook').live('click', function(event){
-    $.ajax({
-      type: 'POST',
-      url: "#{post_review_to_fb_path(@item.id)}",
-      success: function(data){
-        jQuery(document).trigger('close.facebox');
-      }
-    });
+  $('#share_review_on_facebook').live('ajax:success', function(event){
+    jQuery(document).trigger('close.facebox');
   });
