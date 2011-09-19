@@ -97,7 +97,7 @@ class ProductInvitationsController < ApplicationController
       else
         image_url = @item.product.main_image
       end
-      message = {:message => "#{current_user.first_name} has just talked about the #{@item.product.name} on Prizzm.", :link => show_item_url(current_user, @item), :picture => image_url}
+      message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item), :picture => image_url}
       Facebook.post_message(message, current_user.access_token) 
     end
     head :ok
