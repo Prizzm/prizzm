@@ -8,7 +8,8 @@
 #content.grid_14
   %section
     %h1 About
-    %p add an "about" (or description) in the companies companies model
+    = @company.description
+    = link_to 'Edit Company Info', edit_company_path(@company)
     
 
 

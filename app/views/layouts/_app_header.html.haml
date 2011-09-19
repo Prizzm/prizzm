@@ -11,7 +11,7 @@
     #cbbg
       %header#prizzmbar
         .container_24
-          - if signed_in?
+          - if user_signed_in?
             = render "layouts/header"
           - else
             = render "layouts/header_signed_out"

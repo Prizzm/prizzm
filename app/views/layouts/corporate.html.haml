@@ -28,7 +28,7 @@
                 %ul.subnav
                   %li.user
                     = image_tag current_company.main_image, :class => "fl"
-                    = link_to "Edit Profile", edit_company_registration_path(:back => request.url), :class => "facebox"
+                    = link_to "Edit Profile", edit_company_registration_path
                     .clear
                   %li= link_to "Settings", "#"
                   %li= link_to "Logout", destroy_company_session_path
