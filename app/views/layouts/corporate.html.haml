@@ -19,7 +19,7 @@
               %li= link_to "Home", company_root_path, :class => "js-pjax"
               %li= link_to "Clients", company_clients_path(current_company), :class => "js-pjax"
               %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
-              %li= link_to "Invitations", people_path, :class => "js-pjax"
+              %li= link_to "Invitations", '', :class => "js-pjax"
 
               %li.account
                 = link_to "#", :class => "account" do
@@ -30,7 +30,6 @@
                     = image_tag current_company.main_image, :class => "fl"
                     = link_to "Edit Profile", edit_company_registration_path
                     .clear
-                  %li= link_to "Settings", "#"
                   %li= link_to "Logout", destroy_company_session_path
           .clear
      
