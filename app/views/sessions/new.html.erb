@@ -1,8 +1,10 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "regform"}) do |f| %>
+<%= devise_error_messages! %>
 <%= f.text_field :email, :placeholder => "email" %>
 <%= f.password_field :password, :placeholder => "password" %>
 <%= f.submit :id => "submit", :value => "login", :class => "button"%>
 <a href="<%= new_password_path(resource_name) %>" id="forgot" class="facebox">Forgot your password?</a>
+<%= devise_error_messages! %>
 
 <div class="clear"></div>
 <% end %>

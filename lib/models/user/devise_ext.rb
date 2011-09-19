@@ -21,7 +21,7 @@ module Models
           if user.nil?
             # Already signed up with FB.
             if user = find_by_email(data["email"])
-              user.update_attributes(:access_token => credentials['token']) if user.access_token.blank?
+              user.update_attributes(:access_token => credentials['token']) #if user.access_token.blank?
               user
             else 
               # Create new acc on Prizzm with FB acc information.
