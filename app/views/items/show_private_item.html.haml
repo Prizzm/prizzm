@@ -42,14 +42,15 @@
       .clear
       = hidden_field_tag :id, @item.id
     .clear
-  - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
-    %article
-      .coupon
-        Get 15% off this product! <br /> just use the shop coupon PRIZZM15 @
-        - if @item.name == "Hermann Mini"
-          <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a> 
-        - else
-          <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a>
+  - if @item.privacy == "public"
+    - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
+      %article
+        .coupon
+          Get 15% off this product! <br /> just use the shop coupon PRIZZM15 @
+          - if @item.name == "Hermann Mini"
+            <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a> 
+          - else
+            <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a>
   %article
     %h4 Share it
     = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
