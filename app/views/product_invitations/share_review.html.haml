@@ -13,6 +13,7 @@ to your list
       = @item.review
     .clear
 .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
+.loader.hidden{:style => 'display:none'}= image_tag 'facebox/loading.gif'
 %ul.finalstep.fr
   %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
   %li= link_to "Recommend it on facebook", post_review_to_fb_path(@item.id), :method => :post, :class => "green button", :id => 'share_review_on_facebook'
@@ -22,3 +23,7 @@ to your list
     jQuery(document).trigger('close.facebox');
   });
 
+  $('#share_review_on_facebook').click(function(event){
+    $('.loader').show();
+    //jQuery(document).trigger('close.facebox');
+  });
