@@ -1,7 +1,23 @@
 %h1 Editing company
 
-= render 'form'
+= form_for @company do |f|
+  -if @company.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.text_field :name, :placeholder => "Name"
+  .field
+    = f.text_field :email, :placeholder => "Email"
+  .field
+    = f.text_area :description, :placeholder => "Company Description"
+  .field
+    = f.text_field :industry, :placeholder => "Industry"
+  .field
+    = f.text_field :contact_name, :placeholder => "Contact Name"
+  .actions
+    = f.submit 'Save'
 
-= link_to 'Show', @company
-\|
-= link_to 'Back', companies_path
+= link_to 'Back', company_root_path

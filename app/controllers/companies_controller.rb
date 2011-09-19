@@ -10,6 +10,20 @@ class CompaniesController < InheritedResources::Base
     render nil
   end
 
+  def edit
+    @company = current_company
+  end 
+
+  def update
+    @company = current_company
+    if @company.update_attributes(params[:company])
+      flash[:notice] = 'Your information was sucessfully updated'
+      redirect_to company_root_path 
+    else
+      render 'edit'
+    end
+  end 
+
   def create
     @company = Company.new(params[:company])
     if @company.save
