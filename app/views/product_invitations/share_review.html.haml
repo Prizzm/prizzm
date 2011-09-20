@@ -6,11 +6,9 @@
     .clear
     = image_tag @item.main_image, :class => "fl"
     .fl.rev
-      You just added a
-      %em= @item.name
-      to your list and said that...
-      %br
+      &quot;
       = @item.review
+      &quot;
     .clear
   
   .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
