@@ -4,6 +4,10 @@
   left: 0;
   z-index: 100;
   text-align: left;
+  
+  -webkit-box-shadow:0 0 10px rgba(0,0,0,0.2);
+  -moz-box-shadow:0 0 10px rgba(0,0,0,0.2);
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 
@@ -11,9 +15,9 @@
   position:relative;
   width: 500px;
   
-  -webkit-box-shadow:0 0 18px rgba(0,0,0,0.4);
-  -moz-box-shadow:0 0 18px rgba(0,0,0,0.4);
-  box-shadow:0 0 18px rgba(0,0,0,0.4);
+  -webkit-box-shadow:0 0 18px rgba(0,0,0,0.6);
+  -moz-box-shadow:0 0 18px rgba(0,0,0,0.6);
+  box-shadow:0 0 18px rgba(0,0,0,0.6);
 }
 
 #facebox .content {
@@ -162,6 +166,14 @@
   box-sizing: border-box;
 }
 
+#facebox p {
+  margin-top: 5px;
+}
+
 #facebox .prod-desc{
   width: 345px;
+}
+
+#facebox .finalstep {
+  display: block;
 }

@@ -204,6 +204,7 @@ a.button:hover, input[type=submit].button:hover {
     border-color: #999;
     -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    text-decoration: none !important;
 }
 a.button:active, input[type=submit].active {
     color: #000;
@@ -365,6 +366,18 @@ a.button.green, input[type=submit].button.green, #item_submit, input.update{
   color: white !important;
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 }
+a.button.fbb {
+  background-color: #6580b4;
+  background-image: -webkit-linear-gradient(top,#6580b4,#516da9);
+  background-image: -moz-linear-gradient(top,#6580b4,#516da9);
+  background-image: -ms-linear-gradient(top,#6580b4,#516da9);
+  background-image: -o-linear-gradient(top,#6580b4,#516da9);
+  background-image: linear-gradient(top,#6580b4,#516da9);
+  border: 1px solid #3f65b2;
+  color: white !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
 aside a.button.fw {
   width: 100%;
   display: block;
@@ -871,13 +884,16 @@ form li.fb, form li.tt {
 .coupon {
   margin: 10px 0;
   padding: 8px;
-  background: #F9F390;
-  color: #A29B2F;
-  border: 1px dashed #D8D272;
+  background: #B8D1FF;
+  color: #6483C2;
+  border: 2.5px dashed white;
   text-align: center;
+  font-weight: bold;
   
-  box-shadow: #FFFFFF 0 0 0 3px inset;
-
+  -webkit-box-shadow: 0 0 0 2px #B8D1FF;
+  -moz-box-shadow: 0 0 0 2px #B8D1FF;
+  box-shadow: 0 0 0 2px #B8D1FF;
+  
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

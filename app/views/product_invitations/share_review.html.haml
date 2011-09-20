@@ -1,36 +1,25 @@
 %h1
-  Congratulations
+  Thanks for sending your feedback
   = current_user.first_name
-You just added a
-%em= @item.name
-to your list
+%p
+  You just added a
+  %em= @item.name
+  to your list
 
-/
-  .product
-    = image_tag @item.main_image, :class => "fl medthumb"
-    .fr.prod-desc
-      %h2= @item.name
-      = @item.review
-    .clear
 .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
-.loader.hidden{:style => 'display:none'}= image_tag 'facebox/loading.gif'
-%ul.finalstep.fr
-  %li= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
-<<<<<<< HEAD
-  %li= link_to "Recommend it on facebook", '', :class => "green button", :id => 'share_review_on_facebook'
-    #fb-root
-    :javascript
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#appId=211702052227910&xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  
-    .fb-like{:data-href => "#{post_review_to_fb_path(@item.id)}", :data-send => "false", :data-width => "450", :data-show-faces => "true", :data-action => "recommend", :data-font => "verdana"}
+%ul.finalstep.fn
+  %li.fl= link_to "Maybe later", '', :class => "other-opt", :id => 'close_share_review'
+  %li.fr= link_to "Recommend it on facebook", '', :class => "fbb button", :id => 'share_review_on_facebook'
 
 :javascript
   $('#close_share_review').click(function(event){
+    jQuery(document).trigger('close.facebox');
+  });
+
+  $('#share_review_on_facebook').click(function(event){
+    $.ajax({
+      type: 'POST',
+      url: "#{post_review_to_fb_path(@item.id)}"
+    });
     jQuery(document).trigger('close.facebox');
   });

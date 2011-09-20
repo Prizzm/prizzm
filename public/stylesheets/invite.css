@@ -88,7 +88,7 @@ section {
   
   
   section textarea {
-    height: 20px;
+    height: 55px;
     font-size: 1.1em;
     padding: 8px;
     width: 100%;
@@ -189,6 +189,7 @@ input[type=text], input[type=password] {
   display: block;
   font-size: 13px;
   padding: 0;
+z-index: 0;
 }
 
 ul.finalstep {
@@ -277,4 +278,8 @@ footer {
 #facebox a.close {
   width: 6px;
   height: 6px;
+}
+
+.recfb {
+  
 }

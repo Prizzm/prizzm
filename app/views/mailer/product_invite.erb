@@ -3,6 +3,7 @@
     <style type="text/css">
     .ReadMsgBody {width: 100%;}
     .ExternalClass {width: 100%; background-color:#f3f3f3 !important;}
+    #content > p {display: none;}
     </style>
     
     <!–[if gte mso 9]>
@@ -21,7 +22,7 @@
               <td><img style="margin: 20px 0 10px;" src="http://development.prizzm.com/images/email/bryna.png"></td>
             </tr>
             <tr>
-              <td style="background: #fff; padding: 20px;">
+              <td id="content" style="background: #fff; padding: 20px;">
                 
                 <div style="border-bottom: 1px solid #f3f3f3; padding-bottom: 5px; margin-bottom: 10px;">
               		  Hi <%= @pinvite.first_name %> <br>
@@ -34,7 +35,7 @@
             </tr>
             <tr>
               <td height="75" style="text-align: center;">
-              <a style="margin: 10px auto; background: #444; text-align: center; text-decoration: none; color: #fff; padding: 14px 76px; border: 1px solid #fff; font-size: 1.3em;" href="<%= "http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>">Give Feedback</a>
+              <a style="cursor: pointer; margin: 10px auto; background: #444; text-align: center; text-decoration: none; color: #fff; padding: 14px 76px; border: 1px solid #fff; font-size: 1.3em;" href="<%= "http://#{@hosturl}/product_reviews/say/accepted/#{@pinvite.encrypted_id}" %>">Send Feedback to <%= @pinvite.product.company.name %></a>
               </td>
             </tr>
             <tr>
