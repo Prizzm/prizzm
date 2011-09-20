@@ -24,14 +24,33 @@ class CasesController < InheritedResources::Base
     render :layout => false
   end
 
+
   def create 
     params[:case][:tag_list] = params[:as_values_tag_list]
+
     @case = Case.new(params[:case])
     @case.user = current_user
+
+    if params[:company_id].blank? == false
+      @case.company = Company.find(params[:company_id])
+    elsif params[:company_name].blank? == false
+      # Need to be re-thought as companies require password/email
+    end
+
+    if params[:product_id].blank? == false
+      @case.product = Product.find(params[:product_id])
+    elsif
+      @case.product = Product.new({
+        :name => params[:product_name]
+      })
+    end
+
+    
     if @case.save
       redirect_to case_path(@case)+"#edit_issue" 
     end
   end
+
 
   def update 
     @case = current_user.cases.find(params[:id])

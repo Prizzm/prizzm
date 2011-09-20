@@ -36,9 +36,10 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # limit results to 6 or so, we we don't reach browser parallel download
-    #products = Product.order('name ASC')
     products = Product.where("name ILIKE ?", params[:query]+'%')
+                      .order('name ASC')
+                      .limit(5)
+
     render :json  => autocomplete_info_for(products)   
   end 
   
@@ -51,8 +52,10 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to company_products_path(current_company)
   end
-private  
+
+
+  private
   def autocomplete_info_for products
-    results = products.to_json(:methods => [:name, :main_image_thumb, :main_image, :customer_count, :url, :description, :company_id, :company_name], :only => [:id, :rating])
+    results = products.to_json(:methods => [:name, :company, :main_image_thumb, :main_image, :customer_count, :url, :description, :company_id, :company_name], :only => [:id, :rating])
   end
 end

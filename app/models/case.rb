@@ -4,6 +4,7 @@ class Case < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :company
+  belongs_to :product
   belongs_to :item
 
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"

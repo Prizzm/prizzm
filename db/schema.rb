@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110918071925) do
     t.string   "privacy"
     t.integer  "user_id"
     t.integer  "company_id"
+    t.integer  "product_id"
     t.integer  "item_id"
     t.string   "cached_slug"
     t.datetime "created_at"

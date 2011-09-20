@@ -1,10 +1,12 @@
 = include_stylesheets :item_new
 
-= form_for @case=Case.new, :html => {:class => "action addcase"} do |f|
+= form_for @case = Case.new, :html => {:class => "action addcase"} do |f|
   = f.text_field 'title', :placeholder => "What's your issue?"
   #hiddenform
-    = text_field_tag 'company_name', nil, :placeholder => "With who?"
-    = f.hidden_field 'company_id'
+    = text_field_tag 'product_name', nil, :placeholder => "With what product?"
+    = text_field_tag 'company_name', nil, :placeholder => "By what company?"
+    = hidden_field_tag 'product_id'
+    = hidden_field_tag 'company_id'
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr
@@ -21,17 +23,56 @@
 
 - content_for :javascripts do
   :javascript
-    $(document).ready(function(){
-      $('#hiddenform').hide();
-      $('#case_title').click(function(){
-       $('#hiddenform').show();
-      });
-      
-      $('.addcase .close').click(function(){
-       $('#hiddenform').hide();
-       $('#company_name').val('');
-       $('#case_title').val('');
-      });
-        
-      #{render 'tags/new_taggable.js.erb', :taggable => @case} 
+    $(function(){
+        $('#hiddenform').hide();
+        $('#case_title').click(function(){
+            $('#hiddenform').show();
+        });
+
+        $('#product_name').autocomplete({
+            source: function(request, response) {
+                $.getJSON('#{search_products_path}', {query: request.term}, function(json){
+                  var json = $.map(json, function(row){
+                    return $.extend({label: row.name}, row);
+                  });
+
+                  response(json)
+                });
+            },
+            select: function(event, ui){console.log(ui.item.company.id);
+                if (ui.item.company.id != false) {
+                  $('#company_name').hide();
+
+                  $('#product_id').val(ui.item.id);
+                  $('#company_id').val(ui.item.company.id);
+                }
+            }
+        });
+
+
+        $('#company_name').autocomplete({
+            source: function(request, response) {
+                $.getJSON('#{search_companies_path}', {query: request.term}, function(json){
+                  response(json);
+                });
+            },
+            select: function(event, ui){
+                $('#company_id').val(ui.item.id);
+            }
+        });
+
+        $('#company_name, #product_name').change(function(event){
+            $('#company_name').show();
+            $('#product_id').val('');
+            $('#company_id').val('');
+        });
+
+
+        $('.addcase .close').click(function(){
+            $('#hiddenform').hide();
+            $('#company_name').val('');
+            $('#case_title').val('');
+        });
+
+        #{render 'tags/new_taggable.js.erb', :taggable => @case}
     });

@@ -9,6 +9,7 @@ class CreateCases < ActiveRecord::Migration
 
       t.references :user
       t.references :company
+      t.references :product
       t.references :item
 
       t.string :cached_slug
