@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110918071925) do
+ActiveRecord::Schema.define(:version => 20110920144911) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(:version => 20110918071925) do
     t.string   "privacy"
     t.integer  "user_id"
     t.integer  "company_id"
-    t.integer  "product_id"
     t.integer  "item_id"
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "workflow_state"
+    t.integer  "product_id"
   end
 
   add_index "cases", ["cached_slug"], :name => "index_cases_on_cached_slug", :unique => true
