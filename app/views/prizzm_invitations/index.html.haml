@@ -1,0 +1,17 @@
+%h1 Listing prizzm_invitations
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @prizzm_invitations.each do |prizzm_invitation|
+    %tr
+      %td= link_to 'Show', prizzm_invitation
+      %td= link_to 'Edit', edit_prizzm_invitation_path(prizzm_invitation)
+      %td= link_to 'Destroy', prizzm_invitation, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Prizzm invitation', new_prizzm_invitation_path

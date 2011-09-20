@@ -1,7 +1,6 @@
 Prizzm::Application.routes.draw do
 
 
-
   root :to => redirect("/home")
   # Routes for main page
   match "/home" => "home#index", :as => "home"
@@ -15,6 +14,7 @@ Prizzm::Application.routes.draw do
   match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members
+  resources :prizzm_invitations
 
   match 'corporate/home' => 'corporate#home', :as => 'company_root'
   
