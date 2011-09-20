@@ -39,12 +39,12 @@
                   response(json)
                 });
             },
-            select: function(event, ui){console.log(ui.item.company.id);
-                if (ui.item.company.id != false) {
+            select: function(event, ui){console.log(ui.item.company_id);
+                if (ui.item.company_id != false) {
                   $('#company_name').hide();
 
                   $('#product_id').val(ui.item.id);
-                  $('#company_id').val(ui.item.company.id);
+                  $('#company_id').val(ui.item.company_id);
                 }
             }
         });
