@@ -3,9 +3,13 @@
     Thanks for sending your feedback
     = current_user.first_name
   %p
-    You just added a
-    %em= @item.name
-    to your list
+    .clear
+    = image_tag @item.main_image, :class => "fl"
+    .fl.rev
+      &quot;
+      = @item.review
+      &quot;
+    .clear
   
   .coupon Recommend it to your friends on facebook and give them 15% off their next purchase!
   %ul.finalstep.fn
@@ -13,7 +17,7 @@
     %li.fr
       .fr= link_to "Recommend it on facebook", post_review_to_fb_path(@item.id), :method => :post, :class => "fbb button", :id => 'share_review_on_facebook'
       .fl.loading
-
+  
 :javascript
   $('#close_share_review').click(function(event){
     jQuery(document).trigger('close.facebox');
