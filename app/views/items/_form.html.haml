@@ -6,6 +6,8 @@
                 :style => 'min-height: 250px; width: 100%;',
                 :value => h(html_clean @item.review)
 
+  = f.text_field :tag_list, :placeholder => "+ Add Tags"
+
   %ul.finalstep
     .fl
       %li= f.label :privacy
@@ -15,3 +17,6 @@
       %li= f.submit 'Save'
     .clear
 .clear
+
+:javascript
+  #{render 'tags/taggable.js.erb', :taggable => @item}

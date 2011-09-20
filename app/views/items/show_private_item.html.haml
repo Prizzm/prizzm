@@ -19,9 +19,6 @@
           = html_clean @item.review
     .clear
 
-    #review_status
-    = form_for [current_user, @item], :remote => true, :method => 'PUT' do |f|
-      = f.text_field :tag_list, :placeholder => "+ Add Tags"
     #footerbit
       .fl
         Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago
