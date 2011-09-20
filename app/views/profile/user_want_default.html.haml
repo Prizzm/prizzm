@@ -2,20 +2,14 @@
   = include_stylesheets :profile
 
 #content.grid_14
-  = render :template => 'cases/new'
-  %ul.table.list-display.case-list
-    - @cases.each do |user_case|
-      %li.row
-        .cell
-          %h3
-            = link_to case_path(user_case) do
-              = user_case.case_reference
-              = user_case.title
-        .cell
-          = user_case.created_at.strftime '%m/%d/%Y'
-        .cell
-          %div{ :class => "status #{user_case.privacy if user_case.is_private?}" }= user_case.privacy
-          = link_to "", user_case, :remote => true, :method => :delete, :class => 'close', :confirm => "Are you sure you want to delete this case?"
+  = render :template => 'items/new_want'
+
+  #welcome
+    You haven't added anything to your list yet!
+    %p
+      Click in the box and add something you want.
+      %br
+      %span Electronics, Bags, Accessories... Anything!
   
 %aside.grid_6.right
   %article

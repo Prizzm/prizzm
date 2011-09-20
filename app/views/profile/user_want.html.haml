@@ -4,16 +4,8 @@
 #content.grid_14
   = render :template => 'items/new_want'
 
-  - if current_user.wanted_items.count > 0
-    %ul.table.list-display
-      = render :partial => "profile/item", :collection => current_user.wanted_items
-  - else
-    #welcome
-      You haven't added anything to your list yet!
-      %p
-        Click in the box and add something you want.
-        %br
-        %span Electronics, Bags, Accessories... Anything!
+  %ul.table.list-display
+    = render :partial => "profile/item", :collection => current_user.wanted_items
   
 %aside.grid_6.right
   %article

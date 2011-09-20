@@ -1,0 +1,11 @@
+- content_for :page_style do
+  = include_stylesheets :profile
+
+= render :template => 'items/new'
+
+#welcome
+  You haven't added anything to your list yet!
+  %p
+    Click in the box and add something you have
+    %br
+    Electronics, Bags, Accessories... Anything!

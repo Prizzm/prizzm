@@ -9,14 +9,24 @@ class ProfileController < ApplicationController
       @user = current_user
       @item = Item.new
       @item.images.build
-      render "#{target_user}_have", :layout => "application"
+
+      if current_user.owned_items.count > 0
+          render "#{target_user}_have", :layout => "application"
+      elsif
+          render "user_have_default", :layout => "application"
+      end
   end
 
   def want
     @user = current_user
     @item = Item.new
     @item.images.build
-    render "#{target_user}_want", :layout => "application"
+
+    if current_user.wanted_items.count > 0
+        render "#{target_user}_want", :layout => "application"
+    elsif
+        render "user_want_default", :layout => "application"
+    end
   end
 
   # just show my cases, not others
@@ -24,8 +34,14 @@ class ProfileController < ApplicationController
     @user = current_user
     @item = Item.new
     @item.images.build
+
     @cases = current_user.cases.all
-    render 'user_cases', :layout => "application"
+
+    if @cases.count > 0
+      render 'user_cases', :layout => "application"
+    elsif
+      render 'user_cases_default', :layout => 'application'
+    end
   end 
 
 protected
