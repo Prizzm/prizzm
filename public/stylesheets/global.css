@@ -308,7 +308,7 @@ a.call {
   background: url(../images/sprite.png)  10px -203px no-repeat #f3f3f3;
   padding-left: 35px;
 }
-.phone{
+.phone {
   background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
     padding-left: 16px;
 }
@@ -317,12 +317,12 @@ a.call {
   padding-left: 25px;
   height: 16px;
 }
-.fb{
+.fb, .facebook{
   background: url(../images/sprite.png)  0 -316px no-repeat;
   padding-left: 25px;
   height: 16px;
 }
-.tt{
+.tt, .twitter{
   background: url(../images/sprite.png)  0 -352px no-repeat;
   padding-left: 25px;
   height: 16px;

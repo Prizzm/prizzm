@@ -70,6 +70,22 @@
           = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green"
           .loading{:style => "display:none;float:left"}
       .clear
+    - if @case.company.nil? == false
+      %h4= "#{@case.company.name} Contacts"
+      - if @case.company.addresses.count > 0
+        %dd
+        - @case.company.addresses.each do |address|
+          %dt
+            %strong= address.address_type.humanize
+
+          - if ['twitter', 'facebook'].include? address.address_type
+            %a{ :class => address.address_type, :href => address.address }= address.address
+          - elsif ['phone_number'].include? address.address_type
+            %span{ :class => 'phone', :data => {:number => address.address.gsub('-', '')} }= address.address
+          - else
+            %dd= address.address
+      - else
+        No company contacts
 
 #call-window{:style => "display:none"}
   %div#call-window-container
@@ -136,10 +152,13 @@
   
 
   :javascript    
-  
     $(document).ready(function() {
       #{render 'tags/taggable.js.erb', :taggable => @case} 
 
+
+      $('.phone').click(function(){
+        callnumber($(this).data('number'));
+      });
 
       $('.note_body').editable(function(value, settings){
         var note_id = $(this).closest('li').attr('id');
