@@ -1,8 +1,9 @@
 class PrizzmInvitationsController < ApplicationController
+  layout 'corporate'
   # GET /prizzm_invitations
   # GET /prizzm_invitations.xml
   def index
-    @prizzm_invitations = PrizzmInvitation.all
+    @prizzm_invitations = current_company.prizzm_invitations.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class PrizzmInvitationsController < ApplicationController
   # GET /prizzm_invitations/1
   # GET /prizzm_invitations/1.xml
   def show
-    @prizzm_invitation = PrizzmInvitation.find(params[:id])
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +25,7 @@ class PrizzmInvitationsController < ApplicationController
   # GET /prizzm_invitations/new
   # GET /prizzm_invitations/new.xml
   def new
-    @prizzm_invitation = PrizzmInvitation.new
+    @prizzm_invitation = current_company.prizzm_invitations.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +35,13 @@ class PrizzmInvitationsController < ApplicationController
 
   # GET /prizzm_invitations/1/edit
   def edit
-    @prizzm_invitation = PrizzmInvitation.find(params[:id])
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
   end
 
   # POST /prizzm_invitations
   # POST /prizzm_invitations.xml
   def create
-    @prizzm_invitation = PrizzmInvitation.new(params[:prizzm_invitation])
+    @prizzm_invitation = current_company.prizzm_invitations.new(params[:prizzm_invitation])
 
     respond_to do |format|
       if @prizzm_invitation.save
@@ -56,7 +57,7 @@ class PrizzmInvitationsController < ApplicationController
   # PUT /prizzm_invitations/1
   # PUT /prizzm_invitations/1.xml
   def update
-    @prizzm_invitation = PrizzmInvitation.find(params[:id])
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
 
     respond_to do |format|
       if @prizzm_invitation.update_attributes(params[:prizzm_invitation])
@@ -72,7 +73,7 @@ class PrizzmInvitationsController < ApplicationController
   # DELETE /prizzm_invitations/1
   # DELETE /prizzm_invitations/1.xml
   def destroy
-    @prizzm_invitation = PrizzmInvitation.find(params[:id])
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
     @prizzm_invitation.destroy
 
     respond_to do |format|

@@ -160,6 +160,12 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
   end
 
   create_table "prizzm_invitations", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "product_id"
+    t.text     "landing_page"
+    t.text     "email_content"
+    t.string   "status"
+    t.string   "metrics"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -224,7 +230,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
 
   create_table "sales", :force => true do |t|
     t.string   "price"
-    t.date     "date"
+    t.datetime "date"
     t.integer  "prizzm_invitation_id"
     t.integer  "client_id"
     t.string   "invitation_status"

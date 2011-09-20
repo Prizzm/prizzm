@@ -2,7 +2,7 @@ class CreateSales < ActiveRecord::Migration
   def self.up
     create_table :sales do |t|
       t.string :price
-      t.date :date
+      t.datetime :date
       t.references :prizzm_invitation
       t.references :client
       t.string :invitation_status

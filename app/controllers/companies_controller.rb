@@ -12,6 +12,7 @@ class CompaniesController < InheritedResources::Base
 
   def edit
     @company = current_company
+    render :layout => 'corporate'
   end 
 
   def update
