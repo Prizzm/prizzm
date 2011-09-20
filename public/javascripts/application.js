@@ -21,7 +21,8 @@ $(document).ready(function(){
   
   $('.tipsy').tipsy({
     gravity : 'n',
-    fade    : true
+    fade    : true,
+    html    : true
   });
   $('textarea').elastic();  
 
