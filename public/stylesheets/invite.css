@@ -189,7 +189,8 @@ input[type=text], input[type=password] {
   display: block;
   font-size: 13px;
   padding: 0;
-z-index: 0;
+  z-index: 0;
+  position: relative;
 }
 
 ul.finalstep {
