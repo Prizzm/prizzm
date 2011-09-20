@@ -447,6 +447,7 @@ a.alt {
   width: 16px;
   height: 16px;
   margin: 0 5px;
+  display: none;
 }
 
 .yui3-aclist {

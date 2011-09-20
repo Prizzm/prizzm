@@ -48,12 +48,11 @@
           .coupon Send your feedback with facebook to be eligible for a 15% discount!
           
           %ul.finalstep
-            %li.fl= link_to "What is Prizzm?", "#", :id => "infolink", :class => "tipsy", :title => "Prizzm helps customers communicate with the brands they buy from, track issues, and ask friends for recommendations."
             %li.fr
               = f.submit "", :id => "facebook_login", :class => "fn"
-              = f.submit "I don't have facebook", :id => "standard_login"
+              = link_to "What is Prizzm?", "#", :id => "infolink", :class => "tipsy", :title => "Prizzm helps customers communicate with the brands they buy from, track issues, and ask friends for recommendations."
             .clear
-        .clear 
+          .clear 
       .clear
     %footer
       Feedback powered by
@@ -63,11 +62,6 @@
 
 :javascript
   $(document).ready(function() {
-    $('#standard_login').live('click', function(event){
-      $('#signin_type').val('standard');
-      $('#new_product_review').submit();
-    });
-
     $('#facebook_login').live('click', function(event){
       $('#signin_type').val('facebook');
       $('#new_product_review').submit();
