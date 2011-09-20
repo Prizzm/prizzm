@@ -63,7 +63,7 @@ class Item < ActiveRecord::Base
 
       i = 0
       items.each do |item|
-        i += 1 if item.tag_list.index('want')
+        i += 1 if item.tag_list.include?('want')
       end
       return i
     end
@@ -81,7 +81,7 @@ class Item < ActiveRecord::Base
 
       i = 0
       items.each do |item|
-        i += 1 if item.tag_list.index('have')
+        i += 1 if item.tag_list.include?('have')
       end
       return i
     end

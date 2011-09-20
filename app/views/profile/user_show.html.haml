@@ -4,7 +4,11 @@
       %li
         .cont
           %ul.tags
-            %li.gld.as-selection-item= link_to "have", "#"
+            %li.gld.as-selection-item
+              - if item.tag_list.include? 'have'
+                Have
+              - elsif item.tag_list.include? 'want'
+                Want              
           = image_tag item.main_image
           = link_to(item) do
             %h4= item.name
