@@ -100,6 +100,8 @@
 #facebox h1 {
 	line-height: 140%;
 	font: normal 20px arial,sans-serif;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #e7e7e7;
 }
 
 #facebox form {
@@ -166,4 +168,13 @@
 
 #facebox .finalstep {
   display: block;
+}
+
+#facebox #share-rev img{
+  width: 80px;
+}
+
+
+#facebox #share-rev .rev {
+  padding-top: 10px;
 }
