@@ -80,7 +80,7 @@
 
           - if ['twitter', 'facebook'].include? address.address_type
             %a{ :class => address.address_type, :href => address.address }= address.address
-          - elsif ['phone', 'mobile'].include? address.address_type
+          - elsif ['phone_number'].include? address.address_type
             %span{ :class => 'phone', :data => {:number => address.address.gsub('-', '')} }= address.address
           - else
             %dd= address.address
