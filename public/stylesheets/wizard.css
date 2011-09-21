@@ -1,0 +1,60 @@
+#ui-tooltip-welcome-steps-title
+{
+  color: #999;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content
+{
+  padding: 20px;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content h1,
+#ui-tooltip-welcome-steps .ui-tooltip-content p,
+#ui-tooltip-welcome-steps .ui-tooltip-content a
+{
+  line-height: 1.3em;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content h1
+{
+  color: #f01a68;
+  margin: 10px 0px;
+  font-size: 2em;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content p
+{
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: normal;
+  margin: 10px 0px;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content mark
+{
+  color: #f01a68;
+  font-weight: bold;
+  font-style: normal;
+  background: transparent;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a 
+{ 
+  color: #4fcdff; 
+  font-size: 1.3em;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a.next
+{
+  float: right;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a.prev,
+#ui-tooltip-welcome-steps .ui-tooltip-content a.manual-close
+{
+  float: left;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a:hover { color: #a3eeff; }

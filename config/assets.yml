@@ -21,6 +21,8 @@ javascripts:
     - public/javascripts/jquery.tipsy.js
     - public/javascripts/jquery.masonry.js
     - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/jquery.class.js
+    - public/javascripts/jquery.qtip.js
     - public/javascripts/swfobject.js
     - public/javascripts/twilio.min.js
     - public/javascripts/facebox.js
@@ -28,7 +30,9 @@ javascripts:
     - public/javascripts/galleriffic/*.js
     - public/javascripts/cases.js
     - public/javascripts/application/comments.js
+    - public/javascripts/prizzm.js
     - public/javascripts/application.js
+    
   wysiwyg:
     - public/javascripts/jwysiwyg/jquery.wysiwyg.js
     - public/javascripts/jwysiwyg/controls/wysiwyg.link.js
@@ -50,6 +54,8 @@ stylesheets:
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/ckeditor.css
     - public/stylesheets/tipsy.css
+    - public/stylesheets/vendor/jquery.qtip.css
+    - public/stylesheets/wizard.css
 
   wysiwyg:
     - public/stylesheets/jquery.wysiwyg.css
