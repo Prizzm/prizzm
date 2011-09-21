@@ -90,6 +90,9 @@ gem "flash_cookie_session"
 
 gem "twilio-ruby"
 
+# Imports
+gem 'csv-mapper', '0.5.1'
+
 #gem "squeel"  # Last officially released gem
 # gem "squeel", :git => "git://github.com/ernie/squeel.git" # Track git repo
 group :development, :test do
