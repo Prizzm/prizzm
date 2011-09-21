@@ -184,4 +184,9 @@ $(document).ready(function(){
       $('#form-ask-friend .loading').show();
     }
   });
+  
+  
+  // Initialize Prizzm
+  Prizzm.init();
+  
 });
