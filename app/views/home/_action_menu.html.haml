@@ -1,4 +1,4 @@
 %ul.action-menu
-  %li= link_to "Have", home_path, :class => ('js-pjax ' << active_if_current(home_path))
+  %li= link_to "Have", have_path(current_user), :class => ('js-pjax ' << active_if_current(have_path(current_user)))
   %li= link_to "Want", want_path(current_user), :class => ('js-pjax ' << active_if_current(want_path(current_user)))
   %li= link_to "Cases", user_cases_path(current_user), :class => ('js-pjax ' << active_if_current(user_cases_path(current_user)))

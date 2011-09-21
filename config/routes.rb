@@ -1,8 +1,6 @@
 Prizzm::Application.routes.draw do
+  root :to => "home#index"
 
-
-
-  root :to => redirect("/home")
   # Routes for main page
   match "/home" => "home#index", :as => "home"
 
@@ -29,7 +27,7 @@ Prizzm::Application.routes.draw do
   match "/people/search" => "people#search", :as => "people_search"
 
   match "/profile/:id" => "profile#show", :as => "profile"
-  get '/:id/has' => 'profile#have', :as => 'have'
+  get '/:id/have' => 'profile#have', :as => 'have'
   get '/:id/wants' => 'profile#want', :as => 'want'
   get '/:id/cases' => 'profile#cases', :as => 'user_cases'
 

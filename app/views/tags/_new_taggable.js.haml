@@ -1,0 +1,40 @@
+:plain
+  var data = [{
+      value: 'have',
+      name: 'have'
+  }, {
+      value: 'want',
+      name: 'want'
+  }];
+
+  $('##{object_type taggable}_tag_list').autoSuggest(data, {
+      asHtmlID       : 'tag_list', 
+      startText      : '+ Add tags',
+      neverSubmit    : true,
+      selectionAdded : function(element){
+        var $tagAdded = $(element),
+            $tagList  = $('#as-values-tag_list');
+
+        // Regular expression to match the added tag in existing tags
+        var regex = new RegExp('(?:^|,)'+$tagAdded.text()+'(?=,|$)', 'g');
+
+        if ($tagList.val().match(regex).length > 1) {
+          // Regular expression to replace tag
+          var regex = new RegExp($tagAdded.text()+',');
+
+          $tagAdded.remove();
+          $tagList.val($tagList.val().replace(regex, ''));
+        }
+      },
+
+      selectionRemoved: function(element){
+        element.fadeOut('fast', function(){
+          element.remove();
+        });
+      }
+  });
+
+  $("#item_tag_list").autoSuggest(data.items, {
+      preFill     : 'have',
+      neverSubmit : true
+  });

@@ -73,10 +73,8 @@
        $(this).parent().remove();
       });
     
-      #{render 'tags/new_taggable.js.erb', :taggable => @item}
+      #{render 'tags/new_taggable.js.haml', :taggable => @item}
       
-      // what?
-
       $("#search-by-title").click(function(){
         if ($('input#item_name').val()){
           window.product_search_term = $('input#item_name').val();

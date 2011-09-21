@@ -2,16 +2,8 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, :except => [:login_popup]
 
   def index
-    @user = current_user
-    @item = Item.new
-    @item.images.build
-    if session[:review]
-      @review =  ProductReview.create(session[:review]) 
-      session[:review] = nil 
-    end
-    respond_to do |format|
-      format.html 
-      format.json  { render :json => @user }
+    if user_signed_in?
+      redirect_to have_path(current_user)
     end
   end
 

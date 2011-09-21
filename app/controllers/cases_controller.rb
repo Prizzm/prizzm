@@ -7,6 +7,7 @@ class CasesController < InheritedResources::Base
 
   def show
     @case = Case.find(params[:id])
+
     @account_sid = ACCOUNT_SID
     @auth_token = AUTH_TOKEN
 
@@ -18,6 +19,7 @@ class CasesController < InheritedResources::Base
     
     render :layout => 'layouts/app_alt'
   end 
+
 
   def new
     @case = Case.new

@@ -1,15 +1,80 @@
 - content_for :page_style do
   = include_stylesheets :profile
 
-= render :template => 'items/new'
+#content.grid_14
+  = render :template => 'items/new'
 
-- if current_user.owned_items.count > 0
-  %ul.table.list-display
-    = render :partial => "profile/item", :collection => current_user.owned_items
-- else
-  #welcome
-    You haven't added anything to your list yet!
-    %p
-      Click in the box and add something you have
-      %br
-      Electronics, Bags, Accessories... Anything!
+  - if current_user.owned_items.count > 0
+    %ul.table.list-display
+      = render :partial => "profile/item", :collection => current_user.owned_items
+  - else
+    #welcome
+      You haven't added anything to your list yet!
+      %p
+        Click in the box and add something you have
+        %br
+        Electronics, Bags, Accessories... Anything!
+ 
+%aside.grid_6.right
+  %article
+    %h4
+      .fl Suggested People
+      = link_to "Refresh", "", :class => 'small fr'
+      = link_to "View all", members_path, :class => 'small fr'
+      .clear
+    %ul.table
+      - suggested_people.each do |person| 
+        %li.row
+          = link_to profile_path(person) do
+            .cell.img
+              = image_tag person.main_image, :class => 'smallthumb'
+            .cell.uname= person.name
+          .cell.action
+            = follow_link_for person
+          .cell.del
+            = link_to "", "", :class => "close"
+  %article
+    %h4 Invite your friends
+    = render :partial => "invitations/new"
+  
+  .clear
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function() {
+      if (document.location.hash === "#share_review"){
+        $.facebox({ajax: "#{share_review_path}"});
+      }
+    });
+
+
+    $(document).ready(function() {
+      $('#invite-button').bind('click', function(e) {
+        e.preventDefault();
+        if ($('#invitations').is(":visible")) {
+          $('#invitations').slideUp('fast');
+        } else {
+          $('#invitations').slideDown('fast');
+        }
+      });
+    
+      $('#add-email').bind('click', function(e) {
+        e.preventDefault();
+        var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a></li>");
+        $('#emails-list').append(new_email);
+      });
+    
+      $('.remove').live('click', function(e) {
+        e.preventDefault();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+    
+      $('#email-invite').bind('ajax:beforeSend', function() {
+        $('#invitations .loading').css('visibility', 'visible');
+      });
+    
+      $('#email-invite').bind('ajax:complete', function() {
+        $('#invitations .loading').css('visibility', 'hidden');
+      });
+    });

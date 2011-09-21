@@ -1,0 +1,169 @@
+:plain
+  //Twilio!
+  Twilio.Device.setup($("#twilio_name").html());
+
+  Twilio.Device.ready(function (device) {
+    $("#log").text("Ready");
+  });
+
+  Twilio.Device.error(function (error) {
+    $("#log").text("Error: " + error.message);
+  });
+
+  Twilio.Device.connect(function (conn) {
+    $("#log").text("Successfully established call");
+
+    $("#call_container_numbers_phone").attr("style", "display:none");
+    $("#call_container_numbers_computer").attr("style", "display:none");
+    $("#calling").attr("style", "display:none");
+    $("#oncall").attr("style", "display:block");
+    $("#placingcall").attr("style", "display:none");
+
+  });
+
+  Twilio.Device.disconnect(function (conn) {
+    $("#log").text("Call ended");
+    $("#call-window").attr("style", "display:none");
+    $("#calling").attr("style", "display:none");
+    $("#oncall").attr("style", "display:none");
+    $("#placingcall").attr("style", "display:none");
+  });
+
+  Twilio.Device.incoming(function (conn) {
+    $("#log").text("Incoming connection from " + conn.parameters.From);
+    // accept the incoming connection and start two-way audio
+    conn.accept();
+  });
+
+  var call = function() {
+    params =  {
+      "PhoneNumber" : $("#number").val(),
+      "CaseId"      : '#{@case.id}'
+    };
+
+    Twilio.Device.connect(params);
+    
+    $("#callnumber").html($("#number").val());
+  }
+
+
+  var callnumber = function(number) {
+    params = {
+      "PhoneNumber" : number,
+      "CaseId"      : '#{@case.id}'
+    };
+
+    Twilio.Device.connect(params);
+
+    $("#callingnumber").html(number);
+    $("#callnumber").html(number);
+
+    $("#call-window").attr("style", "");
+    $("#call_container_buttons").attr("style", "display:none");
+    $("#call_container_numbers_phone").attr("style", "display:none");
+    $("#call_container_numbers_computer").attr("style", "display:none");
+    $("#calling").attr("style", "display:block");
+  }
+
+
+  $("#call").click(function(){
+    $("#call-window").attr("style", "");
+    $("#call_container_buttons").attr("style", "display:block");
+    $("#call_container_numbers_phone").attr("style", "display:none");
+    $("#call_container_numbers_computer").attr("style", "display:none");
+    $("#oncall").attr("style", "display:none");
+    $("#calling").attr("style", "display:none");
+    $("#placingcall").attr("style", "display:none");
+    
+    $('#callform_computer .notice').html("");
+    $('#callform_phone .notice').html("");
+  });
+
+  $("#call_computer").click(function(){
+    numberInput('computer');
+  });
+
+  $("#call_phone").click(function(){
+    numberInput('phone');
+  });
+
+  $('#callform_computer').submit(function(event) {
+    var nr = $("#number").val();
+
+    if (nr) {
+      call();
+    } else {
+      $('#callform_computer .notice').html("Please enter the number");
+    }
+     
+     return false;
+  });
+  
+
+  $.fn.serializeObject = function() {
+    var values = {}
+    $("form input").each( function(){
+      values[this.name] = $(this).val();
+    });
+
+    return values;
+  }
+
+  $('#callform_phone').submit(function(event) {
+    var form = $(this).serializeObject();
+    var from = form["from"];
+    var to = form["to"];
+    event.preventDefault();
+    
+    if (from && to){
+      $.post($(this).attr('action'), $(this).serialize(), null, "script");  
+       return false;
+    } else {
+      $('#callform_phone .notice').html("Please fill in the fields");
+      return false;
+    }
+
+     
+  });  
+
+  var numberInput = function(type){
+    $("#call_container_buttons").attr("style", "display:none");
+
+    if (type == "phone"){
+      $("#call_container_numbers_phone").attr("style", "display:block");
+    } else {
+      $("#call_container_numbers_computer").attr("style", "display:block");
+    }
+  }
+
+
+  $(".phone_number").mouseenter(function(){    
+    $(this).addClass("call_button");
+    $(this).attr("style", "cursor:pointer");
+
+    $(this).click(function(){
+      $("#callform_phone #to").attr("value", $(this).html());
+      $("#call-window").attr("style", "");
+      $("#call_container_buttons").attr("style", "display:none");
+      $("#call_container_numbers_phone").attr("style", "display:block");
+      $("#call_container_numbers_computer").attr("style", "display:none");
+      $("#oncall").attr("style", "display:none");
+      $("#calling").attr("style", "display:none");
+      $("#placingcall").attr("style", "display:none");
+    });
+  });
+
+  $(".phone_number").mouseout(function(){    
+    $(this).removeClass("call_button");
+    $(this).attr("style", "cursor:inherit");
+    });
+
+
+  function hangup() {
+    Twilio.Device.disconnectAll();
+    $("#call-window").attr("style", "display:none");
+  }
+
+  function close_callwindow(){
+    $("#call-window").attr("style", "display:none");
+  }

@@ -1,9 +1,8 @@
 class ProfileController < ApplicationController
-  before_filter :load_user
-
   def show
     render "user_show"
   end 
+
 
   def have
       @user = current_user
@@ -13,9 +12,10 @@ class ProfileController < ApplicationController
       if current_user.owned_items.count > 0
           render "#{target_user}_have", :layout => "application"
       elsif
-          render "user_have_default", :layout => "application"
+          render "#{target_user}_have_default", :layout => "application"
       end
   end
+
 
   def want
     @user = current_user
@@ -25,9 +25,10 @@ class ProfileController < ApplicationController
     if current_user.wanted_items.count > 0
         render "#{target_user}_want", :layout => "application"
     elsif
-        render "user_want_default", :layout => "application"
+        render "#{target_user}_want_default", :layout => "application"
     end
   end
+
 
   # just show my cases, not others
   def cases
@@ -38,18 +39,18 @@ class ProfileController < ApplicationController
     @cases = current_user.cases.all
 
     if @cases.count > 0
-      render 'user_cases', :layout => "application"
+      render "#{target_user}_cases", :layout => "application"
     elsif
-      render 'user_cases_default', :layout => 'application'
+      render "#{target_user}_cases_default", :layout => "application"
     end
   end 
 
-protected
+  protected
   def load_user
     @user = User.find(params[:id])
   end 
 
   def target_user
-    (@user == current_user) ? 'user' : 'other'
+    (@user == current_user) ? "user" : "other"
   end
 end
