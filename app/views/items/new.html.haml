@@ -75,7 +75,7 @@
       });
     
       #{render 'tags/new_taggable.js.haml', :taggable => @item}
-      
+      #{render 'images/image_preview.js.haml'}
       // what?
 
       $("#search-by-title").click(function(){
@@ -133,8 +133,6 @@
 
         $("#item_review").attr('placeholder', 'So what do you think about ' + ui.item.name)
                          .focus();
-
-        userSelectedProductOrUrl("product");
 
         return true;
       };
