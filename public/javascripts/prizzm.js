@@ -13,6 +13,10 @@ var Prizzm = {
     return window.location.pathname == path;
   },
   
+  exists : function (selector) {
+    return $(selector).size() > 0;
+  },
+  
   param : function (matcher) {
     return window.location.search == matcher;
   },
@@ -23,7 +27,7 @@ var Prizzm = {
     
     init : function () {
       
-      if( Prizzm.at("/home") && Prizzm.param("?welcome") )
+      if( Prizzm.exists("#main .action-menu") && Prizzm.param("?welcome") )
         this.welcome(0);
         
     },

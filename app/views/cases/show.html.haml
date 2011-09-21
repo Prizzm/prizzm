@@ -80,8 +80,8 @@
       .clear
 
   - if @case.company.nil? == false
-    %article#company_contacts
-      %h4= "#{@case.company.name} Contacts"
+    %article#company_addresses
+      %h4= "Contact: #{@case.company.name}"
       - if @case.company.addresses.count > 0
         %dd
         - @case.company.addresses.each do |address|
@@ -93,7 +93,7 @@
       - else
         No company contacts
 
-      %a{ :class => 'button contact add' } Add contact
+      %a{ :class => 'button contact add' } Add
       .clear
 
   %article
@@ -177,7 +177,7 @@
         $('#new_address').live('ajax:complete', function(event, xhr){
           $(document).trigger('close.facebox');
 
-          $('article').eq(1).html(xhr.responseText);
+          $('#company_addresses > dl').replaceWith(xhr.responseText);
         });
 
         $('.call').click(function(){
