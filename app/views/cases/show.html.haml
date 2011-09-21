@@ -62,7 +62,7 @@
     = comment_form_for @case
 
 %aside.grid_6
-  %article
+  %article#ask_friends
     %h4 Ask your friends for help
     = form_tag case_post_to_facebook_path(@case), :remote => true, :class => "table", :id => "form-ask-friend" do
       = text_field_tag :message, "", :placeholder => "Message"
@@ -79,25 +79,22 @@
           .loading{:style => "display:none;float:left"}
       .clear
 
-  %article
-    - if @case.company.nil? == false
+  - if @case.company.nil? == false
+    %article#company_contacts
       %h4= "#{@case.company.name} Contacts"
       - if @case.company.addresses.count > 0
         %dd
         - @case.company.addresses.each do |address|
-          %dt
+          %dt{:style => 'margin-top: 10px;'}
             %strong= address.address_type.humanize
-          %dd
-            - if ['twitter', 'facebook'].include? address.address_type
-              %a{ :class => address.address_type, :href => address.address }= address.address
-            - elsif ['phone_number'].include? address.address_type
-              %span{ :class => 'phone', :data => {:number => address.address.gsub('-', '')} }= address.address
-            - else
-              %dd= address.address
+          %dd{:style => 'overflow: hidden'}
+            %span{:style => 'display: block', :title => address.address}= address.address
+            %a{:class => "button #{Company::ADD_CLASS[address.address_type]}", :style => 'display: block', :data => { :value => address.address}}= Company::ADD_TEXT[address.address_type]
       - else
         No company contacts
-    %a{ :class => 'button' } Add contact
-    .clear
+
+      %a{ :class => 'button contact add' } Add contact
+      .clear
 
   %article
     = link_to "Call", "#", :class => "twiliocall button", :id => "call"
@@ -167,15 +164,30 @@
   = include_javascripts :wysiwyg
   
 
-  :javascript    
-    $(document).ready(function() {
-      #{render 'tags/taggable.js.erb', :taggable => @case}
+  - if @case.company.nil? == false
+    :javascript
+      $(function(){
+        // Show facebox
+        $('.contact.add').live('click', function(){
+          $.get('#{company_addresses_path @case.company}/new', function(html){
+            $.facebox(html);
+          }, 'html');
+        });
 
+        $('#new_address').live('ajax:complete', function(event, xhr){
+          $(document).trigger('close.facebox');
 
+          $('article').eq(1).html(xhr.responseText);
+        });
 
-      $('.phone').click(function(){
-        callnumber($(this).data('number'));
+        $('.call').click(function(){
+          callnumber($(this).data('value'));
+        });
       });
+
+  :javascript    
+    $(function() {
+      #{render 'tags/taggable.js.erb', :taggable => @case}
 
       $('.note_body').editable(function(value, settings){
         var note_id = $(this).closest('li').attr('id');
@@ -207,7 +219,7 @@
         //var note_body = $(this).find('note-body');        
         var li_element = $(this).closest('li');
         var note_id = li_element.attr('id');
-      li_element.find('.note_body').trigger('click.editable');
+        li_element.find('.note_body').trigger('click.editable');
       });
 
       function editIssue() {

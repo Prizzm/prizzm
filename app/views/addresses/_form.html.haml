@@ -1,0 +1,7 @@
+= form_for([@company, @company.addresses.build], :remote => true) do |form|
+  = form.label :address_type, 'Contact Type', :style => 'font-weight: bold; display: block; margin: 10px 0 2px;'
+  = form.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
+
+  = form.label :address, 'Contact Value', :style => 'font-weight: bold; display: block; margin: 10px 0 2px;'
+  = form.text_field :address, :placeholder => 'Enter in an email address, postal address, phone number, twitter url, etc.'
+  = form.submit "Add"

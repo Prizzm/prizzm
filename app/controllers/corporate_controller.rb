@@ -5,5 +5,4 @@ class CorporateController < ApplicationController
   def home
     @company = current_company
   end
-
 end
