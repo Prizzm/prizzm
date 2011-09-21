@@ -90,7 +90,8 @@ section {
     height: 55px;
     font-size: 1.1em;
     padding: 8px;
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;    
     
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

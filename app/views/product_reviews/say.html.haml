@@ -35,7 +35,6 @@
     
       =form_for @review,:url=>{:controller=>"product_reviews",:action=>"save",:acceptstatus=>params[:acceptstatus],:encrypted_id=>params[:encrypted_id]},:html=>{:name=>"review_form"} do |f|
         #itemdetail.fl
-          /= image_tag "/images/bryna-brand.png"
           = image_tag @product_invitation.product.main_image, :class => "medthumb"
           %h2= @product_invitation.product.name
         .fr
