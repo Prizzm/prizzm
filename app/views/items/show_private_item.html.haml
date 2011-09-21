@@ -94,41 +94,39 @@
       // End loading animation.
 
       $('#edit-review-link').click(function(){
-        $.facebox(function(){
-          $.get('#{edit_item_path}', function(html){
-            $.facebox(html);
+        $.get('#{edit_item_path}', function(html){
+          $.facebox(html);
 
-            $('#facebox').find('textarea').wysiwyg({
-              controls: {
-                bold: { visible: true },
-                italic: { visible: true },
-                underline: { visible: true },
-                strikeThrough: { visible: true },
+          $('#facebox').find('textarea').wysiwyg({
+            controls: {
+              bold: { visible: true },
+              italic: { visible: true },
+              underline: { visible: true },
+              strikeThrough: { visible: true },
 
-                justifyLeft: { visible: true },
-                justifyCenter: { visible: true },
-                justifyRight: { visible: true },
-                justifyFull: { visible: true },
+              justifyLeft: { visible: true },
+              justifyCenter: { visible: true },
+              justifyRight: { visible: true },
+              justifyFull: { visible: true },
 
-                undo: { visible: true },
-                redo: { visible: true },
+              undo: { visible: true },
+              redo: { visible: true },
 
-                insertOrderedList: { visible: true },
-                insertUnorderedList: { visible: true },
+              insertOrderedList: { visible: true },
+              insertUnorderedList: { visible: true },
 
-                createLink: { visible: true },
-                insertImage: { visible: true },
+              createLink: { visible: true },
+              insertImage: { visible: true },
 
-                paragraph: { visible: true },
-              },
-              rmUnusedControls: true
-            });
+              paragraph: { visible: true },
+            },
+            rmUnusedControls: true
+          });
 
-            $('#facebox').find('.cancel-edit').click(function(){
-              $(document).trigger('close.facebox');
-            });
-          }, 'html');
-        });
+          $('#facebox').find('.cancel-edit').click(function(){
+            $(document).trigger('close.facebox');
+          });
+        }, 'html');
       });
 
 

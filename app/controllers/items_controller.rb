@@ -9,7 +9,8 @@ class ItemsController < InheritedResources::Base
   end
 
   def create
-    params[:item][:tag_list] = params[:as_values_tag_list] + params[:item_possession]
+    params[:item][:tag_list] = params[:as_values_tag_list]
+
     if params[:search]
       @item = Item.create({ :name => params[:search]}.merge(:possession_status => params[:item_possession].downcase))
     else
@@ -46,7 +47,10 @@ class ItemsController < InheritedResources::Base
   end
 
   def update 
+    params[:item][:tag_list] = params[:as_values_tag_list]
+
     @item = current_user.items.find(params[:id])
+
     if @item.update_attributes(params[:item])
       respond_to do |format|
         format.html {redirect_to @item}
