@@ -87,7 +87,7 @@ section {
   
   
   section textarea {
-    height: 55px;
+    height: 88px;
     font-size: 1.1em;
     padding: 8px;
     max-width: 100%;
@@ -184,18 +184,20 @@ input[type=text], input[type=password] {
   }
 
 #infolink{
-  margin-top: 8px;
-  color: #999;
-  display: block;
-  font-size: 13px;
   padding: 0;
   z-index: 0;
   position: relative;
 }
 
+.c-info {
+  font-size: 13px !important;
+  padding: 0 !important;
+}
+
 ul.finalstep {
   width: 100%;
   margin-left: 0 !important;
+  margin-bottom: 10px;
 }
 
 ul.finalstep a{
