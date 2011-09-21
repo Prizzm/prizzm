@@ -23,7 +23,7 @@ namespace :import do
         company.url  = result.website
         company.addresses = []
         build_address_for company, :twitter, result.twitter1
-        build_address_for company, :twitter, result.twitter2Com
+        build_address_for company, :twitter, result.twitter2
         build_address_for company, :twitter, result.twitter3
         build_address_for company, :facebook, result.facebook1
         build_address_for company, :facebook, result.facebook2
