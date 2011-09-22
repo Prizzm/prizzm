@@ -16,11 +16,12 @@
 
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
-        = label_tag 'product_name'
-        = text_field_tag 'product_name', nil, :placeholder => "With what product?", :value => (@case.product.name if @case.product.nil? == false)
 
         = label_tag 'company_name'
         = text_field_tag 'company_name', nil, :placeholder => "By what company?", :value => (@case.company.name if @case.company.nil? == false)
+
+        = label_tag 'product_name'
+        = text_field_tag 'product_name', nil, :placeholder => "With what product?", :value => (@case.product.name if @case.product.nil? == false)
 
         = f.label :description
         = f.text_area :description, :cols => 59
