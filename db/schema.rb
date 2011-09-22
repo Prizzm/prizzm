@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920144911) do
+ActiveRecord::Schema.define(:version => 20110922004901) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20110920144911) do
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110920144911) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "description"
+    t.boolean  "claimed",                             :default => true, :null => false
   end
 
   add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true
@@ -176,10 +177,7 @@ ActiveRecord::Schema.define(:version => 20110920144911) do
     t.string   "email"
     t.date     "purchase_date"
     t.string   "amount"
-    t.text     "content"
-    t.string   "encrypted_id"
     t.string   "sent"
-    t.datetime "sent_on"
     t.string   "accepted"
     t.integer  "mail_template_id"
   end

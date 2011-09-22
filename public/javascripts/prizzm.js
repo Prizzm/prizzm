@@ -4,6 +4,7 @@ var Prizzm = {
   
   /* Initialize */
   init : function () {
+    Prizzm.globals();
     Prizzm.wizards.init();
   },
   
@@ -19,6 +20,22 @@ var Prizzm = {
   
   param : function (matcher) {
     return window.location.search == matcher;
+  },
+  
+  /* Globals */
+  
+  globals : function () {
+    
+    // Enable tips for title tags.
+    $('a[title]').qtip({
+      position : {
+        at : "top center",
+        my : "bottom center"
+      },
+      show : { delay : 400 },
+      style : 'ui-tooltip-tipsy'
+    });
+    
   },
   
   /* Wizards */
