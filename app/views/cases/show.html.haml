@@ -82,16 +82,16 @@
   - if @case.company.nil? == false
     %article#company_addresses
       %h4= "Contact: #{@case.company.name}"
-      - if @case.company.addresses.count > 0
-        %dd
-        - @case.company.addresses.each do |address|
-          %dt{:style => 'margin-top: 10px;'}
-            %strong= address.address_type.humanize
-          %dd{:style => 'overflow: hidden'}
-            %span{:style => 'display: block', :title => address.address}= address.address
-            %a{:class => "button #{Company::ADD_CLASS[address.address_type]}", :style => 'display: block', :data => { :value => address.address}}= Company::ADD_TEXT[address.address_type]
-      - else
-        No company contacts
+      %dl
+        - if @case.company.addresses.count > 0
+          - @case.company.addresses.each do |address|
+            %dt{:style => 'margin-top: 10px;'}
+              %strong= address.address_type.humanize
+            %dd{:style => 'overflow: hidden'}
+              %span{:style => 'display: block', :title => address.address}= address.address
+              %a{:class => "button #{Company::ADD_CLASS[address.address_type]}", :style => 'display: block', :data => { :value => address.address}}= Company::ADD_TEXT[address.address_type]
+        - else
+          %dd No company contacts
 
       %a{ :class => 'button contact add' } Add
       .clear
