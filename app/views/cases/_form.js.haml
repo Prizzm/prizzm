@@ -31,8 +31,11 @@
       }
   });
 
-  $('#company_name, #product_name').change(function(event){
-      $('#company_name').show();
-      $('#case_product_id').val('');
-      $('#case_company_id').val('');
+  $('#product_name').change(function(){
+    $('#case_product_id').val('');
+    $('#company_name').show();
+  });
+
+  $('#company_name').change(function(){
+    $('#case_company_id').val('');
   });
