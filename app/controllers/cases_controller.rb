@@ -30,32 +30,55 @@ class CasesController < InheritedResources::Base
   def create 
     params[:case][:tag_list] = params[:as_values_tag_list]
 
+
     @case = Case.new(params[:case])
     @case.user = current_user
 
     if params[:case][:company_id].blank? == false
-      @case.company = Company.find(params[:case][:company_id])
+      @company = Company.find(params[:case][:company_id])
     elsif params[:company_name].blank? == false
-      # To refactor in the future to use separate tables companies and companies_users
-      @case.company = Company.new({
-        :name     => params[:company_name],
-        :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
-        :password => (0...8).map{65.+(rand(25)).chr}.join,
-        :claimed  => false
-      })
+      @company = Company.find(:first, {
+        :conditions => {:name => params[:company_name]}
+      });
+
+      if @company.nil? == true
+        @company = Company.new({
+          :name     => params[:company_name],
+          :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
+          :password => (0...8).map{65.+(rand(25)).chr}.join,
+          :claimed  => false
+        })
+      end
+
+      @case.company = @company;
     end
+
 
     if params[:case][:product_id].blank? == false
-      @case.product = Product.find(params[:case][:product_id]);
-      @case.product.company = @case.company
-    elsif
-      @case.product = Product.new({
-        :name => params[:product_name]
+      @product = Product.find(params[:case][:product_id]);
+      @product.company = @company
+      @product.save
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :conditions => {
+          :name       => params[:product_name],
+          :company_id => params[:company_id],
+        }
       });
-      @case.product.company = @case.company
+
+      if @product.nil? == true
+        @product = Product.new({
+          :name => params[:product_name]
+        });
+      end
+
+      @product.company = @company
+      @product.save
+
+      @case.product    = @product
     end
 
-    
+
     if @case.save
       redirect_to case_path(@case)+"#edit_issue" 
     end
@@ -66,24 +89,45 @@ class CasesController < InheritedResources::Base
     @case = current_user.cases.find(params[:id])
 
     if params[:case][:company_id].blank? == false
-      @case.company = Company.find(params[:case][:company_id])
+      @company = Company.find(params[:case][:company_id])
     elsif params[:company_name].blank? == false
-      # To refactor in the future to use separate tables companies and companies_users
-      @case.company = Company.new({
-        :name     => params[:company_name],
-        :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
-        :password => (0...8).map{65.+(rand(25)).chr}.join,
-        :claimed  => false
-      })
+      @company = Company.find(:first, {
+        :conditions => {:name => params[:company_name]}
+      });
+
+      if @company.nil? == true
+        @company = Company.new({
+          :name     => params[:company_name],
+          :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
+          :password => (0...8).map{65.+(rand(25)).chr}.join,
+          :claimed  => false
+        })
+      end
+
+      @case.company = @company;
     end
 
+
     if params[:case][:product_id].blank? == false
-      @case.product = Product.find(params[:case][:product_id])
-    elsif
-      @case.product = Product.new({
-        :name => params[:product_name]
-      })
-      @case.product.company = @case.company
+      @product = Product.find(params[:case][:product_id]);
+      @product.company = @company
+      @product.save
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :name       => params[:product_name],
+        :company_id => params[:company_id],
+      });
+
+      if @product.nil? == true
+        @product = Product.new({
+          :name => params[:product_name]
+        });
+      end
+
+      @product.company = @company
+      @product.save
+
+      @case.product    = @product
     end
 
 
