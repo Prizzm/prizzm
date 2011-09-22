@@ -178,3 +178,8 @@
 #facebox #share-rev .rev {
   padding-top: 10px;
 }
+
+#facebox #other-opt {
+  margin-top: 13px;
+display: block;
+}
