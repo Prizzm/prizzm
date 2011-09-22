@@ -20,8 +20,6 @@
       <%= f.input :password, :as => :password, :hint => "leave blank if you don't want to change it" -%>
       <div id="password-error" class="error-message"></div>
       <%= f.input :password_confirmation, :as => :password %>
-      <%= f.input :current_password, :as => :password, :hint => "we need your current password to confirm your changes" -%>
-      <div id="current-password-error" class="error-message"></div>
       <%= f.buttons %>
     <%- end -%>
 

@@ -167,19 +167,6 @@ var Prizzm = {
           // Step 6
           {
             content : concat(
-              "<p>You're just about there!</p>",
-              "<p>Go ahead &amp; <mark>enter your password</mark>, so we know it's you!</p>",
-              next("And then..")
-            ),
-            before : function (api, current, setup) {
-             current.target = $('#user_current_password');
-             setup.call();
-            }
-          },
-          
-          // Step 7
-          {
-            content : concat(
               "<p><mark>You're all done!</mark></p>",
               "<p>Hopefully you're a little more familiar with <mark>Prizzm</mark> now!</p>",
               "<p>Simply <mark>click this button</mark> to save your changes &amp; enjoy your stay!</p>"
