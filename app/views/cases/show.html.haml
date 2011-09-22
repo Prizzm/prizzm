@@ -82,7 +82,7 @@
 
   - if @case.company.nil? == false
     %article#company_addresses
-      %h4= "Contact: #{@case.company.name}"
+      %h4= "Company: #{@case.company.name}"
       = formatted_addresses_for(@case.company)
 
       %a{ :class => 'button contact add' } Add
