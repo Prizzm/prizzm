@@ -53,17 +53,4 @@ module CasesHelper
     end
   end
   
-  
-  # "street_address" => "street",
-  # "phone_number"   => "phone",
-  # "website"        => "world_link",
-  # "twitter"        => "tt",
-  # "facebook"       => "fb"
-  
-  # %dt{:style => 'margin-top: 10px;'}
-  #   %strong= address.address_type.humanize
-  # %dd{:style => 'overflow: hidden'}
-  #   %span{:style => 'display: block', :title => address.address}= address.address
-  #   %a{:class => "button #{Company::ADD_CLASS[address.address_type]}", :style => 'display: block', :data => { :value => address.address}}= Company::ADD_TEXT[address.address_type]
-  
 end
