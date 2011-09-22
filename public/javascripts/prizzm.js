@@ -37,6 +37,7 @@ var Prizzm = {
       // Helpers
       var concat = function () {
         var html = $('<div class="step">');
+            html.append(close("x"));
         $.each(arguments, function (index, value) {
           html.append(value);
         });
@@ -68,7 +69,6 @@ var Prizzm = {
               "<p>Looks like you're new here, that's great!</p>",
               "<p>If you'd like, I can help you get familiarized with <mark>Prizzm..</mark></p>",
               "<p>What do ya say?</p>",
-              close('No thanks..'),
               next('Lets go!')
             )
           },

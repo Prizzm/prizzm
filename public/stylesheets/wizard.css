@@ -49,12 +49,41 @@
   float: right;
 }
 
-#ui-tooltip-welcome-steps .ui-tooltip-content a.prev,
-#ui-tooltip-welcome-steps .ui-tooltip-content a.manual-close
+#ui-tooltip-welcome-steps .ui-tooltip-content a.prev
 {
   float: left;
   font-size: 1em;
   line-height: 1.5em;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a.manual-close
+{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 1em;
+  
+  color: #fff;
+  background: #333;
+  text-decoration: none;
+  border: 1px solid #000;
+  
+  -webkit-border-radius: 3px;
+  -khtml-border-radius:  3px;	
+  -moz-border-radius:    3px;
+  border-radius:         3px;
+}
+
+#ui-tooltip-welcome-steps .ui-tooltip-content a.manual-close:hover
+{
+  color: #fff;
+  background: #444;
 }
 
 #ui-tooltip-welcome-steps .ui-tooltip-content a:hover { color: #a3eeff; }
