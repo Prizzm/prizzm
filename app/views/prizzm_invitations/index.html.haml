@@ -5,9 +5,12 @@
     %th
     %th
     %th
+    %th
 
   - @prizzm_invitations.each do |prizzm_invitation|
     %tr
+      %td= prizzm_invitation.name
+      %td
       %td= link_to 'Show', prizzm_invitation
       %td= link_to 'Edit', edit_prizzm_invitation_path(prizzm_invitation)
       %td= link_to 'Destroy', prizzm_invitation, :confirm => 'Are you sure?', :method => :delete

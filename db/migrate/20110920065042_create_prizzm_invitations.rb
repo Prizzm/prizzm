@@ -5,6 +5,7 @@ class CreatePrizzmInvitations < ActiveRecord::Migration
       t.references :product
       t.text       :landing_page
       t.text       :email_content
+      t.string     :name
       t.string     :status
       t.string     :metrics
       t.timestamps

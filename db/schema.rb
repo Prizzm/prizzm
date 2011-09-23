@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.integer  "product_id"
     t.text     "landing_page"
     t.text     "email_content"
+    t.string   "name"
     t.string   "status"
     t.string   "metrics"
     t.datetime "created_at"
