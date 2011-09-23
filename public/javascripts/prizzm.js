@@ -70,6 +70,11 @@ var Prizzm = {
         return html;
       }
       
+      var cancel = function (message) {
+        return $('<a href="javascript:void(0)" class="cancel">').text(message)
+          .click(function () { $('#ui-tooltip-welcome-steps').triggerHandler('close') });
+      }
+      
       var close = function (message) {
         return $('<a href="javascript:void(0)" class="manual-close">').text(message)
           .click(function () { $('#ui-tooltip-welcome-steps').triggerHandler('close') });
@@ -96,7 +101,7 @@ var Prizzm = {
               "<p>Looks like you're new here, that's great!</p>",
               "<p>If you'd like, I can help you get familiarized with <mark>Prizzm..</mark></p>",
               "<p>What do ya say?</p>",
-              footer(next('Lets go!'))
+              footer(cancel("No thanks."), next('Lets go!'))
             )
           },
         
