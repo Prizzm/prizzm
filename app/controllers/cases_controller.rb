@@ -6,6 +6,7 @@ class CasesController < InheritedResources::Base
   end
 
   def show
+    puts "CASES SHOW"
     @case = Case.find(params[:id])
 
     @account_sid = ACCOUNT_SID
@@ -17,7 +18,11 @@ class CasesController < InheritedResources::Base
     @cap.allow_client_outgoing(@appsid)
     @cap_name = @cap.generate()
     
-    render :layout => 'layouts/app_alt'
+    respond_to do |format|
+      format.js
+      format.html { render :layout => 'layouts/app_alt' }
+    end
+    
   end 
 
 
@@ -28,8 +33,8 @@ class CasesController < InheritedResources::Base
 
 
   def create 
+    puts "CASES CREATE"
     params[:case][:tag_list] = params[:as_values_tag_list]
-
 
     @case = Case.new(params[:case])
     @case.user = current_user
@@ -86,6 +91,8 @@ class CasesController < InheritedResources::Base
 
 
   def update 
+    puts "CASES CREATE"
+    
     @case = current_user.cases.find(params[:id])
 
     if params[:case][:company_id].blank? == false

@@ -187,7 +187,8 @@
        var thingChannel = pusher.subscribe('38');
        thingChannel.bind('thing-create', function(thing) {
          alert('call pushed');
-       $.get("#{case_path}", "script" , function(data) {});
+       
+       $.get('#{case_path}', 'script', function(data) {});
 
        });
        

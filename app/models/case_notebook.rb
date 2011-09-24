@@ -18,6 +18,11 @@ class Note
 
   field :body, type: String
   field :solution, type: Boolean
+  #calls
+   field :call, type: Boolean, :default => false
+   field :duration, type: String
+   field :to, type: String, :default => ""
+   field :from, type: String, :default => ""
 
   def case
     case_notebook.case
