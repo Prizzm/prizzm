@@ -184,7 +184,7 @@
     $(function() {
       
        var pusher = new Pusher('526d54cc07120574aedb'); 
-       var thingChannel = pusher.subscribe('#{@case.id}');
+       var thingChannel = pusher.subscribe('38');
        thingChannel.bind('thing-create', function(thing) {
 
        $.get("#{case_path}", "script" , function(data) {});
