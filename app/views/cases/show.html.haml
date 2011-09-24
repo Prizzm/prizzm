@@ -3,6 +3,7 @@
   = include_stylesheets :case_detail
   = stylesheet_link_tag 'twilio.css'
   = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
+  = javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js"
 
   %span#twilio_name(style="display:none")= @cap_name.to_s
 
@@ -149,36 +150,48 @@
     %div.close_call{:onclick => "close_callwindow();", :title => "Close"}
       %img{:alt => "Close", :src => "/images/close.png", :style => "z-index:2"}/       
 
-      
+
 
 
 - content_for :javascripts do
   = include_javascripts :wysiwyg
-  
 
-  - if @case.company.nil? == false
-    :javascript
-      $(function(){
-        // Show facebox
-        $('.contact.add').live('click', function(){
-          $.get('#{company_addresses_path @case.company}/new', function(html){
-            $.facebox(html);
-          }, 'html');
-        });
+  -if @case.company.nil? == false
+    :javascript  
+       $(function(){
+         // Show facebox
+         $('.contact.add').live('click', function(){
+           $.get('#{company_addresses_path @case.company}/new', function(html){
+             $.facebox(html);
+           }, 'html');
+         });
 
-        $('#new_address').live('ajax:complete', function(event, xhr){
-          $(document).trigger('close.facebox');
+         $('#new_address').live('ajax:complete', function(event, xhr){
+           $(document).trigger('close.facebox');
 
-          $('#company_addresses > dl').replaceWith(xhr.responseText);
-        });
+           $('#company_addresses > dl').replaceWith(xhr.responseText);
+         });
 
-        $('.call').click(function(){
-          callnumber($(this).data('value'));
-        });
-      });
+         $('.call').click(function(){
+           callnumber($(this).data('value'));
+         });
+   
+       });
 
-  :javascript    
+
+  :javascript   
+    
     $(function() {
+      
+       var pusher = new Pusher('526d54cc07120574aedb'); 
+       var thingChannel = pusher.subscribe('#{@case.id}');
+       thingChannel.bind('thing-create', function(thing) {
+
+       $.get("#{case_path}", "script" , function(data) {});
+
+       });
+       
+      
       #{render 'tags/taggable.js.erb', :taggable => @case}
 
       $('.note_body').editable(function(value, settings){
