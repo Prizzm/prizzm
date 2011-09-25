@@ -18,6 +18,7 @@ class Note
 
   field :body, type: String
   field :solution, type: Boolean
+  
   #calls
    field :call, type: Boolean, :default => false
    field :duration, type: String
