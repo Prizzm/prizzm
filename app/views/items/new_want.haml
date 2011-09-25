@@ -1,6 +1,5 @@
-= include_stylesheets :item_new
-
-= form_for [current_user, @item], :html => {:class => 'action addwant'} do |f|
+= form_for [current_user, @item], :html => {:class => 'action addwant addItem'} do |f|
+  %label{:for => "item_name"} +
   = f.text_field :name, :placeholder => "Click to add something you want"
 
   #hiddenform
@@ -34,7 +33,6 @@
             #img_selector
         .urldesc.fl= f.text_area :description, :style => "display:none;"#
         .clear
-        .close
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr

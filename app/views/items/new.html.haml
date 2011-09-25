@@ -1,12 +1,12 @@
-= include_stylesheets :item_new
-
-= form_for [current_user, @item], :html => {:class => 'action addhave'} do |f|
+= form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
+  %label{:for => "item_name"} +
   = f.text_field :name, :placeholder => "Click to add something you have"
 
   #hiddenform
     .close
     .urlsect
       #url_and_dropdown_container{:style => "position:relative;"}
+      %label{:for => "item_url"} URL
       = f.text_field :url, :placeholder => "Add a link"
       
       %ul.urlcont
@@ -35,7 +35,6 @@
             #img_selector
         .urldesc.fl= f.text_area :description, :style => "display:none;"#
         .clear
-        .close
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr
