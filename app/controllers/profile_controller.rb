@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   def show
-    @user = current_user
+    @user = load_user
 
     render "user_show"
   end 

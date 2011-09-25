@@ -4,6 +4,7 @@ var Prizzm = {
   
   /* Initialize */
   init : function () {
+    Prizzm.globals();
     Prizzm.wizards.init();
   },
   
@@ -19,6 +20,22 @@ var Prizzm = {
   
   param : function (matcher) {
     return window.location.search == matcher;
+  },
+  
+  /* Globals */
+  
+  globals : function () {
+    
+    // Enable tips for title tags.
+    $('a[title]').qtip({
+      position : {
+        at : "top center",
+        my : "bottom center"
+      },
+      show : { delay : 400 },
+      style : 'ui-tooltip-tipsy'
+    });
+    
   },
   
   /* Wizards */
@@ -37,10 +54,25 @@ var Prizzm = {
       // Helpers
       var concat = function () {
         var html = $('<div class="step">');
+            html.append(close("x"));
         $.each(arguments, function (index, value) {
           html.append(value);
         });
         return html;
+      }
+      
+      // Footer
+      var footer = function () {
+        var html = $('<div class="footer" />');
+        $.each(arguments, function (index, value) {
+          html.append(value);
+        });
+        return html;
+      }
+      
+      var cancel = function (message) {
+        return $('<a href="javascript:void(0)" class="cancel">').text(message)
+          .click(function () { $('#ui-tooltip-welcome-steps').triggerHandler('close') });
       }
       
       var close = function (message) {
@@ -49,6 +81,7 @@ var Prizzm = {
       }
       
       var go = function (event, message) {
+        $('<div class="footer" />')
         return $('<a href="javascript:void(0)" class="' + event + '">').text(message)
           .click(function () { $('#ui-tooltip-welcome-steps').triggerHandler(event); });
       }
@@ -68,8 +101,7 @@ var Prizzm = {
               "<p>Looks like you're new here, that's great!</p>",
               "<p>If you'd like, I can help you get familiarized with <mark>Prizzm..</mark></p>",
               "<p>What do ya say?</p>",
-              close('No thanks..'),
-              next('Lets go!')
+              footer(cancel("No thanks."), next('Lets go!'))
             )
           },
         
@@ -82,7 +114,7 @@ var Prizzm = {
               "<p><mark>Prizzm</mark> is a new way for you to interact with the products you buy &amp; the companies who make them!</p>",
               "<p>We give you three simple ways to get what's on your mind, out into the world!</p>",
               "<p>Share things you already <mark>have</mark>, things you <mark>want</mark>, &amp; the issues (<mark>cases</mark>) you have with them.</p>",
-              next("Great, what's next?")
+              footer(next("Great, what's next?"))
             )
           },
           
@@ -91,7 +123,7 @@ var Prizzm = {
             content : concat(
               "<p>Let's start by getting to know you a little better!</p>",
               "<p>What's your <mark>first &amp; last name?</mark></p>",
-              next("Right!")
+              footer(next("Right!"))
             ),
             
             at : 'bottom center',
@@ -124,7 +156,7 @@ var Prizzm = {
               "<p><mark>Prizzm</mark> just happens to have some really cool calling features built right in!</p>",
               "<p>Let's say you're having trouble with your cell service &amp; you need to contact customer service..</p>",
               "<p><mark>Prizzm</mark> will dail the best number for you, connect you &amp; record the call to ensure you're treated fairly!</p>",
-              next("Sweet! What's next?")
+              footer(next("Sweet! What's next?"))
             ),
             before : function (api, current, setup) {
               current.target =  $('#user_phone_number');
@@ -139,7 +171,7 @@ var Prizzm = {
             content : concat(
               "<p>Next, <mark>select a photo to upload</mark> of yourself if you'd like!</p>",
               "<p>This will make it easier for your friends to recognize you.</p>",
-              next("Alright!")
+              footer(next("Alright!"))
             ),
             before : function (api, current, setup) {
               current.target = $('#user_photo');
@@ -150,22 +182,10 @@ var Prizzm = {
           // Step 6
           {
             content : concat(
-              "<p>You're just about there!</p>",
-              "<p>Go ahead &amp; <mark>enter your password</mark>, so we know it's you!</p>",
-              next("And then..")
-            ),
-            before : function (api, current, setup) {
-             current.target = $('#user_current_password');
-             setup.call();
-            }
-          },
-          
-          // Step 7
-          {
-            content : concat(
-              "<p><mark>You're all done!</mark></p>",
+              "<h1>You're all done!</mark></h1>",
               "<p>Hopefully you're a little more familiar with <mark>Prizzm</mark> now!</p>",
-              "<p>Simply <mark>click this button</mark> to save your changes &amp; enjoy your stay!</p>"
+              "<p>Simply <mark>click this button</mark> to save your changes &amp; enjoy your stay!</p>",
+              footer()
             ),
             before : function (api, current, setup) {
              current.target = $('li.commit');

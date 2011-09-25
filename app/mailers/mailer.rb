@@ -1,6 +1,6 @@
 class Mailer < ActionMailer::Base
   default :from => "notification@prizzm.com"
-  default_url_options[:host] = "development.prizzm.com"
+  default_url_options[:host] = ENV['URL']
 
   def self.notify_comment comment
     recipient_list = recipients_for comment

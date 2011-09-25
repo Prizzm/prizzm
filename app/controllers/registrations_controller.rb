@@ -1,7 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
   layout "layouts/landing", :only => [:new]
 
-  def update    
+  def update
+    puts "updating: #{@user} - #{@user.new_record?}"
+    
     @user = resource
 
     if @user.update_attributes(params[:user])
@@ -9,6 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
     else
       @errors = resource.errors
     end
+    
+    puts "errors: #{@errors.inspect}"
 
     respond_to do |format|
       format.js { }

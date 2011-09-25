@@ -2,8 +2,8 @@
   %label{:for => "case_title"} +
   = f.text_field 'title', :placeholder => "What's your issue?"
   #hiddenform
-    = text_field_tag 'product_name', nil, :placeholder => "With what product?"
     = text_field_tag 'company_name', nil, :placeholder => "By what company?"
+    = text_field_tag 'product_name', nil, :placeholder => "With what product?"
     = f.hidden_field :product_id
     = f.hidden_field :company_id
     = f.text_field :tag_list, :placeholder => "+ Add tags"

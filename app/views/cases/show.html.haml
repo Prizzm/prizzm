@@ -3,6 +3,7 @@
   = include_stylesheets :case_detail
   = stylesheet_link_tag 'twilio.css'
   = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
+  = javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js"
 
   %span#twilio_name(style="display:none")= @cap_name.to_s
 
@@ -16,11 +17,12 @@
 
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
-        = label_tag 'product_name'
-        = text_field_tag 'product_name', nil, :placeholder => "With what product?", :value => (@case.product.name if @case.product.nil? == false)
 
         = label_tag 'company_name'
         = text_field_tag 'company_name', nil, :placeholder => "By what company?", :value => (@case.company.name if @case.company.nil? == false)
+
+        = label_tag 'product_name'
+        = text_field_tag 'product_name', nil, :placeholder => "With what product?", :value => (@case.product.name if @case.product.nil? == false)
 
         = f.label :description
         = f.text_area :description, :cols => 59
@@ -81,17 +83,8 @@
 
   - if @case.company.nil? == false
     %article#company_addresses
-      %h4= "Contact: #{@case.company.name}"
-      %dl
-        - if @case.company.addresses.count > 0
-          - @case.company.addresses.each do |address|
-            %dt{:style => 'margin-top: 10px;'}
-              %strong= address.address_type.humanize
-            %dd{:style => 'overflow: hidden'}
-              %span{:style => 'display: block', :title => address.address}= address.address
-              %a{:class => "button #{Company::ADD_CLASS[address.address_type]}", :style => 'display: block', :data => { :value => address.address}}= Company::ADD_TEXT[address.address_type]
-        - else
-          %dd No company contacts
+      %h4= "Company: #{@case.company.name}"
+      = formatted_addresses_for(@case.company)
 
       %a{ :class => 'button contact add' } Add
       .clear
@@ -157,36 +150,49 @@
     %div.close_call{:onclick => "close_callwindow();", :title => "Close"}
       %img{:alt => "Close", :src => "/images/close.png", :style => "z-index:2"}/       
 
-      
+
 
 
 - content_for :javascripts do
   = include_javascripts :wysiwyg
-  
 
-  - if @case.company.nil? == false
-    :javascript
-      $(function(){
-        // Show facebox
-        $('.contact.add').live('click', function(){
-          $.get('#{company_addresses_path @case.company}/new', function(html){
-            $.facebox(html);
-          }, 'html');
-        });
+  -if @case.company.nil? == false
+    :javascript  
+       $(function(){
+         // Show facebox
+         $('.contact.add').live('click', function(){
+           $.get('#{company_addresses_path @case.company}/new', function(html){
+             $.facebox(html);
+           }, 'html');
+         });
 
-        $('#new_address').live('ajax:complete', function(event, xhr){
-          $(document).trigger('close.facebox');
+         $('#new_address').live('ajax:complete', function(event, xhr){
+           $(document).trigger('close.facebox');
 
-          $('#company_addresses > dl').replaceWith(xhr.responseText);
-        });
+           $('#company_addresses > dl').replaceWith(xhr.responseText);
+         });
 
-        $('.call').click(function(){
-          callnumber($(this).data('value'));
-        });
-      });
+         $('.call').click(function(){
+           callnumber($(this).data('value'));
+         });
+   
+       });
 
-  :javascript    
+
+  :javascript   
+    
     $(function() {
+      
+       var pusher = new Pusher('526d54cc07120574aedb'); 
+       var thingChannel = pusher.subscribe('4');
+       thingChannel.bind('thing-create', function(thing) {
+         alert('call pushed');
+       
+       $.get('#{case_path}', 'script', function(data) {});
+
+       });
+       
+      
       #{render 'tags/taggable.js.erb', :taggable => @case}
 
       $('.note_body').editable(function(value, settings){
