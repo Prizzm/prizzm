@@ -184,7 +184,7 @@
     $(function() {
       
        var pusher = new Pusher('526d54cc07120574aedb'); 
-       var thingChannel = pusher.subscribe('38');
+       var thingChannel = pusher.subscribe('8');
        thingChannel.bind('thing-create', function(thing) {
          alert('call pushed');
        
