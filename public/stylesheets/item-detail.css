@@ -1,14 +1,17 @@
 section#review{
-  margin-bottom: 10px;
-  padding: 10px;
+  margin: 53px 0 10px;
   background: white;
-  border: 1px solid #CDCDCD;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.fl.img {
+  margin-right: 10px;
+}
+
+.cont {
+  width: 67%;
 }
 
 aside h4, .title {
@@ -44,17 +47,17 @@ img.userthumb {
   width: 50px;
 }
 
-section#review, section#pub-review{
-	padding: 8px 8px 8px;
+section#review h2 {
+  margin: 0 0 10px;
+}
+
+#rendered-review, section#pub-review{
 	font-size: 14px;
 	border: 1px solid #f7f7f7;
 	font: arial,sans-serif;
 }
-  section#pub-review {
-    padding: 10px !important;
-  }
   
-  section#review h1, section#review h2, section#review h3 {
+  #rendered-review h1, #rendered-review h2, #rendered-review h3 {
   font-weight: normal;
   margin: 15px 0 5px;
   line-height: 140%;
@@ -69,34 +72,33 @@ section#review, section#pub-review{
       text-decoration: none;
     }
   
-  section#review h1 {
+  #rendered-review h1 {
   font-size: 1.7em;
   }
   
-  section#review h2 {
+  #rendered-review h2 {
   font-size: 1.6em;
   }
   
-  section#review h3 {
+  #rendered-review h3 {
   font-size: 1.3em;
   }
   
-  section#review p {
+  #rendered-review p {
   margin-bottom: 5px;
   }
   
-  section#review li {
+  #rendered-review li {
   margin-bottom: 5px;
   }
   
-  section#review .edit-cntrl {
+  #rendered-review .edit-cntrl {
   top: 10px;
   right: 10px;
   }
 
   #rendered-review {
     margin-bottom: 10px;
-    width: 422px;
   }
   
   #review-editor {
@@ -107,6 +109,20 @@ section#review, section#pub-review{
   #options {
     margin-bottom: 10px;
   }
+  
+  .status {
+    margin-left: 10px;
+    padding: 6px;
+  }
+  
+    .status.public {
+      background: #8ebf64;
+    }
+
+#footerbit {
+  margin-bottom: 10px;
+  color: #ccc;
+}
 
 .new_comment .share-input textarea {
   padding: 5px;
@@ -158,17 +174,14 @@ ul#comments .cell {
 
 .recommended {
   color: #619866;
-  background: #a7e8ad;
 }
 
 .neutral {
     color: #7c7c7c;
-  background: #bdbdbd;
 }
 
 .hate {
     color: #a25959;
-    background: #d88888;
 }
 
 #gallery {

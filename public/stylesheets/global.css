@@ -470,6 +470,9 @@ a.button, input[type=submit].button {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
     background: linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
     border: solid 1px #dcdcdc;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 a.button:hover, input[type=submit].button:hover {
     color: #333;
@@ -480,9 +483,6 @@ a.button:hover, input[type=submit].button:hover {
 a.button:active, input[type=submit].active {
     color: #000;
     border-color: #444;
-}
-aside a.button {
-  padding: 3px 5px;
 }
 a.call {
   background: url(../images/sprite.png)  10px -203px no-repeat #f3f3f3;
@@ -497,16 +497,7 @@ a.call {
   padding-left: 25px;
   height: 16px;
 }
-.fb{
-  background: url(../images/sprite.png)  0 -316px no-repeat;
-  padding-left: 25px;
-  height: 16px;
-}
-.tt{
-  background: url(../images/sprite.png)  0 -352px no-repeat;
-  padding-left: 25px;
-  height: 16px;
-}
+
 .prizzm {
   background: none;
 }
@@ -547,6 +538,10 @@ a.alt {
 
 .yui3-aclist {
   z-index: 9999 !important;
+}
+
+.status {
+  display: inline-block;
 }
 
 .status.public {
@@ -605,8 +600,9 @@ img.thumb {
 }
 
   img.thumb.big {
-    margin-bottom: 5px;
-  	width: 190px;
+  	width: 150px;
+  	height: 150px;
+  	margin-right: 15px;
   }
   
   img.thumb.small {
@@ -688,68 +684,101 @@ ul.items {
     box-sizing: border-box;
   }
   
-  li.item .fl {
+  .item .fl {
     line-height: 20px;
   }
   
-  li.item .fl.img {
+  .fl.img {
     position: relative;
   }
   
-  li.item .fl.cont {
-    width: 275px;
+  .item .fl.cont {
+    width: 61%;
   }
   
-  li.item .thumb {
+  .item .thumb {
     margin-right: 10px;
   }
   
-  li.item .fl.img span {
+  .fl.img span {
     position: absolute;
     bottom: -5px;
     right: -5px;
   }
-    li.item .fl.img span img {
+    .fl.img span img {
       border-radius: 3px;
     }
   
-  li.item h2 {
+  .item h2 {
     padding: 0;
     margin: 0;
     line-height: 0;
     font-size: 1.2em;
   }
   
-  li.item h2 a{
+  .item h2 a{
     color: #444;
     line-height: 19px;
     text-decoration: none;
   }
   
-  li.item ul {
+  .item ul {
     margin-left: 10px;
   }
   
-  li.item ul li{
+  .item ul li{
     text-align: right;
     display: block;
   }
   
-  li.item .button {
+  .item .button {
     float: right;
   }
   
-    li.item .button.rec {
+    .item .button.rec {
       margin-bottom: 10px;
       padding-left: 25px;
       position: relative;
     }
     
-      li.item .button.rec img {
+      .item .button.rec img {
        position: absolute;
        top: 5px;
        left: 5px;
       }
+
+.itemside .fr {
+  width: 122px;
+}
+
+.itemside article {
+  margin-bottom: 10px;
+}
+.itemside .button {
+  text-align: center;
+}
+
+  .share-item {
+    list-style: none;
+  }
+  
+  .share-item li {
+    margin-bottom: 5px;
+  }
+  
+  a.sn-share {
+    width: 122px;
+    height: 42px;
+    display: block;
+  }
+  
+  .fb{
+    background: url(../images/facebook.png) no-repeat;
+    
+  }
+  .tt{
+    background: url(../images/twitter.png) no-repeat;
+  }
 
 .suggest .people {
   padding: 0 !important;
@@ -771,8 +800,9 @@ ul.items {
     width: 141px;
   }
   
-  .suggested .people .person .button {
+  .follow.button, .unfollow.button {
     margin-top: 5px;
+    padding: 3px 5px;
   }
 
 .invite form {
@@ -876,6 +906,28 @@ ul.items {
   margin-top: 10px;
   text-align: center;
 }
+
+.coupon {
+  margin: 10px 0;
+  padding: 8px;
+  background: #B8D1FF;
+  color: #6483C2;
+  border: 2.5px dashed white;
+  text-align: center;
+  font-weight: bold;
+  
+  -webkit-box-shadow: 0 0 0 2px #B8D1FF;
+  -moz-box-shadow: 0 0 0 2px #B8D1FF;
+  box-shadow: 0 0 0 2px #B8D1FF;
+  
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+  .coupon a {
+    text-decoration: underline;
+  }
 
 
 /* ==|== non-semantic helper classes ========================================
