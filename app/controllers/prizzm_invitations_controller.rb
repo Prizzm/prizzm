@@ -25,7 +25,7 @@ class PrizzmInvitationsController < ApplicationController
   # GET /prizzm_invitations/new
   # GET /prizzm_invitations/new.xml
   def new
-    @prizzm_invitation = current_company.prizzm_invitations.new
+    @prizzm_invitation = current_company.prizzm_invitations.new(:name => "New Invitation")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,6 +59,9 @@ class PrizzmInvitationsController < ApplicationController
   def update
     @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
 
+    #old_client_ids = @prizzm_invitation.client_ids
+    #new_client_ids = params[:clients]
+    @prizzm_invitation.client_ids = params[:clients]
     respond_to do |format|
       if @prizzm_invitation.update_attributes(params[:prizzm_invitation])
         format.html { redirect_to(@prizzm_invitation, :notice => 'Prizzm invitation was successfully updated.') }
@@ -81,4 +84,5 @@ class PrizzmInvitationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

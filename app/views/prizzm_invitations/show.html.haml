@@ -1,12 +1,14 @@
 %p#notice= notice
 
 %p= @prizzm_invitation.name
+%br
 
 Product:
-%p= @prizzm_invitation.product.name
-
+%p= @prizzm_invitation.product.try(:name)
+%br
+Clients:
 - @prizzm_invitation.clients.each do |client|
-  = client.name
+  %p #{client.first_name} #{client.last_name} #{client.id} #{@prizzm_invitation.sales.where(:client_id => client.id).first.invitation_status}
 = link_to 'Edit', edit_prizzm_invitation_path(@prizzm_invitation)
 \|
 = link_to 'Back', prizzm_invitations_path

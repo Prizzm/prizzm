@@ -1,6 +1,31 @@
 %h1 Editing prizzm_invitation
 
-= render 'form'
+= form_for @prizzm_invitation do |f|
+  -if @prizzm_invitation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@prizzm_invitation.errors.count, "error")} prohibited this prizzm_invitation from being saved:"
+      %ul
+        - @prizzm_invitation.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p Invitation Name: 
+  = f.text_field :name
+  %p Select Product
+  = select_tag 'prizzm_invitation[product_id]', options_from_collection_for_select(current_company.products, 'id', 'name') 
+
+  %p Select Email Template
+  %p Select Landing Page
+  %p Select Clients
+  - current_company.clients.each do |client|
+    %p 
+      #{client.first_name} #{client.last_name}
+      = client.id
+      = check_box_tag 'clients[]', client.id
+  .actions
+    = f.submit 'Save'
+
+
+= link_to 'Back', prizzm_invitations_path
 
 = link_to 'Show', @prizzm_invitation
 \|
