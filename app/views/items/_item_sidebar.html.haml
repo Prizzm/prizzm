@@ -1,0 +1,16 @@
+%aside.grid_4.right.itemside
+  = render :partial => "layouts/system_menu"
+  .fr
+    - if @item.privacy == "public"
+      - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
+        %article
+          .coupon
+            Get 15% off this product! <br /> just use the shop coupon PRIZZM15 @
+            - if @item.name == "Hermann Mini"
+              <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a> 
+            - else
+              <a href="http://shopbryna.com/store/serrano-hobo-ikat.html">SHOPBRYNA</a>
+    
+    = render :partial => "layouts/share"
+    = link_to "open case", "#", :class => "button fw"
+  .clear

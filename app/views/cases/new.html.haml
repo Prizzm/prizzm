@@ -1,6 +1,5 @@
-= include_stylesheets :item_new
-
-= form_for @case = Case.new, :html => {:class => "action addcase"} do |f|
+= form_for @case = Case.new, :html => {:class => "action addcase addItem"} do |f|
+  %label{:for => "case_title"} +
   = f.text_field 'title', :placeholder => "What's your issue?"
   #hiddenform
     = text_field_tag 'company_name', nil, :placeholder => "By what company?"

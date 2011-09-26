@@ -1,0 +1,6 @@
+%article.invite
+  %h4 Invite your friends
+  = image_tag "email.png", :class => "fl"
+  = form_for User.new, :url => user_invitation_path, :html => { :id => "email-invite", :class => "fl" }, :remote => true do |f|
+    = f.text_field :email, :name => "user[email][]", :placeholder => "Friends' email"
+    = f.submit "Send!", :class => "button"

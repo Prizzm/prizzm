@@ -1,27 +1,40 @@
-%ul.prod-g
-  - if @items.count > 0
-    - @items.each do |item|
-      %li
-        .cont
-          %ul.tags
-            %li.gld.as-selection-item= link_to "have", "#"
-          = image_tag item.main_image
-          = link_to(item) do
-            %h4= item.name
-            .clear
-            %p= html_clean item.review.truncate(120)
-        - if item.opinion == "horrible!"
-          %div{ :class => "opinion hate" }= item.opinion.humanize
-        - elsif item.opinion == "i_recommend_this!"
-          %div{ :class => "opinion recommended" }= item.opinion.humanize
-        - else
-          %div{ :class => "opinion neutral" } No opinion
+#content.grid_13
+  %nav#secondary
+    %ul
+      %li.curr= link_to "All", have_path(current_user)
 
-        %ul.stats
-          %li= link_to "read more", (item)
-        .clear
-  - else
-    %li No public items
+  %ul.items
+    - if @items.count > 0
+      - @items.each do |item|
+        %li.item{:id => "item_#{item.id}"}
+          .fl.img
+            = image_tag item.user.main_image, :class => "thumb"
+            %span= image_tag item.main_image, :class => "small thumb"
+          .fl.cont
+            %h2= link_to item.name, item
+            = link_to item.user.name, profile_path(item.user)
+            - if item.tag_list.include? 'have'
+              has 
+            - elsif item.tag_list.include? 'want'
+              wants 
+            this and
+            - if item.opinion == "horrible!"
+              %div{ :class => "opinion hate" } doesn't recommend
+            - elsif item.opinion == "i_recommend_this!"
+              %div{ :class => "opinion recommended" } recommends
+            - else
+              %div{ :class => "opinion neutral" } has no opinion about
+            it.
+          %ul.fr
+            /
+              %li
+                = link_to "#", :class => "rec button" do
+                  = image_tag "rec-thumb.png"
+                  Recommend this
+            %li= link_to "View this item", item, :class => "button"
+            = link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
+          .clear
+    - else
+      %li No public items
     
-    
-    
+= render :partial => "layouts/sidebar"
