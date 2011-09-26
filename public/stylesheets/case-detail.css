@@ -1,55 +1,4 @@
-#helptool li {
-	width: 33.33%;
-}
-
-#helptool li a{
-	height: 104px;
-}
-
-aside h4, .title {
-	margin-bottom: 10px;
-	border-bottom: 1px solid #f3f3f3;
-}
-
-  aside ul {
-    margin: 0;
-    list-style: none;
-  }
-  
-  aside ul.comp-det {
-    padding-top: 5px;
-    border-top: 1px solid #f3f3f3;
-  }
-  
-  aside ul.comp-det li{
-    margin-bottom: 5px;
-  }
-
-aside h5 {
-	margin-bottom: 5px;
-}
-
-img.itemthumb, img.compthumb {
-	padding: 2px;
-	margin-right: 5px;
-	width: 50px;
-	height: 50px;
-	border: 1px solid #d5d5d5;
-}
-
-section#case {
-	padding: 20px;
-	font-size: 14px;
-	border: 1px solid rgba(0,0,0,0.2);
-	font: arial,sans-serif;
-	background: #fff;
-	
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
-	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.1);
-	box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-  
-  section#case h1, section#case h2, section#case h3 {
+section#case h1, section#case h2, section#case h3 {
 	font-weight: normal;
 	margin: 15px 0 5px;
 	line-height: 140%;
@@ -114,6 +63,7 @@ section#case {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	position: relative;
+	word-break: break-all;
 }
 
 .note .edit-cntrl {
@@ -228,6 +178,7 @@ form.addNote input[type=submit]{
   font-weight: bold;
   background: #fffec9;
   border: 1px solid #D6D5A9;
+  margin-bottom: 5px;
 }
 
 #company_addresses .add
