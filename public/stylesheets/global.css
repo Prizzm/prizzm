@@ -370,7 +370,7 @@ button, input { line-height: normal; *overflow: visible; }
  * Input type styles
  */
  
- input[type=text] { margin-bottom: 10px; padding: 10px; font-size: 1.1em; width: 100%; border: 1px solid #cccccc; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+ input[type=text], textarea { margin-bottom: 10px; padding: 10px; font-size: 1.1em; width: 100%; border: 1px solid #cccccc; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: #444;}
  
  aside input[type=text] { margin-bottom: 5px; padding: 5px; font-size: 1em; }
 
@@ -685,6 +685,7 @@ ul.items, ul.cases {
     background: #f0f0f0;
     border: 1px solid #ccc;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+    position: relative;
     
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -887,7 +888,6 @@ ul.items, ul.cases {
     max-width: 464px;
     min-width: 100%;
     border: 1px solid #ccc;
-    color: #a7a7a7;
     
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

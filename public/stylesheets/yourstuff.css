@@ -6,8 +6,12 @@
   position: relative;
 }
 
-.addItem input#item_name, .addItem input#case_title, .addItem input#item_url{
+.addItem input#item_name, .addItem input#case_title{
   padding-left: 48px;
+}
+
+.addItem input#item_url {
+  padding: 12px 100px 11px 58px;
 }
 
 .addItem label {
@@ -32,6 +36,16 @@
 }
 
 .addItem label[for=item_url] {
-  
   border-right: 1px solid #ccc;
+  color: #ccc;
 }
+
+.addItem .urlcont {
+  position: absolute;
+  top: 58px;
+  right: 8px;
+}
+
+  .urlcont li {
+    display: inline-block;
+  }
