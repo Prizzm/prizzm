@@ -1,22 +1,39 @@
-= form_for @item, :remote => true, :method => :put do |f|
-  = f.text_field :name, :class => "title"
-  = f.text_area :review,
-                :cols => nil,
-                :rows => nil,
-                :style => 'min-height: 250px; width: 100%;',
-                :value => h(html_clean @item.review)
+%h2 Add a product
 
-  = f.text_field :tag_list, :placeholder => "+ Add Tags"
+= form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
+  = f.label :name, '+'
+  = f.text_field :name, :placeholder => "Product name"
 
-  %ul.finalstep
-    .fl
-      %li= f.label :privacy
-      %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
-    .fr
-      %li= link_to "Cancel", "#", :class => "button red cancel-edit"
-      %li= f.submit 'Save'
-    .clear
-.clear
+  = f.label :company
+  = f.text_field :company, :placeholder => "Company name"
 
-:javascript
-  #{render 'tags/new_taggable.js.haml', :taggable => @item}
+  %div.product
+    %div.image
+      = image_tag 'default-item-image.jpg', :height => 100, :width => 100
+    %ul
+      %li.prev Prev
+      %li.next Next
+
+    = f.label :url
+    = f.text_field :url, :placeholder => "Product link"
+
+  = f.text_area :review, :placeholder => "Review", :cols => nil, :rows => nil
+  = f.text_field :tag_list, :placeholder => "+ Add tags"
+
+  = f.hidden_field :company_id
+  = f.hidden_field :product_id
+
+  = hidden_field :product, :description
+  = hidden_field :product, :image_url
+
+  %ul.buttons
+    %li.fb{:title => "post to facebook"}
+      / facebook checkbox goes here
+    %li.tt{:title => "share to twitter"}
+      / twitter checkbox goes here
+    %li.privacy
+      = f.check_box :privacy, {}, 'private', 'public'
+      Mark Private
+
+    %li= button_to "Cancel"
+    %li= f.submit "Save"

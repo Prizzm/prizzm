@@ -57,7 +57,9 @@
       $('.urlprevsect').show();
       
       $('#item_name').click(function(){
-         $('#hiddenform').show();
+        $.facebox({
+          ajax: "#{new_item_path}"
+        });
       }).keyup(function(){
         $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
         $('#item_review').attr('placeholder', 'So what do you think about ' + this.value);

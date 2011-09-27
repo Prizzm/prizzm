@@ -6,7 +6,14 @@ class ItemsController < InheritedResources::Base
   def new
     @item = Item.new
     @item.images.build
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'items/form'
+      }
+    end
   end
+
 
   def create
     params[:item][:tag_list] = params[:as_values_tag_list]
@@ -26,7 +33,7 @@ class ItemsController < InheritedResources::Base
 
     respond_to do |format|
       format.html {
-        render :partial => 'items/form'
+        render :partial => 'items/form_edit'
       }
     end
   end
