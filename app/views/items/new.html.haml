@@ -4,36 +4,38 @@
 
   #hiddenform
     .close
-    .urlsect
-      #url_and_dropdown_container{:style => "position:relative;"}
-      %label{:for => "item_url"} URL
-      = f.text_field :url, :placeholder => "Add a link"
+    .wrap.fr
+      .urlsect
+        #url_and_dropdown_container{:style => "position:relative;"}
+        %label{:for => "item_url"} URL
+        = f.text_field :url, :placeholder => "Add a link"
+        
+        %ul.urlcont
+          %li#google_search= link_to "search google", ""
+          %li
+            .hide#main-dropdown
+              %ul#dropdown
       
-      %ul.urlcont
-        %li#google_search= link_to "search google", ""
-        %li
-          .hide#main-dropdown
-            %ul#dropdown
+      = f.hidden_field :company_id
     
-    = f.hidden_field :company_id
-  
-    = f.hidden_field :product_id
-    = f.hidden_field :image_url
-    = hidden_field_tag :item_possession, "Have"
-    
-    .wrap
+      = f.hidden_field :product_id
+      = f.hidden_field :image_url
+      = hidden_field_tag :item_possession, "Have"
+      
+      
       = f.text_area :review, :placeholder => "Review"
-      .urlprevsect
-        %h3
+      
+    
+    .urlprevsect.fl
+      #url_preview
+        #img_selector_parent{:style => "display: block;"}
+          %ul#img_controls
+            %li#prev_image.fl{:disabled => "disabled"}= image_tag "prev_img.png"
+            %li#next_image.fr{:disabled => "disabled"}= image_tag "next_img.png"
+          #img_selector
         .clear
-        #url_preview.fl
-          #img_selector_parent{:style => "display: block;"}
-            %ul#img_controls
-              %li#prev_image.fl{:disabled => "disabled"}= image_tag "prev_img.png"
-              %li#next_image.fr{:disabled => "disabled"}= image_tag "next_img.png"
-            #img_selector
-        .urldesc.fl= f.text_area :description, :style => "display:none;"#
-        .clear
+    .clear
+      
     = f.text_field :tag_list, :placeholder => "+ Add tags"
     
     %ul.finalstep.buttons.fr
@@ -116,7 +118,7 @@
         var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
         current_img.css({"display" : "block"});
         
-        var new_image = $("<img src='"+ui.item.main_image+"' />");
+        var new_image = $("<img src='"+ui.item.main_image+"', class='med thumb' />");
         append_image(new_image);
         $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
 

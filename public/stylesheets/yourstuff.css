@@ -49,3 +49,48 @@
   .urlcont li {
     display: inline-block;
   }
+  
+    #url_preview {
+      background: #f3f3f3;
+      position: relative;
+    }
+    
+    #img_controls {
+      margin: 0;
+      padding: 1px;
+      width: 100px;
+      list-style: none;
+      color: #ccc;
+      position: absolute;
+      top: 0;
+      background: rgba(0, 0, 0, .5);
+      -webkit-box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box;
+      
+    }
+    
+      #img_controls li {
+        cursor: pointer;
+      }
+      
+      #img_controls li img {
+        width: 10px;
+        height: 10px;
+      }
+  
+#offscreen_div {position:absolute; left:-5000px; width:1px; overflow:hidden; }
+
+#img_selector > img {
+  max-width:100px;
+  max-height:100px;
+  margin-left:auto;
+  margin-right:auto;
+  vertical-align:middle;
+  display:none;
+  min-width: 100px;
+}
+
+.wrap {
+  width: 79%;
+}
