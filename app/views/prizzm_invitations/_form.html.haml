@@ -1,0 +1,10 @@
+= form_for @prizzm_invitation do |f|
+  -if @prizzm_invitation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@prizzm_invitation.errors.count, "error")} prohibited this prizzm_invitation from being saved:"
+      %ul
+        - @prizzm_invitation.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

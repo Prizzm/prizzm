@@ -13,6 +13,7 @@ Prizzm::Application.routes.draw do
   match 'product_reviews(/:action(/:acceptstatus(/:encrypted_id(.:format))))'=>'product_reviews'
   match "admin(/:action)" => "admin"
   resources :members
+  resources :prizzm_invitations
 
   match 'corporate/home' => 'corporate#home', :as => 'company_root'
   

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110922004901) do
+=======
+ActiveRecord::Schema.define(:version => 20110920065343) do
+>>>>>>> prizzm_invitation
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -161,6 +165,28 @@ ActiveRecord::Schema.define(:version => 20110922004901) do
     t.datetime "updated_at"
   end
 
+  create_table "prizzm_invitations", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "product_id"
+    t.text     "landing_page"
+    t.text     "email_content"
+    t.string   "name"
+    t.string   "status"
+    t.string   "metrics"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prizzm_mail_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "message_content"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "product_images", :force => true do |t|
     t.integer  "product_id"
     t.string   "image"
@@ -208,6 +234,16 @@ ActiveRecord::Schema.define(:version => 20110922004901) do
   end
 
   add_index "products", ["cached_slug"], :name => "index_products_on_cached_slug", :unique => true
+
+  create_table "sales", :force => true do |t|
+    t.string   "price"
+    t.datetime "date"
+    t.integer  "prizzm_invitation_id"
+    t.integer  "client_id"
+    t.string   "invitation_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "settings", :force => true do |t|
     t.string   "var",                      :null => false
