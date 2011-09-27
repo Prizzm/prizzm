@@ -485,6 +485,9 @@ a.button:active, input[type=submit].active {
     color: #000;
     border-color: #444;
 }
+a.button.fw {
+  width: 100%;
+}
 a.call {
   background: url(../images/sprite.png)  10px -203px no-repeat #f3f3f3;
   padding-left: 35px;
