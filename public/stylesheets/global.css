@@ -445,11 +445,16 @@ em {
 	font-size: 0.8em;
 }
 
-.buttons {
-    float: left;
+ul.buttons {
+    float: right;
     clear: both;
 }
-a.button, input[type=submit].button {
+ 
+ ul.buttons li {
+   display: inline-block;
+ }
+ 
+a.button, input[type=submit] {
     color: #6e6e6e;
     font: bold 12px Helvetica, Arial, sans-serif;
     text-decoration: none;
@@ -475,7 +480,7 @@ a.button, input[type=submit].button {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-a.button:hover, input[type=submit].button:hover {
+a.button:hover, input[type=submit]:hover {
     color: #333;
     border-color: #999;
     -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2) -webkit-box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
@@ -485,6 +490,22 @@ a.button:active, input[type=submit].active {
     color: #000;
     border-color: #444;
 }
+input[name=commit] {
+  background-color: #3D9400;
+  background-image: -webkit-linear-gradient(top,#3d9400,#398a00);
+  background-image: -moz-linear-gradient(top,#3d9400,#398a00);
+  background-image: -ms-linear-gradient(top,#3d9400,#398a00);
+  background-image: -o-linear-gradient(top,#3d9400,#398a00);
+  background-image: linear-gradient(top,#3d9400,#398a00);
+  border: 1px solid #29691D;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+input[name=commit]:hover {
+  color: #fff;
+  border: 1px solid #29691D;
+}
+
 a.button.fw {
   width: 100%;
 }

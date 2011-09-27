@@ -4,21 +4,23 @@
   = f.label :name, '+'
   = f.text_field :name, :placeholder => "Product name"
 
-  = f.label :company
+  = f.label :company, "Company"
   = f.text_field :company, :placeholder => "Company name"
 
-  %div.product
-    %div.image
-      = image_tag 'default-item-image.jpg', :height => 100, :width => 100
-    %ul
-      %li.prev Prev
-      %li.next Next
+  .prod-img.fl
+    = image_tag 'default-item-image.jpg', :height => 100, :width => 100
+    %ul#img-controls
+      %li.prev.fl= image_tag "prev_img.png"
+      %li.next.fr= image_tag "next_img.png"
 
-    = f.label :url
+  .wrap.fr
+    = f.label :url, "URL"
     = f.text_field :url, :placeholder => "Product link"
-
-  = f.text_area :review, :placeholder => "Review", :cols => nil, :rows => nil
-  = f.text_field :tag_list, :placeholder => "+ Add tags"
+    
+    = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
+  
+  .clear
+  /= f.text_field :tag_list, :placeholder => "+ Add tags"
 
   = f.hidden_field :company_id
   = f.hidden_field :product_id

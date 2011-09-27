@@ -2,60 +2,10 @@
   %label{:for => "item_name"} +
   = f.text_field :name, :placeholder => "Click to add something you have"
 
-  #hiddenform
-    .close
-    .wrap.fr
-      .urlsect
-        #url_and_dropdown_container{:style => "position:relative;"}
-        %label{:for => "item_url"} URL
-        = f.text_field :url, :placeholder => "Add a link"
-        
-        %ul.urlcont
-          %li#google_search= link_to "search google", ""
-          %li
-            .hide#main-dropdown
-              %ul#dropdown
-      
-      = f.hidden_field :company_id
-    
-      = f.hidden_field :product_id
-      = f.hidden_field :image_url
-      = hidden_field_tag :item_possession, "Have"
-      
-      
-      = f.text_area :review, :placeholder => "Review"
-      
-    
-    .urlprevsect.fl
-      #url_preview
-        #img_selector_parent{:style => "display: block;"}
-          %ul#img_controls
-            %li#prev_image.fl{:disabled => "disabled"}= image_tag "prev_img.png"
-            %li#next_image.fr{:disabled => "disabled"}= image_tag "next_img.png"
-          #img_selector
-        .clear
-    .clear
-      
-    = f.text_field :tag_list, :placeholder => "+ Add tags"
-    
-    %ul.finalstep.buttons.fr
-      %li.fb{:title => "post to facebook"}
-        / facebook checkbox goes here
-      %li.tt{:title => "share to twitter"}
-        / twitter checkbox goes here
-      %li.privacy
-        / privacy drop down goes here
-      %li= f.submit "save", :class => "green button"
-    .clear
-    
-#offscreen_div
-  
 - content_for :javascripts do
   :javascript
     $(document).ready(function(){
-      $('#hiddenform').hide();
-      $('.urlprevsect').show();
-      
+            
       $('#item_name').click(function(){
         $.facebox({
           ajax: "#{new_item_path}"

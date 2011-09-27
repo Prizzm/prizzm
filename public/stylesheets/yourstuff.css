@@ -14,6 +14,11 @@
   padding: 12px 100px 11px 58px;
 }
 
+.addItem input#item_company {
+  padding-left: 90px;
+  padding-bottom: 11px;
+}
+
 .addItem label {
   position: absolute;
   padding: 12px;
@@ -35,7 +40,7 @@
   background: linear-gradient(top, #cdeb8e 0%,#a5c956 100%); /* W3C */
 }
 
-.addItem label[for=item_url] {
+.addItem label[for=item_url], .addItem label[for=item_company] {
   border-right: 1px solid #ccc;
   color: #ccc;
 }
@@ -46,16 +51,13 @@
   right: 8px;
 }
 
-  .urlcont li {
+  .prod-img {
     display: inline-block;
-  }
-  
-    #url_preview {
-      background: #f3f3f3;
+    background: #f3f3f3;
       position: relative;
-    }
+  }
     
-    #img_controls {
+    #img-controls {
       margin: 0;
       padding: 1px;
       width: 100px;
@@ -70,11 +72,11 @@
       
     }
     
-      #img_controls li {
+      #img-controls li {
         cursor: pointer;
       }
       
-      #img_controls li img {
+      #img-controls li img {
         width: 10px;
         height: 10px;
       }
@@ -92,5 +94,5 @@
 }
 
 .wrap {
-  width: 79%;
+  width: 76%;
 }
