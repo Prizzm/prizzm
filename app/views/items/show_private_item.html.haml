@@ -3,68 +3,37 @@
   = include_stylesheets :item_detail
 
 #content.grid_14
-  %section#review    
-    .revpost
-      = link_to "Edit Item", '#', :class => "edit-cntrl", :id => "edit-review-link"
-      
-      .title= raw format h @item.name
+  %nav#secondary
+    %ul
+      %li= link_to "Have", have_path(current_user)
+      %li= link_to "Want", want_path(current_user)
+      %li= link_to "Case", user_cases_path(current_user)
+  %section#review
+    = image_tag @item.main_image, :class => "fl big thumb"
+    .fl.cont
+      %h2= @item.name
+      = link_to "Edit this item", '#', :class => "button", :id => "edit-review-link"
+      %div{ :class => "status #{@item.privacy}" }= @item.privacy
       .clear
-      .fl.galsect
-        = image_tag @item.main_image, :class => "medthumb"
-      #rendered-review.fl
-        #options
-        - if @item.review.blank?
-          = render 'default_review'
-        - else
-          = html_clean @item.review
-    .clear
-
-    #footerbit
-      .fl
+      .revpost
+        #rendered-review
+          #options
+          - if @item.review.blank?
+            = render 'default_review'
+          - else
+            = html_clean @item.review
+      .clear
+  
+      #footerbit
         Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago
         \| Comments 
         = @item.comment_threads.count
-      %div{ :class => "status #{@item.privacy if @item.is_private?}" }= @item.privacy
-      .clear
+      
+      = comments_section_for @item
     .clear
-     
-  = comments_section_for @item
 
-%aside.grid_6
-  %article
-    %h4 Your opinion
-    = form_tag item_save_opinion_path, :remote => true do
-      = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
-      .loading{:style => "display:none;float:left"}
-      .clear
-      = hidden_field_tag :id, @item.id
-    .clear
-  - if @item.privacy == "public"
-    - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
-      %article
-        .coupon
-          Get 15% off this product! <br /> just use the shop coupon PRIZZM15 @
-          - if @item.name == "Hermann Mini"
-            <a href="http://shopbryna.com/store/fall-2011/hermann-mini.html">SHOPBRYNA</a> 
-          - else
-            <a href="http://shopbryna.com/store/serrano-hobo-ikat.html">SHOPBRYNA</a>
-  %article
-    %h4 Share it
-    = form_tag item_post_to_facebook_path(@item), :remote => true, :class => "table", :id => "form-ask-friend" do
-      = text_field_tag :message, "", :placeholder => "Message"
-      %ul.finalstep.buttons.fr
-        %li.fb{:title => "post to facebook"}
-          / facebook checkbox goes here
-        %li.tt
-          / twitter checkbox goes here
-        %li.privacy
-          / privacy drop down goes here
-        %li
-          = hidden_field_tag :link, item_url(@item)
-          = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green"
-          .loading{:style => "display:none;float:left"}
-      .clear
-  %article= link_to "open case", "#", :class => "button fw"
+= render :partial => "items/item_sidebar"
+  
 .clear
 
 - content_for :javascripts do

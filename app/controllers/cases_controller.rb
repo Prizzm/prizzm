@@ -20,7 +20,7 @@ class CasesController < InheritedResources::Base
     
     respond_to do |format|
       format.js
-      format.html { render :layout => 'layouts/app_alt' }
+      format.html
     end
     
   end 

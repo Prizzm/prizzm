@@ -1,13 +1,15 @@
-%li.row{:id => "item_#{item.id}"}
-  .cell.img= image_tag item.main_image
-  .cell
-    %h3
-      = link_to(item) do
-        = item.name
-        %div{ :class => "status #{item.privacy if item.is_private?}" }= item.privacy
+%li.item{:id => "item_#{item.id}"}
+  = image_tag item.main_image, :class => "fl thumb"
+  .fl.cont
+    %h2= link_to item.name, item
+    Added: #{item.created_at.to_date}
+    %div{ :class => "status #{item.privacy}" }= item.privacy
+  %ul.fr
     /
-      %ul.det
-        %li.have 10
-        %li.want 10
-        %li.comm 10
-    = link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
+      %li
+        = link_to "#", :class => "rec button" do
+          = image_tag "rec-thumb.png"
+          Recommend this
+    %li= link_to "Edit this item", item, :class => "button", :id => "edit-review-link"
+    /= link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
+  .clear

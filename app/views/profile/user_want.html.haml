@@ -1,32 +1,16 @@
 - content_for :page_style do
-  = include_stylesheets :profile
+  = include_stylesheets :yourstuff
 
-#content.grid_14
-  = render :template => 'items/new_want'
+#content.grid_13
+  %nav#secondary
+    %ul
+      %li= link_to "Have", have_path(current_user)
+      %li.curr= link_to "Want", want_path(current_user)
+      %li= link_to "Case", user_cases_path(current_user)
+  #main
+    = render :template => 'items/new_want'
 
-  %ul.table.list-display
-    = render :partial => "profile/item", :collection => current_user.wanted_items
+    %ul.table.list-display
+      = render :partial => "profile/item", :collection => current_user.wanted_items
   
-%aside.grid_6.right
-  %article
-    %h4
-      .fl Suggested People
-      = link_to "Refresh", "", :class => 'small fr'
-      = link_to "View all", members_path, :class => 'small fr'
-      .clear
-    %ul.table
-      - suggested_people.each do |person| 
-        %li.row
-          = link_to profile_path(person) do
-            .cell.img
-              = image_tag person.main_image, :class => 'smallthumb'
-            .cell.uname= person.name
-          .cell.action
-            = follow_link_for person
-          .cell.del
-            = link_to "", "", :class => "close"
-  %article
-    %h4 Invite your friends
-    = render :partial => "invitations/new"
-  
-  .clear
+= render :partial => "layouts/sidebar"

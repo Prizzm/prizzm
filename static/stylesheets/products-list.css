@@ -1,0 +1,55 @@
+.prod-g > li {
+  margin: 0 10px 20px 0;
+  width: 172px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 0 3px #f3f3f3;
+}
+
+li.last {
+  margin-right: 0 !important;
+}
+
+.prod-g img {
+  width: 130px;
+}
+
+.prod-g .cont {
+  padding: 8px;
+}
+
+.prod-g .conte h4 {
+  margin: 3px 0;
+}
+
+.prod-g .cont a{
+  color: #444444 !important;
+  text-decoration: none;
+}
+
+.prod-g .cont p {
+  border-top: 1px solid #f3f3f3;
+  padding-top: 3px;
+}
+
+ul.stats {
+  padding: 3px;
+  background: #f7f7f7;
+}
+
+ul.stats li{
+  margin: 0 13px 0 0;
+  display: inline-block;
+}
+
+ul.stats li a {
+  text-decoration: none;
+}
+
+ul.stats li a span {
+  display: block;
+  font-size: 0.85em;
+  font-variant: small-caps;
+}

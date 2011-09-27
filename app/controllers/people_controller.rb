@@ -9,8 +9,6 @@ class PeopleController < ApplicationController
       :limit => 10,
       :order => 'created_at DESC'
     )
-
-    render :layout => "people"
   end
 
 
@@ -26,7 +24,6 @@ class PeopleController < ApplicationController
                  )
                  .limit(10)
 
-    render :layout => "people"
   end
 
 

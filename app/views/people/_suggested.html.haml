@@ -1,0 +1,12 @@
+%article.suggested
+  %h4
+    .fl Suggested People
+    .clear
+  %ul.people
+    - suggested_people.each do |person| 
+      %li.person
+        = image_tag person.main_image, :class => 'small thumb fl'
+        .cont.fl
+          = link_to person.name, profile_path(person)
+        = link_to "Follow", "", :class => "button follow fr"
+        .clear
