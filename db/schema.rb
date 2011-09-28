@@ -10,11 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110922004901) do
-=======
-ActiveRecord::Schema.define(:version => 20110920065343) do
->>>>>>> prizzm_invitation
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -173,16 +169,6 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.string   "name"
     t.string   "status"
     t.string   "metrics"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "prizzm_mail_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "from"
-    t.string   "subject"
-    t.text     "message_content"
-    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
