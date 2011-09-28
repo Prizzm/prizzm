@@ -94,18 +94,7 @@
 
   :javascript   
     
-    $(function() {
-      
-       var pusher = new Pusher('526d54cc07120574aedb'); 
-       var thingChannel = pusher.subscribe('4');
-       thingChannel.bind('thing-create', function(thing) {
-         alert('call pushed');
-          
-       $.get('#{case_path}', 'script', function(data) {});
-             
-      });
-       
-      
+    $(function() {      
       #{render 'tags/taggable.js.erb', :taggable => @case}
 
       $('.note_body').editable(function(value, settings){
