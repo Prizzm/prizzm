@@ -39,8 +39,6 @@ section#review h2 {
 
 #rendered-review, section#pub-review{
 	font-size: 14px;
-	border: 1px solid #f7f7f7;
-	font: arial,sans-serif;
 }
   
   #rendered-review h1, #rendered-review h2, #rendered-review h3 {

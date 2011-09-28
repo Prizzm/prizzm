@@ -567,7 +567,7 @@ a.alt {
   z-index: 9999 !important;
 }
 
-.status {
+.case .status, #review .status {
   display: inline-block;
 }
 

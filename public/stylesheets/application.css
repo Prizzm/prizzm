@@ -163,7 +163,7 @@ nav#secondary a{
   font-size: 1.2em;
 }
 
-.no-menu {
+.no-menu, .profile-user {
   margin-top: 43px;
 }
 
