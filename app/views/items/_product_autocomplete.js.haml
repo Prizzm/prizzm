@@ -2,7 +2,6 @@
   (function ($) {
       $.fn.autocompleteProduct = function (options) {
           this.each(function () {
-              var $this = $(this);
               var settings = {
                   source: function (request, response) {
                       $.getJSON('#{search_products_path}', {
@@ -20,7 +19,7 @@
               if (options) {
                   $.extend(settings, options);
               }
-              $this.autocomplete(settings);
+              $(this).autocomplete(settings);
           });
       };
   })(jQuery);

@@ -43,7 +43,7 @@
 
 
 :javascript
-  // Product Auto Selection
+  // Product Auto Complete
   #{ render "items/product_autocomplete.js" }
 
   $('#product_name').autocompleteProduct({
@@ -69,6 +69,17 @@
                      .removeAttr('readonly');
 
     $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
+  });
+
+
+  // Company Auto Complete
+  #{ render "items/company_autocomplete.js" }
+
+  // Reset company
+  $('#company_name').autocompleteCompany({
+    select: function(event, ui){
+      $('#company_id').val(ui.item.id);
+    }
   });
 
   // Reset company
