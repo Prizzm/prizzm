@@ -2,60 +2,14 @@
   %label{:for => "item_name"} +
   = f.text_field :name, :placeholder => "Click to add something you have"
 
-  #hiddenform
-    .close
-    .urlsect
-      #url_and_dropdown_container{:style => "position:relative;"}
-      %label{:for => "item_url"} URL
-      = f.text_field :url, :placeholder => "Add a link"
-      
-      %ul.urlcont
-        %li#google_search= link_to "search google", ""
-        %li
-          .hide#main-dropdown
-            %ul#dropdown
-    
-    = f.hidden_field :company_id
-  
-    = f.hidden_field :product_id
-    = f.hidden_field :image_url
-    = hidden_field_tag :item_possession, "Have"
-    
-    .wrap
-      = f.text_area :review, :placeholder => "Review"
-      .urlprevsect
-        %h3
-        .clear
-        #url_preview.fl
-          #img_selector_parent{:style => "display: block;"}
-            %ul#img_controls
-              %li#prev_image.fl{:disabled => "disabled"}= image_tag "prev_img.png"
-              %li#next_image.fr{:disabled => "disabled"}= image_tag "next_img.png"
-            #img_selector
-        .urldesc.fl= f.text_area :description, :style => "display:none;"#
-        .clear
-    = f.text_field :tag_list, :placeholder => "+ Add tags"
-    
-    %ul.finalstep.buttons.fr
-      %li.fb{:title => "post to facebook"}
-        / facebook checkbox goes here
-      %li.tt{:title => "share to twitter"}
-        / twitter checkbox goes here
-      %li.privacy
-        / privacy drop down goes here
-      %li= f.submit "save", :class => "green button"
-    .clear
-    
-#offscreen_div
-  
 - content_for :javascripts do
   :javascript
     $(document).ready(function(){
-      $('#hiddenform').hide();
-      $('.urlprevsect').show();
-      
+            
       $('#item_name').click(function(){
-         $('#hiddenform').show();
+        $.facebox({
+          ajax: "#{new_item_path}"
+        });
       }).keyup(function(){
         $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
         $('#item_review').attr('placeholder', 'So what do you think about ' + this.value);
@@ -116,7 +70,7 @@
         var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
         current_img.css({"display" : "block"});
         
-        var new_image = $("<img src='"+ui.item.main_image+"' />");
+        var new_image = $("<img src='"+ui.item.main_image+"', class='med thumb' />");
         append_image(new_image);
         $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
 

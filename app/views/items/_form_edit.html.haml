@@ -1,0 +1,22 @@
+= form_for @item, :remote => true, :method => :put do |f|
+  = f.text_field :name, :class => "title"
+  = f.text_area :review,
+                :cols => nil,
+                :rows => nil,
+                :style => 'min-height: 250px; width: 100%;',
+                :value => h(html_clean @item.review)
+
+  = f.text_field :tag_list, :placeholder => "+ Add Tags"
+
+  %ul.finalstep
+    .fl
+      %li= f.label :privacy
+      %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
+    .fr
+      %li= link_to "Cancel", "#", :class => "button red cancel-edit"
+      %li= f.submit 'Save'
+    .clear
+.clear
+
+:javascript
+  #{render 'tags/new_taggable.js.haml', :taggable => @item}
