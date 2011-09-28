@@ -1,115 +1,12 @@
-= form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
-  %label{:for => "item_name"} +
-  = f.text_field :name, :placeholder => "Click to add something you have"
+= label_tag :new_item, '+'
+= text_field_tag :new_item, nil, :placeholder => "Click to add something you have"
 
 - content_for :javascripts do
   :javascript
     $(document).ready(function(){
-            
-      $('#item_name').click(function(){
+      $('#new_item').click(function(){
         $.facebox({
           ajax: "#{new_item_path}"
         });
-      }).keyup(function(){
-        $('#item_url').attr('placeholder', 'Add a link to ' + this.value);
-        $('#item_review').attr('placeholder', 'So what do you think about ' + this.value);
       });
-
-      $('#hiddenform > .close').click(function(){
-       $('#hiddenform').hide();
-       $('#review').val('');
-       $('#item_url').val('');
-       $('#item_name').val('');
-      });
-      
-      $('.urlprevsect .close').click(function(){
-       $(this).parent().remove();
-      });
-    
-      #{render 'tags/new_taggable.js.haml', :taggable => @item}
-      #{render 'images/image_preview.js.haml'}
-      // what?
-
-      $("#search-by-title").click(function(){
-        if ($('input#item_name').val()){
-          window.product_search_term = $('input#item_name').val();
-          $.facebox({ ajax : "/products/static_search"});
-        }
-        return false;
-      });
-      
-      //*****************************
-      // Image preview/selection
-      //*****************************
-      
-      //*****************************
-      // Product auto-complete code starts below
-      //*****************************
-      
-      // It gets called from js in partial below
-      var product_selected = function(event, ui){
-        $("#item_product_id").val(ui.item.id);
-      
-        $("#item_name").attr('readonly', 'readonly');
-        $("#item_url").attr('readonly', 'readonly');
-        $("#item_description").attr('readonly', 'readonly');
-
-
-
-        $("#item_name").val(ui.item.name)
-                       .change();
-
-        $("#item_url").val(ui.item.url)
-                      .change();
-
-        $("#item_description").val(ui.item.description)
-                              .change()
-                              .show();
-
-        $("#img_selector img").css({ "display" : "none"});
-        var current_img = $("#img_selector img:nth-child(" + (current_image_indx + 1) + ")");
-        current_img.css({"display" : "block"});
-        
-        var new_image = $("<img src='"+ui.item.main_image+"', class='med thumb' />");
-        append_image(new_image);
-        $("#item_image_url").val(new_image.get(0).src); //ui.item.main_image);
-
-        // set company_id
-        $("#item_company_id").val(ui.item.company_id);
-
-        // TODO: Also set Company name
-        $("#company_name").val(ui.item.company_name); // But it is not provided in returned JSON
-        $("#company_name").attr("readonly", "readonly");
-
-        $("#item_name").autocomplete('close')
-
-        $("#item_review").attr('placeholder', 'So what do you think about ' + ui.item.name)
-                         .focus();
-
-        return true;
-      };
-      
-      #{ render "items/product_autocomplete.js" }
-
-      attachProductAutoComplete("input#item_name");
-      
-
-      //*****************************
-      // Google search / autocomplete / URL selection
-      //*****************************
-      #{ render "items/google_search.js" }
-      
-      $("#item_name").change(function(){
-        // TODO: Update the review according to possession status
-        var possession_status = "have";
-        if ( possession_status == "want" ) {
-          var review_placeholder = "Why do you want " + $('#item_name').val() + "?";
-        }
-        else {
-          var review_placeholder = "What do you think of " + $('#item_name').val() + "?";
-        }
-        $('#item_url').attr("placeholder", "Add a link to your " + $('#item_name').val());
-      });
-      
-      
     });

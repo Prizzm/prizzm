@@ -1,8 +1,18 @@
-%li.note{:class => note.solution?, :id => note.id}
-  .note_body{:id => "note_body_#{note.id}"}= note.body
-  .ftnote
-    = note.updated_at.strftime '%A, %B %d, %Y at %I:%M %p' rescue "No time stored.."
-    \|
-    = link_to "edit", "#"
-    \|
-    = link_to 'delete', case_note_path(note.case, note),  :remote => true, :method => :delete if note_belongs_to_current_user?(note)
+- if note.call
+  %li.note{:class => note.solution?, :id => note.id}
+    .note_body{:id => "note_body_#{note.id}"}= link_to "Listen Record", note.body
+    .ftnote
+      = note.updated_at.strftime '%A, %B %d, %Y at %I:%M %p' rescue "No time stored.."
+      \|
+      = link_to "edit", "#"
+      \|
+      = link_to 'delete', case_note_path(note.case, note),  :remote => true, :method => :delete if note_belongs_to_current_user?(note)
+- else 
+  %li.note{:class => note.solution?, :id => note.id}
+    .note_body{:id => "note_body_#{note.id}"}= note.body
+    .ftnote
+      = note.updated_at.strftime '%A, %B %d, %Y at %I:%M %p' rescue "No time stored.."
+      \|
+      = link_to "edit", "#"
+      \|
+      = link_to 'delete', case_note_path(note.case, note),  :remote => true, :method => :delete if note_belongs_to_current_user?(note)

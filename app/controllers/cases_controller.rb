@@ -17,6 +17,7 @@ class CasesController < InheritedResources::Base
     @cap = Twilio::Util::Capability.new(@account_sid, @auth_token)
     @cap.allow_client_outgoing(@appsid)
     @cap_name = @cap.generate()
+    @note = @case.notebook.notes.last
     
     respond_to do |format|
       format.js
@@ -33,7 +34,6 @@ class CasesController < InheritedResources::Base
 
 
   def create 
-    puts "CASES CREATE"
     params[:case][:tag_list] = params[:as_values_tag_list]
 
     @case = Case.new(params[:case])
@@ -67,7 +67,7 @@ class CasesController < InheritedResources::Base
       @product = Product.find(:first, {
         :conditions => {
           :name       => params[:product_name],
-          :company_id => params[:company_id],
+          :company_id => @company.id,
         }
       });
 

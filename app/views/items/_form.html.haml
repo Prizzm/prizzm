@@ -1,32 +1,33 @@
 %h2 Add a product
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
-  = f.label :name, '+'
-  = f.text_field :name, :placeholder => "Product name"
+  = label_tag :product_name, "+"
+  = text_field_tag :product_name, nil, :placeholder => "Product name"
 
-  = f.label :company, "Company"
-  = f.text_field :company, :placeholder => "Company name"
+  = label_tag :company_name, "Company"
+  = text_field_tag :company_name, nil, :placeholder => "Company name"
 
   .prod-img.fl
-    = image_tag 'default-item-image.jpg', :height => 100, :width => 100
-    %ul#img-controls
+    = image_tag 'default-item-image.jpg', :id => 'product_image', :height => 100, :width => 100
+    %ul#img-controls.hidden
       %li.prev.fl= image_tag "prev_img.png"
       %li.next.fr= image_tag "next_img.png"
 
   .wrap.fr
-    = f.label :url, "URL"
-    = f.text_field :url, :placeholder => "Product link"
-    
+    = label_tag :product_url, "URL"
+    = text_field_tag :product_url, nil, :placeholder => "Product link"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
   /= f.text_field :tag_list, :placeholder => "+ Add tags"
-
   = f.hidden_field :company_id
   = f.hidden_field :product_id
 
   = hidden_field :product, :description
   = hidden_field :product, :image_url
+
+  / Remove if being exposed to add tags field
+  = hidden_field :tag_list, 'have'
 
   %ul.buttons
     %li.fb{:title => "post to facebook"}
@@ -35,7 +36,42 @@
       / twitter checkbox goes here
     %li.privacy
       = f.check_box :privacy, {}, 'private', 'public'
-      Mark Private
+      = f.label :privacy, 'Mark Private'
 
     %li= button_to "Cancel"
     %li= f.submit "Save"
+
+
+:javascript
+  // Product Auto Selection
+  #{ render "items/product_autocomplete.js" }
+
+  $('#product_name').autocompleteProduct({
+    select: function(event, ui){
+      if (ui.item.company) {
+        $('#company_id').val(ui.item.company.id);
+        $('#company_name').val(ui.item.company.name);
+      }
+
+      $('#product_image').attr('src', ui.item.main_image_thumb);
+
+      $('#product_url').val(ui.item.url)
+                       .attr('readonly', 'readonly');
+
+      $('#product_id').val(ui.item.id);
+    }
+  });
+
+  // Reset product
+  $('#product_name').change(function(){
+    $('#product_id').val('');
+    $('#product_url').val('')
+                     .removeAttr('readonly');
+
+    $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
+  });
+
+  // Reset company
+  $('#company_name').change(function(){
+    $('#company_id').val('');
+  });
