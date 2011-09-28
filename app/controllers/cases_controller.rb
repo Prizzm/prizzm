@@ -17,6 +17,7 @@ class CasesController < InheritedResources::Base
     @cap = Twilio::Util::Capability.new(@account_sid, @auth_token)
     @cap.allow_client_outgoing(@appsid)
     @cap_name = @cap.generate()
+    @note = @case.notebook.notes.last
     
     respond_to do |format|
       format.js
