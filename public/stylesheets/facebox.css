@@ -39,6 +39,11 @@
   background-image: none;
 }
 
+#facebox .close {
+  top: 8px;
+  right: 8px;
+}
+
 #facebox .close img{
   opacity:0.3;
 }

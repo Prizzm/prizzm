@@ -479,6 +479,7 @@ a.button, input[type=submit] {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    cursor: pointer;
 }
 a.button:hover, input[type=submit]:hover {
     color: #333;
@@ -556,9 +557,10 @@ a.alt {
 }
 
 .loading {
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
   background-image: url('/images/loading.gif');
-  width: 32px;
-  height: 32px;
 }
 
 .yui3-aclist {

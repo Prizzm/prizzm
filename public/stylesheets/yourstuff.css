@@ -1,30 +1,35 @@
 #main{
 	margin-top: 9px;
+	position: relative;
 }
 
 .addItem {
   position: relative;
 }
 
-.addItem input#item_name, .addItem input#case_title{
+input#new_item, input#product_name, .addItem input#case_title{
   padding-left: 48px;
 }
 
-.addItem input#item_url {
+.addItem input#product_url {
   padding: 12px 100px 11px 58px;
 }
 
-.addItem input#item_company {
+.addItem input#company_name {
   padding-left: 90px;
   padding-bottom: 11px;
 }
 
-.addItem label {
+label {
   position: absolute;
   padding: 12px;
 }
 
-.addItem label[for=item_name], .addItem label[for=case_title] {
+label[for=item_privacy] {
+  padding: 0;
+}
+
+label[for=new_item], label[for=product_name], .addItem label[for=case_title] {
   border: 1px solid #97c66f;
   line-height: 11px;
   color: #fff;
@@ -40,7 +45,7 @@
   background: linear-gradient(top, #cdeb8e 0%,#a5c956 100%); /* W3C */
 }
 
-.addItem label[for=item_url], .addItem label[for=item_company] {
+.addItem label[for=product_url], .addItem label[for=company_name] {
   border-right: 1px solid #ccc;
   color: #ccc;
 }
