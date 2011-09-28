@@ -100,7 +100,6 @@
       var pusher = new Pusher('526d54cc07120574aedb'); 
       var thingChannel = pusher.subscribe('#{@case.id}');
       thingChannel.bind('thing-create', function(thing) {
-        alert('pusher');      
         $.get("#{case_path}", "script" , function(data) {
         });
 
