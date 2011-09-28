@@ -1,0 +1,13 @@
+.userbit
+  = image_tag current_user.main_image, :class => "fl thumb"
+  .fl
+    = link_to current_user.name, profile_path(current_user), :class => "uname"
+    = link_to "Edit Profile", edit_user_registration_path(:back => request.url), :class => "facebox"
+  .clear
+    
+%nav
+  %ul
+    %li= link_to "Welcome", home_path, :class => active_if_current(home_path)
+    %li= link_to "Your stuff", have_path(current_user), :class => active_if_current(have_path(current_user))
+    %li= link_to "Following", people_following_path, :class => active_if_current(people_following_path)
+    %li= link_to "Public", people_path, :class => active_if_current(people_path)

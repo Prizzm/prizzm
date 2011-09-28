@@ -1,0 +1,3 @@
+This is your pitch!
+
+= link_to "Sign up", home_path, :class => "button"
