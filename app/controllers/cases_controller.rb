@@ -34,7 +34,6 @@ class CasesController < InheritedResources::Base
 
 
   def create 
-    puts "CASES CREATE"
     params[:case][:tag_list] = params[:as_values_tag_list]
 
     @case = Case.new(params[:case])
@@ -68,7 +67,7 @@ class CasesController < InheritedResources::Base
       @product = Product.find(:first, {
         :conditions => {
           :name       => params[:product_name],
-          :company_id => params[:company_id],
+          :company_id => @company.id,
         }
       });
 
