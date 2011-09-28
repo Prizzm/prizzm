@@ -1,0 +1,23 @@
+%h1 Listing incentives
+
+%table
+  %tr
+    %th Description
+    %th Expiration
+    %th Code
+    %th
+    %th
+    %th
+
+  - @incentives.each do |incentive|
+    %tr
+      %td= incentive.description
+      %td= incentive.expiration
+      %td= incentive.code
+      %td= link_to 'Show', incentive
+      %td= link_to 'Edit', edit_incentive_path(incentive)
+      %td= link_to 'Destroy', incentive, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Incentive', new_incentive_path

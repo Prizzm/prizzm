@@ -1,6 +1,6 @@
 class Mailer < ActionMailer::Base
   default :from => "notification@prizzm.com"
-  default_url_options[:host] = "development.prizzm.com"
+  default_url_options[:host] = ENV['URL']
 
   def self.notify_comment comment
     recipient_list = recipients_for comment
@@ -16,6 +16,14 @@ class Mailer < ActionMailer::Base
       elsif comment.commentable.is_a? Item
         Mailer.item_comment(comment, recipient).deliver
       end
+    end
+  end
+
+  def self.deliver_prizzm_invitation(prizzm_invitation, client=nil)
+    recipients = client.nil? ? prizzm_invitation.clients.all : [client]
+    recipients.each do |client|
+      Rails.logger.info "####################################### Client id: #{client.id}"
+      Mailer.prizzm_invitation(prizzm_invitation, client).deliver
     end
   end
 
@@ -42,6 +50,14 @@ class Mailer < ActionMailer::Base
    @commentable = comment.commentable
    mail(:to => "#{recipient.name} <#{recipient.email}>", :subject => "A User has just left a comment on your #{comment.commentable.class.to_s}")
   end 
+
+  def prizzm_invitation(prizzm_invitation, client=nil)
+    @product = prizzm_invitation.product
+    @company = prizzm_invitation.company
+    @prizzm_invitation = prizzm_invitation
+    @client = client
+      mail(:from => "#{prizzm_invitation.company.name} <#{prizzm_invitation.company.email }>", :to=>"#{client.first_name} #{client.last_name}  <#{client.email}>", :subject=>"#{prizzm_invitation.company.name} thanks you for buying a #{prizzm_invitation.product.name}")
+  end
 
   def self.recipients_for comment
     # Falling back to older method

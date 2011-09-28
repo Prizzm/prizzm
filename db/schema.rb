@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920065343) do
+ActiveRecord::Schema.define(:version => 20110927052815) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "workflow_state"
+    t.integer  "product_id"
   end
 
   add_index "cases", ["cached_slug"], :name => "index_cases_on_cached_slug", :unique => true
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.string   "cached_slug"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.text     "description"
+    t.boolean  "claimed",                             :default => true, :null => false
   end
 
   add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true
@@ -117,6 +119,15 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
   create_table "images", :force => true do |t|
     t.integer  "item_id"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incentives", :force => true do |t|
+    t.integer  "company_id"
+    t.text     "description"
+    t.datetime "expiration"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20110920065343) do
     t.string   "metrics"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "incentive_id"
   end
 
   create_table "prizzm_mail_templates", :force => true do |t|

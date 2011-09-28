@@ -85,4 +85,15 @@ class PrizzmInvitationsController < ApplicationController
     end
   end
 
+  def send_invitation
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
+    client = current_company.clients.find(params[:client_id]) if params[:client_id]
+    Mailer.deliver_prizzm_invitation(@prizzm_invitation, client)
+    redirect_to @prizzm_invitation
+  end
+
+  def open_invitation
+
+  end
+
 end
