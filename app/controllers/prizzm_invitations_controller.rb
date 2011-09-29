@@ -102,6 +102,8 @@ class PrizzmInvitationsController < ApplicationController
     @client = @invitation.clients.find(params[:client_id])
     @product = @invitation.product
     @company = @invitation.company
+    @sale = @invitation.sale_for @client
+    @sale.update_attribute('landing_page_visited', true)
     session[:new_item] = @product.id
 
     Rails.logger.debug "Product #{@product.name} has id #{session[:new_item]}"
@@ -116,8 +118,18 @@ class PrizzmInvitationsController < ApplicationController
     
     signin_type = params[:signin_type]
     session[:review] = params[:review]
+    session[:client_id] = @client.id
+    session[:invitation_id] = @invitation.id
+
     review_text = params[:review]
+
+    unless review_text.blank?
+      @sale = @invitation.sale_for @client
+      @sale.update_attribute('wrote_review', true)
+    end
+
     @item = Item.create({:product_id => @product.id, :name => @product.name, :tag_list => 'have', :review => review_text, :invitation_status => "incomplete"})
+
     begin
       @item.add_image_from_url @product.main_image
     rescue CarrierWave::DownloadError
