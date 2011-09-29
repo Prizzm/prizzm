@@ -6,8 +6,8 @@
     %th Expiration
     %th Code
     %th
-    %th
-    %th
+    %th Edit
+    %th Delete
 
   - @incentives.each do |incentive|
     %tr
@@ -15,9 +15,13 @@
       %td= incentive.expiration
       %td= incentive.code
       %td= link_to 'Show', incentive
-      %td= link_to 'Edit', edit_incentive_path(incentive)
-      %td= link_to 'Destroy', incentive, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to edit_incentive_path(incentive) do
+          = edit_icon
+      %td
+        = link_to incentive, :confirm => 'Are you sure?', :method => :delete do
+          = delete_icon
 
 %br
 
-= link_to 'New Incentive', new_incentive_path
+= link_to 'Add a New Incentive', new_incentive_path, :class => 'btn primary large'
