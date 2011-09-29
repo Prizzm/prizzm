@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927052815) do
+ActiveRecord::Schema.define(:version => 20110929084210) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20110927052815) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "incentive_id"
+    t.datetime "invitation_sent_at"
   end
 
   create_table "prizzm_mail_templates", :force => true do |t|
@@ -249,6 +250,12 @@ ActiveRecord::Schema.define(:version => 20110927052815) do
     t.string   "invitation_status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "invitation_sent_at"
+    t.boolean  "landing_page_visited"
+    t.boolean  "wrote_review"
+    t.boolean  "logged_in_with_fb"
+    t.boolean  "logged_in_with_prizzm"
+    t.boolean  "shared_item_to_fb"
   end
 
   create_table "settings", :force => true do |t|

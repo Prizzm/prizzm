@@ -62,6 +62,11 @@ class PrizzmInvitationsController < ApplicationController
     #old_client_ids = @prizzm_invitation.client_ids
     #new_client_ids = params[:clients]
     @prizzm_invitation.client_ids = params[:clients]
+    #client_ids = params[:clients]
+    #client_ids.each do |cid|
+      #client = current_company.clients.find(cid)
+      #@prizzm_invitation.
+    #end
     respond_to do |format|
       if @prizzm_invitation.update_attributes(params[:prizzm_invitation])
         format.html { redirect_to(@prizzm_invitation, :notice => 'Prizzm invitation was successfully updated.') }

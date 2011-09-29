@@ -13,6 +13,9 @@
   %p Select Product
   = select_tag 'prizzm_invitation[product_id]', options_from_collection_for_select(current_company.products, 'id', 'name') 
 
+  %p Select Incentive
+  = select_tag 'prizzm_invitation[incentive_id]', options_from_collection_for_select(current_company.incentives, 'id', 'code') 
+
   %p Select Email Template
   %p Select Landing Page
   %p Select Clients
@@ -20,7 +23,7 @@
     %p 
       #{client.first_name} #{client.last_name}
       = client.id
-      = check_box_tag 'clients[]', client.id
+      = check_box_tag 'clients[]', client.id, @prizzm_invitation.client_ids.include?(client.id)
   .actions
     = f.submit 'Save'
 

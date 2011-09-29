@@ -20,8 +20,16 @@ class Mailer < ActionMailer::Base
   end
 
   def self.deliver_prizzm_invitation(prizzm_invitation, client=nil)
-    recipients = client.nil? ? prizzm_invitation.clients.all : [client]
+    if client.nil?
+      recipients = prizzm_invitation.clients.all 
+      prizzm_invitation.update_attributes({:invitation_sent_at => Time.now, :status => 'sent' })
+    else
+      recipients = [client]
+    end
+
     recipients.each do |client|
+      sale = prizzm_invitation.sale_for(client)
+      sale.update_attributes({:invitation_sent_at => Time.now, :invitation_status => 'sent' })
       Rails.logger.info "####################################### Client id: #{client.id}"
       Mailer.prizzm_invitation(prizzm_invitation, client).deliver
     end
