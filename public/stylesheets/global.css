@@ -985,6 +985,10 @@ ul.items, ul.cases {
   margin-left: 10px;
 }
 
+#pitch h3 {
+  color: #97c66f;
+}
+
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.

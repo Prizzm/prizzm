@@ -5,6 +5,8 @@
     %h1#logo= link_to "prizzm", home_path
     - if user_signed_in?
       = render :partial => "layouts/logged_in"
+    - else
+      = render :partial => "layouts/pitch"
   = yield
   .clear
   
