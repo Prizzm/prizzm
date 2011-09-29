@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @incentive.description
+%p
+  %b Expiration:
+  = @incentive.expiration
+%p
+  %b Code:
+  = @incentive.code
+
+= link_to 'Edit', edit_incentive_path(@incentive)
+\|
+= link_to 'Back', incentives_path

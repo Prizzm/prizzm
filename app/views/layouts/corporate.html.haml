@@ -4,46 +4,35 @@
     %meta(charset='utf-8')
     %title  Prizzm
     = csrf_meta_tag
-    = render 'layouts/stylesheets'
-    = favicon_link_tag
-    
+    = render :partial => 'layouts/corporate_twitter_bootstrap' 
   %body
-    #cbbg
-      %header#prizzmbar
-        .container_24
-          .fl
-            %h1.fl= link_to "prizzm", "/"
-            .clear
-          %nav.fr
-            %ul
-              %li= link_to "Home", company_root_path, :class => "js-pjax"
-              %li= link_to "Clients", company_clients_path(current_company), :class => "js-pjax"
-              %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
-              %li= link_to "Invitations", prizzm_invitations_path, :class => "js-pjax"
+    .topbar
+      .fill
+        .container
+          = link_to "Welcome #{current_company.name}", company_root_path, :class => 'brand'
+          %ul.nav
+            %li.active= link_to "Home", company_root_path
+            %li= link_to "Edit Profile", edit_company_registration_path
+            %li= link_to "Logout", destroy_company_session_path
+          %p.pull-right Logged in as #{current_company.name}
 
-              %li.account
-                = link_to "#", :class => "account" do
-                  Account
-                  %small &#x25BC;
-                %ul.subnav
-                  %li.user
-                    = image_tag current_company.main_image, :class => "fl"
-                    = link_to "Edit Profile", edit_company_registration_path
-                    .clear
-                  %li= link_to "Logout", destroy_company_session_path
-          .clear
-     
-#container.container_24
-  #main
-    = yield
-    .clear
+    .container
+      .content
 
-  %footer
-    = render "layouts/footer"
-    - flash.each do |type, value|
-      .flash{ :class => type.to_s }
-        = value
-    .clear
+        - flash.each do |type, value|
+          .flash{ :class => type.to_s }
+            = value
+        /= image_tag current_company.main_image, :class => "thumbnail"
+
+        %ul.tabs
+          %li= link_to "Home", company_root_path, :class => "js-pjax"
+          %li= link_to "Clients", company_clients_path(current_company), :class => "js-pjax"
+          %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
+          %li= link_to "Incentives", incentives_path, :class => "js-pjax"
+          %li= link_to "Invitations", prizzm_invitations_path, :class => "js-pjax"
+
+        = yield
+
 
 = render 'layouts/javascripts'
 = javascript_include_tag 'jquery.form.js', 'jquery.remotipart.js'

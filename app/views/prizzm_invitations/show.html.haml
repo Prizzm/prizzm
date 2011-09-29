@@ -2,13 +2,87 @@
 
 %p= @prizzm_invitation.name
 %br
+Status:
+%p= @prizzm_invitation.status
+- if @prizzm_invitation.status == 'sent'
+  Sent on: #{@prizzm_invitation.invitation_sent_at.strftime '%A, %B %d, %Y at %I:%M %p'}
+
+Sent:
+%p= @prizzm_invitation.sent.count
+
+Unsent:
+%p= @prizzm_invitation.unsent.count
+
+Landing Page Visited:
+%p= @prizzm_invitation.landing_page_visited.count
+
+Wrote Review:
+%p= @prizzm_invitation.wrote_review.count
+
+Logged In with FB:
+%p= @prizzm_invitation.logged_in_with_fb.count
+
+Logged In with Prizzm
+%p= @prizzm_invitation.logged_in_with_prizzm.count
+
+Shared Item to FB
+%p= @prizzm_invitation.shared_item_to_fb.count
 
 Product:
 %p= @prizzm_invitation.product.try(:name)
+
+Incentive:
+- if @prizzm_invitation.incentive
+  %p= @prizzm_invitation.incentive.description
+- else
+  None
+
+%table
+  %tr
+    %th Metrics
+  
+
+%table.zebra-striped
+  %thead
+    %tr
+      %th Clients
+    %tr
+      %th Name
+      %th Client ID
+      %th Clicked Email
+      %th Wrote Review
+      %th Used FB
+      %th Logged in with Prizzm
+      %th Shared Item to FB
+      %th Invitation Status
+      %th 
+      %th Last Sent
+  %tbody
+
+    - @prizzm_invitation.clients.each do |client|
+      - sale = @prizzm_invitation.sale_for client
+      %tr
+        %td #{client.first_name} #{client.last_name} 
+        %td #{client.id} 
+        %td #{sale.landing_page_visited && "Yes" || "No"}
+        %td
+          - if sale.wrote_review 
+            - if client.user
+              = link_to("Read Review", show_item_path(client.user, client.user.items.where(:product_id => @prizzm_invitation.product.id).first))
+            - else
+              Yes
+          - else
+            No
+        %td #{sale.logged_in_with_fb && "Yes" || "No"}
+        %td #{sale.logged_in_with_prizzm && "Yes" || "No"}
+        %td #{sale.shared_item_to_fb && "Yes" || "No"}
+        %td #{sale.invitation_status}
+        %td= link_to "Resend Invitation", send_prizzm_invitation_path(@prizzm_invitation, client.id), :method => :post
+        - if sale.invitation_sent_at
+          %td #{sale.invitation_sent_at.strftime '%A, %B %d, %Y at %I:%M %p'}
+
+%p= link_to "Send invitations", send_prizzm_invitation_path(@prizzm_invitation), :method => :post
 %br
-Clients:
-- @prizzm_invitation.clients.each do |client|
-  %p #{client.first_name} #{client.last_name} #{client.id} #{@prizzm_invitation.sales.where(:client_id => client.id).first.invitation_status}
 = link_to 'Edit', edit_prizzm_invitation_path(@prizzm_invitation)
 \|
 = link_to 'Back', prizzm_invitations_path

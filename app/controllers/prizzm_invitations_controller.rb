@@ -62,6 +62,11 @@ class PrizzmInvitationsController < ApplicationController
     #old_client_ids = @prizzm_invitation.client_ids
     #new_client_ids = params[:clients]
     @prizzm_invitation.client_ids = params[:clients]
+    #client_ids = params[:clients]
+    #client_ids.each do |cid|
+      #client = current_company.clients.find(cid)
+      #@prizzm_invitation.
+    #end
     respond_to do |format|
       if @prizzm_invitation.update_attributes(params[:prizzm_invitation])
         format.html { redirect_to(@prizzm_invitation, :notice => 'Prizzm invitation was successfully updated.') }
@@ -84,4 +89,65 @@ class PrizzmInvitationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def send_invitation
+    @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
+    client = current_company.clients.find(params[:client_id]) if params[:client_id]
+    Mailer.deliver_prizzm_invitation(@prizzm_invitation, client)
+    redirect_to @prizzm_invitation
+  end
+
+  def open_invitation
+    @invitation = PrizzmInvitation.find(params[:id])
+    @client = @invitation.clients.find(params[:client_id])
+    @product = @invitation.product
+    @company = @invitation.company
+    @sale = @invitation.sale_for @client
+    @sale.update_attribute('landing_page_visited', true)
+    session[:new_item] = @product.id
+
+    Rails.logger.debug "Product #{@product.name} has id #{session[:new_item]}"
+    render :layout=>false
+  end
+
+  def save_invitation_review
+    @invitation = PrizzmInvitation.find(params[:id])
+    @client = @invitation.clients.find(params[:client_id])
+    @product = @invitation.product
+    @company = @invitation.company
+    
+    signin_type = params[:signin_type]
+    session[:review] = params[:review]
+    session[:client_id] = @client.id
+    session[:invitation_id] = @invitation.id
+
+    review_text = params[:review]
+
+    unless review_text.blank?
+      @sale = @invitation.sale_for @client
+      @sale.update_attribute('wrote_review', true)
+    end
+
+    @item = Item.create({:product_id => @product.id, :name => @product.name, :tag_list => 'have', :review => review_text, :invitation_status => "incomplete"})
+
+    begin
+      @item.add_image_from_url @product.main_image
+    rescue CarrierWave::DownloadError
+      image_url = request.protocol + request.host_with_port + @product.main_image
+      @item.add_image_from_url image_url
+    end
+    session[:accepted_item] = @item.id
+
+
+    # If user chose to signing with facebook
+    if signin_type == 'facebook'
+      session[:signin_type] = 'facebook'
+      redirect_to user_omniauth_authorize_path(:facebook)
+    # If user choose not to use Facebook, show them the login form
+    elsif signin_type == 'standard'
+      session[:signin_type] = 'standard'
+      redirect_to new_user_session_path
+    end
+  end 
+
 end
