@@ -5,8 +5,8 @@
   %thead
     %tr
       %th Invitation Name
-      %th
-      %th
+      %th Edit
+      %th Delete
   %tbody
     - @prizzm_invitations.each do |prizzm_invitation|
       %tr
@@ -15,6 +15,7 @@
         %td
           = link_to edit_prizzm_invitation_path(prizzm_invitation) do
             = edit_icon
+        %td
           = link_to prizzm_invitation, :confirm => 'Are you sure?', :method => :delete do
             = delete_icon
 

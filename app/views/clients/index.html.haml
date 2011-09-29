@@ -6,8 +6,8 @@
     %th Last name
     %th Email
     %th
-    %th
-    %th
+    %th Edit
+    %th Delete
 
   - @clients.each do |client|
     %tr
@@ -15,8 +15,12 @@
       %td= client.last_name
       %td= client.email
       %td= link_to 'Show', [current_company, client]
-      %td= link_to 'Edit', edit_company_client_path(current_company, client)
-      %td= link_to 'Destroy', [current_company, client], :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to edit_company_client_path(current_company, client) do
+          = edit_icon
+      %td
+        = link_to [current_company, client], :confirm => 'Are you sure?', :method => :delete do 
+          = delete_icon
 
 %br
 
