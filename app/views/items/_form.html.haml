@@ -16,6 +16,7 @@
   .wrap.fr
     = label_tag :product_url, "URL"
     = text_field_tag :product_url, nil, :placeholder => "Product link"
+    = link_to "use google", "", :class => "googlesearch"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
