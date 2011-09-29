@@ -10,10 +10,15 @@
   %tbody
     - @prizzm_invitations.each do |prizzm_invitation|
       %tr
-        %td= link_to prizzm_invitation.name, prizzm_invitation
-        %td= link_to 'Edit', edit_prizzm_invitation_path(prizzm_invitation)
-        %td= link_to 'Destroy', prizzm_invitation, :confirm => 'Are you sure?', :method => :delete
+        %td
+          = link_to prizzm_invitation.name, prizzm_invitation
+        %td
+          = link_to edit_prizzm_invitation_path(prizzm_invitation) do
+            = edit_icon
+          = link_to prizzm_invitation, :confirm => 'Are you sure?', :method => :delete do
+            = delete_icon
+
 
 %br
 
-= link_to 'Create an Invitation', new_prizzm_invitation_path, :class => 'btn success large'
+= link_to 'Create an Invitation', new_prizzm_invitation_path, :class => 'btn primary large'

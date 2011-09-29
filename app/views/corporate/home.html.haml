@@ -1,56 +1,42 @@
-- content_for :page_style do
-  = include_stylesheets :company, :logged_in
-
-%header
-  %h2.grid_19 #{@company.name}
-  .grid_5
-
-#content.grid_14
-  %section
-    %h1 About
-    %p
-      Name:
-      = @company.name
-    %p
-      Contact Email: 
-      = @company.email
-    %p
-      Description:
-      = @company.description
-    %p
-      Industry:
-      = @company.industry
-    %p
-      Contact Name:
-      = @company.contact_name
+%h1 About #{@company.name}
+%p
+  Contact Email: 
+  = @company.email
+%p
+  Description:
+  = @company.description
+%p
+  Industry:
+  = @company.industry
+%p
+  Contact Name:
+  = @company.contact_name
 
 
-    = link_to 'Edit Company Info', edit_company_path(current_company)
+= link_to 'Edit Company Info', edit_company_path(current_company), :class => 'btn large'
     
 
 
-  %section#contact
-    %ul.table
-      - @company.addresses.each do |address| 
-        %li.row
-          .cell.icon
-            %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
-          .cell{:title => address.description}= address.description.to_s.truncate(30)
-          .cell{:title => address.address}= address.address
-          .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
-          .cell= link_to "Delete", company_address_path(@company, address), :method => :delete, :confirm => "Are you sure you want to delete this address?"
+%section#contact
+  %dl.table
+    - @company.addresses.each do |address| 
+      %li.row
+        .cell.icon
+          %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
+        .cell{:title => address.description}= address.description.to_s.truncate(30)
+        .cell{:title => address.address}= address.address
+        .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
+        .cell= link_to "Delete", company_address_path(@company, address), :method => :delete, :confirm => "Are you sure you want to delete this address?"
 
-  
-    = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
-      = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
-      = f.text_field :description, :size => "19", :placeholder => 'Enter a description'
-      = f.text_field :address, :size => "19", :placeholder => 'Enter the address, phone number, URL, or Twitter ID here'
-      = f.submit "Add"
 
-  = image_uploader_for @company
-  = image_gallery_for @company
-  %ul.media-grid
-    - @company.images.each do |image|
-      %li= link_to image_tag(image.image.url, :class => 'thumbnail')
-.clear
+  = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
+    = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
+    = f.text_field :description, :size => "19", :placeholder => 'Enter a description'
+    = f.text_field :address, :size => "19", :placeholder => 'Enter the address, phone number, URL, or Twitter ID here'
+    = f.submit "Add"
+
+= image_uploader_for @company
+%ul.media-grid
+  - @company.images.each do |image|
+    %li= link_to image_tag(image.image.url, :class => 'thumbnail')
 
