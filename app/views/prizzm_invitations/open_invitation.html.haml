@@ -1,0 +1,75 @@
+%html{ :lang => "en"}
+
+  %head
+    %meta{:charset=>"utf-8"}
+    %title #{@company.name} Invite - Powered by Prizzm
+    %meta{:http=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
+    %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie.css" type="text/css" media="screen" /><![endif]-->
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/global.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/fonts.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/invite.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/tipsy.css"}
+    %link{:rel=>"stylesheet", :href=>"/stylesheets/facebox.css"}
+    = include_javascripts :app
+
+  %body#main
+    %header      
+      #brand.fl= image_tag @company.main_image
+      %h1.fl= @product.name
+      .clear
+    %section{:style=>"width:100%"}
+      .title
+        Thank you 
+        %span{:style=>"text-transform:capitalize"}=@client.first_name
+      %p
+        It would really help us out at
+        %em #{@company.name}
+        if you let us know what
+        %em you thought
+        of our 
+        = @product.name
+        and
+        %em share it
+        with your friends too!
+    
+      = form_tag save_invitation_review_path(@invitation.id, @client.id), :id => "new_product_review", :name=>"review_form" do 
+        #itemdetail.fl
+          /= image_tag "/images/bryna-brand.png"
+          = image_tag @product.main_image, :class => "medthumb"
+          %h2= @product.name
+        .fr
+          = text_area_tag :review, nil, :placeholder => "Say something about it"
+          = hidden_field_tag :signin_type
+          
+          %ul.finalstep
+            %li.fl= link_to "What is Prizzm?", "#", :id => "infolink", :class => "tipsy", :title => "Prizzm helps customers communicate with the brands they buy from, track issues, and ask friends for recommendations."
+            %li.fr= link_to "Send using Prizzm", "#login", :id => "sendwprizzm", :class => "facebox"
+            .clear
+        .clear
+        #login.hidden
+          %h2 Login to Prizzm
+          = submit_tag "", :id => "facebook_login", :class => "fn"
+          - if @invitation.incentive
+            Login with facebook to be eligible for:
+            .coupon= @invitation.incentive.description
+          = submit_tag "I don't have facebook", :id => "standard_login"
+      .clear
+    %footer
+      Feedback powered by
+      = link_to "Prizzm", home_path, :target => "_blank"
+
+
+
+:javascript
+  $(document).ready(function() {
+    $('#standard_login').live('click', function(event){
+      $('#signin_type').val('standard');
+      $('#new_product_review').submit();
+    });
+
+    $('#facebook_login').live('click', function(event){
+      $('#signin_type').val('facebook');
+      $('#new_product_review').submit();
+    });
+  });

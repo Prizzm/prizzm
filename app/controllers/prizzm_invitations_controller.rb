@@ -93,7 +93,44 @@ class PrizzmInvitationsController < ApplicationController
   end
 
   def open_invitation
+    @invitation = PrizzmInvitation.find(params[:id])
+    @client = @invitation.clients.find(params[:client_id])
+    @product = @invitation.product
+    @company = @invitation.company
+    session[:new_item] = @product.id
 
+    Rails.logger.debug "Product #{@product.name} has id #{session[:new_item]}"
+    render :layout=>false
   end
+
+  def save_invitation_review
+    @invitation = PrizzmInvitation.find(params[:id])
+    @client = @invitation.clients.find(params[:client_id])
+    @product = @invitation.product
+    @company = @invitation.company
+    
+    signin_type = params[:signin_type]
+    session[:review] = params[:review]
+    review_text = params[:review]
+    @item = Item.create({:product_id => @product.id, :name => @product.name, :tag_list => 'have', :review => review_text, :invitation_status => "incomplete"})
+    begin
+      @item.add_image_from_url @product.main_image
+    rescue CarrierWave::DownloadError
+      image_url = request.protocol + request.host_with_port + @product.main_image
+      @item.add_image_from_url image_url
+    end
+    session[:accepted_item] = @item.id
+
+
+    # If user chose to signing with facebook
+    if signin_type == 'facebook'
+      session[:signin_type] = 'facebook'
+      redirect_to user_omniauth_authorize_path(:facebook)
+    # If user choose not to use Facebook, show them the login form
+    elsif signin_type == 'standard'
+      session[:signin_type] = 'standard'
+      redirect_to new_user_session_path
+    end
+  end 
 
 end
