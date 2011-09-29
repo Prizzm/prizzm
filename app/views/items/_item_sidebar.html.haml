@@ -1,5 +1,5 @@
 %aside.grid_4.right.itemside
-  = render :partial => "layouts/system_menu" if user_logged_in?
+  = render :partial => "layouts/system_menu" if user_signed_in?
   .fr
     - if @item.privacy == "public"
       - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
