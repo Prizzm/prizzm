@@ -22,8 +22,7 @@
           - flash.each do |type, value|
             .flash{ :class => type.to_s }
               = value
-          .row
-            /= image_tag current_company.main_image, :class => "thumbnail"
+          /= image_tag current_company.main_image, :class => "thumbnail"
 
           %ul.tabs
             %li= link_to "Home", company_root_path, :class => "js-pjax"
