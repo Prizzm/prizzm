@@ -62,11 +62,11 @@ Incentive:
     %tr
       %td #{client.first_name} #{client.last_name} 
       %td #{client.id} 
-      %td #{sale.landing_page_visited || "No"}
-      %td #{sale.wrote_review || "No"}
-      %td #{sale.logged_in_with_fb || "No"}
-      %td #{sale.logged_in_with_prizzm || "No"}
-      %td #{sale.shared_item_to_fb || "No"}
+      %td #{sale.landing_page_visited && "Yes" || "No"}
+      %td #{sale.wrote_review && "Yes" || "No"}
+      %td #{sale.logged_in_with_fb && "Yes" || "No"}
+      %td #{sale.logged_in_with_prizzm && "Yes" || "No"}
+      %td #{sale.shared_item_to_fb && "Yes" || "No"}
       %td #{sale.invitation_status}
       %td= link_to "Resend Invitation", send_prizzm_invitation_path(@prizzm_invitation, client.id), :method => :post
       %td #{sale.invitation_sent_at.strftime '%A, %B %d, %Y at %I:%M %p'}

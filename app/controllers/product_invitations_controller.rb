@@ -66,8 +66,8 @@ class ProductInvitationsController < ApplicationController
       @user.items << @item
       @item.update_attribute(:invitation_status, 'complete')
 
-      @invitation = Invitation.find(session[:invitation_id])
-      @client = Client.find(session[:client_id])
+      @invitation = PrizzmInvitation.find(session[:invitation_id])
+      @client = @invitation.clients.find(session[:client_id])
       @sale = @invitation.sale_for @client
 
       if session[:signin_type] == 'facebook'
@@ -106,8 +106,8 @@ class ProductInvitationsController < ApplicationController
       message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item), :picture => image_url}
       Facebook.post_message(message, current_user.access_token) 
 
-      @invitation = Invitation.find(session[:invitation_id])
-      @client = Client.find(session[:client_id])
+      @invitation = PrizzmInvitation.find(session[:invitation_id])
+      @client = @invitation.clients.find(session[:client_id])
       @sale = @invitation.sale_for @client
       @sale.update_attribute('shared_item_to_fb', true)
 
