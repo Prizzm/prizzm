@@ -5,18 +5,18 @@
                 :rows => nil,
                 :style => 'min-height: 250px; width: 100%;',
                 :value => h(html_clean @item.review)
-
-  = f.text_field :tag_list, :placeholder => "+ Add Tags"
-
-  %ul.finalstep
+  %ul.buttons
     .fl
       %li= f.label :privacy
       %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
+    .fl.opinion
+      %li
+        = form_tag item_save_opinion_path, :remote => true do
+          = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
+          = hidden_field_tag :id, @item.id
     .fr
       %li= link_to "Cancel", "#", :class => "button red cancel-edit"
       %li= f.submit 'Save'
     .clear
 .clear
 
-:javascript
-  #{render 'tags/new_taggable.js.haml', :taggable => @item}

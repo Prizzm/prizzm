@@ -28,21 +28,27 @@
 
   / Remove if being exposed to add tags field
   = hidden_field :tag_list, 'have'
-
-  %ul.buttons
+  
+  %ul.sharing.fl
     %li.fb{:title => "post to facebook"}
       / facebook checkbox goes here
     %li.tt{:title => "share to twitter"}
       / twitter checkbox goes here
     %li.privacy
-      = f.check_box :privacy, {}, 'private', 'public'
+      = f.check_box :privacy, {:checked => "false"}, 'private', 'public'
       = f.label :privacy, 'Mark Private'
-
+  
+  %ul.buttons.fr
     %li= button_to "Cancel"
     %li= f.submit "Save"
-
+  .clear
 
 :javascript
+  $('li').filter('.fb, .tt').tipsy({
+    gravity : 'n',
+    fade    : true
+  });
+  
   // Product Auto Complete
   #{ render "items/product_autocomplete.js" }
 

@@ -19,7 +19,7 @@ $(document).ready(function(){
     fade    : true
   });
   
-  $('.tipsy').tipsy({
+  $('.tip').tipsy({
     gravity : 'n',
     fade    : true,
     html    : true
