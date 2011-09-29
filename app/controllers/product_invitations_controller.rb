@@ -67,7 +67,9 @@ class ProductInvitationsController < ApplicationController
       @item.update_attribute(:invitation_status, 'complete')
 
       @invitation = PrizzmInvitation.find(session[:invitation_id])
-      @client = @invitation.clients.find(session[:client_id])
+      @client = @invitation.clients.find(session[:client_id], :readonly => false)
+      @client.user = @user
+      @client.save
       @sale = @invitation.sale_for @client
 
       if session[:signin_type] == 'facebook'

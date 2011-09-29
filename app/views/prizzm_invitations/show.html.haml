@@ -63,13 +63,21 @@ Incentive:
       %td #{client.first_name} #{client.last_name} 
       %td #{client.id} 
       %td #{sale.landing_page_visited && "Yes" || "No"}
-      %td #{sale.wrote_review && "Yes" || "No"}
+      %td
+        - if sale.wrote_review 
+          - if client.user
+            = link_to("Read Review", show_item_path(client.user, client.user.items.where(:product_id => @prizzm_invitation.product.id).first))
+          - else
+            Yes
+        - else
+          No
       %td #{sale.logged_in_with_fb && "Yes" || "No"}
       %td #{sale.logged_in_with_prizzm && "Yes" || "No"}
       %td #{sale.shared_item_to_fb && "Yes" || "No"}
       %td #{sale.invitation_status}
       %td= link_to "Resend Invitation", send_prizzm_invitation_path(@prizzm_invitation, client.id), :method => :post
-      %td #{sale.invitation_sent_at.strftime '%A, %B %d, %Y at %I:%M %p'}
+      - if sale.invitation_sent_at
+        %td #{sale.invitation_sent_at.strftime '%A, %B %d, %Y at %I:%M %p'}
 
 %p= link_to "Send invitations", send_prizzm_invitation_path(@prizzm_invitation), :method => :post
 %br
