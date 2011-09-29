@@ -21,6 +21,7 @@ javascripts:
     - public/javascripts/jquery.tipsy.js
     - public/javascripts/jquery.masonry.js
     - public/javascripts/jquery.watermark.min.js
+    - public/javascripts/jquery.tablesorter.min.js
     - public/javascripts/jquery.class.js
     - public/javascripts/jquery.qtip.js
     - public/javascripts/swfobject.js
