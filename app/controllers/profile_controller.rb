@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   def show
     @user = load_user
 
-    render "user_show"
+    render "user_show", :layout => "application"
   end 
 
 

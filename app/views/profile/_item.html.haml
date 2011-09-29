@@ -1,15 +1,42 @@
 %li.item{:id => "item_#{item.id}"}
-  = image_tag item.main_image, :class => "fl thumb"
+  - if item.product.nil? == false
+    = image_tag item.product.main_image, :class => "fl thumb"
+  - else
+    = image_tag item.main_image, :class => "fl thumb"
+
   .fl.cont
-    %h2= link_to item.name, item
-    Added: #{item.created_at.to_date}
-    %div{ :class => "status #{item.privacy}" }= item.privacy
+    / To remove when product isn't references in item columns
+    - if item.product.nil? == false
+      %h2= link_to item.product.name, item
+    - else
+      %h2= link_to item.name, item
+    - if current_user == @user
+      Added: #{item.created_at.to_date}
+      %div{ :class => "status #{item.privacy}" }= item.privacy
+    - else
+      = link_to @user.name, profile_path(@user)
+      - if item.tag_list.include? 'have'
+        has 
+      - elsif item.tag_list.include? 'want'
+        wants 
+      this and
+      - if item.opinion == "horrible!"
+        %div{ :class => "opinion hate" } doesn't recommend
+      - elsif item.opinion == "i_recommend_this!"
+        %div{ :class => "opinion recommended" } recommends
+      - else
+        %div{ :class => "opinion neutral" } has no opinion about
+      it.
   %ul.fr
     /
       %li
         = link_to "#", :class => "rec button" do
           = image_tag "rec-thumb.png"
           Recommend this
-    %li= link_to "Edit this item", item, :class => "button", :id => "edit-review-link"
-    = link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
+    - if current_user == @user
+      %li= link_to "Edit this item", item, :class => "button", :id => "edit-review-link"
+    - else
+      %li= link_to "View this item", item, :class => "button", :id => "edit-review-link"
+      
+    /= link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
   .clear

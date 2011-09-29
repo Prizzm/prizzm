@@ -8,7 +8,7 @@
         %small &#x25BC;
       %ul.subnav
         %li.user
-          = image_tag current_user.main_image, :class => "fl"
+          = image_tag current_user.main_image, :class => "fl thumb"
           = link_to current_user.name, profile_path(current_user), :class => "username"
           = link_to "Edit Profile", edit_user_registration_path(:back => request.url), :class => "facebox"
           .clear

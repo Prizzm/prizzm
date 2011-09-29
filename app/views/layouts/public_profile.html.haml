@@ -31,12 +31,12 @@
       %article
         %h3 Followed by #{pluralize @user.followers_count, "Person"}
         - if @user.followers_count > 0
-          .ufgallery
-          - @user.followers.take(8).each do |follower|
-            = link_to profile_path(follower) do
-              = image_tag follower.main_image, :class => "smallthumb"
-        - else
-          Invite your friends!
+          %ul.ufgallery
+            - @user.followers.take(8).each do |follower|
+              = link_to profile_path(follower) do
+                = image_tag follower.main_image, :class => "smallthumb"
+            - else
+              = render :partial => "invitations/new"
         .clear
         /
           %li

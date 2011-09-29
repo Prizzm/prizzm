@@ -1,30 +1,32 @@
 - content_for :page_style do
   = include_stylesheets :item_detail
   
-#content.grid_14
+#content.grid_14.public-item.no-menu
   %section#review
-    .fl.img
-      = image_tag @item.user.main_image, :class => "big thumb"
-      %span= image_tag @item.main_image, :class => "med thumb"
+    .fl
+      = image_tag @item.main_image, :class => "big thumb"
     .fl.cont
+      #owner
+        .fl.details
+          = image_tag @item.user.main_image, :class => "small thumb fl"
+          = link_to @item.user.name, profile_path(@item.user)
+          - if @item.tag_list.include? 'have'
+            has 
+          - elsif @item.tag_list.include? 'want'
+            wants 
+          this and
+          - if @item.opinion == "horrible!"
+            %div{ :class => "opinion hate" } doesn't recommend
+          - elsif @item.opinion == "i_recommend_this!"
+            %div{ :class => "opinion recommended" } recommends
+          - else
+            %div{ :class => "opinion neutral" } has no opinion about
+          it.
+          .clear
+        %div{:class => "fr"}= follow_link_for @item.user
+        .clear
+          
       %h2= @item.name
-      = link_to @item.user.name, profile_path(@item.user)
-      - if @item.tag_list.include? 'have'
-        has 
-      - elsif @item.tag_list.include? 'want'
-        wants 
-      this and
-      - if @item.opinion == "horrible!"
-        %div{ :class => "opinion hate" } doesn't recommend
-      - elsif @item.opinion == "i_recommend_this!"
-        %div{ :class => "opinion recommended" } recommends
-      - else
-        %div{ :class => "opinion neutral" } has no opinion about
-      it.
-      .clear
-      %div{:class => "fn"}= follow_link_for @item.user
-      
-      .clear
       #rendered-review
         - if @item.review.blank?
           = render 'default_review'
@@ -33,6 +35,8 @@
           = html_clean @item.review
       .clear
       #footerbit
+        
+        
         Written #{@item.created_at.to_date} - Edited #{time_ago_in_words @item.updated_at} ago
         \| Comments 
         = @item.comment_threads.count
@@ -41,7 +45,7 @@
         = comments_section_for @item
       - else
         = link_to "Login to post comments!", login_popup_path, :class => 'facebox'
-        
+          
       
     .clear
 

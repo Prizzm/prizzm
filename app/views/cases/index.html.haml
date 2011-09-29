@@ -12,46 +12,17 @@
     %ul.cases
       - @cases.each do |user_case|
         %li.case{:id => "user_case_#{user_case.id}"}
-          %h2
-            = user_case.case_reference
-            = link_to user_case.title, case_path(user_case)
-          Added: #{user_case.created_at.strftime '%m/%d/%Y'}
-          %div{ :class => "status #{user_case.privacy}" }= user_case.privacy
-          = link_to "", user_case, :remote => true, :method => :delete, :class => 'close', :confirm => "Are you sure you want to delete this case?"
-          = link_to "", user_case, :remote => true, :method => :delete, :class => 'close', :confirm => "Are you sure you want to delete this case?"
-    
-   
-%aside.grid_6.right
-  %nav#system
-    %ul
-      %li= link_to "profile", profile_path(current_user)
-  
-      %li.account
-        = link_to "#", :class => "account" do
-          account
-          %small &#x25BC;
-        %ul.subnav
-          %li.user
-            = image_tag current_user.main_image, :class => "fl"
-            = link_to current_user.name, profile_path(current_user), :class => "username"
-            = link_to "Edit Profile", edit_user_registration_path(:back => request.url), :class => "facebox"
-            .clear
-          %li= link_to "Logout", destroy_user_session_path
-  %article.suggested
-    %h4
-      .fl Suggested People
-      = link_to "Refresh", "", :class => 'small fr'
-      = link_to "View all", members_path, :class => 'small fr'
-      .clear
-    %ul.people
-      - suggested_people.each do |person| 
-        %li.person
-          = image_tag person.main_image, :class => 'small thumb fl'
-          .cont.fl
-            = link_to person.name, profile_path(person)
-          = link_to "Follow", "", :class => "button follow fr"
+          .fl.cont
+            %h2
+              = user_case.case_reference
+              = link_to user_case.title, case_path(user_case)
+            Added: #{user_case.created_at.strftime '%m/%d/%Y'}
+            %div{ :class => "status #{user_case.privacy}" }= user_case.privacy
+            \-
+            Open
+          %ul.fr
+            %li= link_to "View case", case_path(user_case), :class => "button"
+            /%li= link_to "Delete", user_case, :remote => true, :method => :delete, :class => 'close', :confirm => "Are you sure you want to delete this case?"
           .clear
-        
-  %article.invite
-    %h4 Invite your friends
-    = render :partial => "invitations/new"
+   
+= render :partial => "layouts/sidebar"

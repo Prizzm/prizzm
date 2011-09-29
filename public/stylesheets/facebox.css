@@ -39,6 +39,11 @@
   background-image: none;
 }
 
+#facebox .close {
+  top: 8px;
+  right: 8px;
+}
+
 #facebox .close img{
   opacity:0.3;
 }
@@ -54,11 +59,6 @@
   #facebox .loading img {
     display: none;
   }
-
-
-#facebox .image {
-  text-align: center;
-}
 
 #facebox_overlay {
   position: fixed;
@@ -82,104 +82,9 @@
   margin: 0;
 }
 
-#facebox textarea, #facebox input[type=text], #item_possession_status, #facebox input[type=email], #facebox input[type=password], #facebox input[type=tel]{
-	margin-bottom: 3px;
-	padding: 10px;
-	border: 1px solid #e7e7e7;
-	font-size: 1.1em;
-
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-  #facebox textarea {
-	max-height: 150px;
-  }
-
-
 #facebox h1 {
 	line-height: 140%;
 	font: normal 20px arial,sans-serif;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #e7e7e7;
-}
-
-#facebox form {
-	margin: 15px 0;
-}
-
-#facebox ul.social {
-	list-style: none;
-	padding: 5px;
-	width: 98%;
-	background: #fff;
-	border: 1px solid #e7e7e7;
-}
-
-#facebox ul.social li {
-	display: inline-block;
-}
-
-#facebox ul li .cancel{
-	margin: 0 !important;
-	top: 3px;
-	right: 2px;
-	opacity: 0.3;
-	visibility: visible;
-	position: absolute;
-	background: url('../images/cancel-light.png');
-}
-
-#facebox ul li .cancel:hover {
-	opacity: 0.5;
-}
-
-#facebox ul.social .button{
-	padding-top: 2px;
-    padding-bottom: 2px;
-}
-
-#facebox .tags {
-	border-color: #e7e7e7;
-}
-
-#facebox .product {
-  margin: 10px 0;
-  padding: 8px;
-  background: #F9F390;
-  border: 1px solid #D8D272;
-  vertical-align: middle;
-  
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-#facebox p {
-  margin-top: 5px;
-}
-
-#facebox .prod-desc{
-  width: 345px;
-}
-
-#facebox .finalstep {
-  display: block;
-}
-
-#facebox #share-rev img{
-  width: 80px;
-}
-
-
-#facebox #share-rev .rev {
-  padding-top: 10px;
-}
-
-#facebox #other-opt {
-  margin-top: 13px;
-display: block;
 }

@@ -6,16 +6,65 @@ class ItemsController < InheritedResources::Base
   def new
     @item = Item.new
     @item.images.build
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'items/form'
+      }
+    end
   end
 
-  def create
-    params[:item][:tag_list] = params[:as_values_tag_list]
 
-    if params[:search]
-      @item = Item.create({ :name => params[:search]}.merge(:possession_status => params[:item_possession].downcase))
-    else
-      @item = Item.create(params[:item].merge(:possession_status => params[:item_possession].downcase))
+  def create
+    params[:item][:tag_list] = params[:tag_list].keys
+
+    @item = Item.new(params[:item]);
+
+    if params[:item][:company_id].blank? == false
+      @company = Company.find(params[:item][:company_id])
+    elsif params[:company_name].blank? == false
+      @company = Company.find(:first, {
+        :conditions => {:name => params[:company_name]}
+      });
+
+      if @company.nil? == true
+        @company = Company.new({
+          :name     => params[:company_name],
+          :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
+          :password => (0...8).map{65.+(rand(25)).chr}.join,
+          :claimed  => false
+        })
+      end
+
+      @item.company = @company;
     end
+
+
+    if params[:item][:product_id].blank? == false
+      @product = Product.find(params[:item][:product_id]);
+      @product.company = @company
+      @product.save
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :conditions => {
+          :name       => params[:product_name],
+          :company_id => @company.id,
+        }
+      });
+
+      if @product.nil? == true
+        @product = Product.new({
+          :name => params[:product_name],
+          :url  => params[:product_url],
+        });
+      end
+
+      @product.company = @company
+      @product.save
+
+      @item.product    = @product
+    end
+
     current_user.items << @item
     redirect_to @item
   end
@@ -26,7 +75,7 @@ class ItemsController < InheritedResources::Base
 
     respond_to do |format|
       format.html {
-        render :partial => 'items/form'
+        render :partial => 'items/form_edit'
       }
     end
   end

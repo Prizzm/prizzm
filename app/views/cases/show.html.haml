@@ -8,6 +8,12 @@
   %span#twilio_name(style="display:none")= @cap_name.to_s
 
 #content.grid_14
+  %nav#secondary
+    %ul
+      %li= link_to "Have", have_path(current_user)
+      %li= link_to "Want", want_path(current_user)
+      %li= link_to "Case", user_cases_path(current_user)
+      
   %section#case
     .title= @case.title
     #rendered-review
@@ -46,111 +52,18 @@
       .clear
     .clear
     
-    %p
-      Call prizzm for support 
-      %span{:id => "prizm_phone", :class => "phone_number"}= "+14155773411"
-    
-    
     #footerbit
+      Started: 
       = @case.updated_at.strftime '%A, %B %d, %Y at %I:%M %p'
-      \|
-      = link_to 'delete', case_path(@case), :method => :delete if (@case.user == current_user)
-      = privacy_control_for @case
-
+      
   %ul.comms.comments_root
     = comment_collection_for @case
     .clear
   %section#new-comment
     = comment_form_for @case
+       
 
-%aside.grid_6
-  %article#ask_friends
-    %h4 Ask your friends for help
-    = form_tag case_post_to_facebook_path(@case), :remote => true, :class => "table", :id => "form-ask-friend" do
-      = text_field_tag :message, "", :placeholder => "Message"
-      %ul.finalstep.buttons.fr
-        %li.fb{:title => "post to facebook"}
-          / facebook checkbox goes here
-        %li.tt
-          / twitter checkbox goes here
-        %li.privacy
-          / privacy drop down goes here
-        %li
-          = hidden_field_tag :link, case_url(@case)
-          = link_to "Share", "#", :id => 'button-ask-friend', :class => "button green"
-          .loading{:style => "display:none;float:left"}
-      .clear
-
-  - if @case.company.nil? == false
-    %article#company_addresses
-      %h4= "Company: #{@case.company.name}"
-      = formatted_addresses_for(@case.company)
-
-      %a{ :class => 'button contact add' } Add
-      .clear
-
-  %article
-    = link_to "Call", "#", :class => "twiliocall button", :id => "call"
-    .clear
-
-#call-window{:style => "display:none"}
-  %div#call-window-container
-    #call_container
-      #call_container_buttons{:style => "display:none"}
-        #call_computer{:onmouseout => "this.style.backgroundColor='#A1A1A3';", :onmouseover => "this.style.backgroundColor='#4D90FE';"}
-          %div
-            Call from my computer
-        #call_phone{:onmouseout => "this.style.backgroundColor='#A1A1A3';", :onmouseover => "this.style.backgroundColor='#4D90FE';"}
-          %div
-            Call me on my phone
-            
-      / Collect input: by computer
-      #call_container_numbers_computer{:style => "display:none"}
-        %div
-          %form#callform_computer
-            %label{:for => "number"} Enter a phone number to call
-            %p{:class => 'notice'}
-            %input#number{:name => "number", :type => "text"}/
-            %button.button.blue Call
-            
-      / Collect input: by phone
-      #call_container_numbers_phone{:style => "display:none"}
-        %div
-          %form#callform_phone{:action => "/calls", :method => "post", :style => "font-size:12px;text-align:left"}
-            %p{:class => 'notice'}
-            %label{:for => "from"} From
-            %input#from{:name => "from", :type => "text", :value => @case.user.phone_number }/
-            %label{:for => "to"} To
-            %input#to{:name => "to", :type => "text" }/
-            %button.button.blue Call
-            
-      / Info: on call
-      #oncall{:style => "display:none"}
-        %div
-          %p{:style => "font-size: 14px;font-weight: bold;"} On call with
-          %p{:style => "font-size: 16px;margin:30px 0;"}
-            %span#callnumber
-          %button.button.hangup{:onclick => "hangup();"} Hangup
-          
-      / Info: on call
-      #placingcall{:style => "display:none"}
-        %div
-          %p{:style => "font-size: 14px;font-weight: bold;margin-bottom:40px"} Placing your call...
-          %button.button{:onclick => "hangup();"} Close Window
-          
-      / Info: calling
-      #calling{:style => "display:none"}
-        %div
-          %p{:style => "font-size: 14px;font-weight: bold;"} Calling...
-          %p{:style => "font-size: 16px;margin:30px 0;"}
-            %span#callingnumber
-          %button.button{:onclick => "hangup();"} Cancel
-          
-    / Call container
-    %div.close_call{:onclick => "close_callwindow();", :title => "Close"}
-      %img{:alt => "Close", :src => "/images/close.png", :style => "z-index:2"}/       
-
-
+= render :partial => "case_sidebar"
 
 
 - content_for :javascripts do
@@ -181,20 +94,16 @@
 
   :javascript   
     
-    $(function() {
-      
-       var pusher = new Pusher('526d54cc07120574aedb'); 
-       var thingChannel = pusher.subscribe('4');
-       thingChannel.bind('thing-create', function(thing) {
-         alert('call pushed');
-       
-       $.get('#{case_path}', 'script', function(data) {});
-
-       });
-       
-      
+    $(function() {      
       #{render 'tags/taggable.js.erb', :taggable => @case}
+     
+      var pusher = new Pusher('526d54cc07120574aedb'); 
+      var thingChannel = pusher.subscribe('#{@case.id}');
+      thingChannel.bind('thing-create', function(thing) {
+        $.get("#{case_path}", "script" , function(data) {
+        });
 
+      });
       $('.note_body').editable(function(value, settings){
         var note_id = $(this).closest('li').attr('id');
         var update_note_path = "#{case_notes_path(@case)}/" + note_id;

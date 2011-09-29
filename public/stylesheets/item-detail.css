@@ -1,5 +1,5 @@
 section#review{
-  margin: 53px 0 10px;
+  margin: 10px 0 10px;
   background: white;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -11,7 +11,7 @@ section#review{
 }
 
 .cont {
-  width: 67%;
+  width: 69%;
 }
 
 aside h4, .title {
@@ -33,28 +33,12 @@ aside ul{
   padding-top: 0 !important;
 }
 
-aside ul {
-  border: none !important;
-}
-
-img.bigthumb {
-  width: 190px;
-}
-
-img.userthumb {
-  padding: 2px;
-  margin-right: 5px;
-  width: 50px;
-}
-
 section#review h2 {
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 #rendered-review, section#pub-review{
 	font-size: 14px;
-	border: 1px solid #f7f7f7;
-	font: arial,sans-serif;
 }
   
   #rendered-review h1, #rendered-review h2, #rendered-review h3 {
@@ -116,7 +100,7 @@ section#review h2 {
   }
   
     .status.public {
-      background: #8ebf64;
+      
     }
 
 #footerbit {
@@ -184,13 +168,15 @@ ul#comments .cell {
     color: #a25959;
 }
 
-#gallery {
-  width: 100px;
+#owner {
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
 }
 
-.galsect {
-  margin-right: 10px;
-  width: 100px;
+#owner .fl.details{
+ width: 300px;
 }
 
 .sel_opinion {

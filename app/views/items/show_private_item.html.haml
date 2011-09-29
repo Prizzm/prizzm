@@ -2,7 +2,12 @@
   = include_stylesheets :wysiwyg
   = include_stylesheets :item_detail
 
-#content.grid_15
+#content.grid_14
+  %nav#secondary
+    %ul
+      %li= link_to "Have", have_path(current_user)
+      %li= link_to "Want", want_path(current_user)
+      %li= link_to "Case", user_cases_path(current_user)
   %section#review
     = image_tag @item.main_image, :class => "fl big thumb"
     .fl.cont
