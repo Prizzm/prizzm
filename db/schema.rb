@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110922004901) do
+ActiveRecord::Schema.define(:version => 20110927052815) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -123,6 +123,15 @@ ActiveRecord::Schema.define(:version => 20110922004901) do
     t.datetime "updated_at"
   end
 
+  create_table "incentives", :force => true do |t|
+    t.integer  "company_id"
+    t.text     "description"
+    t.datetime "expiration"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "item_images", :force => true do |t|
     t.integer  "item_id"
     t.string   "image"
@@ -169,6 +178,17 @@ ActiveRecord::Schema.define(:version => 20110922004901) do
     t.string   "name"
     t.string   "status"
     t.string   "metrics"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "incentive_id"
+  end
+
+  create_table "prizzm_mail_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "message_content"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,7 +4,7 @@
     %meta(charset='utf-8')
     %title  Prizzm
     = csrf_meta_tag
-    = render 'layouts/stylesheets'
+    /= render 'layouts/stylesheets'
     = favicon_link_tag
     
   %body
@@ -19,6 +19,7 @@
               %li= link_to "Home", company_root_path, :class => "js-pjax"
               %li= link_to "Clients", company_clients_path(current_company), :class => "js-pjax"
               %li= link_to "Products", company_products_path(current_company), :class => "js-pjax"
+              %li= link_to "Incentives", incentives_path, :class => "js-pjax"
               %li= link_to "Invitations", prizzm_invitations_path, :class => "js-pjax"
 
               %li.account

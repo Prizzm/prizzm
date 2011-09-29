@@ -5,10 +5,26 @@
 
 Product:
 %p= @prizzm_invitation.product.try(:name)
+
+%table
+  %tr
+    %th Metrics
+  
+
+%table
+  %tr
+    %th Clients
+
+  - @prizzm_invitation.clients.each do |client|
+    %tr
+      %td #{client.first_name} #{client.last_name} 
+      %td #{client.id} 
+      %td #{@prizzm_invitation.sales.where(:client_id => client.id).first.invitation_status}
+      %td= link_to "Resend Invitation", send_prizzm_invitation_path(@prizzm_invitation, client.id), :method => :post
+      %td Last sent
+
+%p= link_to "Send invitations", send_prizzm_invitation_path(@prizzm_invitation), :method => :post
 %br
-Clients:
-- @prizzm_invitation.clients.each do |client|
-  %p #{client.first_name} #{client.last_name} #{client.id} #{@prizzm_invitation.sales.where(:client_id => client.id).first.invitation_status}
 = link_to 'Edit', edit_prizzm_invitation_path(@prizzm_invitation)
 \|
 = link_to 'Back', prizzm_invitations_path
