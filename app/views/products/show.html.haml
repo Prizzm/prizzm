@@ -1,35 +1,15 @@
-- content_for :page_style do
-  = include_stylesheets :item_detail
+%h2 
+  Product Detail: #{@product.name} - #{@product.price}
+  .pull-right= image_uploader_for @product
   
-#content.grid_14
-  %section#review
-    .title
-      .fl #{@product.name} - #{@product.price}
-      .clear
-    #rendered-review
-      = @product.description
-      .fl
-    .clear
-    #footerbit
-      Written #{@product.created_at.to_date} - Edited #{time_ago_in_words @product.updated_at} ago |
-    .clear
-  .clear
+%br
+.row
+  .hero-unit.offset1.span9
+    %h3 Description:
+    = @product.description
 
-  = link_to "Back", company_products_path(current_company)
-  = link_to "Edit product info", edit_company_product_path(current_company, @product)
+= link_to "Back", company_products_path(current_company)
+= link_to "Edit product info", edit_company_product_path(current_company, @product)
 
-  = image_uploader_for @product
-  = image_gallery_for @product
+= image_gallery_for @product
 
-%aside.grid_6
-  %article
-    = image_tag @product.company.main_image, :class => "userthumb fl"
-    .fl
-      %h3= link_to @product.company.name, company_path(@product.company), :class => "uname"
-      .buttons
-        = link_to "view company", company_path(@product.company), :class => "button"
-    .clear
-  %article
-    .buttons
-
-    

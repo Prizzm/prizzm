@@ -1,39 +1,30 @@
-=stylesheet_link_tag("product_invite")
-%h1 Product listing
-%br
-.product-show
-    %table{:cellspacing=>"10",:cellpadding=>"20"}
-        %tr{:style=>"background:#ccc;padding:5px;"}
-            %th Name
-            %th Upc
-            %th Action
-        - if !@product.nil?
-            %tr
-                %td{:colspan=>"3"} No Record Found
-        - else
-            - @products.each do |product|
-                %tr
-                    %td
-                        = product.name
-                        &nbsp;
-                    %td
-                        = product.upc
-                        &nbsp;
-                    %td.actions
+- if @products.count == 0
+  .alert-messsage.block-message.error 
+    You should add a few products to your inventory
+    = link_to 'Add a New Product', new_company_product_path(current_company), :class => 'btn primary large'
+- else
+  %h1 
+    Product listing
+    = link_to 'Add a New Product', new_company_product_path(current_company), :class => 'btn primary large pull-right'
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Edit
+        %td Delete
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td
+            = link_to product do
+              = image_tag product.main_image_thumb
+              %h6= product.name
+          %td.actions
+            = link_to 'mail templates', product_mail_templates_path(product)
+            = link_to 'add invitation', product_product_invitations_path(product)
+          %td
+            = link_to  company_product_path(current_company, product), :confirm => 'Are you sure?', :method => :delete do
+              = delete_icon
 
-                        = link_to 'Details ', product
-                        &nbsp
-
-                        = link_to 'mail templates', product_mail_templates_path(product)
-                        &nbsp
-
-                        = link_to 'add invitation', product_product_invitations_path(product)
-                        &nbsp
-
-                        = link_to image_tag("delete_product.gif"), company_product_path(current_company, product), :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'Add a New Product', new_company_product_path(current_company), :class => 'btn primary large'
 
 
