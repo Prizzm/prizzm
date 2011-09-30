@@ -44,6 +44,7 @@ class PrizzmInvitationsController < ApplicationController
   # POST /prizzm_invitations.xml
   def create
     @prizzm_invitation = current_company.prizzm_invitations.new(params[:prizzm_invitation])
+    @prizzm_invitation.client_ids = params[:clients]
 
     respond_to do |format|
       if @prizzm_invitation.save
