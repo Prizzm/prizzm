@@ -31,8 +31,19 @@
           = link_to "ask", "#", :id => 'button-ask-friend', :class => "button"
           .loading{:style => "display:none;float:right"}
       .clear
-
-  
+  %artical#case_files
+    %h4 Upload files
+    = semantic_form_for @case, :html => { :multipart => true } do |f|
+      = f.fields_for :case_files do |cf|
+        - if cf.object.casefile.present?
+          = link_to cf.object.casefile.file.filename, cf.object.casefile_url
+          \-
+          = link_to cf.object.privacy, "#"
+          = cf.check_box :_destroy
+          Remove
+        - else
+          = cf.input :casefile, :as => :file, :label => false
+      = f.submit
 
 #call-window{:style => "display:none"}
   %div#call-window-container
