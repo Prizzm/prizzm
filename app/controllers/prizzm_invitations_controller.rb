@@ -1,5 +1,7 @@
 class PrizzmInvitationsController < ApplicationController
   layout 'corporate'
+  before_filter :authenticate_company!, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+
   # GET /prizzm_invitations
   # GET /prizzm_invitations.xml
   def index

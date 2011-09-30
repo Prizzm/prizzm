@@ -1,7 +1,4 @@
-%h1 About #{@company.name}
-%p
-  Contact Email: 
-  = @company.email
+%h1 About #{@company.name} - #{@company.email}
 %p
   Description:
   = @company.description
@@ -12,31 +9,81 @@
   Contact Name:
   = @company.contact_name
 
+.row
+  = link_to 'Edit Company Info', edit_company_path(current_company), :class => 'btn large facebox'
+  = link_to "New Address", '#', :class => 'btn large', :'data-controls-modal' => "new_address_entry", :'data-backdrop' => true, :'data-keyboard' => true
+  = image_uploader_for @company
 
-= link_to 'Edit Company Info', edit_company_path(current_company), :class => 'btn large'
-    
+- if @company.addresses.telephone.count > 0
+  %h3 Phone numbers
+  - @company.addresses.telephone.each do |phone| 
+    .row
+      .span4.offset2= phone.address
+      .span4= phone.description
+      .span3
+        = link_to company_address_path(@company, phone), :method => :delete, :confirm => "Are you sure you want to delete this number?" do
+          Delete
+        
+- if @company.addresses.street.count > 0
+  %h3 Addresses
+  - @company.addresses.street.each do |street| 
+    .row
+      .span4= street.address
+      .span4= street.description
+      .span4
+        = link_to company_address_path(@company, street), :method => :delete, :confirm => "Are you sure you want to delete this address?" do
+          Delete
 
+- if @company.addresses.website.count > 0
+  %h3 Website
+  - @company.addresses.website.each do |web| 
+    .row
+      .span4= web.address
+      .span4= web.description
+      .span4
+        = link_to company_address_path(@company, web), :method => :delete, :confirm => "Are you sure you want to delete this URL?" do
+          Delete
 
-%section#contact
-  %dl.table
-    - @company.addresses.each do |address| 
-      %li.row
-        .cell.icon
-          %span{:class => "#{Company::ADD_ICON[address.address_type]}"}
-        .cell{:title => address.description}= address.description.to_s.truncate(30)
-        .cell{:title => address.address}= address.address
-        .cell= link_to "#{Company::ADD_TEXT[address.address_type]}", "#", :class => "button #{Company::ADD_CLASS[address.address_type]}"
-        .cell= link_to "Delete", company_address_path(@company, address), :method => :delete, :confirm => "Are you sure you want to delete this address?"
+- if @company.addresses.website.count > 0
+  %h3 Twitter
+  - @company.addresses.twitter.each do |twitter| 
+    .row
+      .span4= twitter.address
+      .span4= twitter.description
+      .span4
+        = link_to company_address_path(@company, twitter), :method => :delete, :confirm => "Are you sure you want to delete this account?" do
+          Delete
 
+- if @company.addresses.facebook.count > 0
+  %h3 Facebook
+  - @company.addresses.facebook.each do |facebook| 
+    .row
+      .span4= facebook.address
+      .span4= facebook.description
+      .span4
+        = link_to company_address_path(@company, facebook), :method => :delete, :confirm => "Are you sure you want to delete this account?" do
+          Delete
 
-  = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
-    = f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
-    = f.text_field :description, :size => "19", :placeholder => 'Enter a description'
-    = f.text_field :address, :size => "19", :placeholder => 'Enter the address, phone number, URL, or Twitter ID here'
-    = f.submit "Add"
+#new_address_entry.modal.fade
+  .offset1
+    .modal-header
+      = link_to '&times;'.html_safe, '#', :class => 'close'
+      %h2 Enter a new contact point:
+    = form_for([@company, @company.addresses.build], :html => { :class => "add-cont" }) do |f|
+      %p= f.collection_select :address_type, Company::ADD_TYPES, :to_s, :humanize, {}
+      %p= f.text_field :description,  :placeholder => 'Enter a description', :class => 'span7'
+      %p= f.text_field :address, :placeholder => 'Enter the address, phone number, URL, or Twitter ID here', :class => 'span7'
 
-= image_uploader_for @company
+      %p= f.submit "Add Contact", :class => 'btn primary'
+
+%h4 Company Images
 %ul.media-grid
   - @company.images.each do |image|
-    %li= link_to image_tag(image.image.url, :class => 'thumbnail')
+    %li= link_to image_tag(image.image.url, :class => 'thumbnail', :height => 150, :width => 210)
+    = link_to 'Delete image', image_path(object_type(@company), @company.id, image.id), :method => :delete
 
+
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+    });
