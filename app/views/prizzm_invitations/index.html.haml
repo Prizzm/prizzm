@@ -5,13 +5,14 @@
   %thead
     %tr
       %th Invitation Name
+      %th Last modified
       %th Edit
       %th Delete
   %tbody
     - @prizzm_invitations.each do |prizzm_invitation|
       %tr
-        %td
-          = link_to prizzm_invitation.name, prizzm_invitation
+        %td= link_to prizzm_invitation.name, prizzm_invitation
+        %td= prizzm_invitation.updated_at.strftime '%A, %B %d, %Y'  
         %td
           = link_to edit_prizzm_invitation_path(prizzm_invitation) do
             = edit_icon

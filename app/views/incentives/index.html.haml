@@ -1,26 +1,26 @@
 %h1 Listing incentives
 
 %table
-  %tr
-    %th Description
-    %th Expiration
-    %th Code
-    %th
-    %th Edit
-    %th Delete
-
-  - @incentives.each do |incentive|
+  %thead
     %tr
-      %td= incentive.description
-      %td= incentive.expiration
-      %td= incentive.code
-      %td= link_to 'Show', incentive
-      %td
-        = link_to edit_incentive_path(incentive) do
-          = edit_icon
-      %td
-        = link_to incentive, :confirm => 'Are you sure?', :method => :delete do
-          = delete_icon
+      %th Description
+      %th Expiration
+      %th Code
+      %th Edit
+      %th Delete
+
+  %tbody
+    - @incentives.each do |incentive|
+      %tr
+        %td= incentive.description
+        %td= incentive.expiration.try(:strftime, '%m/%d/%Y')
+        %td= incentive.code
+        %td
+          = link_to edit_incentive_path(incentive) do
+            = edit_icon
+        %td
+          = link_to incentive, :confirm => 'Are you sure?', :method => :delete do
+            = delete_icon
 
 %br
 

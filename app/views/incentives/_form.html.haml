@@ -1,4 +1,5 @@
-= form_for @incentive do |f|
+
+= semantic_form_for @incentive do |f|
   -if @incentive.errors.any?
     #error_explanation
       %h2= "#{pluralize(@incentive.errors.count, "error")} prohibited this incentive from being saved:"
@@ -6,14 +7,8 @@
         - @incentive.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :expiration
-    = f.datetime_select :expiration
-  .field
-    = f.label :code
-    = f.text_field :code
-  .actions
-    = f.submit 'Save'
+  = f.input :description, :input_html => {:rows => 5}
+  = f.input :code, :label => "Redemption Code"
+  = f.input :expiration, :label => "Expiration Date", :wrapper_html => { :style => "" }
+  =f.commit_button "Save Incentive", :button_html => {:class => "btn primary large offset2"}
+

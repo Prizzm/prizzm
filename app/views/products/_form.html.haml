@@ -1,26 +1,13 @@
-= form_for @product do |f|
+= semantic_form_for @product do |f|
   -if @product.errors.any?
     #error_explanation
       %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :type
-    = f.text_field :product_type
-  .field
-    = f.label :upc
-    = f.text_field :upc
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :price
-    = f.text_field :price
-  .actions
-    = f.submit 'Save'
-
+  = f.input :name
+  = f.input :description, :input_html => {:rows => 10, :placeholder => "Describe your product here"}
+  = f.input :price
+  = f.input :upc
+  = f.input :product_type
+  = f.commit_button "Save product info", :button_html => {:class => "btn primary large"}

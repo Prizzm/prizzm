@@ -1,26 +1,6 @@
-%h1 New prizzm_invitation
+%h1 Create an invitation
 
-= form_for @prizzm_invitation do |f|
-  -if @prizzm_invitation.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@prizzm_invitation.errors.count, "error")} prohibited this prizzm_invitation from being saved:"
-      %ul
-        - @prizzm_invitation.errors.full_messages.each do |msg|
-          %li= msg
-
-  %p Invitation Name: 
-  = f.text_field :name
-  %p Select Product
-  = select_tag 'prizzm_invitation[product_id]', options_from_collection_for_select(current_company.products, 'id', 'name') 
-
-  %p Select Incentive
-  = select_tag 'prizzm_invitation[incentive_id]', options_from_collection_for_select(current_company.incentives, 'id', 'code') 
-
-  %p Select Email Template
-  %p Select Landing Page
-  %p Select Clients
-  .actions
-    = f.submit 'Save'
+= render 'form'
 
 
 = link_to 'Back', prizzm_invitations_path

@@ -1,26 +1,29 @@
 %h1 Listing clients
 
 %table
-  %tr
-    %th First name
-    %th Last name
-    %th Email
-    %th
-    %th Edit
-    %th Delete
-
-  - @clients.each do |client|
+  %thead
     %tr
-      %td= client.first_name
-      %td= client.last_name
-      %td= client.email
-      %td= link_to 'Show', [current_company, client]
-      %td
-        = link_to edit_company_client_path(current_company, client) do
-          = edit_icon
-      %td
-        = link_to [current_company, client], :confirm => 'Are you sure?', :method => :delete do 
-          = delete_icon
+      %th First name
+      %th Last name
+      %th Email
+      %th Edit
+      %th Delete
+
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= client.first_name
+        %td= client.last_name
+        %td
+          = client.email
+          /= link_to 'Visit User Profile', profile_path(client.user) if client.user
+          /Nice to have feature, but disabled because for whatever reason, we can no longer observe other users profiles 
+        %td
+          = link_to edit_company_client_path(current_company, client) do
+            = edit_icon
+        %td
+          = link_to [current_company, client], :confirm => 'Are you sure?', :method => :delete do 
+            = delete_icon
 
 %br
 

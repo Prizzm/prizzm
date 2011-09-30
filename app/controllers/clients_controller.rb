@@ -10,7 +10,7 @@ class ClientsController < InheritedResources::Base
   def create
     @client = current_company.clients.create(params[:client])
     if @client.save
-      redirect_to [current_company, @client] 
+      redirect_to company_clients_path(current_company)
     else
       render 'new'
     end
@@ -23,7 +23,7 @@ class ClientsController < InheritedResources::Base
   def update
     @client = current_company.clients.find(params[:id])
     if @client.update_attributes(params[:client])
-      redirect_to [current_company, @client] 
+      redirect_to company_clients_path(current_company)
     else
       render 'edit'
     end
