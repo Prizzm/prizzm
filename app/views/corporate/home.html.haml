@@ -1,24 +1,33 @@
-%h1 About #{@company.name} - #{@company.email}
-%p
-  Description:
-  = @company.description
-%p
-  Industry:
+%h1 
+  About #{@company.name}
+  = link_to 'Edit Company Info', edit_company_path(current_company), :class => 'btn large pull-right'
+
+%br
+.row
+  .hero-unit.offset1.span9
+    %h3 Description:
+    = @company.description
+
+.row.offset1
+  %strong Industry:
   = @company.industry
-%p
-  Contact Name:
+.row.offset1
+  %strong Contact Person:
   = @company.contact_name
 
-.row
-  = link_to 'Edit Company Info', edit_company_path(current_company), :class => 'btn large'
-  = link_to "New Address", '#', :class => 'btn large', :'data-controls-modal' => "new_address_entry", :'data-backdrop' => true, :'data-keyboard' => true
-  = image_uploader_for @company
+
+%br
+%hr
+%h2 
+  Company Contact Points
+  .pull-right= link_to "New Address", '#', :class => 'btn large', :'data-controls-modal' => "new_address_entry", :'data-backdrop' => true, :'data-keyboard' => true
+%br
 
 - if @company.addresses.telephone.count > 0
   %h3 Phone numbers
   - @company.addresses.telephone.each do |phone| 
-    .row
-      .span4.offset2= phone.address
+    .row.offset1
+      .span4= phone.address
       .span4= phone.description
       .span3
         = link_to company_address_path(@company, phone), :method => :delete, :confirm => "Are you sure you want to delete this number?" do
@@ -27,17 +36,18 @@
 - if @company.addresses.street.count > 0
   %h3 Addresses
   - @company.addresses.street.each do |street| 
-    .row
-      .span4= street.address
-      .span4= street.description
-      .span4
-        = link_to company_address_path(@company, street), :method => :delete, :confirm => "Are you sure you want to delete this address?" do
-          Delete
+    .row.offset1
+      %address
+        .span4= street.address
+        .span4= street.description
+        .span4
+          = link_to company_address_path(@company, street), :method => :delete, :confirm => "Are you sure you want to delete this address?" do
+            Delete
 
 - if @company.addresses.website.count > 0
   %h3 Website
   - @company.addresses.website.each do |web| 
-    .row
+    .row.offset1
       .span4= web.address
       .span4= web.description
       .span4
@@ -47,7 +57,7 @@
 - if @company.addresses.website.count > 0
   %h3 Twitter
   - @company.addresses.twitter.each do |twitter| 
-    .row
+    .row.offset1
       .span4= twitter.address
       .span4= twitter.description
       .span4
@@ -57,7 +67,7 @@
 - if @company.addresses.facebook.count > 0
   %h3 Facebook
   - @company.addresses.facebook.each do |facebook| 
-    .row
+    .row.offset1
       .span4= facebook.address
       .span4= facebook.description
       .span4
@@ -76,11 +86,15 @@
 
       %p= f.submit "Add Contact", :class => 'btn primary'
 
-%h4 Company Images
+%br
+%hr
+%h3 
+  Company Images
+  .pull-right= image_uploader_for @company
 %ul.media-grid
   - @company.images.each do |image|
     %li= link_to image_tag(image.image.url, :class => 'thumbnail', :height => 150, :width => 210)
-    = link_to 'Delete image', image_path(object_type(@company), @company.id, image.id), :method => :delete
+    /= link_to 'Delete image', image_path(object_type(@company), @company.id, image.id), :method => :delete
 
 - content_for :javascripts do
   :javascript

@@ -14,7 +14,7 @@
             %li.active= link_to "Home", company_root_path
             %li= link_to "Edit Profile", edit_company_registration_path
             %li= link_to "Logout", destroy_company_session_path
-          %p.pull-right Logged in as #{current_company.name}
+          %p.pull-right{:style => 'color: white;'} Logged in as #{current_company.name} - #{current_company.email}
 
     .container
       .content
