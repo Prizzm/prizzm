@@ -444,12 +444,11 @@ em {
 	text-decoration: none;
 	font-size: 0.8em;
 }
-
-ul.buttons {
-    float: right;
-    clear: both;
-}
  
+.buttons {
+  margin-top: 10px !important;
+}
+
  ul.buttons li {
    display: inline-block;
  }
@@ -808,12 +807,30 @@ ul.items, ul.cases {
     display: block;
   }
   
-  .fb{
+  a.fb{
     background: url(../images/facebook.png) no-repeat;
     
   }
-  .tt{
+  a.tt{
     background: url(../images/twitter.png) no-repeat;
+  }
+  
+  .sharing {
+    margin-top: 14px !important;
+  }
+  
+  .sharing li {
+    display: inline-block;
+    padding: 3px 3px 3px 20px;
+    height: 10px;
+  }
+  
+  .sharing li.fb{
+    background: url(../images/facebook_16.png) no-repeat;
+    
+  }
+  .sharing li.tt{
+    background: url(../images/twitter_16.png) no-repeat;
   }
 
 .suggest .people {
@@ -963,6 +980,14 @@ ul.items, ul.cases {
   .coupon a {
     text-decoration: underline;
   }
+  
+.fl.opinion {
+  margin-left: 10px;
+}
+
+#pitch h3 {
+  color: #97c66f;
+}
 
 
 /* ==|== non-semantic helper classes ========================================

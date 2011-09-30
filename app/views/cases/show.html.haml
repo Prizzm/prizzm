@@ -16,11 +16,11 @@
       
   %section#case
     .title= @case.title
+    = link_to "Edit Issue", "#", :class => "button", :id => "edit-review-link"
+    
     #rendered-review
       = html_clean @case.description
-      = link_to "Edit Issue", "#", :class => "edit-cntrl", :id => "edit-review-link"
-
-
+      
     #review-editor
       = form_for @case, :remote => true, :method => :put do |f|
 

@@ -25,8 +25,12 @@ label {
   padding: 12px;
 }
 
+.privacy {
+  width: 95px;
+}
+
 label[for=item_privacy] {
-  padding: 0;
+  padding: 0 0 0 5px;
 }
 
 label[for=new_item], label[for=product_name], .addItem label[for=case_title] {
@@ -100,4 +104,11 @@ label[for=new_item], label[for=product_name], .addItem label[for=case_title] {
 
 .wrap {
   width: 76%;
+}
+
+.googlesearch {
+  position: absolute;
+  top: 109px;
+  right: 8px;
+  text-decoration: underline !important;
 }
