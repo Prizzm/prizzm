@@ -14,6 +14,13 @@
       %h2= @item.name
       = link_to "Edit this item", '#', :class => "button", :id => "edit-review-link"
       %div{ :class => "status #{@item.privacy}" }= @item.privacy
+      - if @item.opinion == "horrible!"
+        %div{ :class => "opinion hate" } You don't recommend this
+      - elsif @item.opinion == "i_recommend_this!"
+        %div{ :class => "opinion recommended" } You recommend this
+      - else
+        %div{ :class => "opinion neutral" } You have no opinion
+      
       .clear
       .revpost
         #rendered-review
