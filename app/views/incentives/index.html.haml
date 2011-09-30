@@ -6,7 +6,6 @@
       %th Description
       %th Expiration
       %th Code
-      %th
       %th Edit
       %th Delete
 
@@ -14,9 +13,8 @@
     - @incentives.each do |incentive|
       %tr
         %td= incentive.description
-        %td= incentive.expiration
+        %td= incentive.expiration.try(:strftime, '%m/%d/%Y')
         %td= incentive.code
-        %td= link_to 'Show', incentive
         %td
           = link_to edit_incentive_path(incentive) do
             = edit_icon

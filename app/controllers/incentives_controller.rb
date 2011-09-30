@@ -45,7 +45,7 @@ class IncentivesController < ApplicationController
 
     respond_to do |format|
       if @incentive.save
-        format.html { redirect_to(@incentive, :notice => 'current_company.incentives was successfully created.') }
+        format.html { redirect_to( incentives_path, :notice => 'Your incentive has been added') }
         format.xml  { render :xml => @incentive, :status => :created, :location => @incentive }
       else
         format.html { render :action => "new" }
@@ -61,7 +61,7 @@ class IncentivesController < ApplicationController
 
     respond_to do |format|
       if @incentive.update_attributes(params[:incentive])
-        format.html { redirect_to(@incentive, :notice => 'current_company.incentives was successfully updated.') }
+        format.html { redirect_to(incentives_path, :notice => 'Your incentive has been updated') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

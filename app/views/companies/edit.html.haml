@@ -1,23 +1,20 @@
 %h1 Editing information for #{@company.name}
 
-= form_for @company do |f|
+= semantic_form_for @company do |f|
   -if @company.errors.any?
     #error_explanation
       %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
       %ul
         - @company.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.text_field :name, :placeholder => "Name"
-  .field
-    = f.text_field :email, :placeholder => "Email"
-  .field
-    = f.text_area :description, :placeholder => "Company Description"
-  .field
-    = f.text_field :industry, :placeholder => "Industry"
-  .field
-    = f.text_field :contact_name, :placeholder => "Contact Name"
-  .actions
-    = f.submit 'Save'
+  = f.input :name, :required => false, :input_html => {:placeholder => "Enter your company name"}
+
+  = f.input :email, :input_html => {:placeholder => "Enter your login/contact email address"}
+
+  = f.input :description, :input_html => {:placeholder => "Enter some descriptive information about your company", :rows => 10}
+  = f.input :industry, :input_html => {:placeholder => "What industry is your company in?"}
+  = f.input :contact_name, :input_html => {:placeholder => "Who is the contact person for your company?"}
+  .offset2
+    = f.commit_button  :button_html => {:class => "btn primary large"} 
 
 = link_to 'Back', company_root_path
