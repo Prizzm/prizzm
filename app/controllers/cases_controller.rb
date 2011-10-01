@@ -18,12 +18,13 @@ class CasesController < InheritedResources::Base
     @cap.allow_client_outgoing(@appsid)
     @cap_name = @cap.generate()
     @note = @case.notebook.notes.last
+
+    @case.case_files.build
     
     respond_to do |format|
       format.js
       format.html
     end
-    
   end 
 
 

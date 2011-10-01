@@ -6,8 +6,10 @@ class Case < ActiveRecord::Base
   belongs_to :company
   belongs_to :product
   belongs_to :item
-
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
+  has_many :case_files, :dependent => :destroy
+
+  accepts_nested_attributes_for :case_files, :allow_destroy => true
 
   acts_as_followable
   acts_as_commentable
@@ -24,8 +26,6 @@ class Case < ActiveRecord::Base
 
 
   default_value_for :privacy, 'private'
-
-  
 
   workflow do
     state :unresolved do

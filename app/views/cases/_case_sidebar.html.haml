@@ -31,8 +31,21 @@
           = link_to "ask", "#", :id => 'button-ask-friend', :class => "button"
           .loading{:style => "display:none;float:right"}
       .clear
-
-  
+  %artical#case_files
+    %h4 Upload files
+    = semantic_form_for @case, :html => { :multipart => true } do |f|
+      = f.fields_for :case_files do |cf|
+        - if cf.object.casefile.present?
+          = link_to File.basename(cf.object.casefile_url), cf.object.casefile_url
+          \-
+          /= link_to cf.object.privacy, "#"
+          /= link_to "#{cf.object.privacy}", update_case_file_privacy_path(cf.object), :remote => true, :method => :put, :class => "#{cf.object.privacy} status privacy_control"
+          = link_to "#{cf.object.privacy}", "#", :remote => true, :method => :put, :class => "#{cf.object.privacy} status privacy_control"
+          = cf.check_box :_destroy
+          Remove
+        - else
+          = cf.input :casefile, :as => :file, :label => false
+      = f.submit
 
 #call-window{:style => "display:none"}
   %div#call-window-container
