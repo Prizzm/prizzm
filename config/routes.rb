@@ -184,6 +184,9 @@ Prizzm::Application.routes.draw do
   resources :items do
     resources :images, :only => [:create, :destroy]
     match 'post_to_facebook' => 'items#post_to_facebook'
+
+    # Better way to do this? Two separate definitions?
+    get ':possession' => 'items#new', :constraints => {:posession => /^want|have$/i}
   end
 
 

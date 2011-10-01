@@ -1,4 +1,4 @@
-%h2 Add a product
+%h2= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
   = label_tag :product_name, "+"
@@ -30,7 +30,7 @@
   = hidden_field :product, :image_url
 
   / Remove if being exposed to add tags field
-  = hidden_field :tag_list, 'have'
+  = hidden_field :tag_list, params[:possession]
   
   %ul.sharing.fl
     %li.fb{:title => "post to facebook"}

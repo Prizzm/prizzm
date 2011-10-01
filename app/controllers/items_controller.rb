@@ -98,9 +98,7 @@ class ItemsController < InheritedResources::Base
     end
   end
 
-  def update 
-    params[:item][:tag_list] = params[:as_values_tag_list]
-
+  def update
     @item = current_user.items.find(params[:id])
 
     if @item.update_attributes(params[:item])
