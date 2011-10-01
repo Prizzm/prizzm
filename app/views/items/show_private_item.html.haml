@@ -14,10 +14,11 @@
       %h2= @item.name
       = link_to "Edit this item", '#', :class => "button", :id => "edit-review-link"
       %div{ :class => "status #{@item.privacy}" }= @item.privacy
-      - if @item.opinion == "horrible!"
-        %div{ :class => "opinion hate" } You don't recommend this
-      - elsif @item.opinion == "i_recommend_this!"
+
+      - if @item.opinion.to_i == 1
         %div{ :class => "opinion recommended" } You recommend this
+      - elsif @item.opinion.to_i == 2
+        %div{ :class => "opinion hate" } You don't recommend this
       - else
         %div{ :class => "opinion neutral" } You have no opinion
       
@@ -109,7 +110,23 @@
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
         var $facebox = $('#facebox');
 
-        $('div.title').text($facebox.find('#item_name').val());
+        $('#review .title').html($facebox.find('#item_name').val());
+
+        $('#review .opinion').replaceWith(function(){
+          var opinion = $facebox.find('#item_opinion').val();
+
+          switch ($facebox.find('#item_opinion').val()) {
+            case '1':
+              return '<div class="opinion recommended">You recommend this</div>';
+              break;
+            case '2':
+              return '<div class="opinion hate">You don\'t recommend this</div>';
+              break;
+            default:
+              return '<div class="opinion neutral">You have no opinion</div>';
+          }
+        });
+
         $('#rendered-review').html($facebox.find('#item_review').val());
 
         $(document).trigger('close.facebox');

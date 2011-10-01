@@ -18,7 +18,7 @@ class ItemsController < InheritedResources::Base
   def create
     params[:item][:tag_list] = params[:tag_list].keys
 
-    @item = Item.new(params[:item]);
+    @item = Item.create(params[:item]);
 
     if params[:item][:company_id].blank? == false
       @company = Company.find(params[:item][:company_id])
@@ -39,9 +39,8 @@ class ItemsController < InheritedResources::Base
       @item.company = @company;
     end
 
-    if params[:product_image_url].nil? == false
-      @company.images.build params[:product_image_url]
-    end
+
+
 
     if params[:item][:product_id].blank? == false
       @product = Product.find(params[:item][:product_id]);
@@ -66,6 +65,12 @@ class ItemsController < InheritedResources::Base
       @product.save
 
       @item.product    = @product
+    end
+
+    if params[:product][:image_url].nil? == false
+      # Ideally it should reference the same image instead of downloading it twice
+      @product.add_image_from_url params[:product][:image_url]
+      @item.add_image_from_url params[:product][:image_url]
     end
 
     current_user.items << @item
@@ -98,9 +103,7 @@ class ItemsController < InheritedResources::Base
     end
   end
 
-  def update 
-    params[:item][:tag_list] = params[:as_values_tag_list]
-
+  def update
     @item = current_user.items.find(params[:id])
 
     if @item.update_attributes(params[:item])
