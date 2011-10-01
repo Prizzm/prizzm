@@ -1,4 +1,39 @@
 :plain
+  (function ($) {
+      $.fn.autocompleteUrl = function (options) {
+          this.each(function () {
+              var settings = {
+                  minLength: 0,
+                  source: function (request, response) {
+                      $.getJSON('http://ajax.googleapis.com/ajax/services/search/' + settings.type + '?v=1.0&callback=?', {
+                          q: settings.query,
+                          page: settings.page,
+                          perPage: settings.perPage
+                      }, function (json) {
+                          var results = json.responseData.results;
+
+                          if (results.length > 0) {
+                              var data = $.map(results, function (element, index) {
+                                  return $.extend({
+                                      label: element.url
+                                  }, element);
+                              });
+                              response(data);
+                          }
+                      });
+                  }
+              };
+              if (options) {
+                  $.extend(settings, options);
+              }
+              $(this).autocomplete(settings);
+          });
+
+          return this;
+      };
+  })(jQuery);
+
+
 
   var search_google_popup_opened = false;
   var google_search_icon_clicked = false;

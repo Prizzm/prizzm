@@ -2,21 +2,23 @@
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
   = label_tag :product_name, "+"
+  = link_to "use google", "", :id => "google-search"
   = text_field_tag :product_name, nil, :placeholder => "Product name"
 
   = label_tag :company_name, "Company"
   = text_field_tag :company_name, nil, :placeholder => "Company name"
 
-  .prod-img.fl
-    = image_tag 'default-item-image.jpg', :id => 'product_image', :height => 100, :width => 100
-    %ul#img-controls.hidden
+  %div#image-selector.fl
+    %ul#product-images
+      %li.current= image_tag 'default-item-image.jpg', :id => 'product_image', :height => 100, :width => 100
+
+    %ul#product-images-controls.hidden
       %li.prev.fl= image_tag "prev_img.png"
       %li.next.fr= image_tag "next_img.png"
 
   .wrap.fr
     = label_tag :product_url, "URL"
     = text_field_tag :product_url, nil, :placeholder => "Product link"
-    = link_to "use google", "", :class => "googlesearch"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
@@ -45,51 +47,124 @@
   .clear
 
 :javascript
+  // This should be in the global javascript?
   $('li').filter('.fb, .tt').tipsy({
-    gravity : 'n',
-    fade    : true
+      gravity: 'n',
+      fade: true
   });
   
+
   // Product Auto Complete
   #{ render "items/product_autocomplete.js" }
 
   $('#product_name').autocompleteProduct({
-    select: function(event, ui){
-      if (ui.item.company) {
-        $('#company_id').val(ui.item.company.id);
-        $('#company_name').val(ui.item.company.name);
+      select: function (event, ui) {
+          if (ui.item.company) {
+              $('#company_id').val(ui.item.company.id);
+              $('#company_name').val(ui.item.company.name);
+          }
+
+          $('#product_image').attr('src', ui.item.main_image_thumb);
+
+          $('#product_url').val(ui.item.url).attr('readonly', 'readonly');
+
+          $('#product_id').val(ui.item.id);
       }
-
-      $('#product_image').attr('src', ui.item.main_image_thumb);
-
-      $('#product_url').val(ui.item.url)
-                       .attr('readonly', 'readonly');
-
-      $('#product_id').val(ui.item.id);
-    }
   });
+
 
   // Reset product
-  $('#product_name').change(function(){
-    $('#product_id').val('');
-    $('#product_url').val('')
-                     .removeAttr('readonly');
+  $('#product_name').change(function () {
+      $('#product_id').val('');
+      $('#product_url').val('').removeAttr('readonly');
 
-    $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
+      $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
   });
+
 
 
   // Company Auto Complete
   #{ render "items/company_autocomplete.js" }
 
-  // Reset company
   $('#company_name').autocompleteCompany({
-    select: function(event, ui){
-      $('#company_id').val(ui.item.id);
-    }
+      select: function (event, ui) {
+          $('#company_id').val(ui.item.id);
+      }
   });
 
   // Reset company
-  $('#company_name').change(function(){
-    $('#company_id').val('');
+  $('#company_name').change(function () {
+      $('#company_id').val('');
+  });
+
+
+
+  // Google Auto Complete
+  #{ render "items/google_search.js.haml" }
+  $('#google-search').click(function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      $('#product_url').autocompleteUrl({
+          type: 'web',
+          query: $('#company_name').val() + ' ' +$('#product_name').val(),
+          select: function (event, ui) {
+              // Fetch images
+              $.getJSON('#{scrape_path}', {
+                  url: ui.item.url
+              }, function (json) {
+                  var html = '';
+                  $.each(json.images, function (index, value) {
+                      html += '<li><img alt="" src="' + value + '" width="100"></li>\n';
+                  });
+
+                  $('#product-images').html(html)
+                                      .children(':first')
+                                        .addClass('current');
+
+                  $('#product-images-controls').removeClass('hidden');
+
+
+
+                  var $product_images = $('#product-images > li');
+                  $('#product-images-controls > li.next').click(function(){
+                    var $current = $product_images.filter('.current'),
+                        $next    = $current.next();
+
+                    if ($next.length == 0) {
+                      $next = $product_images.first();
+                    }
+
+                    $('#product_image_url').val($next.children('img').attr('src'));
+
+                    $current.fadeOut('slow', function(){
+                      $current.removeClass('current');
+
+                      $next.fadeIn('slow', function(){
+                        $next.addClass('current');
+                      });
+                    });
+                  });
+
+                  $('#product-images-controls > li.prev').click(function(){
+                    var $current = $product_images.filter('.current'),
+                        $prev    = $current.prev();
+
+                    if ($prev.length == 0) {
+                      $prev = $product_images.last();
+                    }
+
+                    $('#product_image_url').val($prev.children('img').attr('src'));
+
+                    $current.fadeOut('fast', function(){
+                      $current.removeClass('current');
+
+                      $prev.fadeIn('fast', function(){
+                        $prev.addClass('current');
+                      });
+                    });
+                  });
+              });
+          }
+      }).autocomplete('search');
   });

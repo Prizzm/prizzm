@@ -39,6 +39,9 @@ class ItemsController < InheritedResources::Base
       @item.company = @company;
     end
 
+    if params[:product_image_url].nil? == false
+      @company.images.build params[:product_image_url]
+    end
 
     if params[:item][:product_id].blank? == false
       @product = Product.find(params[:item][:product_id]);

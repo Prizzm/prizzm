@@ -11,9 +11,7 @@
       %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
     .fl.opinion
       %li
-        = form_tag item_save_opinion_path, :remote => true do
-          = select_tag :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, Item::OPINION.index(@item.opinion)), :class => "sel_opinion"
-          = hidden_field_tag :id, @item.id
+        = f.select :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, @item.opinion), :class => "sel_opinion"
     .fr
       %li= link_to "Cancel", "#", :class => "button red cancel-edit"
       %li= f.submit 'Save'

@@ -21,7 +21,7 @@
     %h3 Following #{followed_users = @user.following_users_count}
     - if followed_users > 0
       .ufgallery
-        - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
+        - @user.following_users.order('first_name').each do |user|
           = link_to profile_path(user) do
             = image_tag user.main_image, :class => "small thumb"
     - else
@@ -41,9 +41,8 @@
 #content.grid_14.no-menu
   %ul.items
     - if @user.items.count > 0
-      - @user.items.where(:privacy => 'public').sort{|a,b| a.name <=> b.name }.each do |item|
-        %li.item
-          = render :partial => "profile/item", :collection => @user.items
+      %li.item
+        = render :partial => "profile/item", :collection => @user.items.where(:privacy => 'public')
     - else
       .error
         - if your_profile?
