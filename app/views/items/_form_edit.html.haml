@@ -1,3 +1,6 @@
+= include_stylesheets :wysiwyg
+= include_javascripts :wysiwyg
+
 = form_for @item, :remote => true, :method => :put do |f|
   = f.text_field :name, :class => "title"
   = f.text_area :review,
@@ -5,17 +8,57 @@
                 :rows => nil,
                 :style => 'min-height: 250px; width: 100%;',
                 :value => h(html_clean @item.review)
-  %ul.buttons
-    .fl
-      %li= f.label :privacy
-      %li= select 'item', 'privacy', {:Private => 'private', :Public => 'public'}
-    .fl.opinion
-      %li
-        = f.select :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, @item.opinion), :class => "sel_opinion"
-    .fr
-      %li= link_to "Cancel", "#", :class => "button red cancel-edit"
-      %li= f.submit 'Save'
-    .clear
+
+  
+  %ul.sharing.fl
+    %li.opinion
+      = f.select :opinion, options_for_select(Item::OPINION.map { |o| [o.humanize, Item::OPINION.index(o)] }, @item.opinion), :class => "sel_opinion"
+    %li.privacy
+      = f.check_box :privacy, {:checked => "false"}, 'private', 'public'
+      = f.label :privacy, 'Mark Private'
+  
+  %ul.buttons.fr
+    %li= button_to "Cancel"
+    %li= f.submit "Save"
+  .clear
 
   .fl= link_to "Delete item", item_path(@item), :confirm => "Are you sure?", :method => 'delete'
 .clear
+
+
+:javascript
+  $(function() {
+    $('#facebox').find('textarea').wysiwyg({
+      controls: {
+        bold: { visible: true },
+        italic: { visible: true },
+        underline: { visible: true },
+        strikeThrough: { visible: true },
+
+        justifyLeft: { visible: true },
+        justifyCenter: { visible: true },
+        justifyRight: { visible: true },
+        justifyFull: { visible: true },
+
+        undo: { visible: true },
+        redo: { visible: true },
+
+        insertOrderedList: { visible: true },
+        insertUnorderedList: { visible: true },
+
+        createLink: { visible: true },
+        insertImage: { visible: true },
+
+        paragraph: { visible: true },
+      },
+      rmUnusedControls: true
+    });
+
+    $('#facebox').find('.cancel-edit').click(function(){
+      $(document).trigger('close.facebox');
+    });
+
+    $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
+      $(document).trigger('close.facebox');
+    });
+  });

@@ -1,3 +1,6 @@
+= include_stylesheets :wysiwyg
+= include_javascripts :wysiwyg
+
 %h2= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
@@ -40,6 +43,7 @@
     %li= button_to "Cancel"
     %li= f.submit "Save"
   .clear
+
 
 :javascript
   // This should be in the global javascript?

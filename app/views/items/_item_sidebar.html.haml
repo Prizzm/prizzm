@@ -13,14 +13,12 @@
     
     = render :partial => "layouts/share"
     - if current_user == @item.user
-      = link_to "open case", "#", :class => "button"
-    - else
-      = link_to "view 2 cases", "#", :class => "button"
+      = link_to "open case", "#", :class => "button new-case"
   .clear
 
 - content_for :javascripts do
   :javascript
-    $('.button').click(function(){
+    $('.new-case').click(function(){
       $.facebox(function(){
         $.get('#{new_item_case_path @item.id}', function(html){
           $.facebox(html);

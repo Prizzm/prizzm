@@ -1,5 +1,4 @@
 - content_for :page_style do
-  = include_stylesheets :wysiwyg
   = include_stylesheets :item_detail
   = include_stylesheets :yourstuff
 
@@ -46,13 +45,10 @@
 .clear
 
 - content_for :javascripts do
-  = include_javascripts :wysiwyg
   = include_javascripts :item_detail
 
   :javascript
     $(function() {
-      var editor;
-
       // For commment loading animation.
       $('.new_comment').live('ajax:beforeSend', function() {
         var cmt = $(this).find('textarea');
@@ -69,39 +65,10 @@
       });
       // End loading animation.
 
+
       $('#edit-review-link').click(function(){
         $.get('#{edit_item_path}', function(html){
           $.facebox(html);
-
-          $('#facebox').find('textarea').wysiwyg({
-            controls: {
-              bold: { visible: true },
-              italic: { visible: true },
-              underline: { visible: true },
-              strikeThrough: { visible: true },
-
-              justifyLeft: { visible: true },
-              justifyCenter: { visible: true },
-              justifyRight: { visible: true },
-              justifyFull: { visible: true },
-
-              undo: { visible: true },
-              redo: { visible: true },
-
-              insertOrderedList: { visible: true },
-              insertUnorderedList: { visible: true },
-
-              createLink: { visible: true },
-              insertImage: { visible: true },
-
-              paragraph: { visible: true },
-            },
-            rmUnusedControls: true
-          });
-
-          $('#facebox').find('.cancel-edit').click(function(){
-            $(document).trigger('close.facebox');
-          });
         }, 'html');
       });
 
@@ -127,7 +94,5 @@
         });
 
         $('#rendered-review').html($facebox.find('#item_review').val());
-
-        $(document).trigger('close.facebox');
       });
     });
