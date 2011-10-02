@@ -65,7 +65,6 @@
 
 = render :partial => "case_sidebar"
 
-
 - content_for :javascripts do
   = include_javascripts :wysiwyg
 
@@ -91,12 +90,11 @@
    
        });
 
+  :javascript
+    $(function() {
+      // Tags
+      #{ render "tags/new_taggable.js.haml", :taggable => @case }
 
-  :javascript   
-    
-    $(function() {      
-      #{render 'tags/taggable.js.erb', :taggable => @case}
-     
       var pusher = new Pusher('526d54cc07120574aedb'); 
       var thingChannel = pusher.subscribe('#{@case.id}');
       thingChannel.bind('thing-create', function(thing) {

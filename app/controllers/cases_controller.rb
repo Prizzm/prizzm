@@ -30,15 +30,41 @@ class CasesController < InheritedResources::Base
 
   def new
     @case = Case.new
-    render :layout => false
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'cases/form'
+      }
+    end
   end
 
 
   def create 
     params[:case][:tag_list] = params[:as_values_tag_list]
 
-    @case = Case.new(params[:case])
+    @case = Case.new(params[:case]);
     @case.user = current_user
+
+    if params[:case][:product_id].blank? == false
+      @product = Product.find(params[:case][:product_id]);
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :conditions => {
+          :name       => params[:product_name],
+          :company_id => (@company.id if @company.nil? == false),
+        }
+      });
+
+      if @product.nil? == true
+        @product = Product.create({
+          :name => params[:product_name],
+          :url  => params[:product_url],
+        });
+      end
+
+      @case.product = @product
+    end
+
 
     if params[:case][:company_id].blank? == false
       @company = Company.find(params[:case][:company_id])
@@ -48,7 +74,7 @@ class CasesController < InheritedResources::Base
       });
 
       if @company.nil? == true
-        @company = Company.new({
+        @company = Company.create({
           :name     => params[:company_name],
           :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
           :password => (0...8).map{65.+(rand(25)).chr}.join,
@@ -56,35 +82,11 @@ class CasesController < InheritedResources::Base
         })
       end
 
-      @case.company = @company;
+      @product.company = @company
+      @case.company = @company
     end
 
-
-    if params[:case][:product_id].blank? == false
-      @product = Product.find(params[:case][:product_id]);
-      @product.company = @company
-      @product.save
-    elsif params[:product_name].blank? == false
-      @product = Product.find(:first, {
-        :conditions => {
-          :name       => params[:product_name],
-          :company_id => @company.id,
-        }
-      });
-
-      if @product.nil? == true
-        @product = Product.new({
-          :name => params[:product_name]
-        });
-      end
-
-      @product.company = @company
-      @product.save
-
-      @case.product    = @product
-    end
-
-
+  
     if @case.save
       redirect_to case_path(@case)+"#edit_issue" 
     end

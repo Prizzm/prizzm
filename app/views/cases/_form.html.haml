@@ -1,23 +1,75 @@
-= form_for @case :html => {:class => "action table addcase"} do |f|
-  = f.text_field 'title', :placeholder => "What's your issue?"
-  = text_field_tag 'company_name', :placeholder => "With who?"
-  = f.hidden_field 'company_id'
-  %ul.tags
-    %li.gld
-      Case
-      .close
-    %li.cmp
-      Dell
-      .close
-    %li 
-      Electronic
-      .close
-    %li
-      laptop
-      .close
-    %li
-      Windows
-      .close
-    + Add tags
-  = f.submit 'save', :class => 'button blue'
-  = f.submit 'clear', :class => 'button', :id => 'clear_item_fields'
+%h2 Add a case
+
+= form_for @case, :html => {:class => 'action addhave addItem'} do |f|
+  = f.text_field 'title', :placeholder => "What's your issue"
+  = text_field_tag :product_name, nil, :placeholder => "with what product"
+  = text_field_tag :company_name, nil, :placeholder => "by what company"
+  = text_field_tag :case_tag_list, nil, :placeholder => "add some tags"
+
+  = f.hidden_field :company_id
+  = f.hidden_field :product_id
+
+  %ul.sharing.fl
+    %li.fb{:title => "post to facebook"}
+      / facebook checkbox goes here
+    %li.tt{:title => "share to twitter"}
+      / twitter checkbox goes here
+    %li.privacy
+      = f.check_box :privacy, {:checked => 'false'}, 'private', 'public'
+      = f.label :privacy, 'Mark Private'
+  
+  %ul.buttons.fr
+    %li= button_to "Cancel"
+    %li= f.submit "Save"
+  .clear
+
+
+
+:javascript
+  // This should be in the global javascript?
+  $('li').filter('.fb, .tt').tipsy({
+      gravity: 'n',
+      fade: true
+  });
+  
+
+  // Product Auto Complete
+  #{ render "items/product_autocomplete.js" }
+
+  $('#product_name').autocompleteProduct({
+      select: function (event, ui) {
+          if (ui.item.company) {
+              $('#company_id').val(ui.item.company.id);
+              $('#company_name').val(ui.item.company.name);
+          }
+
+          $('#product_id').val(ui.item.id);
+      }
+  });
+
+
+  // Reset product
+  $('#product_name').change(function () {
+      $('#product_id').val('');
+  });
+
+
+
+  // Company Auto Complete
+  #{ render "items/company_autocomplete.js" }
+
+  $('#company_name').autocompleteCompany({
+      select: function (event, ui) {
+          $('#company_id').val(ui.item.id);
+      }
+  });
+
+  // Reset company
+  $('#company_name').change(function () {
+      $('#company_id').val('');
+  });
+
+
+  // Tags
+  #{ render "tags/new_taggable.js.haml", :taggable => @case }
+
