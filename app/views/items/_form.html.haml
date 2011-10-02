@@ -113,17 +113,18 @@
               $.getJSON('#{scrape_path}', {
                   url: ui.item.url
               }, function (json) {
+                  // Really need to turn this into a plugin
                   var html = '';
                   $.each(json.images, function (index, value) {
                       html += '<li><img alt="" src="' + value + '" width="100"></li>\n';
                   });
 
-                  $('#product-images').html(html)
-                                      .children(':first')
-                                        .addClass('current');
+                  var $first = $('#product-images').html(html)
+                                                   .children(':first')
+                                                     .addClass('current');
 
                   $('#product-images-controls').removeClass('hidden');
-
+                  $('#product_image_url').val($first.children('img').attr('src'));
 
 
                   var $product_images = $('#product-images > li');
