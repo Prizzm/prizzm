@@ -1,6 +1,7 @@
 - content_for :page_style do
-  = stylesheet_link_tag 'jquery.wysiwyg.css'
   = include_stylesheets :case_detail
+  = include_stylesheets :yourstuff
+
   = stylesheet_link_tag 'twilio.css'
   = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
   = javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js"
@@ -21,28 +22,7 @@
     #rendered-review
       = html_clean @case.description
       
-    #review-editor
-      = form_for @case, :remote => true, :method => :put do |f|
 
-        = label_tag 'company_name'
-        = text_field_tag 'company_name', nil, :placeholder => "By what company?", :value => (@case.company.name if @case.company.nil? == false)
-
-        = label_tag 'product_name'
-        = text_field_tag 'product_name', nil, :placeholder => "With what product?", :value => (@case.product.name if @case.product.nil? == false)
-
-        = f.label :description
-        = f.text_area :description, :cols => 59
-        = f.hidden_field :product_id
-        = f.hidden_field :company_id
-
-        .buttons.fr
-          = f.submit 'Save', :class => "green button"
-          = f.submit "cancel", :class => "button", :id => "clear_item_fields"
-        .clear
-
-    #review_status 
-    = form_for @case, :remote => true, :method => 'PUT' do |f|
-      = f.text_field :tag_list, :placeholder => "+ Add Tags"
     %ul.notes
       - @case.notebook.notes.each do |note|
         = render :partial => 'cases/note', :locals => {:note => note}
@@ -64,7 +44,6 @@
        
 
 = render :partial => "case_sidebar"
-
 
 - content_for :javascripts do
   = include_javascripts :wysiwyg
@@ -91,19 +70,16 @@
    
        });
 
-
-  :javascript   
-    
-    $(function() {      
-      #{render 'tags/taggable.js.erb', :taggable => @case}
-     
+  :javascript
+    $(function() {
       var pusher = new Pusher('526d54cc07120574aedb'); 
       var thingChannel = pusher.subscribe('#{@case.id}');
       thingChannel.bind('thing-create', function(thing) {
         $.get("#{case_path}", "script" , function(data) {
         });
-
       });
+
+
       $('.note_body').editable(function(value, settings){
         var note_id = $(this).closest('li').attr('id');
         var update_note_path = "#{case_notes_path(@case)}/" + note_id;
@@ -137,32 +113,9 @@
         li_element.find('.note_body').trigger('click.editable');
       });
 
+
       function editIssue() {
-        $('#case_description').wysiwyg({
-          controls: {
-              bold: { visible: true },
-              italic: { visible: true },
-              underline: { visible: true },
-              strikeThrough: { visible: true },
 
-              justifyLeft: { visible: true },
-              justifyCenter: { visible: true },
-              justifyRight: { visible: true },
-              justifyFull: { visible: true },
-
-              undo: { visible: true },
-              redo: { visible: true },
-
-              insertOrderedList: { visible: true },
-              insertUnorderedList: { visible: true },
-
-              createLink: { visible: true },
-              insertImage: { visible: true },
-
-              paragraph: { visible: true },
-          },
-          rmUnusedControls: true
-        });
 
         $('#rendered-review').hide();
         $('form#note_new').hide();
@@ -172,7 +125,11 @@
       }
 
       $('#edit-review-link').click(function(){
-        editIssue();
+        $.facebox(function(){
+          $.get('#{edit_case_path @case}', function(html){
+            $.facebox(html);
+          });
+        });
       });
 
 

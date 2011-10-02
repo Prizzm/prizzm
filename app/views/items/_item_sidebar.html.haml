@@ -17,3 +17,13 @@
     - else
       = link_to "view 2 cases", "#", :class => "button"
   .clear
+
+- content_for :javascripts do
+  :javascript
+    $('.button').click(function(){
+      $.facebox(function(){
+        $.get('#{new_item_case_path @item.id}', function(html){
+          $.facebox(html);
+        });
+      });
+    });

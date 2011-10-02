@@ -1,39 +1,12 @@
-= form_for @case = Case.new, :html => {:class => "action addcase addItem"} do |f|
-  %label{:for => "case_title"} +
-  = f.text_field 'title', :placeholder => "What's your issue?"
-  #hiddenform
-    = text_field_tag 'company_name', nil, :placeholder => "By what company?"
-    = text_field_tag 'product_name', nil, :placeholder => "With what product?"
-    = f.hidden_field :product_id
-    = f.hidden_field :company_id
-    = f.text_field :tag_list, :placeholder => "+ Add tags"
-    
-    %ul.finalstep.buttons.fr
-      %li.fb{:title => "post to facebook"}
-        / facebook checkbox goes here
-      %li.tt
-        / twitter checkbox goes here
-      %li.privacy
-        / privacy drop down goes here
-      %li= f.submit "open", :class => "green button"
-    .clear
-    .close 
-
+= label_tag :new_case, '+'
+= text_field_tag :new_case, nil, :placeholder => "What's your issue?"
 
 - content_for :javascripts do
   :javascript
-    $(function(){
-        $('#hiddenform').hide();
-        $('#case_title').click(function(){
-            $('#hiddenform').show();
+    $(document).ready(function(){
+      $('#new_case').click(function(){
+        $.facebox({
+          ajax: "#{new_case_path}"
         });
-
-        $('.addcase .close').click(function(){
-            $('#hiddenform').hide();
-            $('#company_name').val('');
-            $('#case_title').val('');
-        });
-
-        #{render 'cases/form.js.haml'}
-        #{render 'tags/new_taggable.js.haml', :taggable => @case}
+      });
     });

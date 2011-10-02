@@ -25,20 +25,58 @@ class CasesController < InheritedResources::Base
       format.js
       format.html
     end
-  end 
+  end
 
 
   def new
     @case = Case.new
-    render :layout => false
+
+    if params[:item_id].nil? == false
+      @item = Item.find(params[:item_id])
+
+      if @item.product.nil? == false
+        @case.product = @item.product
+      end
+
+      if @item.company.nil? == false
+        @case.company = @item.company
+      end
+    end
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'cases/form'
+      }
+    end
   end
 
 
   def create 
     params[:case][:tag_list] = params[:as_values_tag_list]
 
-    @case = Case.new(params[:case])
+    @case = Case.new(params[:case]);
     @case.user = current_user
+
+    if params[:case][:product_id].blank? == false
+      @product = Product.find(params[:case][:product_id]);
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :conditions => {
+          :name       => params[:product_name],
+          :company_id => (@company.id if @company.nil? == false),
+        }
+      });
+
+      if @product.nil? == true
+        @product = Product.create({
+          :name => params[:product_name],
+          :url  => params[:product_url],
+        });
+      end
+
+      @case.product = @product
+    end
+
 
     if params[:case][:company_id].blank? == false
       @company = Company.find(params[:case][:company_id])
@@ -48,7 +86,7 @@ class CasesController < InheritedResources::Base
       });
 
       if @company.nil? == true
-        @company = Company.new({
+        @company = Company.create({
           :name     => params[:company_name],
           :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
           :password => (0...8).map{65.+(rand(25)).chr}.join,
@@ -56,44 +94,31 @@ class CasesController < InheritedResources::Base
         })
       end
 
-      @case.company = @company;
+      @product.company = @company
+      @case.company = @company
     end
 
-
-    if params[:case][:product_id].blank? == false
-      @product = Product.find(params[:case][:product_id]);
-      @product.company = @company
-      @product.save
-    elsif params[:product_name].blank? == false
-      @product = Product.find(:first, {
-        :conditions => {
-          :name       => params[:product_name],
-          :company_id => @company.id,
-        }
-      });
-
-      if @product.nil? == true
-        @product = Product.new({
-          :name => params[:product_name]
-        });
-      end
-
-      @product.company = @company
-      @product.save
-
-      @case.product    = @product
-    end
-
-
+  
     if @case.save
       redirect_to case_path(@case)+"#edit_issue" 
     end
   end
 
 
-  def update 
-    puts "CASES CREATE"
-    
+  def edit
+    @case = Case.find(params[:id]);
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'cases/form_edit'
+      }
+    end
+  end
+
+
+  def update    
+    params[:case][:tag_list] = params[:as_values_tag_list]
+
     @case = current_user.cases.find(params[:id])
 
     if params[:case][:company_id].blank? == false
@@ -148,23 +173,21 @@ class CasesController < InheritedResources::Base
     end
   end
 
+
   def update_description
     @case = current_user.cases.find(params[:id])
     @case.update_attribute(:description, params[:description])
     render :json => @case.description
   end 
 
-  def destroy
-    @user_case = current_user.cases.find(params[:id])
-    @user_case.destroy
 
-    respond_to do |format|
-      format.js {
-        @html_items = render_to_string :partial   => "profile/user_case",
-                                       :collection => current_user.cases
-      }
-    end
+  def destroy
+    @case = current_user.cases.find(params[:id])
+    @case.destroy
+
+    redirect_to user_cases_path
   end
+
 
   def post_to_facebook
     the_case = Case.find(params[:case_id])

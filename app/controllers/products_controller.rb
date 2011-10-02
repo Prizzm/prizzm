@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    products = Product.where("name ILIKE ?", params[:query]+'%')
+    products = Product.where("name ILIKE ?", '%'+params[:query]+'%')
                       .order('name ASC')
                       .limit(5)
 
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
 
 
   private
-  def autocomplete_info_for products
-    results = products.to_json(:methods => [:name, :company, :main_image_thumb, :main_image, :customer_count, :url, :description, :company_id, :company_name], :only => [:id, :rating])
-  end
+    def autocomplete_info_for products
+      results = products.to_json(:methods => [:name, :company, :main_image_thumb, :main_image, :customer_count, :url, :description, :company_id, :company_name], :only => [:id, :rating])
+    end
 end

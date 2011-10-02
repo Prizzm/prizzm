@@ -1,11 +1,7 @@
 %h2= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
-  = label_tag :product_name, "+"
-  = link_to "use google", "", :id => "google-search"
   = text_field_tag :product_name, nil, :placeholder => "Product name"
-
-  = label_tag :company_name, "Company"
   = text_field_tag :company_name, nil, :placeholder => "Company name"
 
   %div#image-selector.fl
@@ -18,18 +14,17 @@
 
   .wrap.fr
     = label_tag :product_url, "URL"
+    = link_to "use google", "", :id => "google-search"
     = text_field_tag :product_url, nil, :placeholder => "Product link"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
-  /= f.text_field :tag_list, :placeholder => "+ Add tags"
   = f.hidden_field :company_id
   = f.hidden_field :product_id
 
   = hidden_field :product, :description
   = hidden_field :product, :image_url
 
-  / Remove if being exposed to add tags field
   = hidden_field :tag_list, params[:possession]
   
   %ul.sharing.fl

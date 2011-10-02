@@ -37,19 +37,17 @@
 
 #facebox .popup > .close {
   background-image: none;
-}
-
-#facebox .close {
   top: 8px;
   right: 8px;
 }
 
-#facebox .close img{
-  opacity:0.3;
-}
-#facebox .close:hover img{
-  opacity:1.0;
-}
+  #facebox .popup > .close img {
+    opacity:0.3;
+  }
+
+  #facebox .popup > .close:hover img {
+   opacity:1.0;
+  }
 
 #facebox .loading {
   margin-top: 10px;
