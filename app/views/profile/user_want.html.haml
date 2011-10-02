@@ -12,5 +12,24 @@
 
     %ul.items
       = render :partial => "profile/item", :collection => current_user.wanted_items
-  
+
 = render :partial => "layouts/sidebar"
+
+- content_for :javascripts do
+  :javascript
+    $(function() {
+      $('.edit-item').live('click', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        var $this = $(this);
+
+        console.log($this);
+
+        $.facebox(function(){
+          $.get('/items/'+$this.data('id')+'/edit', function(html){
+            $.facebox(html);
+          });
+        });
+      });
+    });
