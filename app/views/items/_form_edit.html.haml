@@ -16,8 +16,6 @@
       %li= link_to "Cancel", "#", :class => "button red cancel-edit"
       %li= f.submit 'Save'
     .clear
-  
-  .fl= link_to "Delete item", "#"  
-  
-.clear
 
+  .fl= link_to "Delete item", item_path(@item), :confirm => "Are you sure?", :method => 'delete'
+.clear

@@ -115,15 +115,13 @@ class ItemsController < InheritedResources::Base
   def destroy
     item = current_user.items.find(params[:id])
 
-    possession = item.tag_list.include?('have') ? 'have' : 'want'
-    item_collection = possession == 'have' ? current_user.owned_items : current_user.wanted_items
-    item.destroy
+    if item.tag_list.include?('want') == true
+      redirect_to want_path
+    else
+      redirect_to have_path
+    end
 
-    respond_to do |format|
-      format.js {
-        @html_items = render_to_string :partial => "profile/item", :collection => item_collection
-      }
-    end 
+    item.destroy
   end
 
   def update_review
