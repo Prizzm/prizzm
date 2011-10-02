@@ -31,6 +31,18 @@ class CasesController < InheritedResources::Base
   def new
     @case = Case.new
 
+    if params[:item_id].nil? == false
+      @item = Item.find(params[:item_id])
+
+      if @item.product.nil? == false
+        @case.product = @item.product
+      end
+
+      if @item.company.nil? == false
+        @case.company = @item.company
+      end
+    end
+
     respond_to do |format|
       format.html {
         render :partial => 'cases/form'
