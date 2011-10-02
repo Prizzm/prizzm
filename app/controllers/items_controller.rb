@@ -18,7 +18,36 @@ class ItemsController < InheritedResources::Base
   def create
     params[:item][:tag_list] = params[:tag_list].keys
 
+
     @item = Item.create(params[:item]);
+
+    if params[:item][:product_id].blank? == false
+      @product = Product.find(params[:item][:product_id]);
+    elsif params[:product_name].blank? == false
+      @product = Product.find(:first, {
+        :conditions => {
+          :name       => params[:product_name],
+          :company_id => (@company.id if @company.nil? == false),
+        }
+      });
+
+      if @product.nil? == true
+        @product = Product.create({
+          :name => params[:product_name],
+          :url  => params[:product_url],
+        });
+      end
+
+      @item.product = @product
+    end
+
+
+    if params[:product][:image_url].nil? == false
+      # Ideally it should reference the same image instead of downloading it twice
+      @product.add_image_from_url params[:product][:image_url]
+      @item.add_image_from_url params[:product][:image_url]
+    end
+
 
     if params[:item][:company_id].blank? == false
       @company = Company.find(params[:item][:company_id])
@@ -28,7 +57,7 @@ class ItemsController < InheritedResources::Base
       });
 
       if @company.nil? == true
-        @company = Company.new({
+        @company = Company.create({
           :name     => params[:company_name],
           :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
           :password => (0...8).map{65.+(rand(25)).chr}.join,
@@ -36,42 +65,10 @@ class ItemsController < InheritedResources::Base
         })
       end
 
-      @item.company = @company;
-    end
-
-
-
-
-    if params[:item][:product_id].blank? == false
-      @product = Product.find(params[:item][:product_id]);
       @product.company = @company
-      @product.save
-    elsif params[:product_name].blank? == false
-      @product = Product.find(:first, {
-        :conditions => {
-          :name       => params[:product_name],
-          :company_id => @company.id,
-        }
-      });
-
-      if @product.nil? == true
-        @product = Product.new({
-          :name => params[:product_name],
-          :url  => params[:product_url],
-        });
-      end
-
-      @product.company = @company
-      @product.save
-
-      @item.product    = @product
+      @item.company = @company
     end
 
-    if params[:product][:image_url].nil? == false
-      # Ideally it should reference the same image instead of downloading it twice
-      @product.add_image_from_url params[:product][:image_url]
-      @item.add_image_from_url params[:product][:image_url]
-    end
 
     current_user.items << @item
     redirect_to @item
