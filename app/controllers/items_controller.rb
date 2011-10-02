@@ -100,6 +100,7 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+
   def update
     @item = current_user.items.find(params[:id])
 
@@ -111,7 +112,8 @@ class ItemsController < InheritedResources::Base
       end 
     end
   end
-  
+
+
   def destroy
     item = current_user.items.find(params[:id])
 
@@ -124,11 +126,13 @@ class ItemsController < InheritedResources::Base
     item.destroy
   end
 
+
   def update_review
     @item = current_user.items.find(params[:id])
     @item.update_attribute(:review, params[:review])
     render :json => @item.review
-  end 
+  end
+
 
   def update_item_name
     @item = current_user.items.find(params[:id])
@@ -136,17 +140,20 @@ class ItemsController < InheritedResources::Base
     render :json => @item.name
   end
 
+
   def update_company
     @item = current_user.items.find(params[:id])
     @company = Company.find(params[:company_id])
     @item.update_attribute(:company_id, params[:company_id])
   end
 
+
   def rate
     @item = current_user.items.find(params[:object_id])
     @item.update_attribute(:rating, params[:rating])
     head :ok
   end
+
 
   def share
     user_id = params[:user_id]

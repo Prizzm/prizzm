@@ -12,45 +12,63 @@
   
     %ul.items
       = render :partial => "profile/item", :collection => current_user.owned_items
-   
+
 = render :partial => "layouts/sidebar"
 
 - content_for :javascripts do
   :javascript
-    $(document).ready(function() {
+    $(function() {
       if (document.location.hash === "#share_review"){
         $.get('#{share_review_path}', function(html){
           $.facebox(html);
         });
       }
-    });
 
 
-    $(document).ready(function() {
-      $('#invite-button').bind('click', function(e) {
-        e.preventDefault();
+      $('#invite-button').bind('click', function(event) {
+        event.preventDefault();
+
         if ($('#invitations').is(":visible")) {
           $('#invitations').slideUp('fast');
         } else {
           $('#invitations').slideDown('fast');
         }
       });
+
     
       $('#add-email').bind('click', function(e) {
         e.preventDefault();
         var new_email = $("<li><input type='text' value='' size='30' name='user[email][]' id='user_email'> <a class='remove' href='#'>&nbsp;</a></li>");
         $('#emails-list').append(new_email);
       });
+
     
       $('.remove').live('click', function(e) {
         e.preventDefault();
         $(this).prev().remove();
         $(this).remove();
       });
+
+      $('.edit-item').live('click', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        var $this = $(this);
+
+        console.log($this);
+
+        $.facebox(function(){
+          $.get('/items/'+$this.data('id')+'/edit', function(html){
+            $.facebox(html);
+          });
+        });
+      });
+
     
       $('#email-invite').bind('ajax:beforeSend', function() {
         $('#invitations .loading').css('visibility', 'visible');
       });
+
     
       $('#email-invite').bind('ajax:complete', function() {
         $('#invitations .loading').css('visibility', 'hidden');
