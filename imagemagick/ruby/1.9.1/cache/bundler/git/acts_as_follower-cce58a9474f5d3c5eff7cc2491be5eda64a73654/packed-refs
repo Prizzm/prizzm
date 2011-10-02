@@ -1,0 +1,4 @@
+# pack-refs with: peeled 
+16b323e95fd41c3826c79ecacaadd5a200d24d16 refs/heads/rails_2.3.x
+43ae06e94ed9b797d611c5294967b5b98a79b48d refs/heads/master
+78769be37af6ba8b5e509c2b94282bbceec1e5e4 refs/heads/integration
