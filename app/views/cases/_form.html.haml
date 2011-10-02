@@ -6,7 +6,7 @@
   = f.text_field :title, :placeholder => "What's your issue"
   = text_field_tag :product_name, (@case.product.name if @case.product.nil? == false), :placeholder => "with what product"
   = text_field_tag :company_name, (@case.company.name if @case.company.nil? == false), :placeholder => "by what company"
-  = f.text_field :tag_list, :placeholder => "add some tags"
+  = f.text_field :tag_list, :placeholder => "Add some tags"
 
   = f.hidden_field :company_id
   = f.hidden_field :product_id
@@ -70,8 +70,6 @@
   $('#company_name').change(function () {
       $('#company_id').val('');
   });
-
-
 
   // Tags
   #{ render "tags/new_taggable.js.haml", :taggable => @case }

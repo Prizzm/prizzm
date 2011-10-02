@@ -5,7 +5,7 @@
 = form_for @case, :html => {:class => 'action addhave addItem'} do |f|
   = f.text_field :title, :placeholder => "What's your issue"
   = f.text_area :description, :cols => nil, :rows => nil
-  = f.text_field :tag_list, :placeholder => "add some tags"
+  = f.text_field :tag_list, :placeholder => "Add some tags"
 
   = f.hidden_field :company_id
   = f.hidden_field :product_id
