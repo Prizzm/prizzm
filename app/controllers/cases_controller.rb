@@ -25,7 +25,7 @@ class CasesController < InheritedResources::Base
       format.js
       format.html
     end
-  end 
+  end
 
 
   def new
@@ -93,9 +93,20 @@ class CasesController < InheritedResources::Base
   end
 
 
-  def update 
-    puts "CASES CREATE"
-    
+  def edit
+    @case = Case.find(params[:id]);
+
+    respond_to do |format|
+      format.html {
+        render :partial => 'cases/form_edit'
+      }
+    end
+  end
+
+
+  def update    
+    params[:case][:tag_list] = params[:as_values_tag_list]
+
     @case = current_user.cases.find(params[:id])
 
     if params[:case][:company_id].blank? == false
@@ -150,23 +161,21 @@ class CasesController < InheritedResources::Base
     end
   end
 
+
   def update_description
     @case = current_user.cases.find(params[:id])
     @case.update_attribute(:description, params[:description])
     render :json => @case.description
   end 
 
-  def destroy
-    @user_case = current_user.cases.find(params[:id])
-    @user_case.destroy
 
-    respond_to do |format|
-      format.js {
-        @html_items = render_to_string :partial   => "profile/user_case",
-                                       :collection => current_user.cases
-      }
-    end
+  def destroy
+    @case = current_user.cases.find(params[:id])
+    @case.destroy
+
+    redirect_to user_cases_path
   end
+
 
   def post_to_facebook
     the_case = Case.find(params[:case_id])
