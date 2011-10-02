@@ -68,17 +68,19 @@ label[for=product_name],
   }
 
 
-    #product-images {
-      /* @todo Remove after logged_in.css removes !important */
-      padding-top: 15px !important;
-    }
-
       #product-images > li {
         display: none;
       }
 
-      #product-images > li.current {
+      #product-images > li.current,
+      #product-images > li.loading {
         display: block;
+      }
+
+      #product-images > li.loading {
+        background-image: none;
+        padding: 45px 0;
+        width: 100px;
       }
     
 

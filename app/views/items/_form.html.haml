@@ -108,6 +108,8 @@
           type: 'web',
           query: $('#company_name').val() + ' ' +$('#product_name').val(),
           select: function (event, ui) {
+              $('#product-images').html('<li class="loading"><span class="loading">&nbsp;</span></li>');
+
               // Fetch images
               $.getJSON('#{scrape_path}', {
                   url: ui.item.url
