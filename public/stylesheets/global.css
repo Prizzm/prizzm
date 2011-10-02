@@ -556,10 +556,11 @@ a.alt {
 }
 
 .loading {
-  width: 16px;
+  background-image: url('/images/loading.gif');
+  display: block;
   height: 16px;
   margin: 0 auto;
-  background-image: url('/images/loading.gif');
+  width: 16px;
 }
 
 .yui3-aclist {

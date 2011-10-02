@@ -49,7 +49,7 @@
    opacity:1.0;
   }
 
-#facebox .loading {
+#facebox .popup .content > .loading {
   margin-top: 10px;
   text-align: center;
 }
