@@ -118,6 +118,7 @@ nav#system ul.subnav{
   border-width: 0 1px 1px;
   border-style: solid;
   border-color: #4e4e4e;
+  display: block;
 }
 
 nav#system ul.subnav li {
