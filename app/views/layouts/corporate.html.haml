@@ -9,12 +9,13 @@
     .topbar
       .fill
         .container
-          = link_to "Welcome #{current_company.name}", company_root_path, :class => 'brand'
-          %ul.nav
-            %li.active= link_to "Home", company_root_path
-            %li= link_to "Edit Profile", edit_company_registration_path
-            %li= link_to "Logout", destroy_company_session_path
-          %p.pull-right{:style => 'color: white;'} Logged in as #{current_company.name} - #{current_company.email}
+          - if company_signed_in?
+            = link_to "Welcome #{current_company.name}", company_root_path, :class => 'brand'
+            %ul.nav
+              %li.active= link_to "Home", company_root_path
+              %li= link_to "Edit Profile", edit_company_registration_path
+              %li= link_to "Logout", destroy_company_session_path
+            %p.pull-right{:style => 'color: white;'} Logged in as #{current_company.name} - #{current_company.email}
 
     .container
       .content
@@ -24,12 +25,13 @@
             = value
         /= image_tag current_company.main_image, :class => "thumbnail"
 
-        %ul.tabs
-          %li{:class => active_if_current(company_root_path)}= link_to "Home", company_root_path
-          %li{:class => active_if_current(company_clients_path(current_company))}= link_to "Clients", company_clients_path(current_company)
-          %li{:class => active_if_current(company_products_path(current_company))}= link_to "Products", company_products_path(current_company)
-          %li{:class => active_if_current(incentives_path)}= link_to "Incentives", incentives_path
-          %li{:class => active_if_current(prizzm_invitations_path)}= link_to "Invitations", prizzm_invitations_path
+        - if company_signed_in?
+          %ul.tabs
+            %li{:class => active_if_current(company_root_path)}= link_to "Home", company_root_path
+            %li{:class => active_if_current(company_clients_path(current_company))}= link_to "Clients", company_clients_path(current_company)
+            %li{:class => active_if_current(company_products_path(current_company))}= link_to "Products", company_products_path(current_company)
+            %li{:class => active_if_current(incentives_path)}= link_to "Incentives", incentives_path
+            %li{:class => active_if_current(prizzm_invitations_path)}= link_to "Invitations", prizzm_invitations_path
 
         = yield
 

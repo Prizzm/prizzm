@@ -58,6 +58,7 @@ module Prizzm
     # Added to customize Devise layouts
     config.to_prepare do 
       Devise::RegistrationsController.layout proc{|controller| "corporate" if company_signed_in? }
+      Devise::SessionsController.layout "landing"
     end 
   end
 end

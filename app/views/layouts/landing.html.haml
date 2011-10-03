@@ -23,8 +23,9 @@
           
         .clear
       %ul.logsoc
-        %li= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook)
-        %li= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter)
+        - if resource_name == 'user'
+          %li= link_to image_tag('/images/landing/fb-login-button.png'), omniauth_authorize_path(resource_name, :facebook)
+          %li= link_to image_tag('/images/landing/login-with-twitter.png'), omniauth_authorize_path(resource_name, :twitter)
       
       %footer 
         ©2011 Prizzm 
@@ -35,7 +36,8 @@
         \-
         = link_to "Privacy", "#"
         \-
-        = link_to "Company panel", new_company_session_path 
+        - if resource_name == 'user'
+          = link_to "Company panel", new_company_session_path 
     
     = render 'layouts/javascripts'   
   </body>
