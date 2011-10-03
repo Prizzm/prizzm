@@ -1,7 +1,10 @@
 .row(id="item_#{item.id}" data-itemid="#{item.id}")
   .cell.img= image_tag item.images.first.image.thumb.url unless item.images.first.nil?
   .cell
-    %h2= link_to item.name, item_path(item)
+    - if item.product.nil? == false
+      %h2= link_to item.product.name, item_path(item)
+    - else
+      %h2= link_to item.name, item_path(item)
     .clear
     = link_to "Write a review", item_path(item) + '#write_review'
     = render :partial => 'items/privacy_controls', :locals => {:item => item }

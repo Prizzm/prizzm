@@ -10,5 +10,9 @@
         .cell.img= image_tag item.main_image
         .cell
           %h3
-            = link_to(item) do
-              = item.name
+            - if item.product.nil? == false
+              = link_to(item) do
+                = item.product.name
+            - else
+              = link_to(item) do
+                = item.name

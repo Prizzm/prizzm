@@ -21,7 +21,10 @@
           %h1
             = link_to item.user.name, profile_path(item.user)
             has a
-            = link_to item.name, (item)
+            - if item.product.nil? == false
+              %h2= link_to item.product.name, item_path(item)
+            - else
+              %h2= link_to item.name, item_path(item)
           .clear
           = image_tag item.main_image, :class => "fl"
           .fl.cont
