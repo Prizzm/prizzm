@@ -1,3 +1,0 @@
-class Mechanize::HTTP
-end
-
