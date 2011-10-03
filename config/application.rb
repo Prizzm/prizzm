@@ -53,5 +53,11 @@ module Prizzm
     config.after_initialize do
       require 'string'
     end
+
+
+    # Added to customize Devise layouts
+    config.to_prepare do 
+      Devise::RegistrationsController.layout proc{|controller| "corporate" if company_signed_in? }
+    end 
   end
 end
