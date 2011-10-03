@@ -11,7 +11,10 @@
   %section#review
     = image_tag @item.main_image, :class => "fl big thumb"
     .fl.cont
-      %h2= @item.product.name
+      - if @item.product.nil? == false
+        %h2= @item.product.name
+      - else
+        %h2= @item.name
       = link_to "Edit this item", '#', :class => "button", :id => "edit-review-link"
       %div{ :class => "status #{@item.privacy}" }= @item.privacy
 
