@@ -2,6 +2,15 @@
   = render :partial => "layouts/system_menu"
   .fr
     - if @item.privacy == "public"
+      - if @incentive
+        %article
+          .coupon
+            Get
+            = @incentive.description
+            %br
+            %br Use coupon code #{@incentive.code}
+            - if @incentive.company.store_url
+              %br #{link_to 'Online', @incentive.company.store_url}
       - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
         %article
           .coupon

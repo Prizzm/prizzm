@@ -14,6 +14,10 @@
 .row.offset1
   %strong Contact Person:
   = @company.contact_name
+.row.offset1
+  %strong Online Store:
+  = link_to @company.store_url, @company.store_url
+
 
 
 %br

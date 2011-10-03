@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930153948) do
+ActiveRecord::Schema.define(:version => 20111003091102) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20110930153948) do
     t.string   "last_sign_in_ip"
     t.text     "description"
     t.boolean  "claimed",                             :default => true, :null => false
+    t.string   "store_url"
   end
 
   add_index "companies", ["cached_slug"], :name => "index_companies_on_cached_slug", :unique => true
@@ -190,6 +191,16 @@ ActiveRecord::Schema.define(:version => 20110930153948) do
     t.datetime "updated_at"
     t.integer  "incentive_id"
     t.datetime "invitation_sent_at"
+  end
+
+  create_table "prizzm_mail_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "message_content"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "product_images", :force => true do |t|

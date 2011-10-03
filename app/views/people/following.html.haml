@@ -11,7 +11,10 @@
             = image_tag item.user.main_image, :class => "thumb"
             %span= image_tag item.main_image, :class => "small thumb"
           .fl.cont
-            %h2= link_to item.name, item
+            - if item.product.nil? == false
+              %h2= link_to item.product.name, item
+            - else
+              %h2= link_to item.name, item
             = link_to item.user.name, profile_path(item.user)
             - if item.tag_list.include? 'have'
               has 

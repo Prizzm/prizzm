@@ -25,11 +25,11 @@
           .clear
         %div{:class => "fr"}= follow_link_for @item.user
         .clear
-          
+
       - if @item.product.nil? == false
-	      %h2= @item.product.name
-	  - else
-	      %h2= @item.name
+        %h2= @item.product.name
+      - else
+        %h2= @item.name
       #rendered-review
         - if @item.review.blank?
           = render 'default_review'
