@@ -1,1 +1,0 @@
-require 'workflow_on_mongoid/workflow'
