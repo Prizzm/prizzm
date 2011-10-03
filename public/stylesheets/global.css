@@ -719,6 +719,11 @@ ul.items, ul.cases {
     line-height: 20px;
   }
   
+  .item.rec {
+	background: #ccf5cd;
+	border: 1px solid #a4d6a6;	
+  }
+  
   .fl.img {
     position: relative;
   }
