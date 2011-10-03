@@ -11,9 +11,7 @@ class ProfileController < ApplicationController
       @item = Item.new
       @item.images.build
 
-      if current_user.owned_items.count > 0
-        render "#{target_user}_have", :layout => "application"
-      end
+      render "#{target_user}_have", :layout => "application"
   end
 
 
@@ -22,9 +20,7 @@ class ProfileController < ApplicationController
     @item = Item.new
     @item.images.build
 
-    if current_user.wanted_items.count > 0
-        render "#{target_user}_want", :layout => "application"
-    end
+    render "#{target_user}_want", :layout => "application"
   end
 
 
@@ -36,9 +32,7 @@ class ProfileController < ApplicationController
 
     @cases = current_user.cases.all
 
-    if @cases.count > 0
-      render "#{target_user}_cases", :layout => "application"
-    end
+    render "#{target_user}_cases", :layout => "application"
   end 
 
   protected
