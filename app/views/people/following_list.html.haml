@@ -1,0 +1,26 @@
+#content.grid_13
+  %nav#secondary
+    %ul
+      %li.curr= link_to "All", ""
+
+  %ul.items
+    - if @items.count > 0
+      - @items.each do |item|
+        %li.item{:id => "item_#{item.id}"}
+          .fl
+            = image_tag item.user.main_image, :class => "thumb"
+          .fl.cont
+            = link_to item.user.name, profile_path(item.user)
+          %ul.fr
+            /
+              %li
+                = link_to "#", :class => "rec button" do
+                  = image_tag "rec-thumb.png"
+                  Recommend this
+            %li= link_to "View profile", profile_path(item.user), :class => "button"
+            
+          .clear
+    - else
+      %li No public items
+    
+= render :partial => "layouts/sidebar"
