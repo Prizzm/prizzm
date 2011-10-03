@@ -25,6 +25,20 @@ class PeopleController < ApplicationController
                  .limit(10)
 
   end
+  
+  def following_list
+    @items = Item.joins('INNER JOIN follows ON follows.follower_id = items.user_id')
+                 .where(
+                   :follows => {
+                     :followable_type => 'User',
+                     :follower_type   => 'User',
+                     :followable_id   => current_user.id
+                   },
+                   :privacy => "public"
+                 )
+                 .limit(10)
+
+  end
 
 
   def search
