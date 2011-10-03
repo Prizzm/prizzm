@@ -12,9 +12,7 @@ class ProfileController < ApplicationController
       @item.images.build
 
       if current_user.owned_items.count > 0
-          render "#{target_user}_have", :layout => "application"
-      elsif
-          render "#{target_user}_have_default", :layout => "application"
+        render "#{target_user}_have", :layout => "application"
       end
   end
 
@@ -26,8 +24,6 @@ class ProfileController < ApplicationController
 
     if current_user.wanted_items.count > 0
         render "#{target_user}_want", :layout => "application"
-    elsif
-        render "#{target_user}_want_default", :layout => "application"
     end
   end
 
@@ -42,8 +38,6 @@ class ProfileController < ApplicationController
 
     if @cases.count > 0
       render "#{target_user}_cases", :layout => "application"
-    elsif
-      render "#{target_user}_cases_default", :layout => "application"
     end
   end 
 

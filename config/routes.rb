@@ -62,6 +62,7 @@ Prizzm::Application.routes.draw do
 
   resources :cases do
     resources :notes
+
     match 'post_to_facebook' => 'cases#post_to_facebook'
   end
 
@@ -183,7 +184,12 @@ Prizzm::Application.routes.draw do
   resources :items
   resources :items do
     resources :images, :only => [:create, :destroy]
+    resources :cases, :only => [:new]
+
     match 'post_to_facebook' => 'items#post_to_facebook'
+
+    # Better way to do this? Two separate definitions?
+    get ':possession' => 'items#new', :constraints => {:posession => /^want|have$/i}
   end
 
 

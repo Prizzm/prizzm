@@ -1,6 +1,6 @@
 - content_for :page_style do
-  = include_stylesheets :wysiwyg
   = include_stylesheets :item_detail
+  = include_stylesheets :yourstuff
 
 #content.grid_14
   %nav#secondary
@@ -11,9 +11,17 @@
   %section#review
     = image_tag @item.main_image, :class => "fl big thumb"
     .fl.cont
-      %h2= @item.name
+      %h2= @item.product.name
       = link_to "Edit this item", '#', :class => "button", :id => "edit-review-link"
       %div{ :class => "status #{@item.privacy}" }= @item.privacy
+
+      - if @item.opinion.to_i == 1
+        %div{ :class => "opinion recommended" } You recommend this
+      - elsif @item.opinion.to_i == 2
+        %div{ :class => "opinion hate" } You don't recommend this
+      - else
+        %div{ :class => "opinion neutral" } You have no opinion
+      
       .clear
       .revpost
         #rendered-review
@@ -37,15 +45,10 @@
 .clear
 
 - content_for :javascripts do
-  = include_javascripts :wysiwyg
   = include_javascripts :item_detail
 
   :javascript
-    $(document).ready(function() {
-      #{render 'tags/taggable.js.erb', :taggable => @item} 
-
-      var editor;
-
+    $(function() {
       // For commment loading animation.
       $('.new_comment').live('ajax:beforeSend', function() {
         var cmt = $(this).find('textarea');
@@ -62,39 +65,10 @@
       });
       // End loading animation.
 
+
       $('#edit-review-link').click(function(){
         $.get('#{edit_item_path}', function(html){
           $.facebox(html);
-
-          $('#facebox').find('textarea').wysiwyg({
-            controls: {
-              bold: { visible: true },
-              italic: { visible: true },
-              underline: { visible: true },
-              strikeThrough: { visible: true },
-
-              justifyLeft: { visible: true },
-              justifyCenter: { visible: true },
-              justifyRight: { visible: true },
-              justifyFull: { visible: true },
-
-              undo: { visible: true },
-              redo: { visible: true },
-
-              insertOrderedList: { visible: true },
-              insertUnorderedList: { visible: true },
-
-              createLink: { visible: true },
-              insertImage: { visible: true },
-
-              paragraph: { visible: true },
-            },
-            rmUnusedControls: true
-          });
-
-          $('#facebox').find('.cancel-edit').click(function(){
-            $(document).trigger('close.facebox');
-          });
         }, 'html');
       });
 
@@ -102,9 +76,23 @@
       $('form.edit_item').live('ajax:success', function(event, data, status, xhr){
         var $facebox = $('#facebox');
 
-        $('div.title').text($facebox.find('#item_name').val());
-        $('#rendered-review').html($facebox.find('#item_review').val());
+        $('#review .title').html($facebox.find('#item_name').val());
 
-        $(document).trigger('close.facebox');
+        $('#review .opinion').replaceWith(function(){
+          var opinion = $facebox.find('#item_opinion').val();
+
+          switch ($facebox.find('#item_opinion').val()) {
+            case '1':
+              return '<div class="opinion recommended">You recommend this</div>';
+              break;
+            case '2':
+              return '<div class="opinion hate">You don\'t recommend this</div>';
+              break;
+            default:
+              return '<div class="opinion neutral">You have no opinion</div>';
+          }
+        });
+
+        $('#rendered-review').html($facebox.find('#item_review').val());
       });
     });

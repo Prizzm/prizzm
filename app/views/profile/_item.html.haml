@@ -34,9 +34,10 @@
           = image_tag "rec-thumb.png"
           Recommend this
     - if current_user == @user
-      %li= link_to "Edit this item", item, :class => "button", :id => "edit-review-link"
-    - else
-      %li= link_to "View this item", item, :class => "button", :id => "edit-review-link"
-      
+      %li
+        %a.button.edit-item{ :data => {:id => item.id } }
+          Edit this item
+
+
     /= link_to "", [current_user, item], :remote => true, :method => :delete, :class => "close", :confirm => "Are you sure you want to delete this item?"
   .clear

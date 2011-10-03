@@ -1,11 +1,10 @@
 = include_stylesheets :wysiwyg
 
-%h2 Add a case
+%h2 Edit case
 
 = form_for @case, :html => {:class => 'action addhave addItem'} do |f|
   = f.text_field :title, :placeholder => "What's your issue"
-  = text_field_tag :product_name, (@case.product.name if @case.product.nil? == false), :placeholder => "with what product"
-  = text_field_tag :company_name, (@case.company.name if @case.company.nil? == false), :placeholder => "by what company"
+  = f.text_area :description, :cols => nil, :rows => nil
   = f.text_field :tag_list, :placeholder => "Add some tags"
 
   = f.hidden_field :company_id
@@ -17,15 +16,19 @@
     %li.tt{:title => "share to twitter"}
       / twitter checkbox goes here
     %li.privacy
-      = f.check_box :privacy, {:checked => 'false'}, 'private', 'public'
+      = f.check_box :privacy, {}, 'private', 'public'
       = f.label :privacy, 'Mark Private'
-  
+
   %ul.buttons.fr
     %li= button_to "Cancel"
     %li= f.submit "Save"
   .clear
 
+  .fl= link_to "Delete case", case_path(@case), :confirm => "Are you sure?", :method => 'delete'
 
+
+
+= include_javascripts :wysiwyg
 
 :javascript
   // This should be in the global javascript?
@@ -71,5 +74,33 @@
       $('#company_id').val('');
   });
 
+
+
   // Tags
   #{ render "tags/new_taggable.js.haml", :taggable => @case }
+
+  $('#case_description').wysiwyg({
+    controls: {
+        bold: { visible: true },
+        italic: { visible: true },
+        underline: { visible: true },
+        strikeThrough: { visible: true },
+
+        justifyLeft: { visible: true },
+        justifyCenter: { visible: true },
+        justifyRight: { visible: true },
+        justifyFull: { visible: true },
+
+        undo: { visible: true },
+        redo: { visible: true },
+
+        insertOrderedList: { visible: true },
+        insertUnorderedList: { visible: true },
+
+        createLink: { visible: true },
+        insertImage: { visible: true },
+
+        paragraph: { visible: true },
+    },
+    rmUnusedControls: true
+  });

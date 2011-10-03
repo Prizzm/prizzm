@@ -39,13 +39,13 @@ class Case < ActiveRecord::Base
     CaseNotebook.where(:case_id => id).first
   end
 
-protected
 
-  def log_creation
-    ActivityLogger.user_open_case :from => self.user, :for =>[self.company, self.item] 
-  end 
+  protected
+    def log_creation
+      ActivityLogger.user_open_case :from => self.user, :for =>[self.company, self.item] 
+    end 
 
-  def create_case_notebook
-    CaseNotebook.create(:case_id => id)
-  end
+    def create_case_notebook
+      CaseNotebook.create(:case_id => id)
+    end
 end

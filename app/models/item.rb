@@ -124,7 +124,7 @@ protected
       ActivityLogger.send(event_name,  :from => self.user, :for => [self], :changes => delta) unless ignore.include? property
     end 
   end 
-  
+
   def pre_process
     if !self.image_url.blank?
       self.images = []

@@ -1,12 +1,12 @@
 #content.grid_13
   %nav#secondary
     %ul
-      %li.curr= link_to "All", have_path(current_user)
+      %li.curr= link_to "All", ""
 
   %ul.items
     - if @items.count > 0
       - @items.each do |item|
-        %li.item{:id => "item_#{item.id}"}
+        %li.item{:id => "item_#{item.id}", :class => "item-rec"}
           .fl.img
             = image_tag item.user.main_image, :class => "thumb"
             %span= image_tag item.main_image, :class => "small thumb"
@@ -18,9 +18,9 @@
             - elsif item.tag_list.include? 'want'
               wants 
             this and
-            - if item.opinion == "horrible!"
+            - if item.opinion == 2
               %div{ :class => "opinion hate" } doesn't recommend
-            - elsif item.opinion == "i_recommend_this!"
+            - elsif item.opinion == 1
               %div{ :class => "opinion recommended" } recommends
             - else
               %div{ :class => "opinion neutral" } has no opinion about

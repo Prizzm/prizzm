@@ -1,39 +1,39 @@
-%h2 Add a product
+= include_stylesheets :wysiwyg
+= include_javascripts :wysiwyg
+
+%h2= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
-  = label_tag :product_name, "+"
   = text_field_tag :product_name, nil, :placeholder => "Product name"
-
-  = label_tag :company_name, "Company"
   = text_field_tag :company_name, nil, :placeholder => "Company name"
 
-  .prod-img.fl
-    = image_tag 'default-item-image.jpg', :id => 'product_image', :height => 100, :width => 100
-    %ul#img-controls.hidden
+  %div#image-selector.fl
+    %ul#product-images
+      %li.current= image_tag 'default-item-image.jpg', :id => 'product_image', :height => 100, :width => 100
+
+    %ul#product-images-controls.hidden
       %li.prev.fl= image_tag "prev_img.png"
       %li.next.fr= image_tag "next_img.png"
 
   .wrap.fr
     = label_tag :product_url, "URL"
+    = link_to "use google", "", :id => "google-search"
     = text_field_tag :product_url, nil, :placeholder => "Product link"
-    = link_to "use google", "", :class => "googlesearch"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
-  /= f.text_field :tag_list, :placeholder => "+ Add tags"
   = f.hidden_field :company_id
   = f.hidden_field :product_id
 
   = hidden_field :product, :description
   = hidden_field :product, :image_url
 
-  / Remove if being exposed to add tags field
-  = hidden_field :tag_list, 'have'
+  = hidden_field :tag_list, params[:possession]
   
   %ul.sharing.fl
-    %li.fb{:title => "post to facebook"}
+    / %li.fb{:title => "post to facebook"}
       / facebook checkbox goes here
-    %li.tt{:title => "share to twitter"}
+    / %li.tt{:title => "share to twitter"}
       / twitter checkbox goes here
     %li.privacy
       = f.check_box :privacy, {:checked => "false"}, 'private', 'public'
@@ -44,52 +44,129 @@
     %li= f.submit "Save"
   .clear
 
+
 :javascript
+  // This should be in the global javascript?
   $('li').filter('.fb, .tt').tipsy({
-    gravity : 'n',
-    fade    : true
+      gravity: 'n',
+      fade: true
   });
   
+
   // Product Auto Complete
   #{ render "items/product_autocomplete.js" }
 
   $('#product_name').autocompleteProduct({
-    select: function(event, ui){
-      if (ui.item.company) {
-        $('#company_id').val(ui.item.company.id);
-        $('#company_name').val(ui.item.company.name);
+      select: function (event, ui) {
+          if (ui.item.company) {
+              $('#company_id').val(ui.item.company.id);
+              $('#company_name').val(ui.item.company.name);
+          }
+
+          $('#product_image').attr('src', ui.item.main_image_thumb);
+
+          $('#product_url').val(ui.item.url).attr('readonly', 'readonly');
+
+          $('#product_id').val(ui.item.id);
       }
-
-      $('#product_image').attr('src', ui.item.main_image_thumb);
-
-      $('#product_url').val(ui.item.url)
-                       .attr('readonly', 'readonly');
-
-      $('#product_id').val(ui.item.id);
-    }
   });
+
 
   // Reset product
-  $('#product_name').change(function(){
-    $('#product_id').val('');
-    $('#product_url').val('')
-                     .removeAttr('readonly');
+  $('#product_name').change(function () {
+      $('#product_id').val('');
+      $('#product_url').val('').removeAttr('readonly');
 
-    $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
+      $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
   });
+
 
 
   // Company Auto Complete
   #{ render "items/company_autocomplete.js" }
 
-  // Reset company
   $('#company_name').autocompleteCompany({
-    select: function(event, ui){
-      $('#company_id').val(ui.item.id);
-    }
+      select: function (event, ui) {
+          $('#company_id').val(ui.item.id);
+      }
   });
 
   // Reset company
-  $('#company_name').change(function(){
-    $('#company_id').val('');
+  $('#company_name').change(function () {
+      $('#company_id').val('');
+  });
+
+
+
+  // Google Auto Complete
+  #{ render "items/google_search.js.haml" }
+  $('#google-search').click(function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      $('#product_url').autocompleteUrl({
+          type: 'web',
+          query: $('#company_name').val() + ' ' +$('#product_name').val(),
+          select: function (event, ui) {
+              $('#product-images').html('<li class="loading"><span class="loading">&nbsp;</span></li>');
+
+              // Fetch images
+              $.getJSON('#{scrape_path}', {
+                  url: ui.item.url
+              }, function (json) {
+                  // Really need to turn this into a plugin
+                  var html = '';
+                  $.each(json.images, function (index, value) {
+                      html += '<li><img alt="" src="' + value + '" width="100"></li>\n';
+                  });
+
+                  var $first = $('#product-images').html(html)
+                                                   .children(':first')
+                                                     .addClass('current');
+
+                  $('#product-images-controls').removeClass('hidden');
+                  $('#product_image_url').val($first.children('img').attr('src'));
+
+
+                  var $product_images = $('#product-images > li');
+                  $('#product-images-controls > li.next').click(function(){
+                    var $current = $product_images.filter('.current'),
+                        $next    = $current.next();
+
+                    if ($next.length == 0) {
+                      $next = $product_images.first();
+                    }
+
+                    $('#product_image_url').val($next.children('img').attr('src'));
+
+                    $current.fadeOut('slow', function(){
+                      $current.removeClass('current');
+
+                      $next.fadeIn('slow', function(){
+                        $next.addClass('current');
+                      });
+                    });
+                  });
+
+                  $('#product-images-controls > li.prev').click(function(){
+                    var $current = $product_images.filter('.current'),
+                        $prev    = $current.prev();
+
+                    if ($prev.length == 0) {
+                      $prev = $product_images.last();
+                    }
+
+                    $('#product_image_url').val($prev.children('img').attr('src'));
+
+                    $current.fadeOut('fast', function(){
+                      $current.removeClass('current');
+
+                      $prev.fadeIn('fast', function(){
+                        $prev.addClass('current');
+                      });
+                    });
+                  });
+              });
+          }
+      }).autocomplete('search');
   });

@@ -11,17 +11,21 @@
             = image_tag item.user.main_image, :class => "thumb"
             %span= image_tag item.main_image, :class => "small thumb"
           .fl.cont
-            %h2= link_to item.name, item
+            - if item.product.nil? == false
+              %h2= link_to item.product.name, item
+            - else
+              %h2= link_to item.name, item
+
             = link_to item.user.name, profile_path(item.user)
             - if item.tag_list.include? 'have'
               has 
             - elsif item.tag_list.include? 'want'
               wants 
             this and
-            - if item.opinion == "horrible!"
-              %div{ :class => "opinion hate" } doesn't recommend
-            - elsif item.opinion == "i_recommend_this!"
+            - if item.opinion.to_i == 1
               %div{ :class => "opinion recommended" } recommends
+            - elsif item.opinion.to_i == 2
+              %div{ :class => "opinion hate" } doesn't recommend
             - else
               %div{ :class => "opinion neutral" } has no opinion about
             it.
