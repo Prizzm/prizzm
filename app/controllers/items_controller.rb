@@ -84,7 +84,7 @@ class ItemsController < InheritedResources::Base
   def show
     #@item = current_user.items.find(params[:id])
     @item = Item.find(params[:id])
-
+    @incentive = Incentive.find(params[:incentive_id]) if params[:incentive_id]
     if @item.user == current_user
       render "show_private_item"
     elsif @item.is_public?

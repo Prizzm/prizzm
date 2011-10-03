@@ -2,6 +2,11 @@
   = render :partial => "layouts/system_menu"
   .fr
     - if @item.privacy == "public"
+      - if @incentive
+        %article
+          .coupon
+            Get
+            = @incentive.description
       - if @item.name == "Serrano Hobo" || @item.name == "Hermann Mini"
         %article
           .coupon

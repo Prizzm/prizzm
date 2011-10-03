@@ -88,6 +88,7 @@ class ProductInvitationsController < ApplicationController
 
 
   def share_review
+    @prizzm_invitation = PrizzmInvitation.find(session[:invitation_id])
     @item = Item.find(session[:accepted_item])
     render :layout => nil
   end
@@ -97,6 +98,7 @@ class ProductInvitationsController < ApplicationController
     # Using and clearing session to fix double posts..  HACK
     @item = current_user.items.find(session[:accepted_item])
     if @item
+      @invitation = PrizzmInvitation.find(session[:invitation_id])
       @item.update_attribute(:privacy, 'public')
       session[:accepted_item] = nil
 
@@ -105,10 +107,13 @@ class ProductInvitationsController < ApplicationController
       else
         image_url = @item.product.main_image
       end
-      message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item), :picture => image_url}
+      if @invitation.incentive
+        message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item)+"?incentive_id=#{@invitation.incentive.id}", :picture => image_url}
+      else
+        message = {:message => "#{@item.review}", :link => show_item_url(current_user, @item), :picture => image_url}
+      end
       Facebook.post_message(message, current_user.access_token) 
 
-      @invitation = PrizzmInvitation.find(session[:invitation_id])
       @client = @invitation.clients.find(session[:client_id])
       @sale = @invitation.sale_for @client
       @sale.update_attribute('shared_item_to_fb', true)
