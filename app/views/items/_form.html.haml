@@ -31,9 +31,9 @@
   = hidden_field :tag_list, params[:possession]
   
   %ul.sharing.fl
-    %li.fb{:title => "post to facebook"}
+    / %li.fb{:title => "post to facebook"}
       / facebook checkbox goes here
-    %li.tt{:title => "share to twitter"}
+    / %li.tt{:title => "share to twitter"}
       / twitter checkbox goes here
     %li.privacy
       = f.check_box :privacy, {:checked => "false"}, 'private', 'public'
