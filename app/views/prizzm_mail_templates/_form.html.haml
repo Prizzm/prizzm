@@ -1,15 +1,29 @@
-= semantic_form_for @prizzm_mail_template do |f|
-  -if @prizzm_mail_template.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@prizzm_mail_template.errors.count, "error")} prohibited this prizzm_mail_template from being saved:"
-      %ul
-        - @prizzm_mail_template.errors.full_messages.each do |msg|
-          %li= msg
-  = f.input :name, :input_html => {:placeholder => "Enter a name for your template"}
-  = f.input :from, :label => "From Address", :input_html => {:placeholder => "What should the 'From' address say?"}
-  = f.input :subject, :label => "Subject", :input_html => {:placeholder => "Enter a subject for your email"}
-  = f.input :message_content, :label => "Message Content", :hint => "HTML is allowed", :input_html => {:placeholder => "Enter the content that should go in your email. HTML is allowed"}
+.row
+  .span7
+    = semantic_form_for @prizzm_mail_template do |f|
+      -if @prizzm_mail_template.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@prizzm_mail_template.errors.count, "error")} prohibited this prizzm_mail_template from being saved:"
+          %ul
+            - @prizzm_mail_template.errors.full_messages.each do |msg|
+              %li= msg
+      = f.input :name, :input_html => {:placeholder => "Enter a name for your template"}
+      = f.input :from, :label => "From Address", :input_html => {:placeholder => "What should the 'From' address say?"}
+      = f.input :subject, :label => "Subject", :input_html => {:placeholder => "Enter a subject for your email"}
+      = f.input :message_content, :label => "Message Content", :hint => "HTML is allowed", :input_html => {:placeholder => "Enter the content that should go in your email. HTML is allowed"}
 
-  = f.commit_button "Save Template", :button_html => {:class => "btn primary large"}
+      = f.commit_button "Save Template", :button_html => {:class => "btn primary large"}
+  .span5
+    .alert-message.block-message.success
+      %h4 Template substitutions
+
+      %p If you want to have your template use custom insertions for each customer email, such as the clients name, or the product name, use the tags below in your template. These tags will be replaced by their respective values.
+      %br
+      %ul
+        %li #client_first_name
+        %li #client_last_name
+        %li #product_name
+        %li #product_price
+        %li #return_url
 
 
