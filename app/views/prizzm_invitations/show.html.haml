@@ -34,7 +34,7 @@
 
 %h3 Mail Template:
 - if @prizzm_invitation.prizzm_mail_template
-  %p= link_to @prizzm_invitation.prizzm_mail_template.name, @prizzm_invitation.prizzm_mail_template
+  %p= link_to @prizzm_invitation.prizzm_mail_template.name, @prizzm_invitation.prizzm_mail_template, :class => "facebox"
 
   
 - if @prizzm_invitation.clients.count > 0

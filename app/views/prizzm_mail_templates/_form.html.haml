@@ -5,10 +5,11 @@
       %ul
         - @prizzm_mail_template.errors.full_messages.each do |msg|
           %li= msg
-  = f.input :name
-  = f.input :from, :label => "From Address"
-  = f.input :subject, :label => "Subject"
-  = f.input :message_content, :label => "Message Content", :hint => "HTML is allowed"
+  = f.input :name, :input_html => {:placeholder => "Enter a name for your template"}
+  = f.input :from, :label => "From Address", :input_html => {:placeholder => "What should the 'From' address say?"}
+  = f.input :subject, :label => "Subject", :input_html => {:placeholder => "Enter a subject for your email"}
+  = f.input :message_content, :label => "Message Content", :hint => "HTML is allowed", :input_html => {:placeholder => "Enter the content that should go in your email. HTML is allowed"}
+
   = f.commit_button "Save Template", :button_html => {:class => "btn primary large"}
 
 

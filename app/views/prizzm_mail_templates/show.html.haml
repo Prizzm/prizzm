@@ -2,4 +2,6 @@
 %p From: #{@prizzm_mail_template.from}
 %p Subject: #{@prizzm_mail_template.subject}
 
-%p #{@prizzm_mail_template.message_content}
+.hero-unit
+  Text
+  %p #{@prizzm_mail_template.message_content.html_safe}

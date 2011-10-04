@@ -46,7 +46,7 @@ class PrizzmMailTemplatesController < ApplicationController
 
     respond_to do |format|
       if @prizzm_mail_template.save
-        format.html { redirect_to(@prizzm_mail_template, :notice => 'Prizzm mail template was successfully created.') }
+        format.html { redirect_to prizzm_mail_templates_path, :notice => 'Your mail template has been saved'}
         format.xml  { render :xml => @prizzm_mail_template, :status => :created, :location => @prizzm_mail_template }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class PrizzmMailTemplatesController < ApplicationController
 
     respond_to do |format|
       if @prizzm_mail_template.update_attributes(params[:prizzm_mail_template])
-        format.html { redirect_to(@prizzm_mail_template, :notice => 'Prizzm mail template was successfully updated.') }
+        format.html { redirect_to prizzm_mail_templates_path, :notice => 'Your changes have been saved.'}
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
