@@ -4,20 +4,16 @@
       %li.curr= link_to "All", ""
 
   %ul.items
-    - if @items.count > 0
-      - @items.each do |item|
-        %li.item{:id => "item_#{item.id}"}
+    - followed_users = @user.following_users_count 
+    - if followed_users > 0
+      - @user.following_users.order('first_name').each do |person|
+        %li.item
           .fl
-            = image_tag item.user.main_image, :class => "thumb"
+            = image_tag person.main_image, :class => "thumb"
           .fl.cont
-            = link_to item.user.name, profile_path(item.user)
+            = link_to person.name, profile_path(person)
           %ul.fr
-            /
-              %li
-                = link_to "#", :class => "rec button" do
-                  = image_tag "rec-thumb.png"
-                  Recommend this
-            %li= link_to "View profile", profile_path(item.user), :class => "button"
+            %li= link_to "View profile", profile_path(person), :class => "button"
             
           .clear
     - else
