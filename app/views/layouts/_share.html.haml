@@ -1,6 +1,8 @@
 %article.share-item
   %ul
-    %li= link_to "", "", :class => "sn-share fb"
-    %li= link_to "", "https://twitter.com/share", :class => "sn-share tt", :'data-count' => "none", :'data-via' => "prizzm"
+    %li{:class => 'fb'}= link_to "", "", :type => "button", :share_url => "development.prizzm.com", :name => "fb_share", :class => 'sn-share'
+    %li{:class => 'tt'}= link_to "", "https://twitter.com/share?url=https%3A%2F%2Fdevelopment.prizzm.com&text=your_text&via=prizzm", :class => "sn-share"
       
 %script{:type => "text/javascript", :src => "https://platform.twitter.com/widgets.js"}
+%script{:src => "http://static.ak.fbcdn.net/connect.php/js/FB.Share", :type => "text/javascript"}
+

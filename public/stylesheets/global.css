@@ -813,14 +813,23 @@ ul.items, ul.cases {
     display: block;
   }
   
-  a.fb{
+  .fb a {
     background: url(../images/facebook.png) no-repeat;
-    
   }
-  a.tt, a.twitter-share-button {
+
+  .fb a .FBConnectButton,
+  .fb a .FBConnectButton_RTL {
+    background: none;
+  }
+
+  .fb a .FBConnectButton_Text {
+    display: none;
+  }
+
+  .tt a {
     background: url(../images/twitter.png) no-repeat;
   }
-  
+
   .sharing {
     margin-top: 14px !important;
   }

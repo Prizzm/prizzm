@@ -184,9 +184,12 @@ $(document).ready(function(){
       $('#form-ask-friend .loading').show();
     }
   });
-  
+
+  $('.tt').live('click', function(e) {
+    e.preventDefault();
+    window.open($(this).find('a').attr('href'), '', 'height=400,width=800,scrollbars=yes');
+  });
   
   // Initialize Prizzm
   Prizzm.init();
-  
 });
