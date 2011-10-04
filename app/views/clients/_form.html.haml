@@ -6,9 +6,9 @@
         - @client.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :first_name, :input_html => {:placeholder => "Enter the First Name" }
-  = f.input :last_name, :input_html => {:placeholder => "Enter the Last Name" }
-  = f.input :email, :input_html => {:placeholder => "Enter the email address" }
+  = f.input :first_name, :input_html => {:placeholder => "Enter the customer's first name" }
+  = f.input :last_name, :input_html => {:placeholder => "Enter the customer's last name" }
+  = f.input :email, :input_html => {:placeholder => "Add their email address" }
 
   = f.commit_button "Save client", :button_html => {:class => "btn primary large offset2"}
 

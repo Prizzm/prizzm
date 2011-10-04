@@ -7,8 +7,8 @@
         - @incentive.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :description, :input_html => {:rows => 5}
-  = f.input :code, :label => "Redemption Code"
+  = f.input :description, :input_html => {:placeholder => "Describe the offer for your customers", :rows => 5}
+  = f.input :code, :label => "Redemption Code", :input_html => {:placeholder => "Provide a redemption code to use in your store"}
   = f.input :expiration, :label => "Expiration Date", :wrapper_html => { :style => "" }
   =f.commit_button "Save Incentive", :button_html => {:class => "btn primary large offset2"}
 

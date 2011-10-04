@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true, :approximate_ascii => true, :reserved_words => %(show delete) 
 
+  validates_presence_of :name
+
   acts_as_followable
 
   begin "methods for product search autocomplete"

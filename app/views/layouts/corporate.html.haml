@@ -21,9 +21,8 @@
       .content
 
         - flash.each do |type, value|
-          .flash{ :class => type.to_s }
+          .flash{ :class => "alert-message #{type.to_s}" }
             = value
-        /= image_tag current_company.main_image, :class => "thumbnail"
 
         - if company_signed_in?
           %ul.tabs
@@ -40,7 +39,6 @@
 = render 'layouts/javascripts'
 :javascript
   $(document).ready(function() { 
-    // call the tablesorter plugin 
     $("table").tablesorter({ 
         // sort on the first column and third column, order asc 
         sortList: [[1,0],[0,0]] 
