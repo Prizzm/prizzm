@@ -78,14 +78,6 @@ h2 {
   color: red;
 }
 
-#edit-user label {
-  width: 140px;
-  display: inline-block;
-  text-align: right;
-  color: #666;
-  margin-right: 10px;
-  padding-top: 5px;
-}
 
 #new-case label {
   text-align: right;
