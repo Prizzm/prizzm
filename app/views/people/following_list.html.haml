@@ -1,0 +1,22 @@
+#content.grid_13
+  %nav#secondary
+    %ul
+      %li.curr= link_to "All", ""
+
+  %ul.items
+    - followed_users = @user.following_users_count 
+    - if followed_users > 0
+      - @user.following_users.order('first_name').each do |person|
+        %li.item
+          .fl
+            = image_tag person.main_image, :class => "thumb"
+          .fl.cont
+            = link_to person.name, profile_path(person)
+          %ul.fr
+            %li= link_to "View profile", profile_path(person), :class => "button"
+            
+          .clear
+    - else
+      %li No public items
+    
+= render :partial => "layouts/sidebar"

@@ -1,6 +1,5 @@
 - content_for :page_style do
   = include_stylesheets :case_detail
-  = include_stylesheets :yourstuff
 
   = stylesheet_link_tag 'twilio.css'
   = javascript_include_tag "http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"
@@ -18,7 +17,8 @@
   %section#case
     .title= @case.title
     = link_to "Edit Issue", "#", :class => "button", :id => "edit-review-link"
-    
+    %div{ :class => "status #{@case.privacy}" }= @case.privacy
+    .clear
     #rendered-review
       = html_clean @case.description
       

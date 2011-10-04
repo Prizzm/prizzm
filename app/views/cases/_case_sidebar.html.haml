@@ -33,19 +33,24 @@
       .clear
   %artical#case_files
     %h4 Upload files
-    = semantic_form_for @case, :html => { :multipart => true } do |f|
-      = f.fields_for :case_files do |cf|
-        - if cf.object.casefile.present?
-          = link_to File.basename(cf.object.casefile_url), cf.object.casefile_url
-          \-
-          /= link_to cf.object.privacy, "#"
-          /= link_to "#{cf.object.privacy}", update_case_file_privacy_path(cf.object), :remote => true, :method => :put, :class => "#{cf.object.privacy} status privacy_control"
-          = link_to "#{cf.object.privacy}", "#", :remote => true, :method => :put, :class => "#{cf.object.privacy} status privacy_control"
-          = cf.check_box :_destroy
-          Remove
-        - else
-          = cf.input :casefile, :as => :file, :label => false
-      = f.submit
+    - if user_signed_in? && (@case_owner.id == current_user.id)
+      %p.ftnote Selected files will be removed
+      = semantic_form_for @case, :html => { :multipart => true } do |f|
+        = f.fields_for :case_files do |cf|
+          - if cf.object.casefile.present?
+            = cf.check_box :_destroy
+            = link_to File.basename(cf.object.casefile_url).limit(12), cf.object.casefile_url, :title => File.basename(cf.object.casefile_url)
+            \-
+            = cf.select :privacy, [['Public', 'public'], ['Private', 'private']], :selected => cf.object.privacy
+            %br/
+          - else
+            = cf.file_field :casefile, :label => false
+        = f.submit :class => "button green"
+    - else
+      - @case.case_files.each do |cf|
+        - if cf.casefile.present? && cf.is_public?
+          = link_to(File.basename(cf.casefile_url).limit(30), cf.casefile_url, :title => File.basename(cf.casefile_url))
+          %br/
 
 #call-window{:style => "display:none"}
   %div#call-window-container

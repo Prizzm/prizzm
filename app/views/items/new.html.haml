@@ -3,7 +3,7 @@
 
 - content_for :javascripts do
   :javascript
-    $(document).ready(function(){
+    $(function(){
       $('#new_item').click(function(){
         $.facebox({
           ajax: "#{new_item_path}/have"

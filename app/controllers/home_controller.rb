@@ -8,48 +8,43 @@ class HomeController < ApplicationController
   end
 
   
-  def welcome
-  end
-
 
   def scrape
-    @req_url = params[:url].strip
+    @url = params[:url].strip
 
-    if !( @req_url.start_with?("http") || @req_url.start_with?("https") )
-      @req_url = "http://" + @req_url
+    if !(@url.start_with?("http") || @url.start_with?("https") )
+      @url = "http://" + @req_url
     end
 
-    a = Mechanize.new { |agent|
-      #agent.user_agent = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.0 Safari/535.1";
+    mechanize = Mechanize.new do |agent|
       agent.user_agent_alias = 'Linux Mozilla'
-    }
+    end
 
     begin
-      a.get(@req_url) do |page|        
+      mechanize.get(@url) do |page|        
         @page = page
       end
     rescue
-      render :json => nil
       return
     end
 
-    base_uri = URI(@req_url.to_s)
 
-    image_urls = @page.image_urls.map { |i| i.to_s }
+    @title       = @page.search('title').first.text
+    @description = @page.search('meta[name]').reject do |element|
+      if element[:name].downcase != 'description'
+        true
+      end
+    end.first[:content]
 
-    if image_urls.length == 0
-      puts "No images Found"
+    @images = @page.image_urls.map do |image|
+      image.to_s
+    end.uniq
 
-      #TODO: try searching background images
-    end
-
-    @title = @page.title
-    @desc = "TODO: Extract description from the document."
-
-    @images = image_urls.uniq
-    
-    # including extra information like title and description if needed later
-    render :json => { :images => @images, :title => @title , :description => @desc }
+    render :json => {
+      :title       => @title,
+      :description => @description,
+      :images      => @images
+    }
   end
 
 

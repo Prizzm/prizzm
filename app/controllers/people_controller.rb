@@ -25,6 +25,10 @@ class PeopleController < ApplicationController
                  .limit(10)
 
   end
+  
+  def following_list
+    @user = current_user
+  end
 
 
   def search

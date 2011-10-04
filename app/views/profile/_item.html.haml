@@ -1,4 +1,4 @@
-%li.item{:id => "item_#{item.id}"}
+%li.item{:id => "item_#{item.id}", :class => "#{'rec' if item.opinion.to_i == 1}"}
   - if item.product.nil? == false
     = image_tag item.product.main_image, :class => "fl thumb"
   - else
@@ -10,9 +10,18 @@
       %h2= link_to item.product.name, item
     - else
       %h2= link_to item.name, item
+    %div{ :class => "status #{item.privacy}" }= item.privacy
+
     - if current_user == @user
-      Added: #{item.created_at.to_date}
-      %div{ :class => "status #{item.privacy}" }= item.privacy
+      You added this on #{item.created_at.to_date} and you
+      - if item.opinion.to_i == 1
+        %div{ :class => "opinion recommended" } recommend
+      - elsif item.opinion.to_i == 2
+        %div{ :class => "opinion hate" } don't recommend 
+      - else
+        %div{ :class => "opinion neutral" } have no opinion about
+      this.
+      
     - else
       = link_to @user.name, profile_path(@user)
       - if item.tag_list.include? 'have'
@@ -20,10 +29,10 @@
       - elsif item.tag_list.include? 'want'
         wants 
       this and
-      - if item.opinion == "horrible!"
-        %div{ :class => "opinion hate" } doesn't recommend
-      - elsif item.opinion == "i_recommend_this!"
+      - if item.opinion.to_i == 1
         %div{ :class => "opinion recommended" } recommends
+      - elsif item.opinion.to_i == 2
+        %div{ :class => "opinion hate" } doesn't recommend
       - else
         %div{ :class => "opinion neutral" } has no opinion about
       it.

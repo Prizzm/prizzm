@@ -6,7 +6,7 @@
   %ul.items
     - if @items.count > 0
       - @items.each do |item|
-        %li.item{:id => "item_#{item.id}", :class => "item-rec"}
+        %li.item{:id => "item_#{item.id}", :class => "#{'rec' if item.opinion.to_i == 1}"}
           .fl.img
             = image_tag item.user.main_image, :class => "thumb"
             %span= image_tag item.main_image, :class => "small thumb"
@@ -21,10 +21,10 @@
             - elsif item.tag_list.include? 'want'
               wants 
             this and
-            - if item.opinion == 2
-              %div{ :class => "opinion hate" } doesn't recommend
-            - elsif item.opinion == 1
+            - if item.opinion.to_i == 1
               %div{ :class => "opinion recommended" } recommends
+            - elsif item.opinion.to_i == 2
+              %div{ :class => "opinion hate" } doesn't recommend
             - else
               %div{ :class => "opinion neutral" } has no opinion about
             it.

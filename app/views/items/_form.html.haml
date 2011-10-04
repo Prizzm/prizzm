@@ -1,7 +1,7 @@
 = include_stylesheets :wysiwyg
 = include_javascripts :wysiwyg
 
-%h2= "Add a product you #{params[:possession]}"
+%h1= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
   = text_field_tag :product_name, nil, :placeholder => "Product name"
@@ -114,6 +114,8 @@
               $.getJSON('#{scrape_path}', {
                   url: ui.item.url
               }, function (json) {
+                  $('#product_description').val(json.description);
+
                   // Really need to turn this into a plugin
                   var html = '';
                   $.each(json.images, function (index, value) {

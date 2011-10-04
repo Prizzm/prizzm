@@ -31,6 +31,7 @@ Prizzm::Application.routes.draw do
   # Routes for people
   match "/people" => "people#index", :as => "people"
   match "/people/following" => "people#following", :as => "people_following"
+  match "/people/following/list" => "people#following_list", :as => "people_following_list"
   match "/people/find" => "people#find", :as => "people_find"
   match "/people/search" => "people#search", :as => "people_search"
 

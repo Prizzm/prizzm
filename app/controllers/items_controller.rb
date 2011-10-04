@@ -33,8 +33,9 @@ class ItemsController < InheritedResources::Base
 
       if @product.nil? == true
         @product = Product.create({
-          :name => params[:product_name],
-          :url  => params[:product_url],
+          :name        => params[:product_name],
+          :url         => params[:product_url],
+          :description => params[:product][:description]
         });
       end
 

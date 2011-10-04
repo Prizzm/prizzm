@@ -9,9 +9,9 @@
   %ul
     %li{:class => active_if_current(home_path)}= link_to "Welcome", home_path
     %li{:class => active_if_current(have_path(current_user))}= link_to "Your stuff", have_path(current_user)
-    %li{:class => active_if_current(people_following_path)}
+    %li{:class => (active_if_current(people_following_path)) << (active_if_current(people_following_list_path))}
       = link_to "Following", people_following_path
       %ul
-        %li{:class => curr_if_current(people_following_path)}= link_to "Updates", "#"
-        %li= link_to "People", "#"
-    %li{:class => active_if_current(people_path)}= link_to "Public", people_path
+        %li{:class => curr_if_current(people_following_path)}= link_to "Updates", people_following_path
+        %li{:class => curr_if_current(people_following_list_path)}= link_to "People", people_following_list_path
+    / %li{:class => active_if_current(people_path)}= link_to "Public", people_path
