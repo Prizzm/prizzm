@@ -1,24 +1,31 @@
 %h1 Current Mail Templates
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Edit
-      %th Delete
+- if @prizzm_mail_templates.count > 0
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Edit
+        %th Delete
 
-  %tbody
-  - @prizzm_mail_templates.each do |prizzm_mail_template|
-    %tr
-      %td= link_to prizzm_mail_template.name, prizzm_mail_template, :class => "facebox"
-      %td
-        = link_to  edit_prizzm_mail_template_path(prizzm_mail_template) do
-          = edit_icon
-      %td
-        = link_to  prizzm_mail_template, :confirm => 'Are you sure?', :method => :delete do
-          = delete_icon
+    %tbody
+    - @prizzm_mail_templates.each do |prizzm_mail_template|
+      %tr
+        %td= link_to prizzm_mail_template.name, prizzm_mail_template, :class => "facebox"
+        %td
+          = link_to  edit_prizzm_mail_template_path(prizzm_mail_template) do
+            = edit_icon
+        %td
+          = link_to  prizzm_mail_template, :confirm => 'Are you sure?', :method => :delete do
+            = delete_icon
 
 
-%br
+  %br
 
-= link_to 'New email template', new_prizzm_mail_template_path, :class => "btn primary large"
+  = link_to 'New email template', new_prizzm_mail_template_path, :class => "btn primary large"
+- else
+  .alert-message.block-message.warning
+    %p
+      You don't have any mail templates yet. Click here to add some
+    = link_to 'Create a new email template', new_prizzm_mail_template_path, :class => "btn primary large"
+
