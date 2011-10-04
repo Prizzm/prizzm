@@ -1,4 +1,6 @@
 %article.share-item
   %ul
     %li= link_to "", "", :class => "sn-share fb"
-    %li= link_to "", "", :class => "sn-share tt"
+    %li= link_to "", "https://twitter.com/share", :class => "sn-share tt", :'data-count' => "none", :'data-via' => "prizzm"
+      
+%script{:type => "text/javascript", :src => "https://platform.twitter.com/widgets.js"}

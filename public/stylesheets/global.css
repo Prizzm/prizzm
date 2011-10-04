@@ -817,7 +817,7 @@ ul.items, ul.cases {
     background: url(../images/facebook.png) no-repeat;
     
   }
-  a.tt{
+  a.tt, a.twitter-share-button {
     background: url(../images/twitter.png) no-repeat;
   }
   
