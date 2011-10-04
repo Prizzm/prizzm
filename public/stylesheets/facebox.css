@@ -87,3 +87,8 @@
 	padding-bottom: 5px;
 	border-bottom: 1px solid #e7e7e7;
 }
+
+#facebox label {
+	position: initial;
+	padding: 0;
+}

@@ -370,8 +370,9 @@ button, input { line-height: normal; *overflow: visible; }
  * Input type styles
  */
  
- input[type=text], textarea { margin-bottom: 10px; padding: 10px; background: #fff; font-size: 1.1em; width: 100%; border: 1px solid #cccccc; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: #444;}
- 
+ input[type=text], textarea, input[type=tel], input[type=email], input[type=password] { margin-bottom: 10px; padding: 10px; background: #fff; font-size: 1.1em; width: 100%; border: 1px solid #cccccc; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15); -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; color: #444;}
+ input[type=tel], input[type=email], input[type=password] {padding: 10px !important;}
+
  aside input[type=text] { margin-bottom: 5px; padding: 5px; font-size: 1em; }
 
 /*
@@ -513,10 +514,7 @@ a.call {
   background: url(../images/sprite.png)  10px -203px no-repeat #f3f3f3;
   padding-left: 35px;
 }
-.phone{
-  background: url("../images/sprite.png") no-repeat scroll 0 -245px transparent;
-    padding-left: 16px;
-}
+
 .world_link{
   background: url(../images/sprite.png)  0 -280px no-repeat;
   padding-left: 25px;
