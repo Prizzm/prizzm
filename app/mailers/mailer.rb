@@ -62,9 +62,34 @@ class Mailer < ActionMailer::Base
   def prizzm_invitation(prizzm_invitation, client=nil)
     @product = prizzm_invitation.product
     @company = prizzm_invitation.company
-    @prizzm_invitation = prizzm_invitation
     @client = client
-      mail(:from => "#{prizzm_invitation.company.name} <#{prizzm_invitation.company.email }>", :to=>"#{client.first_name} #{client.last_name}  <#{client.email}>", :subject=>"#{prizzm_invitation.company.name} thanks you for buying a #{prizzm_invitation.product.name}")
+    @prizzm_invitation = prizzm_invitation
+    @return_url = open_prizzm_invitation_url(@prizzm_invitation.id, @client.id)
+
+    if @prizzm_invitation.prizzm_mail_template
+      @prizzm_mail_template = prizzm_invitation.prizzm_mail_template 
+      from_address = @prizzm_mail_template.from
+      subject = @prizzm_mail_template.subject
+      mail_content = @prizzm_mail_template.message_content
+
+      mail_content = mail_content.gsub('#client_first_name', @client.first_name)
+      mail_content = mail_content.gsub('#client_last_name', @client.last_name)
+      mail_content = mail_content.gsub('#product_name', @product.name)
+      mail_content = mail_content.gsub('#product_price', @product.price)
+      mail_content = mail_content.gsub('#return_url', @return_url)
+    else
+      from_address = "#{prizzm_invitation.company.name} <#{prizzm_invitation.company.email }>"
+      subject = "#{prizzm_invitation.company.name} thanks you for buying a #{prizzm_invitation.product.name}"
+    end
+    mail(:from => from_address, :to=>"#{client.first_name} #{client.last_name}  <#{client.email}>", :subject => subject) do |format|
+      if @prizzm_invitation.prizzm_mail_template
+        # send using custom template
+        format.html   {render :text => mail_content} 
+      else
+        # Send using default template
+        format.html 
+      end
+    end
   end
 
   def self.recipients_for comment

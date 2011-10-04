@@ -32,6 +32,10 @@
 - else
   %p.alert-message.error None
 
+%h3 Mail Template:
+- if @prizzm_invitation.prizzm_mail_template
+  %p= link_to @prizzm_invitation.prizzm_mail_template.name, @prizzm_invitation.prizzm_mail_template, :class => "facebox"
+
   
 - if @prizzm_invitation.clients.count > 0
   %h3 Clients
@@ -72,8 +76,8 @@
 
   %p= link_to "Send invitations", send_prizzm_invitation_path(@prizzm_invitation), :method => :post, :class => "btn primary large"
 - else
-  %p= link_to "Select Recipients", edit_prizzm_invitation_path(@prizzm_invitation), :class => "btn primary large"
+  %p= link_to "Select Recipients", edit_prizzm_invitation_path(@prizzm_invitation), :class => "btn primary large facebox"
 %br
-= link_to 'Edit', edit_prizzm_invitation_path(@prizzm_invitation)
+= link_to 'Edit', edit_prizzm_invitation_path(@prizzm_invitation), :class => "facebox"
 \|
 = link_to 'Back', prizzm_invitations_path

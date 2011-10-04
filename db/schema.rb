@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003091102) do
+ActiveRecord::Schema.define(:version => 20111004024930) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20111003091102) do
     t.datetime "updated_at"
     t.integer  "incentive_id"
     t.datetime "invitation_sent_at"
+    t.integer  "prizzm_mail_template_id"
   end
 
   create_table "product_images", :force => true do |t|

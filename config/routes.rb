@@ -1,4 +1,5 @@
 Prizzm::Application.routes.draw do
+
   root :to => "home#index"
 
   # Routes for main page
@@ -14,6 +15,7 @@ Prizzm::Application.routes.draw do
   match "admin(/:action)" => "admin"
   resources :members
   resources :prizzm_invitations
+  resources :prizzm_mail_templates
   post 'send_invitation/:id/(client/:client_id)' => 'prizzm_invitations#send_invitation', :as => 'send_prizzm_invitation'
   get 'invitation/:id/client/:client_id/open' => 'prizzm_invitations#open_invitation', :as => 'open_prizzm_invitation'
   post 'invitation/:id/client/:client_id/save' => 'prizzm_invitations#save_invitation_review', :as => 'save_invitation_review'

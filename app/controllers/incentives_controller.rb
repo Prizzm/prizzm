@@ -36,6 +36,7 @@ class IncentivesController < ApplicationController
   # GET /incentives/1/edit
   def edit
     @incentive = current_company.incentives.find(params[:id])
+    render :layout => nil
   end
 
   # POST /incentives
