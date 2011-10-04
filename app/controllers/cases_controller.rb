@@ -20,6 +20,8 @@ class CasesController < InheritedResources::Base
     @note = @case.notebook.notes.last
 
     @case.case_files.build
+
+    @case_owner = @case.user
     
     respond_to do |format|
       format.js

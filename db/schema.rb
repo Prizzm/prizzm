@@ -193,16 +193,6 @@ ActiveRecord::Schema.define(:version => 20111003091102) do
     t.datetime "invitation_sent_at"
   end
 
-  create_table "prizzm_mail_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "from"
-    t.string   "subject"
-    t.text     "message_content"
-    t.integer  "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "product_images", :force => true do |t|
     t.integer  "product_id"
     t.string   "image"
@@ -219,10 +209,7 @@ ActiveRecord::Schema.define(:version => 20111003091102) do
     t.string   "email"
     t.date     "purchase_date"
     t.string   "amount"
-    t.text     "content"
-    t.string   "encrypted_id"
     t.string   "sent"
-    t.datetime "sent_on"
     t.string   "accepted"
     t.integer  "mail_template_id"
   end

@@ -29,3 +29,27 @@ form.formtastic fieldset > ol > li.error {
 form.formtastic fieldset > ol > li fieldset ol {
   padding-left: 27%;
 }
+
+form.formtastic input[type='submit'] {
+  border: 1px solid #DCDCDC;
+  cursor: pointer;
+  font: bold 12px Helvetica,Arial,sans-serif;
+  padding: 7px 12px;
+  position: relative;
+}
+
+form.formtastic input[type='file'] {
+  margin: 5px 0;
+}
+
+form.formtastic input[type='text'],
+form.formtastic input[type='file'] {
+ -moz-box-sizing: border-box;
+ background: none repeat scroll 0 0 #FFFFFF;
+ border: 1px solid #CCCCCC;
+ color: #444444;
+ font-size: 1.1em;
+ margin-bottom: 10px;
+ padding: 10px;
+ width: 100%;
+}
