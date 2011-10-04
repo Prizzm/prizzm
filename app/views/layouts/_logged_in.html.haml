@@ -14,4 +14,4 @@
       %ul
         %li{:class => curr_if_current(people_following_path)}= link_to "Updates", people_following_path
         %li{:class => curr_if_current(people_following_list_path)}= link_to "People", people_following_list_path
-    / %li{:class => active_if_current(people_path)}= link_to "Public", people_path
+    %li{:class => active_if_current(people_path)}= link_to "Public", people_path
