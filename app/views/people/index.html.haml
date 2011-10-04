@@ -8,10 +8,11 @@
       - @items.each do |item|
         %li.item{:id => "item_#{item.id}", :class => "#{'rec' if item.opinion.to_i == 1}"}
           .fl.img
-            = image_tag item.user.main_image, :class => "thumb"
             - if item.product.nil? == false
+              = image_tag item.product.user.main_image, :class => "thumb"
               %span= image_tag item.product.main_image, :class => "small thumb"
             - else
+              = image_tag item.user.main_image, :class => "thumb"
               %span= image_tag item.main_image, :class => "small thumb"
             
           .fl.cont
