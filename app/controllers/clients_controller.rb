@@ -18,6 +18,7 @@ class ClientsController < InheritedResources::Base
 
   def edit
     @client = current_company.clients.find(params[:id])
+    render :layout => nil
   end
 
   def update

@@ -4,6 +4,7 @@ class PrizzmInvitation < ActiveRecord::Base
   belongs_to :product
   belongs_to :company
   belongs_to :incentive
+  belongs_to :prizzm_mail_template
 
   default_value_for :status, 'unsent'
 

@@ -32,6 +32,7 @@
             %li{:class => active_if_current(company_products_path(current_company))}= link_to "Products", company_products_path(current_company)
             %li{:class => active_if_current(incentives_path)}= link_to "Incentives", incentives_path
             %li{:class => active_if_current(prizzm_invitations_path)}= link_to "Invitations", prizzm_invitations_path
+            %li{:class => active_if_current(prizzm_mail_templates_path)}= link_to "Mail Templates", prizzm_mail_templates_path
 
         = yield
 

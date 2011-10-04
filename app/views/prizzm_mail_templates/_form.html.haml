@@ -1,0 +1,14 @@
+= semantic_form_for @prizzm_mail_template do |f|
+  -if @prizzm_mail_template.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@prizzm_mail_template.errors.count, "error")} prohibited this prizzm_mail_template from being saved:"
+      %ul
+        - @prizzm_mail_template.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :name
+  = f.input :from, :label => "From Address"
+  = f.input :subject, :label => "Subject"
+  = f.input :message_content, :label => "Message Content", :hint => "HTML is allowed"
+  = f.commit_button "Save Template", :button_html => {:class => "btn primary large"}
+
+

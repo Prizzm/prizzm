@@ -97,5 +97,6 @@ stylesheets:
     - public/stylesheets/fonts.css
     - public/stylesheets/landing.css
     - public/stylesheets/facebox.css
-  twitter_bootstrap:
+  corporate:
     - public/stylesheets/bootstrap.min.css
+    - public/stylesheets/facebox.css

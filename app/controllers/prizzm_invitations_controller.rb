@@ -38,6 +38,7 @@ class PrizzmInvitationsController < ApplicationController
   # GET /prizzm_invitations/1/edit
   def edit
     @prizzm_invitation = current_company.prizzm_invitations.find(params[:id])
+    render :layout => nil
   end
 
   # POST /prizzm_invitations

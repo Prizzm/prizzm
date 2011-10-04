@@ -9,6 +9,7 @@
   = f.input :name, :label => "Invitation Name"
   = f.input :product, :label => "Select Product", :as => :select,  :collection => options_from_collection_for_select(current_company.products, 'id', 'name'),  :include_blank => false
   = f.input :incentive, :label => "Select Incentive", :as => :select, :collection => options_from_collection_for_select(current_company.incentives, 'id', 'code', @prizzm_invitation.incentive.try(:id)), :include_blank => true,  :prompt => "None"
+  = f.input :prizzm_mail_template, :label => "Select Mail Template", :as => :select, :collection => options_from_collection_for_select(current_company.prizzm_mail_templates, 'id', 'name', @prizzm_invitation.prizzm_mail_template.try(:id)), :include_blank => true,  :prompt => "Default"
   .row
     %h3.offset1 Invitation Recipients
     %table.span3.offset3

@@ -16,6 +16,7 @@ class Company < ActiveRecord::Base
   has_many :subscriber_records, :dependent => :destroy, :as => :subscribable, :class_name => "Subscription"
   has_many :clients, :dependent => :destroy
   has_many :prizzm_invitations, :dependent => :destroy
+  has_many :prizzm_mail_templates, :dependent => :destroy
   has_many :incentives, :dependent => :destroy
 
 
