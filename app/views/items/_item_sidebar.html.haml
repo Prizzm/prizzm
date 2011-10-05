@@ -20,7 +20,7 @@
             - else
               <a href="http://shopbryna.com/store/serrano-hobo-ikat.html">SHOPBRYNA</a>
     
-    = render :partial => "layouts/share"
+    = render :partial => "layouts/share", :locals => { :link => item_url(@item) }
     - if current_user == @item.user
       = link_to "open case", "#", :class => "button new-case"
   .clear
