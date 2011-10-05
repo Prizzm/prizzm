@@ -20,7 +20,8 @@ class PeopleController < ApplicationController
                      :follower_type   => 'User',
                      :follower_id     => current_user.id
                    },
-                   :privacy => "public"
+                   :privacy => 'public',
+                   :blocked => false
                  )
                  .limit(10)
 
