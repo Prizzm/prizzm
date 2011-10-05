@@ -13,12 +13,12 @@ class PeopleController < ApplicationController
 
 
   def following
-    @items = Item.joins('INNER JOIN follows ON follows.follower_id = items.user_id')
+    @items = Item.joins('INNER JOIN follows ON follows.followable_id = items.user_id')
                  .where(
                    :follows => {
                      :followable_type => 'User',
                      :follower_type   => 'User',
-                     :followable_id   => current_user.id
+                     :follower_id     => current_user.id
                    },
                    :privacy => "public"
                  )
