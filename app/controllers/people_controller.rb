@@ -16,12 +16,12 @@ class PeopleController < ApplicationController
     @items = Item.joins('INNER JOIN follows ON follows.followable_id = items.user_id')
                  .where(
                    :follows => {
+                     :blocked => false,
                      :followable_type => 'User',
                      :follower_type   => 'User',
                      :follower_id     => current_user.id
                    },
-                   :privacy => 'public',
-                   :blocked => false
+                   :privacy => 'public'
                  )
                  .limit(10)
 
