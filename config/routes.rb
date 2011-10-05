@@ -254,4 +254,7 @@ Prizzm::Application.routes.draw do
 
   ########################################################################################
 
+
+  post 'api/cases' => 'api#create_case'
+  post 'api/items' => 'api#create_item'
 end
