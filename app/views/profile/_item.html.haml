@@ -37,11 +37,11 @@
         %div{ :class => "opinion neutral" } has no opinion about
       it.
   %ul.fr
-    /
-      %li
-        = link_to "#", :class => "rec button" do
-          = image_tag "rec-thumb.png"
-          Recommend this
+    
+    %li
+      = link_to "#", :class => "rec button" do
+        = image_tag "rec-thumb.png"
+        Recommend this
     - if current_user == @user
       %li
         %a.button.edit-item{ :data => {:id => item.id } }
