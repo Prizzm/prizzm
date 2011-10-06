@@ -1,0 +1,3 @@
+$('#item-<%= @item.id -%>-owner-opinion').html("<%= escape_javascript(render :partial => 'owner_opinion', :locals => { :item => @item }) -%>");
+$('#item-<%= @item.id -%>-owner-opinion').effect('highlight', {}, 2000);
+$('li#item_<%= @item.id -%>').addClass('rec');

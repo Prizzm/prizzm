@@ -7,6 +7,7 @@ class ProfileController < ApplicationController
 
 
   def have
+    # What if a user hasn't logged in yet? current_user will be nil then. -Giang
       @user = current_user
       @item = Item.new
       @item.images.build

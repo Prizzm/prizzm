@@ -14,11 +14,8 @@ class ItemsController < InheritedResources::Base
     end
   end
 
-
   def create
     params[:item][:tag_list] = params[:tag_list].keys
-
-
     @item = Item.create(params[:item]);
 
     if params[:item][:product_id].blank? == false
@@ -41,7 +38,6 @@ class ItemsController < InheritedResources::Base
 
       @item.product = @product
     end
-
 
     if params[:product][:image_url].nil? == false
       # Ideally it should reference the same image instead of downloading it twice
@@ -70,11 +66,9 @@ class ItemsController < InheritedResources::Base
       @item.company = @company
     end
 
-
     current_user.items << @item
     redirect_to @item
   end
-
 
   def edit
     @item = current_user.items.find(params[:id])
@@ -85,7 +79,6 @@ class ItemsController < InheritedResources::Base
       }
     end
   end
-
 
   def show
     #@item = current_user.items.find(params[:id])
@@ -101,7 +94,6 @@ class ItemsController < InheritedResources::Base
     end
   end
 
-
   def update
     @item = current_user.items.find(params[:id])
 
@@ -113,7 +105,6 @@ class ItemsController < InheritedResources::Base
       end 
     end
   end
-
 
   def destroy
     item = current_user.items.find(params[:id])
@@ -127,13 +118,11 @@ class ItemsController < InheritedResources::Base
     item.destroy
   end
 
-
   def update_review
     @item = current_user.items.find(params[:id])
     @item.update_attribute(:review, params[:review])
     render :json => @item.review
   end
-
 
   def update_item_name
     @item = current_user.items.find(params[:id])
@@ -141,20 +130,17 @@ class ItemsController < InheritedResources::Base
     render :json => @item.name
   end
 
-
   def update_company
     @item = current_user.items.find(params[:id])
     @company = Company.find(params[:company_id])
     @item.update_attribute(:company_id, params[:company_id])
   end
 
-
   def rate
     @item = current_user.items.find(params[:object_id])
     @item.update_attribute(:rating, params[:rating])
     head :ok
   end
-
 
   def share
     user_id = params[:user_id]
@@ -211,6 +197,11 @@ class ItemsController < InheritedResources::Base
     render :nothing => true
   end
 
+  def recommend
+    @item = Item.find(params[:item_id])
+    @item.update_attributes(:opinion => "1")
+  end
+
   private 
   # Apply a layout or not, based on the controller action:
   # If we are looking at a single item, use the normal application layout.
@@ -218,5 +209,4 @@ class ItemsController < InheritedResources::Base
     def determine_layout
       ['show'].include?(action_name) ? 'application' : nil 
     end 
-
 end
