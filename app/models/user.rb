@@ -37,7 +37,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => email_regex, :if => Proc.new { |user| user.email.present? }
   validates_presence_of :password, :if => Proc.new { |user| user.new_record? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password.present? }
-
+  validates_presence_of :username
+  validates_uniqueness_of :username
   
   #validates_uniqueness_of  :subscriptions, :scope => [:user_id, :subscribable_id, :subscribable_type]
 

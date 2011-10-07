@@ -8,7 +8,7 @@ module Models
 
       included do
         devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :omniauthable, :invitable #, :validatable
-        attr_accessible :email, :password, :password_confirmation, :remember_me, :access_token
+        attr_accessible :email, :password, :password_confirmation, :remember_me, :access_token, :username
       end
       
       module ClassMethods
@@ -26,9 +26,15 @@ module Models
             else 
               # Create new acc on Prizzm with FB acc information.
               email = data['email'] || info['email']
-              user = create!(:email => email, :password => Devise.friendly_token[0,20], 
-                             :first_name => info['first_name'], :last_name => info['last_name'], :remote_photo_url => info["image"], 
-                             :access_token => credentials['token'])
+              username = email.split('@').first + "-prizzm-#{Time.now.hash.abs}"
+              user = create!(:email => email,
+                             :password => Devise.friendly_token[0,20],
+                             :username => username,
+                             :first_name => info['first_name'],
+                             :last_name => info['last_name'],
+                             :remote_photo_url => info["image"],
+                             :access_token => credentials['token']
+                            )
             end
           else
             # Already signed in.
@@ -51,8 +57,13 @@ module Models
               user
             else
               # Create new Prizzm account with Twitter account information.
-              user = create!(:email => "twitter_account_#{screen_name}_#{Time.now.hash}@prizzm.com", :password => Devise.friendly_token[0, 20],
-                             :first_name => info['name'], :location => info['location'], :remote_photo_url => info["image"])
+              user = create!(:email => "twitter_account_#{screen_name}_#{Time.now.hash.abs}@prizzm.com",
+                             :username => screen_name + "-" + Time.now.hash.abs.to_s,
+                             :password => Devise.friendly_token[0, 20],
+                             :first_name => info['name'],
+                             :location => info['location'],
+                             :remote_photo_url => info["image"]
+                            )
               user.tt_token = credentials['token']
               user.tt_secret = credentials['secret']
               user.save

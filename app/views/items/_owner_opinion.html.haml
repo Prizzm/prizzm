@@ -1,0 +1,6 @@
+- if item.opinion.to_i == 1
+  %span{ :class => "opinion recommended" } recommend
+- elsif item.opinion.to_i == 2
+  %span{ :class => "opinion hate" } don't recommend 
+- else
+  %span{ :class => "opinion neutral" } have no opinion about

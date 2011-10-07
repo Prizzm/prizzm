@@ -14,14 +14,9 @@
 
     - if current_user == @user
       You added this on #{item.created_at.to_date} and you
-      - if item.opinion.to_i == 1
-        %div{ :class => "opinion recommended" } recommend
-      - elsif item.opinion.to_i == 2
-        %div{ :class => "opinion hate" } don't recommend 
-      - else
-        %div{ :class => "opinion neutral" } have no opinion about
+      %span{:id => "item-#{item.id}-owner-opinion"}
+        = render :partial => 'items/owner_opinion', :locals => { :item => item }
       this.
-      
     - else
       = link_to @user.name, profile_path(@user)
       - if item.tag_list.include? 'have'
@@ -30,19 +25,19 @@
         wants 
       this and
       - if item.opinion.to_i == 1
-        %div{ :class => "opinion recommended" } recommends
+        %span{ :class => "opinion recommended" } recommends
       - elsif item.opinion.to_i == 2
-        %div{ :class => "opinion hate" } doesn't recommend
+        %span{ :class => "opinion hate" } doesn't recommend
       - else
-        %div{ :class => "opinion neutral" } has no opinion about
+        %span{ :class => "opinion neutral" } has no opinion about
       it.
+
   %ul.fr
-    
-    %li
-      = link_to "#", :class => "rec button" do
-        = image_tag "rec-thumb.png"
-        Recommend this
     - if current_user == @user
+      %li
+        = link_to item_recommend_path(item), :class => "rec button", :remote => true do
+          = image_tag "rec-thumb.png"
+          Recommend this
       %li
         %a.button.edit-item{ :data => {:id => item.id } }
           Edit this item

@@ -186,6 +186,7 @@ Prizzm::Application.routes.draw do
 
   resources :items
   resources :items do
+    match '/recommend' => 'items#recommend'
     resources :images, :only => [:create, :destroy]
     resources :cases, :only => [:new]
 
