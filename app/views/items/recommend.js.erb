@@ -1,3 +1,7 @@
-$('#item-<%= @item.id -%>-owner-opinion').html("<%= escape_javascript(render :partial => 'owner_opinion', :locals => { :item => @item }) -%>");
-$('#item-<%= @item.id -%>-owner-opinion').effect('highlight', {}, 2000);
-$('li#item_<%= @item.id -%>').addClass('rec');
+<%- if @error_message.present? -%>
+  window.location = "<%= root_url -%>";
+<%- else -%>
+  $('#item-<%= @item.id -%>-owner-opinion').html("<%= escape_javascript(render :partial => 'owner_opinion', :locals => { :item => @item }) -%>");
+  $('#item-<%= @item.id -%>-owner-opinion').effect('highlight', {}, 2000);
+  $('li#item_<%= @item.id -%>').addClass('rec');
+<%- end -%>

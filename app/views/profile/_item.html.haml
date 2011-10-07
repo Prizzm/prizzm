@@ -33,12 +33,11 @@
       it.
 
   %ul.fr
-    
-    %li
-      = link_to item_recommend_path(item), :class => "rec button", :remote => true do
-        = image_tag "rec-thumb.png"
-        Recommend this
     - if current_user == @user
+      %li
+        = link_to item_recommend_path(item), :class => "rec button", :remote => true do
+          = image_tag "rec-thumb.png"
+          Recommend this
       %li
         %a.button.edit-item{ :data => {:id => item.id } }
           Edit this item

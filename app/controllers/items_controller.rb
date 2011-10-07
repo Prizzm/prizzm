@@ -199,7 +199,12 @@ class ItemsController < InheritedResources::Base
 
   def recommend
     @item = Item.find(params[:item_id])
-    @item.update_attributes(:opinion => "1")
+
+    if @item.user_id == current_user.id
+      @item.update_attributes(:opinion => "1")
+    else
+      @error_message = "You don't have permission to do this."
+    end
   end
 
   private 
