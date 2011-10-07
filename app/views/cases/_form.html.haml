@@ -11,15 +11,15 @@
   = f.hidden_field :company_id
   = f.hidden_field :product_id
 
-  / %ul.sharing.fl
-  /  %li.fb{:title => "post to facebook"}
-  / facebook checkbox goes here
-  /  %li.tt{:title => "share to twitter"}
-  / twitter checkbox goes here
+  %ul.sharing.fl
+    / %li.fb{:title => "post to facebook"}
+    / facebook checkbox goes here
+    / %li.tt{:title => "share to twitter"}
+    / twitter checkbox goes here
     %li.privacy
       = f.check_box :privacy, {:checked => 'false'}, 'private', 'public'
       = f.label :privacy, 'Mark Private'
-  
+
   %ul.buttons.fr
     %li= button_to "Cancel"
     %li= f.submit "Save"
