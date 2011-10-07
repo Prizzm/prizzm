@@ -94,6 +94,6 @@
 }
 
 #facebox label[for=product_url] {
-  position: absolute;
-  padding: 12px;
+  position: absolute !important;
+  padding: 12px !important;
 }
