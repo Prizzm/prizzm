@@ -2,6 +2,7 @@
   <%= devise_error_messages! -%> 
   
   <%= f.email_field :email, :placeholder => "email" %>
+  <%= f.text_field :username, :placeholder => "username" -%>
   <%= f.password_field :password, :placeholder => "password" %>
   <%= f.password_field :password_confirmation, :placeholder => "confirm password" %>
   <a href="/accounts/login" id="hasaccount">I have an account</a>

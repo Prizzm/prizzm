@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004092427) do
+ActiveRecord::Schema.define(:version => 20111007124351) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -340,6 +340,7 @@ ActiveRecord::Schema.define(:version => 20111004092427) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "company_id"
+    t.string   "username"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true

@@ -4,10 +4,11 @@
   <%= semantic_form_for(@user, :url => user_registration_path, :html => { :multipart => true }, :remote => true) do |f| %>
     <div class="error"></div>
 
-    <%- f.inputs do -%>
+    <%= f.inputs do -%>
+      <%= f.input :username -%>
       <%= f.input :first_name -%>
       <%= f.input :last_name -%>
-	  <%= f.input :phone_number %>	
+      <%= f.input :phone_number %>
       <li>
         <%= label_tag 'current_photo', "Current photo:" -%>
         <%= image_tag @user.photo_url(:profile) -%>
@@ -26,8 +27,9 @@
     <%= hidden_field_tag :back, @back -%>
   <% end %>
 
+  <hr />
   <h2>Unhappy?</h2>
   <div class="clear"></div>
-  <%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "" %>
+  <%= link_to "Cancel my account", user_registration_path, :confirm => "Are you sure?", :method => :delete, :class => "button" %>
   <div class="clear"></div>
 </div>
