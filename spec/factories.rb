@@ -50,6 +50,7 @@ Factory.define :user do |user|
   user.password_confirmation {|u| u.password }
   user.first_name { Forgery::Name.first_name }
   user.last_name { Forgery::Name.last_name }
+  user.username { |u| "#{u.first_name}_#{u.last_name}" }
   user.email {|u| "#{u.first_name}_#{u.last_name}@prizzm.com"}
   user.phone_number { Forgery::Address.phone }
   user.location { Forgery::Address.street_address }
