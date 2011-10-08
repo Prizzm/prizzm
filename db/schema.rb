@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007124351) do
+ActiveRecord::Schema.define(:version => 20111008115903) do
 
   create_table "addresses", :force => true do |t|
     t.text     "address"
@@ -220,7 +220,10 @@ ActiveRecord::Schema.define(:version => 20111007124351) do
     t.string   "email"
     t.date     "purchase_date"
     t.string   "amount"
+    t.text     "content"
+    t.string   "encrypted_id"
     t.string   "sent"
+    t.datetime "sent_on"
     t.string   "accepted"
     t.integer  "mail_template_id"
   end
@@ -341,6 +344,7 @@ ActiveRecord::Schema.define(:version => 20111007124351) do
     t.string   "invited_by_type"
     t.integer  "company_id"
     t.string   "username"
+    t.string   "tt_username"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug", :unique => true

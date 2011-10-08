@@ -66,6 +66,7 @@ module Models
                             )
               user.tt_token = credentials['token']
               user.tt_secret = credentials['secret']
+              user.tt_username = screen_name
               user.save
               user
             end
@@ -73,6 +74,8 @@ module Models
             # Already signed in.
             user.tt_token = credentials['token']
             user.tt_secret = credentials['secret']
+            user.tt_username = screen_name
+
             user.save
             user
           end
@@ -92,7 +95,6 @@ module Models
           new_record?
         end
       end
-
     end
   end
 end
