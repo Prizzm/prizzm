@@ -15,9 +15,9 @@
           - elsif @item.tag_list.include? 'want'
             wants 
           this and
-          - if @item.opinion == "horrible!"
+          - if @item.opinion.to_i == 2
             %div{ :class => "opinion hate" } doesn't recommend
-          - elsif @item.opinion == "i_recommend_this!"
+          - elsif @item.opinion.to_i == 1
             %div{ :class => "opinion recommended" } recommends
           - else
             %div{ :class => "opinion neutral" } has no opinion about
