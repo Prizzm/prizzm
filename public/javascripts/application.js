@@ -189,7 +189,12 @@ $(document).ready(function(){
     e.preventDefault();
     window.open($(this).find('a').attr('href'), '', 'height=400,width=800,scrollbars=yes');
   });
-  
+
+  $('.follow').live('click', function() {
+    $(this).closest('form').submit();
+    $(this).closest('li').remove();
+  });
+
   // Initialize Prizzm
   Prizzm.init();
 });

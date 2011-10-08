@@ -16,7 +16,6 @@ class FollowsController < ApplicationController
     current_user.block user
     render :json => {:blocked => true, :link => view_context.block_link_for(user)}
     ActivityLogger.user_block_user :from => current_user, :data => user
-    
   end 
 
   def unblock

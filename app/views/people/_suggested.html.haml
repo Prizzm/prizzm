@@ -8,5 +8,5 @@
         = image_tag person.main_image, :class => 'small thumb fl'
         .cont.fl
           = link_to person.name, profile_path(person)
-        = link_to "Follow", "", :class => "button follow fr"
+        = button_to "Follow", follow_path('user', person.id), :class => "button follow", :remote => true
         .clear
