@@ -9,7 +9,7 @@
       #owner
         .fl.details
           = image_tag @item.user.main_image, :class => "small thumb fl"
-          = link_to @item.user.name, profile_path(@item.user)
+          = link_to (@item.user.username || @item.user.name), profile_path(@item.user)
           - if @item.tag_list.include? 'have'
             has 
           - elsif @item.tag_list.include? 'want'
