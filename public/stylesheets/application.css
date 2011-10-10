@@ -10,6 +10,7 @@ body {
 #container {
 	margin-top: -43px;
 	min-height: 800px;
+	position: relative;
 }
 
 h1#logo a{
@@ -44,6 +45,8 @@ h1#logo a{
   
 nav#system {
   text-align: right;
+  position: absolute;
+  right: 0;
 }
 
 nav > ul > li{
@@ -105,6 +108,7 @@ nav#system a, nav#secondary a {
 nav#system a {
   font-weight: bold;
   font-size: 1.1em;
+  text-decoration: none !important;
 }
 
 nav#system ul.subnav{
@@ -238,6 +242,10 @@ section h3 span {
 
 aside.left {
   margin-top: -16px;
+}
+
+aside.right {
+  margin-top: 37px;
 }
 
 aside.right article {

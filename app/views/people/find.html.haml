@@ -1,9 +1,19 @@
 - content_for :page_style do
   = include_stylesheets :people
-  
-= form_tag people_search_path
-= text_field_tag 'query', '', :placeholder => "Who are you looking for?"
-%ul#results.people
+  = include_stylesheets :yourstuff
+
+#content.grid_13
+  %nav#secondary
+    %ul
+      %li.curr= link_to "All", ""
+      
+  #main      
+    = form_tag people_search_path
+    = text_field_tag 'query', '', :placeholder => "Who are you looking for?"
+    .clear
+    %ul#results.people
+
+= render :partial => "layouts/sidebar"
 
 = content_for :javascripts do
   :javascript

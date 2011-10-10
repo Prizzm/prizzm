@@ -1,6 +1,7 @@
 %nav#system
   - if user_signed_in?
     %ul
+      %li= link_to "find people", people_find_path
       %li= link_to "profile", profile_path(current_user)
       %li.account
         = link_to "#", :class => "account" do

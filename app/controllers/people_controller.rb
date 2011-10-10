@@ -48,7 +48,7 @@ class PeopleController < ApplicationController
       )
     else
       render :js => render_to_string(
-        :partial => 'people/invite'
+        :partial => 'invitations/new'
       )
     end
   end
