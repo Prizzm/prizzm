@@ -1,6 +1,5 @@
 var sys = require('sys'),
     http = require('http'),
-    pg  = require('pg'),
     qs  = require('querystring');
 
 var OAuth       = require('oauth').OAuth,
@@ -41,10 +40,6 @@ var Prizzm = function(options){
     this._oauth = new OAuth('https://api.twitter.com/oauth/request_token', 'https://api.twitter.com/oauth/access_token',
                             this.settings.twitter.consumerKey, this.settings.twitter.consumerSecret,
                             '1.0A', null, 'HMAC-SHA1');
-
-
-    this._pg = new pg.Client('tcp://prizzm:prizzm@localhost/prizzm_development');
-    this._pg.connect();
 };
 
 
