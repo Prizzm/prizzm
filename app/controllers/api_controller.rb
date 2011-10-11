@@ -1,15 +1,13 @@
 class ApiController < ApplicationController
   def create_item
-    user = User.find(:first, 
-      :conditions => {
-        :tt_username => params[:username]
-      }
-    )
+    user = User.first(:conditions => {
+      :tt_username => params[:username]
+    })
 
     if user.nil? == false
-      company = Company.find(:first,
-        :conditions => {:name => params[:company]}
-      )
+      company = Company.first(:conditions => {
+        :name => params[:company]
+      })
 
       if company.nil? == true
         company = Company.create({
@@ -22,9 +20,9 @@ class ApiController < ApplicationController
 
 
 
-      product = Product.find(:first, 
-        :conditions => {:name => params[:product]}
-      )
+      product = Product.first( :conditions => {
+        :name => params[:product]
+      })
 
       if product.nil? == true
         product = Product.new({
