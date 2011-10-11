@@ -4,10 +4,14 @@ class ApiController < ApplicationController
       :tt_username => params[:username]
     })
 
+    Rails.logger.info "Is user nil? #{user.nil?}"
+
     if user.nil? == false
       company = Company.first(:conditions => {
         :name => params[:company]
       })
+
+      Rails.logger.info "Is company nil? #{company.nil?}"
 
       if company.nil? == true
         company = Company.create({
@@ -23,6 +27,8 @@ class ApiController < ApplicationController
       product = Product.first( :conditions => {
         :name => params[:product]
       })
+
+      Rails.logger.info "Is product nil? #{product.nil?}"
 
       if product.nil? == true
         product = Product.new({
@@ -47,7 +53,7 @@ class ApiController < ApplicationController
       item.product  = product
       item.company  = company
       item.user     = user
-      item.save
+      item.save!
     end
 
     render :nothing => true
