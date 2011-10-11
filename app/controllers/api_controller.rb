@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   def create_item
     user = User.find(:first, 
       :conditions => {
-        :tt_name => params[:username]
+        :tt_username => params[:username]
       }
     )
 
