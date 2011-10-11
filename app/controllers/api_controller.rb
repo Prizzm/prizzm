@@ -41,12 +41,11 @@ class ApiController < ApplicationController
         possession = 'want'
       end
 
-
-      item = Item.new({
-        :tag_list => possession,
+      item = Item.create({
         :privacy  => 'public'
       });
 
+      item.tag_list = possession
       item.product  = product
       item.company  = company
       item.user     = user
