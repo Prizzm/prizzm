@@ -53,6 +53,6 @@ class ApiController < ApplicationController
       item.save
     end
 
-    render :nothing
+    render :nothing => true
   end
 end
