@@ -1,17 +1,47 @@
 class ApiController < ApplicationController
-  def create_item
+  def create_case
     user = User.first(:conditions => {
       :tt_username => params[:username]
     })
-
-    Rails.logger.info "Is user nil? #{user.nil?}"
 
     if user.nil? == false
       company = Company.first(:conditions => {
         :name => params[:company]
       })
 
-      Rails.logger.info "Is company nil? #{company.nil?}"
+      if company.nil? == true
+        company = Company.create({
+          :name     => params[:company],
+          :email    => params[:company].match(/^\w+/)[0].downcase + '@prizzm.com',
+          :password => (0...8).map{65.+(rand(25)).chr}.join,
+          :claimed  => false
+        })
+      end
+
+
+      userCase = Case.new({
+        :title  => params[:title],
+        :privacy => 'public'
+      });
+
+      userCase.company  = company
+      userCase.user     = user
+      userCase.save
+    end
+
+    render :nothing => true
+  end
+
+
+  def create_item
+    user = User.first(:conditions => {
+      :tt_username => params[:username]
+    })
+
+    if user.nil? == false
+      company = Company.first(:conditions => {
+        :name => params[:company]
+      })
 
       if company.nil? == true
         company = Company.create({
@@ -27,8 +57,6 @@ class ApiController < ApplicationController
       product = Product.first( :conditions => {
         :name => params[:product]
       })
-
-      Rails.logger.info "Is product nil? #{product.nil?}"
 
       if product.nil? == true
         product = Product.new({
@@ -53,7 +81,7 @@ class ApiController < ApplicationController
       item.product  = product
       item.company  = company
       item.user     = user
-      item.save!
+      item.save
     end
 
     render :nothing => true

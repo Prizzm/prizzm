@@ -28,6 +28,13 @@ Prizzm::Application.routes.draw do
   get '/login_popup_follow/:object_id/:object_type' => 'home#login_popup', :as => 'login_popup_follow'
 
 
+
+
+  # API takes priority
+  post 'api/cases' => 'api#create_case'
+  post 'api/items' => 'api#create_item'
+
+
   # Routes for people
   match "/people" => "people#index", :as => "people"
   match "/people/following" => "people#following", :as => "people_following"
@@ -254,8 +261,4 @@ Prizzm::Application.routes.draw do
   get '/documentation' => redirect("http://substance.io/#sid137/prizzm")
 
   ########################################################################################
-
-
-  post 'api/cases' => 'api#create_case'
-  post 'api/items' => 'api#create_item'
 end
