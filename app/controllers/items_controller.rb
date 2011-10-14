@@ -14,61 +14,15 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+
   def create
     params[:item][:tag_list] = params[:tag_list].keys
     @item = Item.create(params[:item]);
 
-    if params[:item][:product_id].blank? == false
-      @product = Product.find(params[:item][:product_id]);
-    elsif params[:product_name].blank? == false
-      @product = Product.find(:first, {
-        :conditions => {
-          :name       => params[:product_name],
-          :company_id => (@company.id if @company.nil? == false),
-        }
-      });
-
-      if @product.nil? == true
-        @product = Product.create({
-          :name        => params[:product_name],
-          :url         => params[:product_url],
-          :description => params[:product][:description]
-        });
-      end
-
-      @item.product = @product
-    end
-
-    if params[:product][:image_url].nil? == false
-      # Ideally it should reference the same image instead of downloading it twice
-      @product.add_image_from_url params[:product][:image_url]
-      @item.add_image_from_url params[:product][:image_url]
-    end
-
-
-    if params[:item][:company_id].blank? == false
-      @company = Company.find(params[:item][:company_id])
-    elsif params[:company_name].blank? == false
-      @company = Company.find(:first, {
-        :conditions => {:name => params[:company_name]}
-      });
-
-      if @company.nil? == true
-        @company = Company.create({
-          :name     => params[:company_name],
-          :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
-          :password => (0...8).map{65.+(rand(25)).chr}.join,
-          :claimed  => false
-        })
-      end
-
-      @product.company = @company
-      @item.company = @company
-    end
-
     current_user.items << @item
     redirect_to @item
   end
+
 
   def edit
     @item = current_user.items.find(params[:id])
@@ -80,19 +34,20 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+
   def show
-    #@item = current_user.items.find(params[:id])
     @item = Item.find(params[:id])
     @incentive = Incentive.find(params[:incentive_id]) if params[:incentive_id]
+
     if @item.user == current_user
       render "show_private_item"
     elsif @item.is_public?
       render "show_public_item"
     else
-      # User is somehow trying to see someone else's private item
       redirect_to home_path
     end
   end
+
 
   def update
     @item = current_user.items.find(params[:id])
@@ -106,6 +61,7 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+
   def destroy
     item = current_user.items.find(params[:id])
 
@@ -118,11 +74,13 @@ class ItemsController < InheritedResources::Base
     item.destroy
   end
 
+
   def update_review
     @item = current_user.items.find(params[:id])
     @item.update_attribute(:review, params[:review])
     render :json => @item.review
   end
+
 
   def update_item_name
     @item = current_user.items.find(params[:id])
@@ -130,17 +88,20 @@ class ItemsController < InheritedResources::Base
     render :json => @item.name
   end
 
+
   def update_company
     @item = current_user.items.find(params[:id])
     @company = Company.find(params[:company_id])
     @item.update_attribute(:company_id, params[:company_id])
   end
 
+
   def rate
     @item = current_user.items.find(params[:object_id])
     @item.update_attribute(:rating, params[:rating])
     head :ok
   end
+
 
   def share
     user_id = params[:user_id]
@@ -167,6 +128,7 @@ class ItemsController < InheritedResources::Base
     ActivityLogger.user_share_item :from => current_user, :for => [@item], :data => [:message => fb_message]
   end
 
+
   def post_to_facebook
     item = Item.find(params[:item_id])
     fb_user = FbGraph::User.me(current_user.access_token)
@@ -189,6 +151,7 @@ class ItemsController < InheritedResources::Base
     end
   end
 
+
   def save_opinion
     item = Item.find(params[:id])
     opinion = Item::OPINION[params[:opinion].to_i]
@@ -196,6 +159,7 @@ class ItemsController < InheritedResources::Base
 
     render :nothing => true
   end
+
 
   def recommend
     @item = Item.find(params[:item_id])

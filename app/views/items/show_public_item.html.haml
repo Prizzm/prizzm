@@ -4,7 +4,10 @@
 #content.grid_16.public-item.no-menu
   %section#review
     .fl
-      = image_tag @item.main_image, :class => "big thumb"
+      - if @item.product.nil? == false and @item.product.main_image.nil? == false
+        = image_tag @item.product.main_image, :class => "fl big thumb"
+      - else
+        = image_tag @item.main_image, :class => "fl big thumb"
     .fl.cont
       #owner
         .fl.details

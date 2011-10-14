@@ -12,7 +12,7 @@ input#new_case {
   padding-left: 48px;
 }
 
-.addItem input#product_url {
+.addItem input#item_product_url {
   padding: 12px 100px 11px 58px;
 }
 
@@ -33,7 +33,7 @@ label[for=case_privacy] {
 
 label[for=new_item],
 label[for=new_case],
-label[for=product_name],
+label[for=item_product_name],
 .addItem label[for=case_title] {
   border: 1px solid #97c66f;
   line-height: 11px;
@@ -50,7 +50,8 @@ label[for=product_name],
   background: linear-gradient(top, #cdeb8e 0%,#a5c956 100%); /* W3C */
 }
 
-.addItem label[for=product_url], .addItem label[for=company_name] {
+.addItem label[for=item_product_url],
+.addItem label[for=item_company_name] {
   border-right: 1px solid #ccc;
   color: #ccc;
 }

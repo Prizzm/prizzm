@@ -36,7 +36,9 @@ class Item < ActiveRecord::Base
   default_value_for :privacy, 'private'
 
   OPINION = %w(no_opinion i_recommend_this! not_for_me!)
-  
+
+  attr_accessor :company_name
+  attr_accessor :product_name, :product_url, :product_image, :product_description
   attr_accessor :image_url
 
   # TODO: not using it for now
@@ -125,12 +127,55 @@ protected
     end 
   end 
 
+
   def pre_process
     if !self.image_url.blank?
       self.images = []
       add_image_from_url self.image_url
     end
+
+
+    if self.company_name.blank? == false
+      company = Company.first(:conditions => {
+          :name => self.company_name
+      })
+      
+      if company.nil? == true
+        # TODO: Separate company users and company data
+        company = Company.create({
+          :name     => self.company_name,
+          :email    => self.company_name.match(/^\w+/)[0].downcase + '@prizzm.com',
+          :password => (0...8).map{65.+(rand(25)).chr}.join,
+          :claimed  => false
+        })
+      end
+
+      self.company = company
+    end
+
+
+    if self.product_name.blank? == false
+      product = Product.first(:conditions => {
+        :name       => self.product_name,
+        :company_id => self.company.id
+      })
+    
+      if product.nil? == true
+        product = Product.create({
+          :name        => self.product_name,
+          :description => self.product_description,
+          :url         => self.product_url
+        })
+        product.add_image_from_url(self.product_image)
+        product.company = company
+
+        product.save
+      end
+
+      self.product = product
+    end
   end
+
 
   def create_item_data
     ItemData.create(:item_id => id)

@@ -1,10 +1,12 @@
 = include_stylesheets :wysiwyg
 = include_javascripts :wysiwyg
 
-%h1= "Edit '#{@item.name}'"
+- if @item.product.nil? == false
+  %h1= "Edit '#{@item.product.name}'"
+- else
+  %h1= "Edit '#{@item.name}'"
 
 = form_for @item, :remote => true, :method => :put do |f|
-  = f.text_field :name, :class => "title"
   = f.text_area :review,
                 :cols => nil,
                 :rows => nil,

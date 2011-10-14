@@ -4,8 +4,8 @@
 %h1= "Add a product you #{params[:possession]}"
 
 = form_for [current_user, @item], :html => {:class => 'action addhave addItem'} do |f|
-  = text_field_tag :product_name, nil, :placeholder => "Product name"
-  = text_field_tag :company_name, nil, :placeholder => "Company name"
+  = f.text_field :product_name, :placeholder => "Product name"
+  = f.text_field :company_name, :placeholder => "Company name"
 
   %div#image-selector.fl
     %ul#product-images
@@ -18,15 +18,15 @@
   .wrap.fr
     = label_tag :product_url, "URL"
     = link_to "use google", "", :id => "google-search"
-    = text_field_tag :product_url, nil, :placeholder => "Product link"
+    = f.text_field :product_url, :placeholder => "Product link"
     = f.text_area :review, :placeholder => "Say something", :cols => nil, :rows => nil
   
   .clear
   = f.hidden_field :company_id
   = f.hidden_field :product_id
 
-  = hidden_field :product, :description
-  = hidden_field :product, :image_url
+  = f.hidden_field :product_description
+  = f.hidden_field :product_image
 
   = hidden_field :tag_list, params[:possession]
   
@@ -56,16 +56,16 @@
   // Product Auto Complete
   #{ render "items/product_autocomplete.js" }
 
-  $('#product_name').autocompleteProduct({
+  $('#item_product_name').autocompleteProduct({
       select: function (event, ui) {
           if (ui.item.company) {
               $('#company_id').val(ui.item.company.id);
-              $('#company_name').val(ui.item.company.name);
+              $('#item_company_name').val(ui.item.company.name);
           }
 
           $('#product_image').attr('src', ui.item.main_image_thumb);
 
-          $('#product_url').val(ui.item.url).attr('readonly', 'readonly');
+          $('#item_product_url').val(ui.item.url).attr('readonly', 'readonly');
 
           $('#product_id').val(ui.item.id);
       }
@@ -73,9 +73,9 @@
 
 
   // Reset product
-  $('#product_name').change(function () {
+  $('#item_product_name').change(function () {
       $('#product_id').val('');
-      $('#product_url').val('').removeAttr('readonly');
+      $('#item_product_url').val('').removeAttr('readonly');
 
       $('#product_image').attr('src', '#{path_to_image 'default-item-image.jpg'}');
   });
@@ -85,14 +85,14 @@
   // Company Auto Complete
   #{ render "items/company_autocomplete.js" }
 
-  $('#company_name').autocompleteCompany({
+  $('#item_company_name').autocompleteCompany({
       select: function (event, ui) {
           $('#company_id').val(ui.item.id);
       }
   });
 
   // Reset company
-  $('#company_name').change(function () {
+  $('#item_company_name').change(function () {
       $('#company_id').val('');
   });
 
@@ -104,9 +104,9 @@
       event.preventDefault();
       event.stopPropagation();
 
-      $('#product_url').autocompleteUrl({
+      $('#item_product_url').autocompleteUrl({
           type: 'web',
-          query: $('#company_name').val() + ' ' +$('#product_name').val(),
+          query: $('#item_company_name').val() + ' ' +$('#item_product_name').val(),
           select: function (event, ui) {
               $('#product-images').html('<li class="loading"><span class="loading">&nbsp;</span></li>');
 
@@ -114,7 +114,7 @@
               $.getJSON('#{scrape_path}', {
                   url: ui.item.url
               }, function (json) {
-                  $('#product_description').val(json.description);
+                  $('#item_product_description').val(json.description);
 
                   // Really need to turn this into a plugin
                   var html = '';
@@ -127,7 +127,7 @@
                                                      .addClass('current');
 
                   $('#product-images-controls').removeClass('hidden');
-                  $('#product_image_url').val($first.children('img').attr('src'));
+                  $('#item_product_image').val($first.children('img').attr('src'));
 
 
                   var $product_images = $('#product-images > li');
@@ -139,7 +139,7 @@
                       $next = $product_images.first();
                     }
 
-                    $('#product_image_url').val($next.children('img').attr('src'));
+                    $('#item_product_image').val($next.children('img').attr('src'));
 
                     $current.fadeOut('slow', function(){
                       $current.removeClass('current');
@@ -158,7 +158,7 @@
                       $prev = $product_images.last();
                     }
 
-                    $('#product_image_url').val($prev.children('img').attr('src'));
+                    $('#item_product_image').val($prev.children('img').attr('src'));
 
                     $current.fadeOut('fast', function(){
                       $current.removeClass('current');
