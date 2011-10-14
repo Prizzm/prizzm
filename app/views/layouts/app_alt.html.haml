@@ -1,15 +1,25 @@
-= render 'layouts/app_header'
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = favicon_link_tag
 
-#container.container_24
-  = yield
-  
-  %footer
-    = render "layouts/footer"
-    - flash.each do |type, value|
-      .flash{ :class => type.to_s }
-        = value
-.clear
+  %body
+    #prizzmbar
 
-= render 'layouts/social_utils'
-= render 'layouts/javascripts'
+    #container.container_24
+      = yield
+
+      %footer
+        = render "layouts/footer"
+        - flash.each do |type, value|
+          .flash{ :class => type.to_s }
+            = value
+    .clear
+    
+    = render 'layouts/social_utils'
+    = render 'layouts/javascripts'
 

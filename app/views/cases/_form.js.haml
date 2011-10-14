@@ -1,5 +1,5 @@
 :plain
-  $('#product_name').autocomplete({
+  $('#item_product_name').autocomplete({
       source: function(request, response) {
           $.getJSON('#{search_products_path}', {query: request.term}, function(json){
             var json = $.map(json, function(row){
@@ -11,7 +11,7 @@
       },
       select: function(event, ui){console.log(ui.item.company_id);
           if (ui.item.company_id != false) {
-            $('#company_name').hide();
+            $('#item_company_name').hide();
 
             $('#case_product_id').val(ui.item.id);
             $('#case_company_id').val(ui.item.company_id);
@@ -20,7 +20,7 @@
   });
 
 
-  $('#company_name').autocomplete({
+  $('#item_company_name').autocomplete({
       source: function(request, response) {
           $.getJSON('#{search_companies_path}', {query: request.term}, function(json){
             response(json);
@@ -31,11 +31,11 @@
       }
   });
 
-  $('#product_name').change(function(){
+  $('#item_product_name').change(function(){
     $('#case_product_id').val('');
-    $('#company_name').show();
+    $('#item_company_name').show();
   });
 
-  $('#company_name').change(function(){
+  $('#item_company_name').change(function(){
     $('#case_company_id').val('');
   });

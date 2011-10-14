@@ -1,19 +1,29 @@
-= render 'layouts/app_header'
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = favicon_link_tag
 
-#container.container_24
-  %aside.grid_5.left
-    %h1#logo= link_to "prizzm", home_path
-    - if user_signed_in?
-      = render :partial => "layouts/logged_in"
-  = yield
-  .clear
-  
-%footer.container_24
-  = render "layouts/footer"
-  - flash.each do |type, value|
-    .flash{ :class => type.to_s }
-      = value
-  .clear
+  %body
+    #prizzmbar
 
-= render 'layouts/social_utils'
-= render 'layouts/javascripts'
+    #container.container_24
+      %aside.grid_5.left
+        %h1#logo= link_to "prizzm", home_path
+        - if user_signed_in?
+          = render :partial => "layouts/logged_in"
+      = yield
+      .clear
+      
+    %footer.container_24
+      = render "layouts/footer"
+      - flash.each do |type, value|
+        .flash{ :class => type.to_s }
+          = value
+      .clear
+    
+    = render 'layouts/social_utils'
+    = render 'layouts/javascripts'

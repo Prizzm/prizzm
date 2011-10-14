@@ -1,69 +1,79 @@
-= render "layouts/app_header"
+!!! 
+%html(lang='en')
+  %head
+    %meta(charset='utf-8')
+    %title  Prizzm
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = favicon_link_tag
 
-#container.container_24.profile
-  #main
-    %aside.grid_5
-      %article.userbit
-        = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
-        %h2.fl= @user.name
-        - if your_profile?
-          /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
-        - else
-          /= follow_link_for @user
-        .clear
-      %article
-        = follow_link_for @user
-        .clear
-      %article
-        %h4 About #{@user.first_name}
-        Short about me?
-      .clear
-      %article
-        %h3 Following #{followed_users = @user.following_users_count}
-        - if followed_users > 0
-          .ufgallery
-            - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
-              = link_to profile_path(user) do
-                = image_tag user.main_image, :class => "smallthumb"
-        - else
-          = link_to "Find people to follow", "#"
-          .clear   
-      %article
-        %h3 Followed by #{pluralize @user.followers_count, "Person"}
-        - if @user.followers_count > 0
-          %ul.ufgallery
-            - @user.followers.take(8).each do |follower|
-              = link_to profile_path(follower) do
-                = image_tag follower.main_image, :class => "smallthumb"
+  %body
+    #prizzmbar
+    
+    #container.container_24.profile
+      #main
+        %aside.grid_5
+          %article.userbit
+            = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
+            %h2.fl= @user.name
+            - if your_profile?
+              /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
             - else
-              = render :partial => "invitations/new"
+              /= follow_link_for @user
+            .clear
+          %article
+            = follow_link_for @user
+            .clear
+          %article
+            %h4 About #{@user.first_name}
+            Short about me?
+          .clear
+          %article
+            %h3 Following #{followed_users = @user.following_users_count}
+            - if followed_users > 0
+              .ufgallery
+                - @user.following_users.sort{|a,b| a.name <=> b.name }.each do |user|
+                  = link_to profile_path(user) do
+                    = image_tag user.main_image, :class => "smallthumb"
+            - else
+              = link_to "Find people to follow", "#"
+              .clear   
+          %article
+            %h3 Followed by #{pluralize @user.followers_count, "Person"}
+            - if @user.followers_count > 0
+              %ul.ufgallery
+                - @user.followers.take(8).each do |follower|
+                  = link_to profile_path(follower) do
+                    = image_tag follower.main_image, :class => "smallthumb"
+                - else
+                  = render :partial => "invitations/new"
+            .clear
+            /
+              %li
+                Following #{pluralize @user.following_companies_count, "Company"}
+              %li
+                Following #{pluralize @user.following_products_count, "Product"}
+        
+        
+        #content.grid_14
+          = yield
+        %aside.grid_5
+          %article
+            %h4 Tags used
+            %ul.tags
+              %li.as-selection-item.gld= link_to "Have", ""
+              %li.as-selection-item.gld= link_to "Want", ""
+              %li.as-selection-item.gld= link_to "Case", ""
+    
+    
         .clear
-        /
-          %li
-            Following #{pluralize @user.following_companies_count, "Company"}
-          %li
-            Following #{pluralize @user.following_products_count, "Product"}
+        
+      %footer
+        = render "layouts/footer"
+        - flash.each do |type, value|
+          .flash{ :class => type.to_s }
+            = value
     
-    
-    #content.grid_14
-      = yield
-    %aside.grid_5
-      %article
-        %h4 Tags used
-        %ul.tags
-          %li.as-selection-item.gld= link_to "Have", ""
-          %li.as-selection-item.gld= link_to "Want", ""
-          %li.as-selection-item.gld= link_to "Case", ""
-
-
-    .clear
-    
-  %footer
-    = render "layouts/footer"
-    - flash.each do |type, value|
-      .flash{ :class => type.to_s }
-        = value
-
- 
-= render 'layouts/social_utils'
-= render 'layouts/javascripts'
+     
+    = render 'layouts/social_utils'
+    = render 'layouts/javascripts'

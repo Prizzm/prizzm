@@ -8,7 +8,8 @@ class Item < ActiveRecord::Base
   belongs_to :product
   belongs_to :company
 
-  before_update :pre_process
+  before_update :associate_image
+  before_save :create_or_associate_company, :create_or_associate_product
 
   after_create :create_item_data
   after_update :notify_attribute_changes
@@ -99,16 +100,24 @@ class Item < ActiveRecord::Base
     tagged_with('want')
   end
 
+
   # convience methods
   def has_product?
     !product.nil?
   end
 
-  def parent_company
-    product.company if has_product?
+  def has_company?
+    if has_product? == true
+      return (self.product.company.nil? == false)
+    else
+      return (self.company.nil? == false)
+    end
   end
 
 
+  def parent_company
+    product.company if has_product?
+  end
 protected
 
   #  This method dectects which attributes were changed from the model update,
@@ -125,16 +134,20 @@ protected
       event_name = "user_update_item_#{property}" 
       ActivityLogger.send(event_name,  :from => self.user, :for => [self], :changes => delta) unless ignore.include? property
     end 
-  end 
+  end
 
 
-  def pre_process
+
+  # Obsolete, now stored on products, need to remove
+  def associate_image
     if !self.image_url.blank?
       self.images = []
       add_image_from_url self.image_url
     end
+  end
 
 
+  def create_or_associate_company
     if self.company_name.blank? == false
       company = Company.first(:conditions => {
           :name => self.company_name
@@ -152,8 +165,10 @@ protected
 
       self.company = company
     end
+  end
 
 
+  def create_or_associate_product
     if self.product_name.blank? == false
       product = Product.first(:conditions => {
         :name       => self.product_name,
@@ -167,7 +182,7 @@ protected
           :url         => self.product_url
         })
         product.add_image_from_url(self.product_image)
-        product.company = company
+        product.company = self.company
 
         product.save
       end

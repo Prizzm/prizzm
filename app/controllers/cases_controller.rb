@@ -59,46 +59,46 @@ class CasesController < InheritedResources::Base
     @case = Case.new(params[:case]);
     @case.user = current_user
 
-    if params[:case][:product_id].blank? == false
-      @product = Product.find(params[:case][:product_id]);
-    elsif params[:product_name].blank? == false
-      @product = Product.find(:first, {
-        :conditions => {
-          :name       => params[:product_name],
-          :company_id => (@company.id if @company.nil? == false),
-        }
-      });
-
-      if @product.nil? == true
-        @product = Product.create({
-          :name => params[:product_name],
-          :url  => params[:product_url],
-        });
-      end
-
-      @case.product = @product
-    end
-
-
-    if params[:case][:company_id].blank? == false
-      @company = Company.find(params[:case][:company_id])
-    elsif params[:company_name].blank? == false
-      @company = Company.find(:first, {
-        :conditions => {:name => params[:company_name]}
-      });
-
-      if @company.nil? == true
-        @company = Company.create({
-          :name     => params[:company_name],
-          :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
-          :password => (0...8).map{65.+(rand(25)).chr}.join,
-          :claimed  => false
-        })
-      end
-
-      @product.company = @company
-      @case.company = @company
-    end
+    # if params[:case][:product_id].blank? == false
+      # @product = Product.find(params[:case][:product_id]);
+    # elsif params[:product_name].blank? == false
+      # @product = Product.find(:first, {
+        # :conditions => {
+          # :name       => params[:product_name],
+          # :company_id => (@company.id if @company.nil? == false),
+        # }
+      # });
+# 
+      # if @product.nil? == true
+        # @product = Product.create({
+          # :name => params[:product_name],
+          # :url  => params[:product_url],
+        # });
+      # end
+# 
+      # @case.product = @product
+    # end
+# 
+# 
+    # if params[:case][:company_id].blank? == false
+      # @company = Company.find(params[:case][:company_id])
+    # elsif params[:company_name].blank? == false
+      # @company = Company.find(:first, {
+        # :conditions => {:name => params[:company_name]}
+      # });
+# 
+      # if @company.nil? == true
+        # @company = Company.create({
+          # :name     => params[:company_name],
+          # :email    => params[:company_name].match(/^\w+/)[0].downcase + '@prizzm.com',
+          # :password => (0...8).map{65.+(rand(25)).chr}.join,
+          # :claimed  => false
+        # })
+      # end
+# 
+      # @product.company = @company
+      # @case.company = @company
+    # end
 
   
     if @case.save
