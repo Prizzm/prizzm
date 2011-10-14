@@ -1,9 +1,0 @@
-{
-    "name": "prizzm-twitter-stream",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "oauth": "",
-        "twitter-node": "git+https://github.com/technoweenie/twitter-node.git"
-    }
-}
