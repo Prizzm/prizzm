@@ -5,10 +5,6 @@
   .userbit
     = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
     %h2.fl= @user.name
-    - if your_profile?
-      /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
-    - else
-      /= follow_link_for @user
     .clear
   %article
     = follow_link_for @user
