@@ -1,3 +1,75 @@
+<<<<<<< HEAD
+- content_for :page_style do
+  = include_stylesheets :profile
+
+%aside.grid_5.profile-user.no-menu
+  .userbit
+    = image_tag @user.photo_url(:profile), :class => "fl profilePic", :alt => "" 
+    %h2.fl= @user.name
+    - if your_profile?
+      /= link_to "Edit profile", edit_user_registration_path, :class => "facebox edit button red"
+    - else
+      /= follow_link_for @user
+    .clear
+  %article
+    = follow_link_for @user
+    .clear
+  %article
+    %h4 About #{@user.first_name}
+    Short about me?
+  .clear
+  %article
+    %h3 Following #{followed_users = @user.following_users_count}
+    - if followed_users > 0
+      .ufgallery
+        - @user.following_users.order('first_name').each do |user|
+          = link_to profile_path(user) do
+            = image_tag user.main_image, :class => "small thumb"
+    - else
+      = link_to "Find people to follow", "#"
+      .clear   
+  %article
+    %h3 Followed by #{pluralize @user.followers_count, "Person"}
+    - if @user.followers_count > 0
+      %ul.ufgallery
+        - @user.followers.take(8).each do |follower|
+          = link_to profile_path(follower) do
+            = image_tag follower.main_image, :class => "small thumb"
+    - else
+      = render :partial => "invitations/new"
+  .clear
+
+#content.grid_14.no-menu
+  %ul.items
+    - if @user.items.count > 0
+      %li.item
+        = render :partial => "profile/item", :collection => @user.items.where(:privacy => 'public')
+    - else
+      .error
+        - if your_profile?
+          You currently have no public items
+        - else
+          = "#{@user.first_name} #{@user.last_name} has no public items!"
+          =link_to "Recommend an item to them", ""
+          \.
+          
+    .clear
+
+
+= render :partial => "layouts/system_menu"
+
+- content_for :javascripts do
+  :javascript
+    $(window).load(function(){
+      var $products = $('.prod-g');
+
+      if ($products.has('li').length > 0) {
+        $products.masonry({
+          itemSelector : '.prod-g > li'
+        });
+      }
+    });
+=======
 - content_for :page_style do
   = include_stylesheets :profile
 
@@ -64,3 +136,4 @@
         });
       }
     });
+>>>>>>> f40cabbb9719e93804020da3de5801eeb607ef76
