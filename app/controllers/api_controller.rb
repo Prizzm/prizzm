@@ -5,31 +5,19 @@ class ApiController < ApplicationController
     })
 
     if user.nil? == false
-      company = Company.first(:conditions => {
-        :name => params[:company]
-      })
-
-      if company.nil? == true
-        company = Company.create({
-          :name     => params[:company],
-          :email    => params[:company].match(/^\w+/)[0].downcase + '@prizzm.com',
-          :password => (0...8).map{65.+(rand(25)).chr}.join,
-          :claimed  => false
-        })
-      end
-
-
       userCase = Case.new({
-        :title  => params[:title],
-        :privacy => 'public'
+        :privacy      => 'public',
+        :title        => params[:title],
+        :company_name => params[:company_name]
       });
 
-      userCase.company  = company
-      userCase.user     = user
+      userCase.user = user
       userCase.save
-    end
 
-    render :nothing => true
+      render :json => case_url(userCase)
+    else
+      render :nothing => true
+    end
   end
 
 
@@ -39,14 +27,16 @@ class ApiController < ApplicationController
     })
 
     if user.nil? == false
-      if params[:possession] == 'have'
+      if params[:item_possession] == 'have'
         possession = 'have'
       else
         possession = 'want'
       end
 
       item = Item.create({
-        :privacy  => 'public'
+        :privacy      => 'public',
+        :product_name => params[:product_name],
+        :company_name => params[:company_name],
       });
 
       item.tag_list = possession
