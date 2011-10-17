@@ -47,13 +47,27 @@ module Models
         def find_for_twitter_oauth(access_token, user=nil)
           #pp access_token
           credentials = access_token['credentials']
-          info = access_token['user_info']
           screen_name = access_token['extra']['user_hash']['screen_name']
+          info          = access_token['user_info']
+
+  
 
           # Not signed in.
           if user.nil?
             # Already signed up with Twitter.
             if user = find_by_tt_token_and_tt_secret(credentials['token'], credentials['secret'])
+              user
+            elsif user = find_by_tt_username(screen_name.to_s)
+              # Update twitter token/secret
+              user.tt_token = credentials['token']
+              user.tt_secret = credentials['secret']
+
+              # Update with twitter data
+              user.location         = info['location']
+              user.first_name       = info['name']
+              user.remote_photo_url = info['image']
+              user.save
+
               user
             else
               # Create new Prizzm account with Twitter account information.

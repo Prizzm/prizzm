@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   mount_uploader :photo, UserImageUploader
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :phone_number, :location, :photo, :photo_cache
+  attr_accessible :first_name, :last_name, :phone_number, :location, :photo, :photo_cache, :tt_username
 
   # Manually validate instead of using Devise validatable so that we can validate password only when new record is being created,
   # don't validate password presence when updating user.
