@@ -9,10 +9,14 @@
 
 #content.grid_14
   %nav#secondary
-    %ul
-      %li= link_to "Have", have_path(current_user)
-      %li= link_to "Want", want_path(current_user)
-      %li= link_to "Case", user_cases_path(current_user)
+    - if user_signed_in?
+      %ul
+        %li= link_to "Have", have_path(current_user)
+        %li= link_to "Want", want_path(current_user)
+        %li= link_to "Case", user_cases_path(current_user)
+    - else
+      %ul
+        %li &nbsp;
       
   %section#case
     .title= @case.title
@@ -42,7 +46,6 @@
   %section#new-comment
     = comment_form_for @case
        
-
 = render :partial => "case_sidebar"
 
 - content_for :javascripts do

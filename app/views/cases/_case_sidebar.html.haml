@@ -1,56 +1,39 @@
 = render :partial => "layouts/system_menu"
 
 %aside.grid_5.right
-  %article
-    %h4 Make a call
-    = text_field_tag "", "", :placeholder => "Enter a number to call"
-    = link_to "Call", "#", :class => "twiliocall button", :id => "call"
-    .clear
-    
-  - if @case.company.nil? == false
+  - if @case.company.present?
     %article#company_addresses
-      %h4= "Company: #{@case.company.name}"
+      %h4 Company:
+      %h3= link_to @case.company.name, @case.company
       = formatted_addresses_for(@case.company)
+  %article
+    %h4
+      Person:
+      %h3
+        = image_tag @case.user.photo_url
+        = link_to @case.user.name, @case.user
 
-      %a{ :class => 'button contact add' } Add
-      .clear
-  
-  %article#ask_friends
-    %h4 Ask your friends for help
-    = form_tag case_post_to_facebook_path(@case), :remote => true, :class => "table", :id => "form-ask-friend" do
-      = text_field_tag :message, "", :placeholder => "Message"
-      %ul.finalstep
-        %li.fb{:title => "post to facebook"}
-          / facebook checkbox goes here
-        %li.tt
-          / twitter checkbox goes here
-        %li.privacy
-          / privacy drop down goes here
-        %li
-          = hidden_field_tag :link, case_url(@case)
-          = link_to "ask", "#", :id => 'button-ask-friend', :class => "button"
-          .loading{:style => "display:none;float:right"}
-      .clear
-  %artical#case_files
-    %h4 Upload files
-    - if user_signed_in? && (@case_owner.id == current_user.id)
-      %p.ftnote Selected files will be removed
-      = semantic_form_for @case, :html => { :multipart => true } do |f|
-        = f.fields_for :case_files do |cf|
-          - if cf.object.casefile.present?
-            = cf.check_box :_destroy
-            = link_to File.basename(cf.object.casefile_url).limit(12), cf.object.casefile_url, :title => File.basename(cf.object.casefile_url)
-            \-
-            = cf.select :privacy, [['Public', 'public'], ['Private', 'private']], :selected => cf.object.privacy
+  - if user_signed_in?
+    %article#case_files
+      %h4 Upload files
+      - if user_signed_in? && (@case_owner.id == current_user.id)
+        %p.ftnote Selected files will be removed
+        = semantic_form_for @case, :html => { :multipart => true } do |f|
+          = f.fields_for :case_files do |cf|
+            - if cf.object.casefile.present?
+              = cf.check_box :_destroy
+              = link_to File.basename(cf.object.casefile_url).limit(12), cf.object.casefile_url, :title => File.basename(cf.object.casefile_url)
+              \-
+              = cf.select :privacy, [['Public', 'public'], ['Private', 'private']], :selected => cf.object.privacy
+              %br/
+            - else
+              = cf.file_field :casefile, :label => false
+          = f.submit :class => "button green"
+      - else
+        - @case.case_files.each do |cf|
+          - if cf.casefile.present? && cf.is_public?
+            = link_to(File.basename(cf.casefile_url).limit(30), cf.casefile_url, :title => File.basename(cf.casefile_url))
             %br/
-          - else
-            = cf.file_field :casefile, :label => false
-        = f.submit :class => "button green"
-    - else
-      - @case.case_files.each do |cf|
-        - if cf.casefile.present? && cf.is_public?
-          = link_to(File.basename(cf.casefile_url).limit(30), cf.casefile_url, :title => File.basename(cf.casefile_url))
-          %br/
 
 #call-window{:style => "display:none"}
   %div#call-window-container
